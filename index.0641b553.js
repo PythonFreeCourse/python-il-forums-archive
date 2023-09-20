@@ -612,7 +612,7 @@ search.addWidgets([
             <div class="search-hit-category">קטגוריה: ${hit.category_name}</div>
             ${hit.tags.length > 0 && html`
               <div class="search-hit-tags">תגיות: ${" "} ${hit.tags.map((t, index)=>html`
-                  <a class="tag-link" href="https://forums.pythonic.guru/t/${t}.html">${t}</a>
+                  <a class="tag-link" href="https://forums.pythonic.guru/tag/${t}.html">${t}</a>
                   ${index < hit.tags.length - 1 ? ", " : ""}`)}
               </div>
             `}
