@@ -1,39 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #343a40;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .header {
-  color: #fff;
-  background-image: linear-gradient(284deg, #fedd4e, #fcb43a);
+  color: #212529;
+  direction: rtl;
+  background-color: #e9ecef;
+  justify-content: space-between;
   align-items: center;
-  min-height: 50px;
+  min-height: 40px;
   margin-bottom: 1rem;
-  padding: .5rem 1rem;
+  padding: .5rem 2rem;
   display: flex;
 }
 
 .header a {
-  color: #fff;
+  color: #212529;
+  margin: 0 1rem;
+  font-size: 1rem;
   text-decoration: none;
+  transition: color .3s;
+}
+
+.header a:hover {
+  color: #343a40;
 }
 
 .header-title {
   font-size: 1.2rem;
-  font-weight: normal;
-}
-
-.header-title:after {
-  content: " ▸ ";
-  padding: 0 .5rem;
+  font-weight: 700;
 }
 
 .header-subtitle {
-  font-size: 1.2rem;
+  font-size: .9rem;
+}
+
+@media (width <= 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: .5rem 1rem;
+  }
+
+  .header a, .header-title, .header-subtitle {
+    margin-bottom: .5rem;
+  }
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  clear: both;
+  width: 100%;
+  margin: auto;
   padding: 1rem;
 }
 
+#hits {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .search-panel {
+  flex-direction: column;
+  gap: 1rem;
   display: flex;
 }
 
@@ -51,7 +89,12 @@
 }
 
 #searchbox {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  width: 100%;
   margin-bottom: 2rem;
+  padding: .5rem;
 }
 
 #pagination {
@@ -59,96 +102,245 @@
   margin: 2rem auto;
 }
 
-body {
-  background-color: #f0f0f0;
-  font-family: Arial\, sans-serif;
+@media (width >= 600px) {
+  .search-panel {
+    flex-direction: row;
+  }
 }
 
 .search-hit {
   box-sizing: border-box;
   background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  border-radius: .75rem;
   width: 100%;
-  margin-bottom: 16px;
-  padding: 16px;
-  box-shadow: 0 0 10px #0000001a;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: transform .2s;
+  box-shadow: 0 .125rem .3125rem #0000001a;
+}
+
+.search-hit:hover {
+  transform: translateY(-.3125rem);
 }
 
 .search-hit-header {
-  align-items: center;
-  margin-bottom: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
   display: flex;
+}
+
+.search-hit-header img {
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .search-hit-avatar {
   object-fit: cover;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin-right: 16px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1rem;
 }
 
 .search-hit-info {
   flex-grow: 1;
+  margin-inline-start: .5rem;
 }
 
 .search-hit-title {
+  text-align: start;
+  direction: rtl;
+  color: #343a40;
   margin: 0;
-  font-size: 1.25em;
+  font-size: 1.5rem;
   line-height: 1.4;
 }
 
 .search-hit-meta {
-  color: #666;
-  margin: 0;
-  font-size: .9em;
+  color: #6c757d;
+  text-align: right;
+  direction: rtl;
+  margin: .3125rem 0 0;
+  font-size: .9rem;
 }
 
 .search-hit-content {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .search-hit-text {
-  color: #333;
+  color: #343a40;
+  text-align: right;
+  direction: rtl;
   margin: 0;
   line-height: 1.6;
 }
 
 .search-hit-footer {
-  border-top: 1px solid #e0e0e0;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding-top: 8px;
+  direction: rtl;
+  border-top: 1px solid #e9ecef;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: .5rem;
   display: flex;
 }
 
 .search-hit-category {
-  color: #333;
-  margin-right: 8px;
+  direction: rtl;
+  text-align: right;
+  color: #6c757d;
+  flex-grow: 1;
+  width: 10rem;
+  margin-bottom: .5rem;
+  display: flex;
 }
 
 .search-hit-tags {
-  color: #777;
-  flex-grow: 1;
-  font-size: .9em;
-}
-
-.search-hit-read-more {
+  direction: rtl;
   text-align: right;
+  color: #6c757d;
+  flex-grow: 2;
+  margin-bottom: .5rem;
 }
 
-.search-hit-link {
-  color: #06c;
+.search-hit-tags a {
+  color: #007bff;
   text-decoration: none;
 }
 
 .search-hit-tags span {
-  background-color: #e0e0e0;
-  border-radius: 12px;
-  margin-right: 4px;
-  padding: 2px 6px;
-  font-size: .8em;
+  background-color: #e9ecef;
+  border-radius: .9375rem;
+  margin: 0 .25rem .25rem 0;
+  padding: .125rem .5rem;
+  display: inline-block;
+}
+
+.search-hit-read-more {
+  text-align: left;
+  margin-inline-end: .5rem;
+}
+
+.search-hit-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+#pagination {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2rem auto;
+  display: flex;
+}
+
+.ais-Pagination-link {
+  text-align: center;
+  flex: 1;
+  margin: .5rem 0;
+  padding: 0 .5rem;
+  font-size: .75rem;
+}
+
+@media (width >= 600px) {
+  .ais-Pagination-link {
+    padding: 0 .75rem;
+    font-size: .875rem;
+  }
+}
+
+@media (width >= 900px) {
+  .ais-Pagination-link {
+    padding: 0 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (width >= 37.5rem) {
+  .search-hit-header, .search-hit-footer {
+    direction: rtl;
+    text-align: right;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .search-hit-avatar {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+
+  .search-hit-category {
+    margin-bottom: 0;
+    margin-right: .5rem;
+  }
+
+  .search-hit-tags {
+    margin-bottom: 0;
+  }
+}
+
+.ais-SearchBox-form:before, .ais-SearchBox-form:before {
+  background: initial;
+  top: initial;
+  width: initial;
+  height: initial;
+  margin-top: initial;
+  position: initial;
+  content: initial;
+  left: initial;
+}
+
+.ais-SearchBox-form:after {
+  content: "";
+  background: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%235a5e9a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2221%22%20y1%3D%2221%22%20x2%3D%2216.65%22%20y2%3D%2216.65%22%3E%3C%2Fline%3E%3C%2Fsvg%3E");
+  width: 1rem;
+  height: 1rem;
+  margin-top: -.5rem;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+}
+
+.ais-SearchBox-form {
+  direction: rtl;
+}
+
+.ais-SearchBox-form .ais-SearchBox-input {
+  text-align: right;
+  padding-left: 0 !important;
+  padding-right: 2.5rem !important;
+}
+
+.ais-SearchBox-submit, .ais-SearchBox-reset {
+  order: -1;
+  left: 1rem !important;
+}
+
+.ais-SearchBox-reset {
+  margin-right: auto;
+}
+
+.ais-RefinementList-list {
+  direction: rtl;
+  text-align: right;
+}
+
+.ais-GeoSearch-input, .ais-RefinementList-checkbox {
+  margin: 0;
+  margin-left: .5rem !important;
+  margin-right: 0 !important;
+}
+
+.ais-RefinementList-count {
+  margin-left: 0 !important;
+  margin-right: .5rem !important;
+}
+
+.ais-Panel-header {
+  direction: rtl;
+  text-align: right;
 }
 
 /*# sourceMappingURL=index.4a5519d3.css.map */
