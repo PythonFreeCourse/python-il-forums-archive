@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/9121 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:39 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>עבודה עם המשתמש המחובר למערכת - שבוע 16 - פייתון בעברית ובחינם</title>
+<meta content="בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים. 
+מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן. 
+את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies 
+ישנן 4 פ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9121.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9121.rss" rel="alternate nofollow" title="הזנת RSS של ‚עבודה עם המשתמש המחובר למערכת’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_1024x151.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_1024x151.png" property="og:image"/>
+<meta content="9121.html" property="og:url"/>
+<meta content="9121.html" name="twitter:url"/>
+<meta content="עבודה עם המשתמש המחובר למערכת" property="og:title"/>
+<meta content="עבודה עם המשתמש המחובר למערכת" name="twitter:title"/>
+<meta content="בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.  מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.  את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies  ישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:  כולן בנויות באופן שהיישום שלהן אמור להיות כדיפנדנסי עבור ראוט, באופן הבא:  עבור ההדגמה אני משתמש באחת מהן, הנקראת current_user     ניתן גם ליישם באופן הבא, המתאים בעיקר לפונקציות שמחזירות בוליאן. באופן זה, ערך ההחזרה מהפונקציה א..." property="og:description"/>
+<meta content="בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.  מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.  את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies  ישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:  כולן בנויות באופן שהיישום שלהן אמור להיות כדיפנדנסי עבור ראוט, באופן הבא:  עבור ההדגמה אני משתמש באחת מהן, הנקראת current_user     ניתן גם ליישם באופן הבא, המתאים בעיקר לפונקציות שמחזירות בוליאן. באופן זה, ערך ההחזרה מהפונקציה א..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 16" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="16 ❤"/>
+<meta content="2021-02-18T17:52:49+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"עבודה עם המשתמש המחובר למערכת","mainEntity":{"@type":"Question","name":"עבודה עם המשתמש המחובר למערכת","text":"בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.\n\nמצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.\n\nאת הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies\n\nישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:\n\nכולן בנויות באופן שהיישום של&hellip;","upvoteCount":13,"answerCount":0,"dateCreated":"2021-02-18T17:52:49.005Z","author":{"@type":"Person","name":"koby"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9121.html">עבודה עם המשתמש המחובר למערכת</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-16/28.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 16</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="עבודה עם המשתמש המחובר למערכת" itemprop="headline"/>
+<meta content="שבוע 16" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="9121.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T17:52:49Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏  5:52pm
+                  </time>
+<meta content="2021-02-20T10:11:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.<br/>
+מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.<br/>
+את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies</p>
+<p>ישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:<br/>
+כולן בנויות באופן שהיישום שלהן אמור להיות כדיפנדנסי עבור ראוט, באופן הבא:</p>
+<p>עבור ההדגמה אני משתמש באחת מהן, הנקראת current_user<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a01d78139587e4976eaeaa9f67efb6e698f76192" href="../../uploads/default/original/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192.png" title="image"><img alt="image" data-base62-sha1="mQrx0C41hHpcGWmSblmGA1m029s" data-small-upload="../../uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_10x10.png" height="102" src="../../uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_689x102.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_689x102.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_1033x153.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192.png 2x" width="689"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1283×190 15.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ניתן גם ליישם באופן הבא, המתאים בעיקר לפונקציות שמחזירות בוליאן. באופן זה, ערך ההחזרה מהפונקציה אינו מוכנס למשתנה, ולא ניתן להשתמש בו בתוך הפונקציה שלכם. הדיפנדנסי תתפקד רק כהגנה על הראוט:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1e64ddc9d06c65c22692b2e20ca6d967c19d534c" href="../../uploads/default/original/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c.png" title="image"><img alt="image" data-base62-sha1="4kSqCcUZMqT2v0Ak5Oer4TGUimM" data-small-upload="../../uploads/default/optimized/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c_2_10x10.png" height="137" src="../../uploads/default/original/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">970×193 17.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>מכנה משותף נוסף הוא שכולן מגינות על ראוט. במידה והשתמשתם בהן בכניסה לראוט, והמשתמש אינו מחובר, הוא יופנה אוטומטית לעמוד לוגאין. לאחר ההתחברות הוא יוחזר אוטומטית לראוט שלכם.</p>
+<p>השונה בין הפונקציות הוא ערך ההחזרה שלהן, כפי שמתואר בתיעוד שלהן:<br/>
+is_logged_in  - מחזירה בוליאן בלבד. מיועדת רק על הגנה על ראוט, ללא שימוש בנתוני המשתמש.<br/>
+is_manager - גם כן מחזירה בוליאן, מגינה על ראוט עבור משתמש המוגדר כמנהל בלבד.<br/>
+current_user- מחזירה אובייקט פיידנטיק המכיל: user_id, username. לנוחיותכם השתמשתי במחלקה ולא במילון.<br/>
+לתשומת לבכם, הפונקציה הזאת אינה פונה לדאטה בייס עבור הנתונים. היא מחזירה אותן ישירות מהטוקן שהמשתמש נושא איתו ממערכת האבטחה. מהסיבה הזאת היא ‘יעילה’ עבור פעולות השרת, וכל עוד אינכם צריכים נתונים נוספים עבור המשתמש, אנא השתמשו בה.<br/>
+current_user_from_db - מחזירה אובייקט User מלא מהדאטה בייס, עם כל הנתונים שלו. היא הכי פחות ידידותית מבחינת משאבים, מאחר והיא פונה לדאטה בייס. אנה השתמשו בה רק אם אתם חייבים את הנתונים הספציפיים שכל הפונקציות האחרות אינן מספקות.<br/>
+בנוסף, ישנה הדגמה עבור כל אחת מהפונקציות בקובץ tests\security_testing_routes.<br/>
+אני מקווה שהכל ברור, ובכל מקרה אני פה כדי לעזור <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="13" itemprop="userInteractionCount"/>
+<span class="post-likes">13 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="9121.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T22:44:51Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:44pm
+                  </time>
+<meta content="2021-02-18T22:44:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בשעה טובה, משהו שהוא קריטי להמשך הפרויקט!<br/>
+תודה לך קובי!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="9121.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-20T13:03:52Z" itemprop="datePublished">
+                     20 בפברואר,‏ 2021,‏  1:03pm
+                  </time>
+<meta content="2021-02-20T13:03:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קודם כל עבודה אדירה וקריטית להמשך. תודה המון <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+דבר שני- רציתי לשאול אם אתה עובד עם פונקציה שמכניסה משתמש כמחובר כדי לבחון אם זה עובד. ואם יש טסטים שלהן איפשהו אשמח גם לקבל ניתוב</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="9121.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-20T14:23:14Z" itemprop="datePublished">
+                     20 בפברואר,‏ 2021,‏  2:23pm
+                  </time>
+<meta content="2021-02-20T14:23:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קודם כל תודה רבה :). אני לא בטוח שהבנתי את השאלה. בפוסט כתבתי בדיוק היכן ניתן לראות הדגמה של איך להפעיל את זה, ואיך זה עובד. ישנו קובץ עם ראוטים שיצרתי במיוחד עבור הבדיקה, בתיקיית tests. שם הקובץ הוא  security_testting_routes. על פי הבדיקות שעשיתי, הכל עובד</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="9121.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-20T16:13:22Z" itemprop="datePublished">
+                     20 בפברואר,‏ 2021,‏  4:13pm
+                  </time>
+<meta content="2021-02-20T16:13:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש ב test_login פונקציה test_login_successful שמצאתי מאוד שימושית.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/9121 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:46 GMT -->
+</html>

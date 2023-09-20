@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/check-m8/7522 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:25 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>קריאה והבנה של קוד - check m8 - שבוע 8 - פייתון בעברית ובחינם</title>
+<meta content="בשעה טובה הגעתי לתרגיל השחמט, אני חייב להודות כשקראתי את התרגיל לדוגמא המוח שלי עצר בערך ברבע הראשון ולא הצלחתי יותר לעכל כלום ממה שקורה שם, יכול להיות שזה רק אני אבל קשה לי מאוד לקרוא קוד ולהבין מה התפקיד של כל חלק, כל &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7522.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7522.rss" rel="alternate nofollow" title="הזנת RSS של ‚קריאה והבנה של קוד - check m8’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7522.html" property="og:url"/>
+<meta content="7522.html" name="twitter:url"/>
+<meta content="קריאה והבנה של קוד - check m8" property="og:title"/>
+<meta content="קריאה והבנה של קוד - check m8" name="twitter:title"/>
+<meta content="בשעה טובה הגעתי לתרגיל השחמט, אני חייב להודות כשקראתי את התרגיל לדוגמא המוח שלי עצר בערך ברבע הראשון ולא הצלחתי יותר לעכל כלום ממה שקורה שם, יכול להיות שזה רק אני אבל קשה לי מאוד לקרוא קוד ולהבין מה התפקיד של כל חלק, כל דבר קטן לוקח לי זמן, רק את המחלקה color לקח לי 10 דק’ להבין.  אני חושב שזה בגלל שהדרך לא יושבת לי בראש ואני מקבל רק את התשובה, להבדיל ממתי שאני בונה את הקוד ואני לאט לאט מצליח לעלות על דרכים להתמודד עם כל משימה.  בשביל זה אני רוצה לשאול / לבקש טיפים כלליים לאיך להיכנס לקוד ולהבין..." property="og:description"/>
+<meta content="בשעה טובה הגעתי לתרגיל השחמט, אני חייב להודות כשקראתי את התרגיל לדוגמא המוח שלי עצר בערך ברבע הראשון ולא הצלחתי יותר לעכל כלום ממה שקורה שם, יכול להיות שזה רק אני אבל קשה לי מאוד לקרוא קוד ולהבין מה התפקיד של כל חלק, כל דבר קטן לוקח לי זמן, רק את המחלקה color לקח לי 10 דק’ להבין.  אני חושב שזה בגלל שהדרך לא יושבת לי בראש ואני מקבל רק את התשובה, להבדיל ממתי שאני בונה את הקוד ואני לאט לאט מצליח לעלות על דרכים להתמודד עם כל משימה.  בשביל זה אני רוצה לשאול / לבקש טיפים כלליים לאיך להיכנס לקוד ולהבין..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 8" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שחמט-גנואים" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="5 ❤"/>
+<meta content="2020-07-11T12:20:11+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"קריאה והבנה של קוד - check m8","mainEntity":{"@type":"Question","name":"קריאה והבנה של קוד - check m8","text":"בשעה טובה הגעתי לתרגיל השחמט, אני חייב להודות כשקראתי את התרגיל לדוגמא המוח שלי עצר בערך ברבע הראשון ולא הצלחתי יותר לעכל כלום ממה שקורה שם, יכול להיות שזה רק אני אבל קשה לי מאוד לקרוא קוד ולהבין מה התפקיד של כל חלק, כל דבר קטן לוקח לי זמן, רק את המחלקה color לקח לי 10 דק’ להבין.\n\nאני חושב שזה בגלל &hellip;","upvoteCount":1,"answerCount":0,"dateCreated":"2020-07-11T12:20:11.127Z","author":{"@type":"Person","name":"דרור ביטון"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7522.html">קריאה והבנה של קוד - check m8</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-8/18.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 8</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a9%d7%97%d7%9e%d7%98-%d7%92%d7%a0%d7%95%d7%90%d7%99%d7%9d.html" rel="tag">שחמט-גנואים</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="קריאה והבנה של קוד - check m8" itemprop="headline"/>
+<meta content="שבוע 8" itemprop="articleSection"/>
+<meta content="שחמט-גנואים" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-11T12:20:11Z" itemprop="datePublished">
+                     11 ביולי,‏ 2020,‏ 12:20pm
+                  </time>
+<meta content="2021-12-25T01:37:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>בשעה טובה הגעתי לתרגיל השחמט, אני חייב להודות כשקראתי את התרגיל לדוגמא המוח שלי עצר בערך ברבע הראשון ולא הצלחתי יותר לעכל כלום ממה שקורה שם, יכול להיות שזה רק אני אבל קשה לי מאוד לקרוא קוד ולהבין מה התפקיד של כל חלק, כל דבר קטן לוקח לי זמן, רק את המחלקה color לקח לי 10 דק’ להבין.<br/>
+אני חושב שזה בגלל שהדרך לא יושבת לי בראש ואני מקבל רק את התשובה, להבדיל ממתי שאני בונה את הקוד ואני לאט לאט מצליח לעלות על דרכים להתמודד עם כל משימה.</p>
+<p>בשביל זה אני רוצה לשאול / לבקש טיפים כלליים לאיך להיכנס לקוד ולהבין את התפקיד של כל חלק, ואם אפשר גם, ספציפית לתרגיל הזה, עזרה בלהבין את החלקים, למרות שאני קורא את התיעוד אני מרגיש כאילו יש לי חור שחור בתוך הראש והכל נעלם לא משנה כמה פעמים אני קורא.</p>
+<p>אשמח לכל עזרה שתוכלו להציע לי…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-11T12:50:24Z" itemprop="datePublished">
+                     11 ביולי,‏ 2020,‏ 12:50pm
+                  </time>
+<meta content="2020-07-11T12:50:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה לי שזה אותו נושא <a class="inline-onebox" href="../topic/7521.html">מחפש טיפ של אלופים</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-11T16:45:38Z" itemprop="datePublished">
+                     11 ביולי,‏ 2020,‏  4:45pm
+                  </time>
+<meta content="2020-07-11T16:45:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תפתור את התרגיל בעצמך<br/>
+ואז תשווה עם הקוד של התרגיל לדוגמא<br/>
+ואז אתה תראה את ההבדלים<br/>
+וכבר תבין את הקוד תוך כדי מעבר עליו…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-12T11:28:09Z" itemprop="datePublished">
+                     12 ביולי,‏ 2020,‏ 11:28am
+                  </time>
+<meta content="2020-07-12T11:28:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היום התחלתי להבין קצת איך עובד כל חלק בקוד, עדיין טיפה מעורפל אבל מתחיל להבין איך לשחק עם כל חלק כדי לשנות אותו בהתאם לצרכים שלי.<br/>
+מס’ שאלות:<br/>
+1 - בנוגע לגנו, אני לא בטוח איך להגדיר לו שיוכל לבחור בכל פעם אם הוא רוצה את התכונות של פרש או של גמל, אני מבין שהוא יצטרך לרשת משניהם, ובשביל התרגיל אני מעוניין להשתמש במודול random כדי לבחור ביניהם, אבל איך אני יכול להגדיר שבכל פעם הוא יבחר באופן רנדומלי מאיזה מחלקה לרשת.<br/>
+חשבתי על אופציה שהוא יגריל ולאחר מכן בהתאם ירש ישירות מהמחלקה (ולא באמצעות super) אבל אני לא בטוח איך לוודא שהוא בכל פעם יגריל מחדש, מה גם שאני לא בטוח אם אפשר להגיד:</p>
+<pre><code class>def __init__(self, **kwargs):
+    if self.raffle == 'camel':
+        Camel.__init__(**kwargs)
+    else:
+        Geno.__init__(**kwargs)
+</code></pre>
+<p>דבר נוסף, אני מחפש דרך יעילה להרכיב את המחלקה של החד קרן,<br/>
+אני מבין שאני יכול להכפיל את התנועות של הפרש בכל פעם (כפול 2, כפול 3 וכן הלאה) אבל אני מחפש דרך יעילה שתדע לעבוד לפי גודל הלוח במידה וירצו להגדיל אותו בעתיד.<br/>
+אולי לקחת את גובה/רוחב הלוח (לא בטוח מי מביניהם), לחלק ב-2 כיוון שהקפיצות של פרש הן 2 צעדים לכיוון אחד ולהגדיר שיבדוק על כולם אם הצעדים חוקיים?</p>
+<ul>
+<li>הסיבה לחלוקה ב-2 היא כי אני לא רוצה שהקוד יצטרך לרוץ ולשמור נתונים לרשימה סתם אם הם גם ככה לא יהיו חוקיים לתנועה.</li>
+<li>אני לא בטוח על הגובה/רוחב כיוון שאני חשוב מה אם מישהו אחר בעתיד יחליט להגדיר את הלוח עם הבדל משמעותי בין הרוחב והגובה, לדוג’ יכפיל את השורות הריקות, כמו עם החלוקה ב-2, אני לא רוצה שהקוד ירוץ ויאגור נתונים סתם ושלאחר מכן הם לא יהיו חוקיים גם ככה.</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-12T11:58:42Z" itemprop="datePublished">
+                     12 ביולי,‏ 2020,‏ 11:58am
+                  </time>
+<meta content="2020-07-12T11:58:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי הגנו, הוא לא “בוחר” - הוא כן, אבל לא איך שאתה עושה, אתה פשוט מציב לו גם את האפשרויות לצעד של גמל וגם את האפשרויות לצעד של פרש, את לא מגריל ביניהם (גמל ופרש).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-12T11:59:43Z" itemprop="datePublished">
+                     12 ביולי,‏ 2020,‏ 11:59am
+                  </time>
+<meta content="2020-07-12T11:59:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לדוגמה:<br/>
+צעד של פרש - (1,2)<br/>
+צעד של גמל - (3,1)<br/>
+אז לגנו יהיה ((1,2), (3,1))</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-13T13:22:26Z" itemprop="datePublished">
+                     13 ביולי,‏ 2020,‏  1:22pm
+                  </time>
+<meta content="2020-07-13T13:24:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז בעצם המטרה שלי פה בתרגיל היא לא להראות שאני מבין איך לממש משחק שחמט, אלא שאני מבין איך להיכנס לקוד ולשנות אותו לצרכים שלי?<br/>
+כי אם אני מבין אותך נכון מה שאני צריך לעשות עם גנו זה פשוט ------.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-13T13:24:37Z" itemprop="datePublished">
+                     13 ביולי,‏ 2020,‏  1:24pm
+                  </time>
+<meta content="2020-07-13T13:24:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מבקש שוב לא לפרסם פתרונות בפורום.<br/>
+וכן, חלק גדול מהמטרה של התרגיל זה להרגיל אתכם לכניסה לקוד של אחרים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-13T13:25:32Z" itemprop="datePublished">
+                     13 ביולי,‏ 2020,‏  1:25pm
+                  </time>
+<meta content="2020-07-13T13:25:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>סליחה ברח לי מהראש אני אחרי עבודה ולא מרוכז.<br/>
+תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-13T13:34:36Z" itemprop="datePublished">
+                     13 ביולי,‏ 2020,‏  1:34pm
+                  </time>
+<meta content="2020-07-13T13:34:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יכול (וים כתב שאף רצוי) לכתוב בעצמך את הקוד למשחק,<br/>
+אבל אם נכנסת לקוד המוכן, אז תצטרך להבין אותו…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-13T16:11:21Z" itemprop="datePublished">
+                     13 ביולי,‏ 2020,‏  4:11pm
+                  </time>
+<meta content="2020-07-13T16:11:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הלוואי והיה לי זמן לזה, אולי בעתיד אבל כרגע זה גדול עליי מדי, אני גם אוהב לתרגל עצמי בלהיכנס לקוד כיוון שזה חלק שאני מתקשה בו, בדרך כלל כשזה קוד שלא אני כתבתי כבר במשפט השני אני מוצא את עצמי בוהה במסך ומאבד את כל הריכוז.</p>
+<p>בכל אופן, חוזר לשאלת החד-קרן, עלה לי רעיון שעבור כל אחד מהכיוונים של של צעד פרש, כל עוד הם בתוך הטווח של של הלוח, להוסיף אותם לרשימה ולאחר מכן  להכפיל וכך בעצם הרצף יחזור עד שהוא יצא מהטווח עבור כל כיוון.<br/>
+הבעיה שאני מנסה להגדיר את זה עם הפעולה שקיימת ללוח:</p>
+<pre><code class> board.is_valid_square(row, col)
+</code></pre>
+<p>כיוון שהמחלקה unicorn לא קיבלה את המשתנה board, אני לא יכול להגדיר:</p>
+<pre><code class>self.directions = self.get_directions(board)
+</code></pre>
+<p>כדי לפשט את התהליך, אני לא רוצה להוסיף לכל הכלים את board כמשתנה, זה גם מיותר כיוון שהם חלק מהלוח ולא ההפך במקרה של התרגיל, אבל אני כן מעוניין להשתמש בלוח כטווח, במיוחד כשיש לו אופציה קיימת שיכולה לעשות את העבודה שאני צריך.</p>
+<p>מבדיקה זריזה, ברוב מחלקות הכלים המשתנה board קיים כפרמטר מחוץ לפונקציה init, אבל רק בחד קרן מצאתי צורך להשתמש בו בתוך ה init, אם כך איך אני יכול לעקוף את זה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-14T05:22:55Z" itemprop="datePublished">
+                     14 ביולי,‏ 2020,‏  5:22am
+                  </time>
+<meta content="2020-07-14T05:22:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יכול ליצור רק לחד קרן תכונה (שדה) ששומרת בתוכה את גודל הלוח…אני מאמין שזה יפתור את הבעיה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-14T17:18:54Z" itemprop="datePublished">
+                     14 ביולי,‏ 2020,‏  5:18pm
+                  </time>
+<meta content="2020-07-14T17:18:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבעיה היא שאני מנסה להכניס אותו כחלק בלוח, וכיוון שכל החלקים בלוח לא מקבלים אותו אני לא מוצא דרך לתת לו שכן יקבל.<br/>
+ניסיתי לאפשר לכולם לקבל גם את הלוח, אבל רק מצאתי את עצמי נכנס לבור של בעיות שלא נגמר ועד שחשבתי שפתרתי משהו גיליתי דבר אחר.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/ef54bb4373418c21de524f99ac152d5b8a29afcc.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-15T08:18:33Z" itemprop="datePublished">
+                     15 ביולי,‏ 2020,‏  8:18am
+                  </time>
+<meta content="2020-07-15T09:33:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עריכה:<br/>
+הבנתי שסתם סיבכתי הכל ושלא הייתי צריך לעשות את כל השינויים שעשיתי לכיוונים של החד קרן, ובעצם שהדבר היחידי שמשתנה הוא המיקומים האפשריים.<br/>
+בניסיון הרצה ובדיקה של כל הצעדים האפשריים אני נתקל בבעיה שאני לא מצליח להסביר.<br/>
+שיניתי את הקוד כך שכל עוד מדובר במטרה חוקית שקיימת בלוח, אם המטרה אפשרית בהתחשב במצב הלוח הנוכחי.</p>
+<p>בעיה אחרת: (מצטער שזה ב2 תמונות)<br/>
+<img alt="image" data-base62-sha1="y9dEpEp2KXCdmW1XprHJlnCQkVe" height="368" src="../../uploads/default/original/2X/e/ef54bb4373418c21de524f99ac152d5b8a29afcc.png" width="642"/><br/>
+<img alt="image" data-base62-sha1="rfMU8apxF3oBigG3IY3H8Qgk0Zf" height="268" src="../../uploads/default/original/2X/b/bf039910e1f3a83824c1687a21c1405bb6255435.png" width="690"/></p>
+<p>תקוע עליה כבר לפחות שעה ולא מצליח לעלות שום דרך לפתור אותה.<br/>
+אני חושב שמדובר בבעיה שהפעולה is_valid_square של הלוח מתייחסת עפ"י אורך של השורה והעמודה לעומת set_square שמתייחסת לפי אינדקס.<br/>
+הבעיה שלי שהן פעולות בסיסיות שהגיעו עם הלוח ולכן אני לא מעוניין לשנות אותן, כיוון שאני לא רוצה שזה יעשה לי בעיות אחרות בקוד ואני אכנס ללופ שלא יגמר.<br/>
+ובהתחשב בכך שאני מאבד את הריכוז כל 5 דקות, אשמח אם תוכלו לכוון אותי לדרך אחרת לפתור את המכשול הזה.</p>
+<p>המטרה:<br/>
+בקוד של החד קרן, כשאני מבקש צעדים אפשריים, אני רוצה שהקוד יוכל לבדוק עבור כל כיוון עד סוף טווח הלוח, לאחר מכן אם הצעד אפשרי (לפי הקריטריונים) אקבל אותו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-15T10:30:11Z" itemprop="datePublished">
+                     15 ביולי,‏ 2020,‏ 10:30am
+                  </time>
+<meta content="2020-07-15T10:30:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כדי לזהות את מקור השגיאה, אני חושבת שהייתי מתחילה כך:<br/>
+האם זה עובד עבור חלק מה x-ים?</p>
+<ol>
+<li>
+<p>כן.<br/>
+אם כן, אז אתה אמור לקבל הדפסה של xים מסוימים, כשהאחרונה בהם היא לפני השגיאה, ואז תוכל לראות מה האינדקסים שגורמים לשגיאה.</p>
+</li>
+<li>
+<p>לא.<br/>
+אם לא, אז משהו באיך שx מוגדר, או הפעולות שמתבצעות לפני שx מוגדר לא יכול להתקיים</p>
+</li>
+</ol>
+<p>זה מה שיש לי, שם הייתי מתחילה בכל אופן, אח’כ אולי בהוספת הדפסות במקומות ספציפיים שאני חושדת בהם שהם מקור הבעייה גם אם בקוד המקורי - כך אפשר קצת לעקוב בלי לשנות אותו (אני שמה הערה ליד שורת הדפסה כך שאשים לב למחוק אח’כ)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="7522.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-17T16:22:27Z" itemprop="datePublished">
+                     17 ביולי,‏ 2020,‏  4:22pm
+                  </time>
+<meta content="2020-07-17T16:22:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצאתי פתרון שאני לא כל כך שמח ממנו, אבל בהרצה של בדיקות נראה שהוא עובד.<br/>
+פשוט החסרתי 1 בפעולה שבודקת אם הריבוע חוקי.<br/>
+זה עובד, אבל אני לא מרוצה כי רציתי לא לשנות שום חלק בקוד המקורי, אך עד כה נראה שאין בעיה.</p>
+<p>בעיה אחרונה שנתקלתי בה, משום מה הלוח לא מצליח לזהות את העמודה האחרונה וקורא כאילו היא לא קיימת<br/>
+מה שמוזר לי הוא שלהבדיל מהבעיה הקודמת שהייתה לי שהפונקציה יצאה מהטווח, כאן הוא כן בטווח ואני יכול גם לספור את הטווח הזה, יותר מוזר לי מזה, את השורה האחרונה הוא כן מצליח לזהות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/check-m8/7522 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:28 GMT -->
+</html>

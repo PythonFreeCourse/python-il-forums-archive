@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>קוד מהלייב: בדיקת קבצים כפולים</title>
+    <link>https://forums.pythonic.guru/t/topic/8106</link>
+    <description>```python
+
+import collections
+import hashlib
+import os
+import sys
+from pathlib import Path
+from typing import DefaultDict, Dict, Iterator, List
+
+
+DuplicatesDict = DefaultDict[str, List[Path]]
+
+
+def get_file_paths(path: Path) -&gt; Iterator[Path]:
+    for root, _dirs, files in os.walk(path):
+        for file in files:
+            yield Path(root) / Path(file)
+
+
+def get_file_hash(path: Path) -&gt; str:
+    file_content = path.read_bytes()
+    return hashlib.sha256(file_content).hexdigest()
+
+
+def get_duplicate_files(path: Path) -&gt; DuplicatesDict:
+    duplicates: DuplicatesDict = collections.defaultdict(list)
+    for file_path in get_file_paths(path):
+        file_hash = get_file_hash(file_path)
+        duplicates[file_hash].append(file_path)
+    return duplicates
+
+
+def get_only_hashes_with_duplications(
+        hashes: DuplicatesDict,
+) -&gt; Dict[str, List[Path]]:
+    return {k: v for k, v in hashes.items() if len(v) &gt;= 2}
+
+
+def print_duplicates(duplicates: Dict[str, List[Path]]) -&gt; None:
+    for duplicate_files in duplicates.values():
+        for file in duplicate_files:
+            print(file)
+        print(&#39;-&#39; * 40)
+
+
+def main(path: str):
+    new_path = Path(path).resolve().absolute()
+    hashes = get_duplicate_files(new_path)
+    duplicates = get_only_hashes_with_duplications(hashes)
+    return duplicates
+
+
+if __name__ == &#39;__main__&#39;:
+    if len(sys.argv) == 2:
+        print_duplicates(main(sys.argv[1]))
+    else:
+        print(f&quot;Usage: python {__file__} &lt;path&gt;&quot;)
+```</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 06 Sep 2020 19:40:58 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8106.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>קוד מהלייב: בדיקת קבצים כפולים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <pre><code class="lang-python">
+import collections
+import hashlib
+import os
+import sys
+from pathlib import Path
+from typing import DefaultDict, Dict, Iterator, List
+
+
+DuplicatesDict = DefaultDict[str, List[Path]]
+
+
+def get_file_paths(path: Path) -&gt; Iterator[Path]:
+    for root, _dirs, files in os.walk(path):
+        for file in files:
+            yield Path(root) / Path(file)
+
+
+def get_file_hash(path: Path) -&gt; str:
+    file_content = path.read_bytes()
+    return hashlib.sha256(file_content).hexdigest()
+
+
+def get_duplicate_files(path: Path) -&gt; DuplicatesDict:
+    duplicates: DuplicatesDict = collections.defaultdict(list)
+    for file_path in get_file_paths(path):
+        file_hash = get_file_hash(file_path)
+        duplicates[file_hash].append(file_path)
+    return duplicates
+
+
+def get_only_hashes_with_duplications(
+        hashes: DuplicatesDict,
+) -&gt; Dict[str, List[Path]]:
+    return {k: v for k, v in hashes.items() if len(v) &gt;= 2}
+
+
+def print_duplicates(duplicates: Dict[str, List[Path]]) -&gt; None:
+    for duplicate_files in duplicates.values():
+        for file in duplicate_files:
+            print(file)
+        print('-' * 40)
+
+
+def main(path: str):
+    new_path = Path(path).resolve().absolute()
+    hashes = get_duplicate_files(new_path)
+    duplicates = get_only_hashes_with_duplications(hashes)
+    return duplicates
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        print_duplicates(main(sys.argv[1]))
+    else:
+        print(f"Usage: python {__file__} &lt;path&gt;")
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/8106/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8106/1</link>
+        <pubDate>Sun, 06 Sep 2020 19:40:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8106-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8106.rss">קוד מהלייב: בדיקת קבצים כפולים</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/str/7778 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:45:45 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>פונקציית הקסם str - שבוע 9 - פייתון בעברית ובחינם</title>
+<meta content="שלום 
+יש לי שאלה: 
+נניח יש לי מחלקה ואני רוצה להדפיס ממנה 
+אז אני בונה לה פונקציית קסם str ואז מהתוכנה הראשית אני כותב את הפקודה פרינט ולמעשה מודפס לי מה שרשמתי ב str. 
+אבל אם אני רוצה שכל פעם יודפס לי חלק אחר של המחלקה?&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7778.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7778.rss" rel="alternate nofollow" title="הזנת RSS של ‚פונקציית הקסם str’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7778.html" property="og:url"/>
+<meta content="7778.html" name="twitter:url"/>
+<meta content="פונקציית הקסם str" property="og:title"/>
+<meta content="פונקציית הקסם str" name="twitter:title"/>
+<meta content="שלום  יש לי שאלה:  נניח יש לי מחלקה ואני רוצה להדפיס ממנה  אז אני בונה לה פונקציית קסם str ואז מהתוכנה הראשית אני כותב את הפקודה פרינט ולמעשה מודפס לי מה שרשמתי ב str.  אבל אם אני רוצה שכל פעם יודפס לי חלק אחר של המחלקה? איך עושים את זה?  האם יש כזה דבר פונקציות קסם str1 str2 str3??" property="og:description"/>
+<meta content="שלום  יש לי שאלה:  נניח יש לי מחלקה ואני רוצה להדפיס ממנה  אז אני בונה לה פונקציית קסם str ואז מהתוכנה הראשית אני כותב את הפקודה פרינט ולמעשה מודפס לי מה שרשמתי ב str.  אבל אם אני רוצה שכל פעם יודפס לי חלק אחר של המחלקה? איך עושים את זה?  האם יש כזה דבר פונקציות קסם str1 str2 str3??" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 9" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="מתודות-של-מחלקות" property="og:article:tag"/>
+<meta content="מתודות-קסם" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="11 ❤"/>
+<meta content="2020-08-06T17:56:04+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"פונקציית הקסם str","mainEntity":{"@type":"Question","name":"פונקציית הקסם str","text":"שלום\n\nיש לי שאלה:\n\nנניח יש לי מחלקה ואני רוצה להדפיס ממנה\n\nאז אני בונה לה פונקציית קסם str ואז מהתוכנה הראשית אני כותב את הפקודה פרינט ולמעשה מודפס לי מה שרשמתי ב str.\n\nאבל אם אני רוצה שכל פעם יודפס לי חלק אחר של המחלקה? איך עושים את זה?\n\nהאם יש כזה דבר פונקציות קסם str1 str2 str3??","upvoteCount":0,"answerCount":1,"dateCreated":"2020-08-06T17:56:04.042Z","author":{"@type":"Person","name":"eyalmerav"},"acceptedAnswer":{"@type":"Answer","text":"התנאי if נראה לי כמו אחלה פתרון.\n\nלגבי repr הבנתי שלא כדאי להשתמש בזה להדפסות למשתמש (זה רק נועד ככלי עזר לכותב הקוד ?)\n\n[תמונה]\n\n<a href=\"https://forums.pythonic.guru/t/topic/7161/4\">הדפסה של מופעים שונים (צב שלוח 2)<\/a> <a class=\"badge-wrapper  bullet\" href=\"/c/old/week-7/17\">שבוע 7<\/a>\n\nההמלצה היא לולאת for על כל האובייקטים שאתה רוצה להדפיס. אם אתה צריך את זה בשביל עצמך כמתכנת אתה יכול למ&hellip;","upvoteCount":3,"dateCreated":"2020-08-06T20:39:23.206Z","url":"https://forums.pythonic.guru/t/str/7778/10","author":{"@type":"Person","name":"devorack"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7778.html">פונקציית הקסם str</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-9/19.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 9</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a9%d7%9c-%d7%9e%d7%97%d7%9c%d7%a7%d7%95%d7%aa.html" rel="tag">מתודות-של-מחלקות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a7%d7%a1%d7%9d.html" rel="tag">מתודות-קסם</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="פונקציית הקסם str" itemprop="headline"/>
+<meta content="שבוע 9" itemprop="articleSection"/>
+<meta content="מתודות-של-מחלקות, מתודות-קסם" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T17:56:04Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  5:56pm
+                  </time>
+<meta content="2022-02-10T23:44:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שלום<br/>
+יש לי שאלה:<br/>
+נניח יש לי מחלקה ואני רוצה להדפיס ממנה<br/>
+אז אני בונה לה פונקציית קסם str ואז מהתוכנה הראשית אני כותב את הפקודה פרינט ולמעשה מודפס לי מה שרשמתי ב str.<br/>
+אבל אם אני רוצה שכל פעם יודפס לי חלק אחר של המחלקה? איך עושים את זה?<br/>
+האם יש כזה דבר פונקציות קסם str1 str2 str3??</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:02:35Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:02pm
+                  </time>
+<meta content="2020-08-06T18:02:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>דריסה של str מאפשרת לך להגדיר את הייצוג המחרוזתי של המחלקה שלך. זה בא לידי ביטוי בעיקר כשתעשה<br/>
+print על אובייקט שיצרת מהמחלקה. אז לשאלתך - בדריסת str אתה צריך להחליט על ייצוג אחד שאתה רוצה שהוא זה שיופיע בעת הפעלת str על האובייקט. באותו מימוש אתה יכול להכניס גם את הערכים של התכונות כמובן, בצורה שתהיה נוחה לקריאה.</p>
+<p>לא מוכר לי משהו בסגנון של str2, str3 ואני לא בטוח שהבנתי בדיוק למה הכוונה שלך בזה, אבל זה בטח משהו שאפשר לבדוק עם קצת גוגל. מקווה שזה עזר, אם לא, אולי תוכל לתת דוגמא קונקרטית למה בדיוק היית רוצה לעשות עם מחלקה כלשהי? (נגיד תקרא לה A, לא משהו מהתרגילים כמובן).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:35:33Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:35pm
+                  </time>
+<meta content="2020-08-06T18:35:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>והנה הדוגמא: זורם איתך<br/>
+Class A:<br/>
+Def <em>init</em>(self):<br/>
+Self.a = 1<br/>
+self.b = 2</p>
+<pre><code> Def _str_():
+  return f'value a is {self.a}, value b is {self.b}'
+</code></pre>
+<p>עכשיו במהלך ריצת התוכנית<br/>
+אני רוצה שלפעמים יודפס לי רק שדה אחד<br/>
+לפעמים רק השדה השני<br/>
+ולפעמים שניהם יחד<br/>
+כמו בפונקציית הסטר שבניתי פה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:50:34Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:50pm
+                  </time>
+<meta content="2020-08-06T18:57:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכל להדגים שימוש כזה, ואת הפלט הרצוי בהערה? כלומר, אני מניח שאתה לא מצפה למשהו כזה:</p>
+<pre><code class>a = A()
+print(a)
+# prints: value of a is 1
+</code></pre>
+<p>ואז בפעם הבאה שתעשה את אותו דבר:</p>
+<pre><code class>print(a)
+# prints: value of b is 2
+</code></pre>
+<p>האם זה מה שהיית רוצה שהפונקציית str שלך תעשה?<br/>
+בכל אופן אתה תמיד יכול ליצור פונקציות שידפיסו מה שבא לך ולקרוא להן איך שאתה רוצה. נגיד במקרה הזה אם תוסיף ל A:</p>
+<pre><code class>def print_b(self):
+    print(f"value of b is {self.b}")
+</code></pre>
+<p>ואז:</p>
+<pre><code class>a.print_b()
+# prints: value of b is 2
+</code></pre>
+<p>מעבר לזה לגמרי יתכן שיש דברים שאני לא יודע עליהם שקשורים למתודות קסם וספציפית ל str ושווה לחפש קצת באינטרנט, ולשתף אם תמצא משהו מגניב <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:55:41Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:55pm
+                  </time>
+<meta content="2020-08-06T18:55:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תיקון לקוד שלך…<br/>
+a.print_b()</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:56:41Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:56pm
+                  </time>
+<meta content="2020-08-06T18:56:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>טוב<br/>
+הבנתי<br/>
+תודה רבה<br/>
+20 תווים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T18:57:14Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  6:57pm
+                  </time>
+<meta content="2020-08-06T18:57:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה, אערוך <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> (כתבתי הכל כאן בתגובה בלי לנסות לכתוב או להריץ בעורך כלשהו לפני כן)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T19:00:32Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  7:00pm
+                  </time>
+<meta content="2020-08-06T19:00:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש גם <strong>repr</strong><br/>
+אתה יכול ש-str תכלול if.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T19:10:15Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  7:10pm
+                  </time>
+<meta content="2020-08-06T19:32:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי repr אני מכיר את זה כמשהו שעוזר להדפיס רשימות בצורה יפה. מעניין אם זה באמת יכול לעזור גם במשהו כמו זה שאייל שאל עליו. לגבי ה if, באמת רעיון טוב שכנראה הכי מתאים למה שאייל התכוון בשאלה שלו. אז אם להמשיך את הקוד ממקודם, אפשר למשל לעשות כך:</p>
+<ul>
+<li>ערכתי מאז ההעלאה הראשונה של התגובה.</li>
+</ul>
+<pre><code class>class A:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __str__(self):
+        if self.a &gt; 1:
+            return f"value of a is {self.a}"
+        elif self.b &gt; 1:
+             return f"value of b is {self.b}"
+        else:
+            return f"value of a is {self.a} and value of b is {self.b}"
+
+    def __repr__(self):
+        return str(self)
+
+a1 = A(1, 2)
+a2 = A(2, 1)
+a3 = A(1, 1)
+lst = [a1, a2, a3]
+print(lst)
+# prints: [value of b is 2, value of a is 2, value of a is 1 and value of b is 1]
+
+print()
+for item in lst:
+    print(item)
+# prints:
+# value of b is 2
+# value of a is 2
+# value of a is 1 and value of b is 1
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T20:39:23Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  8:39pm
+                  </time>
+<meta content="2020-08-06T21:49:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התנאי if נראה לי כמו אחלה פתרון.</p>
+<p>לגבי repr הבנתי שלא כדאי להשתמש בזה להדפסות למשתמש (זה רק נועד ככלי עזר לכותב הקוד ?)</p>
+<aside class="quote" data-post="4" data-topic="7161">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../topic/7161/4.html">הדפסה של מופעים שונים (צב שלוח 2)</a> <a class="badge-wrapper bullet" href="../../c/old/week-7/17.html"><span class="badge-category-parent-bg" style="background-color: #0088CC;"></span><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 7.">שבוע 7</span></a>
+</div>
+<blockquote>
+    ההמלצה היא לולאת for על כל האובייקטים שאתה רוצה להדפיס. אם אתה צריך את זה בשביל עצמך כמתכנת אתה יכול לממש __repr__
+  </blockquote>
+</aside>
+<aside class="quote" data-post="4" data-topic="7176">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../2-str/7176/4.html">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</a> <a class="badge-wrapper bullet" href="../../c/old/week-7/17.html"><span class="badge-category-parent-bg" style="background-color: #0088CC;"></span><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 7.">שבוע 7</span></a>
+</div>
+<blockquote>
+    הבהרה קטנה בנוגע ל¯__repr__: הוא לא כ"כ נועד להדפסות. המטרה שלו הוא להיות כלי עזר למתכנת. 
+ההגדרה ה(כמעט) רשמית שלו היא “מחזיר מחרוזת, שכשמריצים אותה בג’ופיטר נוטבוק מתקבל האובייקט עצמו”. 
+עדיף לא לעשות לו Abuse, ואם יש צורך להשתמש בלולאה <img alt="upside_down_face" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title="upside_down_face"/>
+</blockquote>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T20:44:42Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  8:44pm
+                  </time>
+<meta content="2020-08-06T20:44:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם כבר עלה, אז שאלת המשך (לא עלה בשום תרגיל ספציפי אצלי - זו שאלה תיאורטית):</p>
+<p>האם אני יכולה לדעת מי קרא ל__str__ ?<br/>
+(או כל פונקציה אחרת לצורך העיניין)<br/>
+כלומר להכניס תנאי if שדורש לדעת מאיפה הגיעה הקריאה ולבצע בהתאם?<br/>
+(אני גם יכולה לדמיין סיבות לא לעשות את זה,<br/>
+או פתרונות שלא דורשים לדעת את זה - כמו פרמטר נוסף תו’כ הקריאה,<br/>
+אבל באופן כללי האם המידע קיים איפשהוא שאפשר להביא אותו משם?)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7778.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T21:21:26Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  9:21pm
+                  </time>
+<meta content="2020-08-06T21:42:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תשתדלי ממש לא לעשות את זה, זה בעייתי ממש ויתנקם בך אח"כ. אם את חייבת יש את מודול inspect</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/str/7778 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:45:49 GMT -->
+</html>

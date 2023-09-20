@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/tag/מודולים by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:49:43 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>נושאים מתוייגים מודולים</title>
+<meta content="נושאים מתוייגים מודולים" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html" rel="canonical"/>
+<link href="../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9dbb9f.html?match_all_tags=true&amp;page=1&amp;tags%5B%5D=%D7%9E%D7%95%D7%93%D7%95%D7%9C%D7%99%D7%9D" rel="next"/>
+<link href="../posts.rss" rel="alternate" title="פוסטים אחרונים" type="application/rss+xml"/>
+<link href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html" rel="alternate" title="latest נושאים אחרונים top נושאים מובילים top_all הנושאים המובילים בכל הזמנים top_yearly הנושאים המובילים השנתיים top_quarterly הנושאים המובילים הרבעוניים top_monthly הנושאים המובילים החודשיים top_weekly הנושאים המובילים השבועיים top_daily הנושאים המובילים היומיים posts פוסטים אחרונים private_posts הודעות פרטיות אחרונות group_posts פוסטים אחרונים ב%{group_name} group_mentions אזכורים אחרונים ב%{group_name} user_posts פוסטים אחרונים מאת ‎@%{username}‎ user_topics נושאים אחרונים מאת ‎@%{username}‎ tag נושאים מתויגים badge עיטור %{display_name} באתר %{site_title}" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html" property="og:url"/>
+<meta content="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html" name="twitter:url"/>
+<meta content="נושאים מתוייגים מודולים" property="og:title"/>
+<meta content="נושאים מתוייגים מודולים" name="twitter:title"/>
+<meta content="נושאים מתוייגים מודולים" property="og:description"/>
+<meta content="נושאים מתוייגים מודולים" name="twitter:description"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<h1>
+<a href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html" itemprop="item">
+<span itemprop="name">מודולים</span>
+</a> </h1>
+<div class="topic-list-container" itemscope="" itemtype="http://schema.org/ItemList">
+<meta content="http://schema.org/ItemListOrderDescending" itemprop="itemListOrder"/>
+<table class="topic-list">
+<thead>
+<tr>
+<th>נושא</th>
+<th></th>
+<th class="replies">תגובות</th>
+<th class="views">צפיות</th>
+<th>פעילות</th>
+</tr>
+</thead>
+<tbody>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="1" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/graphviz/8126.html" itemprop="url">עזרה בהתקנה / שימוש ב graphviz</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-10/21.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 10</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="wit-graph.html">wit-graph</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%aa%d7%a7%d7%a0%d7%94.html">התקנה</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/DrorBiton">
+<img aria-label="DrorBiton - מפרסמים מקוריים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/drorbiton/25/5609_2.png" title="DrorBiton - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Gili">
+<img aria-label="Gili - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/gili/25/152_2.jpg" title="Gili - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">2</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">151</span>
+</td>
+<td>
+             9 בספטמבר,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="2" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/vsc/7835.html" itemprop="url">מודולים מופיעים כ"שגיאה" בVSC למרות שהם מותקנים</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-9/19.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 9</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="import.html">import</a>
+                    , 
+                    <a class="discourse-tag" href="vscode.html">vscode</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/ofirp">
+<img aria-label="ofirp - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/ofirp/25/1688_2.jpg" title="ofirp - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/nirpn1">
+<img aria-label="nirpn1 - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/nirpn1/25/2944_2.jpg" title="nirpn1 - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/yuval.cagan">
+<img aria-label="yuval.cagan - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/y/4da419/25.png" title="yuval.cagan - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/orronai">
+<img aria-label="orronai - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/o/7c8e57/25.png" title="orronai - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">7</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">177</span>
+</td>
+<td>
+             12 באוגוסט,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="3" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/vscode/7759.html" itemprop="url">מנסנס כוחב כתן - תקלה ב-VSCODE</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-9/19.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 9</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%a0%d7%a1%d7%a0%d7%a1-%d7%9b%d7%95%d7%97%d7%91-%d7%9b%d7%aa%d7%9f.html">מנסנס-כוחב-כתן</a>
+                    , 
+                    <a class="discourse-tag" href="import.html">import</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="vscode.html">vscode</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/EliranRefaely">
+<img aria-label="EliranRefaely - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/e/8e8cbc/25.png" title="EliranRefaely - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/ombental">
+<img aria-label="ombental - מפרסמים מתמידים, תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/ombental/25/4937_2.jpg" title="ombental - מפרסמים מתמידים, תשובה שקיבלה אישור" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/meravyo">
+<img aria-label="meravyo - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/m/8e7dd6/25.png" title="meravyo - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/of313">
+<img aria-label="of313 - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/of313/25/2778_2.jpg" title="of313 - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">7</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">247</span>
+</td>
+<td>
+             7 באוגוסט,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="4" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/9-2/7775.html" itemprop="url">שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/7-category/7.html">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">אשכולות הנהלה</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html">תוכן-הוראה</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%a9%d7%91%d7%95%d7%a2-9.html">שבוע-9</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%97%d7%91%d7%99%d7%9c%d7%95%d7%aa.html">חבילות</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest single" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">1</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">1457</span>
+</td>
+<td>
+             6 באוגוסט,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="5" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6963.html" itemprop="url">הבודק האוטומטי: יבואי המודולים</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html">הבודק-האוטומטי</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/taldew11">
+<img aria-label="taldew11 - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/t/8edcca/25.png" title="taldew11 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Almog">
+<img aria-label="Almog - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/almog/25/432_2.jpg" title="Almog - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">1</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">211</span>
+</td>
+<td>
+             3 ביוני,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="6" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/100-5/6576.html" itemprop="url">תרגיל 100 מעלות מחברת 5</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="100-%d7%9e%d7%a2%d7%9c%d7%95%d7%aa.html">100-מעלות</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html">הבודק-האוטומטי</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/yosefco3">
+<img aria-label="yosefco3 - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/y/77aa72/25.png" title="yosefco3 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/mbrodsky">
+<img aria-label="mbrodsky - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/m/a3d4f5/25.png" title="mbrodsky - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/shiri.tsl">
+<img aria-label="shiri.tsl - המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/s/85f322/25.png" title="shiri.tsl - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">42</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">981</span>
+</td>
+<td>
+             3 ביוני,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="7" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/import/6930.html" itemprop="url">סדר ייבוא import + תיקונים מרובים לתרגיל</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="100-%d7%9e%d7%a2%d7%9c%d7%95%d7%aa.html">100-מעלות</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html">הבודק-האוטומטי</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/shahark">
+<img aria-label="shahark - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/s/c2a13f/25.png" title="shahark - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">4</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">108</span>
+</td>
+<td>
+             2 ביוני,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="8" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6795.html" itemprop="url">עוד שאלה על מודול צד שלישי</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="import.html">import</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/tamar.kahan">
+<img aria-label="tamar.kahan - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/t/3e96dc/25.png" title="tamar.kahan - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/danny">
+<img aria-label="danny - המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/d/848f3c/25.png" title="danny - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">5</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">273</span>
+</td>
+<td>
+             2 ביוני,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="9" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6863.html" itemprop="url">100 מעלות - לא מצליחה לטעון ספריה</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%aa%d7%a7%d7%a0%d7%94.html">התקנה</a>
+                    , 
+                    <a class="discourse-tag" href="100-%d7%9e%d7%a2%d7%9c%d7%95%d7%aa.html">100-מעלות</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/yael7899">
+<img aria-label="yael7899 - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/y/5f9b8f/25.png" title="yael7899 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/ruty3017">
+<img aria-label="ruty3017 - תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/ruty3017/25/1712_2.jpg" title="ruty3017 - תשובה שקיבלה אישור" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/adi1">
+<img aria-label="adi1 - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/a/ecb155/25.png" title="adi1 - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/ori81510">
+<img aria-label="ori81510 - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/ori81510/25/3404_2.jpg" title="ori81510 - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/DrorBiton">
+<img aria-label="DrorBiton - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/drorbiton/25/5609_2.png" title="DrorBiton - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">12</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">227</span>
+</td>
+<td>
+             1 ביוני,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="10" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6787.html" itemprop="url">הורדה של חבילות מחברת 4</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/kaplunoren">
+<img aria-label="kaplunoren - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/k/b5e925/25.png" title="kaplunoren - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">1</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">112</span>
+</td>
+<td>
+             29 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="11" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/wikipedia/6676.html" itemprop="url">תפעול חבילת wikipedia - מודול לא נמצא</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%aa%d7%a7%d7%a0%d7%94.html">התקנה</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%97%d7%91%d7%a8%d7%aa-4-%d7%a9%d7%91%d7%95%d7%a2-6.html">מחברת-4-שבוע-6</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/Alon.B.A">
+<img aria-label="Alon.B.A - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/a/f1d935/25.png" title="Alon.B.A - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">3</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">148</span>
+</td>
+<td>
+             27 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="12" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6679.html" itemprop="url">שאלה כללית על מחברת 4</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html">הבודק-האוטומטי</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/galmishal">
+<img aria-label="galmishal - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/galmishal/25/4819_2.jpg" title="galmishal - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">4</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">122</span>
+</td>
+<td>
+             27 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="13" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6639.html" itemprop="url">שאלה על התקנת חבילת צד שלישי</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%94%d7%aa%d7%a7%d7%a0%d7%94.html">התקנה</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים, תשובה שקיבלה אישור" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/alex">
+<img aria-label="alex - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/a/db5fbb/25.png" title="alex - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">7</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">234</span>
+</td>
+<td>
+             26 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="14" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6510.html" itemprop="url">תרגיל ביניים: מהיר ואמין (שאלה קצת אחרת)</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week6/15.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 6</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%94%d7%99%d7%a8-%d7%95%d7%90%d7%9e%d7%99%d7%9f.html">מהיר-ואמין</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/devorack">
+<img aria-label="devorack - מפרסמים מקוריים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/devorack/25/904_2.jpg" title="devorack - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - המפרסמים האחרונים, תשובה שקיבלה אישור" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - המפרסמים האחרונים, תשובה שקיבלה אישור" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">1</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">274</span>
+</td>
+<td>
+             24 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="15" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6330.html" itemprop="url">שימוש במודולים - שבוע 5</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/adiel1988">
+<img aria-label="adiel1988 - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/a/4af34b/25.png" title="adiel1988 - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">2</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">199</span>
+</td>
+<td>
+             18 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="16" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/2-re/6276.html" itemprop="url">2 שאלות לגבי המודול re</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/israel4001">
+<img aria-label="israel4001 - מפרסמים מקוריים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/israel4001/25/1504_2.jpg" title="israel4001 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/orpazf">
+<img aria-label="orpazf - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/orpazf/25/1019_2.jpg" title="orpazf - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/erane2201">
+<img aria-label="erane2201 - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/e/f475e1/25.png" title="erane2201 - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">12</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">328</span>
+</td>
+<td>
+             17 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="17" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/mudule/6107.html" itemprop="url">תיקון אוטומטי טוען ש-mudule לא לפי הסדר</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html">הבודק-האוטומטי</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/orirenick">
+<img aria-label="orirenick - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/o/46a35a/25.png" title="orirenick - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/maya">
+<img aria-label="maya - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/maya/25/4776_2.png" title="maya - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/zurikarat">
+<img aria-label="zurikarat - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/z/9de0a6/25.png" title="zurikarat - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">6</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">136</span>
+</td>
+<td>
+             12 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="18" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6098.html" itemprop="url">יבוא מודול בתוך פונקציה</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%a4%d7%95%d7%a0%d7%a7%d7%a6%d7%99%d7%95%d7%aa.html">פונקציות</a>
+                    , 
+                    <a class="discourse-tag" href="%d7%a7%d7%95%d7%a0%d7%91%d7%a0%d7%a6%d7%99%d7%95%d7%aa-%d7%aa%d7%9b%d7%a0%d7%95%d7%aa.html">קונבנציות-תכנות</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/adiel1988">
+<img aria-label="adiel1988 - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/a/4af34b/25.png" title="adiel1988 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/orpazf">
+<img aria-label="orpazf - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/orpazf/25/1019_2.jpg" title="orpazf - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">5</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">200</span>
+</td>
+<td>
+             11 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="19" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/from-import/6089.html" itemprop="url">From import מתי משתמשים</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="latest" href="https://forums.pythonic.guru/u/arieveksler">
+<img aria-label="arieveksler - מפרסמים מקוריים, המפרסמים האחרונים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/arieveksler/25/351_2.jpg" title="arieveksler - מפרסמים מקוריים, המפרסמים האחרונים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/zurikarat">
+<img aria-label="zurikarat - מפרסמים מתמידים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/z/9de0a6/25.png" title="zurikarat - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Yam">
+<img aria-label="Yam - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/yam/25/6259_2.jpg" title="Yam - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/aviadamar">
+<img aria-label="aviadamar - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/aviadamar/25/5479_2.jpg" title="aviadamar - מפרסמים מתמידים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">5</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">127</span>
+</td>
+<td>
+             11 במאי,‏ 2020
+          </td>
+</tr>
+<tr class="topic-list-item">
+<td class="main-link" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<meta content="20" itemprop="position"/>
+<span class="link-top-line">
+<a class="title raw-link raw-topic-link" href="../t/topic/6048.html" itemprop="url">יש מצב במסגרת ההיתר ל"יבוא המודולים"</a>
+</span>
+<div class="link-bottom-line">
+<a class="badge-wrapper bullet" href="../c/old/week-5/14.html">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name">שבוע 5</span>
+</span>
+</a>
+<div class="discourse-tags">
+<a class="discourse-tag" href="%d7%9e%d7%95%d7%93%d7%95%d7%9c%d7%99%d7%9d.html">מודולים</a>
+</div>
+</div>
+</td>
+<td class="posters">
+<a class="" href="https://forums.pythonic.guru/u/yosefco3">
+<img aria-label="yosefco3 - מפרסמים מקוריים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/y/77aa72/25.png" title="yosefco3 - מפרסמים מקוריים" width="25"/>
+</a>
+<a class="" href="https://forums.pythonic.guru/u/Felixmn">
+<img aria-label="Felixmn - מפרסמים מתמידים" class="avatar" height="25" src="../user_avatar/forums.pythonic.guru/felixmn/25/635_2.jpg" title="Felixmn - מפרסמים מתמידים" width="25"/>
+</a>
+<a class="latest" href="https://forums.pythonic.guru/u/Jas">
+<img aria-label="Jas - המפרסמים האחרונים" class="avatar" height="25" src="../letter_avatar_proxy/v4/letter/j/b19c9b/25.png" title="Jas - המפרסמים האחרונים" width="25"/>
+</a>
+</td>
+<td class="replies">
+<span class="posts" title="פוסטים">3</span>
+</td>
+<td class="views">
+<span class="views" title="צפיות">290</span>
+</td>
+<td>
+             10 במאי,‏ 2020
+          </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+</div>
+<!-- include_crawler_content? -->
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/tag/מודולים by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:49:56 GMT -->
+</html>

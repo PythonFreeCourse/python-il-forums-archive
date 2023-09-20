@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 6 - פייתון בעברית ובחינם</title>
+    <link>https://forums.pythonic.guru/c/old/week6/15</link>
+    <description>נושאים בקטגוריה ‚שבוע 6’ כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 6.</description>
+    <language>he</language>
+      <lastBuildDate>Fri, 26 May 2023 08:57:31 +0000</lastBuildDate>
+      <atom:link href="https://forums.pythonic.guru/c/old/week6/15.rss" rel="self" type="application/rss+xml" />
+        <item>
+          <title>מחברת 4 - ויקיפדיה</title>
+          <dc:creator><![CDATA[arieveksler]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>במערכת הפעלה MacOS ventura 13<br>
+כשניסיתי לייבא את המודול wikipedia כמו בדוגמה -<br>
+התקבלה השגיאה ״ImportError: cannot import name ‘get_host’ from ‘urllib3.util.url’ ״<br>
+לאחר שניסיתי לפתור את זה באמצעות שינוי גרסא של urllib3<br>
+קיבלתי את השגיאה ״urllib3 v2.0 only supports OpenSSL 1.1.1+, currently the ‘ssl’ module is compiled with LibreSSL 2.8.3. See: <a href="https://github.com/urllib3/urllib3/issues/2168%D7%B4" rel="noopener nofollow ugc">https://github.com/urllib3/urllib3/issues/2168״</a></p>
+<p>וככה נכנסתי ללופים שכל פתרון הוביל חזרה לשגיאה הקודמת.</p>
+<p>הפתרון:</p>
+<ol>
+<li>
+<p>מהטרמינל<br>
+מחיקה של הספריה pip uninstall urllib3<br>
+והתקנה שלה מחדש בגרסא ישנה יותר שתומכת במערכת ההפעלה שלי באמצעות pip install ‘urllib3&lt;2.0’</p>
+</li>
+<li>
+<p>דרך אחרת וטיפה יותר מורכבת - התקנה של סביבה וירטואלית<br>
+python3 -m venv myenv<br>
+source myenv/bin/activate<br>
+והרצה מחדש של המחברת דרך הסביבה.</p>
+</li>
+</ol>
+            <p><small>פוסט 1 - משתתף 1</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/9694">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/9694</link>
+          <pubDate>Fri, 26 May 2023 08:57:31 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-9694</guid>
+          <source url="https://forums.pythonic.guru/t/topic/9694.rss">מחברת 4 - ויקיפדיה</source>
+        </item>
+        <item>
+          <title>Pip search מחברת ארבע</title>
+          <dc:creator><![CDATA[arieveksler]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>ניסיתי להריץ pip search</p>
+<p>אבל קיבלתי את השגיאה הבאה:</p>
+<pre><code class="lang-auto"> ERROR: XMLRPC request failed [code: -32500]
+RuntimeError: PyPI no longer supports 'pip search' (or XML-RPC search). Please use https://pypi.org/search (via a browser) instead. See https://warehouse.pypa.io/api-reference/xml-rpc.html#deprecated-methods for more information.
+</code></pre>
+<p>למיטב הבנתי הפקודה לא נתמכת יותר ולכן יש לחפש באתר <a href="https://pypi.org/search" class="inline-onebox" rel="noopener nofollow ugc">Search results · PyPI</a> באמצעות הדפדפן<br>
+או באמצעות חבילת צד שלישי pip-search באופן הבא: pip_search.</p>
+            <p><small>פוסט 1 - משתתף 1</small></p>
+            <p><a href="https://forums.pythonic.guru/t/pip-search/9690">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/pip-search/9690</link>
+          <pubDate>Wed, 24 May 2023 15:06:36 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-9690</guid>
+          <source url="https://forums.pythonic.guru/t/pip-search/9690.rss">Pip search מחברת ארבע</source>
+        </item>
+        <item>
+          <title>על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</title>
+          <dc:creator><![CDATA[112344asafh]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>קוד קטן שמצאתי באינטרנט אפשר לי לראות בעיניים את ההבדל בין השיטות השונות מבחינת יעילות של זיכרון וזמנים וחשבתי לשתף פה את מי שהעניין מסקרן אותו. כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.</p>
+<p>אוסיף ואומר שישנם דברים שלא ברורים לי ומי שיכול להבהיר לי את העניין אודה לו מאוד.<br>
+שאלתי כאן שלוש שאלות שהם בעצם שאלה אחת עם כמה אספקטים.</p>
+<p>א. מדוע ב the list comprehension method כאשר אני מבצע השמה למשתנה (X = list(people_interator)) הזיכרון של המערכת קופץ ישר לMB300  כאילו אני משתמש במתודה הראשונה. על פניו זה נשמע הגיוני כי אני שומר במערכת זיכרון רב, אולם מצד שני אם אני בוחר לעשות הדפסה לאותה רשימה, פעולה שמשאירה אותי עם זיכרון נמוך מאוד, אני מקבל את כל הערכים בבת אחת, וזה כאשר הgenerator כבר לא יכול להוציא עוד ערכים. ועל פניו נראה שאם אני מקבל את כל הערכים בבת אחת זה אומר שהם שמורים איפשהו במחשב לא כן? אבל אם ככה מדוע לא מופיעה במצב כזה הקפיצה בזיכרון. הסתירה כאן לא ברורה לי.</p>
+<p>א.2 אם אכן כל שמירת מידע גם generators שכל מטרתם לחסוך בזיכרון, לא יכולים לעזור לי, האם זה בעצם מייתר את העבודה שלהם במקרים רבים. כלומר כל עוד אני לא רוצה רק להדפיס מידע ספציפי אלא להשתמש בכל המידע הקיים כדי להפיק תועלת האם יכולת זו לא תוכל לעזור לי?</p>
+<p>ב. שאלה זו קשורה במעט לסעיף א. כאשר אני עושה   list comprehension איפה נשמר המידע עד שהפעולה נגמרת, הרי כל הרעיון בgenerator שכל פעם עובדים על פיסת מידע חדשה והקודמת נדרסת?<br>
+לצורך העניין יש לי רצון לספור תווים לתוך מילון ואין לי רצון להכניס ערכים שכבר הכנסתי כיצד אני עושה זאת?<br>
+הקוד הבא ירוץ לי שלוש פעמים במקום פעמיים. ולהוסיף if letter not in word_dic לא עושה את העבודה כי מבחינת המחשב לא הוכנסו הערכים עדיין למילון.<br>
+פתרון אלגנטי שראיתי הוא להוריד את התנאי ואת המילון הריק ואת זה להכניס ללולאה set(word)</p>
+<pre><code class="lang-auto">'word = 'aba
+word_dic = {}
+word_dic = {letter : word.count(letter) for letter in word  if letter not in word_dic}
+
+</code></pre>
+<p>תודה ענקית למי שמתייחס <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<h1>
+<a name="the-original-method-1" class="anchor" href="https://forums.pythonic.guru#the-original-method-1"></a>the original method</h1>
+<p>Memory (Before): [18.285] Mb<br>
+Memory (After) : [304.972] Mb<br>
+Took 1.5 Seconds</p>
+<h1>
+<a name="the-generator-method-2" class="anchor" href="https://forums.pythonic.guru#the-generator-method-2"></a>the generator method</h1>
+<p>Memory (Before): [18.289] MB<br>
+Memory (After) : [18.300] MB<br>
+Took 1.578 Seconds</p>
+<h1>
+<a name="the-list-comprehension-method-3" class="anchor" href="https://forums.pythonic.guru#the-list-comprehension-method-3"></a>the list comprehension method</h1>
+<p>Memory (Before): [18.289] MB<br>
+Memory (After) : [18.914] MB<br>
+Took 1.71875 Seconds</p>
+<h1>
+<a name="comment-4" class="anchor" href="https://forums.pythonic.guru#comment-4"></a>כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.</h1>
+<p>את memory_profiler תצטרכו להתקין</p>
+<pre><code class="lang-auto">import memory_profiler
+import random
+import time
+
+names = ['John', 'Corey', 'Adam', 'Steve', 'Rick', 'Thomas']
+majors = ['Math', 'Engineering', 'CompSci', 'Arts', 'Business']
+
+print('Memory (Before): ' + str(memory_profiler.memory_usage()) + ' MB' )
+
+def people_list(num_people):
+    result = []
+    for i in range(num_people):
+        person = {
+                    'id': i,
+                    'name': random.choice(names),
+                    'major': random.choice(majors)
+                }
+        result.append(person)
+    return result
+
+def people_generator(upper_bound):
+    i = 0
+    while i &lt; upper_bound:
+        person = {
+                    'id': i,
+                    'name': random.choice(names),
+                    'major': random.choice(majors)
+                }
+        i += 1
+        yield person
+
+t1 = time.process_time()
+
+population = 1000000
+
+# the original method  
+
+people = people_list(population)
+
+# the generator method    &lt;   -------------------------
+
+#people_interator = people_generator(population)
+#for _ in range(population):
+#    next(people_interator)
+
+# the list comprehension method    &lt;   -------------------------
+
+# people_interator = people_generator(population)
+# list(people_interator)
+
+t2 = time.process_time()
+print('Memory (After) : {} Mb'.format(memory_profiler.memory_usage()))
+print( 'Took {} Seconds'.format(t2-t1))
+
+</code></pre>
+            <p><small>3 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/generators-list-comprehension/9174">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/generators-list-comprehension/9174</link>
+          <pubDate>Wed, 18 Aug 2021 12:19:40 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-9174</guid>
+          <source url="https://forums.pythonic.guru/t/generators-list-comprehension/9174.rss">על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</source>
+        </item>
+        <item>
+          <title>ריצת 2000, מנסה לעשות שוב את התרגיל</title>
+          <dc:creator><![CDATA[krauskas]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>מעתיק כאן את השאלה לנוחיותכם:</p>
+<p>כתבו פונקציה בשם timer שמקבלת כפרמטר פונקציה (נקרא לה f) ופרמטרים נוספים.<br>
+הפונקציה timer תמדוד כמה זמן רצה פונקציה f כשמועברים אליה אותם פרמטרים.</p>
+<ol>
+<li>עבור הקריאה <code>timer(print, "Hello")</code> , תחזיר הפונקציה את משך זמן הביצוע של <code>print("Hello")</code> .</li>
+<li>עבור הקריאה <code>timer(zip, [1, 2, 3], [4, 5, 6])</code> , תחזיר הפונקציה את משך זמן הביצוע של <code>zip([1, 2, 3], [4, 5, 6])</code> .</li>
+<li>עבור הקריאה <code>timer("Hi {name}".format, name="Bug")</code> , תחזיר הפונקציה את משך זמן הביצוע של <code>"Hi {name}".format(name="Bug")</code>
+</li>
+</ol>
+<p>ב-2 הדוגמאות הראשונות שהתרגיל מראה אין לי בעיה, הבעיה שלי היא בדוגמא השלישית, הפרמטר הראשון שאני שולח הוא לא פונקציה (כמו print  או zip) אלא מחרוזת, ולכן אני מקבל שגיאה :<br>
+TypeError: ‘str’ object is not callable<br>
+כלומר שאי אפשר לקרוא למחרוזת.<br>
+לא ברור לי עניין הנקודה ואיך לשלוח את הפרמטר לפונקציה הtimer.</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/8469">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/8469</link>
+          <pubDate>Tue, 24 Nov 2020 16:44:30 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-8469</guid>
+          <source url="https://forums.pythonic.guru/t/topic/8469.rss">ריצת 2000, מנסה לעשות שוב את התרגיל</source>
+        </item>
+        <item>
+          <title>שאלה כללית על Comprehensions</title>
+          <dc:creator><![CDATA[inbalk7373]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי ים ושאר אנשי הצוות,<br>
+יש לי שאלה כללית בנושא Comprehensions.</p>
+<p>רציתי לדעת אם כל לולאת For ניתן להמיר ל- Comprehensions?<br>
+לדוגמא בתרגיל "חתול ארוך הוא ארוך " באינסטינקט הראשוני כמובן רציתי להשתמש ב-replace אבל לא הצלחתי לשלב אותו בקוד והשתמשתי ב- join .<br>
+בפועל הרי בreplace אני צריכה “לשמור את השינוי” במשתנה ולהמשיך לבצע את הפעולה על המשתנה.<br>
+לא הצלחתי להבין אם דבר כזה בכלל אפשרי ב- Comprehensions</p>
+<ul>
+<li>דוגמא נוספת - נניח ויש לי מילון קיים ואני רוצה להוסיף למילון ערך לפי דרישה , זה אפשרי?<br>
+את כל שורת ה- Comprehensions אני שומרת במשתנה חדש בעצם.</li>
+</ul>
+<p>מקווה שהשאלות ברורות , יש לי כנראה קצת חוסר ההבנה בנושא.<br>
+תודה מראש!</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/comprehensions/7069">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/comprehensions/7069</link>
+          <pubDate>Wed, 10 Jun 2020 01:27:14 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-7069</guid>
+          <source url="https://forums.pythonic.guru/t/comprehensions/7069.rss">שאלה כללית על Comprehensions</source>
+        </item>
+        <item>
+          <title>שאלה לגבי סט יצרית סט</title>
+          <dc:creator><![CDATA[dimaiscool95]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>שלום לכולם…בעקרון יצרתי רשימה של 81 קלפים ואני מנסה לראות מה משותף לכל אותם קלפים אם יש להם 3 דברים משותפים ואחד שונה… מה שמביא אותי שאני יוצר לולאה שעוברת על הרשימה ואני צריך שהערך הראשון של הלולאה  יעבור על כל הרשימה ואז הערך הבא אחריו יעשה את אותה פעולה נתקלתי בבעיה שאני לא מצליח לחשוב איך לעשות זאת</p>
+            <p><small>4 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6980">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6980</link>
+          <pubDate>Thu, 04 Jun 2020 14:20:03 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6980</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6980.rss">שאלה לגבי סט יצרית סט</source>
+        </item>
+        <item>
+          <title>נקמת האוטומטיים</title>
+          <dc:creator><![CDATA[orronai]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>האם הגרף צריך להיות מוצג במחברת או שמספיק ליצור קובץ של הגרף בתיקייה?</p>
+            <p><small>4 פוסטים - 4 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6979">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6979</link>
+          <pubDate>Thu, 04 Jun 2020 13:28:29 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6979</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6979.rss">נקמת האוטומטיים</source>
+        </item>
+        <item>
+          <title>בקשות, מרקים, ושאר ירקות</title>
+          <dc:creator><![CDATA[koby]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>בתרגילים השבוע התבקשנו לא פעם לעבוד עם מידע שנשאב מאתר אינטרנט. אני מניח שהרוב המוחלט של החברים בקורס נחשפו במהלך החיפושים למודולים requests, beutifulsoup ועוד, אשר מהווים כלים להורדת מידע מאתרי אינטרנט. אני מניח שגם חלק עשו בהם שימוש.<br>
+עד כה, הצלחתי ליישם את מטרות התרגילים ללא שימוש בכלים אלה, אשר באופן בלתי נמנע דורשים איזשהו ידע, גם אם בסיסי מאוד ב HTML, אפילו רק אם כדי להבין לעומק וכראוי את שלל הפעולות שניתן לעשות באמצעותם.<br>
+אני תוהה אם הציפיה מאיתנו בשלב זה בקורס היא להתעמק בכלים מסוג זה ואיך אנחנו מיישמים אותם, או להתרכז במה שמצוי ‘בשוליים’ של התחום, כלומר שימוש במודולים ספציפיים על מנת לפתור את התרגילים הספציפיים, דבר שמצאתי כאפשרי עבור כל תרגיל ותרגיל עד עכשיו.<br>
+ראיתי שמצוין בשבוע 12 בסיליבוס עבודה מול אתרי אינטרנט, ושכל הנושאים סביב שבוע זה נוגעים ב HTML, CSS ואתרי אינטרנט. ההמלצה היא ‘לצלול למים’ כבר עכשיו, או שאלה נושאים שיקבלו דגש מיוחד בשלבים הבאים בקורס?</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6978">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6978</link>
+          <pubDate>Thu, 04 Jun 2020 12:34:59 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6978</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6978.rss">בקשות, מרקים, ושאר ירקות</source>
+        </item>
+        <item>
+          <title>6 דרגות של ויקיפדיה - עזרה</title>
+          <dc:creator><![CDATA[iamsaharon]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי!<br>
+אני מנסה לפתור את התרגיל השלמה, ואני נתקע בקטע שבו אני צריך לעשות לולאת פור בתוך לולאת פור, הבעיה היא שכמות הפעמים שצריך לעשות לולאה בתוך לולאה משתנה בהתאם למספר הלחיצות שאני בודק (שברמת העיקרון נכנס לפונקציה כN).<br>
+אין לי רעיון איך אני יוצר לולאה בתוך לולאה כמספר פעמים לא ידוע.<br>
+אפשר לקבל עזרה? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6973">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6973</link>
+          <pubDate>Thu, 04 Jun 2020 09:55:59 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6973</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6973.rss">6 דרגות של ויקיפדיה - עזרה</source>
+        </item>
+        <item>
+          <title>6 דרגות של ויקיפדיה ופתיחת עמוד קיים אך לא קיים</title>
+          <dc:creator><![CDATA[orirenick]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>נשמע מוזר? גם לי.<br>
+אני מריץ את הפונקציה שלי שלכאורה אמורה לפתור את התרגיל (אפילו 2 רמות יוצא הרבה חישוב אבל)</p>
+<p>ותוך כדי פותח דפים בויקיפדיה כדי לשלוף את הלינקים הבאים.<br>
+נתקלתי כמה פעמים בPAGE.ERROR  שלכאורה טוען שלא קיים הדף הזה (לדוגמא charge particle)<br>
+שזה בכלל שם של דף שקיבלתי בתור לינק מדף אחר, אז הייתי מצפה שבטוח יהיה קיים.<br>
+מה גם כשאני מנסה ידנית לפתוח אותו, הוא פתאום כן פותח לי אובייקט דף עבורו<br>
+&lt;WikipediaPage ‘Charged particle’&gt;</p>
+<p>אז למה זה רושם לי<br>
+wikipedia.exceptions.PageError: Page id “charge particle” does not match any pages. Try another id!</p>
+<p>אני לא מוצא דרך גם להתמודד עם error כאלו בלי להשתמש בtry/catch</p>
+            <p><small>8 פוסטים - 5 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6972">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6972</link>
+          <pubDate>Thu, 04 Jun 2020 08:17:06 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6972</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6972.rss">6 דרגות של ויקיפדיה ופתיחת עמוד קיים אך לא קיים</source>
+        </item>
+        <item>
+          <title>תרגיל השלמה אם 100 מעלות שהוגש בגדול עובד?</title>
+          <dc:creator><![CDATA[chen1]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>הגשתי את 100 מעלות אבל הצלחתי לחלץ מילים לכמה שירים אז הגרף גם נראה קצת שונה ממה שראיתי פה בפורום.<br>
+האם יש דרך לדעות אם אני צריכה לעשות תרגיל השלמה?<br>
+תודה</p>
+            <p><small>4 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6970">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6970</link>
+          <pubDate>Thu, 04 Jun 2020 05:13:37 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6970</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6970.rss">תרגיל השלמה אם 100 מעלות שהוגש בגדול עובד?</source>
+        </item>
+        <item>
+          <title>שש דרגות של הפרדה</title>
+          <dc:creator><![CDATA[gonny]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>אשמח להבהרה קטנה לגבי התרגיל:</p>
+<blockquote>
+<p>כתבו פונקציה שמקבלת שמות 2 ערכים בוויקיפדיה (X , Y) ומרחק הפרדה מקסימלי N. הפונקציה תבדוק האם ניתן ללחוץ על N קישורים החל מהערך X כדי להגיע לערך Y.</p>
+</blockquote>
+<p>אם N הוא 6, האם המרחק התקין הוא רק 6, או שאם יש קישור כבר בדרגה הראשונה הפונקציה תסיים?</p>
+            <p><small>15 פוסטים - 6 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6968">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6968</link>
+          <pubDate>Wed, 03 Jun 2020 19:17:18 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6968</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6968.rss">שש דרגות של הפרדה</source>
+        </item>
+        <item>
+          <title>יעילות בקבוצות אופרטורים לעומת פעולות</title>
+          <dc:creator><![CDATA[yonae]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>אהלן, במחברת בנושא קבוצות של השבוע השישי כתוב שמבחינת יעילות עדיף להשתמש בפעולה על קבוצות מאשר באופרטור המקביל לה. אני מצרף את הדוגמה הניתנת במחברת.  איני מבין מדוע הדרך הראשונה בתצלום יותר יעילה מהדרך השנייה. אני מניח שמדובר ביעילות מבחינת זיכרון (אני צודק?), אבל בשתי הדוגמות המשתנה primes מצביע על קבוצת האיחוד של שתי הקבוצות. האם הדרך השנייה פחות יעילה מכיוון שקבוצת המספרים {2,3,5,7} מהשורה הראשונה נשארת בזיכרון? הרי מכיוון שהמשתנה primes כבר לא מצביע עליה אז היא תיעלם בסופו של דבר (גרביץ׳ קולקטור?).</p>
+<p>תודה! </p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd.png" data-download-href="https://forums.pythonic.guru/uploads/default/ed6c70e42991d510d12467c40a1e42a17c2176bd" title="תמונה"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd_2_281x499.png" alt="תמונה" data-base62-sha1="xSluDOj7xjWS8tXlMwX8gqODH9X" width="281" height="499" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd_2_281x499.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd_2_421x748.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd_2_562x998.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6c70e42991d510d12467c40a1e42a17c2176bd_2_10x10.png"></a></div><p></p>
+            <p><small>5 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6967">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6967</link>
+          <pubDate>Wed, 03 Jun 2020 19:10:01 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6967</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6967.rss">יעילות בקבוצות אופרטורים לעומת פעולות</source>
+        </item>
+        <item>
+          <title>נקמת ה־Leveraging Simple Dictionaries</title>
+          <dc:creator><![CDATA[uazoulay]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>האם אפשר לקבל הבהרה/הכוונה/דוגמה לגבי הגרף הנדרש לתיאור האוטומט המתבקש?</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/leveraging-simple-dictionaries/6965">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/leveraging-simple-dictionaries/6965</link>
+          <pubDate>Wed, 03 Jun 2020 18:14:55 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6965</guid>
+          <source url="https://forums.pythonic.guru/t/leveraging-simple-dictionaries/6965.rss">נקמת ה־Leveraging Simple Dictionaries</source>
+        </item>
+        <item>
+          <title>הבודק האוטומטי: יבואי המודולים</title>
+          <dc:creator><![CDATA[taldew11]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>מבקשת יעוץ לגבי סידור יבוא המודולים. “יש להקפיד על שורה רווח בין מודולים מונים לבין מודולים שלא באים עם פייתון.” +<br>
+“יבואי המודולים שלך מסודרים לא נכון. הקפידו לסדר אותם בסדר אלפבתי.”<br>
+import matplotlib.pyplot<br>
+import pandas</p>
+<p>import collections<br>
+import string</p>
+<p>import billboard<br>
+import lyricsgenius</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6963">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6963</link>
+          <pubDate>Wed, 03 Jun 2020 17:11:50 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6963</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6963.rss">הבודק האוטומטי: יבואי המודולים</source>
+        </item>
+        <item>
+          <title>תרגילים נוספים - שבוע 6</title>
+          <dc:creator><![CDATA[zurikarat]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>האם יש?<br>
+…</p>
+            <p><small>9 פוסטים - 5 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6962">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6962</link>
+          <pubDate>Wed, 03 Jun 2020 16:38:47 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6962</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6962.rss">תרגילים נוספים - שבוע 6</source>
+        </item>
+        <item>
+          <title>הערות הבודק תרגילי 98 ו 100</title>
+          <dc:creator><![CDATA[benhamou.l.e]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>אחרי כל הניסיונות וקריאת ההודעות, עדיין לא הצלחתי לפתור 2 הערות מהבודק האוטומטי,<br>
+תרגיל 98<br>
+rtionError: calc(1, 7, ‘+’) != 8 assert None == 8 + where None = &lt;function calc at 0<br>
+כאשר כן מתקבלת התוצאה 8 עבור 7+1</p>
+<p>תרגיל 100<br>
+non type object is not callable</p>
+<p>תודה מראש על העזרה…</p>
+            <p><small>4 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/98-100/6952">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/98-100/6952</link>
+          <pubDate>Wed, 03 Jun 2020 13:32:05 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6952</guid>
+          <source url="https://forums.pythonic.guru/t/98-100/6952.rss">הערות הבודק תרגילי 98 ו 100</source>
+        </item>
+        <item>
+          <title>זכרו זכרו - שאלה על הערה</title>
+          <dc:creator><![CDATA[Ode]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי!</p>
+<p>קיבלתי הערה על התרגיל “במקרה הזה, עדיף generator expression לדעתי”<br>
+העלתי שני פתרונות אפשריים עם גנרטור - הראשון עם גנרטור, אבל לא generator expression והשני עם generator expression. העניין הוא שגם בפתרון המקורי שלי וגם בפתרון הראשון עם הגנרטור (לא expression) הקוד מפסיק לרוץ אחרי שמוצא את השורה הנכונה ועובר הלאה לעמודה הבאה. עם ה-generator expression הוא ימשיך עד השורה התחתונה (אלא אם כן מחליפים את הלולאה ב-while עם תנאי של האם הפיקסל נמצא).</p>
+<p>אז אני מנסה להבין - למה להשתמש ב- generator expression עדיף על משהו אחר? מה אני מפספסת פה? <img src="https://forums.pythonic.guru/images/emoji/twitter/sweat_smile.png?v=10" title=":sweat_smile:" class="emoji" alt=":sweat_smile:"></p>
+<p>אני שמה לינק לפתרון במערכת התרגילים (עבור הסגל, שאני מניחה שיכולים לראות את זה) במקום לשים פה את הקוד שלי כדי לא להרוס לאחרים <img src="https://forums.pythonic.guru/images/emoji/twitter/slightly_smiling_face.png?v=10" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:"><br>
+<a href="https://solve.pythonic.guru/view/96135" class="onebox" target="_blank" rel="noopener nofollow ugc">https://solve.pythonic.guru/view/96135</a></p>
+            <p><small>4 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6948">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6948</link>
+          <pubDate>Wed, 03 Jun 2020 12:26:47 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6948</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6948.rss">זכרו זכרו - שאלה על הערה</source>
+        </item>
+        <item>
+          <title>תרגיל סט - מה פספסתי?</title>
+          <dc:creator><![CDATA[Geva]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי, אני מסתבך ממש בתרגיל משום מה, סיימתי את כל שאר התרגילים לפני כמה ימים…<br>
+אני לא מצליח לחשוב איך לסנן סטים (סט במשחק, כמובן) זהים!<br>
+כלומר - סט שהתכונות של card1, card2, card3 זהות לתכונות של card1, card3, card2 וכדומה.<br>
+ניסיתי בהייתחסות לכל קלף בתור סט (סט של פייתון, כמובן), בתור מילון או בתור רשימה…</p>
+<p>אשמח להכוונה, לא נשאר לי שיער על הראש מהתרגיל הזה (ולא היה המון מלכתחילה…)</p>
+            <p><small>8 פוסטים - 5 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6944">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6944</link>
+          <pubDate>Wed, 03 Jun 2020 10:36:10 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6944</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6944.rss">תרגיל סט - מה פספסתי?</source>
+        </item>
+        <item>
+          <title>100 מעלות - הודעת שגיאה S310</title>
+          <dc:creator><![CDATA[shiri.tsl]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי, אני מקבלת את הודעת השגיאה הבאה:<br>
+S310-Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected<br>
+ניסיתי להפטר ממנה במיליון דרכים שונות ולא הצלחתי. רציתי לדעת האם ניתן להתעלם?</p>
+            <p><small>13 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/100-s310/6943">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/100-s310/6943</link>
+          <pubDate>Wed, 03 Jun 2020 09:29:41 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6943</guid>
+          <source url="https://forums.pythonic.guru/t/100-s310/6943.rss">100 מעלות - הודעת שגיאה S310</source>
+        </item>
+        <item>
+          <title>Group_by עזרה בהבנת שגיאה</title>
+          <dc:creator><![CDATA[roistamp]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי קיבלתי שגיאה ממש ארוכה מישהו יכול לעזור לפרש?</p>
+<pre><code class="lang-auto"> assert {3: [1, 2, 3,...], 4: [-1, 4]} == {3: [[1, 2, 3]... 4: [[-1, 4]]}   Differing items:   {3: [1, 2, 3, [3], [-99, 0, 3]]} != {3: [[1, 2, 3], [3], [-99, 0, 3]]}   {4: [-1, 4]} != {4: [[-1, 4]]}   Use -v to get the full diff
+</code></pre>
+<p>על הדוגמה זה עובד לי יופי</p>
+            <p><small>8 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/group-by/6942">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/group-by/6942</link>
+          <pubDate>Wed, 03 Jun 2020 08:44:30 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6942</guid>
+          <source url="https://forums.pythonic.guru/t/group-by/6942.rss">Group_by עזרה בהבנת שגיאה</source>
+        </item>
+        <item>
+          <title>לאחר הודעת התיקון - מה הדרישה מאיתנו</title>
+          <dc:creator><![CDATA[hadas.nevenzal]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>היי אז ים העלה הודעת תיקון לתרגיל zip_with ושם כתוב:</p>
+<p>“כל הפתרונות שיוגשו ל־zipwith יתקבלו.”</p>
+<p>התרגיל עבד לי בגדול, אבל הייתה לי שגיאה של הבודק האוטומטי ורק לאחר מכן ראיתי את ההודעה הזאת. בגלל שזמן ההגשה מתקרב אני רוצה לוודא שאם התרגיל שהגשתי עובד על הדוגמאות במחברת אבל יש הודעת בודק אוטומטי - נחשב שהגשתי או לא? תודה</p>
+            <p><small>5 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6941">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6941</link>
+          <pubDate>Wed, 03 Jun 2020 08:31:53 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6941</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6941.rss">לאחר הודעת התיקון - מה הדרישה מאיתנו</source>
+        </item>
+        <item>
+          <title>שטוחלנדיה - מצאתי הערה לא מובנת</title>
+          <dc:creator><![CDATA[ap.maspera]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>AssertionError: assert &lt;generator object find_special_state at 0x7ff640866120&gt; == ‘alaska’  +  where &lt;generator object find_special_state at 0x7ff640866120&gt; = find_special_state()</p>
+<p>הגנרטור מחזיר לי alaska אז מה הבעיה?</p>
+            <p><small>9 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6938">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6938</link>
+          <pubDate>Wed, 03 Jun 2020 07:57:04 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6938</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6938.rss">שטוחלנדיה - מצאתי הערה לא מובנת</source>
+        </item>
+        <item>
+          <title>100 מעלות - נתקלת בשגיאה</title>
+          <dc:creator><![CDATA[Orsa]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/9/97ae1a48491a042b565f2aef6f9c53cda26a0f0e.png" alt="Screen Shot 2020-06-03 at 10.04.46" data-base62-sha1="lDP6TKJyMs2tFNVy3zPUl5lA9We" width="579" height="136"></p>
+<p>מי נתקל? איך מתמודדים?<br>
+הרי הוא נתקל בשגיאה בשלב הקריאה של הטקסט מהאתר,<br>
+אז אני לא יכולה להתנות על “אם הטקסט מכיל $ תתעלם”</p>
+            <p><small>5 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6936">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6936</link>
+          <pubDate>Wed, 03 Jun 2020 07:14:05 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6936</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6936.rss">100 מעלות - נתקלת בשגיאה</source>
+        </item>
+        <item>
+          <title>סדר ייבוא import + תיקונים מרובים לתרגיל</title>
+          <dc:creator><![CDATA[shahark]]></dc:creator>
+          <category>שבוע 6</category>
+          <description><![CDATA[
+            <p>אהלן!<br>
+ראיתי שרשורים קודמים דומים, שלא פתרו לי את הבעיות.</p>
+<p>הבודק האוטומטי מעיר לי על הסדר הבא:</p>
+<p>import billboard</p>
+<p>import collections</p>
+<p>import lyricsgenius</p>
+<p>from matplotlib import rcParams<br>
+import matplotlib.pyplot as plt</p>
+<p>ניסיתי לשחק עם הסדר בכמה דרכים, לפי חוקי סדר שונים, ואף אחת לא מרצה את הבודק. יש למישהו רעיון/הסבר?</p>
+<p>מה שיוביל לשאלה הבאה: אני לא מצליחה להעלות יותר מ-6 תיקונים לתרגיל. האם זה המקסימום? האם יש אפשרות שהתרגיל עדיין ייבדק?</p>
+<p>תודה רבה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+            <p><small>5 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/import/6930">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/import/6930</link>
+          <pubDate>Tue, 02 Jun 2020 20:33:51 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6930</guid>
+          <source url="https://forums.pythonic.guru/t/import/6930.rss">סדר ייבוא import + תיקונים מרובים לתרגיל</source>
+        </item>
+  </channel>
+</rss>

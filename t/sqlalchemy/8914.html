@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/sqlalchemy/8914 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:12:09 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>בעיה עם sqlalchemy - עזרה ושיתופי פעולה - פייתון בעברית ובחינם</title>
+<meta content="אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס. 
+זאת המחלקה ממנה אני יורש 
+  
+זאת הירושה שלי 
+ 
+מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת. 
+כל השורות המסומנות קיימות במחלקה ממ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8914.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8914.rss" rel="alternate nofollow" title="הזנת RSS של ‚בעיה עם sqlalchemy’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpg" property="og:image"/>
+<meta content="8914.html" property="og:url"/>
+<meta content="8914.html" name="twitter:url"/>
+<meta content="בעיה עם sqlalchemy" property="og:title"/>
+<meta content="בעיה עם sqlalchemy" name="twitter:title"/>
+<meta content="אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.  זאת המחלקה ממנה אני יורש     זאת הירושה שלי    מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.  כל השורות המסומנות קיימות במחלקה ממנה אני יורש.  ככה זה בדוקומנטציה:    זאת השגיאה בטקסט:  801: SAWarning: Column ‘user.id’ is marked as a member of the primary key for table ‘user’, but has no Python-side or server-side default generator indicated, nor does it indicate ‘autoincrement=True’ or ‘nullable=True’, and..." property="og:description"/>
+<meta content="אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.  זאת המחלקה ממנה אני יורש     זאת הירושה שלי    מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.  כל השורות המסומנות קיימות במחלקה ממנה אני יורש.  ככה זה בדוקומנטציה:    זאת השגיאה בטקסט:  801: SAWarning: Column ‘user.id’ is marked as a member of the primary key for table ‘user’, but has no Python-side or server-side default generator indicated, nor does it indicate ‘autoincrement=True’ or ‘nullable=True’, and..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="עזרה ושיתופי פעולה" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2021-01-26T21:21:25+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"בעיה עם sqlalchemy","mainEntity":{"@type":"Question","name":"בעיה עם sqlalchemy","text":"אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.\n\nזאת המחלקה ממנה אני יורש\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44\" title=\"image\">[image]<\/a>\n\nזאת הירושה שלי\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/e6f45904e70645128e911b84ca0c9d93df10d3db\" title=\"image\">[image]<\/a>\n\nמקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.\n\nכל השורות המסומנות קיימות במחלקה ממנה אני יורש.\n\nככה זה בדוקומנטציה:\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3\" title=\"image\">[image]<\/a>\n\nזאת השגיאה בטקסט:\n\n801&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2021-01-26T21:21:25.575Z","author":{"@type":"Person","name":"koby"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8914.html">בעיה עם sqlalchemy</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/help-and-coop/31.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">עזרה ושיתופי פעולה</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="בעיה עם sqlalchemy" itemprop="headline"/>
+<meta content="עזרה ושיתופי פעולה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:21:25Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:21pm
+                  </time>
+<meta content="2021-01-26T23:12:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.<br/>
+זאת המחלקה ממנה אני יורש<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44" href="../../uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpg" title="image"><img alt="image" data-base62-sha1="vWKtZ8RBswcG0EP1zelbdGF1u3a" data-small-upload="../../uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_10x10.png" height="306" src="../../uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_690x306.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_690x306.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">946×420 65.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+זאת הירושה שלי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e6f45904e70645128e911b84ca0c9d93df10d3db" href="../../uploads/default/original/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db.jpg" title="image"><img alt="image" data-base62-sha1="wX7kvBxaaiYuAyFMC7HUJIkg9Sz" data-small-upload="../../uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_10x10.png" height="423" src="../../uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_690x423.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_690x423.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_1035x634.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1276×783 185 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.<br/>
+כל השורות המסומנות קיימות במחלקה ממנה אני יורש.<br/>
+ככה זה בדוקומנטציה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3" href="../../uploads/default/original/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3.png" title="image"><img alt="image" data-base62-sha1="3jFJmnqckD6gtJWjDDPTjiEglaj" data-small-upload="../../uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_10x10.png" height="305" src="../../uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_690x305.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_690x305.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_1035x457.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1045×462 32.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+זאת השגיאה בטקסט:<br/>
+801: SAWarning: Column ‘user.id’ is marked as a member of the primary key for table ‘user’, but has no Python-side or server-side default generator indicated, nor does it indicate ‘autoincrement=True’ or ‘nullable=True’, and no explicit value is passed.  Primary key columns typically may not store NULL.<br/>
+util.warn(msg)<br/>
+אשמח מאוד לעזרה אם מישהו מכיר את זה, כי לא מוצא על זה כלום בגוגל, בהקשר של sqlalchemy</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:41:50Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:41pm
+                  </time>
+<meta content="2021-01-26T21:41:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אתה מוציא את id מהערה, זה עובד?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:43:05Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:43pm
+                  </time>
+<meta content="2021-01-26T21:43:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא, מתקבלת שגיאה אחרת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:43:40Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:43pm
+                  </time>
+<meta content="2021-01-26T21:43:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>… מה השגיאה האחרת?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:50:05Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:50pm
+                  </time>
+<meta content="2021-01-26T21:50:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/3efe4cd216fe46290ec1ca20b5732e039ae855a4" href="../../uploads/default/original/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4.png" title="image"><img alt="image" data-base62-sha1="8ZgrbTqdaDXGp6SCqis5VXPyQyo" data-small-upload="../../uploads/default/optimized/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4_2_10x10.png" height="102" src="../../uploads/default/original/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1269×189 18.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+כמו שאתה רואה, זאת לא ממש ‘שגיאה’ אלא יותר אזהרה. אבל אני לא מצליח לשמור ככה בדאטה בייס. הראוט מרונדר לי חזרה.</p>
+<p>זה הריקווסט<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/7096053e5e1ca832591d7052bc845547038f5709" href="../../uploads/default/original/2X/7/7096053e5e1ca832591d7052bc845547038f5709.png" title="image"><img alt="image" data-base62-sha1="g3YTqTi0WZR1UPSo1WfAT9vxdGx" data-small-upload="../../uploads/default/optimized/2X/7/7096053e5e1ca832591d7052bc845547038f5709_2_10x10.png" height="280" src="../../uploads/default/original/2X/7/7096053e5e1ca832591d7052bc845547038f5709.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1103×448 20.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זה הריספונס<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c" href="../../uploads/default/original/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c.png" title="image"><img alt="image" data-base62-sha1="ozzm5Df9h8cCvqJC48hHnuTRpzm" data-small-upload="../../uploads/default/optimized/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c_2_10x10.png" height="334" src="../../uploads/default/original/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">863×418 17.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:52:23Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:52pm
+                  </time>
+<meta content="2021-01-26T21:52:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אגב, הטבלה נוצרה בהצלחה ככה. ואני יכול לשמור דרך המודול ממנו אני יורש. אני מנסה למנוע מצב שכולם יצטרכו לתקן את הקוד, מאחר ושם המחלקה של של הסיפרייה הזאת שונה משלנו, ואותו לא ניתן לשנות(אני יודע שניתן… :))</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:55:36Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:55pm
+                  </time>
+<meta content="2021-01-26T21:55:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נראה שזה פתר את הבעיה. אם אתה רוצה להפתר מה־warning (ראוי) קרא <a href="https://docs.sqlalchemy.org/en/13/faq/ormconfiguration.html#i-m-getting-a-warning-or-error-about-implicitly-combining-column-x-under-attribute-y">כאן</a> (יצא ראשון בגוגל).</p>
+<p>אחרי שפתרת את הבעיה הזו, אם יש בעיה בשמירה נראה שהיא במקום אחר. שכחת לעשות commit או משהו כזה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T21:58:50Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏  9:58pm
+                  </time>
+<meta content="2021-01-26T21:58:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני אבדוק, יותר לעומק. אבל לפני בניית הדאטה בייס הממוזג הזה, עשיתי בדיקות, ואותה הבקשה בדיוק עבדה. זה לא ענין של קומיט. לא שיניתי כלום בקוד. אנסה לבדוק יותר לעומק את השדות שלהם, אולי יש התנגשות עם הגדרות הנתונים שלהם, לעומת מה שאני שולח. אבל אז, אם אני לא טועה, הייתי מקבל שגיאה מ- SQL</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T22:04:51Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏ 10:04pm
+                  </time>
+<meta content="2021-01-26T22:04:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ים, ראיתי את הפתרון הזה עוד לפני כן. יש שני עניינים איתו:</p>
+<ol>
+<li>הם מגדירים טבלה שונה. זה לא המצב שלי. אני מוסיף על אותה טבלה.</li>
+<li>אני לא יכול להגדיר את id. לפחות לא בדרך ‘פשוטה’<br/>
+תיכנס לפה ותראה למה…<br/>
+<a class="inline-onebox" href="https://github.com/frankie567/fastapi-users/blob/master/fastapi_users/db/sqlalchemy.py" rel="noopener nofollow ugc">fastapi-users/sqlalchemy.py at master · frankie567/fastapi-users · GitHub</a>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T22:08:09Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏ 10:08pm
+                  </time>
+<meta content="2021-01-26T22:08:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי, ראיתי. ניסית לבדוק האם <a href="https://github.com/frankie567/fastapi-users/issues/262">הפתרון הזה</a> מעלים את השגיאה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8914.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-26T22:12:34Z" itemprop="datePublished">
+                     26 בינואר,‏ 2021,‏ 10:12pm
+                  </time>
+<meta content="2021-01-26T22:12:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם הכוונה שלך היא לזה, אז כן, כבר הכנסתי את זה לקוד כשהתאמתי את הגדרות הדאטה בייס<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3" href="../../uploads/default/original/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3.png" title="image"><img alt="image" data-base62-sha1="saqiGZ7rl8Fy8JHJ8Vjqpyy9mbp" data-small-upload="../../uploads/default/optimized/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3_2_10x10.png" height="108" src="../../uploads/default/original/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1063×167 11.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/sqlalchemy/8914 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:12:27 GMT -->
+</html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שמירת מחברת כ-html</title>
+    <link>https://forums.pythonic.guru/t/html/7538</link>
+    <description>היי, אשמח לעזרה של מיטב המוחות!
+אני מעוניינת לשלוח למישהו מחברת ג&#39;ופיטר כ-html אבל להסתיר את הקוד.
+כלומר, שהקובץ יהיה דו&quot;ח שבו המקבל יראה את הדברים שכתבתי ב-markdown ואת ה-output של הקוד (טבלאות, גרפים וכו&#39;) אבל לא את הקוד עצמו.
+מצאתי extension שמאפשר לי להסתיר את הקוד במחברת, אבל כשאני שומרת את המחברת כ-html הקוד שוב מופיע באורח פלא.
+ב-R יש דרך קלה לעשות את זה ופתרון מהיר יהיה לכתוב קוד פייתון בתוך R, אבל לא בא לי.
+אם מישהו מכיר פתרון אשמח לשמוע :slight_smile:
+תודה!</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 13 Jul 2020 13:33:22 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/html/7538.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שמירת מחברת כ-html</title>
+        <dc:creator><![CDATA[meravyo]]></dc:creator>
+        <description><![CDATA[
+            <p>וואו תודה רבה, עובד נהדר!</p>
+          <p><a href="https://forums.pythonic.guru/t/html/7538/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/html/7538/3</link>
+        <pubDate>Mon, 13 Jul 2020 13:33:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7538-3</guid>
+        <source url="https://forums.pythonic.guru/t/html/7538.rss">שמירת מחברת כ-html</source>
+      </item>
+      <item>
+        <title>שמירת מחברת כ-html</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בכיף. כתבתי עבורך סקריפט זריז שמוסיף לקובץ “חוק” עיצובי שתאי הקוד של jupyter יוסתרו.</p>
+<pre><code class="lang-python">import os
+
+
+PATH = r"C:\Users\Yam\Downloads\3_Exceptions.html"
+
+
+def get_html(path):
+    with open(path, encoding='utf-8') as html_file:
+        return html_file.read()
+
+
+def backup_html(path):
+    os.rename(path, f'{path}.bck')
+
+
+def add_hide_style(html):
+    hide_inputs_css = '&lt;style&gt;div.input{display:none !important;}&lt;/style&gt;'
+    return html.replace('&lt;/title&gt;', f'&lt;/title&gt;\n{hide_inputs_css}')
+
+
+def write_new_html(path, new_html_content):
+    with open(path, 'w', encoding='utf-8') as html_file:
+        return html_file.write(new_html_content)
+
+
+def hide_jupyter_inputs_in_html(path):
+    html = get_html(path)
+    backup_html(path)
+    new_html = add_hide_style(html)
+    write_new_html(path, new_html)
+
+
+hide_jupyter_inputs_in_html(PATH)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/html/7538/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/html/7538/2</link>
+        <pubDate>Mon, 13 Jul 2020 13:21:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7538-2</guid>
+        <source url="https://forums.pythonic.guru/t/html/7538.rss">שמירת מחברת כ-html</source>
+      </item>
+      <item>
+        <title>שמירת מחברת כ-html</title>
+        <dc:creator><![CDATA[meravyo]]></dc:creator>
+        <description><![CDATA[
+            <p>היי, אשמח לעזרה של מיטב המוחות!<br>
+אני מעוניינת לשלוח למישהו מחברת ג’ופיטר כ-html אבל להסתיר את הקוד.<br>
+כלומר, שהקובץ יהיה דו"ח שבו המקבל יראה את הדברים שכתבתי ב-markdown ואת ה-output של הקוד (טבלאות, גרפים וכו’) אבל לא את הקוד עצמו.<br>
+מצאתי extension שמאפשר לי להסתיר את הקוד במחברת, אבל כשאני שומרת את המחברת כ-html הקוד שוב מופיע באורח פלא.<br>
+ב-R יש דרך קלה לעשות את זה ופתרון מהיר יהיה לכתוב קוד פייתון בתוך R, אבל לא בא לי.<br>
+אם מישהו מכיר פתרון אשמח לשמוע <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/html/7538/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/html/7538/1</link>
+        <pubDate>Mon, 13 Jul 2020 12:46:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7538-1</guid>
+        <source url="https://forums.pythonic.guru/t/html/7538.rss">שמירת מחברת כ-html</source>
+      </item>
+  </channel>
+</rss>

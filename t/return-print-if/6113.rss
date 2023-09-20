@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+    <link>https://forums.pythonic.guru/t/return-print-if/6113</link>
+    <description>כאן אני מתייחס לנושא 6 בשבוע 2. 
+נדרשנו ליצור פונקציה (או בצורה אחרת):
+* אם משתמש הקליד 5, הדפיסו לו 005.
+* אם משתמש הקליד 007, הדפיסו לו 007.
+* אם משתמש הקליד 70, הדפיסו לו 070.
+* אם משתמש הקליד 700, הדפיסו לו 700.
+* אם משתמש הקליד -1, הדפיסו לו &quot;Wrong Category&quot;.
+* אם משתמש הקליד Art, הדפיסו לו &quot;Wrong Category&quot;.
+הרעיון מבחינתי הוא פשוט. קודם כל-לזהות אם מדובר בקלט שהוא לא רק מספר. אם זה המצב-לשלוח הודעת שגיאה. ברגע שהקלט הוא כן רק מספרי, אז קודם כל להמיר אותו לint ואז להחיל עליו תנאים בנוגע לצורך להוסיף אפסים כנגזרת מהגודל שלו . בדרך למדתי קצת על &quot;תנאי על תנאי&quot; שזה מה שאני עושה כאן. כי אני נותן פקודה להמיר לint שהיא מותנית בקיום תנאי, ואז אחרי שהמרתי אני מחיל תנאים נוספים. 
+אני החלטתי להשתמש בפונקציה מסוימת. וכך היא נראתה בהתחלה. 
+![Capture 2|689x391](upload://6GGRm3etRcc4dS6gclgjHg0mJlG.png) 
+כמו שאפשר לראות, קורה משהו מוזר. כאשר אני מכניס קלט שאינו מספרי (נזכור-מדובר בסטרינג בכל מקרה) מה שהיה אמור לקרות מבחינתי זה שהתוכנה תזהה את התנאי הראשון שלי (הקלט אינו מספרי בלבד) ותחזיר לי הודעת שגיאה. במקום זה מה קרה? התוכנה המשיכה לרוץ לתנאים הבאים בתור, והתלוננה על פערים בין str לint. לכאורה, היא הייתה צריכה להפנים את התנאי הראשון ולהחיל אותו, ולא לרוץ הלאה, כי שאר התנאים לא רלוונטיים מבחינתה. הם פשוט לא חלים. 
+הצלחתי לפתור את הבעיה הזו על ידי החלפת פקודת הprint בפקודה return. 
+כך:
+![Capture|690x247](upload://xHQXdUI81hOf3wrQENhh7tK7Jqz.png) 
+זה עבד יופי. התוכנה באמת סיימה לרוץ אחרי הreturn כאשר הקלט לא היה מספרי בלבד.
+מה שאני לא מבין היא למה במצב שבו לא ממש אמרתי לה &quot;תסיימי לרוץ&quot; (באמצעות הפקודה) היא המשיכה לרוץ לתנאים שלכאורה בכלל לא התקיימו במצב הראשון. 
+תודה רבה מראש!</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 12 May 2020 09:26:32 +0000</lastBuildDate>
+    <category>שבוע 2</category>
+    <atom:link href="https://forums.pythonic.guru/t/return-print-if/6113.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>פשוט להזיח את הבלוק השני כך שיהיה בתוך הראשון.<br>
+(עם זאת, יותר מקובל לקטוע ריצה מוקדם ע"י return מאשר להזיח בלוקים)</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/7</link>
+        <pubDate>Tue, 12 May 2020 09:26:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-7</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>בצורה אפילו יותר מחודדת.<br>
+אתה אמרת שהם רצים בלי תלות.<br>
+אני חשבתי שהם רצים עם תלות והייתי שמח להבין איך עושים את זה.</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/6</link>
+        <pubDate>Tue, 12 May 2020 09:25:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-6</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>מעולה הבנתי! אז אני רוצה לשאול אחרת.<br>
+השאלה שלי נבעה מכך, שחשבתי שהצלחתי ליצור “תנאי כפול”.<br>
+1-כלומר-אם זה לא מספרי תעשה X<br>
+2-ואם זה מספרי תעשי Y<br>
+3-ואז (אם זה מספרי):אם זה &gt;0 וכו. כלומר שתנאי 3  יחול רק בתנאי שהתנאי השני יתקיים.<br>
+לא יכולתי לדעתי לעשות פה and כי תנאי 2 מחיל כבר פקודה של המרה למספר.<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/5</link>
+        <pubDate>Tue, 12 May 2020 09:24:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-5</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לך שם 2 בלוקים נפרדים – ה־if הראשון וה־if השני, והם רצים בלי תלות של אחד בשני.<br>
+בדוגמה הראשונה שנתת, אם הקלט אינו מספרי הפונקציה מדפיסה Wrong category (הבלוק הראשון) ועוברת לנסות להריץ את <code>if number &lt; 0</code>. אתה חוטף TypeError כי אי אפשר להשוות בין מחרוזת למספר</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/4</link>
+        <pubDate>Tue, 12 May 2020 09:21:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-4</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>זה קצת לא מובן לי. אני לא מבין למה היא ממשיכה לרוץ על תנאים שלא מתקיימים ומחזירה הודעת שגיאה בנוגע לתנאים האלה. לכאורה, התנאי שבו אני מבקש להמיר str לint חל רק כאשר המספר הוא רק דסימלי (כלומר יש רק מספרים בפלט), ולכן לא ברור לי למה כאשר אני מזין קלט שהוא לא רק דסימלי התוכנה מחילה אותו.</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/3</link>
+        <pubDate>Tue, 12 May 2020 09:18:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-3</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מרגיש שפספסתי את השאלה.<br>
+הפונקציה מסיימת לרוץ רק כשהיא סיימה להריץ את כל הפקודות שבתוכה, או שהיא מגיעה ל־return ושם היא מסיימת את ריצתה.<br>
+ככה עובדת פייתון (ועוד כמה שפות). איפה החלק הפחות מובן?</p>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/2</link>
+        <pubDate>Tue, 12 May 2020 09:15:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-2</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+      <item>
+        <title>חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>כאן אני מתייחס לנושא 6 בשבוע 2.<br>
+נדרשנו ליצור פונקציה (או בצורה אחרת):</p>
+<ul>
+<li>אם משתמש הקליד 5, הדפיסו לו 005.</li>
+<li>אם משתמש הקליד 007, הדפיסו לו 007.</li>
+<li>אם משתמש הקליד 70, הדפיסו לו 070.</li>
+<li>אם משתמש הקליד 700, הדפיסו לו 700.</li>
+<li>אם משתמש הקליד -1, הדפיסו לו “Wrong Category”.</li>
+<li>אם משתמש הקליד Art, הדפיסו לו “Wrong Category”.<br>
+הרעיון מבחינתי הוא פשוט. קודם כל-לזהות אם מדובר בקלט שהוא לא רק מספר. אם זה המצב-לשלוח הודעת שגיאה. ברגע שהקלט הוא כן רק מספרי, אז קודם כל להמיר אותו לint ואז להחיל עליו תנאים בנוגע לצורך להוסיף אפסים כנגזרת מהגודל שלו . בדרך למדתי קצת על “תנאי על תנאי” שזה מה שאני עושה כאן. כי אני נותן פקודה להמיר לint שהיא מותנית בקיום תנאי, ואז אחרי שהמרתי אני מחיל תנאים נוספים.<br>
+אני החלטתי להשתמש בפונקציה מסוימת. וכך היא נראתה בהתחלה.<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84.png" data-download-href="https://forums.pythonic.guru/uploads/default/2ee074fee03075cddd263d026c320c5d0ab0df84" title="Capture 2"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84_2_689x391.png" alt="Capture 2" data-base62-sha1="6GGRm3etRcc4dS6gclgjHg0mJlG" width="689" height="391" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84_2_689x391.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84_2_1033x586.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2ee074fee03075cddd263d026c320c5d0ab0df84_2_10x10.png"></a></div>
+<br>
+כמו שאפשר לראות, קורה משהו מוזר. כאשר אני מכניס קלט שאינו מספרי (נזכור-מדובר בסטרינג בכל מקרה) מה שהיה אמור לקרות מבחינתי זה שהתוכנה תזהה את התנאי הראשון שלי (הקלט אינו מספרי בלבד) ותחזיר לי הודעת שגיאה. במקום זה מה קרה? התוכנה המשיכה לרוץ לתנאים הבאים בתור, והתלוננה על פערים בין str לint. לכאורה, היא הייתה צריכה להפנים את התנאי הראשון ולהחיל אותו, ולא לרוץ הלאה, כי שאר התנאים לא רלוונטיים מבחינתה. הם פשוט לא חלים.<br>
+הצלחתי לפתור את הבעיה הזו על ידי החלפת פקודת הprint בפקודה return.<br>
+כך:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b.png" data-download-href="https://forums.pythonic.guru/uploads/default/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b" title="Capture"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b_2_690x247.png" alt="Capture" data-base62-sha1="xHQXdUI81hOf3wrQENhh7tK7Jqz" width="690" height="247" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b_2_690x247.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b_2_1035x370.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b_2_1380x494.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ec3ccdda3620016c002fb4297b6492a7e1f8ea6b_2_10x10.png"></a></div>
+<br>
+זה עבד יופי. התוכנה באמת סיימה לרוץ אחרי הreturn כאשר הקלט לא היה מספרי בלבד.<br>
+מה שאני לא מבין היא למה במצב שבו לא ממש אמרתי לה “תסיימי לרוץ” (באמצעות הפקודה) היא המשיכה לרוץ לתנאים שלכאורה בכלל לא התקיימו במצב הראשון.<br>
+תודה רבה מראש!</li>
+</ul>
+          <p><a href="https://forums.pythonic.guru/t/return-print-if/6113/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/return-print-if/6113/1</link>
+        <pubDate>Tue, 12 May 2020 09:13:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6113-1</guid>
+        <source url="https://forums.pythonic.guru/t/return-print-if/6113.rss">חידוד בנוגע להבדלים בין return לprint (וגם if קשור כאן)</source>
+      </item>
+  </channel>
+</rss>

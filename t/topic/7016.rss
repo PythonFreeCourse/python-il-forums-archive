@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>אליבי לרוצחים-הקדמה לפתרון</title>
+    <link>https://forums.pythonic.guru/t/topic/7016</link>
+    <description>למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד. 
+מדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובלים לאורך ורוחב N E. כאשר אנחנו משתמשים ב** ברשימה או בtuple שבו יש מילון, והמילון מרכיב את המפתחות X Y ואת הערכים המתקבלים לכל מפתח, אזי ה** נכנס לתוך המילון ומוציא את הערכים (בניגוד לפקודה * שאז הוא היה נכנס &quot;חצי דרך&quot; ומוציא רק את המפתחות), כדי אז להחיל עליהם את הפקודות של הפונקציה, שמקבלת שני משתנים. 
+נראה בצילום:
+![a|690x248](upload://kog5eiKT13mGsfMN4qFXcsxvKlw.png) 
+עד כאן הכול טוב ויפה. 
+אממה, יש פה משהו שממש פוצץ לי את המוח. בוא נחליף את המפתח (הנומינלי לחלוטין, חסר משמעות, סטרינג ולא יותר) &quot;X&quot; במפתח &quot;B&quot;. ונריץ את אותה פקודה. הרי הפונצקיה מקבלת עדיין שני משתנים, זה שאנחנו כינינו אותם בשמות X וY לא אמור לשנות. מה נקבל? 
+![b|690x295](upload://epi2K3r4ZtntbfhKvrzyqCSePTD.png) 
+ג&#39;יזז! נראה שהבחור ממש מאוכזב מזה שלא הבאנו לו את המשתנה &quot;X&quot;. ואת זה אני ממש ממש ממש לא מבין. תודה רבה ואחלה יום!</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 08 Jun 2020 10:52:20 +0000</lastBuildDate>
+    <category>שבוע 4</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/7016.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>אליבי לרוצחים-הקדמה לפתרון</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אני ממליצה להסתכל בשבוע 5 מחברת 2 באופן כללי, ובמונחים לקראת הסוף במיוחד. אני חזרתי לשם בשביל השאלה הזו, וגם אני הסתבכתי קצת עם ה unpacking באיזשהוא שלב. מה שאני הבנתי בסוף זה ככה: פייתון מוכנה לעשות הרבה ‘תרגום’ של פרמטרים שנשלחים לפונקציה, וזאת בתנאי שהם נשלחים בצורה שאינה דו משמעית, ולכן יש מוסכמות בינינו לבין פייתון איך אנחנו שולחים פרמטרים לפונקציה. בין השאר אנחנו יכולים לשלוח פרמטרים לפי מיקום או פרמטרים לפי שם. כאשר אנחנו שולחים פרמטרים לפי מיקום, זה לא משנה איך קוראים להם - אנחנו אומרים לפייתון - קחי את המשתנה הראשון שאת רואה ותעשי איתו {…} ואת המשתנה השני ו {…}. זה מה שקורה כשכתוב x, y או b, y וכן הלאה. הסימון * מאפשר לנו לשלוח איטרבל שמכיל משתנים שישלחו לפי מיקומם (למעשה מיקומם באיטרבל) - עבור הדוגמא שלנו דמיין רשימת המפתחות הראשון נשלח ל x עבורו מוגדרת הפונקציה והשני עבור הy.<br>
+לעומת זאת, בשימוש ב **kwargs אנחנו שולחים משתנים לפי שם פייתון מתרגמת את זה כך עבור הדוגמא הספציפית הזאת:ש:<br>
+(b’=36.671111, y=65.808056’)<br>
+ואז חייבים לקרוא למשתנים בשמם שהרגע סיפקנו, כי שלחנו לפייתון משתנים לפי שם ולא לפי מיקום.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7016/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7016/5</link>
+        <pubDate>Mon, 08 Jun 2020 10:52:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7016-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7016.rss">אליבי לרוצחים-הקדמה לפתרון</source>
+      </item>
+      <item>
+        <title>אליבי לרוצחים-הקדמה לפתרון</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה!<br>
+לא הבנתי את כל מה שכתבת אבל אני רוצה להתייחס רק לפסקה הראשונה.<br>
+את אמרת ש" כדי לקבל ערך עבור מפתח מסוים, צריך לקרוא לו בשם שלו" אני חושב שעליתי פה על משהו שממש לא הבנתי וטוב שאני מסביר אותו לעצמי עכשיו. אשמח לשמוע את דעתך בעניין.<br>
+ראשית, ברור שהפונקציה print_treasure_location לא מחפשת מפתח. היא מקבל שני משתנים ומוסיפה להם שתי אותיות (N, E).<br>
+למשל, ברור שאם נכתוב בפונקציה: print_treasure_location בתוך הסוגריים את האותיות (“c”, “d”) או כול אות אחרת (שאינן X Y המוגדרות), הפונקציה תרוץ בלי בעיה. זה כמובן בדיוק העניין של פונקציות הם מקבלות משתנים שמוגדרים מחוץ אליהן ופועלות בהתאם. יותר מזה, כאשר אני שם כוכבית אחת, כלומר כאשר אני מפנה את הפונקציה להדפסת <strong>המפתח</strong> ולא הדפסת הערך, הפונקציה רצה בלי בעיות ואכן מדפיסה כל מפתח שהוא, לדוגמא כאן שיניתי שוב את הX לB והפונקציה הדפיסה אותו בלי בעיה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e.png" data-download-href="https://forums.pythonic.guru/uploads/default/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e" title="Capture"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_690x190.png" alt="Capture" data-base62-sha1="y3NNi3G3VhVp5hr4RMVoywolC2O" width="690" height="190" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_690x190.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_1035x285.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_1380x380.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_10x10.png"></a></div><br>
+אז למה (לעזאזעל <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"> ) כשאני מפנה אותן לערך מילוני, כלומר אני אומר לפונקציה לחפש את הערך של המפתח, פתאום הוא צריך שהמפתח יהיה זהה בדיוק למשתנה (המומצא) שבפונקציה? את זה אני ממש ממש לא מבין.<p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7016/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7016/4</link>
+        <pubDate>Mon, 08 Jun 2020 10:31:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7016-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7016.rss">אליבי לרוצחים-הקדמה לפתרון</source>
+      </item>
+      <item>
+        <title>אליבי לרוצחים-הקדמה לפתרון</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא בטוחה שהבנתי בדיוק כל מה שכתבת - אבל בכללי נראה לי שפשוט מדובר פה בשמות משתנים - כדי לקבל ערך עבור מפתח מסוים, צריך לקרוא לו בשם שלו. אם קראת לו b אז כך צריך גם להביא אותו בפעם הבאה.</p>
+<p>הפונקציה תקבל את המילון לפי **kwargs ללא קשר לשמות המפתח: ערך , אבל אם אתה רוצה גם לקרוא להם ללא לדעת את שמם, צריך לכתוב לולאה מתאימה <strong>בתוך</strong> הפונקציה. רק להחליף את שם המפתח ל b ואז לנסות לקרוא לו ב x או להיפך לא יעבוד. שים לב שפה הפונקציה כמו שהוגדרה מקבלת את המפתח (ממש, השם שלו) : מה שהפונקציה מקבלת כשאתה מעביר את **location זה מה שבתוך המילון ממש:<br>
+{‘b’: 36.671111, ‘y’: 65.808056’}<br>
+ולזה אתה מנסה לקרוא בתוך הפונקציה לפי שם המפתח</p>
+<p>למיטב הבנתי, **kwargs משמש לקריאה למספר בלתי מוגבל של משתנים לפי שם (שבוע 5 מחברת 2), כשאתה מחליף את x ב b אתה מנסה למעשה לקרוא למשתנה לפי מיקום.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7016/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7016/3</link>
+        <pubDate>Sun, 07 Jun 2020 17:34:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7016-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7016.rss">אליבי לרוצחים-הקדמה לפתרון</source>
+      </item>
+      <item>
+        <title>אליבי לרוצחים-הקדמה לפתרון</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>אני ארחיב-כאשר נכנסתי לתמונה הקודמת, ושיניתי <strong>בפונקציה</strong> את האות X לאות B ואז שוב שיניתי את כול האותיות בtuple שקרוי treasure_maps לB אז זה כן עבד! וזה ממש ממש ממש (אמרתי כבר-ממש?) לא מובן לי הרי כול העניין של פונקציות זה שאתה מגדיר שתי משתנים שהפונקציה עובדת על פיהם, וגורם לה להתייחס לכל משתנה שאתה מכניס אליה כמו המשתנה שהגדרת (!). אז ממתי אנחנו צריכים ששם המשתנה יהיה תואם לשם של המשתנה שהגדרנו בפונקציה.<br>
+אני חושב שהכיוון שבגללו אני טועה כל כך קשור לזה, ש** לא לגמרי עושה את העבודה. או שהוא לא מתוחכם מספיק (אפשרות שנייה סבירה לא פחות-אני לא מתוחכם מספיק <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"> ). בכול אופן אשמח מאוד להסבר ותודה מראש!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7016/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7016/2</link>
+        <pubDate>Sun, 07 Jun 2020 13:34:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7016-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7016.rss">אליבי לרוצחים-הקדמה לפתרון</source>
+      </item>
+      <item>
+        <title>אליבי לרוצחים-הקדמה לפתרון</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד.<br>
+מדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובלים לאורך ורוחב N E. כאשר אנחנו משתמשים ב** ברשימה או בtuple שבו יש מילון, והמילון מרכיב את המפתחות X Y ואת הערכים המתקבלים לכל מפתח, אזי ה** נכנס לתוך המילון ומוציא את הערכים (בניגוד לפקודה * שאז הוא היה נכנס “חצי דרך” ומוציא רק את המפתחות), כדי אז להחיל עליהם את הפקודות של הפונקציה, שמקבלת שני משתנים.<br>
+נראה בצילום:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06.png" data-download-href="https://forums.pythonic.guru/uploads/default/8ee98172b73108090e3696de5c2fa5ad4a59ad06" title="a"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_690x248.png" alt="a" data-base62-sha1="kog5eiKT13mGsfMN4qFXcsxvKlw" width="690" height="248" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_690x248.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1035x372.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1380x496.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_10x10.png"></a></div><br>
+עד כאן הכול טוב ויפה.<br>
+אממה, יש פה משהו שממש פוצץ לי את המוח. בוא נחליף את המפתח (הנומינלי לחלוטין, חסר משמעות, סטרינג ולא יותר) “X” במפתח “B”. ונריץ את אותה פקודה. הרי הפונצקיה מקבלת עדיין שני משתנים, זה שאנחנו כינינו אותם בשמות X וY לא אמור לשנות. מה נקבל?<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5.png" data-download-href="https://forums.pythonic.guru/uploads/default/64fa509d1d85aab91c47e87c87e48e80a7a659f5" title="b"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_690x295.png" alt="b" data-base62-sha1="epi2K3r4ZtntbfhKvrzyqCSePTD" width="690" height="295" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_690x295.png, https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_1035x442.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_1380x590.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_10x10.png"></a></div><br>
+ג’יזז! נראה שהבחור ממש מאוכזב מזה שלא הבאנו לו את המשתנה “X”. ואת זה אני ממש ממש ממש לא מבין. תודה רבה ואחלה יום!<p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7016/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7016/1</link>
+        <pubDate>Sun, 07 Jun 2020 13:24:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7016-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7016.rss">אליבי לרוצחים-הקדמה לפתרון</source>
+      </item>
+  </channel>
+</rss>

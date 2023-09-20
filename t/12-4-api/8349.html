@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/12-4-api/8349 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:01 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 12, יום 4: סִדרוּת, API - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="אדמיניסטרטיבי
+היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם. 
+ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה. 
+סִדרוּת (Serialization)
+בקצרה, סִדרוּת (ביום־יום אומרים “סר&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8349.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8349.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 12, יום 4: סִדרוּת, API’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_1014x1024.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_1014x1024.png" property="og:image"/>
+<meta content="8349.html" property="og:url"/>
+<meta content="8349.html" name="twitter:url"/>
+<meta content="שבוע 12, יום 4: סִדרוּת, API" property="og:title"/>
+<meta content="שבוע 12, יום 4: סִדרוּת, API" name="twitter:title"/>
+<meta content="אדמיניסטרטיבי היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם.  ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה.  סִדרוּת (Serialization) בקצרה, סִדרוּת (ביום־יום אומרים “סריאליזציה”), הוא תהליך של העברת מבני נתונים (כמו מילון או רשימה) לצורה בה יהיה אפשר לאחסן את מבני הנתונים בקלות, או להעביר אותו ליעד אחר.  לרוב הקלט של תהליך הסריאליזציה יהיה מבנה נתונים, והפלט יהיה טקסט כלשהו שמייצג את את אותו מבנה נתונים.  בדה־סריאליזציה (deserialization) עושים ..." property="og:description"/>
+<meta content="אדמיניסטרטיבי היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם.  ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה.  סִדרוּת (Serialization) בקצרה, סִדרוּת (ביום־יום אומרים “סריאליזציה”), הוא תהליך של העברת מבני נתונים (כמו מילון או רשימה) לצורה בה יהיה אפשר לאחסן את מבני הנתונים בקלות, או להעביר אותו ליעד אחר.  לרוב הקלט של תהליך הסריאליזציה יהיה מבנה נתונים, והפלט יהיה טקסט כלשהו שמייצג את את אותו מבנה נתונים.  בדה־סריאליזציה (deserialization) עושים ..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-12" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="10 ❤"/>
+<meta content="2020-10-18T05:33:48+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8349.html">שבוע 12, יום 4: סִדרוּת, API</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-12.html" rel="tag">שבוע-12</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 12, יום 4: סִדרוּת, API" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-12" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/22811143e5ec803cd071e694d953790ff6f61278.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T05:33:48Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  5:33am
+                  </time>
+<meta content="2020-10-18T05:33:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>אדמיניסטרטיבי</h2>
+<p>היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם.<br/>
+ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה.</p>
+<h2>סִדרוּת (Serialization)</h2>
+<p>בקצרה, סִדרוּת (ביום־יום אומרים “סריאליזציה”), הוא תהליך של העברת מבני נתונים (כמו מילון או רשימה) לצורה בה יהיה אפשר לאחסן את מבני הנתונים בקלות, או להעביר אותו ליעד אחר.<br/>
+לרוב הקלט של תהליך הסריאליזציה יהיה מבנה נתונים, והפלט יהיה טקסט כלשהו שמייצג את את אותו מבנה נתונים.<br/>
+בדה־סריאליזציה (deserialization) עושים את התהליך ההפוך, שבו הקלט הוא לרוב טקסט, והפלט הוא לרוב מבנה נתונים.</p>
+<p>שימושים נפוצים לסריאליזציה:</p>
+<ol>
+<li>אם נצטרך להעביר בין שני מחשבים מילון ששמור בפייתון, נוכל בקלות לעשות לו סריאליזציה במחשב בו הוא שמור ולשלוח אותו למחשב השני. המחשב השני יעשה דה־סריאליזציה, ובכך יוכל להשתמש במילון.</li>
+<li>אם נרצה לשמור על המחשב את אותו מילון, נוכל להמיר אותו לטקסט בעזרת סריאליזציה ולשמור אותו בקלות על קובץ.</li>
+</ol>
+<h3>על אודות JSON</h3>
+<p>ישנם פרוטוקולים שונים לסריאליזציה, המוכר שבהם הוא JSON (קיצור ל־JavaScript Object Notation).<br/>
+היתרון הגדול של צורות סריאליזציה מוכרות במיוחד הוא שהן נתמכות בכל שפה שנגיע אליה. זה המצב עם JSON.<br/>
+בואו נמיר tuple של מילונים בפייתון ל־JSON, ונהפוך אותה למערך של אובייקטים (המקבילה ה־JavaScript־ית) ב־JavaScript:</p>
+<pre><code class>import json
+people = ({'name': 'Hummus', 'favorite_dish': 'Moshe'}, {'name': 'Guyava', 'favorite_dish': 'Danna'})
+print(json.dumps(people))
+</code></pre>
+<p>איך יראה הפלט? דומה להחריד:</p>
+<blockquote>
+<p><code>[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]</code></p>
+</blockquote>
+<p>ננסה להמיר חזרה ל־Python, רק כדי לראות מה קרה כאן:</p>
+<pre><code class="lang-python">json.loads('[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]')
+</code></pre>
+<p>קיבלנו:</p>
+<pre><code class>[{'name': 'Hummus', 'favorite_dish': 'Moshe'},
+ {'name': 'Guyava', 'favorite_dish': 'Danna'}]
+</code></pre>
+<p>שימו לב שאיבדנו את העובדה שמבנה הנתונים החיצוני היה tuple.<br/>
+זה קורה כיוון שב־JSON אין מבנה נתונים שקול בדיוק ל־tuple, ולכן סריאליזציה של tuple־ים ממירה אותם לרשימות. זה בד"כ לא משהו שמשפיע עלינו באמת, אבל זה כן משהו לקחת בחשבון כשעושים סריאליזציה באמצעות JSON.</p>
+<p>בנוסף, פייתון דאגה למיר את התו <code>'</code> לתו <code>"</code>, כדי לעמוד בתקן של JSON.</p>
+<p>אם נרצה לטעון באמצעות JavaScript את ה־JSON, נוכל לכתוב:</p>
+<pre><code class="lang-javascript">JSON.parse('[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]')
+</code></pre>
+<p>חשוב לזכור ש־JSON נתמכת כמעט בכל פלטפורמה שתגיעו אליה – וזה החוזק העיקרי שלה.</p>
+<p>ב־Go, לדוגמה, תוכלו לכתוב:</p>
+<pre><code class>json.Unmarshal([]byte(myJsonString), &amp;myStoredVariable)
+</code></pre>
+<p>וב־Java תוכלו לכתוב:</p>
+<pre><code class>FileReader reader = new FileReader(filename);
+JSONParser jsonParser = new JSONParser();
+return jsonParser.parse(reader);
+</code></pre>
+<h3>על אודות pickle</h3>
+<p>כפי שראינו, החיסרון המשמעותי ביותר של JSON היא איבוד מידע. JSON לא מבטיח לשמור לכם על טיפוסי הנתונים שהמרתם, ואפילו יסרב להמיר אובייקטים מורכבים (לדוגמה: רשימת תאריכים מטיפוס datetime).</p>
+<p>כדי להתמודד עם הבעיה, פייתון מציעה את המודול הסטנדרטי pickle שמאפשר לעשות סריאליזציה לכל אובייקט פייתון שהוא. החיסרון הוא, כמובן, שמעט מאוד שפות תכנות אחרות תומכות ב־pickle ישירות מהקופסה.</p>
+<p>נראה דוגמה ליצירת pickle:</p>
+<pre><code class>import datetime
+import pickle
+
+pickle.dumps(datetime.datetime.now())
+</code></pre>
+<p>תוצאה:</p>
+<blockquote>
+<p>b’\x80\x04\x95*\x00\x00\x00\x00\x00\x00\x00\x8c\x08datetime\x94\x8c\x08datetime\x94\x93\x94C\n\x07\xe4\n\x12\x073 \x04\x02\xa1\x94\x85\x94R\x94.’</p>
+</blockquote>
+<h3>תחביר</h3>
+<p>השימוש ב־pickle וב־json בפייתון זהה למדי – מייבאים את הספרייה הרלוונטית, ומשתמשים באחת מארבע פעולות שזמינות בספרייה:</p>
+<ol>
+<li>הפעולה <code>load</code> – מאפשרת לטעון מחרוזת מקובץ ולהעביר אותה דה-סריאליזציה.</li>
+<li>הפעולה <code>loads</code> – מאפשרת לטעון מחרוזת רגילה ולהעביר אותה דה-סריאליזציה.</li>
+<li>הפעולה <code>dump</code> – מאפשרת לשמור טיפוס נתונים על קובץ אחרי שעבר סריאליזציה.</li>
+<li>הפעולה <code>dumps</code> – מאפשרת לשמור טיפוס נתונים כמשתנה/לקבל אותו כערך אחרי שעבר סריאליזציה.</li>
+</ol>
+<h3>שימוש בפרויקט שלנו</h3>
+<p>ננסה להבין, לדוגמה, כיצד מערכת התרגילים מציגה לכם את ההערות שקיבלתם על התרגילים שלכם.</p>
+<p>כדי לעשות את זה נלחץ F12 בדף התרגיל, נעבור ללשונית Networks ונלחץ על Refresh.<br/>
+בין הבקשות, נוכל לראות את הבקשה לדף <a href="https://solve.pythonic.guru/comments?act=fetch&amp;fileId=111088">https://solve.pythonic.guru/comments?act=fetch&amp;fileId=111088</a>, כאשר 111088 הוא מספר הקובץ שהוגש.</p>
+<p>כסיכום ביניים, אנחנו יכולים להגיד שבעת כניסה לתרגיל, המערכת פונה באמצעות בקשת GET קלאסית לדף comments בדומיין solve.pythonic.guru, שהפרמטרים שלה הם act: fetch ו־fileId: 111088.</p>
+<p>תשובת השרת היא:</p>
+<pre><code class="lang-json">[{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337937,"is_auto":true,"line_number":6,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."},{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337938,"is_auto":true,"line_number":9,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."},{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337939,"is_auto":true,"line_number":12,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."}]
+</code></pre>
+<p>אם אתם משתמשים בדפדפן עם כלי פיתוח מודרניים, יתכן שהוא יבחר להציג לכם את התשובה באופן נאה לעין:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/22811143e5ec803cd071e694d953790ff6f61278" href="../../uploads/default/original/2X/2/22811143e5ec803cd071e694d953790ff6f61278.png" title="image"><img alt="image" data-base62-sha1="4VeL6lmY1sGvVHt2OgVmO2K7ZQ4" data-small-upload="../../uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_495x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_495x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_742x750.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_990x1000.png 2x" width="495"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1290×1302 82.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>במערכת יש קוד JavaScript שקורא את הנתונים הללו, שהתקבלו משרת ה־Flask.<br/>
+לפי אותם נתונים הוא צובע את השורות הרלוונטיות ומאפשר לכם ללחוץ עליהן כדי לקבל פרטים נוספים על ההערה. את שם הבודק ואת המלל שיוצגו לכם הוא לוקח מהשדות author_name ו־text שמופיעים ב־JSON.</p>
+<p>כשתשתמשו בפרויקט שלכם ב־API, כמעט כל השירותים יאפשרו לכם לקבל תשובות ב־JSON.<br/>
+כעת אתם יודעים מה זה הייצוג הזה, וכיצד להמיר אותו לטיפוס נתונים שאתם מכירים בפייתון.</p>
+<hr/>
+<h2>מה זה API?</h2>
+<p>המונח API הוא ראשי תיבות של Application Programming Interface.<br/>
+תוכנות פופולריות רבות כמו Facebook, Telegram או אפילו מערכת הפורומים שלנו, רוצות לעזור למתכנתים לכתוב עבורם הרחבות ולהשתמש באותן תוכנות לצורכיהם בקלות.</p>
+<p>לשם כך אותן תוכנות כותבות עבור המתכנתים דרך נוחה וקלה לדבר איתן. לזה קוראים API.<br/>
+אותו API לרוב מתועד, כך שאם תרשמו Discourse API לדוגמה (זה השם של מערכת הפורומים שלנו) אתם תראו הוראות שימוש מפורטות.</p>
+<p>דוגמאות ל־API:</p>
+<ul>
+<li>מערכת הפורומים שלנו יודעת להחזיר בצורת JSON את כל ההודעות הפרטיות שלכם, או אפילו לשנות תמונת פרופיל באמצעות ה־API.</li>
+<li>ב־Telegram אפשר ליצור בוט שמתממשק עם הערוץ, מקבל את כל המידע ממנו ויודע לבצע כל פעולה שמשתמש רגיל יכול לעשות, מהזמנת משתמשים ועד להשעייתם.</li>
+<li>גם ל־Facebook, Youtube, Twitter, Whatsapp ואפילו ל־Windows – יש API.</li>
+</ul>
+<h2>על אודות Flask</h2>
+<p>המודול Flask הוא מודול מינימליסטי שמאפשר לכם להרים שרת web בסיסי באמצעות פייתון.<br/>
+ראו את הלייב ביום 3 ואת <a href="../12-3/8339/2.html">דוגמת הקוד</a> שמצורפת אליו כדי להבין כיצד הוא עובד ומה ניתן לעשות בעזרתו.</p>
+<p>אפליקציית Flask בסיסית (תודה לוויקיפדיה):</p>
+<pre><code class="lang-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/8411.html" itemprop="url">ריכוז חומרים: שבוע 12</a>
+<meta content="4" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T07:15:28Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  7:15am
+                  </time>
+<meta content="2020-10-18T07:15:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי הייתי שמח לשני חידודים,<br/>
+אחד מה כרגע הדברים שנדרש לבצע חוץ מלהעמיד אתר…אלא קצת יותר ספציפי… פשוט מרגיש שהשבוע חלקנו נאבדנו כי היינו רגליים למשימות ספציפיות<br/>
+ב. עוד קצת הסברים שלך על פלאסק אם זה יהיה אפשרי</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galmalull</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T12:41:15Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏ 12:41pm
+                  </time>
+<meta content="2020-10-18T12:41:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי ים,<br/>
+האם כל API נכתב כjson ומחזיר תשובה באמצעות json ?<br/>
+האם יש מקום שאתה ממליץ שנוכל לקרוא בו מידע נוסף על איך יוצרים API ?<br/>
+תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T14:39:31Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  2:39pm
+                  </time>
+<meta content="2020-10-18T14:39:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אשמח אם תסביר על REST API.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galmalull</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-19T05:56:40Z" itemprop="datePublished">
+                     19 באוקטובר,‏ 2020,‏  5:56am
+                  </time>
+<meta content="2020-10-19T05:56:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה על המענה בשידור!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="8349.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-19T12:16:15Z" itemprop="datePublished">
+                     19 באוקטובר,‏ 2020,‏ 12:16pm
+                  </time>
+<meta content="2020-10-19T12:16:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>הסבר מעולה !</li>
+<li>כדי שהדפדפן יציג json בצורה יפה , בדרך כלל נדרשת התקנת תוסף לדפדפן.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/12-4-api/8349 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:07 GMT -->
+</html>

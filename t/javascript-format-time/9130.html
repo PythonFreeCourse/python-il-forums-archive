@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/javascript-format-time/9130 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:13 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>עזרה ב-javascript + שגיאה מוזרה ב-format של time - שבוע 16 - פייתון בעברית ובחינם</title>
+<meta content="היי כולם, 
+אני בטיקט האחרון שלי ויש לי 2 דברים שתוקעים אותי, 
+למי שראה את הטיקט שלי או וגם למי שלא הוא בנוי משני כפתורים ששניהם פותחים מודלים, אחד פותח טופס ליצירת משימה, והשני פותח את רשימת המשימות לאותו יום. 
+נראה כך: 
+&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9130.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9130.rss" rel="alternate nofollow" title="הזנת RSS של ‚עזרה ב-javascript + שגיאה מוזרה ב-format של time’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_1024x566.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_1024x566.png" property="og:image"/>
+<meta content="9130.html" property="og:url"/>
+<meta content="9130.html" name="twitter:url"/>
+<meta content="עזרה ב-javascript + שגיאה מוזרה ב-format של time" property="og:title"/>
+<meta content="עזרה ב-javascript + שגיאה מוזרה ב-format של time" name="twitter:title"/>
+<meta content="היי כולם,  אני בטיקט האחרון שלי ויש לי 2 דברים שתוקעים אותי,  למי שראה את הטיקט שלי או וגם למי שלא הוא בנוי משני כפתורים ששניהם פותחים מודלים, אחד פותח טופס ליצירת משימה, והשני פותח את רשימת המשימות לאותו יום.  נראה כך:     יש ברשימה אפשרות לסמן משימה כבוצעה ויש כפתור עריכה  כפתור העריכה מתקשר ל-javascript בעזרתו הוא פותח את המודל טופס של העריכה:     כדי לאפשר את הפונקציונליות הזו של פתיחת המודל + שמירת עריכת הנתונים ב-DB אני משתמשת בספרייה jQuery ששימשה לי תחליף נוח מאוד ל-js.  הקוד של הכפתור:  ..." property="og:description"/>
+<meta content="היי כולם,  אני בטיקט האחרון שלי ויש לי 2 דברים שתוקעים אותי,  למי שראה את הטיקט שלי או וגם למי שלא הוא בנוי משני כפתורים ששניהם פותחים מודלים, אחד פותח טופס ליצירת משימה, והשני פותח את רשימת המשימות לאותו יום.  נראה כך:     יש ברשימה אפשרות לסמן משימה כבוצעה ויש כפתור עריכה  כפתור העריכה מתקשר ל-javascript בעזרתו הוא פותח את המודל טופס של העריכה:     כדי לאפשר את הפונקציונליות הזו של פתיחת המודל + שמירת עריכת הנתונים ב-DB אני משתמשת בספרייה jQuery ששימשה לי תחליף נוח מאוד ל-js.  הקוד של הכפתור:  ..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 16" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2021-02-24T15:45:22+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"עזרה ב-javascript + שגיאה מוזרה ב-format של time","mainEntity":{"@type":"Question","name":"עזרה ב-javascript + שגיאה מוזרה ב-format של time","text":"היי כולם,\n\nאני ב<a href=\"https://forums.pythonic.guru/t/todo-list/8639\">טיקט<\/a> האחרון שלי ויש לי 2 דברים שתוקעים אותי,\n\nלמי שראה את הטיקט שלי או וגם למי שלא הוא בנוי משני כפתורים ששניהם פותחים <a href=\"https://getbootstrap.com/docs/5.0/components/modal/\" rel=\"noopener nofollow ugc\">מודלים<\/a>, אחד פותח טופס ליצירת משימה, והשני פותח את רשימת המשימות לאותו יום.\n\nנראה כך:\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc\" title=\"image\">[image]<\/a>\n\nיש ברשימה אפשרות לסמן משימה כבוצעה ויש כפתור עריכה\n\nכפתור העריכה מתקש&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2021-02-24T15:45:22.233Z","author":{"@type":"Person","name":""}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9130.html">עזרה ב-javascript + שגיאה מוזרה ב-format של time</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-16/28.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 16</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="עזרה ב-javascript + שגיאה מוזרה ב-format של time" itemprop="headline"/>
+<meta content="שבוע 16" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T15:45:22Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  3:45pm
+                  </time>
+<meta content="2021-02-24T15:45:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי כולם,<br/>
+אני ב<a href="../todo-list/8639.html">טיקט</a> האחרון שלי ויש לי 2 דברים שתוקעים אותי,</p>
+<p>למי שראה את הטיקט שלי או וגם למי שלא הוא בנוי משני כפתורים ששניהם פותחים <a href="https://getbootstrap.com/docs/5.0/components/modal/" rel="noopener nofollow ugc">מודלים</a>, אחד פותח טופס ליצירת משימה, והשני פותח את רשימת המשימות לאותו יום.</p>
+<p><strong>נראה כך:</strong></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc" href="../../uploads/default/original/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc.png" title="image"><img alt="image" data-base62-sha1="oAeSMFYqaoNhFw06l1uYNrpNZso" data-small-upload="../../uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_10x10.png" height="285" src="../../uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_517x285.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_517x285.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_775x427.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/a/ac4ce68bd30d48f18d3b3fa17bf38c3758b1dcbc_2_1034x570.png 2x" width="517"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1680×929 47.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>יש ברשימה אפשרות לסמן משימה כבוצעה ויש <strong>כפתור עריכה</strong><br/>
+כפתור העריכה מתקשר ל-javascript בעזרתו הוא פותח את המודל טופס של העריכה:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/27ec8975d50277f0c6bf75f07acc83aad8c413aa" href="../../uploads/default/original/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa.png" title="image"><img alt="image" data-base62-sha1="5HboLqtozc51EIyOeT8mlK2LMAa" data-small-upload="../../uploads/default/optimized/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa_2_10x10.png" height="287" src="../../uploads/default/optimized/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa_2_517x287.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa_2_517x287.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa_2_775x430.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/27ec8975d50277f0c6bf75f07acc83aad8c413aa_2_1034x574.png 2x" width="517"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1672×929 44.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כדי לאפשר את הפונקציונליות הזו של פתיחת המודל + שמירת עריכת הנתונים ב-DB אני משתמשת בספרייה <a href="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" rel="noopener nofollow ugc">jQuery</a> ששימשה לי תחליף נוח מאוד ל-js.</p>
+<p><strong>הקוד של הכפתור:</strong><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/83bfd1a7a090e3bb96edd1f22934cdde065ab16c" href="../../uploads/default/original/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c.png" title="image"><img alt="image" data-base62-sha1="iNvwavNnkx4gsQWCgapgmkfwjOk" data-small-upload="../../uploads/default/optimized/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c_2_10x10.png" height="158" src="../../uploads/default/optimized/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c_2_690x158.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c_2_690x158.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c_2_1035x237.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/8/83bfd1a7a090e3bb96edd1f22934cdde065ab16c.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1110×255 24.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><strong>הקוד jQuery</strong><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/350a81bdd25db1d34a95b7f83f6fef8f611f2180" href="../../uploads/default/original/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180.png" title="image"><img alt="image" data-base62-sha1="7zdODdHdAMvnoDcWzDEo5vnoWqY" data-small-upload="../../uploads/default/optimized/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180_2_10x10.png" height="328" src="../../uploads/default/optimized/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180_2_690x328.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180_2_690x328.png, https://forums.pythonic.guru/uploads/default/original/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/350a81bdd25db1d34a95b7f83f6fef8f611f2180.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">866×412 46.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>קיבלתי הערה לא להשתמש בספרייה זו אלא להמיר הכל ל-javascript בעזרת <a href="https://getbootstrap.com/docs/5.0/components/modal/#varying-modal-content" rel="noopener nofollow ugc">bootstrap</a>.<br/>
+אין לי רקע ב-javascript ואני מתקשה להתאים את הקוד שלי לבקשה.</p>
+<p><strong>בעיה שנייה שנתקלתי בה</strong><br/>
+כחלק מהטסטים שלי, עליי לבדוק שעריכת הנתונים שלי מתבצעת כראוי.<br/>
+מאיזושהי סיבה שלא הצלחתי למצוא לא מצליחה להתבצע שמירה של הנתונים בטסט כמו בהרצה הרגילה.</p>
+<p><strong>הקוד של הטסט</strong></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1d1859adcc775ae4b25473a342b86911a5861d9f" href="../../uploads/default/original/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f.png" title="image"><img alt="image" data-base62-sha1="49o136JTq3kL1wjUdrhlDaZaXBZ" data-small-upload="../../uploads/default/optimized/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f_2_10x10.png" height="363" src="../../uploads/default/optimized/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f_2_517x363.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f_2_517x363.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f_2_775x544.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/1d1859adcc775ae4b25473a342b86911a5861d9f.png 2x" width="517"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">781×549 51.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><strong>השגיאה</strong></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/0cf61223e73777369978ec615df02d86b69b189e" href="../../uploads/default/original/2X/0/0cf61223e73777369978ec615df02d86b69b189e.png" title="image"><img alt="image" data-base62-sha1="1QEVUq1Zk0YJZfk0TC64U2cX4bY" data-small-upload="../../uploads/default/optimized/2X/0/0cf61223e73777369978ec615df02d86b69b189e_2_10x10.png" height="138" src="../../uploads/default/original/2X/0/0cf61223e73777369978ec615df02d86b69b189e.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">926×186 21.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>אשמח לעזרה בפתרון הבעיות, רוב תודות לעוזרים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T15:57:51Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  3:57pm
+                  </time>
+<meta content="2021-02-24T15:57:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנוגע לבעיה השנייה – שימי לב שאת בוחרת פעמיים את task מה־DB.<br/>
+הגיוני שיהיה להם אותו title, לא?<br/>
+(יש מצב שאני מפספס משהו טריוויאלי)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T16:01:49Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  4:01pm
+                  </time>
+<meta content="2021-02-24T16:01:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני בוחרת פעם אחת בשביל לעדכן את הנתונים, ופעם שניה בשביל לראות שהנתונים השתנו</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T16:03:07Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  4:03pm
+                  </time>
+<meta content="2021-02-24T16:03:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניסית לשמור הכותרת של המשימה לפני השינוי, על משתנה נפרד, לפני שאת שולחת את ה־POST?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T16:09:15Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  4:09pm
+                  </time>
+<meta content="2021-02-24T16:09:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניסיתי והכותרת עדיין נשארת זהה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T17:13:35Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  5:13pm
+                  </time>
+<meta content="2021-02-24T17:21:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קצת סדר בעניין ה־JavaScript שכדאי לעשות:</p>
+<h3>מה זה jQuery</h3>
+<p>חשוב להתחיל בזה ש־jQuery היא לא תחליף ל־JavaScript – היא ממש JavaScript. היא ספרייה (כמו מודול) ישנה שנוצרה לפני שנים רבות כדי “לחפות” על זה ש־JavaScript הייתה בעייתית:</p>
+<ol>
+<li>היו חסרים הרבה פיצ’רים שימושיים מאוד.</li>
+<li>הייתה חוסר תאימות בין דפדפנים, וכל דפדפן הכיל פיצ’רים שונים.</li>
+</ol>
+<p>מבחינה טכנולוגית, jQuery <strong>כתובה ב־JavaScript</strong> ובאה להרחיב את היכולות שלנו ב־JavaScript.</p>
+<p>היום יש לה פחות אוהדים כיוון שהיא שוקלת הרבה (כלומר – מאטה את טעינת הדף) ולא מספקת פיצ’רים חדשים מעבר לאלו שכבר קיימים ב־JavaScript.<br/>
+למעשה, יש חלופה טובה ב־JavaScript לרוב המוחלט של הדברים ש־jQuery מספקת, כפי שניתן לראות באתר <a href="http://youmightnotneedjquery.com/">YouMightNotNeedJQuery.com</a>.<br/>
+עבורי זה חבל – כי הכרתי את jQuery ממש טוב <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>, אבל בעולם הזה דברים משתנים בקצב די תדיר ומתרגלים.</p>
+<hr/>
+<h3>מה זה Bootstrap</h3>
+<p>קצת בדומה ל־jQuery, ‏Bootstrap הוא מודול שאחראי יותר על CSS ועיצוב. הוא מפותח בידי צוות ב־Twitter.<br/>
+בגדול הוא אחראי בעיקר על CSS, אבל כמו בכל דבר שרוצים לעשות דינאמית מבחינה עיצובית הוא משתמש (בחלק מהדברים) ב־JavaScript.</p>
+<p>אנחנו משתמשים ב־Bootstrap לאורכו של הפרויקט, והוא שם בלתי תלות בפיצ’ר שלך.<br/>
+למזלנו הרב, Bootstrap, כחלק מהחשיבה שלהם על עיצוב האתר, עיצבו פיצ’ר נחמד של Modal (שזה, כמו שמוסבר בקישור שהבאת, חלון חביב ש"עולה" ויזואלית על תוכן הדף).<br/>
+יש יתרון בלהשתמש ב־Bootstrap בפיצ’ר כיוון שהוא גם ככה באתר, ולא יוסיף מודול גדול כמו jQuery שאין לנו שימוש בו חוץ מלצורך הספציפי הזה.</p>
+<hr/>
+<h3>ידע מקדים ב־JavaScript</h3>
+<ol>
+<li>צריך לדעת שאפשר לייצג את ה־HTML שכתבנו בצורת עץ של תגיות. נניח, בראש העץ יש את התגית HTML, ובתוכו יש 2 תגיות: head ו־body. בתוך ה־head יש גם הרבה תגיות. כיוון שבתוך כל תגית יש תגיות “בנות” שלה, אפשר לייצג כל תגית כ"בת" בעץ (רמה אחת מתחת) של התגית שמכילה אותה. העץ הזה נקרא DOM Tree.</li>
+<li>בעזרת JavaScript אנחנו יכולים לגשת לאלמנטים בתוך העץ הזה, לקרוא מהם מידע, לערוך אותם ולבצע עליהם פעולות. אפשר ממש לערוך את ה־DOM Tree הזה. זה מה שכיף ב־JavaScript.</li>
+<li>כשאנחנו רוצים לשמור מידע על ה־DOM Tree ש־JavaScript יוכל לגשת אליו, אנחנו משתמשים ב־<a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</a>. לדוגמה, אם יש לי כפתור שקשור ל־task, ול־task יש id, אני יכול לתת לו attribute שנקרא data-task-id שערכו יהיה מספר ה־task. זה יראה ככה: <code>&lt;button type="submit" id="our-button" class="btn btn-success" data-type-id="5"&gt;</code>.</li>
+<li>לשמחתינו, JavaScript יכולה לגשת בקלות לאלמנטים בדף – נניח ל־our-button אפשר לגשת בעזרת <code>document.getElementById('our-button')</code>.</li>
+<li>אפשר לגשת ל־attributes של אותו אלמנט בצורה הזו. ספציפית ל־attributes שמתחילים במילה data אפשר לגשת בעזרת <code>.dataset</code>, לדוגמה, אם שמרנו את הכפתור שתפסנו בסעיף הקודם תחת שם המשתנה <code>ourButton</code>, אפשר לעשות: <code>ourButton.dataset.typeId</code>
+</li>
+<li>לכל אלמנט בדף, כולל document או window, אפשר לעשות <code>addEventListener</code>. זה מאפשר לנו להוסיף פונקציה ש־JavaScript יקרא לה באופן אוטומטי כשאירוע מסוים יקרה. לדוגמה, על כפתור מסוים נוכל לבצע:<br/>
+<code>button.addEventListener('click', function() { console.log('hi'); })</code><br/>
+כלומר, להוסיף event listener שמאזין ללחיצות על הכפתור (האירוע נקרא “click”) וזה ידפיס לנו  hi כל פעם שמישהו ילחץ על הכפתור.</li>
+</ol>
+<hr/>
+<h3>מה צריך לעשות</h3>
+<ol>
+<li>להוריד את jQuery מה־<code>&lt;script&gt;</code>־ים בתחתית האתר</li>
+<li>ליצור modal ב־HTML שמייצג את רשימת ה־TODO (עדיף ב־HTML נפרד ולעשות <code>{% include %}</code>, כדי שלא יהיה בלאגן)</li>
+<li>ליצור modal ב־HTML שמייצג את עריכת ה־Task (עדיף ב־HTML נפרד ולעשות <code>{% include %}</code>, כדי שלא יהיה בלאגן)</li>
+<li>לדאוג שהכפתורים יפתחו את ה־modal־ים – בלי JavaScript בכלל (גם בלי onclick בכפתורים). חשוב שהשלב הזה יבוא לפני הוספת ה־JavaScript כדי לוודא שהכל פועל אחלה באופן בלתי תלוי גם בלי ה־JavaScript.</li>
+<li>עכשיו רוצים לגרום לזה שה־modal יתמלא בפרטים הרלוונטיים. יש דוגמה לזה <a href="https://getbootstrap.com/docs/5.0/components/modal/#varying-modal-content">פה</a>. את צריכה שלכפתור יהיה attribute שמתחיל במילים <code>data-bs-</code> ואז השם של ה־field שאת רוצה למלא ב־modal, נניח <code>data-bs-task-id</code>. הקטע הזה של data-attributes זו שיטה נפוצה להחזיק מידע בתוך ה־HTML כדי שיהיה נוח להגיע אליו ב־JavaScript. השלב הזה ידאג שהמידע על ה־task־ים יישב במקום שנוכל להגיע אליו.</li>
+<li>להוסיף JavaScript שמחכה לכך שהעמוד ייטען (עם DOMContentLoaded).</li>
+<li>בתוכו, מצאי את האלמנט ה־HTML־י של ה־modal שאת רוצה למלא בפרטים בעזרת <code>document.getElementById</code>.</li>
+<li>כשיש לך משתנה שמכיל את האלמנט הזה, את יכולה להוסיף לו <code>addEventListener</code> לאירוע <code>show.bs.modal</code> (כלומר: מה יקרה כשה־modal נפתח)</li>
+<li>בתוכו, את יכולה להשתמש בדוגמה שיש <a href="https://getbootstrap.com/docs/5.0/components/modal/#varying-modal-content">פה</a> כדי לתפוס את הכפתור שלחצו עליו, ולקחת ממנו את כל המידע שנמצא על ה־data-attributes ולהכניס אותם לשדות טקסט הרלוונטיים ב־modal.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="9130.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-24T19:04:56Z" itemprop="datePublished">
+                     24 בפברואר,‏ 2021,‏  7:04pm
+                  </time>
+<meta content="2021-02-24T20:02:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="6" data-topic="9130" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>את צריכה שלכפתור יהיה attribute שמתחיל במילים <code>data-bs-</code> ואז השם של ה־field שאת רוצה למלא ב־modal</p>
+</blockquote>
+</aside>
+<p>אז הכפתור submit שלי בעריכה צריך להכיל בתוכו את כל הנתונים של השדות או שהכפתור שפותח את המודל של העריכה צריך להכיל בתוכו את הנתונים הקודמים כדי שישמרו על השדות שרוצים לערוך?</p>
+<p>וגם כל נתון צריך להיות data-bs-time, data-bs-title, data-bs-descriptions וכן הלאה?</p>
+<p>כמו פה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/2749c2efcca5d63cf9325fa24ac52ce066b00924" href="../../uploads/default/original/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924.png" title="image"><img alt="image" data-base62-sha1="5ByEAaHTrdsJrq4AvGckbELHyy8" data-small-upload="../../uploads/default/optimized/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924_2_392x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924_2_392x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924_2_588x750.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/2/2749c2efcca5d63cf9325fa24ac52ce066b00924.png 2x" width="392"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">648×826 59.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ובהתאמה ניסיתי לכתוב את הפונקציה הזו:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a" href="../../uploads/default/original/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a.png" title="image"><img alt="image" data-base62-sha1="zomUw1hzP3eD7xA0FMElOKsoyaS" data-small-upload="../../uploads/default/optimized/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a_2_10x10.png" height="390" src="../../uploads/default/optimized/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a_2_690x390.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a_2_690x390.png, https://forums.pythonic.guru/uploads/default/optimized/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a_2_1035x585.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/f/f80d4d3ffe84bb1e875f51f6bcf260c2898f9a6a.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1039×588 81.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>והיא עדיין לא עובדת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/javascript-format-time/9130 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:39 GMT -->
+</html>

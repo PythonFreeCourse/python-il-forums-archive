@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שימוש ב else בחריגות</title>
+    <link>https://forums.pythonic.guru/t/else/7627</link>
+    <description>למדנו שנכון לכתוב את החריגות בצמוד לקטע קוד שאנחנו צופים לו שגיאות.
+למדנו גם שמיד אחרי הexcept במידה ויש המשך לקוד נשתמש בelse.
+השאלה שלי, מה קורה כשבקטע קוד צפויות חריגות בכמה קטעים,
+האם הבדיקה בפעם השנייה תהיה מוזחת בelse וכן הלאה(מדרגה שניה ושלישית וכו&#39;),
+לדוגמה:
+``` python
+try:
+    code
+except Error:
+    code
+else:
+    code
+    try:
+        code
+    except Error:
+        code
+```
+
+או שאת הelse כותבים רק במידה שבהמשך לא צפוי חריגות?
+לדוגמה,
+``` python
+try:
+    code...
+except Error:
+    code...
+code...
+try:
+    code...
+except Error:
+    code...
+```</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 26 Jul 2020 18:23:58 +0000</lastBuildDate>
+    <category>שבוע 8</category>
+    <atom:link href="https://forums.pythonic.guru/t/else/7627.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שימוש ב else בחריגות</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>לגבי 1 לעומת 2 - מה שאחרי ה except ירוץ בין אם היתה שגיאה או לא היתה שגיאה, ומה שבתוך ה else ירוץ רק אם לא היתה שגיאה ונראה לי שיכול להיות לזה שימוש משמעותי במקרים מסוימים (כמו תנאי if).</p>
+<p>מה שאביעד ציין (נראה לי) זה שאפשר היה להכניס את קטע הקוד הזה כבר בתוך הtry הראשון, ונראה לי שההבדל העיקרי שם זה מה שאביעד אמר: מה מנסים בדיוק לתפוס בשגיאה ועל מה להתריע</p>
+          <p><a href="https://forums.pythonic.guru/t/else/7627/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/else/7627/5</link>
+        <pubDate>Sun, 26 Jul 2020 18:23:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7627-5</guid>
+        <source url="https://forums.pythonic.guru/t/else/7627.rss">שימוש ב else בחריגות</source>
+      </item>
+      <item>
+        <title>שימוש ב else בחריגות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>בצורה השניה שהציגומפה אין else . אולם בכל מקרה else כפי שהוסבר במחברת הוא כביכול לא מחייב כי מה שיגיע אליו יכול לרוץ גם בתוך run בהנחה ואין שגיאות.</p>
+<p>משתמשים בו אולם כדי לעשות סדר ולהפוך את הקוד לקריא יותר. כך שאם נכנסות אליו שורות שאנו לא מצפים בהם לחריגות תהיה הפרדה ברורה בין מה שבtry שעלול ליצר חריגה (ולאחריו את הטיפול בחריגות) ואז את שאר הקוד שנרצה שירוץ במידה והכל תקין בתוך else</p>
+          <p><a href="https://forums.pythonic.guru/t/else/7627/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/else/7627/4</link>
+        <pubDate>Sun, 26 Jul 2020 17:30:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7627-4</guid>
+        <source url="https://forums.pythonic.guru/t/else/7627.rss">שימוש ב else בחריגות</source>
+      </item>
+      <item>
+        <title>שימוש ב else בחריגות</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אפשר לכתוב בדרך השניה, מה אם כן הצורך בשימוש בelse?</p>
+          <p><a href="https://forums.pythonic.guru/t/else/7627/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/else/7627/3</link>
+        <pubDate>Sun, 26 Jul 2020 14:29:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7627-3</guid>
+        <source url="https://forums.pythonic.guru/t/else/7627.rss">שימוש ב else בחריגות</source>
+      </item>
+      <item>
+        <title>שימוש ב else בחריגות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>שניהם תקינים, הראשון מעט נדיר יותר כיוון שמנסים לשמור על קוד לא מוזח בד"כ.<br>
+<a href="https://github.com/python/cpython/blob/95f60010219e142a436fae18e1695cbc45407afe/Lib/pty.py#L88">דוגמה לראשון</a><br>
+<a href="https://github.com/python/cpython/blob/master/Lib/datetime.py#L1729">דוגמה לשני</a></p>
+          <p><a href="https://forums.pythonic.guru/t/else/7627/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/else/7627/2</link>
+        <pubDate>Fri, 24 Jul 2020 09:31:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7627-2</guid>
+        <source url="https://forums.pythonic.guru/t/else/7627.rss">שימוש ב else בחריגות</source>
+      </item>
+      <item>
+        <title>שימוש ב else בחריגות</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>למדנו שנכון לכתוב את החריגות בצמוד לקטע קוד שאנחנו צופים לו שגיאות.<br>
+למדנו גם שמיד אחרי הexcept במידה ויש המשך לקוד נשתמש בelse.<br>
+השאלה שלי, מה קורה כשבקטע קוד צפויות חריגות בכמה קטעים,<br>
+האם הבדיקה בפעם השנייה תהיה מוזחת בelse וכן הלאה(מדרגה שניה ושלישית וכו’),<br>
+לדוגמה:</p>
+<pre><code class="lang-python">try:
+    code
+except Error:
+    code
+else:
+    code
+    try:
+        code
+    except Error:
+        code
+</code></pre>
+<p>או שאת הelse כותבים רק במידה שבהמשך לא צפוי חריגות?<br>
+לדוגמה,</p>
+<pre><code class="lang-python">try:
+    code...
+except Error:
+    code...
+code...
+try:
+    code...
+except Error:
+    code...
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/else/7627/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/else/7627/1</link>
+        <pubDate>Fri, 24 Jul 2020 01:40:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7627-1</guid>
+        <source url="https://forums.pythonic.guru/t/else/7627.rss">שימוש ב else בחריגות</source>
+      </item>
+  </channel>
+</rss>

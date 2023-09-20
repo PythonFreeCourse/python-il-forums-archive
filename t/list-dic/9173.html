@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/list-dic/9173 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:37:14 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שאלה בנוגע ליעילות של list אל מול dic - שבוע 5 - פייתון בעברית ובחינם</title>
+<meta content="תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי. 
+הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer. 
+תרגיל זה שוב עורר בי שאלה שרציתי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9173.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9173.rss" rel="alternate nofollow" title="הזנת RSS של ‚שאלה בנוגע ליעילות של list אל מול dic’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" property="og:image"/>
+<meta content="9173.html" property="og:url"/>
+<meta content="9173.html" name="twitter:url"/>
+<meta content="שאלה בנוגע ליעילות של list אל מול dic" property="og:title"/>
+<meta content="שאלה בנוגע ליעילות של list אל מול dic" name="twitter:title"/>
+<meta content="תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.  הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.  תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.  ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צ..." property="og:description"/>
+<meta content="תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.  הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.  תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.  ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צ..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 5" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="יעילות" property="og:article:tag"/>
+<meta content="מילונים" property="og:article:tag"/>
+<meta content="רשימות" property="og:article:tag"/>
+<meta content="slicing" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="1 ❤"/>
+<meta content="2021-08-15T19:35:00+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שאלה בנוגע ליעילות של list אל מול dic","mainEntity":{"@type":"Question","name":"שאלה בנוגע ליעילות של list אל מול dic","text":"תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.\n\nהרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.\n\nתרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה &hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2021-08-15T19:35:00.461Z","author":{"@type":"Person","name":"אסף חייא"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9173.html">שאלה בנוגע ליעילות של list אל מול dic</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-5/14.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 5</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%99%d7%a2%d7%99%d7%9c%d7%95%d7%aa.html" rel="tag">יעילות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%99%d7%9c%d7%95%d7%a0%d7%99%d7%9d.html" rel="tag">מילונים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a8%d7%a9%d7%99%d7%9e%d7%95%d7%aa.html" rel="tag">רשימות</a>, 
+            <a class="discourse-tag" href="../../tag/slicing.html" rel="tag">slicing</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שאלה בנוגע ליעילות של list אל מול dic" itemprop="headline"/>
+<meta content="שבוע 5" itemprop="articleSection"/>
+<meta content="יעילות, מילונים, רשימות, slicing" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9173.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-15T19:35:00Z" itemprop="datePublished">
+                     15 באוגוסט,‏ 2021,‏  7:35pm
+                  </time>
+<meta content="2021-09-11T14:46:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.</p>
+<p>הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.<br/>
+תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.<br/>
+ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צורך לעבור על כולה כל פעם מחדש ברגע שנתקלים במילה חדשה.</p>
+<p>האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום  (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).<br/>
+,תודה מראש על ההתייחסות.<br/>
+.</p>
+<blockquote>
+<p><strong>מתודה א:   –  מיון בעזרת רשימה  -  צורה לא יעילה</strong></p>
+</blockquote>
+<pre><code class>my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+while my_list:
+    counting = 0
+    current = my_list[0]
+    while counting &lt; len(my_list) and my_list[counting] == current:
+        counting += 1
+    new_dic[current] = counting
+    my_list = my_list[ counting :]
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img alt="image" data-base62-sha1="AwgRODC2RjXniMfZwF7HzxHZ4JU" height="32" src="../../uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" width="431"/></p>
+<blockquote>
+<p><strong>מתודה ב:   –   מיון בעזרת מילון</strong></p>
+</blockquote>
+<pre><code class>my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+for word in my_list:
+    if word in new_dic:
+        new_dic[word] += 1
+    else:
+        new_dic[word] = 1
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img alt="image" data-base62-sha1="zHWv75Lf68EgQOrHXkTi7QYxhEG" height="32" src="../../uploads/default/original/2X/f/fa43bdac5b8bcc7c8ffdb5d5e3aa2c68477cd416.png" width="356"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9173.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T06:49:06Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏  6:49am
+                  </time>
+<meta content="2021-08-16T06:49:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שכחתי בפוסט הראשון לוסיף מדוע הפעולה sort() על רשימה גדולה ככל שתיהיה לוקחת גם היא מילי שניות מדוע לא מדובר בפעולה שאמורה לקחת זמן, האם לא מדובר כאן על מצב בוהרשימה נקראת על ידי המחשב כמה וכמה פעמים וכך מסדרת את אותה לפי הסדר, לכאורה זו פעולה יותר מורכבת שאומרה לקחת יותר זמן ממה שאני ניסיתי לעשות במטודה א. כשניסיתי למצוא למספור המילים שמופיעות בטקסט.<br/>
+שוב תודה על ההתיחסות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9173.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T09:21:21Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏  9:21am
+                  </time>
+<meta content="2021-08-16T09:21:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="9173" data-username="112344asafh">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/1/47e85d/40.png" width="20"/> 112344asafh:</div>
+<blockquote>
+<p>האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).<br/>
+,תודה מראש על ההתייחסות.</p>
+</blockquote>
+</aside>
+<p>השורה <code>    my_list = my_list[counting:]</code> מעתיקה כל פעם את כל האיברים ב־<code>my_list</code> לרשימה חדשה, החל ממקום <code>counting</code>. זו פעולה יקרה שעלולה לארוך זמן רב אם הרשימה גדולה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/list-dic/9173 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:37:17 GMT -->
+</html>

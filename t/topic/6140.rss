@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>אין לי וִנִגְרֶט - השנים בקלט</title>
+    <link>https://forums.pythonic.guru/t/topic/6140</link>
+    <description>פתרתי את התרגיל לכאורה, והוא רץ כאשר אני מכניסה בתור קלט תאריכים מסוימים.
+
+אך כאשר אני מריצה אותו עם התאריכים שניתנו כדוגמה בתרגיל (1912-06-23, 1954-06-07), מתקבלת השגיאה הבאה (date1 הוא תאריך מסוג datetime.datetime):
+&gt; ---&gt; 15     date1_timestamp = date1.timestamp()
+&gt; **OSError: [Errno 22] Invalid argument**
+
+עפ&quot;י הדוקומנטציה (של fromtimestamp), נראה שיש בעיה עם שנים שחורגות מטווח מסוים:
+&gt; classmethod date.fromtimestamp(timestamp)
+&gt; Return the local date corresponding to the POSIX timestamp, such as is returned by time.time().
+&gt; 
+&gt; This may raise OverflowError, if the timestamp is out of the range of values supported by the platform C localtime() function, and OSError on localtime() failure. **It’s common for this to be restricted to years from 1970 through 2038.** Note that on non-POSIX systems that include leap seconds in their notion of a timestamp, leap seconds are ignored by fromtimestamp().
+
+האם חלק מהתרגיל הוא להתמודד עם שנים מחוץ לטווח שמוגדר במודול? אשמח להכוונה.
+תודה!</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 13 May 2020 21:33:43 +0000</lastBuildDate>
+    <category>שבוע 5</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/6140.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>אין לי וִנִגְרֶט - השנים בקלט</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>חשוב להדגיש שהתרגיל צריך לתת מענה לכל השנים, גם כאלו שלפני ה-epoch.<br>
+במידה ו-timestamp() לא נתנה מענה, נסי לראות מה יוכל לתת מענה.<br>
+טיפ: ישנה דרך להשתמש ב-timestamp כדי לחשב timestamp עבור זמנים שלפני ה-epoch!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6140/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6140/4</link>
+        <pubDate>Wed, 13 May 2020 21:33:43 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6140-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6140.rss">אין לי וִנִגְרֶט - השנים בקלט</source>
+      </item>
+      <item>
+        <title>אין לי וִנִגְרֶט - השנים בקלט</title>
+        <dc:creator><![CDATA[Ellen]]></dc:creator>
+        <description><![CDATA[
+            <p>יואו! כמה זמן לקח לי להבין שהשנים הם הבעיה ולא הקוד!!! ביליתי זמן מכובד בדקומנטציה ואיכשהו פסחתי את ההגבלה הזאת! תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6140/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6140/3</link>
+        <pubDate>Wed, 13 May 2020 04:48:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6140-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6140.rss">אין לי וִנִגְרֶט - השנים בקלט</source>
+      </item>
+      <item>
+        <title>אין לי וִנִגְרֶט - השנים בקלט</title>
+        <dc:creator><![CDATA[israel4001]]></dc:creator>
+        <description><![CDATA[
+            <p>תשתמשי בפונקציות אחרות ולא בtimestamp()<br>
+פתרתי בלא שימוש בפונקציה זו, ואני יכול להכניס שנים ללא הגבלת טווח…<br>
+בהצלחה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6140/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6140/2</link>
+        <pubDate>Tue, 12 May 2020 17:47:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6140-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6140.rss">אין לי וִנִגְרֶט - השנים בקלט</source>
+      </item>
+      <item>
+        <title>אין לי וִנִגְרֶט - השנים בקלט</title>
+        <dc:creator><![CDATA[yaelh]]></dc:creator>
+        <description><![CDATA[
+            <p>פתרתי את התרגיל לכאורה, והוא רץ כאשר אני מכניסה בתור קלט תאריכים מסוימים.</p>
+<p>אך כאשר אני מריצה אותו עם התאריכים שניתנו כדוגמה בתרגיל (1912-06-23, 1954-06-07), מתקבלת השגיאה הבאה (date1 הוא תאריך מסוג datetime.datetime):</p>
+<blockquote>
+<p>—&gt; 15     date1_timestamp = date1.timestamp()<br>
+<strong>OSError: [Errno 22] Invalid argument</strong></p>
+</blockquote>
+<p>עפ"י הדוקומנטציה (של fromtimestamp), נראה שיש בעיה עם שנים שחורגות מטווח מסוים:</p>
+<blockquote>
+<p>classmethod date.fromtimestamp(timestamp)<br>
+Return the local date corresponding to the POSIX timestamp, such as is returned by time.time().</p>
+<p>This may raise OverflowError, if the timestamp is out of the range of values supported by the platform C localtime() function, and OSError on localtime() failure. <strong>It’s common for this to be restricted to years from 1970 through 2038.</strong> Note that on non-POSIX systems that include leap seconds in their notion of a timestamp, leap seconds are ignored by fromtimestamp().</p>
+</blockquote>
+<p>האם חלק מהתרגיל הוא להתמודד עם שנים מחוץ לטווח שמוגדר במודול? אשמח להכוונה.<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6140/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6140/1</link>
+        <pubDate>Tue, 12 May 2020 16:59:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6140-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6140.rss">אין לי וִנִגְרֶט - השנים בקלט</source>
+      </item>
+  </channel>
+</rss>

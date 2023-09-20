@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/7217 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:26:59 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>אורטל קומבט 2 הדפסת שחקנים בזירה - שבוע 7 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+אני מנסה לכתוב פונקציית STR שתחזיר לי מידע על הזירה. 
+אחד הפרטים שאני רוצה להדפיס הוא רשימת השחקנים. 
+מכיוון שמדובר בליסט הוא לא מדפיס אותם כראוי אלא בצורה הזאת: 
+[&amp;lt;main.Player object at 0x0000020EFFF526C8&amp;gt; 
+איך אפ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7217.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7217.rss" rel="alternate nofollow" title="הזנת RSS של ‚אורטל קומבט 2 הדפסת שחקנים בזירה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7217.html" property="og:url"/>
+<meta content="7217.html" name="twitter:url"/>
+<meta content="אורטל קומבט 2 הדפסת שחקנים בזירה" property="og:title"/>
+<meta content="אורטל קומבט 2 הדפסת שחקנים בזירה" name="twitter:title"/>
+<meta content="היי,  אני מנסה לכתוב פונקציית STR שתחזיר לי מידע על הזירה.  אחד הפרטים שאני רוצה להדפיס הוא רשימת השחקנים.  מכיוון שמדובר בליסט הוא לא מדפיס אותם כראוי אלא בצורה הזאת:  [&lt;main.Player object at 0x0000020EFFF526C8&gt;  איך אפשר לשלב את הדפסת השחקנים בתוך כל המידע הנוסף?  תודה" property="og:description"/>
+<meta content="היי,  אני מנסה לכתוב פונקציית STR שתחזיר לי מידע על הזירה.  אחד הפרטים שאני רוצה להדפיס הוא רשימת השחקנים.  מכיוון שמדובר בליסט הוא לא מדפיס אותם כראוי אלא בצורה הזאת:  [&lt;main.Player object at 0x0000020EFFF526C8&gt;  איך אפשר לשלב את הדפסת השחקנים בתוך כל המידע הנוסף?  תודה" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 7" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="אורטל-קומבט-חלק-2" property="og:article:tag"/>
+<meta content="מתודות-של-מחלקות" property="og:article:tag"/>
+<meta content="מתודות-קסם" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-06-20T11:28:09+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"אורטל קומבט 2 הדפסת שחקנים בזירה","mainEntity":{"@type":"Question","name":"אורטל קומבט 2 הדפסת שחקנים בזירה","text":"היי,\n\nאני מנסה לכתוב פונקציית STR שתחזיר לי מידע על הזירה.\n\nאחד הפרטים שאני רוצה להדפיס הוא רשימת השחקנים.\n\nמכיוון שמדובר בליסט הוא לא מדפיס אותם כראוי אלא בצורה הזאת:\n\n[&lt;main.Player object at 0x0000020EFFF526C8&gt;\n\nאיך אפשר לשלב את הדפסת השחקנים בתוך כל המידע הנוסף?\n\nתודה","upvoteCount":0,"answerCount":0,"dateCreated":"2020-06-20T11:28:09.869Z","author":{"@type":"Person","name":"shira"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7217.html">אורטל קומבט 2 הדפסת שחקנים בזירה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-7/17.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 7</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%90%d7%95%d7%a8%d7%98%d7%9c-%d7%a7%d7%95%d7%9e%d7%91%d7%98-%d7%97%d7%9c%d7%a7-2.html" rel="tag">אורטל-קומבט-חלק-2</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a9%d7%9c-%d7%9e%d7%97%d7%9c%d7%a7%d7%95%d7%aa.html" rel="tag">מתודות-של-מחלקות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a7%d7%a1%d7%9d.html" rel="tag">מתודות-קסם</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="אורטל קומבט 2 הדפסת שחקנים בזירה" itemprop="headline"/>
+<meta content="שבוע 7" itemprop="articleSection"/>
+<meta content="אורטל-קומבט-חלק-2, מתודות-של-מחלקות, מתודות-קסם" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:28:09Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:28am
+                  </time>
+<meta content="2021-11-18T18:38:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,<br/>
+אני מנסה לכתוב פונקציית <strong>STR</strong> שתחזיר לי מידע על הזירה.<br/>
+אחד הפרטים שאני רוצה להדפיס הוא רשימת השחקנים.<br/>
+מכיוון שמדובר בליסט הוא לא מדפיס אותם כראוי אלא בצורה הזאת:<br/>
+[&lt;<strong>main</strong>.Player object at 0x0000020EFFF526C8&gt;<br/>
+איך אפשר לשלב את הדפסת השחקנים בתוך כל המידע הנוסף?</p>
+<p>תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:32:04Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:32am
+                  </time>
+<meta content="2020-06-20T11:32:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>השאלה כבר הועלתה ונענתה בעבר על רשימות של אובייקטים - לדעתי גם על nemesis וגם על נקודות, נסי לחפש <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:36:10Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:36am
+                  </time>
+<meta content="2020-06-20T11:36:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ראיתי שהגיבו בעבר על פונקציית REPER או עם לולאה<br/>
+השאלה שלי היא שונה כי אני מנסה להחזיר מידע שגם חלקו מיידי וחלקו מתוך רשימה.<br/>
+משהו כזה:<br/>
+f’the maximum num of player is : {self.max_players},\n’<br/>
+f’the players are:{self._players},\n’</p>
+<p>לכן פתחתי שאלה חדשה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:42:40Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:42am
+                  </time>
+<meta content="2020-06-20T11:42:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני לא בטוחה שאני רואה את ההבדל בין שתי השאלות… מה ההבדל בין להדפיס את הרשימה ותו לא לבין להדפיס את הרשימה כחלק ממחרוזת שכוללת עוד איברים?<br/>
+למיטב ידיעתי ועל-סמך ניסוי קצר שעשיתי עכשיו זה עובד נהדר גם במקרה שלך</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:45:49Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:45am
+                  </time>
+<meta content="2020-06-20T11:45:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab" href="../../uploads/default/original/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab.png" title="image"><img alt="image" data-base62-sha1="7fzMAjZdmg5AfzmBQFhsfzeS7Jp" data-small-upload="../../uploads/default/optimized/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab_2_10x10.png" height="53" src="../../uploads/default/optimized/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab_2_690x53.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab_2_690x53.png, https://forums.pythonic.guru/uploads/default/optimized/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab_2_1035x79.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/32d1fe78518e53b5849cf4d6bd05dc4df39ce9ab.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1350×105 58.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זה לא עובד…<br/>
+אני לא יודעת איך לשלב פה לולאת פור עבור השחקנים / פתרון אחר…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/31c4e879c48323027b35ea70adf41b5e941bfc7d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T11:51:56Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 11:51am
+                  </time>
+<meta content="2020-06-20T11:51:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם זה לא עובד לך - עשית טעות בדרך. נסי לקרוא שוב את מה שים כתב או להיעזר באינטרנט ולמצוא מה הבעיה<br/>
+דוגמא למקרה שבו זה כן עובד: <div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/31c4e879c48323027b35ea70adf41b5e941bfc7d" href="../../uploads/default/original/2X/3/31c4e879c48323027b35ea70adf41b5e941bfc7d.png" title="תמונה"><img alt="תמונה" data-base62-sha1="76hgIPGs1E5sY4laJsDxceVZi7r" data-small-upload="../../uploads/default/optimized/2X/3/31c4e879c48323027b35ea70adf41b5e941bfc7d_2_10x10.png" height="134" src="../../uploads/default/original/2X/3/31c4e879c48323027b35ea70adf41b5e941bfc7d.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">823×161 4.62 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:02:26Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:02pm
+                  </time>
+<meta content="2020-06-20T12:02:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה מה שעשיתי-<br/>
+ברור לי שכנראה יש טעות במה שעשיתי אחרת לא הייתי כותבת כאן לעזרה…<br/>
+אשמח אם מישהו שרואה את הבעיה יוכל לעזור לי לפתור אותה (אחרי שקראתי כאן ובאינטרנט ללא הצלחה)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/141fdf4b6a9db266ef174d2319e14768b9406160" href="../../uploads/default/original/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160.png" title="image"><img alt="image" data-base62-sha1="2S1PNbWQllPUhk2ZapRsST8h0s0" data-small-upload="../../uploads/default/optimized/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160_2_10x10.png" height="251" src="../../uploads/default/optimized/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160_2_690x251.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160_2_690x251.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160_2_1035x376.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/141fdf4b6a9db266ef174d2319e14768b9406160_2_1380x502.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1464×534 66.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:04:40Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:04pm
+                  </time>
+<meta content="2020-06-20T12:04:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני רואה שהחלטת לא ללכת על לולאה (בחירה נכונה בעיניי). אם כך, הבעיה נעוצה במה שכתבת או לא כתבת ב-player.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/5/521a725efe9faccf3f44a06f1392ac7bcb0f84de.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:06:10Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:06pm
+                  </time>
+<meta content="2020-06-20T12:06:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קיימת לי פונקציהSTR גם עבור PLAYER…<br/>
+<img alt="image" data-base62-sha1="bIjOuWTlZlW3GyGiDNxCeoDPYn4" height="180" src="../../uploads/default/original/2X/5/521a725efe9faccf3f44a06f1392ac7bcb0f84de.png" width="685"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:08:00Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:08pm
+                  </time>
+<meta content="2020-06-20T12:08:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זו לא המתודה הרלוונטית למקרה כזה. נסי לחפש שוב את התשובה של ים איזו מתודה את צריכה להגדיר כדי שזה יעבוד לך כראוי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:08:16Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:08pm
+                  </time>
+<meta content="2020-06-20T12:08:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שימי לב שאת מנסה להדפיס רשימה - זו השורה שיוצא לך אובייקט</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:09:18Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:09pm
+                  </time>
+<meta content="2020-06-20T12:09:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:10:29Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:10pm
+                  </time>
+<meta content="2020-06-20T12:10:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כדאי גם לשים לב שע’פ מה שהבנתי מהתגובה של ים - לא כדאי להשתמש ב repr כדי להדפיס</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirabarel</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:13:01Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:13pm
+                  </time>
+<meta content="2020-06-20T12:13:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז עכשיו אני מבולבלת לגמרי… אשמח שמישהו יעשה סדר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:17:10Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:17pm
+                  </time>
+<meta content="2020-06-20T12:17:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ים עשה סדר פה <a class="inline-onebox" href="7161/4.html">הדפסה של מופעים שונים (צב שלוח 2)</a> ופה <a class="inline-onebox" href="7101/6.html">אורטל קומבט חלק 1 שאלה על רשימת הנמסיס</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T12:34:55Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏ 12:34pm
+                  </time>
+<meta content="2020-06-20T12:34:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>וגם בשאלה זהה: <a class="inline-onebox" href="../2-str/7176/2.html">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T17:12:23Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏  5:12pm
+                  </time>
+<meta content="2020-06-20T17:12:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אין בעיה לשלב לולאה בתוך הפקודות האלו - אני עשיתי עם קומפריהנשיין</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7217.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-20T17:23:56Z" itemprop="datePublished">
+                     20 ביוני,‏ 2020,‏  5:23pm
+                  </time>
+<meta content="2020-06-20T17:29:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אעשה סדר:<br/>
+הפעולה <code>__repr__</code> מיועדת למתכנת. היא אמורה להחזיר מחרוזת, שמאפשרת למתכנת ליצור את האובייקט במצבו הנוכחי אם הוא מריץ אותה.<br/>
+הפעולה <code>__str__</code> עושה את מה שאת מבינה שהיא עושה.<br/>
+אפשר להשתמש בלולאה, ואפשר להשתמש בכל דבר אחר שעושה מניפולציה על מחרוזת כדי להדפיס רשימה של שחקנים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/7217 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:27:12 GMT -->
+</html>

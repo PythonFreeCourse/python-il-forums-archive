@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Mypy --ignore-missing-imports שח/מט</title>
+    <link>https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926</link>
+    <description>אחרי ריבים ארוכים עם אימפורטים ועם mypy הערות היחידות שנשארו לי הן מסוג Cannot find implementation or library stub for module named x.
+הרצה של mypy עם הדגל ```--ignore-missing-imports``` נותנת את האור הירוק המיוחל.
+כל חיפוש בגוגל מוביל ל-https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports שלא מספק שום פיתרון מלבד העמסת הקוד בהערות מסוג ```# type: ignore``` שעושה את אותה פעולה כמו הוספת הדגל בהרצה.
+השאלה היא כמובן האם זה עובר מבחינת הגשת תרגילים, או שמא יש צורך בהוספת ההערות כחלק מהקוד?
+
+הייתי שמח גם לדעת מה רמת ההשקעה הסבירה (IRL, לא כחלק מתרגול) לטיפול בשגיאות של mypy. כחלק מהטיפול בשגיאות נאלצתי להוסיף לקוד שורות מיותרות (דוגמאת ```return None``` בסוף פונקציה) ולמצוא הרבה workarounds שהייתי מעדיף שלא להכניס בקוד, רק על מנת ש-mypy תאשר את ה-type hints שנתתי.
+![image|690x215, 100%](upload://xS86wrVgNLHkWOSSuBswFU0nBph.jpeg)</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 21 Aug 2020 09:56:40 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Mypy --ignore-missing-imports שח/מט</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>קודם כל אני מבין שמבחינת הגשה הפתרון עובר <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"><br>
+ועכשיו לעניינו:<br>
+מסיבה שממש לא ברורה לי ונאבקתי איתה שעות ללא פתרון, אימפורט אבסולוטי לא עובד לי ומקריס את התוכנה (ModuleNotFoundError).<br>
+כל הקבצים נמצאים תחת תיקייה אחת ובה קובץ <code>__init__</code> (ניסיתי גם למחוק אותו וללכת על גישת הnamespace של +python 3.3 אך ללא הועיל).</p>
+<p>לגבי עניין ה-annotations לי קרה המקרה הבא:<br>
+על מנת להקל את קריאות הפלט הוספתי ללוח מספרי שורות ואותיות בתחתית כל עמודה. לצורך כך הוספתי פונקציה שתפקידה להמיר position tuples שמתקבלים עם שילוב של מספר ואות לטאפל של מספרים בלבד. מכאן שערך ההחזרה של הפונקציה אמור להיות <code>Tuple[int, int]</code>.<br>
+מכיוון ו-mypy לא מריצה את הקוד, היא לא עלתה על כך שביצעתי המרה של סוגי ערכים וטענה שאני מחזיר <code>Tuple[Union[int, str], Union[int, str]]</code> (סוג הערך שהתקבל על ידי הפונקציה).<br>
+שיניתי את הפונקציה על מנת שהטאפל שיוחזר לעולם לא יכיל סטרינגים ולא יבלבל את mypy, וכעת mypy לא מוכנה לקבל את העובדה שלטאפל יש ערך קבוע וטוענת שיש צורך ב- <code>Tuple[int, ...]</code>. בשלב הזה כבר נשברתי (כמובן שאחרי עוד כמה נסיונות לחנך את mypy).</p>
+<p>יכול להיות שכמות ההשקעה כאן מוגזמת, אך כמו שאמרת, רציתי אנוטציה מסויימת שמסבירה פלאים את תפקיד הפונקציה, ולשם כך נאלצתי לשנות את אופן כתיבתה ולבסוף גם את האנוטציה.<br>
+יכול להיות שראוי כאן לפתוח באג, אין לי מספיק ניסיון עם הכלי בשביל להחליט איפה הוא תקול.</p>
+<p>לגמרי לא שמתי לב שזו תמונה של warhammer. זו בסך הכל דרכי להגיד תודה.<br>
+אז שוב:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/a/af38ea876c5df802193c131ab857ec5222daaec7.jpeg" alt="image" data-base62-sha1="p05uYm4VlZZmdwLgHpnif8depGn" width="450" height="300"></p>
+          <p><a href="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/3</link>
+        <pubDate>Fri, 21 Aug 2020 09:56:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7926-3</guid>
+        <source url="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926.rss">Mypy --ignore-missing-imports שח/מט</source>
+      </item>
+      <item>
+        <title>Mypy --ignore-missing-imports שח/מט</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בנוגע לענייני ה־import – כן יצא לי להשתמש לא מעט ב־<code>--ignore-missing-imports</code>. מה שאני עושה בד"כ זה import אבסולוטי שמתחיל בתיקייה הגבוהה ביותר שבה יש <code>__init__</code>.</p>
+<p>להכניס <code>return None</code> זה לא בהכרח רע, וזה אכן נחוץ במקרה של <code>mypy --strict</code>.<br>
+אם יש דברים שמשנמכים את האיכות של הקוד, יש 2 אופציות:</p>
+<ol>
+<li>אתה צריך להתנסות קצת יותר עם Type Annotations כדי לקבל תחושה לגבי קצת יותר פיצ’רים</li>
+<li>(פחות סביר) יש באגים/דברים בעייתיים ב־mypy שיש עליהם באג פתוח/אתה צריך לפתוח עליהם באג.</li>
+</ol>
+<p>יצא לי לעשות את 2 <a href="https://github.com/python/mypy/issues/3682">לפני כמה שנים</a> וטיפלו בזה בסופו של דבר.</p>
+<p>בסופו של דבר mypy אמור להיות גם דוקומנטציה מעולה, וגם לעזור לך לתחזק את הקוד ולהימנע מבאגים.<br>
+תתמחר כמה זה שווה לך, ולפי זה תחליט כמה להשקיע בזה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>(+לייק על התמונה מ־Warhammer 40k)</p>
+          <p><a href="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/2</link>
+        <pubDate>Fri, 21 Aug 2020 05:42:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7926-2</guid>
+        <source url="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926.rss">Mypy --ignore-missing-imports שח/מט</source>
+      </item>
+      <item>
+        <title>Mypy --ignore-missing-imports שח/מט</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>אחרי ריבים ארוכים עם אימפורטים ועם mypy הערות היחידות שנשארו לי הן מסוג Cannot find implementation or library stub for module named x.<br>
+הרצה של mypy עם הדגל <code>--ignore-missing-imports</code> נותנת את האור הירוק המיוחל.<br>
+כל חיפוש בגוגל מוביל ל-<a href="https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports">https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports</a> שלא מספק שום פיתרון מלבד העמסת הקוד בהערות מסוג <code># type: ignore</code> שעושה את אותה פעולה כמו הוספת הדגל בהרצה.<br>
+השאלה היא כמובן האם זה עובר מבחינת הגשת תרגילים, או שמא יש צורך בהוספת ההערות כחלק מהקוד?</p>
+<p>הייתי שמח גם לדעת מה רמת ההשקעה הסבירה (IRL, לא כחלק מתרגול) לטיפול בשגיאות של mypy. כחלק מהטיפול בשגיאות נאלצתי להוסיף לקוד שורות מיותרות (דוגמאת <code>return None</code> בסוף פונקציה) ולמצוא הרבה workarounds שהייתי מעדיף שלא להכניס בקוד, רק על מנת ש-mypy תאשר את ה-type hints שנתתי.<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/ed6631139f1d448d997f9fbe3776dcd3921bf33b" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b_2_690x215.jpeg" alt="image" data-base62-sha1="xS86wrVgNLHkWOSSuBswFU0nBph" width="690" height="215" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b_2_690x215.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b_2_1035x322.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b_2_1380x430.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ed6631139f1d448d997f9fbe3776dcd3921bf33b_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926/1</link>
+        <pubDate>Thu, 20 Aug 2020 22:29:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7926-1</guid>
+        <source url="https://forums.pythonic.guru/t/mypy-ignore-missing-imports/7926.rss">Mypy --ignore-missing-imports שח/מט</source>
+      </item>
+  </channel>
+</rss>

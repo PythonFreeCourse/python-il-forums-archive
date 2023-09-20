@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Super, kwargs ומה שביניהן</title>
+    <link>https://forums.pythonic.guru/t/super-kwargs/7533</link>
+    <description>ניקח כדוגמה את מחלקת Instrumental שירשה ממחלקת Song במחברת הראשונה: 
+``` python
+class Instrumental(Song):
+    def __init__(self, name, artists=None):
+        super().__init__(name=name, lyrics=&quot;&quot;, artists=artists)
+```
+במקרה הזה, השתמשנו ב-super כדי להשתמש באותה פעולת אתחול של Song, בשינוי קל שבו lyrics  מוגדר כריק.
+
+איך זה עובד כשיש לנו kwargs? נגיד בדוגמה עם החיות ממחברת 2 - נניח שמחלקת Animal משרתת חנות חיות, ויש לכל חיה גם מאפיין של מחיר:
+```python
+class Animal(ABC):
+    @abstractmethod
+    def __init__(self, name, gender, price):
+        self.name = name
+        self.gender = gender
+        self.price = price
+```
+אם אני רוצה שאחת החיות תהיה מיוחדת והמחיר שלה יקבע לפי המין שלה (בואו נתעלם מכל מה שרע מוסרית בדוגמה הזו כרגע), האם כך זה אמור להיראות?
+```python
+class Dog(Animal):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.price = self.get_price()
+```
+האם מה שקורה פה זה שא) נדרסת פונקציית האתחול של Animal ב) פונקציית האתחול של Dog משתמשת בפונקציית האתחול שאותה היא דרסה &quot;כלשונה&quot; באמצעות super, ג) בשורה לאחר מכן המשתנה של המחיר נדרס ע&quot;י קביעה שלו באמצעות הפונקציה ששייכת ל-Dog ד) כל הטוב הזה עובר למחלקת העל באמצעות ה-kwargs שב- def __init__? או שהעברת המשתנים לפונקציית העל בכלל מתבצעת ב-super?
+
+(מתנצלת על החפירה, התלהבות יתר מהטריק שנתן @aviadamar וגיליתי רק עכשיו)</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 14 Jul 2020 08:25:38 +0000</lastBuildDate>
+    <category>שבוע 8</category>
+    <atom:link href="https://forums.pythonic.guru/t/super-kwargs/7533.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בד"כ נהוג להעביר באופן מפורש רק את הפרמטרים שרוצים לשנות, ובשאר לתת ל־<code>**kwargs</code> לטפל</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/7</link>
+        <pubDate>Mon, 13 Jul 2020 22:52:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-7</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>למעשה בsuper נזין רק את הפרמטרים שאנחנו רוצים לעשות בהם שינויים?</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/6</link>
+        <pubDate>Mon, 13 Jul 2020 22:44:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-6</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="PureDream" data-post="3" data-topic="7533">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/puredream/40/824_2.png" class="avatar"> PureDream:</div>
+<blockquote>
+<p>מבחינת קוד, אין באמת בעיה בדריסה שבשורה של self.price נכון.?</p>
+</blockquote>
+</aside>
+<p>יאפ</p>
+<aside class="quote no-group" data-username="efratush" data-post="4" data-topic="7533" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/e/ecc23a/40.png" class="avatar"> efratush:</div>
+<blockquote>
+<p>יש לי שאלה לגבי ההבדלים בין הדוגמאות כאן,<br>
+למה במחלקת Instrumental בפעולת האתחול super, צוינו שמות הארגומנטים והפרמטרים<br>
+ואילו במחלקת Dog לא?</p>
+</blockquote>
+</aside>
+<p>כדי להדגים את העובדה שניתן לספק פרמטר עם ערך שאנחנו קובעים עליו בלי להקשות על הקריאה של החניך <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+אם הייתי צריך לנסח עכשיו, אחרי שאת מבינה את החומר, יש מצב שזה היה משהו בסגנון:</p>
+<pre><code class="lang-python"> class Instrumental(Song):
+    def __init__(self, artists=None, **kwargs):
+        super().__init__(lyrics="", artists=artists, **kwargs)
+</code></pre>
+<p>עדיין סיפקתי פה את ה־lyrics הריק שאני רוצה, ודאגתי ש־<code>artists</code> ישאר עם ערך ברירת מחדל <code>None</code></p>
+<aside class="quote no-group" data-username="efratush" data-post="4" data-topic="7533">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/e/ecc23a/40.png" class="avatar"> efratush:</div>
+<blockquote>
+<p>שאלה נוספת, האם אפשר להגדיר מחלקה אבסטרקטית גם כמחלקה יורשת(במקרה של mixin)?</p>
+</blockquote>
+</aside>
+<p>למעשה כל מחלקה בפייתון יורשת אוטומטית מהמחלקה <code>object</code>, ככה שבהכרח כל מחלקה אבסטרקטית שתגדירי תירש ממשהו.</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/5</link>
+        <pubDate>Mon, 13 Jul 2020 22:15:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-5</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לי שאלה לגבי ההבדלים בין הדוגמאות כאן,<br>
+למה במחלקת Instrumental בפעולת האתחול super, צוינו שמות הארגומנטים והפרמטרים<br>
+ואילו במחלקת Dog לא?<br>
+שאלה נוספת, האם אפשר להגדיר מחלקה אבסטרקטית גם כמחלקה יורשת(במקרה של mixin)?</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/4</link>
+        <pubDate>Mon, 13 Jul 2020 19:16:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-4</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>מבחינת קוד, אין באמת בעיה בדריסה שבשורה של self.price  נכון.?<br>
+זאת אומרת ככה מצופה מאיתנו לשנות את המשתנים הללו לא?</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/3</link>
+        <pubDate>Mon, 13 Jul 2020 15:13:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-3</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="car.chopin" data-post="1" data-topic="7533">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/car.chopin/40/4258_2.png" class="avatar"> car.chopin:</div>
+<blockquote>
+<p>האם מה שקורה פה זה שא) נדרסת פונקציית האתחול של Animal ב) פונקציית האתחול של Dog משתמשת בפונקציית האתחול שאותה היא דרסה “כלשונה” באמצעות super, ג) בשורה לאחר מכן המשתנה של המחיר נדרס ע"י קביעה שלו באמצעות הפונקציה ששייכת ל-Dog</p>
+</blockquote>
+</aside>
+<p>עד כאן כן</p>
+<aside class="quote no-group" data-username="car.chopin" data-post="1" data-topic="7533">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/car.chopin/40/4258_2.png" class="avatar"> car.chopin:</div>
+<blockquote>
+<p>ד) כל הטוב הזה עובר למחלקת העל באמצעות ה-kwargs שב- def <strong>init</strong> ?</p>
+</blockquote>
+</aside>
+<p>כאן לא: לא קורה פה שום קסם מיוחד, ו־<code>self.price = self.get_price()</code> מתבצעת רק <em>אחרי</em> הקריאה ל־<code>super().__init__(**kwargs)</code> (בסדר שציינת בסעיפים א–ג). ממליץ להתחדד על מה אומר <code>**kwargs</code></p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/2</link>
+        <pubDate>Mon, 13 Jul 2020 01:41:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-2</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+      <item>
+        <title>Super, kwargs ומה שביניהן</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>ניקח כדוגמה את מחלקת Instrumental שירשה ממחלקת Song במחברת הראשונה:</p>
+<pre><code class="lang-python">class Instrumental(Song):
+    def __init__(self, name, artists=None):
+        super().__init__(name=name, lyrics="", artists=artists)
+</code></pre>
+<p>במקרה הזה, השתמשנו ב-super כדי להשתמש באותה פעולת אתחול של Song, בשינוי קל שבו lyrics  מוגדר כריק.</p>
+<p>איך זה עובד כשיש לנו kwargs? נגיד בדוגמה עם החיות ממחברת 2 - נניח שמחלקת Animal משרתת חנות חיות, ויש לכל חיה גם מאפיין של מחיר:</p>
+<pre><code class="lang-python">class Animal(ABC):
+    @abstractmethod
+    def __init__(self, name, gender, price):
+        self.name = name
+        self.gender = gender
+        self.price = price
+</code></pre>
+<p>אם אני רוצה שאחת החיות תהיה מיוחדת והמחיר שלה יקבע לפי המין שלה (בואו נתעלם מכל מה שרע מוסרית בדוגמה הזו כרגע), האם כך זה אמור להיראות?</p>
+<pre><code class="lang-python">class Dog(Animal):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.price = self.get_price()
+</code></pre>
+<p>האם מה שקורה פה זה שא) נדרסת פונקציית האתחול של Animal ב) פונקציית האתחול של Dog משתמשת בפונקציית האתחול שאותה היא דרסה “כלשונה” באמצעות super, ג) בשורה לאחר מכן המשתנה של המחיר נדרס ע"י קביעה שלו באמצעות הפונקציה ששייכת ל-Dog ד) כל הטוב הזה עובר למחלקת העל באמצעות ה-kwargs שב- def <strong>init</strong>? או שהעברת המשתנים לפונקציית העל בכלל מתבצעת ב-super?</p>
+<p>(מתנצלת על החפירה, התלהבות יתר מהטריק שנתן <a class="mention" href="https://forums.pythonic.guru/u/aviadamar">@aviadamar</a> וגיליתי רק עכשיו)</p>
+          <p><a href="https://forums.pythonic.guru/t/super-kwargs/7533/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/super-kwargs/7533/1</link>
+        <pubDate>Mon, 13 Jul 2020 01:08:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7533-1</guid>
+        <source url="https://forums.pythonic.guru/t/super-kwargs/7533.rss">Super, kwargs ומה שביניהן</source>
+      </item>
+  </channel>
+</rss>

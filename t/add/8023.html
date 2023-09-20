@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/add/8023 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:30:27 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הבהרת התרגיל: פקודת add - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל. 
+הנחה 1: נקודת השורש של הגיבוי
+ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. אותה נרצה לגב&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8023.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8023.rss" rel="alternate nofollow" title="הזנת RSS של ‚הבהרת התרגיל: פקודת add’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8023.html" property="og:url"/>
+<meta content="8023.html" name="twitter:url"/>
+<meta content="הבהרת התרגיל: פקודת add" property="og:title"/>
+<meta content="הבהרת התרגיל: פקודת add" name="twitter:title"/>
+<meta content="ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל.  הנחה 1: נקודת השורש של הגיבוי ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. אותה נרצה לגבות.  נניח שעשינו wit init בתוך התיקייה C:\Projects\Yam\Etztrubal.  מעתה, Etztrubal היא “תיקיית השורש”, ה־repository או “התיקייה המקורית”. בתוכה תיווצר התיקייה .wit.  כל פעם בעתיד שנבקש לשחזר את הגיבוי (לחזור לתמונה מסוימת), אנחנו נחליף את כל התוכן של תיקיית Etztrubal בגיבוי שביקש..." property="og:description"/>
+<meta content="ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל.  הנחה 1: נקודת השורש של הגיבוי ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. אותה נרצה לגבות.  נניח שעשינו wit init בתוך התיקייה C:\Projects\Yam\Etztrubal.  מעתה, Etztrubal היא “תיקיית השורש”, ה־repository או “התיקייה המקורית”. בתוכה תיווצר התיקייה .wit.  כל פעם בעתיד שנבקש לשחזר את הגיבוי (לחזור לתמונה מסוימת), אנחנו נחליף את כל התוכן של תיקיית Etztrubal בגיבוי שביקש..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="wit-add" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="10 ❤"/>
+<meta content="2020-08-30T15:47:09+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8023.html">הבהרת התרגיל: פקודת add</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/wit-add.html" rel="tag">wit-add</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הבהרת התרגיל: פקודת add" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="wit-add" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8023.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-30T15:47:09Z" itemprop="datePublished">
+                     30 באוגוסט,‏ 2020,‏  3:47pm
+                  </time>
+<meta content="2020-08-30T16:02:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל.</p>
+<h3>הנחה 1: נקודת השורש של הגיבוי</h3>
+<p>ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. <em>אותה נרצה לגבות</em>.</p>
+<p>נניח שעשינו wit init בתוך התיקייה <code>C:\Projects\Yam\Etztrubal</code>.<br/>
+מעתה, Etztrubal היא “תיקיית השורש”, ה־repository או “התיקייה המקורית”. בתוכה תיווצר התיקייה <code>.wit</code>.</p>
+<p>כל פעם בעתיד שנבקש לשחזר את הגיבוי (לחזור לתמונה מסוימת), אנחנו נחליף את כל התוכן של תיקיית <code>Etztrubal</code> בגיבוי שביקשנו לבצע.</p>
+<h3>הנחה 2: המטרה היא שיהיה אפשר לשחזר את הקבצים בקלות</h3>
+<p>הרעיון של wit הוא שבתוך תיקיית <code>.wit/images</code> יישמרו העתקים של התיקייה המקורית.<br/>
+בעתיד, נרצה להיות מסוגלים לבקש מ־wit לשחזר את קבצים לתוך תיקיית Etztrubal (התיקייה המקורית) בצורה הכי פשוטה שאפשר.<br/>
+לכן, כל העתק צריך לשמר את היררכיית התיקיות שנמצאת בתוך Etztrubal.</p>
+<h3>הנחה 3: התיקייה staging_area היא תמונת ראי של התיקייה המקורית</h3>
+<p>התיקייה staging_area שנמצאת בתוך תיקיית <code>.wit</code> אמורה לשקף את המצב המדויק של התיקייה המקורית.</p>
+<p>זאת אומרת, אם:</p>
+<ol>
+<li>כתובתה של התיקייה המקורית היא <code>C:\Projects\Yam\Etztrubal</code>.</li>
+<li>החלטנו להוסיף לגיבוי באמצעות הפקודה add את <code>C:\Projects\Yam\Etztrubal\a\b\c</code> לגיבוי.</li>
+</ol>
+<p>אז תיקיית staging_area תכיל את התיקייה a (ללא קבצים בתוכה), תחתיה את התיקייה b (ללא קבצים בתוכה), ותחתיה את התיקייה c (עם כל הקבצים). כלומר: <code>C:\Projects\Yam\Etztrubal\.wit\staging_area\a\b\c</code>.</p>
+<p>זה קורה כיוון ש:</p>
+<ol>
+<li>התיקייה c היא התיקייה שביקשנו להוסיף לגיבוי (באמצעות add). אנחנו נשמור אותה ואת כל הקבצים שבתוכה.</li>
+<li>התיקיות a, b מתווספות כדי שנוכל “לזכור” איפה תיקייה c הייתה שמורה בהיררכיית התיקיות.</li>
+</ol>
+<h3>למה לשמור בצורה הזו?</h3>
+<ol>
+<li>כשנרצה לחזור לאחד הגיבויים, נוכל פשוט להעתיק את תוכן תיקיית הגיבוי בחזרה לתיקייה המקורית. היררכיית הקבצים תישמר, ולא נצטרך להתעסק עם איזו תיקייה הייתה איפה.</li>
+<li>זה עוזר לנו למנוע מצב שבו עשינו <code>add</code> לתיקייה <code>d</code> ולתיקייה <code>e</code> שנמצאים במקומות שונים בהיררכייה, ובשניהם יש קבצים עם שם דומה (נניח: <code>main.py</code>). אם לא נשמור תחת staging_area את הנתיב לתיקייה, עלולים להיווצר התנגשויות.</li>
+</ol>
+<h3>דוגמאות נוספות</h3>
+<p>ראו <a href="../1-add/8004/12.html">כאן</a>.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../status-checkout/7996/20.html" itemprop="url">שאלת הבנה בנוגע ל-status ו-checkout</a>
+<meta content="2" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../10-1-wit/7954.html" itemprop="url">שבוע 10 – יום 1: בונים את wit</a>
+<meta content="3" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pelled.idan</span>
+</span>
+<link href="8023.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T09:13:10Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏  9:13am
+                  </time>
+<meta content="2020-08-31T09:13:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם add אמור לדרוס קובץ אם השם שהוכנס זהה לקובץ קיים אחר ב- staging area?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="8023.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T09:51:04Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏  9:51am
+                  </time>
+<meta content="2020-08-31T09:51:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם הוא נמצא באותו היררכיה, כן.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/add/8023 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:30:30 GMT -->
+</html>

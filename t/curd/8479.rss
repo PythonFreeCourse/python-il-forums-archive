@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+    <link>https://forums.pythonic.guru/t/curd/8479</link>
+    <description>היי כולם,
+
+אני עוסק בתחום ה-BI ועובד הרבה עם SQL ביום יום, לכן חשבתי לתרום לקהילה ולהסביר על CURD.
+
+אז מה זה **CURD** ב-SQL?
+Create (Insert)
+Update
+Read (Select)
+Delete
+
+אלה בעצם חלק מפקודות ממשפחת ה-DML - פוקודות אשר משמשות אותנו לניהול טבלאות.
+ [להרחבה קראו פה](https://www.w3schools.in/mysql/ddl-dml-dcl/)
+
+נניח שהקמנו אתר בשם FaceBack שהוא חיקוי די מוצלח של Facebook, ויצרנו עבורו טבלה אחת בשם users.
+הטבלה מורכבת מ-3 עמודות / שדות המתארות באופן כללי מאד את המשתמשים -
+
+1. שדה username - מסוג VARCHAR (סוג varchar הוא בעצם כמו string/str מפייתון)
+2. שדה password - מסוג VARCHAR
+3. שדה age - מסוג INTEGER
+
+
+**פקודת Create - Insert**:
+הפקודה משמשת להוספת שורת ערכים בטבלה.
+לדוגמה, משתמש חדש נרשם אצלנו באתר FaceBack והזין את הנתונים הבאים:
+
+שם משתמש = Bob
+סיסמה = sS123456@3
+גיל = 28
+
+כעת אנו נהיה מעוניינים לשמור את הערכים הללו בטבלת users, כדי שנוכל לאמת את התחברותו בפעם הבאה שירצה להתחבר.
+
+איך נעשה זאת ב-SQL?
+נריץ את שורת הקוד הבאה:
+&gt; INSERT INTO users VALUES (&#39;Bob&#39;, &#39;sS123456@3&#39;, 28);
+
+שורת קוד זו תכניס את הערכים לטבלת user לפי סדר העמודות בטבלה. כלומר, הערך הראשון (Bob) יכנס לעמודת username, הערך השני (sS123456@3) יכנס לעמודת password והערך האחרון (28) יכנס לעמודת age.
+
+* חשוב לזכור ב-SQL ערך מסוג VARCHAR ילווה בצ&#39;וקו אחד ( &#39; ) מכל צד, לא ניתן עם צ&#39;וקיים ( &quot; ).
+
+ניתן לבצע זאת גם בדרך הבאה -
+
+&gt; INSERT INTO users (age, password, username) VALUES (28, &#39;sS123456@3&#39;, &#39;Bob&#39;);
+
+בשורת קוד הזו הערך הראשון יכנס לעמודת age, הערך השני יכנס לעמודת password והערך האחרון לעמודת username
+
+* מומלץ להשתמש בדרך השניה - היא הרבה יותר ברורה לקריאה ומונעת טעויות של הכנסת נתונים לטבלה.
+
+
+**פקודת Update**:
+פקודת אשר משנה נתונים בטבלה.
+בחזרה לסיפור שלנו על המשתמש Bob. עברו הימים, והאתר FaceBack נהיה האתר בעל הערך החיפוש הכי גבוה בגוגל, המשתמש Bob נזכר שיש לו משתמש באתר שלנו וניסה להתחבר.
+אבל Bob כבר הספיק לשכוח את הסיסמה שהזין במועד הרישום והוא מעוניין לאפסה.
+
+המשתמש Bob הזין -
+סיסמה חדשה = Ss12345@2
+
+איך נעדכן את הסיסמה החדשה בטבלת users?
+
+&gt; UPDATE users SET password = &#39;Ss12345@2&#39; WHERE username = &#39;Bob&#39;;
+
+שימו לב!
+אם לא נשתמש ב-WHERE בפוקדת UPDATE כלומר, נריץ את שורת הקוד הבאה:
+
+&gt; UPDATE users SET password = &#39;Ss12345@2&#39;;
+
+כל הסיסמאות של כל היוזרים ישתנו לסיסמה שהגדרנו בשורת הקוד הזו.
+יש פתרונות למקרים שכאלה כמו פקודת Rollback אבל זה נושא אחר ומשל עצמו.
+
+
+**פקודת Read - SELECT**:
+זו כבר פקודה שכולנו כבר מכירים היטב, השימוש העיקר שלה הוא הצגת נתונים מתוך טבלה או מספר טבלאות בשאילתא,
+בהמשך הקורס נלמד את פקודת JOIN שהיא מחברת בין טבלאות בשאילתא אחת.
+
+
+**פקודת Delete**:
+פקודה זו מוחקת שורה בטבלה.
+המשתמש הלבבי שלנו Bob החליט שהוא מעוניין למחוק את המשתמש שלו מהאתר שלנו FaceBack.
+הוא פנה לצוות התמיכה שלנו באתר, וביקש למחוק את כל המידע עליו.
+
+איך נבצע זאת ב-SQL?
+
+&gt; DELETE FROM users WHERE username = &#39;Bob&#39;;
+
+* גם בשורת קוד זו כמו בפקודת UPDATE, אם לא נשתמש ב-WHERE נמחק את כל המשתמשים מטבלת users.
+* פקודת DELETE מוחקת שורות, ולא ערכים! אם נרצה לשנות / למחוק ערך נעשה זאת באמצעות פקודת UPDATE.
+דוגמה למחיקת ערך בעזרת UPDATE:
+לצורך הדוגמה נמחק את הגיל של המשתמש שלנו Bob.
+
+&gt; UPDATE users SET age = NULL WHERE username = &#39;Bob&#39;;
+
+- ערך NULL דומה מאד לערך None בפייתון, כלומר ערך ריק.
+
+עד לפה ההסבר,
+מקווה שהיה מספיק ברור ומובן לכולם, אם יש שאלות אשמח לענות!
+
+***
+תודות ל - @eyalmerav שהעלאה את הפוסט ל-GitHub - [הלינק נמצא פה](https://github.com/safecode-dev/week-14)</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 04 Dec 2020 10:42:03 +0000</lastBuildDate>
+    <category>שבוע 14</category>
+    <atom:link href="https://forums.pythonic.guru/t/curd/8479.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה מצוין! <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/12</link>
+        <pubDate>Fri, 04 Dec 2020 10:42:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-12</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>FaceBck עלה לאוויר!</p>
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <a href="https://faceback-app.herokuapp.com/" target="_blank" rel="noopener nofollow ugc">faceback-app.herokuapp.com</a>
+  </header>
+  <article class="onebox-body">
+    <img src="" class="thumbnail" width="" height="">
+
+<h3><a href="https://faceback-app.herokuapp.com/" target="_blank" rel="noopener nofollow ugc">Home</a></h3>
+
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/11</link>
+        <pubDate>Fri, 04 Dec 2020 08:38:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-11</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>קח ישר את המחברת…<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji only-emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/10</link>
+        <pubDate>Mon, 30 Nov 2020 15:10:59 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-10</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה!! אני מקווה להתחיל בקרוב את השבוע ואעזר בפוסט שלך ללא ספק <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/9</link>
+        <pubDate>Mon, 30 Nov 2020 12:20:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-9</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה!<br>
+בעברי הייתי מתרגל אקסל במכללה, אז יש קצת ניסיון.</p>
+<p>שמח לשמוע שהפוסט היה ברור לכולם, ניסיתי עד כמה שאפשר לפשט ולהנגיש את החומר…<br>
+יאמר לזכותו של ים שיש לו הרבה סבלנות לכתוב לנו מחברות בצורה ממש מובנת, זה לא מובן מאליו בכלל.<br>
+בפוסט הזה יש בלחץ 50 שורות ולקח לי איזה 3 שעות לעבור עליו ולסדר ולחשוב איך להנגיש לכולם.<br>
+וגם זה שאתה יודע נושא מסויים זה לא אומר שאתה יודע ללמד את הנושא כמו שצריך.</p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/8</link>
+        <pubDate>Thu, 26 Nov 2020 13:08:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-8</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>תותח!<br>
+לא יודע אם אתה עוסק בהוראה אבל לגמרי יש לך את זה.<br>
+ההסבר גם ברור וגם כתוב בצורה שכיף לקרוא.</p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/7</link>
+        <pubDate>Thu, 26 Nov 2020 12:54:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-7</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[anna.shtirberg]]></dc:creator>
+        <description><![CDATA[
+            <p>איזה תותח!!! המון המון המון תודה!!! <img src="https://forums.pythonic.guru/images/emoji/twitter/heart_eyes.png?v=9" title=":heart_eyes:" class="emoji" alt=":heart_eyes:"></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/6</link>
+        <pubDate>Thu, 26 Nov 2020 09:40:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-6</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>מחברת יופיטר של פוסט זה:</p>
+<p><a href="https://github.com/safecode-dev/week-14.git" rel="noopener nofollow ugc">תנו כוכבים אל תהיו קמצנים!! <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></a></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/5</link>
+        <pubDate>Thu, 26 Nov 2020 09:37:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-5</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[nadav]]></dc:creator>
+        <description><![CDATA[
+            <p>מדהים קצר וקולע!<br>
+תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/4</link>
+        <pubDate>Thu, 26 Nov 2020 09:26:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-4</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>שמור לך מקום בגן עדן!!</p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/3</link>
+        <pubDate>Wed, 25 Nov 2020 19:15:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-3</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>היה ברור מאוד תודה!<img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/2</link>
+        <pubDate>Wed, 25 Nov 2020 17:35:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-2</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+      <item>
+        <title>הסבר על CURD - פקודות לניהול טבלאות נתונים</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי כולם,</p>
+<p>אני עוסק בתחום ה-BI ועובד הרבה עם SQL ביום יום, לכן חשבתי לתרום לקהילה ולהסביר על CURD.</p>
+<p>אז מה זה <strong>CURD</strong> ב-SQL?<br>
+Create (Insert)<br>
+Update<br>
+Read (Select)<br>
+Delete</p>
+<p>אלה בעצם חלק מפקודות ממשפחת ה-DML - פוקודות אשר משמשות אותנו לניהול טבלאות.<br>
+<a href="https://www.w3schools.in/mysql/ddl-dml-dcl/" rel="noopener nofollow ugc">להרחבה קראו פה</a></p>
+<p>נניח שהקמנו אתר בשם FaceBack שהוא חיקוי די מוצלח של Facebook, ויצרנו עבורו טבלה אחת בשם users.<br>
+הטבלה מורכבת מ-3 עמודות / שדות המתארות באופן כללי מאד את המשתמשים -</p>
+<ol>
+<li>שדה username - מסוג VARCHAR (סוג varchar הוא בעצם כמו string/str מפייתון)</li>
+<li>שדה password - מסוג VARCHAR</li>
+<li>שדה age - מסוג INTEGER</li>
+</ol>
+<p><strong>פקודת Create - Insert</strong>:<br>
+הפקודה משמשת להוספת שורת ערכים בטבלה.<br>
+לדוגמה, משתמש חדש נרשם אצלנו באתר FaceBack והזין את הנתונים הבאים:</p>
+<p>שם משתמש = Bob<br>
+סיסמה = sS123456@3<br>
+גיל = 28</p>
+<p>כעת אנו נהיה מעוניינים לשמור את הערכים הללו בטבלת users, כדי שנוכל לאמת את התחברותו בפעם הבאה שירצה להתחבר.</p>
+<p>איך נעשה זאת ב-SQL?<br>
+נריץ את שורת הקוד הבאה:</p>
+<blockquote>
+<p>INSERT INTO users VALUES (‘Bob’, ‘sS123456@3’, 28);</p>
+</blockquote>
+<p>שורת קוד זו תכניס את הערכים לטבלת user לפי סדר העמודות בטבלה. כלומר, הערך הראשון (Bob) יכנס לעמודת username, הערך השני (sS123456@3) יכנס לעמודת password והערך האחרון (28) יכנס לעמודת age.</p>
+<ul>
+<li>חשוב לזכור ב-SQL ערך מסוג VARCHAR ילווה בצ’וקו אחד ( ’ ) מכל צד, לא ניתן עם צ’וקיים ( " ).</li>
+</ul>
+<p>ניתן לבצע זאת גם בדרך הבאה -</p>
+<blockquote>
+<p>INSERT INTO users (age, password, username) VALUES (28, ‘sS123456@3’, ‘Bob’);</p>
+</blockquote>
+<p>בשורת קוד הזו הערך הראשון יכנס לעמודת age, הערך השני יכנס לעמודת password והערך האחרון לעמודת username</p>
+<ul>
+<li>מומלץ להשתמש בדרך השניה - היא הרבה יותר ברורה לקריאה ומונעת טעויות של הכנסת נתונים לטבלה.</li>
+</ul>
+<p><strong>פקודת Update</strong>:<br>
+פקודת אשר משנה נתונים בטבלה.<br>
+בחזרה לסיפור שלנו על המשתמש Bob. עברו הימים, והאתר FaceBack נהיה האתר בעל הערך החיפוש הכי גבוה בגוגל, המשתמש Bob נזכר שיש לו משתמש באתר שלנו וניסה להתחבר.<br>
+אבל Bob כבר הספיק לשכוח את הסיסמה שהזין במועד הרישום והוא מעוניין לאפסה.</p>
+<p>המשתמש Bob הזין -<br>
+סיסמה חדשה = Ss12345@2</p>
+<p>איך נעדכן את הסיסמה החדשה בטבלת users?</p>
+<blockquote>
+<p>UPDATE users SET password = ‘Ss12345@2’ WHERE username = ‘Bob’;</p>
+</blockquote>
+<p>שימו לב!<br>
+אם לא נשתמש ב-WHERE בפוקדת UPDATE כלומר, נריץ את שורת הקוד הבאה:</p>
+<blockquote>
+<p>UPDATE users SET password = ‘Ss12345@2’;</p>
+</blockquote>
+<p>כל הסיסמאות של כל היוזרים ישתנו לסיסמה שהגדרנו בשורת הקוד הזו.<br>
+יש פתרונות למקרים שכאלה כמו פקודת Rollback אבל זה נושא אחר ומשל עצמו.</p>
+<p><strong>פקודת Read - SELECT</strong>:<br>
+זו כבר פקודה שכולנו כבר מכירים היטב, השימוש העיקר שלה הוא הצגת נתונים מתוך טבלה או מספר טבלאות בשאילתא,<br>
+בהמשך הקורס נלמד את פקודת JOIN שהיא מחברת בין טבלאות בשאילתא אחת.</p>
+<p><strong>פקודת Delete</strong>:<br>
+פקודה זו מוחקת שורה בטבלה.<br>
+המשתמש הלבבי שלנו Bob החליט שהוא מעוניין למחוק את המשתמש שלו מהאתר שלנו FaceBack.<br>
+הוא פנה לצוות התמיכה שלנו באתר, וביקש למחוק את כל המידע עליו.</p>
+<p>איך נבצע זאת ב-SQL?</p>
+<blockquote>
+<p>DELETE FROM users WHERE username = ‘Bob’;</p>
+</blockquote>
+<ul>
+<li>גם בשורת קוד זו כמו בפקודת UPDATE, אם לא נשתמש ב-WHERE נמחק את כל המשתמשים מטבלת users.</li>
+<li>פקודת DELETE מוחקת שורות, ולא ערכים! אם נרצה לשנות / למחוק ערך נעשה זאת באמצעות פקודת UPDATE.<br>
+דוגמה למחיקת ערך בעזרת UPDATE:<br>
+לצורך הדוגמה נמחק את הגיל של המשתמש שלנו Bob.</li>
+</ul>
+<blockquote>
+<p>UPDATE users SET age = NULL WHERE username = ‘Bob’;</p>
+</blockquote>
+<ul>
+<li>ערך NULL דומה מאד לערך None בפייתון, כלומר ערך ריק.</li>
+</ul>
+<p>עד לפה ההסבר,<br>
+מקווה שהיה מספיק ברור ומובן לכולם, אם יש שאלות אשמח לענות!</p>
+<hr>
+<p>תודות ל - <a class="mention" href="https://forums.pythonic.guru/u/eyalmerav">@eyalmerav</a> שהעלאה את הפוסט ל-GitHub - <a href="https://github.com/safecode-dev/week-14" rel="noopener nofollow ugc">הלינק נמצא פה</a></p>
+          <p><a href="https://forums.pythonic.guru/t/curd/8479/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/curd/8479/1</link>
+        <pubDate>Wed, 25 Nov 2020 15:49:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8479-1</guid>
+        <source url="https://forums.pythonic.guru/t/curd/8479.rss">הסבר על CURD - פקודות לניהול טבלאות נתונים</source>
+      </item>
+  </channel>
+</rss>

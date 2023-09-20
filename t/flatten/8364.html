@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/flatten/8364 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:20:44 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>אתגר: הפונקציה flatten - אתגר - פייתון בעברית ובחינם</title>
+<meta content="נסו לכתוב פונקציה קצרה בשם flatten שמקבלת רשימה בעומק בלתי מוגבל, ומחזירה רשימה שטוחה. 
+לדוגמה: 
+
+עבור: [[[1, 2], [3, 4]], [5, 6], 7] יוחזר: [1, 2, 3, 4, 5, 6, 7]. 
+עבור: [[]] יוחזר: []. 
+
+בונוס למי שמצליח לכתוב 2 פונקצי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8364.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8364.rss" rel="alternate nofollow" title="הזנת RSS של ‚אתגר: הפונקציה flatten’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8364.html" property="og:url"/>
+<meta content="8364.html" name="twitter:url"/>
+<meta content="אתגר: הפונקציה flatten" property="og:title"/>
+<meta content="אתגר: הפונקציה flatten" name="twitter:title"/>
+<meta content="נסו לכתוב פונקציה קצרה בשם flatten שמקבלת רשימה בעומק בלתי מוגבל, ומחזירה רשימה שטוחה.  לדוגמה:   עבור: [[[1, 2], [3, 4]], [5, 6], 7] יוחזר: [1, 2, 3, 4, 5, 6, 7].  עבור: [[]] יוחזר: [].   בונוס למי שמצליח לכתוב 2 פונקציות: אחת רקורסיבית והשנייה לא רקורסיבית." property="og:description"/>
+<meta content="נסו לכתוב פונקציה קצרה בשם flatten שמקבלת רשימה בעומק בלתי מוגבל, ומחזירה רשימה שטוחה.  לדוגמה:   עבור: [[[1, 2], [3, 4]], [5, 6], 7] יוחזר: [1, 2, 3, 4, 5, 6, 7].  עבור: [[]] יוחזר: [].   בונוס למי שמצליח לכתוב 2 פונקציות: אחת רקורסיבית והשנייה לא רקורסיבית." name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="15 ❤"/>
+<meta content="2020-10-20T19:37:52+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8364.html">אתגר: הפונקציה flatten</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="אתגר: הפונקציה flatten" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:37:52Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:37pm
+                  </time>
+<meta content="2020-10-20T19:37:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>נסו לכתוב פונקציה קצרה בשם <code>flatten</code> שמקבלת רשימה בעומק בלתי מוגבל, ומחזירה רשימה שטוחה.</p>
+<p>לדוגמה:</p>
+<blockquote>
+<p>עבור: <code>[[[1, 2], [3, 4]], [5, 6], 7]</code> יוחזר: <code>[1, 2, 3, 4, 5, 6, 7]</code>.<br/>
+עבור: <code>[[]]</code> יוחזר: <code>[]</code>.</p>
+</blockquote>
+<p>בונוס למי שמצליח לכתוב 2 פונקציות: אחת רקורסיבית והשנייה לא רקורסיבית.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T21:15:58Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  9:15pm
+                  </time>
+<meta content="2020-10-20T21:15:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+גרסא מכוערת 2</summary>
+<pre><code>def flatten(lst_of_lsts):
+lst = []
+for elem in lst_of_lsts:
+	if isinstance(elem, list):
+		lst.extend(flatten(elem))
+	else:
+		lst.append(elem)
+return lst
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T22:33:40Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏ 10:33pm
+                  </time>
+<meta content="2021-11-23T01:39:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8364" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>[<span class="chcklst-box fa fa-square-o fa-fw"></span>]</p>
+</blockquote>
+</aside>
+<p>אפשר יותר פשוט בלי פונקציה בכלל</p>
+<details>
+<summary>
+גרסה ממש מכוערת</summary>
+<blockquote>
+<pre><code class>a = str(my_list).replace('[', '').replace(']', '').replace(',', ' ').split()
+</code></pre>
+</blockquote>
+<p>הערה: החלק האחרון נועד למנוע איברים ריקים ברשימה</p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T02:36:52Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  2:36am
+                  </time>
+<meta content="2020-10-21T06:57:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="3" data-topic="8364" data-username="ofirp">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/ofirp/40/1688_2.jpg" width="20"/> ofirp:</div>
+<blockquote>
+<p>גרסה ממש מכוערת</p>
+</blockquote>
+</aside>
+<p>משעשע למדי, אבל:</p>
+<ol>
+<li>אתה הופך את האיברים ברשימה למחרוזות, מה שאומר שאלה כבר לא האיברים המקוריים.</li>
+<li>זה פועל פחות טוב אם יש לך איברים שאינם int/float ברשימה, למשל tuple או מחרוזת.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Almog</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T13:14:13Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  1:14pm
+                  </time>
+<meta content="2020-10-21T13:14:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שתי גרסאות ממש ממש מכוערות (רק ממשיכה את הרצף מעליי)</p>
+<details>
+<summary>
+גרסה רקורסיבית</summary>
+<pre><code class>def flatten(nested_list):
+    while check_if_nested(nested_list):
+        next_level = []
+        for item in nested_list:
+            if isinstance(item, list):
+                next_level.extend(item)
+            else:
+                next_level.append(item)
+        return flatten(next_level)
+    return nested_list
+
+
+def check_if_nested(items):
+    for item in items:
+        if isinstance(item, list):
+            return True
+
+
+# Some tests
+# example_list = [[[[1, 2], [3, 4]]], [[5, 6]], 7, [8]]
+# empty_nested_list = [[[]]]
+# non_nested_list = [1, 2, 3]
+# print(flatten(example_list))
+# print(flatten(empty_nested_list))
+# print(flatten(non_nested_list))
+</code></pre>
+</details>
+<details>
+<summary>
+גרסה איטרטיבית</summary>
+<pre><code class>def flatten(nested_list):
+    current_level = nested_list.copy()
+    next_level = []
+    while check_if_nested(current_level):
+        for item in current_level:
+            if isinstance(item, list):
+                for i in item:
+                    next_level.append(i)
+            else:
+                next_level.append(item)
+        current_level = next_level
+        next_level = []
+    return current_level
+
+
+def check_if_nested(items):
+    for item in items:
+        if isinstance(item, list):
+            return True
+
+
+# Some tests
+# example_list = [[[[1, 2], [3, 4]]], [[5, 6]], 7, [8]]
+# empty_nested_list = [[[]]]
+# non_nested_list = [1, 2, 3]
+# print(flatten(example_list))
+# print(flatten(empty_nested_list))
+# print(flatten(non_nested_list))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T23:02:52Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏ 11:02pm
+                  </time>
+<meta content="2020-10-21T23:02:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה. הצחיק אותי ממש! <img alt=":joy:" class="emoji" src="../../images/emoji/twitter/joyc164.png?v=9" title=":joy:"/><br/>
+תודה. <img alt=":heart:" class="emoji" src="../../images/emoji/twitter/heartc164.png?v=9" title=":heart:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="8364.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T13:14:26Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:14pm
+                  </time>
+<meta content="2020-10-25T13:14:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פתרון</summary>
+<pre><code>def flatten_recursive(l):
+    temp = []
+    for i in l:
+        if isinstance(i, list):
+            temp.extend(flatten(i))
+        else:
+            temp.append(i)
+    return temp
+
+
+def flatten(l):
+    temp = l.copy()
+    while len(tuple(filter(lambda k: isinstance(k, list), temp))) != 0:
+        new = []
+        for i in temp:
+            if isinstance(i, list):
+                for j in i:
+                    new.append(j)
+            else:
+                new.append(i)
+        temp = new.copy()
+    return temp
+
+# Tests
+L1 = [[[1, 2], [3, 4]], [5, 6], 7]
+L2 = [[]]
+
+print()
+print(flatten(L1))
+print(flatten(L2))
+print()
+print(flatten_recursive(L1))
+print(flatten_recursive(L2))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/flatten/8364 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:20:46 GMT -->
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/9171 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:36:58 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית - שבוע 5 - פייתון בעברית ובחינם</title>
+<meta content="שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5. 
+במחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple. 
+א.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר ש&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9171.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9171.rss" rel="alternate nofollow" title="הזנת RSS של ‚בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png" property="og:image"/>
+<meta content="9171.html" property="og:url"/>
+<meta content="9171.html" name="twitter:url"/>
+<meta content="בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית" property="og:title"/>
+<meta content="בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית" name="twitter:title"/>
+<meta content="שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5.  במחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple.  א.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר שהוא iterable הוא הופך להיות tuple כשכל איבריו בצד אחד וישנו ערך ריק בצד שני. האם ישנה דרך אלגנטית לפתור בעיה זו?  ב. שאלה כללית יותר באשר לשימוש בטכניקה זו,  כאשר אני כותב את הקוד אני יודע כמה משתנים אני הולך להעביר לפונקציה לכן למה יש עניין להשתמש בשיטה זו.  תודה מראש." property="og:description"/>
+<meta content="שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5.  במחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple.  א.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר שהוא iterable הוא הופך להיות tuple כשכל איבריו בצד אחד וישנו ערך ריק בצד שני. האם ישנה דרך אלגנטית לפתור בעיה זו?  ב. שאלה כללית יותר באשר לשימוש בטכניקה זו,  כאשר אני כותב את הקוד אני יודע כמה משתנים אני הולך להעביר לפונקציה לכן למה יש עניין להשתמש בשיטה זו.  תודה מראש." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 5" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="unpacking" property="og:article:tag"/>
+<meta content="פונקציות" property="og:article:tag"/>
+<meta content="ארגומנטים" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2021-08-12T17:41:39+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית","mainEntity":{"@type":"Question","name":"בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית","text":"שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5.\n\nבמחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple.\n\nא.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר שהוא iterable הוא הופך להיות tuple כשכל איבריו בצד אחד וישנו ערך ריק בצד שני. האם&hellip;","upvoteCount":1,"answerCount":0,"dateCreated":"2021-08-12T17:41:39.621Z","author":{"@type":"Person","name":"אסף חייא"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9171.html">בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-5/14.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 5</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/unpacking.html" rel="tag">unpacking</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a4%d7%95%d7%a0%d7%a7%d7%a6%d7%99%d7%95%d7%aa.html" rel="tag">פונקציות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%a8%d7%92%d7%95%d7%9e%d7%a0%d7%98%d7%99%d7%9d.html" rel="tag">ארגומנטים</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית" itemprop="headline"/>
+<meta content="שבוע 5" itemprop="articleSection"/>
+<meta content="unpacking, פונקציות, ארגומנטים" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-12T17:41:39Z" itemprop="datePublished">
+                     12 באוגוסט,‏ 2021,‏  5:41pm
+                  </time>
+<meta content="2021-09-11T14:44:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5.</p>
+<p>במחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple.<br/>
+א.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר שהוא iterable הוא הופך להיות tuple כשכל איבריו בצד אחד וישנו ערך ריק בצד שני. האם ישנה דרך אלגנטית לפתור בעיה זו?<br/>
+ב. שאלה כללית יותר באשר לשימוש בטכניקה זו,  כאשר אני כותב את הקוד אני יודע כמה משתנים אני הולך להעביר לפונקציה לכן למה יש עניין להשתמש בשיטה זו.<br/>
+תודה מראש.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/364cbf43de4ae9ce0d552fe852a5bfd2f9903025" href="../../uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png" title="image"><img alt="image" data-base62-sha1="7Kmdecap59VO1FKPMW0C8kTb9Pf" data-small-upload="../../uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_595x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_595x500.png, https://forums.pythonic.guru/uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png 2x" width="595"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">855×718 52 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">leddest</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-12T18:36:50Z" itemprop="datePublished">
+                     12 באוגוסט,‏ 2021,‏  6:36pm
+                  </time>
+<meta content="2021-08-12T18:36:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כאשר פונקציה מקבלת args* פייתון מתייחס לargs כtuple של n פרמטרים שהפונקציה תקבל בפועל.<br/>
+בעצם ציינת את זה בעצמך.<br/>
+במקרה הנ"ל העברת list - רק פרמטר אחד. אז הtuple (args) כולל רק איבר אחד.<br/>
+כאשר הtuple כולל איבר אחד - הפסיק עדיין יופיע שזה חלק מהסינטקסיס - אין איבר ריק בצד שני, יש רק איבר אחד שהוא list.</p>
+<p>אז אם אתה רוצה שהפונקציה תקבל iterable תן לה לקבל parameters ואין צורך להשתמש בargs* <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-14T03:21:33Z" itemprop="datePublished">
+                     14 באוגוסט,‏ 2021,‏  3:21am
+                  </time>
+<meta content="2021-08-14T03:22:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="9171" data-username="112344asafh">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/1/47e85d/40.png" width="20"/> 112344asafh:</div>
+<blockquote>
+<p>ב. שאלה כללית יותר באשר לשימוש בטכניקה זו, כאשר אני כותב את הקוד אני יודע כמה משתנים אני הולך להעביר לפונקציה לכן למה יש עניין להשתמש בשיטה זו.</p>
+</blockquote>
+</aside>
+<p>קשה לענות על השאלה הזו בקצרה.</p>
+<p>כמתכנתים, לפעמים נרצה לבנות קוד שיהיה גמיש במיוחד.<br/>
+כשאני אומר “קוד גמיש” אני מתכוון לקוד שמצליח לתאר מקרה כללי, ולפשט אותו לכמה שורות בודדות.</p>
+<p>לרוב משתמשים בטריקים כאלו בתכנות קצת יותר מתקדם, אבל אני מוכן לנסות לתת פה דוגמה.</p>
+<p>בפייתון קיימת הפונקציה <code>range</code>, שיודעת לטפל ב־3 מקרים:</p>
+<ol>
+<li>אם הועבר רק ארגומנט אחד (<code>end</code>), הפונקציה מחזירה את כל המספרים מ־0 ועד <code>end</code>, לא כולל <code>end</code>.</li>
+<li>אם הועברו שני ארגומנטים (<code>start</code>, <code>end</code>) הפונקציה מחזירה את כל המספרים מ־<code>start</code> ועד <code>end</code>, לא כולל את <code>end</code>.</li>
+<li>אם הועברו שלושה ארגומנטים (<code>start</code>, <code>end</code>, <code>jumps</code>) הפונקציה מחזירה את כל המספרים מ־<code>start</code> ועד <code>end</code>, לא כולל <code>end</code>, בקפיצות של <code>jumps</code>. לדוגמה: עבור <code>start = 1, end = 7, jumps = 2</code> יחזרו המספרים 1, 3 ו־5.</li>
+</ol>
+<p>אשמח אם לפני שאתה ממשיך לקרוא תעצור ותנסה לממש את זה בעצמך <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<p>הנה המימוש שלי, במגבלות הידע שצברנו עד שבוע 5:</p>
+<pre><code class="lang-python">def range_jumps(start, end, jumps):
+    numbers = []
+    current = start
+    while start &lt;= current &lt; end:
+        numbers.append(current)
+        current += jumps
+    return numbers
+</code></pre>
+<p>המימוש די פשוט: מקבלים התחלה, סוף וקפיצות. מתחילים ב־<code>start</code>, קופצים ב־<code>jumps</code> עד שמגיעים ל־<code>end</code>. בדרך צוברים את המספרים שעברנו עליהם.<br/>
+נוכל לכתוב גם 2 פונקציות בשמות <code>range_until</code> ו־<code>range_between</code>. נשתמש בפונקציה <code>range_jumps</code> כדי למנוע שכפול קוד:</p>
+<pre><code class="lang-python">def range_until(end):
+    return range_jumps(0, end, 1)
+
+
+def range_between(start, end):
+    return range_jumps(start, end, 1)
+</code></pre>
+<p>אבל רגע!<br/>
+אם אני חושב על מתכנת שעובד איתי בצוות ומשתמש בפונקציה שלי, אני לא רוצה להכריח אותו ללמוד בעל־פה 3 שמות של פונקציות שונות.<br/>
+אני רוצה לממש פונקציה אחת בלבד, <code>range</code>, שיודעת להחזיר תשובה בתלות בכמות הפרמטרים שהיא קיבלה.</p>
+<p>אני שוב, אשמח מאוד וחושב שזה יתרום להבנה שלך אם תעצור ותנסה לכתוב כזו בעצמך.<br/>
+בשלב הזה כבר השקעתי די הרבה בתשובה, והייתי שמח לעצור לשנייה ולראות קוד שלך – גם כדי לוודא שעקבת עד כאן וגם כי אולי תהיה לך הברקה בנוגע לפיתרון <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<p>בהצלחה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-15T06:53:09Z" itemprop="datePublished">
+                     15 באוגוסט,‏ 2021,‏  6:53am
+                  </time>
+<meta content="2021-08-15T06:53:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה על ההסבר המפורט, הדבר בהחלט חידד לי את היתרון בשימוש בפונקציות אלו, ובזכות הפוסט יירד לי האסימון שעיקר הפונקציות בשימוש זה הוא כדי לעזור למתכנת לכתוב קוד בצורה יעילה יותר עם פונקציות כלליות ולא רק לשימושים ספציפים.<br/>
+אני חייב להגיד שטיפה הותקלתי כי מצד אחד צריך לאפשר מצב בו אם מכניסים משתנה אחד הוא ייכנס לend כלומר משתנה end צריך להיות מוגדר ראשון בפונקציה וstart מייד אחריו כדיפולטיבי. מצד שני לאפשר מצב שכאשר מעוניינים<br/>
+להסיף גם start ההשמה תגיע לפני end, ויוצא שבמקרה כזה start צריך להיות מוגדר קודם.</p>
+<p>אז הפיתרון שלי היה להגדיר את start  לפני end, במידה והמשתמש מכניס שני ערכים הכל יעבוד חלק כמו בפונקציית  range  המקורית אבל במידה והמשתמש מכניס רק משתנה אחד אני בעצם מחליף בין start לend.</p>
+<p>האם ישנו פיתרון אלגנטי יותר?</p>
+<pre><code class>def range(start = 0, end = None ,jump = 1):
+    if end == None:
+        start, end = 0, start
+    current = start
+    range_list = []
+    while current &lt; end:
+        range_list.append(current)
+        current += jump
+    return range_list
+
+print(list(range(5)))
+print(list(range(5,10)))
+print(list(range(0, 10, 2)))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T08:54:36Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏  8:54am
+                  </time>
+<meta content="2021-08-16T08:54:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יפה, זה פתרון טוב – אבל כמו שהצלחת לראות, זה מעט מסבך את הפתרון ויוצר קוד מעט פחות קריא <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<p>האם, לדעתך, היית יכול להשתמש בחתימת הפונקציה: <code>def range(*params):</code> כדי לפשט את הפונקציה שכתבת?</p>
+<p>אם מצאת את השאלה קשה מדי, הנה כמה רמזים:</p>
+<ol>
+<li>
+<details>
+<summary>
+לחץ על החץ כדי לראות את רמז 1</summary>
+<p>השתמש ב־3 הפונקציות <code>range_until</code>, <code>range_between</code> ו־<code>range_jumps</code>.</p>
+</details>
+</li>
+<li>
+<details>
+<summary>
+לחץ על החץ כדי לראות את רמז 2</summary>
+<p>מה ההבדל העיקרי בקריאה לפונקציות האלו?</p>
+</details>
+</li>
+<li>
+<details>
+<summary>
+לחץ על החץ כדי לראות את רמז 3</summary>
+<p>צור פונקציה בשם range ש״בוחרת״ לאיזו פונקציה לקרוא.</p>
+</details>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T10:16:09Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏ 10:16am
+                  </time>
+<meta content="2021-08-16T10:22:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תאמת לפני שקראתי את הרמזים חשבתי על כיוון אחר…<br/>
+אבל בכל אופן תודה על כל האשכול בהחלט עזר לי לחדד את השיטות השונות ופשר לסכם שאכן נראה שבכל שיטה יש את היתרונות והחסרונות שלה. <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<pre><code class>def range(*params):
+
+   start, jump = 0, 1
+   if len(params) == 1:
+       end = params[0]   # &lt;- - - - - - - -  parmas = (x,)
+   elif len(params)== 2:
+       start,end = params
+   else:
+       start, end, jump = params
+
+   current = start
+   range_list = []
+   while current &lt; end:
+       range_list.append(current)
+       current += jump
+   return range_list
+
+print(list(range(5)))
+print(list(range(5,10)))
+print(list(range(0, 10, 2)))
+</code></pre>
+<p>השיטה שהצעת:</p>
+<pre><code class>
+def range_jumps(start, end, jumps):
+    numbers = []
+    current = start
+    while start &lt;= current &lt; end:
+        numbers.append(current)
+        current += jumps
+    return numbers
+
+def range_until(end):         # &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+    return range_jumps(0, end, 1)
+
+def range_between(start, end):
+    return range_jumps(start, end, 1)
+
+def range(*params):
+    if len(params) == 1:
+        return range_until(*params)     # &lt;- - - -  params = (x,)
+    elif len(params) == 2:
+        return range_between(*params)
+    elif len(params) == 3:
+        return range_jumps(*params)
+    else:
+        return None
+
+print(range(5))
+print(range(5,10))
+print(range(0, 10, 2))
+
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">112344asafh</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T10:27:19Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏ 10:27am
+                  </time>
+<meta content="2021-08-16T10:27:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>פתאום שמתי לב שיש משהו שלא ברור לי עם השימוש ב *args כשיש לי רק איבר אחד שמועבר לפונקציה. <img alt=":sweat_smile:" class="emoji" src="../../images/emoji/twitter/sweat_smileb6f5.png?v=10" title=":sweat_smile:"/><br/>
+ערכתי את קטע הקוד בפוסט מעליי והוספתי חצים כדי שיהיה ניתן לראות במה מדובר.</p>
+<p>מדוע בקטע הקוד הראשון כאשר מועבר לי מידע רק לגבי end, על מנת לא לקבל שגיאה הייתי צריך להגדיר<br/>
+end = params[0], כי הרי params הינו tuple<br/>
+אולם מדוע בקטע הקוד השני כאשר העברנו את אותו tuple עם איבר אחד ריק לפונקציה range_until(end)… פייתון יידע לפרק את הtuple ולקחת רק את החלק ב ישנו מידע.</p>
+<p>סליחה מראש על כל השאלות, כידוע ‘תורה היא וללמוד אני צריך’ <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9171.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-08-16T19:46:44Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2021,‏  7:46pm
+                  </time>
+<meta content="2021-08-16T19:46:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="6" data-topic="9171" data-username="112344asafh">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/1/47e85d/40.png" width="20"/> 112344asafh:</div>
+<blockquote>
+<p><code>range_until</code></p>
+</blockquote>
+</aside>
+<p>כיוון שאתה מפרק אותו בקריאה עצמה: אתה משתמש ב־<code>range_until(*end)</code>.<br/>
+הכוכבית לפני המילה end משמעה ״פרק את ה־iterable ששמו end לכלל איבריו, והכנס את האיבר הראשון שלו לפרמטר הראשון, את השני לפרמטר השני וכן הלאה״.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/9171 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:37:02 GMT -->
+</html>

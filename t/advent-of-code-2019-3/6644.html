@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-3/6644 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:34 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Advent of Code 2019 🤯 (יום 3) - אתגר - פייתון בעברית ובחינם</title>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם Advent of Code יום 2 שהיה משמעותית קשוח מקודמו. 
+אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן :slight_smile: 
+ואם לא הספקתם לפתור את הימים הקודמים – לא ח&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6644.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6644.rss" rel="alternate nofollow" title="הזנת RSS של ‚Advent of Code 2019 🤯 (יום 3)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6644.html" property="og:url"/>
+<meta content="6644.html" name="twitter:url"/>
+<meta content="Advent of Code 2019 🤯 (יום 3)" property="og:title"/>
+<meta content="Advent of Code 2019 🤯 (יום 3)" name="twitter:title"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם Advent of Code יום 2 שהיה משמעותית קשוח מקודמו.  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום השלישי של Advent of Code!" property="og:description"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם Advent of Code יום 2 שהיה משמעותית קשוח מקודמו.  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום השלישי של Advent of Code!" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="advent-of-code" property="og:article:tag"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="7 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="22 ❤"/>
+<meta content="2020-05-26T15:40:36+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6644.html">Advent of Code 2019 🤯 (יום 3)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/advent-of-code.html" rel="tag">advent-of-code</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Advent of Code 2019 🤯 (יום 3)" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="advent-of-code, אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T15:40:36Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  3:40pm
+                  </time>
+<meta content="2020-05-26T15:40:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שרשור <a href="../advent-of-code-2019-1/6478.html">Advent of Code יום 1</a> נחל הצלחה גדולה, וגם <a href="../advent-of-code-2019-2/6486.html">Advent of Code יום 2</a> שהיה משמעותית קשוח מקודמו.</p>
+<p>אני מניח שהאתגר הזה ישאר פה <strong>לפחות</strong> ליומיים שלושה, אז קחו את הזמן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.</p>
+<p>אז קדימה, פרסמו פה את הפתרונות שלכם <a href="https://adventofcode.com/2019/day/3">ליום השלישי</a> של Advent of Code!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-6/7068.html" itemprop="url">Advent of Code 2019 🤯 (יום 6)</a>
+<meta content="4" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-4/6895.html" itemprop="url">Advent of Code 2019 🤯 (יום 4)</a>
+<meta content="5" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-5/6987.html" itemprop="url">Advent of Code 2019 🤯 (יום 5)</a>
+<meta content="6" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T20:10:34Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  8:10pm
+                  </time>
+<meta content="2020-05-27T17:20:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק א'</summary>
+<pre><code class>def find_route(weird_route):
+    # Returns all the route that the steps created in a set
+    starting_point = (0, 0)
+    return {
+        point
+        for point in list(create_route(starting_point, weird_route))
+    }
+
+
+def create_route(point, weird_route):
+    # Gerenerates the route
+    defenitions = {'U': (0, 1), 'D': (0, -1), 'R': (1, 0), 'L': (-1, 0)}
+    for step in weird_route:
+        direction, how_many_steps = step[0], step[1:]
+        for _ in range(int(how_many_steps)):
+            point = tuple(map(sum, zip(point, defenitions[direction])))
+            yield point
+
+
+def find_distance(points):
+    # Returns the minimum distance from the closest point
+    return (
+        abs(point[0]) + abs(point[1])
+        for point in points
+    )
+
+
+def get_wires_route():
+    # Finds what's all the intersection points
+    with open("resources/adventofcode/weird directions.txt", 'r') as file:
+        line1, line2 = file.read().splitlines()
+    first_route = find_route(line1.split(','))
+    second_route = find_route(line2.split(','))
+    intersection_points = first_route.intersection(second_route)
+    return intersection_points
+
+
+def get_minimum_distance(intersection_points):
+    # Returns the minimum distance for the intersection points
+    return min(find_distance(intersection_points))
+</code></pre>
+<p>התוצאה: 651</p>
+</details>
+<details>
+<summary>
+חלק ב'</summary>
+<pre><code class>def get_shortest_intersect_point(intersection_points):
+    # Finds what's the distance from the closest point
+    with open("resources/adventofcode/weird directions.txt", 'r') as file:
+        line1, line2 = file.read().splitlines()
+    line1_route = list(create_route((0, 0), line1.split(',')))
+    line2_route = list(create_route((0, 0), line2.split(',')))
+    distance_route1 = [
+        line1_route.index(point) + 1
+        for point in intersection_points
+    ]
+    distance_route2 = [
+        line2_route.index(point) + 1
+        for point in intersection_points
+    ]
+    total_distances = list(map(sum, zip(distance_route1, distance_route2)))
+    return min(total_distances)
+
+
+intersection_points = get_wires_route()
+print(get_minimum_distance(intersection_points))
+print(get_shortest_intersect_point(intersection_points))
+</code></pre>
+<p>התוצאה: 7534</p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zahideri</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T20:59:53Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  8:59pm
+                  </time>
+<meta content="2020-05-26T20:59:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חלק 1:<br/>
+לא הכי אלגנטי בעולם, אבל עובד…</p>
+<p>אגב, אני רק במחברת 1 השבוע! תן יותר מרווח בין אתגר לאתגר <img alt=":stuck_out_tongue:" class="emoji" src="../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+<pre><code class>def steps_counter(steps):
+    x = y = 0
+    positions = set()
+    for step in steps:
+        if step[0] == 'R':
+            for move in range(1, return_number(step) + 1):
+                x += 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'L':
+            for move in range(1, return_number(step) + 1):
+                x -= 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'U':
+            for move in range(1, return_number(step) + 1):
+                y += 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'D':
+            for move in range(1, return_number(step) + 1):
+                y -= 1
+                positions.add(str(x) + '.' + str(y))
+    return positions   
+
+
+def return_number(cell):
+    number = ''
+    for n in cell[1:]:
+        number += n
+    return int(number)
+
+
+def who_is_the_closest(sets):
+    winner = 999999
+    for numbers in sets:
+        xy = numbers.split('.')
+        x = abs(int(xy[0]))
+        y = abs(int(xy[1]))
+        if x + y &lt; winner:
+            winner = x + y
+    return winner
+
+
+with open('day3.txt', 'r') as file:
+    text = file.read()
+    text = text.split('\n')
+    text[0] = text[0].split(',')
+    text[1] = text[1].split(',')
+
+
+steps_found1 = steps_counter(text[0])
+steps_found2 = steps_counter(text[1])
+who_is_the_closest(steps_found1.intersection(steps_found2))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T14:24:00Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏  2:24pm
+                  </time>
+<meta content="2020-05-27T14:24:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+תשובה - חלק 1</summary>
+<pre><code class>with open('resources/input_day3.txt', 'r') as fh:
+    lines = fh.read().splitlines()
+
+
+def create_line_route(line1_directions):
+    line_coordinates = [(0, 0)]
+    directions_definition = {'R': (1, 0), 'D': (0, -1), 'L': (-1, 0), 'U': (0, 1)}
+    for point in line1_directions:
+        direction = point[0]
+        steps = int(point[1:])
+        current_x, current_y = line_coordinates[-1]
+        x, y = directions_definition.get(direction)
+        for step in range(steps):
+            current_x += x
+            current_y += y
+            new_point = (current_x, current_y)
+            line_coordinates.append(new_point)
+    line_coordinates.remove((0, 0))
+    return set(line_coordinates)
+
+
+def get_list_of_intersections():
+    line1_directions = lines[0].split(',')
+    line1_route_set = create_line_route(line1_directions)
+    line2_directions = lines[1].split(',')
+    line2_route_set = create_line_route(line2_directions)
+    return line2_route_set.intersection(line1_route_set)
+
+
+def find_minimum_distance(list_of_intersections):
+    list_of_distances = []
+    for point in list_of_intersections:
+        list_of_distances.append(abs(point[0]) + abs(point[1]))
+    return min(list_of_distances)
+
+
+def find_manhattan_distance():
+    list_of_intersections = get_list_of_intersections()
+    min_distance = find_minimum_distance(list_of_intersections)
+    return min_distance
+
+
+print(find_manhattan_distance())  # part I - 529
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T22:12:25Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏ 10:12pm
+                  </time>
+<meta content="2020-05-27T22:12:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הקוד הכי יפה בעולם … אבל עובד <img alt=":shushing_face:" class="emoji" src="../../images/emoji/twitter/shushing_facec164.png?v=9" title=":shushing_face:"/></p>
+<details>
+<summary>
+תשובה חלק 2</summary>
+<pre><code class>with open('resources/input_day3.txt', 'r') as fh:
+    lines = fh.read().splitlines()
+
+
+def create_line_route(directions):
+    line_coordinates = [(0, 0)]
+    directions_definition = {'R': (1, 0), 'D': (0, -1), 'L': (-1, 0), 'U': (0, 1)}
+    for point in directions:
+        direction = point[0]
+        steps = int(point[1:])
+        current_x, current_y = line_coordinates[-1]
+        x, y = directions_definition.get(direction)
+        for _ in range(steps):
+            current_x += x
+            current_y += y
+            new_point = (current_x, current_y)
+            line_coordinates.append(new_point)
+    line_coordinates.remove((0, 0))
+    return set(line_coordinates)
+
+
+def get_list_of_intersections():
+    line1_directions = lines[0].split(',')
+    line1_route_set = create_line_route(line1_directions)
+    line2_directions = lines[1].split(',')
+    line2_route_set = create_line_route(line2_directions)
+    return line2_route_set.intersection(line1_route_set)
+
+
+def get_steps_for_intersection(intersection_point):
+    line_coordinates = [(0, 0)]
+    step_line1 = 0
+    total_steps = 0
+    directions_definition = {'R': (1, 0), 'D': (0, -1), 'L': (-1, 0), 'U': (0, 1)}
+    for point in lines[0].split(','):
+        direction = point[0]
+        steps = int(point[1:])
+        current_x, current_y = line_coordinates[-1]
+        x, y = directions_definition.get(direction)
+        step_line1 += steps
+        for step in range(steps):
+            current_x += x
+            current_y += y
+            new_point = (current_x, current_y)
+            if new_point == intersection_point:
+                total_steps += step_line1 - steps + step + 1
+            line_coordinates.append(new_point)
+    line_coordinates = [(0, 0)]
+    step_line2 = 0
+    for point in lines[1].split(','):
+        direction = point[0]
+        steps = int(point[1:])
+        current_x, current_y = line_coordinates[-1]
+        x, y = directions_definition.get(direction)
+        step_line2 += steps
+        for step in range(steps):
+            current_x += x
+            current_y += y
+            new_point = (current_x, current_y)
+            if new_point == intersection_point:
+                total_steps += step_line2 - steps + step + 1
+            line_coordinates.append(new_point)
+    return total_steps
+
+
+def find_lowest_combined_steps():
+    list_of_intersections = get_list_of_intersections()
+    list_of_steps = []
+    for intersection in list_of_intersections:
+        list_of_steps.append(get_steps_for_intersection(intersection))
+    return min(list_of_steps)
+
+
+print(find_lowest_combined_steps())  # part 2 - 20386
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/ecf5640779358985d817b6147fff6a78a9504241.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-28T23:05:14Z" itemprop="datePublished">
+                     28 במאי,‏ 2020,‏ 11:05pm
+                  </time>
+<meta content="2020-05-29T08:34:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הקוד הכי יפה שלי, אבל נתחיל בזה…</p>
+<details>
+<summary>
+חלק 1</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ecf5640779358985d817b6147fff6a78a9504241" href="../../uploads/default/original/2X/e/ecf5640779358985d817b6147fff6a78a9504241.png" title="תמונה"><img alt="תמונה" data-base62-sha1="xOeqFUV1ARUaWQmxBAzhQQJrFHX" data-small-upload="../../uploads/default/optimized/2X/e/ecf5640779358985d817b6147fff6a78a9504241_2_10x10.png" height="349" src="../../uploads/default/original/2X/e/ecf5640779358985d817b6147fff6a78a9504241.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">1000×507 23.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+<details>
+<summary>
+חלק 1 בגרסא קצת יותר יפה</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/0f5a81f56441b585fbb45e3ee51172ffa6c596f4" href="../../uploads/default/original/2X/0/0f5a81f56441b585fbb45e3ee51172ffa6c596f4.png" title="תמונה"><img alt="תמונה" data-base62-sha1="2bP4zHxbnnJSskFFZ5EXVV8yIlu" data-small-upload="../../uploads/default/optimized/2X/0/0f5a81f56441b585fbb45e3ee51172ffa6c596f4_2_10x10.png" height="352" src="../../uploads/default/original/2X/0/0f5a81f56441b585fbb45e3ee51172ffa6c596f4.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">929×475 21.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+<details>
+<summary>
+חלק 2</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/f6c1168c5af0b4f0ed544fa3960b8b52e3888b94" href="../../uploads/default/original/2X/f/f6c1168c5af0b4f0ed544fa3960b8b52e3888b94.png" title="תמונה"><img alt="תמונה" data-base62-sha1="zcT97bScFd8Y57LZ6OXbfE2Sm2g" data-small-upload="../../uploads/default/optimized/2X/f/f6c1168c5af0b4f0ed544fa3960b8b52e3888b94_2_10x10.png" height="375" src="../../uploads/default/original/2X/f/f6c1168c5af0b4f0ed544fa3960b8b52e3888b94.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">1049×571 19 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T13:35:37Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏  1:35pm
+                  </time>
+<meta content="2020-05-29T13:35:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>וואו זה התיש אותי כל כך שאני לא בטוח שאני רוצה לדעת מה החלק השני של זה:</p>
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>FILE_LOCATION = 'resources/input.txt'
+
+
+def get_info():
+    with open(FILE_LOCATION, 'r') as file:
+        all_info =  file.read().strip().split('\n')
+        all_steps = [steps.split(',') for steps in all_info]
+    return all_steps
+
+
+def create_path(wire_path):
+    possition = (0, 0)
+    path = set()
+    instructions = {'R': (1, 0), 'L': (-1, 0), 'U': (0, 1), 'D':(0, -1)}
+    
+    for movment in wire_path:
+        direction = instructions[movment[:1]]
+        steps = int(movment[1:])
+        new_pose = (
+            possition[0] + direction[0] * steps,
+            possition[1] + direction[1] * steps
+        )
+        delta = (new_pose[0] - possition[0], new_pose[1] - possition[1])
+        for i in range(abs(*filter(None, delta))):
+            path.add((i * direction[0] + possition[0], i * direction[1] + possition[1]))
+        possition = new_pose
+    return path
+
+
+def add(couple):
+    return abs(couple[0]) + abs(couple[1])
+
+
+def the_sortest_sidtance():
+    all_path = []
+    wires = get_info()
+    for wire_path in wires:
+        path = create_path(wire_path)
+        all_path.append(path)
+    
+    intersections = all_path[0] &amp; all_path[1]
+    distance = sorted((map(add, intersections)))[1]
+    return distance
+
+
+the_sortest_sidtance()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Almog</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T23:14:38Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏ 11:14pm
+                  </time>
+<meta content="2020-05-29T23:14:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>def main():
+    with open('save-santa-day3.txt', 'r') as f:
+         paths = f.read()
+    path1 = paths.split("\n")[0].split(",")
+    path2 = paths.split("\n")[1].split(",")
+    
+    previous_positions_path1 = walking_with_the_flow(path1)
+    previous_positions_path2 = walking_with_the_flow(path2)
+    
+    return calculate_distance_of_nearest_intersection(previous_positions_path1, previous_positions_path2)
+
+
+def walking_with_the_flow(instructions):
+    position = (0,0)
+    previous_positions = set()
+    directions = {"R": (1, 0), "L": (-1, 0), "U": (0, 1), "D": (0, -1)}
+    for move in instructions:
+        for step in range(int(move[1:])):
+            position = position[0] + directions[move[0]][0], position[1] + directions[move[0]][1]   # directions[move][1]
+            previous_positions.add(position)
+    return previous_positions
+
+
+def calculate_distance_of_nearest_intersection(previous_positions_path1, previous_positions_path2):
+    intersections = previous_positions_path1 &amp; previous_positions_path2
+    distances = set()
+    for item in intersections:
+        distance = abs(item[0]) + abs(item[1])
+        distances.add(distance)
+    return min(distances)
+
+
+main()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T15:55:25Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏  3:55pm
+                  </time>
+<meta content="2020-05-30T15:55:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפתרון שלי:</p>
+<p><img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/></p>
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>def get_wires_directions(file1):
+    wires = []
+    counter = 0
+    with open(file1, "r") as wires_directions:
+        wires_dir_content = wires_directions.readlines()
+    wires.append(wires_dir_content[0].replace("\n", "").split(","))
+    wires.append(wires_dir_content[1].split(","))
+    return wires
+
+
+def split_command(command):
+    direction = command[0]
+    paces = int(command[1:])
+    return direction, paces
+
+
+def up_down_left_right_handler(direction, paces, x, y):
+    if direction == "U":
+        return (x, y + paces)
+    if direction == "D":
+        return (x, y - paces)
+    if direction == "R":
+        return (x + paces, y)
+    if direction == "L":
+        return (x - paces, y)
+
+
+def between_two_positions(pos1, pos2):
+    paces_between = []
+    if pos2[1] == pos1[1]:
+        if pos2[0] &gt; pos1[0]:
+            for x in range(pos2[0] - pos1[0]):
+                paces_between.append((pos1[0] + x + 1, pos1[1]))
+        else:
+            for x in range(abs(pos2[0] - pos1[0])):
+                paces_between.append((pos1[0] - x - 1, pos1[1]))
+    else:
+        if pos2[1] &gt; pos1[1]:
+            for y in range(pos2[1] - pos1[1]):
+                paces_between.append((pos1[0], pos1[1] + y + 1))
+        else:
+            for y in range(abs(pos2[1] - pos1[1])):
+                paces_between.append((pos1[0], pos1[1] - y - 1))
+    return paces_between
+
+
+def draw_the_ways(file1):
+    wires = get_wires_directions(file1)
+    wire1 = [(0, 0)]
+    wire2 = [(0, 0)]
+    for trace in wires[0]:
+        next_dir, next_paces = split_command(trace)
+        next_pos = up_down_left_right_handler(next_dir, next_paces, wire1[-1][0], wire1[-1][1])
+        wire1.extend(between_two_positions(wire1[-1], next_pos))
+    for trace in wires[1]:
+        next_dir, next_paces = split_command(trace)
+        next_pos = up_down_left_right_handler(next_dir, next_paces, wire2[-1][0], wire2[-1][1])
+        wire2.extend(between_two_positions(wire2[-1], next_pos))
+    return wire1, wire2
+
+
+def find_all_intersection(wire1, wire2):
+    wire1 = set(wire1)
+    wire2 = set(wire2)
+    return wire1.intersection(wire2)
+
+
+wire1, wire2 = draw_the_ways("resources//day3.txt")
+all_intersections = find_all_intersection(wire1, wire2)
+all_intersections.remove((0, 0))
+manhattan_distances = ([abs(inersection[0]) + abs(inersection[1]) for inersection in all_intersections])
+print(min(manhattan_distances))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T16:32:48Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏  4:32pm
+                  </time>
+<meta content="2020-05-30T16:32:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+הפתרון שלי</summary>
+<pre><code class="lang-python">DIRECTIONS = dict(zip('UDLR', (1j, -1j, 1, -1)))
+
+
+def manhattan_distance(number):
+    return abs(number.real) + abs(number.imag)
+
+
+def get_input():
+    with open('input.txt', 'r') as challenge_input:
+        yield from (line.strip().split(',') for line in challenge_input)
+
+
+def get_steps(instructions):
+    for step_letter, *times_to_walk in instructions:
+        direction = DIRECTIONS[step_letter] 
+        times_to_walk = int(''.join(times_to_walk))
+        yield direction * times_to_walk
+
+
+def get_travel(instructions):
+    src = 0j
+    total_steps_taken = 0
+    points = {}
+    for step in get_steps(instructions):
+        dst = src + step
+        direction = (dst - src) / abs(dst - src)
+        while src != dst:
+            src += direction
+            total_steps_taken += 1
+            # Remember only the distance to the first visit
+            points[src] = points.get(src, total_steps_taken)
+    return points
+
+
+# Part 1
+visited1, visited2 = map(get_travel, get_input())
+intersections = set(visited1) &amp; set(visited2)
+closest = min(intersections, key=manhattan_distance)
+print(int(manhattan_distance(closest)))
+
+# Part 2
+distances_sum = (sum([visited1[k], visited2[k]]) for k in intersections)
+print(min(distances_sum))
+</code></pre>
+</details>
+<p>ניצלתי קצת את היכולת של פייתון להשתמש במספרים מרוכבים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T21:20:01Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏  9:20pm
+                  </time>
+<meta content="2020-05-30T21:20:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ופתרון לחלק שני:<br/>
+<img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/> <img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/></p>
+<details>
+<summary>
+חלק 2</summary>
+<pre><code class>def get_wires_directions(file1):
+    wires = []
+    counter = 0
+    with open(file1, "r") as wires_directions:
+        wires_dir_content = wires_directions.readlines()
+    wires.append(wires_dir_content[0].replace("\n", "").split(","))
+    wires.append(wires_dir_content[1].split(","))
+    return wires
+
+
+def split_command(command):
+    direction = command[0]
+    paces = int(command[1:])
+    return direction, paces
+
+
+def up_down_left_right_handler(direction, paces, x, y):
+    if direction == "U":
+        return (x, y + paces)
+    if direction == "D":
+        return (x, y - paces)
+    if direction == "R":
+        return (x + paces, y)
+    if direction == "L":
+        return (x - paces, y)
+
+
+def between_two_positions(pos1, pos2, total_paces):
+    paces_between = []
+    if pos2[1] == pos1[1]:
+        if pos2[0] &gt; pos1[0]:
+            for x in range(pos2[0] - pos1[0]):
+                paces_between.append((pos1[0] + x + 1, pos1[1], total_paces + x + 1))
+        else:
+            for x in range(abs(pos2[0] - pos1[0])):
+                paces_between.append((pos1[0] - x - 1, pos1[1], total_paces + x + 1))
+    else:
+        if pos2[1] &gt; pos1[1]:
+            for y in range(pos2[1] - pos1[1]):
+                paces_between.append((pos1[0], pos1[1] + y + 1, total_paces + y + 1))
+        else:
+            for y in range(abs(pos2[1] - pos1[1])):
+                paces_between.append((pos1[0], pos1[1] - y - 1, total_paces + y + 1))
+    return paces_between
+  
+
+def draw_the_ways(file1):
+    wires = get_wires_directions(file1)
+    wire1 = [(0, 0, 0)]
+    wire2 = [(0, 0, 0)]
+    for trace in wires[0]:
+        next_dir, next_paces = split_command(trace)
+        next_pos = up_down_left_right_handler(next_dir, next_paces, wire1[-1][0], wire1[-1][1])
+        wire1.extend(between_two_positions(wire1[-1], next_pos, wire1[-1][-1]))
+    for trace in wires[1]:
+        next_dir, next_paces = split_command(trace)
+        next_pos = up_down_left_right_handler(next_dir, next_paces, wire2[-1][0], wire2[-1][1])
+        wire2.extend(between_two_positions(wire2[-1], next_pos, wire2[-1][-1]))
+    return wire1, wire2
+
+
+def fewest_combined_steps(wire1, wire2):
+    wire1_without_paces = [(steps[0], steps[1]) for steps in wire1]
+    wire2_without_paces = [(steps[0], steps[1]) for steps in wire2]
+    wire1_without_paces = set(wire1_without_paces)
+    wire2_without_paces = set(wire2_without_paces)
+    intersections = wire1_without_paces.intersection(wire2_without_paces)
+    wire1 = {(cord[0], cord[1]): cord[2] for cord in wire1}
+    wire2 = {(cord[0], cord[1]): cord[2] for cord in wire2}
+    fewest_combined_intersection = 1000000000
+    for intersection in intersections:
+        if (fewest_combined_intersection &gt; wire1[intersection] + wire2[intersection]) and (wire1[intersection] + wire2[intersection] != 0):
+            fewest_combined_intersection = wire1[intersection] + wire2[intersection]
+    return fewest_combined_intersection
+
+wire1, wire2 = draw_the_ways("resources//day3.txt")
+print(fewest_combined_steps(wire1, wire2))
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-01T02:57:35Z" itemprop="datePublished">
+                     1 ביוני,‏ 2020,‏  2:57am
+                  </time>
+<meta content="2020-06-01T02:57:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש לכם עד מחר לפתור, לפני שנפרסם את יום 4 <img alt=":partying_face:" class="emoji" src="../../images/emoji/twitter/partying_facec164.png?v=9" title=":partying_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-01T09:37:56Z" itemprop="datePublished">
+                     1 ביוני,‏ 2020,‏  9:37am
+                  </time>
+<meta content="2020-06-01T09:37:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>באיחור קטן <img alt=":stuck_out_tongue:" class="emoji" src="../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+<details>
+<summary>
+Advent of Code, Day 3</summary>
+<pre><code class="lang-python"># ADVENT OF CODE, DAY 3
+
+def get_input(file_path):
+    '''
+    Returns a list of wire pathes.
+    Args:
+        file_path(str) - Input file path.
+    '''
+    with open(file_path, 'r') as file:
+        wires = [wire.split(",") for wire in file.read().splitlines()]
+    return wires
+
+
+def get_locations(wire):
+    '''
+    Generates the locations of the wire on the grid.
+    Args:
+        wire(list) - List of instructions.
+    '''
+    current_loc = [0, 0]
+    for command in wire:
+        direction = DIRECTIONS[command[:1]]
+        distance = int(command[1:])
+        for step in range(distance):
+            current_loc[0] += direction[0]
+            current_loc[1] += direction[1]
+            yield (current_loc[0], current_loc[1])
+
+
+def get_distance(inter_points):
+    '''
+    Generates the distances of the intersection points.
+    Args:
+        inter_points(set) - Set of intersection points (X, Y).
+    '''
+    for point in inter_points:
+        yield abs(point[0]) + abs(point[1])
+
+
+def calc_steps_to_point(point, locs):
+    '''
+    Returns the amount of steps required to reach a point in the grid.
+    If the point is unreachable using this wires, return None.
+    Args:
+        point(tuple) - (X, Y).
+        locs(list) - List of locations of the wire on the grid, each location is (X, Y).
+    '''
+    steps = 0
+    for loc in locs:
+        steps += 1
+        if loc == point:
+            return steps
+    return
+
+
+DIRECTIONS = {'U': (0, 1), 'D': (0, -1), 'R': (1, 0), 'L': (-1, 0)}
+
+# Part 1
+wires = get_input('input.txt')
+wire1_locs = [loc for loc in get_locations(wires[0])]
+wire2_locs = [loc for loc in get_locations(wires[1])]
+inter_points = set(wire1_locs) &amp; set(wire2_locs)
+closest_distance = min(get_distance(inter_points))
+print(closest_distance)
+
+# Part 2
+inter_steps = [
+    sum([calc_steps_to_point(point, wire1_locs), calc_steps_to_point(point, wire2_locs)])
+    for point in inter_points
+]
+print(min(inter_steps))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-01T16:20:44Z" itemprop="datePublished">
+                     1 ביוני,‏ 2020,‏  4:20pm
+                  </time>
+<meta content="2020-06-01T16:20:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+שני החלקים</summary>
+<pre><code class>def seperate_cord_instructions(cord_instructions):
+    cord1, cord2 = cord_instructions.split()
+    return cord1.split(','), cord2.split(',')
+
+
+def draw_cord_path(cord):
+    CENTRAL_PORT = (0, 0)
+    path = [CENTRAL_PORT]
+    for progression in cord:
+        direction, steps = progression[0], int(progression[1:])
+        for i in range(1, steps + 1):
+            prev_step = path[-1]
+            if direction == 'R':
+                advance = (prev_step[0] + 1, prev_step[1])
+            elif direction == 'L':
+                advance = (prev_step[0] - 1, prev_step[1])
+            elif direction == 'U':
+                advance = (prev_step[0], prev_step[1] + 1)
+            elif direction == 'D':
+                advance = (prev_step[0], prev_step[1] - 1)
+            path.append(advance)
+
+    return path
+
+
+def find_cord_intersections(path1, path2):
+    intersections = []
+    for position in path1[1:]:
+        if position in path2:
+            intersections.append(position)
+
+    return intersections
+
+
+def calc_manhattan_distance(intersections):
+    distances = []
+    for intersection in intersections:
+        abs_intersection = (abs(intersection[0]), abs(intersection[1]))
+        distance = sum(abs_intersection)
+        distances.append(distance)
+
+    shortest_distance = sorted(distances)[0]
+    return shortest_distance
+    
+
+with open('Day 3.txt', 'r') as file_handler:
+    cords = file_handler.read()
+
+cord1, cord2 = seperate_cord_instructions(cords)
+path1 = draw_cord_path(cord1)
+path2 = draw_cord_path(cord2)
+intersections = find_cord_intersections(path1, path2)
+manhattan_distance = calc_manhattan_distance(intersections)
+print(manhattan_distance)
+
+# Part 2
+
+def count_steps_to_intersection(path1, path2, intersection):
+    total_steps = 0
+    total_steps += path1.index(intersection)
+    total_steps += path2.index(intersection)
+
+    return total_steps
+
+
+def find_shortest_route(path1, path2, intersections):
+    routes_length = []
+    for intersection in intersections:
+        route = count_steps_to_intersection(path1, path2, intersection)
+        routes_length.append(route)
+
+    shortest_route = sorted(routes_length)[0]
+    return shortest_route
+
+
+shortest_route = find_shortest_route(path1, path2, intersections)
+print(shortest_route)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-04T22:11:22Z" itemprop="datePublished">
+                     4 ביוני,‏ 2020,‏ 10:11pm
+                  </time>
+<meta content="2020-06-04T22:11:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כנראה אחד הדברים הפחות יעילים שכתבתי, אבל כבר לילה והתרגיל הזה התיש אותי <img alt=":sleepy:" class="emoji" src="../../images/emoji/twitter/sleepyc164.png?v=9" title=":sleepy:"/></p>
+<pre><code class>import math
+
+
+def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        lines =  puzzle_input.readlines()
+        return [line.split(',') for line in lines]
+
+
+def move(current_height, current_width, direction, num, moves):
+    for i in range(num):
+        if direction == 'D':
+            current_height += 1
+        elif direction == 'U':
+            current_height -= 1
+        elif direction == 'R':
+            current_width += 1
+        else:
+            current_width -= 1
+
+        moves.append((current_height, current_width))
+    return current_height, current_width, moves
+
+
+def get_intersections(path1, path2):
+    i = j = x = y = 0
+    moves_first = []
+    moves_second = []
+    intersections_first = []
+    intersections_second = []
+    
+    max_length = max(len(path1), len(path2))
+    for k in range(max_length):
+        if k &lt; len(path1):
+            i, j, moves_first = move(i, j, path1[k][0], int(path1[k][1:]), moves_first)
+        if k &lt; len(path2):
+            x, y, moves_second = move(x, y, path2[k][0], int(path2[k][1:]), moves_second)
+    
+    for i, position in enumerate(moves_first):
+        if position in moves_second:
+            intersections_first.append((position, i + 1))
+            
+    for j, pos in enumerate(moves_second):
+        if pos in moves_first:
+            intersections_second.append((pos, j + 1))
+            
+    return intersections_first, intersections_second
+
+
+def calc_manhattan_distance(p, q):
+    return abs(p[0] - q[0][0]) + abs(p[1] - q[0][1])
+
+
+def get_min_steps(intersections_first, intersections_second):
+    min_steps = math.inf
+    for intersection in intersections_first:
+        for intersection2 in intersections_second:
+            if intersection[0] == intersection2[0]:
+                if intersection[1] + intersection2[1] &lt; min_steps:
+                    min_steps = intersection[1] + intersection2[1]
+                    best = intersection[0]
+    return min_steps
+
+
+data = get_input('resources/input.txt')
+intersections_first, intersections_second = get_intersections(data[0], data[1])
+
+# First Part
+print(min([calc_manhattan_distance((0,0), intersection) for intersection in intersections_first]))
+
+# Second Part
+print(get_min_steps(intersections_first, intersections_second))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-06T07:56:11Z" itemprop="datePublished">
+                     6 ביוני,‏ 2020,‏  7:56am
+                  </time>
+<meta content="2020-06-06T07:56:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שני החלקים :</p>
+<pre><code class>
+
+
+def make_steps(direction, steps, current_point, points):
+    for i in range(1, int(steps) + 1):
+        if direction == "R":
+            points.append((current_point[0] + i, current_point[1]))
+        elif direction == "U":
+            points.append((current_point[0], current_point[1] + i))
+        elif direction == "L":
+            points.append((current_point[0] - i, current_point[1]))
+        else:
+            points.append((current_point[0], current_point[1] - i))
+    return points
+
+
+def points_on_route(li):
+    points = [(0, 0)]
+    for x in li:
+        points = make_steps(x[0], x[1:], points[-1], points)
+    return points
+
+
+def read_lines_from_file(path):
+    with open(path, "r") as f:
+        f = f.read().split("\n")
+        line1, line2 = f[0].split(","), f[1].split(",")
+        return line1, line2
+
+
+def common_points_two_lines(line1,line2):
+    common_points = []
+    line1 = set(points_on_route(line1))
+    line2 = set(points_on_route(line2))
+    common_points = line1.intersection(line2)
+    # common_points = common_points.remove((0, 0))
+    # common_points = [point for point in line1 if point in line2 and point != (0, 0)]
+    common_points -= {(0, 0)}
+    # print(common_points)
+    return common_points
+
+
+#####################################
+#### part 1##########################
+#####################################
+
+
+# def find_closest(path=None):
+#     if path:
+#         line1, line2 = read_lines_from_file(path)
+#     common_points = common_points_two_lines(line1,line2)
+#     common_points_distance = [
+#         sum((abs(point[0]), abs(point[1]))) for point in common_points
+#     ]
+#     return min(common_points_distance)
+
+
+# print(find_closest("lines.txt"))
+
+###############################
+###part 2######################
+###############################
+
+
+def find_min_steps(path=None):
+    if path:
+        line1, line2 = read_lines_from_file(path)
+    common_points = common_points_two_lines(line1,line2)
+    for point in common_points:
+        points_line_1_until_intersection =points_on_route_until_common_point(line1,point)
+        points_line_2_until_intersection =points_on_route_until_common_point(line2,point)
+        yield len(points_line_1_until_intersection)+len(points_line_2_until_intersection)
+            
+
+    
+def points_on_route_until_common_point(li,first_common_point):
+    points = [(0, 0)]
+    for x in li:
+        points = make_steps(x[0], x[1:], points[-1], points)
+        if first_common_point in points:
+            return points[:points.index(first_common_point)]
+
+
+        
+print(min(list(find_min_steps("lines.txt"))))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pelled.idan</span>
+</span>
+<link href="6644.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-06T17:31:02Z" itemprop="datePublished">
+                     6 ביוני,‏ 2020,‏  5:31pm
+                  </time>
+<meta content="2020-06-06T17:31:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק א' + ב'</summary>
+<pre><code>def move(location, move_direction):
+possible_directions = {'R': (1, 0), 'L': (-1, 0), 'U': (0, 1), 'D': (0, -1)}
+for direction in possible_directions:
+    if move_direction == direction:
+        location[0] = location[0] + possible_directions[direction][0]
+        location[1] = location[1] + possible_directions[direction][1]
+return location
+
+
+def clean_direction(direction):
+return (direction[:1], int(direction[1:]))
+
+
+def get_all_locations(directions):
+start = [0, 0]
+location = start
+for direction in directions.split(','):
+    direction = clean_direction(direction)
+    for time in range(0, direction[1]):
+        location = move(location, direction[0])
+        yield (location.copy())
+
+
+def cross_path(d1, d2):
+all_locations = list(get_all_locations(d1))
+for location in get_all_locations(d2):
+    if location in all_locations:
+        yield (location)
+
+
+def get_min_distance(directions1, directions2):
+distances = []
+for cross_path_items in cross_path(directions1, directions2):
+    x, y = cross_path_items
+    if x &lt; 0:
+        x = -x
+    if y &lt; 0:
+        y = -y
+    distances.append(sum([x, y]))
+return min(distances)
+
+
+def get_smallest_path(directions1, directions2):
+return min([list(get_all_locations(directions1)).index(cross_path_items) + 
+            list(get_all_locations(directions2)).index(cross_path_items) + 2
+            for cross_path_items in list(cross_path(directions1, directions2))])
+
+
+wire1 = 'R1000,U371,R195,U136,R804,U805,L450,U211,R768,U768,L548,U354,L736,U431,L152,U658,L670,D262,L277,U136,L290,U939,R501,U550,L931,D839,R335,D492,L25,U80,R878,U355,R653,U186,R423,D485,L793,D259,L739,U679,R508,D269,R432,D761,R97,D461,L675,U958,L58,U348,L719,D271,R144,U849,R384,U72,L84,U493,R947,U30,L356,D442,R327,U646,R825,U718,L329,D173,L949,D345,L971,D830,L93,U506,R245,D376,R322,D105,L604,D60,R298,D959,L165,D423,R180,D527,R956,D944,R785,U641,L794,D182,R975,D719,L166,U974,L224,U243,L666,U706,R796,D600,L856,D913,L988,D993,L259,U351,R487,D424,L335,U910,L437,D180,R621,D3,R878,D188,R254,D393,L727,U829,R352,U958,L327,D158,L854,D17,R143,D454,R889,D265,L345,U784,R35,D129,R77,U117,R951,D980,L866,U646,R242,D603,L562,U727,L496,U328,L380,D504,R644,U803,L530,D546,R328,D373,L489,U454,R74,D908,R366,U94,R604,D482,L573,D27,R943,U497,L782,D267,L391,U49,R528,D58,R155,D529,R227,D998,R558,D891,R224,U843,R512,U34,R92,U404,R752,U946,L338,D880,L513,D28,L856,D444,L187,U532,L187,U669,L306,U259,R287,D442,R478,U576,R702,U336,L305,U701,L754,D277,R760,D863,L717,U196,L221,U101,L334,D156,L961,D810,L67,D716,L457,D44,L505,D724,R716,D660,L36,D338,R54,U424,R730,U18,L65,D133,R149,U374,R356,D989,R519,U593,L444,D270,R328,U167,L748,D797,L434,U751,R444,D71,R158,D530,L630,U147,R909,D994,L957,U521,L644,D579,R673,U191,R935,U237,R600,D321,L671,U961,L884,U378,R534,D46,R275,U845,R571,U245,L507,U273,R995,U408,L14,D799,L955,D534,R579,D94,R705,D391,R469,D381,R620,U162,R907,D826,R824,U167,L734,U922,L484'
+wire2 = 'L1007,D620,R853,U77,L13,U473,L253,D410,R897,U464,L862,U281,L650,D470,R87,D204,L896,U670,L864,D950,L75,D320,R901,D785,L653,D225,L857,U616,L143,U940,L664,U131,L547,D745,R636,U569,L50,U454,R288,D254,L36,U377,L609,U929,L714,U85,L939,U923,L566,D280,R243,U948,R447,D7,R908,D151,R824,D432,R34,D81,L458,U745,L420,D982,L625,U910,L729,D274,R910,U322,L984,D88,L700,D349,L932,U510,R625,U88,L252,U785,L378,D101,R299,U66,L476,U696,R236,D46,R590,U157,R461,U305,L269,D487,L676,U467,R319,D524,R75,U65,L478,U861,L238,D716,R888,D12,L184,D578,R266,D226,L656,D172,L752,U124,L831,U810,L663,U538,R417,D770,L359,U1,R12,U791,L332,U272,R574,D942,L857,U447,R310,U342,L713,D258,R590,D585,R129,D115,R832,D967,R981,D159,R864,U423,R268,U519,L52,D493,R445,D657,R885,U166,R155,D264,R51,D632,R525,D875,R617,U898,L556,D386,L143,U278,L767,D389,R821,U869,R286,D90,R289,U54,R15,D764,R46,D674,R983,U49,R959,U779,R958,D247,R483,U156,L18,U12,L178,U540,L499,U487,L544,D336,R814,U267,R145,D135,L920,D902,L933,D507,L997,U361,L577,U425,L773,D782,R117,U851,R998,U503,R902,U781,L161,U98,L653,U633,L91,U629,L138,D19,R147,D756,R364,D529,L764,U913,L118,U856,R774,D621,R151,U154,R737,D960,R86,U458,R991,D481,R560,D858,R223,D6,R931,D301,R552,D797,R284,U368,L967,D686,R940,U410,R137,D156,L6,U643,L445,D999,R888,D277,L852,U210,L777,D36,R103,D652,R120,D67,L642,D527,R913,D858,R69,D433,R864,U75,L531,U456,L664,D452,R801,U851,L824,D278,L526,U133,R200,U768,R15,U393,R982,U287,L38,D114,R86,U299,L819,D891,R379,D601,L244'
+print(f'part 1: {get_min_distance(wire1, wire2)}')
+print(f'part 2: {get_smallest_path(wire1, wire2)}')
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-3/6644 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:43 GMT -->
+</html>

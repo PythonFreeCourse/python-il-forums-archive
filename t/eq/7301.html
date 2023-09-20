@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/eq/7301 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:30:41 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שימוש במתודה __eq__ וכדוגמתה - פייתון בעברית ובחינם</title>
+<meta content="איך משתמשים במתודה eq כאשר אני רוצה שייתן לי אפשרות השוואה של יותר מתכונה אחת? 
+האם זה נכון לכתוב את כל האפשרויות שאני רוצה שיתאפשר בניהם ההשוואה ובינהם ‘or’? 
+לדוגמה אם  יש לי מחלקה של מוצר ואני רוצה שיתאפשר לעשות השווא&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7301.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7301.rss" rel="alternate nofollow" title="הזנת RSS של ‚שימוש במתודה __eq__ וכדוגמתה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7301.html" property="og:url"/>
+<meta content="7301.html" name="twitter:url"/>
+<meta content="שימוש במתודה __eq__ וכדוגמתה" property="og:title"/>
+<meta content="שימוש במתודה __eq__ וכדוגמתה" name="twitter:title"/>
+<meta content="איך משתמשים במתודה eq כאשר אני רוצה שייתן לי אפשרות השוואה של יותר מתכונה אחת?  האם זה נכון לכתוב את כל האפשרויות שאני רוצה שיתאפשר בניהם ההשוואה ובינהם ‘or’?  לדוגמה אם  יש לי מחלקה של מוצר ואני רוצה שיתאפשר לעשות השוואה גם לשם המוצר וגם לגודל שלהם. האם נכון לכתוב את המתודה כך:   def eq(self, other):  return self.name == other.name or self.size == other.size   ואם לא, מה הדרך הנכונה להשוות בין תכונות במופעים שונים?" property="og:description"/>
+<meta content="איך משתמשים במתודה eq כאשר אני רוצה שייתן לי אפשרות השוואה של יותר מתכונה אחת?  האם זה נכון לכתוב את כל האפשרויות שאני רוצה שיתאפשר בניהם ההשוואה ובינהם ‘or’?  לדוגמה אם  יש לי מחלקה של מוצר ואני רוצה שיתאפשר לעשות השוואה גם לשם המוצר וגם לגודל שלהם. האם נכון לכתוב את המתודה כך:   def eq(self, other):  return self.name == other.name or self.size == other.size   ואם לא, מה הדרך הנכונה להשוות בין תכונות במופעים שונים?" name="twitter:description"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="13 ❤"/>
+<meta content="2020-06-23T21:59:23+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7301.html">שימוש במתודה __eq__ וכדוגמתה</a>
+</h1>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שימוש במתודה __eq__ וכדוגמתה" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T21:59:23Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏  9:59pm
+                  </time>
+<meta content="2020-06-23T22:50:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>איך משתמשים במתודה <strong>eq</strong> כאשר אני רוצה שייתן לי אפשרות השוואה של יותר מתכונה אחת?<br/>
+האם זה נכון לכתוב את כל האפשרויות שאני רוצה שיתאפשר בניהם ההשוואה ובינהם ‘or’?<br/>
+לדוגמה אם  יש לי מחלקה של מוצר ואני רוצה שיתאפשר לעשות השוואה גם לשם המוצר וגם לגודל שלהם. האם נכון לכתוב את המתודה כך:</p>
+<blockquote>
+<p>def <strong>eq</strong>(self, other):<br/>
+return self.name == other.name <strong>or</strong> self.size == other.size</p>
+</blockquote>
+<p>ואם לא, מה הדרך הנכונה להשוות בין תכונות במופעים שונים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:06:10Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:06pm
+                  </time>
+<meta content="2020-06-23T22:06:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אולי התכוונת eq ?</p>
+<p>לדעתי “or” מחזיר True אם אחד מהביטויים נכון.<br/>
+בשביל לקבל True רק במקרה ששניהם נכונים כדאי להשתמש ב “and”</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:20:48Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:20pm
+                  </time>
+<meta content="2020-06-23T22:20:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן. התבלבלתי.<br/>
+שני המקרים לא מספיק טובים.<br/>
+אם אני רוצה שיהיה אפשרות להשתמש באופרטור == בין המופעים אבל שיוכל לבדוק רק תכונה אחת,לדוגמה:<br/>
+a.name == b.name<br/>
+וגם לבדוק מקרה אחר,<br/>
+a.size == b.size<br/>
+מה עושים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:31:23Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:31pm
+                  </time>
+<meta content="2020-06-23T22:31:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זאת אומרת שאת רוצה להגדיר את פעולת הקסם eq כדי לבצע כל פעם משהו אחר?</p>
+<p>איך את מתכננת לקרוא לפעולה כך שפייתון תדע איזו תכונה של המופע ברצונך לבדוק את ההשוואה עליו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:35:19Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:35pm
+                  </time>
+<meta content="2020-06-23T22:35:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן, בדיוק.<br/>
+אני לא בדיוק יודעת איך לעשות, אבל הייתי רוצה שיהיה אפשרות לבצע את הפעולות שבדוגמה למעלה.<br/>
+השאלה אם אפשר, ואם כן, איך?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:43:49Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:43pm
+                  </time>
+<meta content="2020-06-23T22:43:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מתודת הקסם הזו נועדה (למיטב הבנתי) להשוות בין מופעים שלדעתך הם שווים.<br/>
+למשל בדוגמת הקלפים המצוינת שהכינה <span class="mention">@orpaz</span> ניתן היה להחליט שהקלפים “שווים” אם המספר שלהם שווה, או הצבע, או נניח אם מדובר במשחק טאקי למשל - אחד מהם.<br/>
+על פניו, כמו שהבנתי את השאלה שלך, אין משהו אחד תמיד שלפיו את מוכנה להכריז על שני מופעים כשווים.<br/>
+אני לדעתי במקרה כזה לא הייתי משתמשת בפעולת קסם.<br/>
+את יכולה להגדיר איזה פעולה שמתחשק לך לבצע את ההשוואה הזו - כך שתוכלי להגדיר פעולה אחרת לכל אחד מהמקרים האלו.<br/>
+את גם יכולה להגדיר פעולת השוואה בודדת שמקבלת כפרמטר את ה attribute שברצונך להשוות. במקרה הספציפי של eq אני לא יודעת איך ניתן לקרוא לה בצורה שמאפשרת שליחת פרמטר איתה (אבל ייתכן שאני פשוט לא יודעת ויש כזו - לכן שאלתי איך את מתכננת לקרוא לה).<br/>
+בכל מקרה אם זה כ"כ ספציפי ומשתנה ממקרה למקרה, אולי את יכולה להשתמש פשוט בדוגמאות שנתת ללא פעולה מיוחדת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:44:40Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:44pm
+                  </time>
+<meta content="2020-06-23T22:44:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר למשל להחזיר מתוצאת הפעולה הזו משהו שהוא לא True/False אלא ערך אחר - למשל 1/2/3/4 וכו’ או מחרוזות כלשהן שיעידו על תוצאת ההשוואה ויאפשרו לשחק עם כמה ערכים - אבל זה יצריך השוואה של הערך החוזר מהמתודה לערך אחר כדי לדעת מה היתה התוצאה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:49:51Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:49pm
+                  </time>
+<meta content="2020-06-23T22:49:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה על התשובות.<br/>
+אחרי שראיתי את הסרטון(המעולה!) של אורפז, חשבתי שחייבים להשתמש במתודה eq כדי להשוות בין מופעים.<br/>
+טעיתי.<br/>
+ושוב תודה על ההסבר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T23:29:26Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 11:29pm
+                  </time>
+<meta content="2020-06-23T23:29:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה תודה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+וכמו שדבורה אמרה - שימוש ב-eq הוא אם את רוצה ש- == יעבוד בצורה מסוימת.<br/>
+אחרת את יכולה גם ליצור מתודות שמשוות משהו מסוים ולתת להן שם מתאים, למשל compare_name.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7301.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T23:50:08Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 11:50pm
+                  </time>
+<meta content="2020-06-24T03:49:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מתמטיקאי אחד נכנס לגלידרייה:<br/>
+“אני אקח אקח כדור שוקולד…או וניל!<br/>
+…אבל לא את שניהם!”</p>
+<hr/>
+<p>-במתודת הקסם, את יכולה להחליט שהיא תחזיר True על מה שבא לך. זה כל הקטע - שאת קובעת! (לפי ההגדרה שלך).</p>
+<p>-המשמעות של: “or” במתמטיקה, היא שמספיק שתנאי אחד יתקיים - ויש לנו אור ירוק שזה True. אז הכיוון שלך היה טוב. <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> <strong>אני חושב שאם היית משתעשעת בזה במחברת שלך, היית מגלה שזה עובד לך!</strong></p>
+<hr/>
+<p>*העשרה (לא קשור לשאלה שלך, אלא קשור לנושא של or):<br/>
+פייתון יודעת להיות “עצלנית”:</p>
+<p>למשל, אם יהיה לנו:<br/>
+condition_1 or condition_2 or condition_3 or condition_4</p>
+<p>ועל ההתחלה, condition_1 הוא כבר True -<br/>
+פייתון אפילו לא תלך לבדוק את שאר התנאים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/eq/7301 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:30:42 GMT -->
+</html>

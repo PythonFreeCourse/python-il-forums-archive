@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>[אתגר] מקסימום רקורסיבי</title>
+    <link>https://forums.pythonic.guru/t/topic/5245</link>
+    <description>כתבו פונקציה בשם `maximum` שמקבלת כפרמטר רשימת מספרים.
+הפונקציה תחזיר את המספר המקסימלי במערך מבלי להשתמש בלולאות.
+השתמשו רק בחומר שלמדנו עד כה.
+
+אתם רשאים לפרסם פה את הפתרון שלכם :slight_smile:
+אנחנו ממליצים לכולם לא להסתכל על הפתרון של אחרים ולנסות לפתור בעצמם.
+שימו לב שמדובר בשאלה קשה מאוד, וזה בסדר גמור לא להצליח לפתור אותה בשלב הזה של הקורס.
+
+ניתן לבדוק האם הפתרון שלכם עובד בעזרת הרצת הקוד שכאן אחרי שהגדרתם את הפונקציה שלכם:
+```python
+import random
+
+
+def listgen1():
+    return [random.uniform(-1000, 1000) for i in range(random.randrange(1, 999))]
+
+
+def listgen2():
+    return [random.randrange(-1000, 1000) for i in range(random.randrange(1, 999))]
+
+
+def listgen3():
+    return [0 for i in range(random.randrange(1, 999))]
+
+
+def listgen4():
+    return [9.9 for i in range(random.randrange(1, 999))]
+
+
+def check(l):
+    try:
+        assert max(l) == maximum(l), f&quot;Failed for input {l}&quot;
+    except Exception as e:
+        print(f&quot;{e}, {l}&quot;)
+
+
+check([1, 2, 3])
+check([3, 2, 1])
+check([3, 1, 1])
+check([3, 3, 1])    
+check([1])
+
+
+for i in range(100):
+    check(listgen1())
+    check(listgen2())
+
+check(listgen3())
+check(listgen4())
+```</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 07 May 2020 14:39:07 +0000</lastBuildDate>
+    <category>אתגר</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/5245.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[nitayv]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/a470ae32631538a0fed02e501747196e8aea312a.png" alt="‏‏לכידה" data-base62-sha1="nsHIL3gnbH74apcT7SJQmZAVxCq" width="523" height="255"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/77">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/77</link>
+        <pubDate>Thu, 07 May 2020 14:39:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-77</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[ofekhareven]]></dc:creator>
+        <description><![CDATA[
+            <blockquote>
+<pre><code>def maximum(list_of_numbers):
+    if len(list_of_numbers) == 1:
+        return list_of_numbers[0]
+    elif list_of_numbers[0] &gt; list_of_numbers[1]:
+        list_of_numbers.pop(1)
+        return maximum(list_of_numbers)
+    else:
+        list_of_numbers.pop(0)
+        return maximum(list_of_numbers)
+
+
+maximum([1,2,3,1,5,8,10,40,32])</code></pre>
+</blockquote>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/76">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/76</link>
+        <pubDate>Wed, 06 May 2020 06:33:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-76</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[OrelHandler]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/4/4d4420e1961a9a4ddacd002fb779399c4ee494fc.png" alt="image" data-base62-sha1="b1wJf7b1W5bfJ0QldSzWNlsJ4VC" width="435" height="259"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/74">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/74</link>
+        <pubDate>Tue, 28 Apr 2020 11:57:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-74</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yu.segal]]></dc:creator>
+        <description><![CDATA[
+            <pre><code>def maximum(lis):
+    if len(lis) == 1:
+        return lis[0]
+    if lis[0] &gt; lis[1]:
+        return maximum(lis[0:1] + lis[2:])
+    return maximum(lis[1:])
+
+li = [1,4,3,27,18,7,8,9,0]
+print(maximum(li))
+print(li)</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/73">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/73</link>
+        <pubDate>Tue, 28 Apr 2020 07:03:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-73</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>אה אוקי, אז אני מניח שבגלל זה הדבר מקובל. אחכה בסבלנות כשנלמד זאת (כאמור, יהיה מגניב אם ניגע בהזדמנות בתכנות נכון <img src="https://forums.pythonic.guru/images/emoji/twitter/blush.png?v=9" title=":blush:" class="emoji" alt=":blush:"> )<br>
+תודה רבה!</p>
+<p>עריכה: טוב אני רואה שכאשר קוראים לפונקציה אז מפעילים אותה אך ורק על רשימה אז אין בעיה. אז ספציפית עם הפתרון הזה אין בעיה, אבל עדיין תוהה במקרים אחרים. אבל את זה נשאיר לפעם אחרת <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/72">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/72</link>
+        <pubDate>Mon, 27 Apr 2020 18:15:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-72</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הפסקה השנייה שכתבת פותרת לך את הספקות <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"> נלמד על זה בהמשך</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/71">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/71</link>
+        <pubDate>Mon, 27 Apr 2020 18:07:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-71</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>באמת?! חייב להודות שאני ממש מופתע. בלי קשר למעקב אחרי הקוד,  הרי פונקציה זו ״קופסה סגורה״. תאר לך שזו הייתה פונקציה שימושית בפייתון, אזי בכל פעם שהיית רוצה להשתמש בה היית צריך להזין בנוסף לרשימה גם את הקבוע 0. אבל אני מבין מדבריך  ״שבעולם האמיתי״ בהייטק זה לא נורא, העיקר שיעבוד.<br>
+אגב עכשיו כשאני מסתכל על הסינטקס אני רואה שהאיתחול של הפרמטר x נעשה כבר בחתימת הפונקציה, לא היה לי מושג שזה אפשרי.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/70">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/70</link>
+        <pubDate>Mon, 27 Apr 2020 18:06:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-70</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אין עם זה בעיה עקרונית, אבל זה נראה פחות טוב ומקשה לעקוב אחרי הרקורסיה. זה כן מקל על הכתיבה שלה, ולכן הצעתי לאנשים לפתור בלי.<br>
+לתלמידים שהפתרונות שלהם טובים מאוד במערכת התרגילים אנחנו הרבה פעמים נותנים insights מעבר, לא יודע אם נספיק להגיע לעקרונות מתקדמים במסגרת הקורס</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/69">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/69</link>
+        <pubDate>Mon, 27 Apr 2020 17:57:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-69</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה שהעלית את הפתרון שלך שי. לא בדקתי נכונות של הקוד, אבל רציתי לשאול את <a class="mention" href="https://forums.pythonic.guru/u/yam">@Yam</a> - מבחינת עקרונות תכנות נכון, זה לא ״נכון״ בבעיה שלנו שהפונקציה הראשית תקבל עוד פרמטרים מלבד רשימה, נכון? (אפשר לעטוף אותה בפונקציה ראשית שתקבל כפרמטר רק רשימה וקוראת לפונקציה עם יותר פרמטרים, נכון?) השאלה שלי היא מדוע. כיצד לנמק מדוע זה פסול. (אולי זה קשור לעיקרון ההכמסה, אולי יש עוד סיבות?)<br>
+השאלה נשאלת ללא כל קשר לכך שביקשת שהפונקציה תקבל אך ורק רשימה כפרמטר, נניח והיית מתיר זאת.</p>
+<p>אפרופו, האם נדבר בקורס על ״עקרונות תכנות נכון״ וכל הדברים הקשורים לזה? למשל אני מניח שההמלצה שפונקציה לא תשנה את הקלט שלה (כמו שינוי רשימה שמתקבלת כפרמטר) זה חלק מזה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/68">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/68</link>
+        <pubDate>Mon, 27 Apr 2020 17:55:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-68</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[shay90030]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d4219a0f36e36e5196d13ee701650b547f492e59.png" alt="Screenshot_2" data-base62-sha1="ugBdlpG425GWs8xOYPSRbGaMrZ7" width="306" height="303"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/67">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/67</link>
+        <pubDate>Mon, 27 Apr 2020 17:14:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-67</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>כמובן שייתכן, בדרך כלל זו תמיד הסיבה חחחח.<br>
+בדקתי שוב בקפידה, כתבתי len בלי ארגומנט <img src="https://forums.pythonic.guru/images/emoji/twitter/cowboy_hat_face.png?v=9" title=":cowboy_hat_face:" class="emoji" alt=":cowboy_hat_face:"> הפונקציה רצה בצורה אינסופית על ערך לא מוגדר</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/66">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/66</link>
+        <pubDate>Mon, 27 Apr 2020 15:00:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-66</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>ניסיתי להריץ עכשיו שוב על שני המקרים שכתבת וזה הריץ והחזיר את התשובות הנכונות. האם ייתכן שטעית בהעתקה של אחת מהשורות? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/65">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/65</link>
+        <pubDate>Mon, 27 Apr 2020 14:56:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-65</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>בהתחלה,<br>
+[0, 1, 15, 3, 18, 5, 6, 14, 8, 1012, 9, 7, 4, 2, 20]<br>
+אחרי השגיאה<br>
+[0, 1, 15]</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/64">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/64</link>
+        <pubDate>Mon, 27 Apr 2020 14:53:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-64</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>על איזה גודל ניסית להריץ אותה? לרוב מחסנית הקריאות לפונקציה מוגבלת וניתן להגיע לכל היותר ל-999 קריאות רקורסיביות לפני שנזרקת שגיאה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/63">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/63</link>
+        <pubDate>Mon, 27 Apr 2020 14:51:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-63</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>היי <a class="mention" href="https://forums.pythonic.guru/u/orpazf">@orpazf</a> ,<br>
+אפשר הסבר מה קורה בחלק האחרון של הפונקציה, ניסיתי להריץ אותה<br>
+בvisualize python ובמחברת.<br>
+אני מקבל שגיאה שיש חריגה בגודל הרקורסיה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/62">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/62</link>
+        <pubDate>Mon, 27 Apr 2020 14:50:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-62</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>הפתרון שלי. אשמח להערות מכל בחינה (יעילות, רווחים, צורת כתיבה וכו׳)</p>
+<p>הערה: השתמשתי במילים “l” ו-“m” במקום “num_list” ו-״maximum” בהתאמה מכיוון שהקוד נכתב באפליקציה באייפון וניסיתי שכל שורת קוד לא תצטרך לחרוג לשורה הבאה.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590.png" data-download-href="https://forums.pythonic.guru/uploads/default/1d4837b014e1b0d3ad0be8588d098cade2f77590" title="תמונה"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590_2_281x499.png" alt="תמונה" data-base62-sha1="4b2zsIU4ek037DXJPAbecVAaKcw" width="281" height="499" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590_2_281x499.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590_2_421x748.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590_2_562x998.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1d4837b014e1b0d3ad0be8588d098cade2f77590_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/61">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/61</link>
+        <pubDate>Mon, 27 Apr 2020 12:49:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-61</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>למה בלי copy? מה הבעיה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/60">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/60</link>
+        <pubDate>Mon, 27 Apr 2020 10:40:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-60</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא.<br>
+</p><aside class="quote quote-modified" data-post="8" data-topic="5395">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <img alt="" width="20" height="20" src="/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar">
+    <a href="https://forums.pythonic.guru/t/topic/5395/8">איקס עיגול - לולאה רקורסיבית</a> 
+  </div>
+  <blockquote>
+    בגדול רקורסיה היא טכניקה שנתנו לה שם. היא לא שום דבר חדש או מיוחד, אלא פשוט מעין מדבקת־שם, או שם חיבה אם תרצו, ל"פונקציה שקוראת לעצמה". 
+יש אינסוף טכניקות ומונחים במדמ"ח, ומפאת זמן, בהירות ונגישות, אי אפשר (ולא כדאי) לציין את כולם כשבאים להעביר קורס. 
+יש אנשים שזה אינטואיטיבי להם, יש אנשים שזה פחות. יש אנשים שלוקח להם שנים להבין את הרעיון עד הסוף (היי). אני לא חושב שזו יכולת שמתכנת מתחיל לא יכול בלעדיה, ואני כן חושב שבתור התחלה עדיף לנו להתמקד בדברים אחרים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title="slight_smile" alt="slight_smile" class="emoji"> 
+אני מקווה שיהיה זמן ספי…
+  </blockquote>
+</aside>
+<p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/59">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/59</link>
+        <pubDate>Mon, 27 Apr 2020 10:31:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-59</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[yonae]]></dc:creator>
+        <description><![CDATA[
+            <p>אהלן ים, כתוב להשתמש אך ורק בחומר שלמדנו כבר. רקורסיה לא נופלת תחת חומר <strong>שלא</strong> למדנו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/58">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/58</link>
+        <pubDate>Mon, 27 Apr 2020 10:26:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-58</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[shniedy]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/8/8496af6f5622fa5dc58959979c7dcfac43ca4061.png" alt="image" data-base62-sha1="iUVRO0TFqJOIH24TQots5f08OuR" width="480" height="278"><br>
+עם הזחות</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/57">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/57</link>
+        <pubDate>Mon, 27 Apr 2020 09:40:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-57</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[shniedy]]></dc:creator>
+        <description><![CDATA[
+            <p>def maximum(lst):<br>
+i = len(lst) -1<br>
+if i == 0:<br>
+return lst[i]<br>
+res = lst.copy()<br>
+res.pop()<br>
+res = maximum(res)<br>
+<span class="hashtag">#another</span> option is - return max(res,lst[i])<br>
+if res &gt; lst[i]:<br>
+return res<br>
+else:<br>
+return lst[i]</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/56">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/56</link>
+        <pubDate>Mon, 27 Apr 2020 09:39:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-56</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/images/emoji/twitter/fire.png?v=9" title=":fire:" class="emoji only-emoji" alt=":fire:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/slightly_smiling_face.png?v=9" title=":slightly_smiling_face:" class="emoji only-emoji" alt=":slightly_smiling_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/55">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/55</link>
+        <pubDate>Mon, 27 Apr 2020 09:21:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-55</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[mgblamg]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e0ece317a73c014922c631950d0d81c2107c5301.png" data-download-href="https://forums.pythonic.guru/uploads/default/e0ece317a73c014922c631950d0d81c2107c5301" title="מקסימום רקורסיבי"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e0ece317a73c014922c631950d0d81c2107c5301_2_690x190.png" alt="מקסימום רקורסיבי" data-base62-sha1="w5MtRiGTHlEtfB34ofJDUElzJDz" width="690" height="190" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e0ece317a73c014922c631950d0d81c2107c5301_2_690x190.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e0ece317a73c014922c631950d0d81c2107c5301_2_1035x285.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e0ece317a73c014922c631950d0d81c2107c5301_2_1380x380.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e0ece317a73c014922c631950d0d81c2107c5301_2_10x10.png"></a></div><br>
+ככה? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/54">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/54</link>
+        <pubDate>Mon, 27 Apr 2020 09:19:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-54</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>עכשיו ללבל הבא: בלי copy <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/53">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/53</link>
+        <pubDate>Mon, 27 Apr 2020 06:55:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-53</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+      <item>
+        <title>[אתגר] מקסימום רקורסיבי</title>
+        <dc:creator><![CDATA[mgblamg]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13.png" data-download-href="https://forums.pythonic.guru/uploads/default/09f73ed7c7e788148b7d26e144a90c190427da13" title="מקסימום רקורסיבי"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13_2_690x200.png" alt="מקסימום רקורסיבי" data-base62-sha1="1qa185ckOCs0ZwMiBJAvygvSkXV" width="690" height="200" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13_2_690x200.png, https://forums.pythonic.guru/uploads/default/optimized/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13_2_1035x300.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13_2_1380x400.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/0/09f73ed7c7e788148b7d26e144a90c190427da13_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5245/52">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5245/52</link>
+        <pubDate>Mon, 27 Apr 2020 00:48:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5245-52</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5245.rss">[אתגר] מקסימום רקורסיבי</source>
+      </item>
+  </channel>
+</rss>

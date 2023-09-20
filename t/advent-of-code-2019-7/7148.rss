@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Advent of Code 2019 🤯 (יום 7)</title>
+    <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148</link>
+    <description>בהצלחה :slight_smile:
+[יום 7](https://adventofcode.com/2019/day/7)
+
+![image|690x444](upload://a18xCs2VblOXEY2cXdMxSec7wsq.jpeg)</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 30 Jun 2020 15:12:37 +0000</lastBuildDate>
+    <category>אתגר</category>
+    <atom:link href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>תאמין או לא - מסתבר שהקטע עם הריצה קרה גם לי!<br>
+קצת באיחור, אבל פתרתי. עובר ל-8 <img src="https://forums.pythonic.guru/images/emoji/twitter/star_struck.png?v=9" title=":star_struck:" class="emoji" alt=":star_struck:"></p>
+
+Advent of Code, Day 7 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/8">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/8</link>
+        <pubDate>Tue, 30 Jun 2020 15:12:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-8</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>וואי וואי, חלש פה הפעם <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+לא מת על הפתרון שלי, אבל עובד.<br>
+מסיבות של חוסר זמן לא צנזרתי דברים שאתם לא יודעים, אבל אין פה איזו טכניקה מטורפת שגורמת להכול להיות יותר קל.</p>
+<pre><code class="lang-python">import itertools
+import operator
+from copy import copy
+from typing import (
+    Any, Callable, Dict, Iterable, Iterator, List, Optional, Tuple, Union,
+)
+
+from typing_extensions import TypedDict
+
+
+Command = TypedDict(
+    'Command',
+    {
+        'size': int, 'function': Callable[..., Any],
+        'jump': bool, 'void': int, 'method': bool,
+    },
+    total=False,
+)
+ParsedCmds = Iterator[int]
+vmethod = {'void': 1, 'method': True}
+
+
+class IntcodeMachine:
+    OPCODES: Dict[int, Command] = {
+        1: {'size': 4, 'function': operator.add},
+        2: {'size': 4, 'function': operator.mul},
+        3: {'size': 2, 'function': lambda s: s.get_input(), 'method': True},
+        4: {'size': 2, 'function': lambda s, v: s.add_output(v), **vmethod},
+        5: {'size': 3, 'function': operator.truth, 'jump': True},
+        6: {'size': 3, 'function': operator.not_, 'jump': True},
+        7: {'size': 4, 'function': lambda x, y: bool(operator.lt(x, y))},
+        8: {'size': 4, 'function': lambda x, y: bool(operator.eq(x, y))},
+    }
+
+    def __init__(self, code: List[int], inputs: Iterable[int]) -&gt; None:
+        self.eip = 0  # Instructions pointer
+        self.code = code
+        self._inputs = iter(inputs)
+        self._outputs_index = 0
+        self._outputs: List[int] = []
+
+    @property
+    def opcode(self) -&gt; int:
+        return self.code[self.eip] % 100
+
+    @property
+    def is_halt(self) -&gt; bool:
+        return self.opcode == 99
+
+    @property
+    def is_jump(self) -&gt; bool:
+        return self.opcode_get('jump', False)
+
+    def add_inputs(self, inputs: Union[int, List[int]]) -&gt; None:
+        if not isinstance(inputs, (list, tuple)):
+            inputs = [inputs]
+        self._inputs = itertools.chain(self._inputs, inputs)
+
+    def get_input(self) -&gt; Optional[int]:
+        try:
+            return next(self._inputs)
+        except StopIteration:
+            return None
+
+    def add_output(self, outputs: Union[int, List[int]]) -&gt; None:
+        if not isinstance(outputs, (list, tuple)):
+            outputs = [outputs]
+        self._outputs.extend(outputs)
+
+    def get_outputs(self) -&gt; List[int]:
+        outputs = self._outputs[self._outputs_index:]
+        self._outputs_index = len(self._outputs)
+        return outputs
+
+    @property
+    def modes(self) -&gt; Tuple[int, int, int]:
+        modes_part = self.code[self.eip] // 100
+        return modes_part % 10, modes_part // 10 % 10, modes_part // 100
+
+    def opcode_get(self, prop: str, default: Any = None) -&gt; Any:
+        return self.OPCODES[self.opcode].get(prop, default)
+
+    @property
+    def argc(self) -&gt; int:
+        return self.opcode_get('size', 2) - 2
+
+    @property
+    def args(self) -&gt; List[int]:
+        offset = self.argc + self.opcode_get('void', 0)
+        params = self.code[self.eip + 1:self.eip + 1 + offset]
+        out = []
+        for param, mode in zip(params, self.modes):
+            out.append(param if mode else self.code[param])
+        if self.opcode_get('method'):
+            out.insert(0, self)
+        return out
+
+    @property
+    def write_address(self) -&gt; Optional[int]:
+        if self.opcode_get('void'):
+            return None
+
+        write_to = self.code[self.eip + 1 + self.argc]
+        is_relative_jump = self.is_jump and self.modes[self.argc] == 0
+        return self.code[write_to] if is_relative_jump else write_to
+
+    def __call__(self) -&gt; List[int]:
+        while self.opcode != 99:
+            op_size = self.opcode_get('size')
+            args, write_to = self.args, self.write_address
+            returns = self.opcode_get('function')(*args)
+            if returns is None and self.opcode == 3:
+                return self.get_outputs()  # Halt until you get input
+            if write_to is not None and not self.is_jump:
+                self.code[write_to] = returns
+            should_jump = self.is_jump and returns
+            self.eip = write_to if should_jump else (self.eip + op_size)
+        return self.get_outputs()
+
+
+def get_input() -&gt; List[int]:
+    with open('input.txt', 'r') as challenge_input:
+        return list(map(int, challenge_input.read().strip().split(',')))
+
+
+# Part 1
+program = get_input()
+outputs = []
+for phases in itertools.permutations(list(range(5))):
+    current_input = 0
+    for phase in phases:
+        current_machine = IntcodeMachine(program, [phase, current_input])
+        current_input = current_machine()[-1]
+        program = current_machine.code
+    outputs.append(current_input)
+print(max(outputs))
+
+
+# Part 2
+program = get_input()
+max_output = 0
+for phases in itertools.permutations(list(range(5, 10))):
+    machines = [IntcodeMachine(copy(get_input()), [phase]) for phase in phases]
+    next_input = 0
+    i = 0
+    while not machines[-1].is_halt:
+        machines[i].add_inputs(next_input)
+        next_input = machines[i]()[-1]
+        i = (i + 1) % len(machines)
+    max_output = max(max_output, next_input)
+print(max_output)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/7</link>
+        <pubDate>Wed, 24 Jun 2020 10:01:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-7</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אסגור ברביעי <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/6</link>
+        <pubDate>Mon, 22 Jun 2020 00:20:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-6</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>כבר כמעט השארתי את הסוף של זה למחר ויצאתי לרוץ… ואז בזמן הריצה איכשהו עלה לי רעיון וזה עבד!</p>
+
+חלק 2 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/5">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/5</link>
+        <pubDate>Wed, 17 Jun 2020 21:21:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-5</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>חלק 2 יחכה למחר כנראה. בינתיים זה נחמד מאוד <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/4">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/4</link>
+        <pubDate>Tue, 16 Jun 2020 22:18:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-4</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/images/emoji/twitter/star2.png?v=9" title=":star2:" class="emoji only-emoji" alt=":star2:"></p>
+
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/3">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/3</link>
+        <pubDate>Mon, 15 Jun 2020 18:39:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-3</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/2">(לחיצה לפרטים נוספים)</a>
+<p>הפעם הם ניצחו אותי. אני פשוט לא מבין מה רוצים בחלק 2 וויתרתי לבנתיים.<br>
+אחזור לזה בהמשך עם ראש נקי.</p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/2</link>
+        <pubDate>Mon, 15 Jun 2020 15:43:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-2</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 7)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בהצלחה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+<a href="https://adventofcode.com/2019/day/7">יום 7</a></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_690x444.jpeg" alt="image" data-base62-sha1="a18xCs2VblOXEY2cXdMxSec7wsq" width="690" height="444" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_690x444.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_1035x666.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-7/7148/1</link>
+        <pubDate>Mon, 15 Jun 2020 02:34:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7148-1</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-7/7148.rss">Advent of Code 2019 🤯 (יום 7)</source>
+      </item>
+  </channel>
+</rss>

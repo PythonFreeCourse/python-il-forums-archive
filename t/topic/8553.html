@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8553 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:17:42 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר - שבוע 14 - פייתון בעברית ובחינם</title>
+<meta content="נניח ואני מעוניין מדי פעם לעשות שינויי בdb 
+
+מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו)
+והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8553.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8553.rss" rel="alternate nofollow" title="הזנת RSS של ‚שינויים במסד הנתונים לאחר העלאה של האתר לאוויר’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8553.html" property="og:url"/>
+<meta content="8553.html" name="twitter:url"/>
+<meta content="שינויים במסד הנתונים לאחר העלאה של האתר לאוויר" property="og:title"/>
+<meta content="שינויים במסד הנתונים לאחר העלאה של האתר לאוויר" name="twitter:title"/>
+<meta content="נניח ואני מעוניין מדי פעם לעשות שינויי בdb   מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו) והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?" property="og:description"/>
+<meta content="נניח ואני מעוניין מדי פעם לעשות שינויי בdb   מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו) והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 14" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="העשרה" property="og:article:tag"/>
+<meta content="מסדי-נתונים" property="og:article:tag"/>
+<meta content="db" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="5 ❤"/>
+<meta content="2020-12-11T08:57:34+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שינויים במסד הנתונים לאחר העלאה של האתר לאוויר","mainEntity":{"@type":"Question","name":"שינויים במסד הנתונים לאחר העלאה של האתר לאוויר","text":"נניח ואני מעוניין מדי פעם לעשות שינויי בdb\n\nמה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו)\n\nוהוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \\ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?","upvoteCount":0,"answerCount":0,"dateCreated":"2020-12-11T08:57:34.193Z","author":{"@type":"Person","name":"אביעד אברהם עמר"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8553.html">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-14/26.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 14</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%94%d7%a2%d7%a9%d7%a8%d7%94.html" rel="tag">העשרה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%a1%d7%93%d7%99-%d7%a0%d7%aa%d7%95%d7%a0%d7%99%d7%9d.html" rel="tag">מסדי-נתונים</a>, 
+            <a class="discourse-tag" href="../../tag/db.html" rel="tag">db</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שינויים במסד הנתונים לאחר העלאה של האתר לאוויר" itemprop="headline"/>
+<meta content="שבוע 14" itemprop="articleSection"/>
+<meta content="העשרה, מסדי-נתונים, db" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-11T08:57:34Z" itemprop="datePublished">
+                     11 בדצמבר,‏ 2020,‏  8:57am
+                  </time>
+<meta content="2022-09-11T23:49:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>נניח ואני מעוניין מדי פעם לעשות שינויי בdb</p>
+<ul>
+<li>מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו)</li>
+<li>והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-12T13:59:41Z" itemprop="datePublished">
+                     12 בדצמבר,‏ 2020,‏  1:59pm
+                  </time>
+<meta content="2020-12-12T13:59:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יכול להוסיף עמודות בסוף הטבלה. אם אתה מביא שדות לפי שם - שאילתות קיימות לא יתייחסו לשדות החדשים בשליפה מהטבלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-13T01:13:11Z" itemprop="datePublished">
+                     13 בדצמבר,‏ 2020,‏  1:13am
+                  </time>
+<meta content="2020-12-13T01:13:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למען האמת זה נושא מורכב למדי, מה שנקרא – שאל את ארכיטקט המערכות הקרוב לביתך.<br/>
+אנסה לתת פה אמ;לק לא מחייב.</p>
+<p>המטרה שלנו היא לשנות את הצורה של מסד נתונים עם 0 “זמן מת” שבו האפליקציה לא עובדת.<br/>
+מהמטרה הזו נגזרות כמה שאלות:</p>
+<ol>
+<li>כנראה שיהיה data שצריך להשתנות. איך משנים אותו, טכנית, בלי לכבות את מסד הנתונים?</li>
+<li>בזמן הזה כנראה ממשיך לזרום מידע לאפליקציה. איך מתייחסים אליו ואיך מכניסים אותו למסד הנתונים? בצורה של המידע הישן? בצורה של המידע החדש? מה אנחנו בדיוק באמצע של שינוי constrains לסט מסוים של עמודות? איך מוודאים שאין race conditions?</li>
+</ol>
+<p>הנה שיטה אחת:</p>
+<ol>
+<li>להוסיף database נוסף ל־production, שהוא איך שהיית רוצה שה־database החדש יראה.</li>
+<li>לשנות את הפונקציות שאחראיות על הכנסת הנתונים ל־database. עבור כל נתון חדש שמתקבל לכתיבה: לנסות להכניס את הנתונים ל־database הישן. אם זה הצליח, להכניס אותו גם ל־database החדש. לפעמים ה־database עצמו יודע לעשות את זה בלי לשנות את התנהגות האפליקציה עצמה, זה נקרא CDC (או change data capture).</li>
+<li>לבנות סקריפט מיגרציה שלוקח את כל הנתונים מה־database הישן ומזרים אותם ל־database החדש. חשוב לזכור להשתמש ב־ON CONFLICT IGNORE בשלב הזה.</li>
+<li>כשריצת הסקריפט תסתיים, לשנות את הפונקציות שאחראיות על הכנסת הנתונים ל־database שוב כך שעבור כל נתון שמתקבל לכתיבה, יכתבו אותו רק ל־database החדש.</li>
+</ol>
+<p>שיטה אחרת היא ליצור את ה־database החדש, להפנות את הכתיבה אליו וכל פעם לקרוא מ־2 מסדי הנתונים, עד שירוץ סקריפט מיגרציה שיעביר את הנתונים מה־db הישן לחדש.</p>
+<p>תוכל לקרוא עוד על העניין בעצמך אם תגגל “database migration zero downtime”.</p>
+<p>בהצלחה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-13T08:57:36Z" itemprop="datePublished">
+                     13 בדצמבר,‏ 2020,‏  8:57am
+                  </time>
+<meta content="2020-12-13T08:57:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה ! אמשיך בקריאה על זה השמע לי סופר משמעותי <img alt=":muscle:t2:" class="emoji" src="../../images/emoji/twitter/muscle/2c164.png?v=9" title=":muscle:t2:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-15T10:05:58Z" itemprop="datePublished">
+                     15 בדצמבר,‏ 2020,‏ 10:05am
+                  </time>
+<meta content="2020-12-15T10:05:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כמה זה בריא התהליך הזה? לי לפחות זה מוכר שבוחרים שעה הכי פחות פעילה ושמים הודעה שהשרת ירד לתחזוקה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="8553.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-15T11:31:36Z" itemprop="datePublished">
+                     15 בדצמבר,‏ 2020,‏ 11:31am
+                  </time>
+<meta content="2020-12-15T11:31:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תשאל את אמיר שעבר מהכללית ל-GOOGLE<br/>
+<img alt=":zipper_mouth_face:" class="emoji only-emoji" src="../../images/emoji/twitter/zipper_mouth_facec164.png?v=9" title=":zipper_mouth_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8553 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:17:45 GMT -->
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/render-templates/8409 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:41:45 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שימוש בrender templates - שבוע 12 - פייתון בעברית ובחינם</title>
+<meta content="היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה : 
+ 
+ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8409.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8409.rss" rel="alternate nofollow" title="הזנת RSS של ‚שימוש בrender templates’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1024x576.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1024x576.png" property="og:image"/>
+<meta content="8409.html" property="og:url"/>
+<meta content="8409.html" name="twitter:url"/>
+<meta content="שימוש בrender templates" property="og:title"/>
+<meta content="שימוש בrender templates" name="twitter:title"/>
+<meta content="היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :     ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנהHTML, בקובץ app.py ומחזיר את המשתנה HTML, אני כן יכול לראות תוצאה תקינה ב127.0.0.1:5000 בדפדפן (אם כי ללא העיצוב של קובץ ה-CSS) למישהו יש רעיון מה הבעיה? מקווה שהבהרתי את עצמי בצורה ברורה." property="og:description"/>
+<meta content="היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :     ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנהHTML, בקובץ app.py ומחזיר את המשתנה HTML, אני כן יכול לראות תוצאה תקינה ב127.0.0.1:5000 בדפדפן (אם כי ללא העיצוב של קובץ ה-CSS) למישהו יש רעיון מה הבעיה? מקווה שהבהרתי את עצמי בצורה ברורה." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 12" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-10-31T13:34:55+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שימוש בrender templates","mainEntity":{"@type":"Question","name":"שימוש בrender templates","text":"היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/8a684b0e488bd1986e1b37a3d94a9597a70558e8\" title=\"image\">[image]<\/a>\n\nניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנה&hellip;","upvoteCount":0,"answerCount":1,"dateCreated":"2020-10-31T13:34:54.971Z","author":{"@type":"Person","name":"hagai kraus"},"acceptedAnswer":{"@type":"Answer","text":"קבצי CSS צריך לשים בתיקיית STATIC ולדאוג להגדיר נתיב מתאים. (או לדרוס את ברירת המחדל ולשים בנתיב אחר, יש מדריכים בשפע באינטרנט איך להגדיר)","upvoteCount":1,"dateCreated":"2020-10-31T20:23:59.943Z","url":"https://forums.pythonic.guru/t/render-templates/8409/9","author":{"@type":"Person","name":"ofirp"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8409.html">שימוש בrender templates</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/24-category/24.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 12</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שימוש בrender templates" itemprop="headline"/>
+<meta content="שבוע 12" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T13:34:55Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  1:34pm
+                  </time>
+<meta content="2020-10-31T13:53:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/8a684b0e488bd1986e1b37a3d94a9597a70558e8" href="../../uploads/default/original/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8.png" title="image"><img alt="image" data-base62-sha1="jKpkXrkQRsCf7Ch5XI6mcniaEXe" data-small-upload="../../uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_10x10.png" height="388" src="../../uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_690x388.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_690x388.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1035x582.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1380x776.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1920×1080 167 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנהHTML, בקובץ app.py ומחזיר את המשתנה HTML, אני כן יכול לראות תוצאה תקינה ב127.0.0.1:5000 בדפדפן (אם כי ללא העיצוב של קובץ ה-CSS) למישהו יש רעיון מה הבעיה? מקווה שהבהרתי את עצמי בצורה ברורה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T14:29:20Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  2:29pm
+                  </time>
+<meta content="2020-10-31T14:29:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה השגיאה בטרמינל? אמור להיות פירוט.<br/>
+לא יזיק גם לראות את התוכן של app.py</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T14:57:28Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  2:57pm
+                  </time>
+<meta content="2020-10-31T14:57:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בטרמינל אין שגיאה.</p>
+<p>ככה נראה הקובץ של app.py:<br/>
+from flask import Flask, render_template</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p><span class="mention">@app.route</span>(’/’)</p>
+<p>def hello_world():</p>
+<pre><code>return render_template('index.html')
+</code></pre>
+<p>ככה נראה הקובץ index.html:</p>
+<pre><code>&lt;!-- https://github.com/joshbuchea/HEAD --&gt;
+
+&lt;link rel="stylesheet" href="index.css"&gt;
+
+&lt;meta charset="utf-8"&gt;
+
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+&lt;title&gt;Movies Recommondations&lt;/title&gt;
+</code></pre>
+<pre><code>&lt;!-- https://www.youtube.com/watch?v=3elFdnJexmU&amp;feature=youtu.be&amp;ab_channel=%D7%9E%D7%93%D7%A8%D7%99%D7%9A%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F --&gt;
+
+&lt;h1&gt;Movies Recommondations&lt;/h1&gt;
+
+&lt;form action="/action_page.php" method="get"&gt;
+
+  &lt;label for="genres"&gt;Choose your genre from the list:&lt;/label&gt;
+
+  &lt;input list="genres" name="genre" id="genre"&gt;
+
+  &lt;datalist id="genres"&gt;
+
+    &lt;option value="Comedy"&gt;
+
+    &lt;option value="Action"&gt;
+
+    &lt;option value="Drama"&gt;
+
+    &lt;option value="Science Fiction"&gt;
+
+    &lt;option value="Family"&gt;
+
+  &lt;/datalist&gt;
+
+  &lt;button type="submit" class="btn btn-primary"&gt;Search&lt;/button&gt;
+
+&lt;/form&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Results&lt;/h2&gt;
+
+&lt;div id="results"&gt;
+
+  &lt;div class="result" data-result-id="1"&gt;
+
+    &lt;div class="movies-details"&gt;
+
+      &lt;div class="movie-name res-property"&gt;{{movie-name}}&lt;/div&gt;
+
+      &lt;div class="movie-length res-property"&gt;{{movie-length}}&lt;/div&gt;
+
+      &lt;div class="movie-rate res-property"&gt;{{movie-rate}}&lt;/div&gt;
+
+      &lt;div class="movie-main-actors res-property"&gt;{{movie-main-actors}}&lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class="movies-result-sample"&gt;
+
+     {{ code sample}}
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T15:17:28Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  3:17pm
+                  </time>
+<meta content="2020-10-31T15:17:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי, מה גורם לפונקציית הפייתון לרוץ? יש דוגמא בפורום מה התוכן צריך להיות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T15:26:05Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  3:26pm
+                  </time>
+<meta content="2020-10-31T15:26:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא ממש הבנתי את השאלה…<br/>
+אתה מדבר על פונקציית hello world?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T17:39:45Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  5:39pm
+                  </time>
+<meta content="2020-10-31T17:39:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן, משהו אמור להריץ אותה. ואגב, בטרמינל שבו הרצת חייב להיות לוג כלשהו שמפרט את השגיאה שקיבלת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T19:05:09Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  7:05pm
+                  </time>
+<meta content="2020-10-31T19:05:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי אני מניח שבטרמינל התכוונת לcmd (בהתחלה חשבתי שהתכוונת לvscode),<br/>
+אני מקבל את ההודעה הזאת:<br/>
+return render_template(‘index3.html’, str1=“hagai3”)<br/>
+File “c:\programdata\anaconda3\lib\site-packages\flask\templating.py”, line 140, in render_template<br/>
+ctx.app,<br/>
+File “c:\programdata\anaconda3\lib\site-packages\flask\templating.py”, line 120, in _render<br/>
+rv = template.render(context)<br/>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2\environment.py”, line 1090, in render<br/>
+self.environment.handle_exception()<br/>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2\environment.py”, line 832, in handle_exception<br/>
+reraise(*rewrite_traceback_stack(source=source))<br/>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2_compat.py”, line 28, in reraise<br/>
+raise value.with_traceback(tb)<br/>
+File “C:\Users\Hagai\Desktop\חגי\תכנות\Visual Studio Code\YouTube live\week 12\project\templates\index3.html”, line 35, in top-level template code<br/>
+</p><div>{{movie-name}}</div><br/>
+jinja2.exceptions.UndefinedError: ‘movie’ is undefined<br/>
+127.0.0.1 - - [31/Oct/2020 20:58:34] “←[35m←[1mGET / HTTP/1.1←[0m” 500 -
+<p>שיחקתי קצת עם הקוד, מחקתי ובדקתי ומה שעושה את הבעיה נמצא בחלק הזה של הקוד:</p>
+<div>
+<pre><code>  &lt;div class="result" data-result-id="1"&gt;
+
+    &lt;div class="movies-details"&gt;
+
+      &lt;div class="movie-name res-property"&gt;{{movie-name}}&lt;/div&gt;
+
+      &lt;div class="movie-length res-property"&gt;{{movie-length}}&lt;/div&gt;
+
+      &lt;div class="movie-rate res-property"&gt;{{movie-rate}}&lt;/div&gt;
+
+      &lt;div class="movie-main-actors res-property"&gt;{{movie-main-actors}}&lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+</code></pre>
+<p>אגב ושאלה נוספת, אני רואה שהוא לא מפעיל את הקובץ css והייתי שמח לדעת איך לעשות זאת</p>
+</div>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T20:23:59Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  8:23pm
+                  </time>
+<meta content="2020-10-31T20:23:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קבצי CSS צריך לשים בתיקיית STATIC ולדאוג להגדיר נתיב מתאים. (או לדרוס את ברירת המחדל ולשים בנתיב אחר, יש מדריכים בשפע באינטרנט איך להגדיר)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="8409.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-31T20:58:48Z" itemprop="datePublished">
+                     31 באוקטובר,‏ 2020,‏  8:58pm
+                  </time>
+<meta content="2020-10-31T20:58:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הקובץ html מצפה לקבל פרמטרים שאתה לא שולח לו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/render-templates/8409 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:41:50 GMT -->
+</html>

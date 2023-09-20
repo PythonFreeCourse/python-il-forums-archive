@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/mutable/7108 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:07:55 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>אתחול ארגומנט אופציונלי כ-mutable - שבוע 7 - פייתון בעברית ובחינם</title>
+<meta content="*ספציפית: nemeses =  בחתימת הפונקציה. 
+הבודק האוטומטי מכיר: 
+  
+כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא, 
+והבנתי איזו תופעה ההערה הזו נועדה למנוע. 
+רק שבמקרה הזה התופעה היא מכוונת. 
+אני רוצה שבקריאה הראשונה לפ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7108.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7108.rss" rel="alternate nofollow" title="הזנת RSS של ‚אתחול ארגומנט אופציונלי כ-mutable’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpg" property="og:image"/>
+<meta content="7108.html" property="og:url"/>
+<meta content="7108.html" name="twitter:url"/>
+<meta content="אתחול ארגומנט אופציונלי כ-mutable" property="og:title"/>
+<meta content="אתחול ארגומנט אופציונלי כ-mutable" name="twitter:title"/>
+<meta content="*ספציפית: nemeses =  בחתימת הפונקציה.  הבודק האוטומטי מכיר:     כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,  והבנתי איזו תופעה ההערה הזו נועדה למנוע.  רק שבמקרה הזה התופעה היא מכוונת.  אני רוצה שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).  האם יש להשאיר את זה כך למרות ההערה?" property="og:description"/>
+<meta content="*ספציפית: nemeses =  בחתימת הפונקציה.  הבודק האוטומטי מכיר:     כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,  והבנתי איזו תופעה ההערה הזו נועדה למנוע.  רק שבמקרה הזה התופעה היא מכוונת.  אני רוצה שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).  האם יש להשאיר את זה כך למרות ההערה?" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 7" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="mutability" property="og:article:tag"/>
+<meta content="קונבנציות-תכנות" property="og:article:tag"/>
+<meta content="ערך-דיפולטי" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="14 ❤"/>
+<meta content="2020-06-12T03:51:09+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"אתחול ארגומנט אופציונלי כ-mutable","mainEntity":{"@type":"Question","name":"אתחול ארגומנט אופציונלי כ-mutable","text":"*ספציפית: nemeses =  בחתימת הפונקציה.\n\nהבודק האוטומטי מכיר:\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/043082f0b301330e57a173b47eba642167eb9e3d\" title=\"IMG_20200612_064537\">[IMG_20200612_064537]<\/a>\n\nכדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,\n\nוהבנתי איזו תופעה ההערה הזו נועדה למנוע.\n\nרק שבמקרה הזה התופעה היא מכוונת.\n\nאני רוצה שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוס&hellip;","upvoteCount":0,"answerCount":1,"dateCreated":"2020-06-12T03:51:09.517Z","author":{"@type":"Person","name":"גיא טריסקר"},"acceptedAnswer":{"@type":"Answer","text":"אגב, בניסוי שלי קרו דברים מעניינים:\n\nביצירת אובייקטים - כל אחד בשלו, ומצביע לאן שנראה שמתבקש.\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f\" title=\"IMG_20200612_161514\">[IMG_20200612_161514]<\/a>\n\nplayer_1, ו-player-3 מצביעים על רשימה ריקה;\n\nplayer_2 מצביע על player_1.\n\nכאשר נבצע append לרשימת ה-nemeses של player_3:\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/d/db5496b5f165ccfd59543976bd80b1057803f837.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/db5496b5f165ccfd59543976bd80b1057803f837\" title=\"IMG_20200612_161545\">[IMG_20200612_161545]<\/a>\n\nהוא מתווסף גם לרשימה של player_1.\n\n&hellip;","upvoteCount":0,"dateCreated":"2020-06-12T13:21:32.071Z","url":"https://forums.pythonic.guru/t/mutable/7108/11","author":{"@type":"Person","name":"DissonantHarmony"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7108.html">אתחול ארגומנט אופציונלי כ-mutable</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-7/17.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 7</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/mutability.html" rel="tag">mutability</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a7%d7%95%d7%a0%d7%91%d7%a0%d7%a6%d7%99%d7%95%d7%aa-%d7%aa%d7%9b%d7%a0%d7%95%d7%aa.html" rel="tag">קונבנציות-תכנות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a2%d7%a8%d7%9a-%d7%93%d7%99%d7%a4%d7%95%d7%9c%d7%98%d7%99.html" rel="tag">ערך-דיפולטי</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="אתחול ארגומנט אופציונלי כ-mutable" itemprop="headline"/>
+<meta content="שבוע 7" itemprop="articleSection"/>
+<meta content="mutability, קונבנציות-תכנות, ערך-דיפולטי" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T03:51:09Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  3:51am
+                  </time>
+<meta content="2021-11-30T00:24:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>*ספציפית: nemeses = <span class="chcklst-box fa fa-square-o fa-fw"></span> בחתימת הפונקציה.</p>
+<p>הבודק האוטומטי מכיר:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/043082f0b301330e57a173b47eba642167eb9e3d" href="../../uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpg" title="IMG_20200612_064537"><img alt="IMG_20200612_064537" data-base62-sha1="B3Qpb2Lnu66ILDWDXbas0r7syp" data-small-upload="../../uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_513x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_513x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg 2x" width="513"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">IMG_20200612_064537</span><span class="informations">737×717 126 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,<br/>
+והבנתי איזו תופעה ההערה הזו נועדה למנוע.</p>
+<p><strong>רק שבמקרה הזה התופעה היא מכוונת</strong>.<br/>
+אני <em>רוצה</em> שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).</p>
+<p>האם יש להשאיר את זה כך למרות ההערה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/7125/2.html" itemprop="url">אורטל קומבט חלק 1 שאלה על מילונים משהו שנתקלתי בו והשמח לעזרה</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T03:56:31Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  3:56am
+                  </time>
+<meta content="2020-06-12T03:56:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הנושא הוזכר המחברות.אם אתה עושה את זה כארגומנט בפונקציה אז תשתמש ב None כערך ברירת מחדל</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T04:11:20Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  4:11am
+                  </time>
+<meta content="2020-06-12T04:11:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נועד על מנת שקריאה נוספת לפונקציה לא תרחיב את הרשימה שהוגדרה בפעם הראשונה.</p>
+<p>למשל: פונקציה שמקבלת מספר, ורשימה אופציונלית של שני מספרים. החזר את המכפלה של המספר, בסכום שני המספרים שברשימה:</p>
+<pre><code>def times_this (number, numbers = []):
+    return number * sum(numbers)
+</code></pre>
+<p>אם נקרא לפונקציה:</p>
+<p>times_this(1, [2, 3])<br/>
+אז נקבל:<br/>
+1 * 5 = 5</p>
+<p>אבל אם נקרא לפונקציה:</p>
+<p><code>times_this(1, [4, 5])</code>,</p>
+<p>אז לא נקבל:<br/>
+1 * 9,</p>
+<p>אלא:<br/>
+1 * 14</p>
+<p>למה?<br/>
+כי הרשימה הפנימית תכיל את 2, 3 שהיו קודם,<br/>
+ועכשיו היא תהיה:<br/>
+[2, 3, 4, 5]</p>
+<p>ההצעה לשמור את המשתנה כ-None, ולהגדיר אותו מבפנים, נועדה למנוע את זה.</p>
+<p>*אבל אם זה המקרה הרצוי?<br/>
+או אלטרנטיבית: מה אם הקוד שלי בנוי בצורה כזו שאי אפשר לקרוא לפונקציה הזו עוד פעם בלי שהרשימה הזו תהיה כבר ריקה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T04:22:21Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  4:22am
+                  </time>
+<meta content="2020-06-12T04:22:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="7108" data-username="DissonantHarmony">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/dissonantharmony/40/461_2.png" width="20"/> DissonantHarmony:</div>
+<blockquote>
+<p><strong>רק שבמקרה הזה התופעה היא מכוונת</strong> .<br/>
+אני <em>רוצה</em> שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).</p>
+</blockquote>
+</aside>
+<p>הדוגמה שתיארת היא לא מה שיקרה, נסה להריץ והיווכח בכך. בדוגמה שנתת אתה תקבל <code>1 * 9</code> ולא <code>1 * 14</code>, כיוון שלא השתמשת כלל בפרמטר הדיפולטי שהוגדר.<br/>
+הבעיה מתחילה שאתה משנה את numbers במהלך הפונקציה:</p>
+<pre><code class>def a(b, c=[]):
+    c.append(b)
+    return c
+
+a(5)
+a(6)
+print(a(7))
+</code></pre>
+<p>יחזיר לך <code>[5, 6, 7]</code>.<br/>
+העניין הוא שכמעט אף פעם זה לא מה שאתה רוצה.<br/>
+אם אתה שומר state על ארגומנט של הפונקציה זה סימן לבחירות עיצוב לא כ"כ טובות בד"כ, ואולי היה אפשר לעשות דברים אחרת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T04:26:55Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  4:26am
+                  </time>
+<meta content="2020-06-12T04:26:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר גם להוסיף תנאי שיקבע מפורשות מה אתה רוצה שיהיה אם לרשימה יש ערך ואם היא ריקה או לא הועברה בכלל בקיראה לפונקציה. None הוא רק ערך ברירת מחדל אם לא העברת רשימה בכלל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T12:10:29Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏ 12:10pm
+                  </time>
+<meta content="2020-06-12T12:10:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>
+<p>אתה צודק. (עכשיו גם נכנסתי לשחק עם זה, בשביל “להתלכלך, ולהרגיש בידיים”).</p>
+</li>
+<li>
+<p>זה עדיין לא עונה לי על השאלה. <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/></p>
+</li>
+</ol>
+<hr/>
+<p>-אני אחדד: הארגומנט הזה נמצא בחתימה של <code>__init__</code>.<br/>
+אנחנו מגדירים ישות, והיא מקבלת פרמטר nemesis שמצביע על הרשימה שמועברת בארגומנט הזה (או לברירת המחדל: רשימה ריקה), וזהו. אין יותר התעסקות עם זה בתוך המתודה.</p>
+<p>אני <strong>מבין</strong> למה זה משמעותי בעיניך <strong>כחונך</strong> להטמיע בנו הרגלים בריאים, ואני לחלוטין מתכוון גם, כחניך, <strong>לסמוך על התהליך</strong> שאתה מתווה לנו ולתקן את זה. (וחוץ מזה: אני רוצה <strong>לכבד את הבודקים, ואת הזמן שלהם</strong> בתרגיל שלא צבוע באדום).</p>
+<p>ועם, זאת אני ממש רוצה לשאול:<br/>
+בהנחה שלא פספסתי משהו - והזהירות הזו לא נחוצה <strong>הפעם</strong>: אם היית מסיר לרגע את הכובע של החונך, ומרכיב במקומו משקפים של מתכנת ותיק שפשוט בא לעבוד עם הקוד שלי - איך היית מרגיש לגבי “חכמולוגיה” כזו? (<strong>אם</strong> יוצאים מנק’ הנחה שבמקרה הזה אין בה צורך).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T12:18:12Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏ 12:18pm
+                  </time>
+<meta content="2020-06-12T12:18:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מכין את מה שאני אומר. (וזה מה שאני אעשה),<br/>
+אבל אני מרגיש שמה שזה בא להשיג הפעם - לא נחוץ.</p>
+<p>ואז (בהנחה שזה באמת לא נחוץ, ולא פספסתי כלום) - אני מרגיש שזו סתם חכמולוגיה.</p>
+<p>לתפישתי (ההדיוטה), זה לא שונה מכתיבת הערה שמסבירה משהו סופר מובן, או ביצוע במבחן במתמטיקה איזו פעולה בזהירות שאין בה צורך, סתם כדי להראות לבודק שאני יודע שצריך להיות זהיר. (גם אם במקרה הזה - לא).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T12:37:03Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏ 12:37pm
+                  </time>
+<meta content="2020-06-12T12:37:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מניחה שהייתי ניגשת לזה מנקודת מבט של מישהו אחר  - שקורא את הקוד / רוצה לשנות אותו.</p>
+<ol>
+<li>
+<p>האם זה קריא? כלומר, האם קל לפספס את השינוי שקורה במקרה הזה?</p>
+</li>
+<li>
+<p>אם יערכו שינויים מסוימים בתנאי המשחק, ו/או יצטרפו שימושים נוספים למשתנה או לפונקציה, האם צורת הכתיבה שבה בחרת תאפשר זאת בעריכה מינימלית?</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/9/94b4a11275a69921dc119acfc9b120786ff891d4.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T12:41:11Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏ 12:41pm
+                  </time>
+<meta content="2020-06-12T12:41:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה מניח שבאתחול של אובייקט חדש של המחלקה תהיה רשימה ריקה חדשה, ולמרבה הצער זו הנחה שגויה<br/>
+<img alt="תמונה" data-base62-sha1="ldvF2fLzYAbhXVSTzXWSac7Ier2" height="358" src="../../uploads/default/original/2X/9/94b4a11275a69921dc119acfc9b120786ff891d4.png" width="424"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T12:48:26Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏ 12:48pm
+                  </time>
+<meta content="2020-06-12T12:48:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בום. <img alt=":heart:" class="emoji" src="../../images/emoji/twitter/heartc164.png?v=9" title=":heart:"/></p>
+<p>הלכתי לערוך.<br/>
+בי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T13:21:32Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  1:21pm
+                  </time>
+<meta content="2020-06-12T13:59:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אגב, בניסוי שלי קרו דברים מעניינים:</p>
+<p>ביצירת אובייקטים - כל אחד בשלו, ומצביע לאן שנראה שמתבקש.<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f" href="../../uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpg" title="IMG_20200612_161514"><img alt="IMG_20200612_161514" data-base62-sha1="AhbRc9er24rYiT3TWuiTZqn7OQ7" data-small-upload="../../uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_10x10.png" height="261" src="../../uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_690x261.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_690x261.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_1035x391.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">IMG_20200612_161514</span><span class="informations">1080×410 63.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+player_1, ו-player-3 מצביעים על רשימה ריקה;<br/>
+player_2 מצביע על player_1.</p>
+<p>כאשר נבצע append לרשימת ה-nemeses של player_3:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/db5496b5f165ccfd59543976bd80b1057803f837" href="../../uploads/default/original/2X/d/db5496b5f165ccfd59543976bd80b1057803f837.jpg" title="IMG_20200612_161545"><img alt="IMG_20200612_161545" data-base62-sha1="vihNnN2esekp5NDv8gQf8E5bk5V" data-small-upload="../../uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_10x10.png" height="318" src="../../uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_690x318.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_690x318.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_1035x477.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/db5496b5f165ccfd59543976bd80b1057803f837.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">IMG_20200612_161545</span><span class="informations">1043×481 120 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+הוא מתווסף גם לרשימה של player_1.<br/>
+*אך player_2 נשאר אפאתי.</p>
+<p>ננסה לעשות append לרשימה שאליה מצביע player_3, וזה יתווסף ל-player_1, ו-player_3, אבל player_2, שקבל ערך כשהוגדר - עדיין אפאטי.</p>
+<hr/>
+<p>אני מבין מכך שכמו שאורפז אמרה - כל המשתנים שבהם nemeses הוא ברירת המחדל - חולקים את אותה הרשימה.</p>
+<p>*אבל למדתי שאלו שכן מקבלים ערך (ולא משתמשים בברירת המחדל) - יהנו מרשימה עצמאית משלהם.</p>
+<p>*זה גם מסביר למה הכל היה נראה “חלק” בהתחלה - כשהדפסתי את האויבים של player_1, ו-player_2, וחשבתי בטעות ש: “רואים? כל אחד, והאויבים שלו!” (לא: player_2 מקבל רשימה משלו, אבל כל player_x שלא הוזנה להם רשימה, ומשתמש בברירת המחדל - יחלקו רשימה משותפת, כמו שקרה עם player_1 ו-player_3 בניסוי הזה).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7108.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T13:23:25Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  1:23pm
+                  </time>
+<meta content="2020-06-12T13:23:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התחכמויות בקוד לא מובילות בד"כ למקומות טובים.<br/>
+הן לא קריאות למשתמשים שבאים אחריך, ובסופו של דבר כשבאים להרחיב את התוכנה הן מתגלות כמקלות בגלגלים.<br/>
+מהמקום שלי אני יכול לתרום שברוב המוחלט של המקרים עדיף לחפש את הדרך הנקייה והיסודית לכתוב קוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/mutable/7108 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:08:08 GMT -->
+</html>

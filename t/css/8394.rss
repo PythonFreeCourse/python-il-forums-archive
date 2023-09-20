@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שגיאת בודק אוטומטי ב-CSS</title>
+    <link>https://forums.pythonic.guru/t/css/8394</link>
+    <description>השתמשתי בגרדיאנט בפרויקט שלי עבור צבע רקע
+
+    background: linear-gradient(180deg, var(--blue) 0%, var(--pink) 100%);
+(יש בנוסף גם fallback לדפדפנים שלא תומכים בגרדיאנטים)
+
+ה-CSS הזה כמובן עובד בפועל, אבל הבודק האוטומטי שם לי שגיאה
+&gt;CSS: “background”: “100%” is not a “color-stop” value.
+
+ניסיתי גם לעשות עוד כמה ואריאציות לאותו קוד שהסתיימו בשגיאות שונות:
+
+    background: linear-gradient(180deg, var(--blue), var(--pink));
+
+&gt; CSS: “background”: too few values for the property “linear-gradient”.
+
+וגם:
+
+    background: linear-gradient(var(--pink), var(--blue));
+
+&gt; CSS: “background”: Cannot invoke &quot;org.w3c.css.values.CssValue.getType()&quot; because &quot;&lt;local4&gt;&quot; is null.
+
+כל הגרסאות נבדקו בכרום ועובדות.
+אני תוהה אם זה קורה בגלל שהשתמשתי במשתני CSS (ולמרות שאני משתמשת בהם גם בעוד מקומות ולא מקבלת עליהם שגיאות).
+כמובן שהגרדיאנט הזה לא באמת קריטי והוא נטו עיצובי, אבל חבל לי למחוק אותו. יש מה לעשות לגבי זה?</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 24 Oct 2020 21:41:16 +0000</lastBuildDate>
+    <category>שבוע 12</category>
+    <atom:link href="https://forums.pythonic.guru/t/css/8394.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שגיאת בודק אוטומטי ב-CSS</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Ode" data-post="1" data-topic="8394">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/ode/40/1157_2.png" class="avatar"> Ode:</div>
+<blockquote>
+<p>כל הגרסאות נבדקו בכרום ועובדות.</p>
+</blockquote>
+</aside>
+<p>חשוב לי לפתוח בזה שדפדפנים הם בד"כ סופר סלחנים ומנסים לעשות לופים באוויר כדי שדברים יעבדו, אז זה לא ערובה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<aside class="quote no-group" data-username="Ode" data-post="1" data-topic="8394">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/ode/40/1157_2.png" class="avatar"> Ode:</div>
+<blockquote>
+<p>אני תוהה אם זה קורה בגלל שהשתמשתי במשתני CSS (ולמרות שאני משתמשת בהם גם בעוד מקומות ולא מקבלת עליהם שגיאות).</p>
+</blockquote>
+</aside>
+<p>מעניין. אני חושב שלא, אם כן זה באג ב־linter שאנחנו משתמשים בו.</p>
+<aside class="quote no-group" data-username="Ode" data-post="1" data-topic="8394">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/ode/40/1157_2.png" class="avatar"> Ode:</div>
+<blockquote>
+<p>כמובן שהגרדיאנט הזה לא באמת קריטי והוא נטו עיצובי, אבל חבל לי למחוק אותו. יש מה לעשות לגבי זה?</p>
+</blockquote>
+</aside>
+<p>ברור שאם יהיה צורך פשוט נוותר על ההערה האוטומטית ולא על הגרדיאנט</p>
+<hr>
+<p>לפי גיגול, זה באמת נגרם בגלל <a href="https://github.com/validator/validator/issues/814">משתני ה־CSS</a>, כך שאת יכולה להתעלם מההערה.</p>
+          <p><a href="https://forums.pythonic.guru/t/css/8394/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/css/8394/2</link>
+        <pubDate>Sat, 24 Oct 2020 21:41:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8394-2</guid>
+        <source url="https://forums.pythonic.guru/t/css/8394.rss">שגיאת בודק אוטומטי ב-CSS</source>
+      </item>
+      <item>
+        <title>שגיאת בודק אוטומטי ב-CSS</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>השתמשתי בגרדיאנט בפרויקט שלי עבור צבע רקע</p>
+<pre><code>background: linear-gradient(180deg, var(--blue) 0%, var(--pink) 100%);
+</code></pre>
+<p>(יש בנוסף גם fallback לדפדפנים שלא תומכים בגרדיאנטים)</p>
+<p>ה-CSS הזה כמובן עובד בפועל, אבל הבודק האוטומטי שם לי שגיאה</p>
+<blockquote>
+<p>CSS: “background”: “100%” is not a “color-stop” value.</p>
+</blockquote>
+<p>ניסיתי גם לעשות עוד כמה ואריאציות לאותו קוד שהסתיימו בשגיאות שונות:</p>
+<pre><code>background: linear-gradient(180deg, var(--blue), var(--pink));
+</code></pre>
+<blockquote>
+<p>CSS: “background”: too few values for the property “linear-gradient”.</p>
+</blockquote>
+<p>וגם:</p>
+<pre><code>background: linear-gradient(var(--pink), var(--blue));
+</code></pre>
+<blockquote>
+<p>CSS: “background”: Cannot invoke “org.w3c.css.values.CssValue.getType()” because “” is null.</p>
+</blockquote>
+<p>כל הגרסאות נבדקו בכרום ועובדות.<br>
+אני תוהה אם זה קורה בגלל שהשתמשתי במשתני CSS (ולמרות שאני משתמשת בהם גם בעוד מקומות ולא מקבלת עליהם שגיאות).<br>
+כמובן שהגרדיאנט הזה לא באמת קריטי והוא נטו עיצובי, אבל חבל לי למחוק אותו. יש מה לעשות לגבי זה?</p>
+          <p><a href="https://forums.pythonic.guru/t/css/8394/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/css/8394/1</link>
+        <pubDate>Sat, 24 Oct 2020 19:52:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8394-1</guid>
+        <source url="https://forums.pythonic.guru/t/css/8394.rss">שגיאת בודק אוטומטי ב-CSS</source>
+      </item>
+  </channel>
+</rss>

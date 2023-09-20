@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 9 – יום 5: תרגילי סיכום</title>
+    <link>https://forums.pythonic.guru/t/9-5/7851</link>
+    <description>## שבוע 9 – תרגול
+
+### `None` shall `pass`
+
+בקובץ connected_users.txt מופיעים המשתמשים שמחוברים למערכת שלנו.
+בכל שורה מופיע משתמש יחיד.
+
+כתבו decorator שנקרא `@login_required`.
+ה־decorator יניח שהפרמטר הראשון של הפונקציה אותה הוא &quot;מקשט&quot; הוא שם המשתמש.
+אם שם המשתמש נמצא בקובץ `connected_users.txt`, הריצו את הפונקציה.
+אם שם המשתמש לא נמצא שם, זרקו חריגת UserNotFoundError (אותה תצרו בעצמכם).
+
+בונוס: דאגו ל־type annotations בתרגיל.
+אנקדוטה משעשעת: אנחנו משתמשים ב־decorator שמבוסס על הרעיון הזה [בקוד של מערכת בדיקת התרגילים](https://github.com/PythonFreeCourse/lms/blob/master/lms/lmsweb/views.py#L120).
+
+### קולונל האטי
+
+הקוד הבא מחזיר את 40 האיברים הראשונים בסדרת פיבונאצ&#39;י:
+
+```python
+def fibo(n):
+    if n &lt;= 2:
+        return 1
+    return fibo(n - 1) + fibo(n - 2)
+
+
+print([fibo(n) for n in range(1, 40)])
+```
+
+ממשו decorator בשם `cache`.
+ה־decorator שתיצרו ידע לשמור את התוצאה ש־`fibo` מחזירה עבור `n` מסוים.
+אם הפונקציה נקראה בעבר עם `n` זהה, `cache` יחזיר מיד את הערך השמור במקום לחשב אותו מחדש.
+
+לדוגמה – אם נקרא ל־`fibo(6)` פעמיים:
+1. בקריאה הראשונה התוכנה שלנו תחשב את ערך הפיבונאצ&#39;י השישי ותחזיר לנו 8.
+2. בקריאה השנייה cache יחזיר מייד את התוצאה 8, מבלי לקרוא באמת לפונקציה fibo שמחשבת את סדרת פיבונאצ&#39;י.
+
+איך תדעו שהצלחתם? הוספה של `@cache` מעל fibo אמורה לאפשר לכם להריץ את הקוד שלמעלה עם `range(1, 100)` ושזה יעבוד בצ&#39;יק.
+
+אחרי שהצלחתם, ודאו שה־decorator שלכם פועל על כל כמות פרמטרים שהיא (ב־`fibo` יש רק אחד, אבל עליכם לדאוג שה־decorator שלכם יהיה גמיש לכמות הפרמטרים שהוא מקבל).
+
+[details=&quot;רמז&quot;]
+בעת מימוש הפונקציה המקוננת לצורך ה־decorator, אפשר להגדיר משתנים בתוך הפונקציה החיצונית.
+לפונקציה הפנימית יש גישה למשתנים הללו.
+[/details]
+
+### ביגבאגים
+
+לפניכם תוכנית שמקבלת Iterable כלשהו של מספרים (נניח: [1, 6, 7, 3]) ותוצאה רצויה (נניח: 10).
+התוכנית תחזיר את כל התרגילים החשבוניים שאפשר לבנות מהמספרים שקיבלה.
+
+עבור הדוגמה שניתנה מעלה התוכנה אמורה להחזיר את הפלט הבא:
+[details=&quot;פלט לדוגמה&quot;]
+    1*7+6-3
+    1*6+7-3
+    7*1+6-3
+    6*1+7-3
+    1*7-3+6
+    1*6-3+7
+    7*1-3+6
+    6*1-3+7
+    3*6-1-7
+    3*6-7-1
+    6*3-1-7
+    6*3-7-1
+    6/3+1+7
+    6/3+7+1
+    7/1+6-3
+    6/1+7-3
+    7/1-3+6
+    6/1-3+7
+    7+1*6-3
+    7+6*1-3
+    6+1*7-3
+    6+7*1-3
+    1+6/3+7
+    7+6/3+1
+    7+6/1-3
+    6+7/1-3
+    1+7+6/3
+    7+1+6/3
+    7+6-1*3
+    7+6-3*1
+    6+7-1*3
+    6+7-3*1
+    7+6-3/1
+    6+7-3/1
+    7-1*3+6
+    7-3*1+6
+    6-1*3+7
+    6-3*1+7
+    7-3/1+6
+    6-3/1+7
+    7-3+1*6
+    7-3+6*1
+    6-3+1*7
+    6-3+7*1
+    7-3+6/1
+    6-3+7/1
+[/details]
+
+לתוכנית הוכנסו שלושה תקלים משמעותיים.
+הוסיפו Type annotations לתוכנית ותקנו את התקלים שמופיעים בה.
+היעזרו במנפה השגיאות של סביבת העבודה שלכם.
+
+```python
+import itertools
+from typing import NamedTuple
+
+
+ALLOWED_OPERATORS = (&#39;*&#39;, &#39;/&#39;, &#39;+&#39;, &#39;-&#39;)  # , &#39;**)
+REPEAT_NUMBERS = False
+
+
+def normalize_input(digits):
+    if not all(map(str.isdecimal, digits)):
+        raise ValueError(&quot;&#39;Digits&#39; must be consisted of decimal numbers.&quot;)
+    return list(map(str, digits))
+
+
+def any_order(items, length=None, allow_repeats=True):
+    length = length or len(items)
+
+    if allow_repeats:
+        yield from itertools.product(items, repeat=length)
+    else:
+        yield from itertools.permutations(items, r=length)
+
+
+def zip_to_str(expression):
+    return &#39;&#39;.join(&#39;&#39;.join(i) for i in expression)
+
+
+def get_answer(digits, operators):
+    zipped_expression = itertools.zip_longest(digits, operators, fillvalue=&#39;0&#39;)
+    expression = zip_to_str(zipped_expression)
+    try:
+        return Answer(solution=eval(expression), expression=expression)
+    except ZeroDivisionError:
+        return Answer(solution=None, expression=expression)
+
+
+def solver(allowed_digits, solution):
+    assert isinstance(solution, int), &quot;Solution must be a number.&quot;
+    digits = normalize_input(allowed_digits)
+
+    for operators in any_order(ALLOWED_OPERATORS, length=len(digits)):
+        for digits_option in any_order(digits, allow_repeats=REPEAT_NUMBERS):
+            answer = get_answer(digits_option, operators)
+            if answer.solution == solution:
+                yield answer.expression
+
+
+if __name__ == &#39;__main__&#39;:
+    for solution in solver(&#39;1679&#39;, solution=10):
+        print(solution)
+```</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 15 Aug 2020 13:15:34 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/9-5/7851.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 9 – יום 5: תרגילי סיכום</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>אנחנו צריכים ליצור את קובץ connected_users.txt?</p>
+          <p><a href="https://forums.pythonic.guru/t/9-5/7851/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-5/7851/2</link>
+        <pubDate>Sat, 15 Aug 2020 13:15:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7851-2</guid>
+        <source url="https://forums.pythonic.guru/t/9-5/7851.rss">שבוע 9 – יום 5: תרגילי סיכום</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 5: תרגילי סיכום</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>שבוע 9 – תרגול</h2>
+<h3>
+<code>None</code> shall <code>pass</code>
+</h3>
+<p>בקובץ connected_users.txt מופיעים המשתמשים שמחוברים למערכת שלנו.<br>
+בכל שורה מופיע משתמש יחיד.</p>
+<p>כתבו decorator שנקרא <code>@login_required</code>.<br>
+ה־decorator יניח שהפרמטר הראשון של הפונקציה אותה הוא “מקשט” הוא שם המשתמש.<br>
+אם שם המשתמש נמצא בקובץ <code>connected_users.txt</code>, הריצו את הפונקציה.<br>
+אם שם המשתמש לא נמצא שם, זרקו חריגת UserNotFoundError (אותה תצרו בעצמכם).</p>
+<p>בונוס: דאגו ל־type annotations בתרגיל.<br>
+אנקדוטה משעשעת: אנחנו משתמשים ב־decorator שמבוסס על הרעיון הזה <a href="https://github.com/PythonFreeCourse/lms/blob/master/lms/lmsweb/views.py#L120">בקוד של מערכת בדיקת התרגילים</a>.</p>
+<h3>קולונל האטי</h3>
+<p>הקוד הבא מחזיר את 40 האיברים הראשונים בסדרת פיבונאצ’י:</p>
+<pre><code class="lang-python">def fibo(n):
+    if n &lt;= 2:
+        return 1
+    return fibo(n - 1) + fibo(n - 2)
+
+
+print([fibo(n) for n in range(1, 40)])
+</code></pre>
+<p>ממשו decorator בשם <code>cache</code>.<br>
+ה־decorator שתיצרו ידע לשמור את התוצאה ש־<code>fibo</code> מחזירה עבור <code>n</code> מסוים.<br>
+אם הפונקציה נקראה בעבר עם <code>n</code> זהה, <code>cache</code> יחזיר מיד את הערך השמור במקום לחשב אותו מחדש.</p>
+<p>לדוגמה – אם נקרא ל־<code>fibo(6)</code> פעמיים:</p>
+<ol>
+<li>בקריאה הראשונה התוכנה שלנו תחשב את ערך הפיבונאצ’י השישי ותחזיר לנו 8.</li>
+<li>בקריאה השנייה cache יחזיר מייד את התוצאה 8, מבלי לקרוא באמת לפונקציה fibo שמחשבת את סדרת פיבונאצ’י.</li>
+</ol>
+<p>איך תדעו שהצלחתם? הוספה של <code>@cache</code> מעל fibo אמורה לאפשר לכם להריץ את הקוד שלמעלה עם <code>range(1, 100)</code> ושזה יעבוד בצ’יק.</p>
+<p>אחרי שהצלחתם, ודאו שה־decorator שלכם פועל על כל כמות פרמטרים שהיא (ב־<code>fibo</code> יש רק אחד, אבל עליכם לדאוג שה־decorator שלכם יהיה גמיש לכמות הפרמטרים שהוא מקבל).</p>
+
+רמז <a href="https://forums.pythonic.guru/t/9-5/7851/1">(לחיצה לפרטים נוספים)</a>
+<h3>ביגבאגים</h3>
+<p>לפניכם תוכנית שמקבלת Iterable כלשהו של מספרים (נניח: [1, 6, 7, 3]) ותוצאה רצויה (נניח: 10).<br>
+התוכנית תחזיר את כל התרגילים החשבוניים שאפשר לבנות מהמספרים שקיבלה.</p>
+<p>עבור הדוגמה שניתנה מעלה התוכנה אמורה להחזיר את הפלט הבא:</p>
+
+פלט לדוגמה <a href="https://forums.pythonic.guru/t/9-5/7851/1">(לחיצה לפרטים נוספים)</a>
+<p>לתוכנית הוכנסו שלושה תקלים משמעותיים.<br>
+הוסיפו Type annotations לתוכנית ותקנו את התקלים שמופיעים בה.<br>
+היעזרו במנפה השגיאות של סביבת העבודה שלכם.</p>
+<pre><code class="lang-python">import itertools
+from typing import NamedTuple
+
+
+ALLOWED_OPERATORS = ('*', '/', '+', '-')  # , '**)
+REPEAT_NUMBERS = False
+
+
+def normalize_input(digits):
+    if not all(map(str.isdecimal, digits)):
+        raise ValueError("'Digits' must be consisted of decimal numbers.")
+    return list(map(str, digits))
+
+
+def any_order(items, length=None, allow_repeats=True):
+    length = length or len(items)
+
+    if allow_repeats:
+        yield from itertools.product(items, repeat=length)
+    else:
+        yield from itertools.permutations(items, r=length)
+
+
+def zip_to_str(expression):
+    return ''.join(''.join(i) for i in expression)
+
+
+def get_answer(digits, operators):
+    zipped_expression = itertools.zip_longest(digits, operators, fillvalue='0')
+    expression = zip_to_str(zipped_expression)
+    try:
+        return Answer(solution=eval(expression), expression=expression)
+    except ZeroDivisionError:
+        return Answer(solution=None, expression=expression)
+
+
+def solver(allowed_digits, solution):
+    assert isinstance(solution, int), "Solution must be a number."
+    digits = normalize_input(allowed_digits)
+
+    for operators in any_order(ALLOWED_OPERATORS, length=len(digits)):
+        for digits_option in any_order(digits, allow_repeats=REPEAT_NUMBERS):
+            answer = get_answer(digits_option, operators)
+            if answer.solution == solution:
+                yield answer.expression
+
+
+if __name__ == '__main__':
+    for solution in solver('1679', solution=10):
+        print(solution)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/9-5/7851/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-5/7851/1</link>
+        <pubDate>Fri, 14 Aug 2020 02:02:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7851-1</guid>
+        <source url="https://forums.pythonic.guru/t/9-5/7851.rss">שבוע 9 – יום 5: תרגילי סיכום</source>
+      </item>
+  </channel>
+</rss>

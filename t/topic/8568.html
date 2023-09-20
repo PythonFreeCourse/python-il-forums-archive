@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8568 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:16:40 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגילים: שבוע 15 - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="תרגול
+
+ביטויים רגולריים
+
+על גלי האתר
+כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־http:// או ב־https://. שימו לב שזה רק תרגיל, וככלל, זה נחשב רעיון רע מאוד להשתמש ב־Regular Expression כדי לחלץ &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8568.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8568.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגילים: שבוע 15’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/4/47c3de14c5323e0e64f53acbcff46408f9017c22.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/4/47c3de14c5323e0e64f53acbcff46408f9017c22.png" property="og:image"/>
+<meta content="8568.html" property="og:url"/>
+<meta content="8568.html" name="twitter:url"/>
+<meta content="תרגילים: שבוע 15" property="og:title"/>
+<meta content="תרגילים: שבוע 15" name="twitter:title"/>
+<meta content="תרגול  ביטויים רגולריים  על גלי האתר כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־http:// או ב־https://. שימו לב שזה רק תרגיל, וככלל, זה נחשב רעיון רע מאוד להשתמש ב־Regular Expression כדי לחלץ נתונים מ־HTML.   סימון למטה כדי ליצור לינק בפורומים, אפשר לפתוח סוגריים מרובעים, לכתוב את המלל שיופיע כקישור, לסגור אותם, לפתוח סוגריים עגולים, להזין את הקישור ולסגור את הסוגריים העגולים. זה יראה כך:  [מערכת התרגילים](solve.pythonic.guru). כתבו פונקציה שמקבלת פוסט בפורום, ומחזירה..." property="og:description"/>
+<meta content="תרגול  ביטויים רגולריים  על גלי האתר כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־http:// או ב־https://. שימו לב שזה רק תרגיל, וככלל, זה נחשב רעיון רע מאוד להשתמש ב־Regular Expression כדי לחלץ נתונים מ־HTML.   סימון למטה כדי ליצור לינק בפורומים, אפשר לפתוח סוגריים מרובעים, לכתוב את המלל שיופיע כקישור, לסגור אותם, לפתוח סוגריים עגולים, להזין את הקישור ולסגור את הסוגריים העגולים. זה יראה כך:  [מערכת התרגילים](solve.pythonic.guru). כתבו פונקציה שמקבלת פוסט בפורום, ומחזירה..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-15" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="6 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="29 ❤"/>
+<meta content="2020-12-18T10:43:26+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="85684658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8568.html">תרגילים: שבוע 15</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-15.html" rel="tag">שבוע-15</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגילים: שבוע 15" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-15" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/47c3de14c5323e0e64f53acbcff46408f9017c22.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-18T10:43:26Z" itemprop="datePublished">
+                     18 בדצמבר,‏ 2020,‏ 10:43am
+                  </time>
+<meta content="2022-02-10T22:44:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h1>
+<a class="anchor" href="#h-1" name="h-1"></a>תרגול</h1>
+<h2>
+<a class="anchor" href="#h-2" name="h-2"></a>ביטויים רגולריים</h2>
+<h3>
+<a class="anchor" href="#h-3" name="h-3"></a>על גלי האתר</h3>
+<p>כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־<code>http://</code> או ב־<code>https://</code>. שימו לב שזה רק תרגיל, וככלל, זה נחשב <a href="https://stackoverflow.com/a/1732454/1058671">רעיון רע מאוד</a> להשתמש ב־Regular Expression כדי לחלץ נתונים מ־HTML.</p>
+<h3>
+<a class="anchor" href="#h-4" name="h-4"></a>סימון למטה</h3>
+<p>כדי ליצור לינק בפורומים, אפשר לפתוח סוגריים מרובעים, לכתוב את המלל שיופיע כקישור, לסגור אותם, לפתוח סוגריים עגולים, להזין את הקישור ולסגור את הסוגריים העגולים. זה יראה כך:<br/>
+<code>[מערכת התרגילים](solve.pythonic.guru)</code>. כתבו פונקציה שמקבלת פוסט בפורום, ומחזירה רשימה של tuples, כך שעבור כל קישור בפוסט –</p>
+<ol>
+<li>במקום הראשון בכל tuple יופיע המלל של הקישור.</li>
+<li>במקום השני יופיע הקישור עצמו.</li>
+</ol>
+<p>לדוגמה: <code>[('מערכת התרגילים', 'solve.pythonic.guru'), ('הפורומים', 'forums.pythonic.guru')]</code>.</p>
+<h3>
+<a class="anchor" href="#h-5" name="h-5"></a>הוא מגיע</h3>
+<p>פתרו את <a href="https://adventofcode.com/2020/day/2">תרגיל 2</a> ואת <a href="https://adventofcode.com/2020/day/4">תרגיל 4</a> ב־Advent of Code 2020. השתמשו ב־Regular Expressions.</p>
+<h3>
+<a class="anchor" href="#h-6" name="h-6"></a>ר"ת</h3>
+<p>כתבו פונקציה שמקבלת רצף מילים, ומחזירה את ראשי התיבות שלהן. לדוגמה: עבור <code>United States of America</code> היא תחזיר USoA. השתמשו ב־sub כדי להגיע לתוצאה הרצויה.</p>
+<h3>
+<a class="anchor" href="#h-7" name="h-7"></a>דחוף!!!</h3>
+<p>כתבו פונקציה כנגד אנשים מציקים ומתלהמים בפורומים. הפונקציה תקבל מחרוזת שבה יש סימני פיסוק כפולים (כמו “עזרה דחוף!!!”) ותוריד את הכפילות (עזרה דחוף!). הפונקציה תעבוד גם על סימני שאלה, נקודה ופסיקים.</p>
+<p>דוגמאות:</p>
+<blockquote>
+<p>אני צריך עזרה!,!!! דחוף!!!</p>
+</blockquote>
+<p>יהפוך ל</p>
+<blockquote>
+<p>אני צריך עזרה!,! דחוף!</p>
+</blockquote>
+<p>דוגמאות:</p>
+<blockquote>
+<p>אני צריך עזרה<code>!!!!!!!</code> דחוף?!?!</p>
+</blockquote>
+<p>יהפוך ל</p>
+<blockquote>
+<p>אני צריך עזרה! דחוף?!?!</p>
+</blockquote>
+<h3>
+<a class="anchor" href="#h-8" name="h-8"></a>לפרק נתיבים</h3>
+<p>כתבו פונקציה שמקבלת נתיב לקובץ במחשב, ומחזירה במילון שם התיקייה בה הוא נמצא, את שם הקובץ ואת הסיומת שלו.</p>
+<p>לדוגמה, עבור הנתיב:</p>
+<blockquote>
+<p><code>C:\Berries Sherries\Music\Axis of Awesome\4 Chords.tar.gz</code></p>
+</blockquote>
+<p>יוחזר המילון:</p>
+<blockquote>
+<p><code>{'folder': 'Axis of Awesome', 'name': '4 Chords.tar', 'extension': 'gz'}</code></p>
+</blockquote>
+<h3>
+<a class="anchor" href="#h-9" name="h-9"></a>סוגרים חשבון</h3>
+<p>כתבו פונקציה שמקבלת ביטוי חשבוני ובודקת אם הוא תקין. ביטוי חשבוני נחשב תקין אם הוא מורכב ממספרים שביניהם הסימנים <code>+</code>, <code>-</code>, <code>*</code> או <code>/</code>, והוא מסתיים בסימן <code>=</code>. לדוגמה, הביטויים הבאים נחשבים חוקיים: <code>17/5=</code>, <code>5+2=</code>, <code>5=</code>, <code>99+1/2=</code>, <code>6.2*2=</code>, <code>6+4+3+1/2+6=</code>. הביטויים הבאים נחשבים לא חוקיים: <code>1.1.1=</code>, <code>1++7=</code>, <code>=1+1</code>, <code>1=1</code>, <code>1+=1</code>.</p>
+<h3>
+<a class="anchor" href="#h-10" name="h-10"></a>הערות</h3>
+<p>כתבו ביטוי רגולרי שמוצא את כל ההערות מרובות השורות (שמתחילות ומסתיימות ב־<code>"""</code> או <code>'''</code>) בקוד פייתון. בונוס: נסו למצוא באותו ביטוי גם הערות רגילות (<code>#</code>).</p>
+<hr/>
+<h2>
+<a class="anchor" href="#h-11" name="h-11"></a>בדיקות תוכנה</h2>
+<h3>
+<a class="anchor" href="#h-12" name="h-12"></a>רגע, צדקתי?</h3>
+<p>כתבו בדיקות לתרגילים “סימון למטה”, “לפרק נתיבים” ו"הערות".</p>
+<h3>
+<a class="anchor" href="#h-13" name="h-13"></a>חיים שלי</h3>
+<p>“משחק החיים” מתרחש בטבלה בגודל אינסופי (לצורך התרגיל, גודלה יהיה 50 על 50).<br/>
+ערך ברירת המחדל של כל התאים בטבלה הוא “מת”, כלומר 0.<br/>
+לפני המהלך הראשון של המשחק, “מחיים” מספר תאים בטבלה, כלומר, משנים את ערכם מ־0 ל־1.</p>
+<p>המשחק מתרחש ב"דורות", כאשר בכל דור (<span class="math">T</span>) מצב הלוח מתעדכן לפי מצב הלוח בדור הקודם (<span class="math">T - 1</span>).<br/>
+מצבו של תא בדור <span class="math">T</span> יקבע לפי כמות השכנים שלו, קרי, כמות התאים שמקיפים אותו (בצדדים ובאלכסוניו – 8 במספר).</p>
+<p>בדור <span class="math">T</span>, תא חי ימות (ערכו ישתנה ל־0) אם אחד התנאים הבאים התקיים:</p>
+<ol>
+<li>כמות השכנים החיים שלו בדור <span class="math">T-1</span> היא פחות מ־2 – התא ימות מבדידות.</li>
+<li>כמות השכנים החיים שלו בדור <span class="math">T-1</span> היא יותר מ־3 – התא ימות מצפיפות יתר.</li>
+</ol>
+<p>בדור <span class="math">T</span>, תא מסוים יחיה (ערכו יישאר או ישתנה ל־1) אם אחד התנאים הבאים התקיים:</p>
+<ol>
+<li>הוא היה חי, וכמות השכנים החיים שלו בדור <span class="math">T-1</span> היא בין 2 ל־3 – התא ממשיך לדור הבא.</li>
+<li>הוא היה מת, אבל כמות השכנים החיים שלו בדור <span class="math">T-1</span> היא 3 בדיוק – ככה תאים באים לעולם. דילגו על הרעיון של חסידות וכו’.</li>
+</ol>
+<p>החוקים שתוארו עד כה למשחק החיים קיבלו את הסימון <code>B3/S23</code>:</p>
+<ol>
+<li>תא נולד (<code>B</code>) אם יש לו 3 שכנים חיים.</li>
+<li>תא שורד (<code>S</code>) אם יש לו 2 או 3 שכנים חיים.</li>
+<li>בכל מצב אחר הוא מת.</li>
+</ol>
+<p>צרו פונקציה שנקראת <code>game_of_life</code> ומקבלת כפרמטר את סימון החוקים.<br/>
+אם לא הועבר לפונקציה סימון חוקים, השתמשו בחוקים <code>B3/S23</code> המופיעים מעלה.<br/>
+הפונקציה תציג <a href="https://www.youtube.com/watch?v=OEbCsKJKXaE">סימולציה ויזואלית</a> של “משחק החיים” – בין אם בעזרת <code>print</code> או בעזרת כלים כמו <code>pygame</code>.</p>
+<p>הפרידו לפונקציות ככל האפשר וכתבו קוד מסודר ונעים לתחזוקה.<br/>
+כיתבו בדיקות לכל הפונקציות שלכם, ונסו להגיע ל־100% כיסוי.</p>
+<p>(העתקות מהאינטרנט של התרגיל הזה לא יתקבלו בעין יפה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilee5bf.png?v=12" title=":slight_smile:"/> )</p>
+<h3>
+<a class="anchor" href="#scream-14" name="scream-14"></a>פרויקט בלי בדיקות? <img alt=":scream:" class="emoji" src="../../images/emoji/twitter/screame5bf.png?v=12" title=":scream:"/>
+</h3>
+<p>הוסיפו בדיקות לפרויקט שבניתם בשבוע שעבר.<br/>
+קראו על הוספת בדיקות ל־Flask בעמוד התיעוד המתאים.<br/>
+ודאו שיש לכם 80% כיסוי לפחות.</p>
+<hr/>
+<h2>
+<a class="anchor" href="#h-15" name="h-15"></a>סיבוכיות</h2>
+<h3>
+<a class="anchor" href="#h-16" name="h-16"></a>יעילות בסיסית</h3>
+<p>כתבו מה היעילות של כל אחד מהפעולות הבאות.<br/>
+השתמשו בגוגל כדי לחפש את סיבוכיות הזמן (time complexity) של כל אחד מהבאים.<br/>
+אם אפשר, התייחסו למקרה הממוצע (Average case) ולא למקרה הגרוע ביותר (Worst case):</p>
+<ol>
+<li>רשימה בפייתון: הוספת איבר אחרון, הוספת איבר שאינו אחרון, מחיקת איבר אחרון, מחיקת איבר שאינו אחרון, פנייה לאיבר ברשימה, חיפוש איבר ברשימה (<code>in</code>), מציאת אורך הרשימה.</li>
+<li>מילון בפייתון: הוספת איבר חדש, אחזור איבר לפי key, אחזור איבר לפי value, מחיקת איבר, חיפוש איבר במילון (<code>in</code>).</li>
+<li>קבוצה (set) בפייתון: הוספת איבר חדש, מחיקת איבר, חיפוש איבר (<code>in</code>).</li>
+<li>סידור של n מספרים ברשימה בלתי ממויינת. רמז: אין הנחות נוספות לגבי הרשימה, ועליכם להתייחס לאלגוריתמים מבוססי השוואה.</li>
+<li>מציאת איבר ברשימה מסודרת, ומציאת איבר ברשימה לא מסודרת.</li>
+</ol>
+<h3>
+<a class="anchor" href="#h-17" name="h-17"></a>יעילות בחיים</h3>
+<p>מה היעילות של “משחק החיים” שכתבתם בתרגיל על בדיקות תוכנה?<br/>
+מה היעילות של כל אחת מהפונקציות שבו?<br/>
+צרפו קישור לתרגיל “משחק החיים” שהעלתם.</p>
+<h3>
+<a class="anchor" href="#h-18" name="h-18"></a>הפרש סכום הריבועים</h3>
+<p>סכום הריבועים של המספרים הטבעיים עד 5 הוא <span class="math">1^2 + 2^2 + 3^2 + 4^2 + 5^2 = 55</span>.<br/>
+ריבוע הסכום של המספרים הטבעיים עד 5 הוא <span class="math">(1 + 2 + 3 + 4 + 5)^2 = 15 ^ 2 = 225</span>.</p>
+<p>כלומר, הפרש סכום הריבועים במקרה שבו <span class="math">N=5</span> הוא 170, שכן <span class="math">225-55=170</span>.</p>
+<p>כתבו תוכנה שמקבלת <span class="math">N</span> ומחזירה את הפרש סכום הריבועים. מה יעילותה?<br/>
+בונוס למתמטיקאים: האם תוכלו לפתור ביעילות זמן ריצה <span class="math">O(1)</span>?</p>
+<h3>
+<a class="anchor" href="#h-19" name="h-19"></a>על הדרך מושיק</h3>
+<p>נצייר טבלה בגודל 2 על 2, ונמקם את מושיק בשולחן השופטים ש<strong>בנקודה</strong> השמאלית העליונה של הטבלה (לא בתא).<br/>
+מושיק יודע לנוע רק ימינה ולמטה, כך שיש לו 6 דרכים בלבד להגיע לנקודה הימנית התחתונה בטבלה, הרי היא המנה הנכספת:</p>
+<p><img alt="Untitled Diagram" data-base62-sha1="aeRxLqaVWLJiio5M9KioqKEwGSC" height="219" src="../../uploads/default/original/2X/4/47c3de14c5323e0e64f53acbcff46408f9017c22.png" width="359"/></p>
+<p>קבלו כקלט את גודל הטבלה, <span class="math">N</span>.<br/>
+בכמה דרכים יכול מושיק להגיע למנה?<br/>
+מה היעילות של התוכנית שכתבתם?</p>
+<h3>
+<a class="anchor" href="#h-20" name="h-20"></a>קריוס ובקטוס</h3>
+<p>אזדרכת וחשבשבת צריכות להתחלק בסופגניות הזעירות שקיבלו בחנוכה.<br/>
+לצורך כך, הן בנו משחק שמשתמש בטבלה ריבועית <span class="math">M</span> בגודל <span class="math">X</span> על <span class="math">X</span> שמולאה במספרים באופן אקראי.</p>
+<p>בתחילת המשחק, אזדרכת בוחרת שורה כרצונה (<span class="math">i</span>) ומעבירה עליה קו כחול.<br/>
+חשבשבת בוחרת בעמודה כרצונה (<span class="math">j</span>) ומעבירה על כל המספרים בה קו אדום.<br/>
+אזדרכת עכשיו לוקחת סופגניות זעירות כמספר שמופיע בטבלה במקום <span class="math">M_{ij}</span>.<br/>
+עכשיו אזדרכת שוב בוחרת שורה כרצונה (<span class="math">k</span>; שחייבת להיות שורה שבה לא בחרה בעבר), וחשבשבת שוב בוחרת עמודה בטבלה (<span class="math">l</span>; שחייבת להיות עמודה שלא בחרה בעבר).<br/>
+אזדרכת לוקחת הפעם <span class="math">M_{kl}</span> סופגניות.<br/>
+בכל שלב במשחק, אם מספר הסופגניות בתא הנבחר הוא שלילי, אזדרכת מאבדת את מספר הסופגניות הזה, והסופגניות עוברות לחשבשבת.<br/>
+המשחק ממשיך עד שמועבר קו על כל המספרים שבטבלה.</p>
+<p>מה מספר הסופגניות הגדול ביותר שאזדרכת יכולה להרוויח אם גם אזדרכת וגם חשבשבת משחקים בצורה הטובה ביותר?<br/>
+לצורך התרגיל, השתמשו בטבלה בגודל 4 על 4.<br/>
+מה היעילות של התוכנית שכתבתם כדי לגלות זאת?</p>
+<h3>
+<a class="anchor" href="#h-21" name="h-21"></a>דונלד</h3>
+<p>דונלד הקים חנות למכירת ברווזי גומי.<br/>
+באחד הטרמפים שלקח עם חברו, קנות’, הידוע כדאקדקן במיוחד בענייני חשבונאות,<br/>
+סיפר לו דונלד כיצד הוא מנהל את החשבונות בחנות שלו.</p>
+<p>עבור כל קנייה, דונלד רושם בקובץ את סכום הקנייה כשלפניה מופיע הסימן <code>+</code>.<br/>
+כל פעם שדולנד קונה סחורה חדשה עבור החנות, דונלד רושם בקובץ את הסימן מינוס, ואז את הסכום שהוציא.</p>
+<p>לדוגמה, החודש היו לו 3 לקוחות שקנו ממנו ברווזי גומי ב־50, 60 ו־70 שקלים, והוא ביצע 2 רכישות בשווי 120 ו־2 שקלים.<br/>
+קובץ החשבונות שלו החודש נראה כך:</p>
+<pre><code class>+50
++60
+-120
++70
+-2
+</code></pre>
+<p>כתבו שתי פונקציות שיעזרו לדולנד:</p>
+<ol>
+<li>הפונקציה <code>parse_file</code> שתקבל נתיב לקובץ, ותחזיר מבנה נתונים שיהיה נוח לעבוד איתו.</li>
+<li>דונלד רוצה להתרברב בכמה שהוא עשיר. עזרו לו לכתוב את הפונקציה <code>very_rich</code>, שמחזירה את הסכום הגבוה ביותר שהרוויח בימים רצופים החודש. בדוגמה שניתנה למעלה, הסכום הוא 110: בימים הראשון והשני דונלד הרוויח 110 ש"ח. לאחר מכן הפסיד 120 ש"ח (סך הכל חובות של 10 ש"ח) ואז הרוויח 70 ש"ח (מרווח 60 ש"ח). בדוגמה הבאה, דונלד יתרברב על רווח של 45 ש"ח בין הימים השלישי לשישי. ממשו את הפונקציה הזו ביעילות זמן ריצה של לפחות <span class="math">O(n^2)</span>. האם יש לכם רעיון אפילו טוב יותר?</li>
+</ol>
+<pre><code class>+5
+-10
++30
++10
+-5
++10
+-40
++30
+</code></pre>
+<h3>
+<a class="anchor" href="#h-22" name="h-22"></a>הורדות</h3>
+<p>ביום הראשון של הקורס, כשב־LIVE ביקשתי מהחניכים להוריד את Anaconda Python, השרתים שלהם קרסו.<br/>
+בתחקור שלאחר המעשה, בעלי השרת ניסו להבין איפה היה העומס הרב ביותר על השרת.<br/>
+לצורך כך, הם קיבלו את התיעוד של מה קרה בשרת.</p>
+<p>כל שורה בקובץ מורכבת מ־3 חלקים:</p>
+<ol>
+<li>ה־IP שממנו נשלחה בקשת ההורדה, ואחריו נקודתיים.</li>
+<li>הזמן (בשניות מאז עליית השרת) שבו כל IP התחיל להוריד את הקובץ, ואחריו מקף.</li>
+<li>הזמן (בשניות מאז עליית השרת) שבו כל IP סיים להוריד את הקובץ.</li>
+</ol>
+<p>לדוגמה:</p>
+<pre><code class="lang-nohighlight">193.238.175.157: 503-584
+81.173.1.186: 324-793
+208.195.27.101: 224-710
+198.241.74.162: 747-770
+201.96.152.206: 601-861
+159.10.243.192: 823-879
+137.221.214.153: 416-975
+24.139.10.160: 190-323
+136.244.3.48: 640-975
+117.126.245.109: 67-302
+</code></pre>
+<p>עזרו למחלקת ה־IT לתחקר את המקרה: באיזה טווח שניות היו הכי הרבה חיבורים פתוחים מול השרת.<br/>
+אם מספר החיבורים המירבי התרחש ביותר מנקודת זמן אחת, החזירו את נקודת הזמן הראשונה שבה זה קרה.<br/>
+בדוגמה שהוצגה למעלה, נניח, מספר החיבורים המירבי היה 5, בין השניות 640 ל־711.</p>
+<p>פתרו בסיבוכיות זמן ריצה <span class="math">O(n\log{n})</span>.<br/>
+הניחו שהמספרים יכולים להיות גדולים מאוד – השרת רץ מאז 1980 לפחות, ויש אגדות על כמה הורדות שעדיין לא הסתיימו מאז…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="10" itemprop="userInteractionCount"/>
+<span class="post-likes">10 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="8634.html" itemprop="url">ריכוז חומרים: שבוע 15</a>
+<meta content="5" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-20T14:06:06Z" itemprop="datePublished">
+                     20 בדצמבר,‏ 2020,‏  2:06pm
+                  </time>
+<meta content="2020-12-20T14:06:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<blockquote>
+<p>כתבו פונקציה שמקבלת ביטוי חשבוני ובודקת אם הוא תקין. ביטוי חשבוני נחשב תקין אם הוא מורכב ממספרים שביניהם הסימנים <code>+</code> , <code>-</code> , <code>*</code> או <code>/</code> , והוא מסתיים בסימן <code>=</code> . לדוגמה, הביטויים הבאים נחשבים חוקיים: <code>17/5=</code> , <code>5+2=</code> , <code>5=</code> , <code>99+1/2=</code> , <code>6.2*2=</code> , <code>6+4+3+1/2+6=</code> . הביטויים הבאים נחשבים לא חוקיים: <code>1.1.1=</code> , <code>1++7=</code> , <code>=1+1</code> , <code>1=1</code> , <code>1+=1</code> .</p>
+</blockquote>
+<p>איך הביטוי “5=” נחשב תקין אם הוא לא עונה להגדרה “מורכב ממספים שבינהם הסימנים…”?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-20T15:02:15Z" itemprop="datePublished">
+                     20 בדצמבר,‏ 2020,‏  3:02pm
+                  </time>
+<meta content="2020-12-20T15:02:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מניח שזה מה שנקרא “נכון באופן ריק”, כי החלק של סימן בין מספרים מניח שיש לפחות שני מספרים, אבל לא כתוב שבהכרח יהיו שני מספרים. זו דוגמא לכך שגם מצב כזה אפשרי להבנתי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-20T15:04:23Z" itemprop="datePublished">
+                     20 בדצמבר,‏ 2020,‏  3:04pm
+                  </time>
+<meta content="2020-12-20T15:04:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יכול להיות, אבל יצאתי מנקודת הנחה שאם ציינו את המרכיבים וציינו במפורש שיש סימנים בינהם, אז זה בהכרח ככה. כי אז לפי הגישה שלך, גם הסימן שווה בסוף לא מחייב.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-20T17:03:33Z" itemprop="datePublished">
+                     20 בדצמבר,‏ 2020,‏  5:03pm
+                  </time>
+<meta content="2020-12-20T17:03:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אין משמעות ל"ביניהם" אם אין 2 מספרים, ולכן אין סימן.<br/>
+ההגדרה "הוא מסתיים בסימן <code>=</code>" נפרדת ולא תלויה בכמות האיברים, ולכן הוא כן מחייב.<br/>
+בדיוק בשביל דקויות כאלו יש את הדוגמאות <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-23T09:11:13Z" itemprop="datePublished">
+                     23 בדצמבר,‏ 2020,‏  9:11am
+                  </time>
+<meta content="2020-12-23T09:32:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בסימון למטה אשמח להבהרה:<br/>
+האם אני צריך להעביר לפונקציה כתובת אתר?<br/>
+במידה וכן אניי מעביר כתובת אתר, אני מבין שהחלק הראשוני של השאלה הוא בעיקר הסבר כי הרי לינקים נמצאים בתוך "&lt; a &gt; "</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-23T12:26:32Z" itemprop="datePublished">
+                     23 בדצמבר,‏ 2020,‏ 12:26pm
+                  </time>
+<meta content="2020-12-23T12:26:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפונקציה מקבלת פוסט אחרי שלחצת על הסימן של העיפרון (edit).<br/>
+לדוגמה:</p>
+<pre><code class># תרגול
+
+## ביטויים רגולריים
+
+### על גלי האתר
+כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־`http://` או ב־`https://`. שימו לב שזה רק תרגיל, וככלל, זה נחשב [רעיון רע מאוד](https://stackoverflow.com/a/1732454/1058671) להשתמש ב־Regular Expression כדי לחלץ נתונים מ־HTML.
+
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-24T09:49:31Z" itemprop="datePublished">
+                     24 בדצמבר,‏ 2020,‏  9:49am
+                  </time>
+<meta content="2020-12-24T09:49:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בקריוס ובקטוס אשמח לשתי הבהרות:</p>
+<ol>
+<li>יש טווח מספרים מסוים? האם כלל המספרים הם קבוצה של מספרים עוקבים כמספר המשבצות?</li>
+<li>מה זה בדיוק אומר ששתיהן משחקות הכי טוב שהן יכולות? האם זה אומר לחשב בכל מהלך, מהוא המהלך הטוב ביותר, או לחשב את הפוטנציאל המקסימלי של נקודות שאזדרכת יכולה לזכות בו, בהתאם לסדרת המספרים הנבחרת?<br/>
+תודה!</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-24T09:58:47Z" itemprop="datePublished">
+                     24 בדצמבר,‏ 2020,‏  9:58am
+                  </time>
+<meta content="2020-12-24T09:58:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>לא, המספרים אקראיים. עבור אורך צלע <span class="math">m</span> בריבוע הייתי בוחר בטווח שבין <span class="math">-m^2</span> ל¯ <span class="math">m^2</span>.</li>
+<li>זה אומר ששחקן א’ מנסה למקסם את מספר הנקודות שלו בסוף המשחק, ושחקן ב’ מנסה למקסם את הנקודות שלו בסוף המשחק.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-24T10:04:41Z" itemprop="datePublished">
+                     24 בדצמבר,‏ 2020,‏ 10:04am
+                  </time>
+<meta content="2020-12-24T10:04:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה.<br/>
+בנוגע ל-2… בכל מהלך, ישנו המהלך ‘הברור’ כטוב ביותר מספרית לאותו הרגע. אבל עם זאת, זהו משחק אסטרטגי מובהק, כך שלא בהכרח המהלך הטוב ביותר עבור כל רגע נתון, יהיה המועיל ביותר עבור השחקן, בהמשך הדרך. אז השאלה שלי היא בעצם אם ניתן להתעלם מהנקודה הזאת ביישום המשחק…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-24T13:09:25Z" itemprop="datePublished">
+                     24 בדצמבר,‏ 2020,‏  1:09pm
+                  </time>
+<meta content="2020-12-24T13:09:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התשובה היא שהאלגוריתם צריך להיות אסטרטג ולא טקטיקן. כלומר, לקחת את החישוב לטווח הארוך ולא לתור הקרוב.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-25T09:53:11Z" itemprop="datePublished">
+                     25 בדצמבר,‏ 2020,‏  9:53am
+                  </time>
+<meta content="2020-12-25T09:53:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+ניתן לקבל הסבר נוסף לכוונה בסוף המשחק?<br/>
+האם הכוונה שבכל תור של אזדרכת נבחרת שורה רנדומלית שלא נבחרה בעבר ומתוכה חשבשבת בוחרת איזה טור כדאי לה לבחור?<br/>
+או הכוונה למהלך האחרון שנשאר במשחק?</p>
+<p>תודה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-25T14:42:10Z" itemprop="datePublished">
+                     25 בדצמבר,‏ 2020,‏  2:42pm
+                  </time>
+<meta content="2020-12-25T14:42:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="12" data-topic="8568" data-username="adi1">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/a/ecb155/40.png" width="20"/> adi1:</div>
+<blockquote>
+<p>האם הכוונה שבכל תור של אזדרכת נבחרת שורה רנדומלית שלא נבחרה בעבר ומתוכה חשבשבת בוחרת איזה טור כדאי לה לבחור?</p>
+</blockquote>
+</aside>
+<p>מבין שתי האופציות שהצעת, זו הכוונה בתרגיל</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-26T19:26:23Z" itemprop="datePublished">
+                     26 בדצמבר,‏ 2020,‏  7:26pm
+                  </time>
+<meta content="2020-12-26T22:15:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תרגיל “משחק החיים”, שתי שאלות לגבי האתחול:</p>
+<aside class="quote no-group" data-post="1" data-topic="8568" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>לפני המהלך הראשון של המשחק, “מחיים” מספר תאים בטבלה, כלומר, משנים את ערכם מ־0 ל־1.</p>
+</blockquote>
+</aside>
+<p>מהו מספר התאים שיש להחיות? והאם בחירת התאים שאותם מחיים נעשית באופן רנדומלי?</p>
+<p>ושאלה לגבי הקלט לפונקציה:<br/>
+במידה וניתן קלט, האם הפורמט שלו הוא בדיוק כמו בדוגמא? כלומר -<br/>
+תו, לאחר מכן מספר שלם אחד שהמשמעות שלו היא מספר השכנים החיים על מנת להחיות תא מת, לאחר מכן סלאש, תו,  ולבסוף שתי ספרות שהראשונה היא התחלה של טווח והשניה סוף הטווח שמציין (כולל הקצוות) את מספר השכנים החיים שישאירו תא חי בחיים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-26T22:57:07Z" itemprop="datePublished">
+                     26 בדצמבר,‏ 2020,‏ 10:57pm
+                  </time>
+<meta content="2020-12-26T22:57:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כמה שבא לך, ואילו תאים שבא לך. בגדול זה אמור להיות קלט של המשתמש.</p>
+<p>וכן, לגבי שאלת הקלט</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-27T05:08:52Z" itemprop="datePublished">
+                     27 בדצמבר,‏ 2020,‏  5:08am
+                  </time>
+<meta content="2020-12-27T05:08:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קריוס ובקטוס<br/>
+האם ניתן להניח שבמטריצה אין ערכים שגודלם 0?<br/>
+האם אפשר להניח שכל הערכים מטיפוס שלם?<br/>
+(ולא נקודה צפה)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-27T14:27:49Z" itemprop="datePublished">
+                     27 בדצמבר,‏ 2020,‏  2:27pm
+                  </time>
+<meta content="2020-12-27T14:27:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-27T22:50:47Z" itemprop="datePublished">
+                     27 בדצמבר,‏ 2020,‏ 10:50pm
+                  </time>
+<meta content="2020-12-27T22:50:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8568" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>בדוגמה הבאה, דונלד יתרברב על רווח של 45 ש"ח בין הימים השלישי לשישי.</p>
+</blockquote>
+</aside>
+<p>הכוונה לימים החמישי והשישי?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nellie</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-28T00:50:53Z" itemprop="datePublished">
+                     28 בדצמבר,‏ 2020,‏ 12:50am
+                  </time>
+<meta content="2020-12-28T00:50:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הנתון מדוייק.<br/>
+במידה ותתחיל לבדוק את הנתונים ביום השלישי, תחבר ותחסר עד היום השישי כולל - תגיע לסכום של 45 ש"ח.<br/>
+ברשימת הנתונים הזו, זה טווח הימים עם הרווח המכסימלי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="8568.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T17:23:20Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  5:23pm
+                  </time>
+<meta content="2021-01-01T17:23:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בקריוס ובקטוס - האם כמות הסופגניות משנה? כלומר, האם המספרים צריך להסתכם ל-X סופגניות, או שהסופגניות כל כך פקטיביות שאפשר להניח שיש אינסוף מהן? <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="85684658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8568 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:16:47 GMT -->
+</html>

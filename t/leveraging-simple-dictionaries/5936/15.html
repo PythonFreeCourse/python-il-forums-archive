@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/leveraging-simple-dictionaries/5936/15 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:16:30 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Leveraging Simple Dictionaries שוקל קפיצה מגג - מס׳ 15 מאת orpazf - leveraging-simple-di - פייתון בעברית ובחינם</title>
+<meta content="היי 
+אני יושב מאתמול על התרגיל האחרון בתאכלס אני יושב מול מחברת דיי ריקה ומנסה להבין מה ואיך זה אמור לעבוד… 
+שעות השקעה זה לא מה שחסר לי… 
+מישהו מהצוות \ ממי שצלח את זה ויכול עצה\טיפ\הכוונה 
+אני מבין מה המערכת אמורה לעשו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../5936.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../5936.rss" rel="alternate nofollow" title="הזנת RSS של ‚Leveraging Simple Dictionaries שוקל קפיצה מגג’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="15.html" property="og:url"/>
+<meta content="15.html" name="twitter:url"/>
+<meta content="Leveraging Simple Dictionaries שוקל קפיצה מגג" property="og:title"/>
+<meta content="Leveraging Simple Dictionaries שוקל קפיצה מגג" name="twitter:title"/>
+<meta content="leveraging-simple-di" property="og:article:tag"/>
+<meta content="2020-05-07T07:53:28+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../5936.html">Leveraging Simple Dictionaries שוקל קפיצה מגג</a>
+</h1>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/leveraging-simple-di.html" rel="tag">leveraging-simple-di</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Leveraging Simple Dictionaries שוקל קפיצה מגג" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="leveraging-simple-di" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galelyaakov</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T12:14:17Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏ 12:14pm
+                  </time>
+<meta content="2020-05-06T13:39:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי<br/>
+אני יושב מאתמול על התרגיל האחרון בתאכלס אני יושב מול מחברת דיי ריקה ומנסה להבין מה ואיך זה אמור לעבוד…<br/>
+שעות השקעה זה לא מה שחסר לי…<br/>
+מישהו מהצוות \ ממי שצלח את זה ויכול עצה\טיפ\הכוונה<br/>
+אני מבין מה המערכת אמורה לעשות אבל  מה החוקיות זה מה שאני לא מבין…<br/>
+מותר לי להגיד לה לכי למקום של Transitions ?<br/>
+מותר לי לעשות לה חיתוכים ?[כל הקבצים זהים במבנה? ]<br/>
+ודיי הלכתי לאיבוד עם 20 הסברים שונים מאנשים שונים…<br/>
+HELP!<br/>
+תודה מראש חניך אבוד</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T12:17:02Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏ 12:17pm
+                  </time>
+<meta content="2020-05-06T12:17:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנוגע לקפיצה מהגג – <a href="https://forums.pythonic.guru/search?q=%D7%9E%D7%94%D7%92%D7%92">https://forums.pythonic.guru/search?q=מהגג</a></p>
+<p>וברצינות רגע: מותר לך להשתמש בכל טכניקה שלמדת עד עכשיו.<br/>
+הייתי ממליץ לך לפרט בשלבים על דף (כמו פעם, עם עט, עפרון וזה) איך <em>אתה</em> היית מתמודד עם הבעיה הזו כבנאדם, שלב אחר שלב, אם היו נותנים לך לפתור אותה ידנית.<br/>
+אח"כ נסה להבין מהתרשים הזה איך אתה יכול לבנות קוד עבור כל אחד מהחלקים שפירטת שם.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pierarts</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T12:28:06Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏ 12:28pm
+                  </time>
+<meta content="2020-05-06T12:28:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הי, גם אני אשמח לסיוע קטן. הבעיה שלי דומה אך קצת אחרת. אני מבין מה צריך לעשות, ואיך המכונה פועלת. מה שקשה לי זו המניפולציה על הטקסט. אני מרגיש שפספסתי את החלק שמסביר את הפיכת הטקסט למילונים בתוך מילונים ואשמח להפניה לחומר שיסביר לי את זה קצת יותר טוב.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galelyaakov</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T12:32:50Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏ 12:32pm
+                  </time>
+<meta content="2020-05-06T12:32:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש לי את זה בטקסט ובתרשים  במחשב פשוט אני קצת מתקשה בהבנה של המעברים והתנאים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:05:04Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:05pm
+                  </time>
+<meta content="2020-05-06T13:05:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני חשבתי שהתרגיל הזה מאתגר נורא, ולקח לי הרבה זמן להתחיל. אחרי שפתרתי, ההמלצה האישית שלי היא פשוט להתחיל. חשבתי שיקח 700 שנה לכתוב כל דבר כדי להתקדם עם הקוד, בגלל שעל פניו יש המון חלקים זזים (ביטוי מקובל?), אבל אחרי שהתחלתי זה הפך לקצר קומפקטי ודי מגניב. כן הייתי צריכה לחזור לתקן כמה דברים שכבר סיימתי כשכתבתי את מה שבא אחרי, אבל מעט באופן מפתיע. בהתחלה קצת התעצבנתי שלא לעסו וירקו לי (צריך לכתוב פונקציה ש… ואז לכתוב פונקציה ש… וכן הלאה) אבל כמובן שזה היה מעיב על תחושת ההישג כשכבר סיימתי (בשביל מה שזה שווה). (וגם היה לי חשוב לכתוב את כל זה כי באמת נבהלתי כשהתיישבתי סופסוף לעשות את התרגיל האחרון השבוע, ‘לקפוץ מהגג’ היה נראה ת’רד מתאים לזה).</p>
+<p>עצות יותר קונקרטיות - זה היה שבוע כזה של מבני נתונים - אני התחלתי שם. לפי מיטב הבנתי אפשר להשתמש בכל מה שרוצים כמידע מוקדם על הקובץ (כולל שימוש במילים שמופיעות בו). המבחן שעשיתי - הקבצים במחברת + הקובץ שים פרסם בפורום, והכל עבד, אז אני חושבת שלגיטימי.</p>
+<ul>
+<li>רק אציין שהגעתי לקובץ שים פירסם פה בפורום וזה לא יצא נכון, באמת כמעט קפצתי מהגג. אבל אז התברר שהיתה בו טעות קטנה <img alt=":wink:" class="emoji" src="../../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/>
+</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirazyomtov</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:15:04Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:15pm
+                  </time>
+<meta content="2020-05-06T13:15:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> אני יכולה לשאול אותך בפרטי שאלה על התרגיל ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:22:06Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:22pm
+                  </time>
+<meta content="2020-05-06T13:22:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה לי שממש עדיף פה בפורום, מכמה סיבות</p>
+<ol>
+<li>
+<p>מה אני מבינה? ואם אני לא מבינה, מישהו אחר יכול לענות, ויש פה בפורום רבים וטובים.</p>
+</li>
+<li>
+<p>בטח לעוד מלא אחרים יש שאלה דומה. הפורומים מאוד עוזרים לי, כשמעבירים לפרטי זה פחות אפקטיבי.</p>
+</li>
+<li>
+<p>בפרטי יוצר איזשהיא תלות ומחויבות (קצת חוזר ל1) שמקשה על שני הצדדים בדיון: אם לא אגש למחשב שלי ב5 השעות הקרובות, (מה שמאוד יכול לקרות), לא תקבלי תשובה וחבל לי על הזמן שלך.</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shirazyomtov</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:24:59Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:24pm
+                  </time>
+<meta content="2020-05-06T13:24:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן מובן <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+אני הצלחתי לפרק את הקובץ אבל לא מצליחה ממש להבין איך להתקדם הלאה.<br/>
+מה בדיוק אני אמורה לבצע אחרי פירוק הקובץ ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:29:11Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:29pm
+                  </time>
+<meta content="2020-05-06T13:29:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+אז <span class_="mention">@devorack</span> אמרה יפה שאכן מדובר בשבוע שעסק הרבה במילונים ומבני נתונים.<br/>
+אכן הייתי ממליץ ללכת על הכיוון הזה. התרגיל מאוד מאתגר אבל קל לתכנת אותו כאשר עוברים על התהליך שלב אחרי שלב ומחלקים לפונקציות עזר.<br/>
+המטרה בסוף לפני תחילת כתיבת הקוד היא להיסגר על מבנה הנתונים הרצוי שאיתו נעבוד (dict, list, tuple, דומיהם והשילוב ביניהם).<br/>
+בנוסף, חלק גדול מהתרגיל הינו ניתוח הטקסט בקובץ. כבר עברנו על מספר תרגילים כאלו. אם נדרש תבצע/תבצעי חזרה על ה-Builtins והמתודות האפשריות ל-string.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:29:24Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:29pm
+                  </time>
+<meta content="2020-05-06T13:29:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בגדול - לעבור בין מצבים כמו שמתואר - לפי העצה של ים למעלה: קחי נייר ותכתבי מה את מבינה שצריך לעשות. סוג של ים - יבשה : על איזה איזה משבצת אני צריכה לעמוד? רק שההוראות תלויות על איזו משבצת את כבר עומדת עכשיו <img alt=":wink:" class="emoji" src="../../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">israel4001</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T13:51:25Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  1:51pm
+                  </time>
+<meta content="2020-05-06T13:51:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נתת כאן וואחד רמז למי שצריך…</p>
+<p>הצלחה רבה! לא להתייאש, למרות שהוא נראה תרגיל מעצבן ברמות על</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galelyaakov</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T17:35:41Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  5:35pm
+                  </time>
+<meta content="2020-05-06T17:35:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>;על איזה רמז מדובר? אני באמת לא מבין מה אני מפספס בתרגיל הזה שאני יושב עליו כבר 12 וחצי שעות ואפילו לא קרוב לפיצוח…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">hadas.nevenzal</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T21:15:30Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  9:15pm
+                  </time>
+<meta content="2020-05-06T21:15:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבנת מה האוטומט עושה?</p>
+<p>תחשוב שאתה מקבל את האוטומט הזה ואת האינפוט הראשון, של שלושה צעדים. איך תדע אחרי שהלכת את שלושת הצעדים לאן תגיע? מה הצעדים שאתה עושה? תכתוב אותם. תראה אם אתה יכול לגרום לקוד לעשות אותם.</p>
+<p>בשלב של המעבר לחשוב איך קוד עושה אותם- תזכור שזה שבוע של מבני נתונים וכנראה לבנות מבנה נתונים מסוג מסויים יעזור לקוד שלך ללכת את השלבים שהוא צריך ללכת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ISA-SAM</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T07:51:16Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏  7:51am
+                  </time>
+<meta content="2020-05-07T07:51:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="5" data-topic="5936" data-username="devorack">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/devorack/40/904_2.jpg" width="20"/> devorack:</div>
+<blockquote>
+<p>הגעתי לקובץ שים פירסם פה בפורום וזה לא יצא נכון, באמת כמעט קפצתי מהגג. אב</p>
+</blockquote>
+</aside>
+<p>היי, את יכולה לשולח קישור של העומד בפורום בו ים פירסם דוגמא נוספת, אני רוצה לבדוק אם המערכת עובדת גם על הדוגמא הזו.</p>
+<p>תודה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T07:53:28Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏  7:53am
+                  </time>
+<meta content="2020-05-07T07:53:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote" data-post="23" data-topic="5755">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../5755/23.html">Leveraging Simple Dictionaries - מצב התחלתי ומקבל</a> <a class="badge-wrapper bullet" href="../../../c/week4.html"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 4.">שבוע 4</span></a>
+</div>
+<blockquote>
+    קח דוגמה לאוטומט שאולי יותר יאתגר לך את הקוד: 
+Definitions:
+States: q0, q1, q2
+Start: q0
+Accepting: q0
+
+Transitions:
+q0: 0, 3, 6, 9 -&gt; q0
+q0: 2, 5, 8 -&gt; q1
+q0: 1, 4, 7 -&gt; q2
+q1: 1, 4, 7 -&gt; q0
+q1: 0, 3, 6, 9 -&gt; q1
+q1: 2, 5, 8 -&gt; q2
+q2: 2, 5, 8 -&gt; q0
+q2: 1, 4, 7 -&gt; q1
+q2: 0, 3, 6, 9 -&gt; q2
+
+Inputs:
+1
+1, 2
+1, 2, 3
+1, 3, 5
+1, 3, 8
+1, 2, 4, 1
+9, 9, 9, 9, 9, 9
+9, 9, 9, 9, 9, 1
+
+התשובות: 
+False
+True
+True
+True
+True
+False
+True
+False
+  </blockquote>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">thundergirl84</span>
+</span>
+<link href="../5936.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T14:19:15Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏  2:19pm
+                  </time>
+<meta content="2020-05-07T14:19:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מסכימה עם הנאמר. צריך כבר להגיש את התרגילים ועוד לא הבנתי מה רוצים ממני פה.<br/>
+מה אני אמורה לעשות?<br/>
+אפשר את זה בעברית?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/leveraging-simple-dictionaries/5936/15 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:16:31 GMT -->
+</html>

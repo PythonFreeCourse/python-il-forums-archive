@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/object/7495/7 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:37 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>ירושה מרובה - טנק - שאלה על ירושה מobject - מס׳ 7 מאת Yam - שבוע 8 - פייתון בעברית ובחינם</title>
+<meta content="היי :slight_smile: 
+בדוגמא כאן: 
+ 
+אשמח לדעת למה מחלקת vehicle ומחלקת weapon יורשות ממחלקת object בצורה שבה זה כתוב כאן (כלומר עם הsuper().init())… 
+למה בעצם הן לא כתובות כמו מחלקות שעשינו עד עכשיו? האם יש יתרון/סיבה לכת&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../7495.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../7495.rss" rel="alternate nofollow" title="הזנת RSS של ‚ירושה מרובה - טנק - שאלה על ירושה מobject’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7.html" property="og:url"/>
+<meta content="7.html" name="twitter:url"/>
+<meta content="ירושה מרובה - טנק - שאלה על ירושה מobject" property="og:title"/>
+<meta content="ירושה מרובה - טנק - שאלה על ירושה מobject" name="twitter:title"/>
+<meta content="מה ההבדל ממחלקות שעשינו עד עכשיו? האם התשובה כאן עונה לך על השאלה?   לשאלה הזו חן ענתה (אכן התייחסתי בהרחבה כאן)   כן   כיוון שבקריאה ל־__init__ של Button הפונקציה “אוטומטית” תקרא ל־__init__ של מחלקת־העל (ה־super), זה מה שקורה כשלא דורסים פעולה של מחלקת־על בתת־המחלקה.  באחרות כן מימשנו כיוון שרצינו להוסיף דברים נוספים חוץ מהקריאה ל־__init__ של מחלקת־העל." property="og:description"/>
+<meta content="מה ההבדל ממחלקות שעשינו עד עכשיו? האם התשובה כאן עונה לך על השאלה?   לשאלה הזו חן ענתה (אכן התייחסתי בהרחבה כאן)   כן   כיוון שבקריאה ל־__init__ של Button הפונקציה “אוטומטית” תקרא ל־__init__ של מחלקת־העל (ה־super), זה מה שקורה כשלא דורסים פעולה של מחלקת־על בתת־המחלקה.  באחרות כן מימשנו כיוון שרצינו להוסיף דברים נוספים חוץ מהקריאה ל־__init__ של מחלקת־העל." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 8" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="ירושה" property="og:article:tag"/>
+<meta content="2020-07-08T16:35:57+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"ירושה מרובה - טנק - שאלה על ירושה מobject","mainEntity":{"@type":"Question","name":"ירושה מרובה - טנק - שאלה על ירושה מobject","text":"היי :slight_smile:\n\nבדוגמא כאן:\n\n[image]\n\nאשמח לדעת למה מחלקת vehicle ומחלקת weapon יורשות ממחלקת object בצורה שבה זה כתוב כאן (כלומר עם הsuper().init())…\n\nלמה בעצם הן לא כתובות כמו מחלקות שעשינו עד עכשיו? האם יש יתרון/סיבה לכתיבה בצורה הזו? מה המחלקות האלה יורשות מobject כשכתבים ככה לעומת אחרת (אמר&hellip;","upvoteCount":3,"answerCount":0,"dateCreated":"2020-07-08T05:57:54.354Z","author":{"@type":"Person","name":"רתם"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../7495.html">ירושה מרובה - טנק - שאלה על ירושה מobject</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/week-8/18.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 8</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%99%d7%a8%d7%95%d7%a9%d7%94.html" rel="tag">ירושה</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="ירושה מרובה - טנק - שאלה על ירושה מobject" itemprop="headline"/>
+<meta content="שבוע 8" itemprop="articleSection"/>
+<meta content="ירושה" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">rotembej</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/4/4b427adce2306f360345bfe69e16b80dac8b529d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T05:57:54Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  5:57am
+                  </time>
+<meta content="2021-12-27T00:43:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/><br/>
+בדוגמא כאן:<br/>
+<img alt="image" data-base62-sha1="aJMf3DPG6GIKiuT5pq1BasnI6sJ" height="310" src="../../../uploads/default/original/2X/4/4b427adce2306f360345bfe69e16b80dac8b529d.png" width="539"/></p>
+<p>אשמח לדעת למה מחלקת vehicle ומחלקת weapon יורשות ממחלקת object בצורה שבה זה כתוב כאן (כלומר עם הsuper().<strong>init</strong>())…<br/>
+למה בעצם הן לא כתובות כמו מחלקות שעשינו עד עכשיו? האם יש יתרון/סיבה לכתיבה בצורה הזו? מה המחלקות האלה יורשות מobject כשכתבים ככה לעומת אחרת (אמרנו שבכל מקרה המחלקות “יורשות” ממחלקת אובייקט כברירת מחדל לא?)?</p>
+<p>תודה מראש!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../super-object-mixins/7503/2.html" itemprop="url">שימוש ב- super() וירושה ממחלקת object הכללית, ועוד שאלה על ההבדל בין Mixins למחלקת מופשטת</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">rotembej</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T06:12:32Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  6:12am
+                  </time>
+<meta content="2020-07-08T06:12:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאלה נוספת לגבי ההבדלים בין MIXIN למחלקה מופשטת…</p>
+<p>האם אפשר להגיד שMIXIN היא סוג של מחלקה מופשטת? בעצם אין לה מטרה בפני עצמה, לא אמורים ליצור ממנה מופעים, והיא משמשת רק כמחלקה שיורשים ממנה לא?<br/>
+האם ההבדל בין שתיהן הוא רק ש"לרוב נעשה שימוש ביותר מ־Mixin אחת בעזרת ירושה מרובה"? או שההבדל נובע מזה שהמחלקות שיורשות ממחלקה מופשטת חייבות להשתמש בפעולות שלה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yael7899</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/b/b1d3ced02389ee6ecd456deb6f2969899fbf5b3a.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T07:52:50Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  7:52am
+                  </time>
+<meta content="2020-07-08T07:55:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצטרפת לשאלה בנושא<br/>
+האם בדוגמא זו ה MIXIN – ים הם המחלקות Clickable, LargeRectangle?<br/>
+ולמה כאן במחלקת button לא רשמנו את הפונקציית <strong>init</strong> ולא אתחלנו את הפונקציה עם הקריאה super(), כמו שעשינו עד כה?</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/b1d3ced02389ee6ecd456deb6f2969899fbf5b3a" href="../../../uploads/default/original/2X/b/b1d3ced02389ee6ecd456deb6f2969899fbf5b3a.png" title="image"><img alt="image" data-base62-sha1="pn8j7XUJIsPgMSarsM8ktyH4qSK" data-small-upload="../../../uploads/default/optimized/2X/b/b1d3ced02389ee6ecd456deb6f2969899fbf5b3a_2_10x10.png" height="416" src="../../../uploads/default/original/2X/b/b1d3ced02389ee6ecd456deb6f2969899fbf5b3a.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">793×479 21.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T08:00:19Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  8:00am
+                  </time>
+<meta content="2020-07-08T08:00:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ים ענה על השאלה של הMixin בשרשור אבסטרקט - Mixin<br/>
+<aside class="quote quote-modified" data-post="2" data-topic="7485">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../../mixin/7485/2.html">Mixin - אבסטרקט?</a> <a class="badge-wrapper bullet" href="../../../c/old/week-8/18.html"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 8.">שבוע 8</span></a>
+</div>
+<blockquote>
+    כן, הן נחשבות אבסטרקטיות לפי ההגדרה היבשה של מחלקה אבסטרקטית במדעי־המחשב (מחלקה שלא יוצרים ממנה מופעים), אבל אין סיבה להשתמש ב־ABC כאן כי אנחנו לא רוצים להכריח אף אחת מתתי־המחלקות לממש פעולות מסוימות. 
+
+הרחבה: 
+
+בתורת הטיפוסים אנחנו מגדירים טיפוס אבסטרקטי (abstract type, סוג משתנה אבסטרקטי) כטיפוס שאי אפשר ליצור ממנו מופעים. טיפוס שכן אפשר ליצור ממנו מופעים (הקבוצה המשלימה לטיפוס אבסטרקטי) נקראת טיפוס מוחשי (concrete type).
+בשפות תכנות רבות נהוג שבטיפוס האבסטרקטי כתובות חתימות של פעולות (שם ופרמ…
+  </blockquote>
+</aside>
+</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../mixins/7530/3.html" itemprop="url">Mixins ואבסטרקטיות</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T08:14:11Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  8:14am
+                  </time>
+<meta content="2020-07-08T08:14:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה שקרה במקרה הזה, זה בעצם שתי מחלקות שונות , שהיה צורך לחבר אותן, סתם צורך, אז פשוט יצרו מחלקה שלישית שכוללת את שתיהן יחדיו,<br/>
+זה כמו שתי פונקציות, שבפונקציה אחת עושה חיבור והשניה כפל,<br/>
+עכשיו לא מכובד ליצור פונקציה שתכלול בתוכה גם את הכפל וגם את החיבור, לכן יש פונקציה שלישית שתאחד אותן…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T08:16:35Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  8:16am
+                  </time>
+<meta content="2020-07-08T08:16:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בעצם הMixIn זה מה שיוצרת מחלקת botton,<br/>
+לא רשמנו super, init וכו’ כי אנחנו לא מעוניינים לשנות כלום במחלקות האב, וגם כי שתי המחלקות הנ’'ל אינן שייכות למחלקה ספציפית שתירש אותה (abc module etc…)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7495.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-08T16:35:57Z" itemprop="datePublished">
+                     8 ביולי,‏ 2020,‏  4:35pm
+                  </time>
+<meta content="2020-07-08T16:35:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="7495" data-username="rotembej">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/r/e274bd/40.png" width="20"/> rotembej:</div>
+<blockquote>
+<p>למה בעצם הן לא כתובות כמו מחלקות שעשינו עד עכשיו?</p>
+</blockquote>
+</aside>
+<p>מה ההבדל ממחלקות שעשינו עד עכשיו? האם התשובה <a href="../../topic/7497/2.html">כאן</a> עונה לך על השאלה?</p>
+<aside class="quote no-group" data-full="true" data-post="2" data-topic="7495" data-username="rotembej">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/r/e274bd/40.png" width="20"/> rotembej:</div>
+<blockquote>
+<p>שאלה נוספת לגבי ההבדלים בין MIXIN למחלקה מופשטת…</p>
+<p>האם אפשר להגיד שMIXIN היא סוג של מחלקה מופשטת? בעצם אין לה מטרה בפני עצמה, לא אמורים ליצור ממנה מופעים, והיא משמשת רק כמחלקה שיורשים ממנה לא?<br/>
+האם ההבדל בין שתיהן הוא רק ש"לרוב נעשה שימוש ביותר מ־Mixin אחת בעזרת ירושה מרובה"? או שההבדל נובע מזה שהמחלקות שיורשות ממחלקה מופשטת חייבות להשתמש בפעולות שלה?</p>
+</blockquote>
+</aside>
+<p>לשאלה הזו חן ענתה (אכן התייחסתי בהרחבה <a href="../../mixin/7485/2.html">כאן</a>)</p>
+<aside class="quote no-group" data-post="3" data-topic="7495" data-username="yael7899">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/y/5f9b8f/40.png" width="20"/> yael7899:</div>
+<blockquote>
+<p>האם בדוגמא זו ה MIXIN – ים הם המחלקות Clickable, LargeRectangle?</p>
+</blockquote>
+</aside>
+<p>כן</p>
+<aside class="quote no-group" data-post="3" data-topic="7495" data-username="yael7899">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/y/5f9b8f/40.png" width="20"/> yael7899:</div>
+<blockquote>
+<p>ולמה כאן במחלקת button לא רשמנו את הפונקציית <strong>init</strong> ולא אתחלנו את הפונקציה עם הקריאה super(), כמו שעשינו עד כה?</p>
+</blockquote>
+</aside>
+<p>כיוון שבקריאה ל־<code>__init__</code> של Button הפונקציה “אוטומטית” תקרא ל־<code>__init__</code> של מחלקת־העל (ה־super), זה מה שקורה כשלא דורסים פעולה של מחלקת־על בתת־המחלקה.<br/>
+באחרות כן מימשנו כיוון שרצינו להוסיף דברים נוספים חוץ מהקריאה ל־<code>__init__</code> של מחלקת־העל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/object/7495/7 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:46 GMT -->
+</html>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הבהרת התרגיל: פקודת add</title>
+    <link>https://forums.pythonic.guru/t/add/8023</link>
+    <description>ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל.
+
+### הנחה 1: נקודת השורש של הגיבוי
+
+ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. *אותה נרצה לגבות*.
+
+נניח שעשינו wit init בתוך התיקייה `C:\Projects\Yam\Etztrubal`.
+מעתה, Etztrubal היא &quot;תיקיית השורש&quot;, ה־repository או &quot;התיקייה המקורית&quot;. בתוכה תיווצר התיקייה `.wit`.
+
+כל פעם בעתיד שנבקש לשחזר את הגיבוי (לחזור לתמונה מסוימת), אנחנו נחליף את כל התוכן של תיקיית `Etztrubal` בגיבוי שביקשנו לבצע.
+
+### הנחה 2: המטרה היא שיהיה אפשר לשחזר את הקבצים בקלות
+
+הרעיון של wit הוא שבתוך תיקיית `.wit/images` יישמרו העתקים של התיקייה המקורית.
+בעתיד, נרצה להיות מסוגלים לבקש מ־wit לשחזר את קבצים לתוך תיקיית Etztrubal (התיקייה המקורית) בצורה הכי פשוטה שאפשר.
+לכן, כל העתק צריך לשמר את היררכיית התיקיות שנמצאת בתוך Etztrubal.
+
+### הנחה 3: התיקייה staging_area היא תמונת ראי של התיקייה המקורית
+
+התיקייה staging_area שנמצאת בתוך תיקיית `.wit` אמורה לשקף את המצב המדויק של התיקייה המקורית.
+
+זאת אומרת, אם:
+1. כתובתה של התיקייה המקורית היא `C:\Projects\Yam\Etztrubal`.
+2. החלטנו להוסיף לגיבוי באמצעות הפקודה add את `C:\Projects\Yam\Etztrubal\a\b\c` לגיבוי.
+
+אז תיקיית staging_area תכיל את התיקייה a (ללא קבצים בתוכה), תחתיה את התיקייה b (ללא קבצים בתוכה), ותחתיה את התיקייה c (עם כל הקבצים). כלומר: `C:\Projects\Yam\Etztrubal\.wit\staging_area\a\b\c`.
+
+זה קורה כיוון ש:
+1. התיקייה c היא התיקייה שביקשנו להוסיף לגיבוי (באמצעות add). אנחנו נשמור אותה ואת כל הקבצים שבתוכה.
+2. התיקיות a, b מתווספות כדי שנוכל &quot;לזכור&quot; איפה תיקייה c הייתה שמורה בהיררכיית התיקיות.
+
+### למה לשמור בצורה הזו?
+
+1. כשנרצה לחזור לאחד הגיבויים, נוכל פשוט להעתיק את תוכן תיקיית הגיבוי בחזרה לתיקייה המקורית. היררכיית הקבצים תישמר, ולא נצטרך להתעסק עם איזו תיקייה הייתה איפה.
+2. זה עוזר לנו למנוע מצב שבו עשינו `add` לתיקייה `d` ולתיקייה `e` שנמצאים במקומות שונים בהיררכייה, ובשניהם יש קבצים עם שם דומה (נניח: `main.py`). אם לא נשמור תחת staging_area את הנתיב לתיקייה, עלולים להיווצר התנגשויות.
+
+### דוגמאות נוספות
+
+ראו [כאן](https://forums.pythonic.guru/t/1-add/8004/12?u=yam).</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 31 Aug 2020 09:51:04 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/add/8023.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הבהרת התרגיל: פקודת add</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>אם הוא נמצא באותו היררכיה, כן.</p>
+          <p><a href="https://forums.pythonic.guru/t/add/8023/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/add/8023/3</link>
+        <pubDate>Mon, 31 Aug 2020 09:51:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8023-3</guid>
+        <source url="https://forums.pythonic.guru/t/add/8023.rss">הבהרת התרגיל: פקודת add</source>
+      </item>
+      <item>
+        <title>הבהרת התרגיל: פקודת add</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>האם add אמור לדרוס קובץ אם השם שהוכנס זהה לקובץ קיים אחר ב- staging area?</p>
+          <p><a href="https://forums.pythonic.guru/t/add/8023/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/add/8023/2</link>
+        <pubDate>Mon, 31 Aug 2020 09:13:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8023-2</guid>
+        <source url="https://forums.pythonic.guru/t/add/8023.rss">הבהרת התרגיל: פקודת add</source>
+      </item>
+      <item>
+        <title>הבהרת התרגיל: פקודת add</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ראיתי שיש אינסוף בלבול סביב התרגיל הזה, אז החלטתי לרכז את ההסבר באופן ש(אני מקווה) יפשט לכולם את התרגיל.</p>
+<h3>הנחה 1: נקודת השורש של הגיבוי</h3>
+<p>ברגע שאנחנו עושים wit init בתיקייה מסוימת, זו התיקייה של הפרויקט שלנו. <em>אותה נרצה לגבות</em>.</p>
+<p>נניח שעשינו wit init בתוך התיקייה <code>C:\Projects\Yam\Etztrubal</code>.<br>
+מעתה, Etztrubal היא “תיקיית השורש”, ה־repository או “התיקייה המקורית”. בתוכה תיווצר התיקייה <code>.wit</code>.</p>
+<p>כל פעם בעתיד שנבקש לשחזר את הגיבוי (לחזור לתמונה מסוימת), אנחנו נחליף את כל התוכן של תיקיית <code>Etztrubal</code> בגיבוי שביקשנו לבצע.</p>
+<h3>הנחה 2: המטרה היא שיהיה אפשר לשחזר את הקבצים בקלות</h3>
+<p>הרעיון של wit הוא שבתוך תיקיית <code>.wit/images</code> יישמרו העתקים של התיקייה המקורית.<br>
+בעתיד, נרצה להיות מסוגלים לבקש מ־wit לשחזר את קבצים לתוך תיקיית Etztrubal (התיקייה המקורית) בצורה הכי פשוטה שאפשר.<br>
+לכן, כל העתק צריך לשמר את היררכיית התיקיות שנמצאת בתוך Etztrubal.</p>
+<h3>הנחה 3: התיקייה staging_area היא תמונת ראי של התיקייה המקורית</h3>
+<p>התיקייה staging_area שנמצאת בתוך תיקיית <code>.wit</code> אמורה לשקף את המצב המדויק של התיקייה המקורית.</p>
+<p>זאת אומרת, אם:</p>
+<ol>
+<li>כתובתה של התיקייה המקורית היא <code>C:\Projects\Yam\Etztrubal</code>.</li>
+<li>החלטנו להוסיף לגיבוי באמצעות הפקודה add את <code>C:\Projects\Yam\Etztrubal\a\b\c</code> לגיבוי.</li>
+</ol>
+<p>אז תיקיית staging_area תכיל את התיקייה a (ללא קבצים בתוכה), תחתיה את התיקייה b (ללא קבצים בתוכה), ותחתיה את התיקייה c (עם כל הקבצים). כלומר: <code>C:\Projects\Yam\Etztrubal\.wit\staging_area\a\b\c</code>.</p>
+<p>זה קורה כיוון ש:</p>
+<ol>
+<li>התיקייה c היא התיקייה שביקשנו להוסיף לגיבוי (באמצעות add). אנחנו נשמור אותה ואת כל הקבצים שבתוכה.</li>
+<li>התיקיות a, b מתווספות כדי שנוכל “לזכור” איפה תיקייה c הייתה שמורה בהיררכיית התיקיות.</li>
+</ol>
+<h3>למה לשמור בצורה הזו?</h3>
+<ol>
+<li>כשנרצה לחזור לאחד הגיבויים, נוכל פשוט להעתיק את תוכן תיקיית הגיבוי בחזרה לתיקייה המקורית. היררכיית הקבצים תישמר, ולא נצטרך להתעסק עם איזו תיקייה הייתה איפה.</li>
+<li>זה עוזר לנו למנוע מצב שבו עשינו <code>add</code> לתיקייה <code>d</code> ולתיקייה <code>e</code> שנמצאים במקומות שונים בהיררכייה, ובשניהם יש קבצים עם שם דומה (נניח: <code>main.py</code>). אם לא נשמור תחת staging_area את הנתיב לתיקייה, עלולים להיווצר התנגשויות.</li>
+</ol>
+<h3>דוגמאות נוספות</h3>
+<p>ראו <a href="https://forums.pythonic.guru/t/1-add/8004/12">כאן</a>.</p>
+          <p><a href="https://forums.pythonic.guru/t/add/8023/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/add/8023/1</link>
+        <pubDate>Sun, 30 Aug 2020 15:47:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8023-1</guid>
+        <source url="https://forums.pythonic.guru/t/add/8023.rss">הבהרת התרגיל: פקודת add</source>
+      </item>
+  </channel>
+</rss>

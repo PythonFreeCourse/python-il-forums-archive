@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/response-redirect/8919?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:27:11 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>בעיה עם response.redirect - פייתון בעברית ובחינם</title>
+<meta content="יש לי ראוט שמרנדר טופס עבור הלקוח. אני לוקח ומעבד את הנתונים מהטופס.בסוף הפעולה, אני צריך לשלוח את הנתונים הללו לראוט אחר, שאמור לקבל אותם כמילון, בבקשת פוסט. 
+אני לא מצליח לבצע את הפעולה הזאת בשום דרך עם return.redirect&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="89194658.html?page=2" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8919.rss" rel="alternate nofollow" title="הזנת RSS של ‚בעיה עם response.redirect’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="89194658.html?page=2" property="og:url"/>
+<meta content="89194658.html?page=2" name="twitter:url"/>
+<meta content="בעיה עם response.redirect" property="og:title"/>
+<meta content="בעיה עם response.redirect" name="twitter:title"/>
+<meta content="חסר תמיכה בפרונט אנד כחלק מהפעלת האפליקציה. כמו בהמון דברים שכבר ניסיתי לבצע ב fast-api. הכל תמיד מסתמך על זה שתהיה מערכת פרונט אנד נפרדת שתשלח ג’ייסונים ותקבל אותם בחזרה" property="og:description"/>
+<meta content="חסר תמיכה בפרונט אנד כחלק מהפעלת האפליקציה. כמו בהמון דברים שכבר ניסיתי לבצע ב fast-api. הכל תמיד מסתמך על זה שתהיה מערכת פרונט אנד נפרדת שתשלח ג’ייסונים ותקבל אותם בחזרה" name="twitter:description"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="3 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="7 ❤"/>
+<meta content="2021-01-27T18:07:26+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="8919.html" rel="prev"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8919.html">בעיה עם response.redirect</a>
+</h1>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="בעיה עם response.redirect" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-27T18:07:26Z" itemprop="datePublished">
+                     27 בינואר,‏ 2021,‏  6:07pm
+                  </time>
+<meta content="2021-01-27T18:07:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חסר תמיכה בפרונט אנד כחלק מהפעלת האפליקציה. כמו בהמון דברים שכבר ניסיתי לבצע ב fast-api. הכל תמיד מסתמך על זה שתהיה מערכת פרונט אנד נפרדת שתשלח ג’ייסונים ותקבל אותם בחזרה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_22" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-27T18:08:33Z" itemprop="datePublished">
+                     27 בינואר,‏ 2021,‏  6:08pm
+                  </time>
+<meta content="2021-01-27T18:08:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה חסר לך שה־frontend יבצע עבורך?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_23" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-27T18:09:32Z" itemprop="datePublished">
+                     27 בינואר,‏ 2021,‏  6:09pm
+                  </time>
+<meta content="2021-01-27T18:09:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יקבל נתונים מהמשתמש וישלח אותם לראוטים שהם מספקים. בדיוק מה שאני מנסה לעשות ולא מצליח</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_24" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-27T18:29:34Z" itemprop="datePublished">
+                     27 בינואר,‏ 2021,‏  6:29pm
+                  </time>
+<meta content="2021-01-27T18:29:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יכול לכתוב את ה־JS, זה לא סיפור (זה בעיקר להעתיק ולהדביק קוד קיים)<br/>
+אם מאוד מאוד לא בא לך, אפשר להשתמש ב־httpx כדי לשלוח בקשת HTTP</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_25" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-27T18:47:08Z" itemprop="datePublished">
+                     27 בינואר,‏ 2021,‏  6:47pm
+                  </time>
+<meta content="2021-01-27T18:47:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אבדוק את זה. תודה רבה על העזרה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_26" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-28T18:25:36Z" itemprop="datePublished">
+                     28 בינואר,‏ 2021,‏  6:25pm
+                  </time>
+<meta content="2021-01-28T18:25:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הצלחתי להפעיל את httpx משום מה, יש שם מספר דברים שצריך להגדיר בעבודה עם שרת מקומי, והעדפתי ללכת על פתרון ה- JS למרות חוסר הניסיון והידע שלי בזה. היה נראה לי יותר הגיוני להסיר שכבה מהשרת, במקום להוסיף לו אחת.<br/>
+עשיתי פונקצית JS שלוקחת ישירות את הנתונים מהטופס, מאמתת אותם, שולחת אותם לראוט של fastapi-Users, ומבצעת פעולות בהתאם לתשובה שחוזרת ממנו. בינתיים הכל עובד בסדר, אבל אני תוהה לגבי נקודה מסויימת.<br/>
+הראוט שיצרתי שמפעיל את הפונקציה שמרנדרת את הטופס הוא מסוג get. לא הצלחתי להגדיר אותו כפוסט, וגם בעצם לא צריך, מאחר והפונקציה עצמה לא מקבלת נתונים. הם נשאבים ישירות מהטופס בעמוד, באמצעות JS. השאלה שלי היא האם זה בסדר ומקובל, ולא bad practice…<br/>
+אם אני מנסה להגדיר את אותו הראוט בדיוק כ- GET, אני מקבל Method Not Allowed.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_27" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T14:16:36Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  2:16pm
+                  </time>
+<meta content="2021-01-30T14:16:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נשמע טוב מאוד. רק הנתונים מהטופס צריכים להישלח ב־POST</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_28" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T14:23:58Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  2:23pm
+                  </time>
+<meta content="2021-01-30T14:23:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפתרון הזה כבר לא רלוונטי. לאחר שיישמתי, מסתבר שהסיפרייה fastapi-userrs לא מנהלת סשן, ולא מייצרת קוקי. הצלחתי ליישם על ידי יצירת הקוקי ב- JS, אבל זה לא טוב, כי לא ניתן לייצר שם httpcoookie.<br/>
+כל דרך שאני מנסה כדי לפתור את זה ולהגיע למצב שכל המכלול עובד, מעמידה בפני איזה שהוא מחסום שאני לא מצליח לעבור, בכל פעם במקום אחר.<br/>
+מצאתי גם דרך ליצור ראוט, ולשלוח את הנתונים מהטופס לראוט לוגאין שהסיפרייה מספקת. אבל הדרך היחידה היא באמצעות redirectresponse. ואז הטוקן חוזר לי באובייקט של סטרלט ריספונס, ואני לא מצליח להוציא ממנו את הנתונים<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ef213577f7a0c8372833ad33d58a64a234af0593" href="../../uploads/default/original/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593.jpg" title="image"><img alt="image" data-base62-sha1="y7rgr1HI4SdHR05UksYnBnKUCsP" data-small-upload="../../uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_10x10.png" height="243" src="../../uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_690x243.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_690x243.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_1035x364.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1280×451 70.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7" href="../../uploads/default/original/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7.jpg" title="image"><img alt="image" data-base62-sha1="8a3KI8dmi7Vo1PmjPVNnSOlvvuf" data-small-upload="../../uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_10x10.png" height="192" src="../../uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_690x192.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_690x192.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_1035x288.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1142×318 59 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_29" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T15:21:15Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  3:21pm
+                  </time>
+<meta content="2021-01-30T15:21:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לפי <a class="inline-onebox" href="https://frankie567.github.io/fastapi-users/usage/flow/#cookie-backend">Flow - FastAPI Users</a> נראה שדווקא הם כן יודעים לייצר קוקי, אם זה מה שאתה מחפש.<br/>
+מה הפער הנוכחי?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_30" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/0be105216930a069139e4624b937ea44ec30aa3f.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T15:35:32Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  3:35pm
+                  </time>
+<meta content="2021-01-30T15:45:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי ב- JS פונקציה ששולחת את הנתונים מהטופס לראוט שלהם ליצירת טוקן ו- קוקי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/0be105216930a069139e4624b937ea44ec30aa3f" href="../../uploads/default/original/2X/0/0be105216930a069139e4624b937ea44ec30aa3f.png" title="image"><img alt="image" data-base62-sha1="1H5m27ghpoglsvuT0FtSWsI68HB" data-small-upload="../../uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_10x10.png" height="358" src="../../uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_690x358.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_690x358.png, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_1035x537.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_1380x716.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1466×762 93.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+חוזר טוקן<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1ce236c476b3eae5cdb0a4db840964156528b72f" href="../../uploads/default/original/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f.png" title="image"><img alt="image" data-base62-sha1="47w1SrQ7W8RzPIcyEWmB9mUBYET" data-small-upload="../../uploads/default/optimized/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f_2_10x10.png" height="38" src="../../uploads/default/original/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1162×65 6.51 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+לא חוזרת קוקי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c" href="../../uploads/default/original/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c.png" title="image"><img alt="image" data-base62-sha1="lDPWFYUcOPbHkayEFtMSOIkmSsY" data-small-upload="../../uploads/default/optimized/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c_2_10x10.png" height="277" src="../../uploads/default/original/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1210×486 14.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+לעומת זאת:<br/>
+זה ראוט מוגן:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef" href="../../uploads/default/original/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef.png" title="image"><img alt="image" data-base62-sha1="mA2PSbd0kBniBwq3ZCmnXs53sLB" data-small-upload="../../uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_10x10.png" height="121" src="../../uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_690x121.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_690x121.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_1035x181.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1358×239 24.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אם אני מייצר את הקוקי לבד ב- JS:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e734dce6cd4165ebba99a7a903aaddcd88ea60db" href="../../uploads/default/original/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db.png" title="image"><img alt="image" data-base62-sha1="wZlyldI7EsphKmhfEplQBv6pwdZ" data-small-upload="../../uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_10x10.png" height="145" src="../../uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_690x145.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_690x145.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_1035x217.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_1380x290.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1525×321 35.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+מצליח להיכנס לראוט:<br/>
+<img alt="image" data-base62-sha1="lwuWQEiZid9gZcITbKOdUdAjC50" height="309" src="../../uploads/default/original/2X/9/96da1fc17a26c93592102adbdc854ce5145eba56.png" width="602"/><br/>
+הבעיה היא שני לא יכול לייצר שם httpcookie.<br/>
+לעומת זאת, אם אני מפנה לרואט שלהם ישירות מהראוט של הטופס שלי כדי שאצליח ליצור עם פייתון את הקוקי, אז הדרך היחידה שידוע לי עליה היא עם redirect. ואז הטוקן חוזר אלי כאובייקט של starlette.response.redirect. ואני לא מצליח בשום צורה לחלץ ממנו את המידע.<br/>
+מקווה שהייתי ברור…<br/>
+כשאני מנסה לעשות את זה מפייתון, אז הפונקציה נראית משהו בסגנון הזה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ea2d73e3c934ae35e6d705d2352e910a8673844b" href="../../uploads/default/original/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b.png" title="image"><img alt="image" data-base62-sha1="xpD6OY9QAKcGJrshbMDk1qqrHsf" data-small-upload="../../uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_10x10.png" height="470" src="../../uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_690x470.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_690x470.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_1035x705.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1205×821 76.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab" href="../../uploads/default/original/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab.png" title="image"><img alt="image" data-base62-sha1="83cMghjMUmo1AaYRvKp2qviWkif" data-small-upload="../../uploads/default/optimized/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab_2_10x10.png" height="259" src="../../uploads/default/original/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">701×264 21.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_31" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T18:47:39Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  6:47pm
+                  </time>
+<meta content="2021-01-30T18:47:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="30" data-topic="8919" data-username="koby">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/koby/40/2234_2.jpg" width="20"/> koby:</div>
+<blockquote>
+<p>עשיתי ב- JS פונקציה ששולחת את הנתונים מהטופס לראוט שלהם ליצירת טוקן ו- קוקי</p>
+</blockquote>
+</aside>
+<p>אתה שולח ל־JWT שלא אמור ליצור קוקי. <a href="http://localhost:8000/auth/cookie">http://localhost:8000/auth/cookie</a> אמור ליצור קוקי.<br/>
+זה כתוב בתיעוד <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_32" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-31T09:14:09Z" itemprop="datePublished">
+                     31 בינואר,‏ 2021,‏  9:14am
+                  </time>
+<meta content="2021-01-31T09:14:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי למיטב הבנתי כמו בדוקומנטציה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/6f958b141c8d0e972b59bf3430c719d0546436b9" href="../../uploads/default/original/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9.png" title="image"><img alt="image" data-base62-sha1="fV7orlkPo1m9Tos6e7QNsdcCDQl" data-small-upload="../../uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_10x10.png" height="385" src="../../uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_690x385.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_690x385.png, https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_1035x577.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1096×612 51.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אני לא מקבל חזרה את מה שהם כותבים שאני אמור לקבל ב- headers:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/bd706eb4e89e42e402e83d10b6af383d6c4b238f" href="../../uploads/default/original/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f.png" title="image"><img alt="image" data-base62-sha1="r1R7TqMYz5uMWLyfdWYKKgVLhrF" data-small-upload="../../uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_10x10.png" height="255" src="../../uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_690x255.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_690x255.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_1035x382.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_1380x510.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1909×708 78.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אני מקבל טוקן, בדיוק כמו מקודם, בבודי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d823f242c55998002f14ced33360d3d788c7175a" href="../../uploads/default/original/2X/d/d823f242c55998002f14ced33360d3d788c7175a.png" title="image"><img alt="image" data-base62-sha1="uQ49bYuulUiPWTSS3YiNzF1n8UO" data-small-upload="../../uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_10x10.png" height="296" src="../../uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_690x296.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_690x296.png, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_1035x444.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_1380x592.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1909×819 99.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+גם אין קוקי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a" href="../../uploads/default/original/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a.png" title="image"><img alt="image" data-base62-sha1="aQrHegcAjdJdgMtpZrxQvIIHftM" data-small-upload="../../uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_10x10.png" height="368" src="../../uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_690x368.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_690x368.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_1035x552.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_1380x736.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1421×758 39.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אלה הגדרות הבקאנד. כמובן ניסיתי גם לפני שביטלתי את JWT. עשיתי ניסיון גם להסיר לגמרי את ההגדרה שלו. בכל אופן, הבקאנד עבור קוקי מוגדר<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4" href="../../uploads/default/original/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4.png" title="image"><img alt="image" data-base62-sha1="x1wcWu4v0PNduyKxRLUp0FmF5WI" data-small-upload="../../uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_10x10.png" height="266" src="../../uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_690x266.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_690x266.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_1035x399.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_1380x532.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1417×547 43 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_33" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-01T00:33:46Z" itemprop="datePublished">
+                     1 בפברואר,‏ 2021,‏ 12:33am
+                  </time>
+<meta content="2021-02-01T00:33:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני אצטרך גישה לכל הקוד ולהריץ אותו אצלי כדי לראות למה זה קורה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_34" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-01T04:51:56Z" itemprop="datePublished">
+                     1 בפברואר,‏ 2021,‏  4:51am
+                  </time>
+<meta content="2021-02-01T04:51:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="onebox githubfolder">
+<header class="source">
+<img class="site-icon" height="32" src="https://github.githubassets.com/favicons/favicon.svg" width="32"/>
+<a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" rel="noopener nofollow ugc" target="_blank">github.com</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:420/420;"><img class="thumbnail" height="420" src="https://avatars.githubusercontent.com/u/71118404?s=400&amp;amp;v=4" width="420"/></div>
+<h3><a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" rel="noopener nofollow ugc" target="_blank">kobyfogel/calendar</a></h3>
+<p><a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" rel="noopener nofollow ugc" target="_blank">feature/FastAPI-Users</a></p>
+<p><span class="label1">Contribute to kobyfogel/calendar development by creating an account on GitHub.</span></p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_35" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-01T06:39:54Z" itemprop="datePublished">
+                     1 בפברואר,‏ 2021,‏  6:39am
+                  </time>
+<meta content="2021-02-01T12:00:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מכייוון שנגמרו לי הרעיונות אתמול לגבי הסיפרייה הזאת, המשכתי לעבוד על המערכת שאני בניתי.<br/>
+המערכת מייצרת jwt טוקן על פי הדוקומנטציה של auth2, ומכניסה אותו ל-cookie httponly.<br/>
+בכל ניסיון כניסה לראוט מוגן, הטוקן נבדק. אם הוא לא קיים, לא נכון, או זמנו עבר, הקוקי נמחקת והמשתמש מופנה להתחברות.<br/>
+יצרתי גם ראוט לוגאאוט שמוחק את הקוקי מהדפדפן.<br/>
+צרתי דיפנדנסי עבור ראוט מוגן רק עבור יוזר מחובר, ועוד דיפנדנסי עבור קבלת יוזר מחובר אם יש כזה, ואם לא אז None, אך עדיין ניתן להיכנס לראוט.<br/>
+כל מה שנותר לעשות שם זה שיפורים קטנים בניהול הודעות עבור משתמש, שלא הצליח להיכנס לראוט מסוים. אני ממשיך בינתיים לעבוד על זה כרגע עד למוצר מוגמר \ עד שנבין איך אפשר בכ"ז לעבוד עם fastapi-Users.<br/>
+אשמח אם תעיף מבט על מה שעשיתי, אולי בכל זאת תרצה שנשתמש בזה… <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+עריכה: הוספתי הודעות רלוונטיות למשתמש, בכל פעם שאינו מצליח להכנס לראוט מוגן, מכל סיבה שהיא. בנוסף הוספתי הפנייה שמעבירה אותו לעמוד המוגן שאותו הוא חיפש, וזאת לאחר ההתחברות.</p><aside class="onebox githubfolder">
+<header class="source">
+<img class="site-icon" height="32" src="https://github.githubassets.com/favicons/favicon.svg" width="32"/>
+<a href="https://github.com/kobyfogel/calendar/tree/feature/login" rel="noopener nofollow ugc" target="_blank">github.com</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:420/420;"><img class="thumbnail" height="420" src="https://avatars.githubusercontent.com/u/71118404?s=400&amp;amp;v=4" width="420"/></div>
+<h3><a href="https://github.com/kobyfogel/calendar/tree/feature/login" rel="noopener nofollow ugc" target="_blank">kobyfogel/calendar</a></h3>
+<p><a href="https://github.com/kobyfogel/calendar/tree/feature/login" rel="noopener nofollow ugc" target="_blank">feature/login</a></p>
+<p><span class="label1">Contribute to kobyfogel/calendar development by creating an account on GitHub.</span></p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_36" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T03:00:33Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  3:00am
+                  </time>
+<meta content="2021-02-02T03:00:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני אצטרך שתעשה PR עם העבודה על fastapi-users כדי לראות את ה־diff, בבקשה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_37" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T04:33:46Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  4:33am
+                  </time>
+<meta content="2021-02-02T04:33:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_38" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8919.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-04T17:24:26Z" itemprop="datePublished">
+                     4 בפברואר,‏ 2021,‏  5:24pm
+                  </time>
+<meta content="2021-02-04T17:24:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי PR  לשתי הגירסאות.<br/>
+עבור גירסת api-Users, טיפלתי עד כמה שיכלתי בקונפליטקים שנוצרו בעקבות כך שהיא חייבת להיות זאת שמנהלת את טבלת user. עשיתי את המקסימום על ידי ירושה ממחלקת base שלהם, ושיניתי בהתאם את הריליישנז של כל הטבלאות.<br/>
+ישנם קונפליקטים נוספים שבהם לא טיפלתי, מאחר ואין בה password עבור יוזר, אלא hashed_password. ישנם טסטים של אחרים שמחפשים את השורה הזאת, והם לא עוברים כרגע.<br/>
+פירטתי כמיטב יכולתי בתיאור ה- PR.<br/>
+לגבי הגירסה לניהול משתמשים שאני כתבתי: אין בה שום קונפליקטים, היא עובדת באופן מלא, כולל תמיכה בפרונט אנד. עקרונית היא מוכנה למיזוג מהבחינה הזאת. למרות זאת, הגירסה שב- PR תצטרך לעבור מספר שינויים קוסמטיים, במידה ויוחלט להשתמש בה. גם לגביה פירטתי כמיטב יכולתי בתיאור ה- PR.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="8919.html" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/response-redirect/8919?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:27:52 GMT -->
+</html>

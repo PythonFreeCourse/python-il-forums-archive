@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+    <link>https://forums.pythonic.guru/t/wit-merge-commit/8065</link>
+    <description>היי,
+[במימוש האפשרי האחר](https://forums.pythonic.guru/t/wit-merge/8024), אחרי שמעתיקים ל־staging_area את BRANCH_NAME ועושים commit ל staging_area.
+האם עדיין יש לוודא ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי? כיוון שברגע שבמימוש זה לא מחפשים את האב הכי קרוב לHEAD ול BRANCH_NAME לא נוצר commit עם יותר מparent אחד?
+
+ושאלה נוספת בהקשר למימוש האפשרי האחר: 
+אם staging_area ו־HEAD לא  זהים, הפעולה לא תתבצע או שבמקרה כזה יש לגרום להם להיות זהים?
+
+תודה!</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 06 Sep 2020 16:45:14 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>השורה התתונה היא שה־merge קורה בין הקומיט שאנחנו ממש עליו (HEAD), לבין הקומיט שעליו מצביע BRANCH NAME, ואסור שיאבד מידע כלשהו שהמשתמש עשה.<br>
+אם מידע עלול להאבד, תכשיל את הפעולה.</p>
+<p>אין צורך לעדכן את ההורים עצמם, אלא רק לתת אליהם הפנייה בשדה parent.</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/19">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/19</link>
+        <pubDate>Sun, 06 Sep 2020 16:45:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-19</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[d104]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group quote-modified" data-username="Yam" data-post="2" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<aside class="quote no-group" data-username="adi1" data-post="1" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"> adi1:</div>
+<blockquote>
+<p>אם staging_area ו־HEAD לא זהים, הפעולה לא תתבצע או שבמקרה כזה יש לגרום להם להיות זהים?</p>
+</blockquote>
+</aside>
+<p>אם הם לא זהים הפקודה merge לא אמורה להתאפשר בגדול (כי עושים commit)</p>
+</blockquote>
+</aside>
+<p>בפקודה של commit, אם staging_area ו-HEAD זהים אז לא מתבצע commit (כי אין שום דבר חדש), ואם הם לא זהים אז מתבצע commit. לא?</p>
+<p>איך שחשבתי על merge:</p>
+<ul>
+<li>נרצה שהפעולה תיכשל אם יש משהו ב-“changes not staged for commit” (? אלא אם כן זה באחריות המשתמש לעשות add לכל הקבצים הלא מעודכנים ב-staging_area)</li>
+<li>בודקים אילו קבצים שונים (כולל כאלו שנוספו) מאז הבסיס המשותף ועד ל-BRANCH_NAME.</li>
+<li>מוודאים שאין קבצים משותפים בין ה-HEAD לאלו מסעיף קודם. אם יש, הפעולה תיכשל (אלא אם כן מטפלים ב-collisions, כפי שרשום בבונוס). אם אין, מעתיקים אותם (אלו של סעיף קודם) ל-staging_area</li>
+<li>אם יש משהו ב-“changes to be commited”, השינויים האלו כבר ייכנסו ל-commit ביחד עם מה שיש ב-BRANCH_NAME</li>
+<li>מבצעים commit תוך עדכון שני ההורים.</li>
+</ul>
+<p>מה כאן חסר / לא נכון?</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/18">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/18</link>
+        <pubDate>Sun, 06 Sep 2020 16:09:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-18</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, זו הכוונה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/17</link>
+        <pubDate>Sat, 05 Sep 2020 17:40:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-17</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>עוד שאלה על merge -<br>
+כשאתה כותב ש"לבדוק את התקינות של graph אחרי merge " אתה מתכווין שיראו בגרף את הhead החדש יוצא משני ההורים ?</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/16</link>
+        <pubDate>Sat, 05 Sep 2020 17:40:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-16</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה טובה. בגדול אפשר ליצור הודעה אוטומטית כדי לחסוך את הטרחה, משהו בסגנון “Merge branch: BRANCH_NAME”</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/15</link>
+        <pubDate>Sat, 05 Sep 2020 16:11:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-15</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[zoharya]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה נוספת בנושא זה-<br>
+אם הפונקציה merge אמורה לקרוא בתוכה לפונקציה commit,<br>
+האם שורת הפקודה של merge אמורה להיות כך:<br>
+“python path/to/wit.py merge BRANCH_NAME MESSAGE”?<br>
+תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/14</link>
+        <pubDate>Sat, 05 Sep 2020 10:27:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-14</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, זה נכון <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/13</link>
+        <pubDate>Thu, 03 Sep 2020 18:24:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-13</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+שאלה נוספת שעלתה לי, כל פעם שקוראים לפקודה merge מתבצע איחוד בין HEAD ו BRANCH_NAME , ולאחר מכן בתוך הפונקציה merge  קוראים לפונקציה commit, כלומר בהכרח ל commit האחרון יהיו 2 הורים ולא יותר (כיוון שמאחדים רק ענף אחד עם head ולא כמה ענפים בכל פעם)?<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/12</link>
+        <pubDate>Thu, 03 Sep 2020 17:36:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-12</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>עכשיו נפל האסימון!<br>
+המון תודה לשניכם על כל ההסברים!</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/11</link>
+        <pubDate>Thu, 03 Sep 2020 13:31:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-11</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adva.alkalay]]></dc:creator>
+        <description><![CDATA[
+            <p>שימי לב שברגע ש-meow הפך להיות פעיל, התווית שלו מוצמדת ל-commit הבאים (עד שהוא מפסיק להיות פעיל/כשענף אחר מופעל). כלומר, הוא פעיל עד ה-checkout master, ובדיוק לפניו נוצר commit חדש (222222) <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/10</link>
+        <pubDate>Thu, 03 Sep 2020 13:22:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-10</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>נכון!  סליחה פספסתי את commit 111111, אז עכשיו אני מסכימה שהאחד מהוריו של ה commit יהיה מורכב מ111111 (כי HEAD מצביע עליו) , ולגבי meow (שגם מרכיב את ה commit) הוא מצביע על 000000 , למה אם כך הוא לא אחד מהוריו של 333333 (במקום 222222)?</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/9</link>
+        <pubDate>Thu, 03 Sep 2020 13:09:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-9</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="adi1" data-post="6" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"> adi1:</div>
+<blockquote>
+<p>לאחר מכן התבצע commit ונוצר 222222 (HEAD מעודכן להיות 222222.), לאחר מכן checkout master ועכשיו HEAD מצביע ל000000.</p>
+</blockquote>
+</aside>
+<p>כאן הפער, לדעתי: master הוא הענף הראשי אחרי שעושים wit init.<br>
+הוא רץ הלאה עם ה־commit עד שמפעילים ענף אחר.</p>
+<p>לכן commit שיוצר את תמונה מספר 111111, master מתעדכן להצביע עליה.<br>
+ב־wit checkout master ה־HEAD יצביע על 111111.</p>
+<p>עכשיו עושים wit merge, שיוצר commit חדש מ־111111 ומ־222222 <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/8</link>
+        <pubDate>Thu, 03 Sep 2020 12:56:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-8</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adva.alkalay]]></dc:creator>
+        <description><![CDATA[
+            <p>master מצביע על 111111 <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/7</link>
+        <pubDate>Thu, 03 Sep 2020 12:53:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-7</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>עדיין מבולבלת,<br>
+אחרי שנעשה checkout 000000:<br>
+HEAD מעודכן להיות 000000.<br>
+יצרנו את ענף meow ולאחר מכן עשינו checkout meow , עכשיו ב HEAD מופיע 000000<br>
+לאחר מכן התבצע commit ונוצר 222222 (HEAD מעודכן להיות 222222.), לאחר מכן checkout master ועכשיו HEAD מצביע ל000000.<br>
+בסוף הגענו לmerge ונוצר 333333.<br>
+עדיין לא הבנתי לצערי איך 222222, 111111 הם ההורים של 333333.<br>
+אשמח לעוד הסבר בבקשה</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/6</link>
+        <pubDate>Thu, 03 Sep 2020 12:52:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-6</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <pre><code class="lang-auto">wit init
+wit add a
+wit commit
+(נוצר commit מספר 000000)
+wit add b
+wit commit
+(נוצר commit מספר 111111)
+wit checkout 000000
+wit branch meow
+wit checkout meow
+wit add c
+wit commit
+(נוצר commit מספר 222222)
+wit checkout master
+wit merge meow
+(נוצר commit מספר 333333)
+</code></pre>
+<p>הוריו של ה־commit שמספרו 333333 הם 22222 ו־111111</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/4</link>
+        <pubDate>Thu, 03 Sep 2020 12:21:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-4</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="2" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>כן, יש לוודא ששאר הפקודות מתפקדות ולתקן אותן אם יש צורך (וכנראה שיש צורך).<br>
+צריך להתחשב במצב שבו יש יותר מ־parent אחד בכל מקרה.</p>
+</blockquote>
+</aside>
+<p>הבנתי,<br>
+אפשר בבקשה לקבל דוגמה למצב בו ל commit האחרון יותר מ־parent אחד? כי commit  מקבל את הparent שלו מה HEAD, ולכן אני לא מצליחה להבין כיצד יהיה מצב בו יש יותר מ  parent אחד?</p>
+<p>תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/3</link>
+        <pubDate>Thu, 03 Sep 2020 12:17:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-3</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="adi1" data-post="1" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"> adi1:</div>
+<blockquote>
+<p>האם עדיין יש לוודא ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי? כיוון שברגע שבמימוש זה לא מחפשים את האב הכי קרוב לHEAD ול BRANCH_NAME לא נוצר commit עם יותר מparent אחד?</p>
+</blockquote>
+</aside>
+<p>כן, יש לוודא ששאר הפקודות מתפקדות ולתקן אותן אם יש צורך (וכנראה שיש צורך).<br>
+צריך להתחשב במצב שבו יש יותר מ־parent אחד בכל מקרה.</p>
+<aside class="quote no-group" data-username="adi1" data-post="1" data-topic="8065">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"> adi1:</div>
+<blockquote>
+<p>אם staging_area ו־HEAD לא זהים, הפעולה לא תתבצע או שבמקרה כזה יש לגרום להם להיות זהים?</p>
+</blockquote>
+</aside>
+<p>אם הם לא זהים הפקודה merge לא אמורה להתאפשר בגדול (כי עושים commit)</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/2</link>
+        <pubDate>Thu, 03 Sep 2020 12:13:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-2</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+      <item>
+        <title>בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+<a href="https://forums.pythonic.guru/t/wit-merge/8024">במימוש האפשרי האחר</a>, אחרי שמעתיקים ל־staging_area את BRANCH_NAME ועושים commit ל staging_area.<br>
+האם עדיין יש לוודא ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי? כיוון שברגע שבמימוש זה לא מחפשים את האב הכי קרוב לHEAD ול BRANCH_NAME לא נוצר commit עם יותר מparent אחד?</p>
+<p>ושאלה נוספת בהקשר למימוש האפשרי האחר:<br>
+אם staging_area ו־HEAD לא  זהים, הפעולה לא תתבצע או שבמקרה כזה יש לגרום להם להיות זהים?</p>
+<p>תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/wit-merge-commit/8065/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit-merge-commit/8065/1</link>
+        <pubDate>Thu, 03 Sep 2020 11:14:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8065-1</guid>
+        <source url="https://forums.pythonic.guru/t/wit-merge-commit/8065.rss">בדיקות תקינות אחרי wit merge ו־commit עם הורים מרובים</source>
+      </item>
+  </channel>
+</rss>

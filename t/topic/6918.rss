@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>העשרה: אז יש סדר במילונים, או לא?</title>
+    <link>https://forums.pythonic.guru/t/topic/6918</link>
+    <description>הכל התחיל ככה:
+![image|536x456](upload://aROzZa2VQV1P6pODK8PgVLoHsNM.png) 
+
+מה שסחף אותי לקצת סיפורי סבא. מוזמנים גם להינות. מעתיק את התשובה המלאה מהטלגרם:
+
+----
+
+זה סיפור ארוך, אנסה לעשות אותו קצר.
+
+במהלך השנים נעשים שוב ושוב ניסיונות לייעל את איך שמבני הנתונים בפייתון מתוכנתים מאחורי הקלעים (מבחינת מהירות וחיסכון במקום). עושים את זה כי מבינים שכל מילישנייה שנחסכת תחסוך מילישנייה במאות מיליוני מקומות שמריצים פייתון, ובמצטבר חסכון של מילישנייה על פני כ&quot;כ הרבה מקומות זה המון זמן. אותו רעיון גם עבור אחסון.
+מהסיבה הזו, במהלך השנים בכל גרסאות פייתון, איך שמילון עובד באמת, מאחורי הקלעים בפייתון, היה קצת אחר. יש על זה הרצאה של בחור בשם Raymond Hettinger, אחד ממפתחי הליבה של פייתון למי שרוצה
+
+למעשה, מילון הוא לא באמת המצאה של פייתון. הרעיון הכללי נקרא Hashmap – מעין מבנה שיודע להחזיק key ו־value, כאשר ה־key מצביע ל־value והפעולה של אחזור ערך לפי מפתח מסוים היא מאוד מהירה. המבנה הזה הוא רעיון, ומימוש שלו קיים כמעט בכל שפת תכנות מודרנית שתתקלו בה. אחד היתרונות המשמעותיים של hashmap הוא זמן הריצה המהיר ועלות זיכרון יחסית נמוכה, ואחד החסרונות הוא שאין סדר למפתחות.  בפייתון המימוש לרעיון נקרא dictionary.
+
+בפייתון 3.6 עשו שינוי מסוים (בפעם המאה) למימוש של מילונים, והצליחו לייעל אותם טיפה. אחד מ&quot;תופעות הלוואי&quot; של השינוי הזה, מעבר לכך שהמילון בגרסתו המיועלת תופס פחות מקום בזיכרון, הייתה שסדר הערכים במילון פתאום הפך להיות מסודר – לפי סדר ההכנסה של הערכים במילון. החבר&#39;ה בפייתון ראו כי טוב, ובאמת החליטו שזה מגניב. אנחנו מדברים על שינוי יחסית חדש, ממש מלפני 3 שנים or so.
+
+גוידו ואן רוסום, ה&quot;בעלים&quot; של פייתון באותה תקופה, אמר שזה מגניב, אבל סירב להכניס את זה כחלק מהתקן. בתקן עצמו (בתיעוד של פייתון) בגרסה 3.6 נשאר המשפט שאומר: &quot;אסור לכם להניח שיש סדר כלשהו למילונים&quot;, למרות שפרקטית – כבר היה סדר למילונים.
+יש להחלטה של לא להכניס את הסדר למילונים לתקן 3 סיבות:
+1. הכנסה של דבר כזה לתקן היא נקודת אל־חזור. אם ירצו לייעל מילונים עוד בעתיד, הם יהיו *עדיין* חייבים לשמור על הסדר, כי אחרת זו שבירת תאימות לאחור – וחוסר יציבות זה משהו שאי אפשר לעשות בשפה שכ&quot;כ הרבה אנשים משתמשים בה. זה מגביל במובן מסוים את היכולת לייעל מילונים.
+2. פייתון היא תקן. אנחנו משתמשים במימוש מסוים לתקן שנקרא CPython שבו רוב העולם משתמש, אבל יש מימושים נוספים לפייתון שמנסים, נניח, להמהיר את השפה. הכנסת אמירה כזו לתקן מחייבת אותם להתיישר עם מימוש שבו ל־dictionary יש סדר מסוים, וזו מכה קשה שעלולה לפגוע ביעילות שלהם.
+3. יש כבר במודול `collections` מבנה שנקרא `OrderedDict`. מי שמעוניין יכול להשתמש בו.
+
+עכשיו, אחרי שיש לכם את כל הידע שנוגע למילונים ולהיסטוריה שלהם, אני יכול לספר לכם שאחרי לחץ מהקהילה החליטו בפייתון 3.7 *כן* להכניס את הסדר של המילונים לתקן (למרות שב־3.6 הם כבר היו מסודרים, דה־פקטו). לשמחתכם אתם עוברים בפייתון 3.7 ואתם יכולים להשתמש בזה. מבחינה פדגוגית, אני חושב שנכון יותר ללמד מילונים כ־hashmap – מבנה בלי סדר. גם כדי להעביר טוב יותר את המהות של מבנה הנתונים הזה, וגם כדי שיהיה לכם קל יותר לעבור לשפות אחרות אם תרצו.</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 05 Jun 2020 08:13:25 +0000</lastBuildDate>
+    <category>שבוע 6</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/6918.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[Dusinka]]></dc:creator>
+        <description><![CDATA[
+            <p>בעד עוד כאלה <img src="https://forums.pythonic.guru/images/emoji/twitter/muscle.png?v=9" title=":muscle:" class="emoji" alt=":muscle:"><img src="https://forums.pythonic.guru/images/emoji/twitter/muscle.png?v=9" title=":muscle:" class="emoji" alt=":muscle:"><img src="https://forums.pythonic.guru/images/emoji/twitter/muscle.png?v=9" title=":muscle:" class="emoji" alt=":muscle:"><br>
+מאוד מעניין ומעשיר</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/8</link>
+        <pubDate>Fri, 05 Jun 2020 08:13:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מצטער.<br>
+התחת הזה שם למעלה מוציא אותי מריכוז! <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/7</link>
+        <pubDate>Fri, 05 Jun 2020 06:31:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote group-helper" data-username="devorack" data-post="5" data-topic="6918">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/devorack/40/904_2.png" class="avatar"> devorack:</div>
+<blockquote>
+<p>אז מילון הוא מסודר לפי סדר הכנסת האיברים, אבל בעצם משהו יכול להיות רק מסודר או לא מסודר, ואם הסדר הוא סדר הכנסת האיברים אז בפועל אני יכולה להכניס את האיברים מחדש בסדר שאני רוצה ולקבל מילון שמסודר לפי מה שסידרתי אותו (לפחות עד הפעם הבאה שאעדכן אותו)?</p>
+</blockquote>
+</aside>
+<p>כן</p>
+<aside class="quote group-helper" data-username="devorack" data-post="5" data-topic="6918">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/devorack/40/904_2.png" class="avatar"> devorack:</div>
+<blockquote>
+<p>האם זה לא יוצר פוטנציאל לייקר פעולות עם מילונים שלא לצורך כדי לשמור על סדר?</p>
+</blockquote>
+</aside>
+<p>“לייקר” כנראה שלא, אבל אם תצוץ הזדמנות לייעל דברים שתגרום למילון להיות לא מסודר – עכשיו ייאלצו לוותר עליה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/6</link>
+        <pubDate>Wed, 03 Jun 2020 15:56:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אם הבנתי נכון -</p>
+<p>אז מילון הוא מסודר לפי סדר הכנסת האיברים, אבל בעצם משהו יכול להיות רק מסודר או לא מסודר, ואם הסדר הוא סדר הכנסת האיברים אז בפועל אני יכולה להכניס את האיברים מחדש בסדר שאני רוצה ולקבל מילון שמסודר לפי מה שסידרתי אותו (לפחות עד הפעם הבאה שאעדכן אותו)?</p>
+<p>האם זה לא יוצר פוטנציאל לייקר פעולות עם מילונים שלא לצורך כדי לשמור על סדר?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/5</link>
+        <pubDate>Wed, 03 Jun 2020 10:56:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>“סיפורים שהוא מספר, נשארים איתנו יום וליל,<br>
+זו שעה גדולה, זהו זמן נפלא, <strong>עוד סיפור עם אבא בונה</strong>”</p>
+<p><a href="https://www.youtube.com/watch?v=bPzzNC9qLxI" class="onebox" target="_blank" rel="noopener">https://www.youtube.com/watch?v=bPzzNC9qLxI</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/4</link>
+        <pubDate>Wed, 03 Jun 2020 08:13:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[ruty3017]]></dc:creator>
+        <description><![CDATA[
+            <p>מעניין מאוד! ותודה על ההעשרה.<br>
+האמת שכל פינת סיפור עם ים מרתקת,<br>
+ולדעתי צריך להפוך את זה לפינה קבועה <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=12" title=":wink:" class="emoji" alt=":wink:" loading="lazy" width="20" height="20"></p>
+<p>(ממש כמו ששלדון עשה, למרות שים אתה הרבה יותר מוצלח <img src="https://forums.pythonic.guru/images/emoji/twitter/blush.png?v=12" title=":blush:" class="emoji" alt=":blush:" loading="lazy" width="20" height="20"><br>
+נזכרתי כמה זה מצחיק אז צירפתי)</p><p><a href="https://www.youtube.com/watch?v=b4bDoOFQzwM">Fun with Flags episode 3</a></p>
+
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/3</link>
+        <pubDate>Wed, 03 Jun 2020 08:10:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>מעניין. תודה רבה על ההעשרה.<br>
+עד עכשיו לא מצאתי הזדמנות טובה מספיק להשתמש בתכונה הזו</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/2</link>
+        <pubDate>Wed, 03 Jun 2020 07:55:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+      <item>
+        <title>העשרה: אז יש סדר במילונים, או לא?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הכל התחיל ככה:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/4/4c2b13c96d27968e9197671110f5ffc3af95f106.png" alt="image" data-base62-sha1="aROzZa2VQV1P6pODK8PgVLoHsNM" width="536" height="456"></p>
+<p>מה שסחף אותי לקצת סיפורי סבא. מוזמנים גם להינות. מעתיק את התשובה המלאה מהטלגרם:</p>
+<hr>
+<p>זה סיפור ארוך, אנסה לעשות אותו קצר.</p>
+<p>במהלך השנים נעשים שוב ושוב ניסיונות לייעל את איך שמבני הנתונים בפייתון מתוכנתים מאחורי הקלעים (מבחינת מהירות וחיסכון במקום). עושים את זה כי מבינים שכל מילישנייה שנחסכת תחסוך מילישנייה במאות מיליוני מקומות שמריצים פייתון, ובמצטבר חסכון של מילישנייה על פני כ"כ הרבה מקומות זה המון זמן. אותו רעיון גם עבור אחסון.<br>
+מהסיבה הזו, במהלך השנים בכל גרסאות פייתון, איך שמילון עובד באמת, מאחורי הקלעים בפייתון, היה קצת אחר. יש על זה הרצאה של בחור בשם Raymond Hettinger, אחד ממפתחי הליבה של פייתון למי שרוצה</p>
+<p>למעשה, מילון הוא לא באמת המצאה של פייתון. הרעיון הכללי נקרא Hashmap – מעין מבנה שיודע להחזיק key ו־value, כאשר ה־key מצביע ל־value והפעולה של אחזור ערך לפי מפתח מסוים היא מאוד מהירה. המבנה הזה הוא רעיון, ומימוש שלו קיים כמעט בכל שפת תכנות מודרנית שתתקלו בה. אחד היתרונות המשמעותיים של hashmap הוא זמן הריצה המהיר ועלות זיכרון יחסית נמוכה, ואחד החסרונות הוא שאין סדר למפתחות.  בפייתון המימוש לרעיון נקרא dictionary.</p>
+<p>בפייתון 3.6 עשו שינוי מסוים (בפעם המאה) למימוש של מילונים, והצליחו לייעל אותם טיפה. אחד מ"תופעות הלוואי" של השינוי הזה, מעבר לכך שהמילון בגרסתו המיועלת תופס פחות מקום בזיכרון, הייתה שסדר הערכים במילון פתאום הפך להיות מסודר – לפי סדר ההכנסה של הערכים במילון. החבר’ה בפייתון ראו כי טוב, ובאמת החליטו שזה מגניב. אנחנו מדברים על שינוי יחסית חדש, ממש מלפני 3 שנים or so.</p>
+<p>גוידו ואן רוסום, ה"בעלים" של פייתון באותה תקופה, אמר שזה מגניב, אבל סירב להכניס את זה כחלק מהתקן. בתקן עצמו (בתיעוד של פייתון) בגרסה 3.6 נשאר המשפט שאומר: “אסור לכם להניח שיש סדר כלשהו למילונים”, למרות שפרקטית – כבר היה סדר למילונים.<br>
+יש להחלטה של לא להכניס את הסדר למילונים לתקן 3 סיבות:</p>
+<ol>
+<li>הכנסה של דבר כזה לתקן היא נקודת אל־חזור. אם ירצו לייעל מילונים עוד בעתיד, הם יהיו <em>עדיין</em> חייבים לשמור על הסדר, כי אחרת זו שבירת תאימות לאחור – וחוסר יציבות זה משהו שאי אפשר לעשות בשפה שכ"כ הרבה אנשים משתמשים בה. זה מגביל במובן מסוים את היכולת לייעל מילונים.</li>
+<li>פייתון היא תקן. אנחנו משתמשים במימוש מסוים לתקן שנקרא CPython שבו רוב העולם משתמש, אבל יש מימושים נוספים לפייתון שמנסים, נניח, להמהיר את השפה. הכנסת אמירה כזו לתקן מחייבת אותם להתיישר עם מימוש שבו ל־dictionary יש סדר מסוים, וזו מכה קשה שעלולה לפגוע ביעילות שלהם.</li>
+<li>יש כבר במודול <code>collections</code> מבנה שנקרא <code>OrderedDict</code>. מי שמעוניין יכול להשתמש בו.</li>
+</ol>
+<p>עכשיו, אחרי שיש לכם את כל הידע שנוגע למילונים ולהיסטוריה שלהם, אני יכול לספר לכם שאחרי לחץ מהקהילה החליטו בפייתון 3.7 <em>כן</em> להכניס את הסדר של המילונים לתקן (למרות שב־3.6 הם כבר היו מסודרים, דה־פקטו). לשמחתכם אתם עוברים בפייתון 3.7 ואתם יכולים להשתמש בזה. מבחינה פדגוגית, אני חושב שנכון יותר ללמד מילונים כ־hashmap – מבנה בלי סדר. גם כדי להעביר טוב יותר את המהות של מבנה הנתונים הזה, וגם כדי שיהיה לכם קל יותר לעבור לשפות אחרות אם תרצו.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6918/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6918/1</link>
+        <pubDate>Tue, 02 Jun 2020 17:34:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6918-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6918.rss">העשרה: אז יש סדר במילונים, או לא?</source>
+      </item>
+  </channel>
+</rss>

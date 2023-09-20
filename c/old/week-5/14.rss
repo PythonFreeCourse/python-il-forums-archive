@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:discourse="http://www.discourse.org/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 5 - פייתון בעברית ובחינם</title>
+    <link>https://forums.pythonic.guru/c/old/week-5/14</link>
+    <description>נושאים בקטגוריה ‚שבוע 5’ כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 5.</description>
+    <language>he</language>
+      <lastBuildDate>Sun, 15 Aug 2021 19:35:00 +0000</lastBuildDate>
+      <atom:link href="https://forums.pythonic.guru/c/old/week-5/14.rss" rel="self" type="application/rss+xml" />
+        <item>
+          <title>שאלה בנוגע ליעילות של list אל מול dic</title>
+          <dc:creator><![CDATA[112344asafh]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.</p>
+<p>הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.<br>
+תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.<br>
+ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צורך לעבור על כולה כל פעם מחדש ברגע שנתקלים במילה חדשה.</p>
+<p>האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום  (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).<br>
+,תודה מראש על ההתייחסות.<br>
+.</p>
+<blockquote>
+<p><strong>מתודה א:   –  מיון בעזרת רשימה  -  צורה לא יעילה</strong></p>
+</blockquote>
+<pre><code class="lang-auto">my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+while my_list:
+    counting = 0
+    current = my_list[0]
+    while counting &lt; len(my_list) and my_list[counting] == current:
+        counting += 1
+    new_dic[current] = counting
+    my_list = my_list[ counting :]
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" alt="image" data-base62-sha1="AwgRODC2RjXniMfZwF7HzxHZ4JU" width="431" height="32"></p>
+<blockquote>
+<p><strong>מתודה ב:   –   מיון בעזרת מילון</strong></p>
+</blockquote>
+<pre><code class="lang-auto">my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+for word in my_list:
+    if word in new_dic:
+        new_dic[word] += 1
+    else:
+        new_dic[word] = 1
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fa43bdac5b8bcc7c8ffdb5d5e3aa2c68477cd416.png" alt="image" data-base62-sha1="zHWv75Lf68EgQOrHXkTi7QYxhEG" width="356" height="32"></p>
+            <p><small>3 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/list-dic/9173">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/list-dic/9173</link>
+          <pubDate>Sun, 15 Aug 2021 19:35:00 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-9173</guid>
+          <source url="https://forums.pythonic.guru/t/list-dic/9173.rss">שאלה בנוגע ליעילות של list אל מול dic</source>
+        </item>
+        <item>
+          <title>בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית</title>
+          <dc:creator><![CDATA[112344asafh]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>שלום רב, תחילה אומר שלא ראיתי התייחסות לעניין זה באשכול של שבוע 5.</p>
+<p>במחברת 3 של שבוע זה לימדתם את היכולת להעביר מספר בלתי מוגבל של ארגומנטים שהערך ייכנס לפונקציה כtuple.<br>
+א.  לא ברור לי מדוע כאשר אני מעביר רק משתנה אחר שהוא iterable הוא הופך להיות tuple כשכל איבריו בצד אחד וישנו ערך ריק בצד שני. האם ישנה דרך אלגנטית לפתור בעיה זו?<br>
+ב. שאלה כללית יותר באשר לשימוש בטכניקה זו,  כאשר אני כותב את הקוד אני יודע כמה משתנים אני הולך להעביר לפונקציה לכן למה יש עניין להשתמש בשיטה זו.<br>
+תודה מראש.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png" data-download-href="https://forums.pythonic.guru/uploads/default/364cbf43de4ae9ce0d552fe852a5bfd2f9903025" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_595x500.png" alt="image" data-base62-sha1="7Kmdecap59VO1FKPMW0C8kTb9Pf" width="595" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_595x500.png, https://forums.pythonic.guru/uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/364cbf43de4ae9ce0d552fe852a5bfd2f9903025_2_10x10.png"></a></div><p></p>
+            <p><small>8 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/9171">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/9171</link>
+          <pubDate>Thu, 12 Aug 2021 17:41:39 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-9171</guid>
+          <source url="https://forums.pythonic.guru/t/topic/9171.rss">בעיה עם העברת מספר בלתי מוגבל של פרמטרים עם כוכבית</source>
+        </item>
+        <item>
+          <title>לחששנית-מספר דברים התחלתיים שאני לא כ&quot;כ מבין</title>
+          <dc:creator><![CDATA[asdfg199]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>הצלחתי לחלץ את הקובץ בינארית ולהדפיס אותו, מלא “xx” ו"\" ודברים לא יפים אחרים.<br>
+בשלב הראשון, מה שהייתי עושה זה לוקח את כל האותיות האנגליות ומייצר מהם רשימה של מחרוזות, כאשר ה"!"  מפריד בין כול מחרוזת. ככה יהיה לי את הraw material שממנו (יום אחד, כשאגדל <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"> אני מקווה לחלץ את המסר הסודי.<br>
+אממה-כאן כבר גיליתי בעיה מאוד מעניינת. כאשר אני מדפיס את הקובץ כולו, כבר הזכרתי שאני מקבל חתיכה גדולה ומגעילה של של מסרים לא ברורים.<br>
+אבל! כאשר אני מדפיס את הקובץ על פי חתיכות של רשימות (כלומר אני אומר לפייתון-תעבור על הקובץ כרשימה, ובכל i תדפיס את i) הוא מתחיל להדפיס מספרים! אותו דבר כאשר אני קורא לאיבר ספציפי, אני מקבל מספר! כמובן שמעבר לזה שזה מוזר נורא זה מחסל את האפשרות לבודד את האותיות האנגליות, מכיוון שאני לא יכול לעבור על החומר הכתוב כרשימה ולשאול האם מדובר באות אנגלית קטנה או לא-מבחינת פייתון כאשר הוא חלק מרשימה אז בעצם מדובר ברשימה של מספרים.<br>
+כמובן שעל לחשוב על פתרון למסר אין מה לדבר בכלל.<br>
+אשמח לכול עזרה!</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/7261">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/7261</link>
+          <pubDate>Mon, 22 Jun 2020 14:25:41 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-7261</guid>
+          <source url="https://forums.pythonic.guru/t/topic/7261.rss">לחששנית-מספר דברים התחלתיים שאני לא כ&quot;כ מבין</source>
+        </item>
+        <item>
+          <title>שאלת הבנה קצרה-כוכביות</title>
+          <dc:creator><![CDATA[asdfg199]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>קורה לי משהו מוזר. נראה שאין אפשרות להוסיף בפונקציה שני משתנים תחת כוכבית, או שני משתנים תחת שתי כוכביות. הסינטקס לא מאפשר את זה. מישהו יכול להסביר לי את ההיגיון? או שיש איזושהי טעות אחרת שאני עושה?<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711.png" data-download-href="https://forums.pythonic.guru/uploads/default/3ae253a72095dc2b81a3dcbfc5f9418caaff7711" title="Capture"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711_2_690x256.png" alt="Capture" data-base62-sha1="8oUAXBJxxsd4Dwk3vB27tHrIWTD" width="690" height="256" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711_2_690x256.png, https://forums.pythonic.guru/uploads/default/original/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/3ae253a72095dc2b81a3dcbfc5f9418caaff7711_2_10x10.png"></a></div><p></p>
+            <p><small>5 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/7171">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/7171</link>
+          <pubDate>Tue, 16 Jun 2020 15:28:47 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-7171</guid>
+          <source url="https://forums.pythonic.guru/t/topic/7171.rss">שאלת הבנה קצרה-כוכביות</source>
+        </item>
+        <item>
+          <title>מספר שאלות הבנה בנוגע לחומר</title>
+          <dc:creator><![CDATA[asdfg199]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>שוב הזדמנות להודות לכל האנשים הטובים פה שעוזרים עם המון השקעה והמון מחשבה.<br>
+אני מצרף פה את התמונה מהשבוע הראשון. דבר ראשון, לא לגמרי הבנתי את הטעות שהe מביא לנו. האם הe הוא משתנה שמוגדר גם מחוץ למודול? ולכן הוא מספק לנו תשובות שונות בנוגע להדפסה שלו במידה וייבאנו את המודול או לא? אם זו הבעיה-מדוע הייבוא של כלל המודול יפתור אותה?<br>
+דבר שני, לא לגמרי הבנתי כיצד הכוכבית מביאה אותנו למצב שונה ובעייתי במיוחד. הרי היא מייבאת את כול מה שיש-אז במה זה שונה מפשוט לייבא הכול על ידי הפקודה import?.<br>
+תודה רבה מראש. </p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5.png" data-download-href="https://forums.pythonic.guru/uploads/default/02fef2a65b96f447a8b79420a742db60aa6bfcc5" title="Capture"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5_2_690x343.png" alt="Capture" data-base62-sha1="qvb2YdP6a6svna1F1JIBE4vpfT" width="690" height="343" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5_2_690x343.png, https://forums.pythonic.guru/uploads/default/optimized/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5_2_1035x514.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5_2_1380x686.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/0/02fef2a65b96f447a8b79420a742db60aa6bfcc5_2_10x10.png"></a></div><p></p>
+            <p><small>3 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/7136">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/7136</link>
+          <pubDate>Sun, 14 Jun 2020 09:59:46 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-7136</guid>
+          <source url="https://forums.pythonic.guru/t/topic/7136.rss">מספר שאלות הבנה בנוגע לחומר</source>
+        </item>
+        <item>
+          <title>מחברת 1- תרגיל חזרת בודק אוטומטי</title>
+          <dc:creator><![CDATA[shirazyomtov]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>היי<br>
+כשאני מעלה את התרגיל, הבודק האוטומטי הביא לי את השגיאה הבאה :<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825.png" data-download-href="https://forums.pythonic.guru/uploads/default/248b0d66d4c73b69734b103e932e5660c7d11825" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825_2_690x105.png" alt="image" data-base62-sha1="5dh6Eaby9WZTUIrrQIqcZDu43ch" width="690" height="105" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825_2_690x105.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825_2_1035x157.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825_2_1380x210.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/2/248b0d66d4c73b69734b103e932e5660c7d11825_2_10x10.png"></a></div><br>
+אשמח להבין את הכוונה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"><p></p>
+            <p><small>3 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6549">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6549</link>
+          <pubDate>Sun, 24 May 2020 15:46:32 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6549</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6549.rss">מחברת 1- תרגיל חזרת בודק אוטומטי</source>
+        </item>
+        <item>
+          <title>מ.ס.ס - עזרה בתרגיל</title>
+          <dc:creator><![CDATA[iamsaharon]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>היי, אני מנסה לפתור את תרגיל ההשלמה מ.ס.ס (לא לצורך הגשה, אלא להעשרה)<br>
+ומשום מה אני לא מצליח להגיע לפתרון של הסעיף הראשון.<br>
+הקונספט של הבדיקה לפי זמן הפתרון לא הולך לי - אני מתבסס על העיקרון שלפונקציה שניתנה יקח יותר זמן להחזיר False אם האותיות אכן תואמות את הסיסמה. <em>אבל</em> העיקרון לא תמיד פועל לי - אחרי שעליתי על האות הראשונה P לפעמים לפונקציה לוקח יותר זמן להחזיר False על אות שגויה (לצורך העניין - f) מאשר אות נכונה (האות y).<br>
+למישהו יש פתרון או יכול להוסיף את הדרך שהוא פתר ואבין איפה אני טועה? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6534">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6534</link>
+          <pubDate>Sun, 24 May 2020 12:06:45 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6534</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6534.rss">מ.ס.ס - עזרה בתרגיל</source>
+        </item>
+        <item>
+          <title>מרטינגל - מהו התוצר הסופי שנדרש להצגה בהגשה?</title>
+          <dc:creator><![CDATA[ofirashkenazi1]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>אהלן, האם בקוד להדפיס רק את הגרף? או גם מלל שקשור לתוצאות של מהלך הריצה? כמו למשל כמה כסף נותר, כמה סיבובים רצו?</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6495">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6495</link>
+          <pubDate>Sat, 23 May 2020 13:39:41 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6495</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6495.rss">מרטינגל - מהו התוצר הסופי שנדרש להצגה בהגשה?</source>
+        </item>
+        <item>
+          <title>מרטינגל - תרגיל השלמה</title>
+          <dc:creator><![CDATA[lea9797]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>היי, אני לא מצליחה לראות את הגרף (למרות שהשתמשתי ב PLT.SHOW), נוצר לי התרשים של ה-X ו-Y, אך ללא הגרף, אשמח לעזרה</p>
+            <p><small>4 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6488">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6488</link>
+          <pubDate>Sat, 23 May 2020 07:08:49 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6488</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6488.rss">מרטינגל - תרגיל השלמה</source>
+        </item>
+        <item>
+          <title>מ.ס.ס שאלות הבהרה</title>
+          <dc:creator><![CDATA[beni.vd]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>נתקעתי דווקא על סוף התרגיל…<br>
+רשום : כעת, עליכם לשנות את  <code>check_password</code>  כך שלא יוכלו לפרוץ אותה בדרך זו. אין למחוק את השורה שמדמה את זמן החישוב.<br>
+למה הכוונה לשורה של הsleep?<br>
+ולמחוק את השורות מתחתיה מותר/שורות אחרות?<br>
+מותר לשנות את החוקים שנאמרו בהתחלה בפרצה או שצריכים לעבוד לפי אותם חוקים? למשל יש אפשרות למחוק את כל שורת הfor לצורך העניין?<br>
+אני מנסה לא לעשות ספויילרים אבל קשה לתשאל את זה בפורום ולא לברר מול מישהו…</p>
+            <p><small>12 פוסטים - 7 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6477">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6477</link>
+          <pubDate>Fri, 22 May 2020 01:37:27 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6477</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6477.rss">מ.ס.ס שאלות הבהרה</source>
+        </item>
+        <item>
+          <title>לחששנית - חייבת הכוונה</title>
+          <dc:creator><![CDATA[Orsa]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>אני עומדת לאבד את זה,<br>
+אני על התרגיל הזה כבר 4 ימים, השארתי אותו לסוף התרגול כי לא הצלחתי אותו, פספסתי את מועד ההגשה שלו,<br>
+קראתי את כל הדיונים עליו בפורום לאורכם ולרוחבם וגם חרשתי את האינטרנט,</p>
+<p>אבל אני לא מצליחה להרפות ממנו <img src="https://forums.pythonic.guru/images/emoji/twitter/frowning.png?v=9" title=":frowning:" class="emoji" alt=":frowning:"><br>
+הבנתי שאני צריכה לפתוח את הקובץ בקריאה בינארית.<br>
+הבנתי שברגע ש"אתרגם" את הביטים בעזרת decode לסטרינג, אוכל להתחיל לחפש את המסרים בתוך הסטרינג.<br>
+אני פשוט לא מצליחה לעבור את השלב שאני יוצרת סטרינג לעבוד איתו.</p>
+<p>לא משנה מה אני עושה, אני או:</p>
+<ul>
+<li>מדפיסה את אותה שורה בלופ אינסופי</li>
+<li>מדפיסה כלום בכמות אינסופית</li>
+<li>מקבלת אינסוף שגיאות</li>
+</ul>
+<p>מרגיש לי שזה אמור להיות יחסית פשוט וזה מחסום שאני פשוט לא מצליחה לעבור.</p>
+<p>זה הכי קרוב שהגעתי (מרשה לעצמי לצרף כי אנחנו אחרי ההגשה) -<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a.png" data-download-href="https://forums.pythonic.guru/uploads/default/8ac3c386cae764689a92bdb2a11caf56921b8a3a" title="Screen Shot 2020-05-21 at 14.19.52"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a_2_690x255.png" alt="Screen Shot 2020-05-21 at 14.19.52" data-base62-sha1="jNzjoHgOZ2u3UqqQz9a3B0GHPXs" width="690" height="255" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a_2_690x255.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a_2_1035x382.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a_2_1380x510.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ac3c386cae764689a92bdb2a11caf56921b8a3a_2_10x10.png"></a></div><p></p>
+<ul>
+<li>כשאני מורידה את stringy מcomment ומבקשת להדפיס אותו:<br>
+“IOPub data rate exceeded.”</li>
+<li>כשאני מורידה את if f.read() == b’’ מcomment:<br>
+זה מדפיס לי This is the end of the file בצורה אין סופיתץ</li>
+<li>כשאני מנסה להחזיר את byte או את stringy עם yield:</li>
+<li>מדפיס לי כלום אינסופי.<br>
+HELPPPPP<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/weary.png?v=9" title=":weary:" class="emoji only-emoji" alt=":weary:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/sweat.png?v=9" title=":sweat:" class="emoji only-emoji" alt=":sweat:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/sob.png?v=9" title=":sob:" class="emoji only-emoji" alt=":sob:">
+</li>
+</ul>
+            <p><small>7 פוסטים - 5 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6474">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6474</link>
+          <pubDate>Thu, 21 May 2020 17:10:13 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6474</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6474.rss">לחששנית - חייבת הכוונה</source>
+        </item>
+        <item>
+          <title>הודעת שגיאה מהבודק האוטומטי בשימוש בלולאה עם שני פרמטרים</title>
+          <dc:creator><![CDATA[itzikc]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>שלום</p>
+<p>אני מקבל הודעת שגיאה מהבודק האוטומטי בשימוש:<br>
+for i, v in shape:<br>
+על כך שאני לא משתמש בפרמטר איי בתוך הפונקציה</p>
+<p>האם יש אופן אחר להגדיר את הלולאה כך שאני לא אקבל הודעת שגיאה?</p>
+            <p><small>3 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6465">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6465</link>
+          <pubDate>Thu, 21 May 2020 11:07:48 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6465</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6465.rss">הודעת שגיאה מהבודק האוטומטי בשימוש בלולאה עם שני פרמטרים</source>
+        </item>
+        <item>
+          <title>מ.ס.ס - הגדרת סיסמא</title>
+          <dc:creator><![CDATA[eladhux]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>היי בסעיף הראשון ,איך מוגדרת הסיסמא שצריך למצוא? היא יכולה להכיל מספרים, אותיות גדולות וקטנות ותווים מיוחדים?</p>
+<p>אלעד.</p>
+            <p><small>4 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6464">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6464</link>
+          <pubDate>Thu, 21 May 2020 10:15:51 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6464</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6464.rss">מ.ס.ס - הגדרת סיסמא</source>
+        </item>
+        <item>
+          <title>מרטינגל - תרגיל השלמה שבוע 5</title>
+          <dc:creator><![CDATA[ha.amear]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>מה נספר כסיבוב בתוך ה-10,000 הסיבובים? כל עוד יש למהמר כסף?</p>
+            <p><small>47 פוסטים - 11 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6454">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6454</link>
+          <pubDate>Wed, 20 May 2020 23:12:50 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6454</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6454.rss">מרטינגל - תרגיל השלמה שבוע 5</source>
+        </item>
+        <item>
+          <title>לחששנית - הצילו</title>
+          <dc:creator><![CDATA[noam1248]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>אני מניח שיהיו יותר הקלות בעזרה כי נגמר השבוע, אני הבנתי שאפשר לחלק קריאה עד למספר מסוים, אבל הבעיה היא שזה יחתוך משפטים באמצע, ולכן צריך לקרוא עד תו מסוים (!). אין לי מושג איך לעשות את זה, ואני לא מצליח למצוא</p>
+            <p><small>17 פוסטים - 4 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6452">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6452</link>
+          <pubDate>Wed, 20 May 2020 21:50:54 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6452</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6452.rss">לחששנית - הצילו</source>
+        </item>
+        <item>
+          <title>הארי רציונלי - בעיה ביצירת נתיב חדש</title>
+          <dc:creator><![CDATA[naamaivgi]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>יש לי בעיה ביצירת נתיב חדש שלדעתי קשורה לשרשור באמצעות “\” , כאשר אני מדפיסה את הנתיב שנוצר אני מקבלת פלט נכון, אך כאשר אני מחזירה את הנתיב או משתמשת בו, הוא יוצא משובש.<br>
+אני כבר די אובדת עצות עם התרגיל וחיטטתי באינטרנט להבין איפה הבעיה.<br>
+אשמח לעזרה!!<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/d430cfad63eb4b0a23876922d1a976754e07e309.png" data-download-href="https://forums.pythonic.guru/uploads/default/d430cfad63eb4b0a23876922d1a976754e07e309" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d430cfad63eb4b0a23876922d1a976754e07e309.png" alt="image" data-base62-sha1="uh7NGkcBo1ztv61eYC6i0fHlQ8x" width="690" height="202" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d430cfad63eb4b0a23876922d1a976754e07e309_2_10x10.png"></a></div><p></p>
+            <p><small>10 פוסטים - 5 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6446">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6446</link>
+          <pubDate>Wed, 20 May 2020 17:28:39 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6446</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6446.rss">הארי רציונלי - בעיה ביצירת נתיב חדש</source>
+        </item>
+        <item>
+          <title>הארי רציונלי - שם עם נקודותיים</title>
+          <dc:creator><![CDATA[shay.barnea]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>כאשר שם הפרק מכיל נקודותיים, אפשר להחליף בתו אחר?? מאחר ואי אפשר לשים נקודותיים בשם קובץ</p>
+            <p><small>3 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6445">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6445</link>
+          <pubDate>Wed, 20 May 2020 17:09:42 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6445</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6445.rss">הארי רציונלי - שם עם נקודותיים</source>
+        </item>
+        <item>
+          <title>מנה מושלמת לחלוקה - התייעצות על יעילות הבדיקות</title>
+          <dc:creator><![CDATA[idanshalem25]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>** זהירות ספוילר למי שעוד לא עשה את התרגיל</p>
+<p>היי חברים,</p>
+<p>אשמח להתייעצות על יעילות הקוד כך שיגיע מהר יותר לתוצאות.<br>
+בניתי פונקציה ראשונה שמריצה מספרים עד אינסוף וכל מספר היא שולחת לפונקציה שנייה שמחזירה TRUE אם המספר עונה על הדרישות של מנה מושלמת.<br>
+הפונקציה השנייה שולחת כל מספר כזה לפונקציה שמחזירה את כל המספרים שמתחלקים ללא שארית. לאחר מכן, היא מכניסה אותם לרשימה, סוכמת אותם ובודקת אם הסכום שווה למספר.</p>
+<p>הבעיה היא שלעשות את הבדיקה של הסכום לכל מספר היא נורא ארוכה ומבזבזת זמן יקר. ניסיתי לחשוב על תנאי עצירה כלשהו כדי שלא אגיע לשלב שאני סוכם את כל המספרים שמתחלקים ללא שארית עבור כל מספר בטווח הערכים אך לא הצלחתי לחשוב על אחד כזה.<br>
+האם אתם הצלחתם לחשוב על משהו כזה שיכול להפוך את הקוד ליותר יעיל?</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6442">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6442</link>
+          <pubDate>Wed, 20 May 2020 15:44:15 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6442</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6442.rss">מנה מושלמת לחלוקה - התייעצות על יעילות הבדיקות</source>
+        </item>
+        <item>
+          <title>פרדוקס יום ההולדת שאלה על הקטנה של טווח התאריכים אם זה תופס</title>
+          <dc:creator><![CDATA[dimaiscool95]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>יש לי שאלה בקשר לטווח של הימים, זה בעיה שנתקלתי בה בפתרון יש חלק מימים שלא קיימים בטווח כלומר, נגיד יש חודש שאין בו 31 ימים האם להתייחס לימים כימים כלומר לבודק כל תאריך אם הוא באמת קיים או שאפשר לוותר על זה ולצור פשוט טווח של מספרים רנדומלים ולהתייחס לפתרון של התרגיל כאילו התאריכים האלו קיימים</p>
+            <p><small>7 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6440">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6440</link>
+          <pubDate>Wed, 20 May 2020 15:37:37 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6440</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6440.rss">פרדוקס יום ההולדת שאלה על הקטנה של טווח התאריכים אם זה תופס</source>
+        </item>
+        <item>
+          <title>שגיאת permission בתרגיל הארי רציונלי</title>
+          <dc:creator><![CDATA[yuvmirk]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>אני יודעת שנפתח נושא דומה, אבל הוא לא ענה על הבעיה שנתקלתי בה…<br>
+לאחר סגירת כל הקבצים והתיקיות, אני ממשיכה לקבל את השגיאה הבאה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605.png" data-download-href="https://forums.pythonic.guru/uploads/default/7908b2bc5934955fac75f2dfb70930b6c8cec605" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605_2_690x56.png" alt="image" data-base62-sha1="hgIpoTFGX9mvpyVyqMdboWdSEVT" width="690" height="56" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605_2_690x56.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605_2_1035x84.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605_2_1380x112.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7908b2bc5934955fac75f2dfb70930b6c8cec605_2_10x10.png"></a></div><p></p>
+<p>אפשר בבקשה עזרה?</p>
+            <p><small>4 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/permission/6435">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/permission/6435</link>
+          <pubDate>Wed, 20 May 2020 14:40:59 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6435</guid>
+          <source url="https://forums.pythonic.guru/t/permission/6435.rss">שגיאת permission בתרגיל הארי רציונלי</source>
+        </item>
+        <item>
+          <title>לא נראה לי שהבנתי את הרעיון שעומד מאוחרי generator</title>
+          <dc:creator><![CDATA[lidyalatin]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>היי לכולם.ן,</p>
+<p>נירה לי שלא הבנתי את הרעיון שעומד מאוחרי GENERATOR ואיך ומתי ולמה להשתמש בזה.<br>
+אשמח להכוונה לחומר שמסביר בצורה עמוקה יותר על הפונקציה.<br>
+שאלתי את גברת גוגל ולא מצאתי משהוא שבמאת עוזר לי להבין את זה.</p>
+<p>תודה מראש לכולם.ן <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+            <p><small>5 פוסטים - 4 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/generator/6434">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/generator/6434</link>
+          <pubDate>Wed, 20 May 2020 14:21:59 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6434</guid>
+          <source url="https://forums.pythonic.guru/t/generator/6434.rss">לא נראה לי שהבנתי את הרעיון שעומד מאוחרי generator</source>
+        </item>
+        <item>
+          <title>לא מעלה לי את מחברת 3</title>
+          <dc:creator><![CDATA[Alon_Gritsovsky]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>מנסה לעלות את המחברת וזה נותן לי שגיאה. כמובן שבדקתי שכל התרגילים שעליי לעשות מסומנים(לדוגמה: <span class="hashtag">#Upload</span> 80)</p>
+            <p><small>5 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6433">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6433</link>
+          <pubDate>Wed, 20 May 2020 14:12:52 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6433</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6433.rss">לא מעלה לי את מחברת 3</source>
+        </item>
+        <item>
+          <title>שאלה לגבי פרדוקס יום הולדת והערה של הבודק האוטומטי (מחברת 4 שבוע 5)</title>
+          <dc:creator><![CDATA[fakliro]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>שאלה ראשונה:<br>
+אם אני יוצר תאריך ממספרים ימים רנדומלי (בטווח השנים 1900 עד 9999)<br>
+המחשב אוטומטית מתחשב בשנים מעוברות נכון?<br>
+שאלה שניה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/bdded1ec4af96d7f5188013127f259ef99b556e5.png" data-download-href="https://forums.pythonic.guru/uploads/default/bdded1ec4af96d7f5188013127f259ef99b556e5" title="לא הוגדר"><img src="https://forums.pythonic.guru/uploads/default/original/2X/b/bdded1ec4af96d7f5188013127f259ef99b556e5.png" alt="לא הוגדר" data-base62-sha1="r5FD9Pd0dABtMkVqJ8jjSV5xfet" width="690" height="171" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bdded1ec4af96d7f5188013127f259ef99b556e5_2_10x10.png"></a></div><br>
+אני מגדיר פה את המשתנה…<br>
+לא הבנתי מה אני צריך לתקן…<p></p>
+<p>תודה!</p>
+            <p><small>4 פוסטים - 3 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/4-5/6426">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/4-5/6426</link>
+          <pubDate>Wed, 20 May 2020 10:19:07 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6426</guid>
+          <source url="https://forums.pythonic.guru/t/4-5/6426.rss">שאלה לגבי פרדוקס יום הולדת והערה של הבודק האוטומטי (מחברת 4 שבוע 5)</source>
+        </item>
+        <item>
+          <title>הארי רציונלי - תקלה מוזרה [WinError 87]</title>
+          <dc:creator><![CDATA[Geva]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>הקוד רץ לי סבבה לגמרי קודם, פשוט היה מקרה קצה שהצריך ממני לשנות את איך שאני מפרמט את שם הקובץ החדש (לא קשור לשינוי שם הקובץ בתיקייה).</p>
+<p>עכשיו אני מקבל שגיאה:<br>
+OSError: [WinError 87] The parameter is incorrect:</p>
+<p>כל השלבים בתהליך הולכים חלק, והכל פועל כמצופה- ברגע שאני מפעיל את הפונקציה שמשנה את שמות הקבצים- הפונקציה עובדת על כמה קבצים ואז אני מקבל את השגיאה הזו.</p>
+<p>חיפשתי באינטרנט (ובפורום כמובן) ומצאתי מעט מאוד מידע, הכל קשור למערכת ההפעלה או לכרטיס מסף ולא לקוד בכלל…</p>
+<p>המחברת רצה מתוך התיקייה week5 שמכילה את המחברות של השבוע.</p>
+<p>אשמח לעזרה כדי שאוכל להגיש בזמן, אני מודע לזה שאני על הדקה- לצערי היה לי שבוע לא פשוט בכלל…</p>
+            <p><small>4 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/winerror-87/6424">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/winerror-87/6424</link>
+          <pubDate>Wed, 20 May 2020 09:47:14 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6424</guid>
+          <source url="https://forums.pythonic.guru/t/winerror-87/6424.rss">הארי רציונלי - תקלה מוזרה [WinError 87]</source>
+        </item>
+        <item>
+          <title>שימוש במבנה שלא נלמד</title>
+          <dc:creator><![CDATA[edengmarcus]]></dc:creator>
+          <category>שבוע 5</category>
+          <description><![CDATA[
+            <p>האם מותר להשתמש במבנה שלא נלמד עדיין בהינתן וקראתי עליו בגוגל? במקרה הזה אני רוצה להשתמש ב-Set.</p>
+            <p><small>2 פוסטים - 2 משתתפים</small></p>
+            <p><a href="https://forums.pythonic.guru/t/topic/6423">קריאת הנושא במלואו</a></p>
+          ]]></description>
+          <link>https://forums.pythonic.guru/t/topic/6423</link>
+          <pubDate>Wed, 20 May 2020 08:43:52 +0000</pubDate>
+          <discourse:topicPinned>No</discourse:topicPinned>
+          <discourse:topicClosed>No</discourse:topicClosed>
+          <discourse:topicArchived>No</discourse:topicArchived>
+          <guid isPermaLink="false">forums.pythonic.guru-topic-6423</guid>
+          <source url="https://forums.pythonic.guru/t/topic/6423.rss">שימוש במבנה שלא נלמד</source>
+        </item>
+  </channel>
+</rss>

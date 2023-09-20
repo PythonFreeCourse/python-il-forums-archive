@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/class/7089/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:53:31 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגול מחלקות: מוזיקה class־ית - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="בחסות נגה אוסין. תודה @Noga_o :slight_smile: 
+
+מוזיקה class־ית
+  
+בתרגיל זה ניצור סימפוניה קטנה, באמצעות מחלקות. 
+
+חלק 1
+ממשו מחלקה של תו (Note). בפעולת האתחול של המופע, לכל תו יהיה: 
+
+
+גובה צליל (Pitch) – אחד מהערכים דו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../7089.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../7089.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגול מחלקות: מוזיקה class־ית’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png" name="twitter:image"/>
+<meta content="../../../uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png" property="og:image"/>
+<meta content="../7089.html" property="og:url"/>
+<meta content="../7089.html" name="twitter:url"/>
+<meta content="תרגול מחלקות: מוזיקה class־ית" property="og:title"/>
+<meta content="תרגול מחלקות: מוזיקה class־ית" name="twitter:title"/>
+<meta content="בחסות נגה אוסין. תודה @Noga_o 🙂   מוזיקה class־ית    בתרגיל זה ניצור סימפוניה קטנה, באמצעות מחלקות.   חלק 1 ממשו מחלקה של תו (Note). בפעולת האתחול של המופע, לכל תו יהיה:    גובה צליל (Pitch) – אחד מהערכים דו־רה־מי־פה־סול־לה־סי.  אורך (Length): כלומר, במשך כמה ביטים (יחידות זמן) התו ינוגן. (למוזיקאים: לשם הפשטות, נקרא לתו של רבע פשוט “ביט” בתרגיל זה. תו של חצי יהיה שני ביטים, וכן הלאה.)  משימות נוספות:   צרו __str__ למחלקת התו שלכם. כל תו יהיה מהצורה Pitch(xLength). לדוגמה: Do(x1), R..." property="og:description"/>
+<meta content="בחסות נגה אוסין. תודה @Noga_o 🙂   מוזיקה class־ית    בתרגיל זה ניצור סימפוניה קטנה, באמצעות מחלקות.   חלק 1 ממשו מחלקה של תו (Note). בפעולת האתחול של המופע, לכל תו יהיה:    גובה צליל (Pitch) – אחד מהערכים דו־רה־מי־פה־סול־לה־סי.  אורך (Length): כלומר, במשך כמה ביטים (יחידות זמן) התו ינוגן. (למוזיקאים: לשם הפשטות, נקרא לתו של רבע פשוט “ביט” בתרגיל זה. תו של חצי יהיה שני ביטים, וכן הלאה.)  משימות נוספות:   צרו __str__ למחלקת התו שלכם. כל תו יהיה מהצורה Pitch(xLength). לדוגמה: Do(x1), R..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תרגול-נוסף" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="4 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="13 ❤"/>
+<meta content="2020-06-11T01:40:17+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../7089.html">תרגול מחלקות: מוזיקה class־ית</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%aa%d7%a8%d7%92%d7%95%d7%9c-%d7%a0%d7%95%d7%a1%d7%a3.html" rel="tag">תרגול-נוסף</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגול מחלקות: מוזיקה class־ית" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תרגול-נוסף" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T01:40:17Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  1:40am
+                  </time>
+<meta content="2021-09-05T13:57:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>בחסות נגה אוסין. תודה <span class_="mention">@Noga_o</span> <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<h2>
+<a class="anchor" href="#class-1" name="class-1"></a>מוזיקה class־ית</h2>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e7e6e343b07e1f642f20d0dacee28475a831a609" href="../../../uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png" title="image"><img alt="image" data-base62-sha1="x5uYadwu2pzezexmmIdHPZhKhiF" data-small-upload="../../../uploads/default/optimized/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609_2_10x10.png" height="124" src="../../../uploads/default/optimized/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609_2_690x124.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609_2_690x124.png, https://forums.pythonic.guru/uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/e7e6e343b07e1f642f20d0dacee28475a831a609.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">907×164 18.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>בתרגיל זה ניצור סימפוניה קטנה, באמצעות מחלקות.</p>
+<h3>
+<a class="anchor" href="#1-2" name="1-2"></a>חלק 1</h3>
+<p>ממשו מחלקה של תו (Note). בפעולת האתחול של המופע, לכל תו יהיה:</p>
+<ol>
+<li>
+<strong>גובה צליל</strong> (Pitch) – אחד מהערכים דו־רה־מי־פה־סול־לה־סי.</li>
+<li>
+<strong>אורך</strong> (Length): כלומר, במשך כמה ביטים (יחידות זמן) התו ינוגן. (למוזיקאים: לשם הפשטות, נקרא לתו של רבע פשוט “ביט” בתרגיל זה. תו של חצי יהיה שני ביטים, וכן הלאה.)</li>
+</ol>
+<p>משימות נוספות:</p>
+<ol>
+<li>צרו <code>__str__</code> למחלקת התו שלכם. כל תו יהיה מהצורה Pitch(<strong>x</strong>Length). לדוגמה: Do(x1), Re(x2).<br/>
+על האות הראשונה בגובה הצליל להיות אות גדולה.</li>
+<li>על מנת להלחין את הסימפוניה שלנו הפעם, “נצנץ לך כוכב קטן”, עליכם ליצור תו של דו, באורך ביט אחד; תו של סול, באורך ביט אחד; תו של לה, באורך ביט אחד; תו של סול, באורך שני ביטים.</li>
+</ol>
+<h3>
+<a class="anchor" href="#2-3" name="2-3"></a>חלק 2</h3>
+<p>ממשו מחלקה של תיבה מוזיקלית (Bar). כל תיבה מסוגלת להכיל מספר קבוע של ביטים – לא פחות ולא יותר.<br/>
+בדוגמה למעלה ישנן ארבע תיבות, עם ארבעה ביטים בכל אחת. התיבות מופרדות זו מזו באמצעות פסים אנכיים.<br/>
+חדי העין ודאי ישימו לב שבתיבה השנייה והרביעית מצוירים רק שלושה תווים; זה מכיוון שתו “חלול” נחשב כשני ביטים, בעוד שאר התווים בדוגמה נחשבים כביט אחד בלבד.</p>
+<ol>
+<li>תחת פעולת האתחול, הגדירו לתיבה כמה ביטים היא יכולה להכיל. אם שמעתם על מונחים כמו “שלושה רבעים”, “ארבעה רבעים” או אפילו “שבע שמיניות” – זה בדיוק מה שאנחנו הולכים לממש כאן, אם כי בגרסה מעט פשוטה יותר. לתרגיל הנוכחי נממש שתי תיבות של ארבעה ביטים.</li>
+<li>ממשו את פעולת <code>compose</code> (הלחנה), בה התיבה תקבל מספר בלתי מוגבל של תווים, ותציב אותם בסדר בו היא קיבלה אותם. אם מספר הביטים של כלל התווים אינו תואם במדויק את הגדרת ההכלה של התיבה, החזירו <code>False</code> במקום להציב את התווים בתיבה. למשל, עבור תיבה המכילה ארבעה ביטים, התווים Do(x1), Re(x1), Mi(x1) לא יתקבלו מכיוון שמספר הביטים קטן מדי. התווים Do(x2), Re(x2), Mi(x1) לא יתקבלו אף הם, כיוון שמספר הביטים גדול מדי.</li>
+<li>ממשו את פעולת <code>__str__</code> בצורה הבאה: אם התיבה הולחנה, יוחזרו התווים המאוחסנים בה משורשרים אחד לשני, כשביניהם פסיק ורווח. אם היא טרם הולחנה – החזירו את ההודעה “not composed yet”.</li>
+</ol>
+<p>צרו את התיבה הראשונה והשנייה בשיר המופיע מטה!</p>
+<ol>
+<li>התיבה הראשונה אמורה להיראות כך: (Do(x1), Do(x1), Sol(x1), Sol(x1</li>
+<li>והשנייה, כך: (La(x1), La(x1), Sol(x2</li>
+</ol>
+<h3>
+<a class="anchor" href="#3-4" name="3-4"></a>חלק 3</h3>
+<p>הגיע הזמן לחבר את התיבות שלכן לסימפוניה! אין סימפוניה בלי תיבות, לכן פעולת האתחול של מחלקת הסימפוניה (<code>Symphony</code>) תקבל מספר בלתי מוגבל של תיבות. למחלקה זו תהיה פעולה אחת ויחידה – הדפסת כל התיבות, בזו אחר זו. תוכלו להוסיף קישוט אם בא לכם.</p>
+<p>התוצאה הסופית אמורה להיראות כך:</p>
+<blockquote>
+<p>Do(x1), Do(x1), Sol(x1), Sol(x1) || La(x1), La(x1), Sol(x2)</p>
+</blockquote>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/7156.html" itemprop="url">תרגול נוסף: שבוע 7</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T03:35:18Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  3:35am
+                  </time>
+<meta content="2020-06-11T03:35:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כיצד אפשר לגרום למחשב להשמיע את הסימפוניה הנפלאה שכתבנו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T03:47:37Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  3:47am
+                  </time>
+<meta content="2020-06-11T03:47:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מושאר כתרגיל לקורא, כמובן</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T06:54:48Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  6:54am
+                  </time>
+<meta content="2020-06-11T06:54:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פיתרון</summary>
+<pre><code class>class Note:
+    """A note class. Creates a note.
+
+    Args:
+        Pitch (str): The pitch of the note.
+        Length (int): The length of the note.
+
+    Attributes:
+        Pitch (str): The pitch of the note.
+        Length (int): The length of the note.
+    """
+    def __init__(self, Pitch, Length):
+        self.Pitch = Pitch
+        self.Length = Length
+
+    def __str__(self):
+        return f'{self.Pitch}(x{self.Length})'
+
+class Bar:
+    """A bar class. Unites notes together.
+
+    Args:
+        Length (int): The length of the bar.
+
+    Attributes:
+        Length (int): The length of the bar.
+        notes (list): The notes that the bar consist from.
+    """
+    def __init__(self, Length):
+        self.Length = Length
+        self.notes = []
+
+    def compose(self, *notes):
+        """Compose the notes into the bar."""
+        length_counter = self.Length
+        bar_notes = []
+        for note in notes:
+            bar_notes.append(note)
+            length_counter -= note.Length
+        if length_counter != 0:
+            return False
+        self.notes = bar_notes
+        return True
+
+    def __str__(self):
+        if self.notes:
+            return ", ".join(str(note) for note in self.notes)
+        return "Not composed yet"
+
+class Symphony:
+    """A symphony class. Unites bars together.
+
+    Args:
+        bars (Bar): Unknown number of Bars'.
+
+    Attributes:
+        Bars (list): The bars that had already composed.
+    """
+    def __init__(self, *bars):
+        self.Bars = [bar for bar in bars if str(bar) != "Not composed yet"]
+
+    def print_bars(self):
+        """Print the symphony."""
+        print(self)
+
+    def __str__(self):
+        return " || ".join(str(bar) for bar in self.Bars)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T09:48:48Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  9:48am
+                  </time>
+<meta content="2020-06-11T09:56:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תרגיל ממש מהנה וממש עובר על מה שלמדנו בצורה מעולה ! ממליץ בחום.</p>
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>class Note:
+    """ Represent a music note and
+
+    Args:
+        pitch (str): Pitch of a note
+        Length (int): A length of a note represented by a number of bites
+
+    Attributes:
+        pitch (str): Pitch of a note
+        Length (int): A length of a note.
+    """
+
+    def __init__(self, pitch, length):
+        self.pitch = pitch
+        self.length = length
+
+    def __str__(self):
+        return f"{self.pitch}(x{self.length})".title()
+
+
+class Bar:
+    """Represent a musical bar
+
+    Args:
+        size (int, optional): A max number of bits a bar can storage.
+                              Gets a defualt size of 4.
+
+    Attributes:
+        size (int): A max number of bits a bar can storage.
+        notes (list): A list of notes sets by the method compose.
+                      Gets None as default value.
+    """
+
+    def __init__(self, size=4):
+        self.size = size
+        self.notes = None
+
+    def __str__(self):
+        if not self.notes:
+            return "not composed yet"
+        return ", ".join(map(str, self.notes))
+
+    def compose(self, *melody, max_lenght=4):
+        """Constracting a music bar by given notes and max size."""
+
+        number_of_bites = sum([note.length for note in melody])
+        if number_of_bites != max_lenght:
+            return False
+        self.notes = melody
+
+
+class Symphony:
+    """A Symmphony class constract by music's bars
+
+    Args:
+        bars (tuple): Music bars
+        name (str): Symphony name
+
+    Attributes:
+        bars(tuple): Music bars
+        name (str): Symphony name
+    """
+
+    def __init__(self, name, *bars):
+        self.name = name
+        self.bars = bars
+
+    def __str__(self):
+        return f"{self.name}:\n" + " || ".join(map(str, self.bars))
+</code></pre>
+<p><span class="hashtag">#output</span></p>
+<pre><code class>Little Star:
+Do(X1), Do(X1), Sol(X1), Sol(X1) || La(X1), La(X1), Sol(X2)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T10:10:02Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏ 10:10am
+                  </time>
+<meta content="2020-06-11T10:18:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>class Symphony:
+    def __init__(self, *bars):
+        self.bars = bars
+        
+    def __str__(self):
+        return ' || '.join(str(bar) for bar in self.bars)
+
+
+class Bar:
+    def __init__(self, length):
+        self.legnth = length
+        self.bar = None
+
+    def __str__(self):
+        if self.bar:
+            return ', '.join(str(note) for note in self.bar)
+        return "not composed yet"
+
+    def compose(self, *notes):
+        number_of_beats = sum(note.length for note in notes)
+        if self.legnth != number_of_beats:
+            return False
+        self.bar = notes
+
+
+class Note:
+    def __init__(self, pitch, length):
+        self.pitch = pitch
+        self.length = length
+
+    def __str__(self):
+        return f"{self.pitch.capitalize()}(x{self.length})"
+
+
+def play_twinkle_twinkle_little_star():
+    bar1 = Bar(4)
+    bar1.compose(Note("do", 1), Note("do", 1), Note("sol", 1), Note("sol", 1))
+    bar2 = Bar(4)
+    bar2.compose(Note("la", 1), Note("la", 1), Note("sol", 2))
+    return Symphony(bar1, bar2)
+
+
+print(play_twinkle_twinkle_little_star())
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Geva</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T16:23:51Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  4:23pm
+                  </time>
+<meta content="2020-06-11T16:26:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אחלה תרגיל! תודה רבה.</p>
+<p>אני עכשיו בחיפושים אחר מודול שמקבל תו כמחרוזת ומחזיר הכל כSheet Music בשביל התרגול, אבל זה יצריך לשנות את הקוד דיי הרבה (ייצוג של האוקטבה של התו בנוסף לשם, בעיקר…)</p>
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>class Note:
+    """A Note class, make a note representation with pitch and length.
+    
+    Args:
+        pitch (str) = The note's pitch, represented as a string.
+        length (int) = The note's length in beats. In 4/4 time, there are 4 beats.
+    
+    Notes:
+        - At the moment, beats that are smaller than 1 are not supported.
+        - For ease of use, you should use the solfège system (Do, Re, Mi...)
+          to define the pitch.
+    """
+    
+    def __init__(self, pitch, length):
+        self.pitch = pitch
+        self.length = length
+    
+    def __str__(self):
+        return f"{self.pitch.title()}(x{self.length})"
+
+class Bar:
+    """A Bar class, construct bars of specific time from notes.
+    
+    Args:
+        beat_count (int) = The bar's time, or number of beats per bar.
+        notes (tuple) = A unlimited arg for passing notes to the bar.
+    
+    Attributes:
+        composed (None or tuple) : A composed bar, after the insertion of notes.                           
+    """
+    
+    def __init__(self, beat_count):
+        self.beat_count = beat_count
+    
+    def compose(self, *notes):
+        """Insert given notes to bar if note don't exceede the bar's beat_count.
+        
+        Args:
+            notes (tuple) : The notes that construct the bar
+        
+        Returns:
+            bool: Was the bar composed or not.
+        """
+        notes_beat_count = sum(note.length for note in notes)
+        self.composed = None
+        if notes_beat_count != self.beat_count:
+            return False
+        self.composed = notes
+        return True
+    
+    def __str__(self):
+        if self.composed:
+            return ", ".join(str(note) for note in self.composed)
+        else:
+            return "Not composed yet."
+
+class Symphony:
+    """A Symphony class. Will convert bars to strings and string bars in order with seperation.
+    
+    Args:
+        bars (tuple): An unlimited amount of bars to be returned as a symphony.
+    """
+    def __init__(self, *bars):
+        self.bars = bars
+    
+    def __str__(self):
+        return " || ".join(str(bar) for bar in self.bars)
+
+
+def twinkle_twinkle():
+    """Print a verse of the "Twinkle, Twinkle" song."""
+    do1 = Note("Do", 1)
+    sol1 = Note('Sol', 1)
+    sol2 = Note('Sol', 2)
+    la1 = Note('La', 1)
+    bar1 = Bar(4)
+    bar2 = Bar(4)
+    bar1.compose(do1, do1, sol1, sol1)
+    bar2.compose(la1, la1, sol2)
+    symphony = Symphony(bar1, bar2)
+    print(symphony)
+
+twinkle_twinkle()
+</code></pre>
+<p>The output:</p>
+<pre><code class>Do(x1), Do(x1), Sol(x1), Sol(x1) || La(x1), La(x1), Sol(x2)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T19:29:52Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏  7:29pm
+                  </time>
+<meta content="2020-06-11T19:29:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תרגיל נחמד מאוד. לקחתי על עצמי להכניס גם את המשך השיר לסימפוניה שלי</p>
+<details>
+<summary>
+Bitter Sweet Symphony of Destruction</summary>
+<pre><code class>class Note:
+    """A class for note represtation including pitch and length
+
+    Args:
+        pitch (str): The note's pitch (Do, Re, Mi...)
+        length (int): The number of beats the note lasts for.
+
+    Attributes:
+        pitch (str): The note's pitch (Do, Re, Mi...)
+        length (int): The number of beats the note lasts for.
+    """
+    def __init__(self, pitch, length):
+        self.pitch = pitch
+        self.length = length
+
+    def __str__(self):
+        return f'{self.pitch.title()}(x{self.length})'
+
+
+class Bar:
+    """A bar class, represents an ordered collection of notes
+
+    Args:
+        beats (int): The number of beats in the bar.
+
+    Attributes:
+        beats (int): The number of beats in the bar.
+        notes (list): A list of the bars notes in order.
+                        Is created empty.
+    """
+    def __init__(self, beats):
+        self.beats = beats
+        self.notes = []
+
+    def compose(self, *notes):
+        """Adds notes to the bar in their given order.
+
+        Args:
+            *notes (Note): Any number of Note instances.
+
+        Returns:
+            bool: False.
+                    Only if the given notes do not correspond to the bar's length.
+        """
+        total_beats = 0
+        for note in notes:
+            total_beats += note.length
+        if total_beats != self.beats:
+            return False
+        self.notes = [*notes]
+
+    def __str__(self):
+        if not self.notes:
+            return 'Not yet composed'
+        bar = ''
+        for note in self.notes:
+            bar += f'{str(note)}, '
+        return bar.rstrip(', ')
+
+
+class Symphony:
+    """A symphony class made up of several bars that form a melody.
+
+    Args:
+        *bars (Bar): Any number of Bar instances.
+
+    Attributes:
+        bars (list): A list of the symphony's bars.
+    """
+    def __init__(self, *bars):
+        self.bars = [*bars]
+
+    def __str__(self):
+        symphony = ''
+        for bar in self.bars:
+            symphony += str(bar) + r'||'
+        return symphony.rstrip(r'||')
+
+
+do_1 = Note('do', 1)
+sol_1 = Note('sol', 1)
+la_1 = Note('la', 1)
+sol_2 = Note('sol', 2)
+fa_1 = Note('fa', 1)
+mi_1 = Note('mi', 1)
+re_1 = Note('re', 1)
+do_2 = Note('do', 2)
+re_2 = Note('re', 2)
+
+
+first_bar = Bar(4)
+second_bar = Bar(4)
+third_bar = Bar(4)
+fourth_bar = Bar(4)
+fifth_bar = Bar(4)
+sixth_bar = Bar(4)
+first_bar.compose(do_1, do_1, sol_1, sol_1)
+second_bar.compose(la_1, la_1, sol_2)
+third_bar.compose(fa_1, fa_1, mi_1, mi_1)
+fourth_bar.compose(re_1, re_1, do_2)
+fifth_bar.compose(sol_1, sol_1, fa_1, fa_1)
+sixth_bar.compose(mi_1, mi_1, re_2)
+BARS = [first_bar, second_bar, third_bar, fourth_bar, fifth_bar, sixth_bar]
+
+twinkle = Symphony(
+    BARS[0],
+    BARS[1],
+    BARS[2],
+    BARS[3],
+    BARS[4],
+    BARS[5],
+    BARS[4],
+    BARS[5],
+    BARS[0],
+    BARS[1],
+    BARS[2],
+    BARS[3])
+print(twinkle)
+</code></pre>
+<p>Output</p>
+<pre><code class>Do(x1), Do(x1), Sol(x1), Sol(x1)||La(x1), La(x1), Sol(x2)||Fa(x1), Fa(x1), Mi(x1), Mi(x1)||Re(x1), Re(x1), Do(x2)||Sol(x1), Sol(x1), Fa(x1), Fa(x1)||Mi(x1), Mi(x1), Re(x2)||Sol(x1), Sol(x1), Fa(x1), Fa(x1)||Mi(x1), Mi(x1), Re(x2)||Do(x1), Do(x1), Sol(x1), Sol(x1)||La(x1), La(x1), Sol(x2)||Fa(x1), Fa(x1), Mi(x1), Mi(x1)||Re(x1), Re(x1), Do(x2)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../7089.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-11T22:01:45Z" itemprop="datePublished">
+                     11 ביוני,‏ 2020,‏ 10:01pm
+                  </time>
+<meta content="2020-06-11T22:01:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>class Note:
+    def __init__(self, pitch, length):
+        self.pitch = pitch.title()
+        self.length = length
+
+    def __str__(self):
+        return f"{self.pitch}(x{self.length})"
+
+
+class Bar:
+    def __init__(self, length):
+        self.length = length
+        self.notes = None
+
+    def __str__(self):
+        if self.notes is None:
+            return "not composed yet"
+        return ", ".join(str(note) for note in self.notes)
+
+    def compose(self, *notes):
+        if sum(map(lambda note: note.length, notes)) != self.length:
+            return False
+        self.notes = list(notes)
+
+
+class Symphony:
+    def __init__(self, *bars):
+        self.bars = bars
+
+    def __str__(self):
+        return " || ".join(str(bar) for bar in self.bars)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/class/7089/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:53:31 GMT -->
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/mutability-immutability/5049 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:43:52 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>חיזוק בנוגע ל־Mutability ו־Immutability - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="שאלה טובה מאוד שנשאלה בטלגרם, הרגשתי צורך להדביק גם פה: 
+
+אם יש לי רשימה של tuples אני לא יכולה לשנות את הערכים של התאים נכון? 
+כי הם immutable, למרות שהרשימה היא mutable. 
+
+הקוד (העובד) בשביל להוכיח שההנחה בשאלה לא מדוי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="5049.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5049.rss" rel="alternate nofollow" title="הזנת RSS של ‚חיזוק בנוגע ל־Mutability ו־Immutability’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_1024x733.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_1024x733.jpg" property="og:image"/>
+<meta content="5049.html" property="og:url"/>
+<meta content="5049.html" name="twitter:url"/>
+<meta content="חיזוק בנוגע ל־Mutability ו־Immutability" property="og:title"/>
+<meta content="חיזוק בנוגע ל־Mutability ו־Immutability" name="twitter:title"/>
+<meta content="שאלה טובה מאוד שנשאלה בטלגרם, הרגשתי צורך להדביק גם פה:   אם יש לי רשימה של tuples אני לא יכולה לשנות את הערכים של התאים נכון?  כי הם immutable, למרות שהרשימה היא mutable.   הקוד (העובד) בשביל להוכיח שההנחה בשאלה לא מדויקת:  l = [('a', 'b'), ('c', 'd')] l[0] = ('e', 'f')   הסבר:   איך זה אפשרי? הרי טאפל לא ברי שינוי.   זה אפשרי. אין עם זה בעיה, מכיוון שאת משנה את הרשימה ולא את ה־tuple. צריך לחשוב רגע על ההיררכיה של איך כל המבנה המורכב הזה נראה עבור פייתון.  אנסה לעזור לך לדמיין:   יש לנו את הליי..." property="og:description"/>
+<meta content="שאלה טובה מאוד שנשאלה בטלגרם, הרגשתי צורך להדביק גם פה:   אם יש לי רשימה של tuples אני לא יכולה לשנות את הערכים של התאים נכון?  כי הם immutable, למרות שהרשימה היא mutable.   הקוד (העובד) בשביל להוכיח שההנחה בשאלה לא מדויקת:  l = [('a', 'b'), ('c', 'd')] l[0] = ('e', 'f')   הסבר:   איך זה אפשרי? הרי טאפל לא ברי שינוי.   זה אפשרי. אין עם זה בעיה, מכיוון שאת משנה את הרשימה ולא את ה־tuple. צריך לחשוב רגע על ההיררכיה של איך כל המבנה המורכב הזה נראה עבור פייתון.  אנסה לעזור לך לדמיין:   יש לנו את הליי..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="mutability" property="og:article:tag"/>
+<meta content="טיפוסים" property="og:article:tag"/>
+<meta content="דיוני-עומק" property="og:article:tag"/>
+<meta content="cpython" property="og:article:tag"/>
+<meta content="ניהול-זיכרון" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="16 ❤"/>
+<meta content="2020-04-19T15:07:25+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5049.html">חיזוק בנוגע ל־Mutability ו־Immutability</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/mutability.html" rel="tag">mutability</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%98%d7%99%d7%a4%d7%95%d7%a1%d7%99%d7%9d.html" rel="tag">טיפוסים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%93%d7%99%d7%95%d7%a0%d7%99-%d7%a2%d7%95%d7%9e%d7%a7.html" rel="tag">דיוני-עומק</a>, 
+            <a class="discourse-tag" href="../../tag/cpython.html" rel="tag">cpython</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a0%d7%99%d7%94%d7%95%d7%9c-%d7%96%d7%99%d7%9b%d7%a8%d7%95%d7%9f.html" rel="tag">ניהול-זיכרון</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="חיזוק בנוגע ל־Mutability ו־Immutability" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="mutability, טיפוסים, דיוני-עומק, cpython, ניהול-זיכרון" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-19T15:07:25Z" itemprop="datePublished">
+                     19 באפריל,‏ 2020,‏  3:07pm
+                  </time>
+<meta content="2021-09-07T13:25:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שאלה טובה מאוד שנשאלה בטלגרם, הרגשתי צורך להדביק גם פה:</p>
+<blockquote>
+<p>אם יש לי רשימה של tuples אני לא יכולה לשנות את הערכים של התאים נכון?<br/>
+כי הם immutable, למרות שהרשימה היא mutable.</p>
+</blockquote>
+<p>הקוד (העובד) בשביל להוכיח שההנחה בשאלה לא מדויקת:</p>
+<pre><code class="lang-python">l = [('a', 'b'), ('c', 'd')]
+l[0] = ('e', 'f')
+</code></pre>
+<hr/>
+<p>הסבר:</p>
+<blockquote>
+<p>איך זה אפשרי? הרי טאפל לא ברי שינוי.</p>
+</blockquote>
+<p>זה אפשרי. אין עם זה בעיה, מכיוון שאת משנה את הרשימה ולא את ה־tuple. צריך לחשוב רגע על ההיררכיה של איך כל המבנה המורכב הזה נראה עבור פייתון.</p>
+<p>אנסה לעזור לך לדמיין:</p>
+<ol>
+<li>יש לנו את הלייזר הראשי. הוא זה שמצביע כביכול על כל המבנה המורכב הזה. השם שלו הוא l, והוא מצביע על הרשימה הענקית שנמצאת בחוץ.</li>
+<li>בתוך l יש לנו הרבה לייזרים קטנים – אחד עבור כל תא ברשימה. הלייזר הראשון מצביע לטאפל <code>('a', 'b')</code> (אין לו כ"כ שם, נקרא לו <code>l[0]</code> ). הלייזר השני מצביע לטאפל <code>('c', 'd')</code> .</li>
+<li>סיכום ביניים: יש לנו לייזר אחד גדול בשם l שמצביע לרשימה, ובתוכו עוד הרבה לייזרים (כאורך הרשימה), כל אחד מצביע לתוכן התא שלו ברשימה.</li>
+<li>בתוך כל טאפל כזה, יש לנו עוד לייזרים קטנטנים שמצביעים על הערכים בתוך ה־tuple. אז ב־tuple הראשון שלנו יש 2 לייזרים, אחד מצביע על a והשני מצביע על b. בטאפל השני גם יש שני לייזרים, אחד מצביע על c והשני מצביע על d.</li>
+<li>כשאנחנו אומרים על משהו שהוא Immutable אנחנו בעצם אומרים שאנחנו לא יכולים לשנות את התוכן שלו. זאת אומרת – אי אפשר להוסיף לו לייזרים או להוריד ממנו לייזרים, או לגרום ללייזרים שבתוכו להצביע למקום אחר</li>
+<li>ולכן: את הלייזרים של list, שהיא mutable, כמו <code>l[0]</code> וכמו <code>l[1]</code> אנחנו יכולים להפנות ל־tuple חדש, בדיוק כמו שהראיתי בדוגמת הקוד למעלה.</li>
+<li>לעומת זאת, את הלייזרים <em>שבתוך</em> טאפל כלשהו אי אפשר לשנות – אז אי אפשר להוסיף או להוריד איברים מתוך הטאפלים ברשימה, או לשנות את הערכים שנמצאים בתוכם.</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/54a9b83913ebc3bf8403a3445715ca37f1819dd6" href="../../uploads/default/original/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6.jpg" title="image"><img alt="image" data-base62-sha1="c4XJgC55PtbmZy7eCgJsi9lwSOO" data-small-upload="../../uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_10x10.png" height="494" src="../../uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_690x494.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_690x494.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_1035x741.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/5/54a9b83913ebc3bf8403a3445715ca37f1819dd6_2_1380x988.jpeg 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1459×1045 160 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<blockquote>
+<p>רק רוצה לוודא שהבנתי עד הסוף:<br/>
+אם למשל הייתי רושמת:<br/>
+<code>l[0][0] = ‘dana’</code><br/>
+זה היה מראה לי שגיאה נכון?</p>
+</blockquote>
+<p>בהחלט</p>
+<blockquote>
+<p>אם נעשה לצורך העניין <code>l[0] = l[0] +('g',)</code> זה אפשרי אם ככה? כי אנחנו בעצם מכניסים רשומה חדשה לרשימה ולא באמת משנים את הטאפל</p>
+</blockquote>
+<p>בהחלט אפשרי, שים לב שיצרת טאפל חדש לחלוטין ולא באמת שינית את הטאפל המקורי.<br/>
+רק שינית את החץ הירוק (הלייזר) מלהצביע על הטאפל השמאלי שמופיע על הלוח, ללהצביע על טאפל חדש שאתה יצרת שמורכב מהאיברים בטאפל השמאלי ועוד האיבר ‘g’.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="10" itemprop="userInteractionCount"/>
+<span class="post-likes">10 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/5096.html" itemprop="url">אשכולות מעניינים להעמקה</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">puff_boy_1</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T09:15:09Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  9:15am
+                  </time>
+<meta content="2020-04-21T09:15:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תענוג !!!<br/>
+תודה רבה על ההבהרה וההסבר!!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mayacoey</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T16:25:41Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  4:25pm
+                  </time>
+<meta content="2020-04-21T16:25:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>וואו. הסבר מדהים.</p>
+<p>אני לא יכולה להסביר בכלל כמה הקורס הזה מלמד אותי לפתח ועוזר לי להתפתח בעצמי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+ים והצוות, אתם מלמדים אותנו מה זה חינוך ומה זו אהבה אמיתית לעשייה.<br/>
+תודה תודה תודה. <span class_="mention">@Yam</span> <span class_="mention">@itamaraviv</span> <span class_="mention">@guykeller</span></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">doriguy</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T21:55:20Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏  9:55pm
+                  </time>
+<meta content="2020-04-25T21:55:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@Yam</span><br/>
+וואו הסבר קוהרנטי, שאפו <img alt=":muscle:" class="emoji" src="../../images/emoji/twitter/musclec164.png?v=9" title=":muscle:"/><br/>
+גם הקפטן הוק מרשים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T06:39:42Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  6:39am
+                  </time>
+<meta content="2020-10-18T06:39:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בואו נחזור איזה 4 חודשים אחורה בערך…</p>
+<p>דבר מוזר שנתקלתי בו:<br/>
+נניח ש a ו b  הם משתנים מסוג int<br/>
+a = 100<br/>
+b = 100<br/>
+אני תמיד חשבתי ש int  זה mutable<br/>
+ולכן id(a) == id(b)  יתן False</p>
+<p>אבל מסתבר שעבור a = 1000 ,  b=1000<br/>
+id(a) == id(b)  יתן True</p>
+<p>האם ניתן לקבל הסבר למה זה מתנהג ככה?<br/>
+והאם אפשר לדעת בוודאות מראש עבור כל סוג טיפוס האם הוא Mutable או Immutable?<br/>
+או שזה בכלל לא קשור ל מיוטבל ואימיוטבל אלא קשור למשהו אחר??</p>
+<p>תודה רבה!<br/>
+איל</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/272cf9d108636fe071a893fce540e3c19b7f1a7f.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T08:03:52Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  8:03am
+                  </time>
+<meta content="2020-10-18T08:03:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>משתה INT הוא Immutable, תראה כאן הסבר תמציתי למה זה הגיוני:<br/>
+<img alt="image" data-base62-sha1="5AyYRtlKyPHDMnIQMJa4evQg9sP" height="345" src="../../uploads/default/original/2X/2/272cf9d108636fe071a893fce540e3c19b7f1a7f.png" width="686"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T08:36:30Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  8:36am
+                  </time>
+<meta content="2020-10-18T08:43:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני חושב שמה שמסביר את זה זו העובדה שבפייתון כל דבר הוא אובייקט, אפילו מספר.<br/>
+כאן יש הסבר טוב שעשה לי קצת סדר בראש וגם תזכורת ל id, אז תודה על השאלה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p><a href="https://www.programiz.com/python-programming/methods/built-in/id">https://www.programiz.com/python-programming/methods/built-in/id</a></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a669bd6f411d582d4201e0bf2ae86550a26a46ed" href="../../uploads/default/original/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed.png" title="image"><img alt="image" data-base62-sha1="nK9O1VPErR3MdBoDtTwIWIB8lzf" data-small-upload="../../uploads/default/optimized/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed_2_10x10.png" height="463" src="../../uploads/default/optimized/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed_2_690x463.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed_2_690x463.png, https://forums.pythonic.guru/uploads/default/original/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/a669bd6f411d582d4201e0bf2ae86550a26a46ed.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">919×617 25.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T09:04:58Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  9:04am
+                  </time>
+<meta content="2020-10-18T09:04:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="onebox allowlistedgeneric">
+<header class="source">
+<img class="site-icon" height="300" src="../../uploads/default/original/2X/1/1babf4dba1298bf48427a64a69a1d0aca0841199.png" width="300"/>
+<a href="https://www.linux.com/training-tutorials/python3-sometimes-immutable-mutable-and-everything-object/" rel="noopener nofollow ugc" target="_blank" title="01:31PM - 25 June 2018">Linux.com – 25 Jun 18</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:690/332;"><img class="thumbnail" data-small-upload="../../uploads/default/optimized/2X/2/2513b0e6d9791e73dc23f0ad48c86f9f6baeea6c_2_10x10.png" height="332" src="../../uploads/default/optimized/2X/2/2513b0e6d9791e73dc23f0ad48c86f9f6baeea6c_2_690x332.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2513b0e6d9791e73dc23f0ad48c86f9f6baeea6c_2_690x332.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/2/2513b0e6d9791e73dc23f0ad48c86f9f6baeea6c_2_1035x498.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/2513b0e6d9791e73dc23f0ad48c86f9f6baeea6c_2_1380x664.jpeg 2x" width="690"/></div>
+<h3><a href="https://www.linux.com/training-tutorials/python3-sometimes-immutable-mutable-and-everything-object/" rel="noopener nofollow ugc" target="_blank">Python 3: Sometimes Immutable Is Mutable and Everything Is an Object - Linux.com</a></h3>
+<p>What is Python? Python is an interpreted, interactive object-oriented programming language; it incorporated modules, classes, exceptions, dynamic typing and high level data types. Python is also powerful when it comes to clear syntax....</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<p>בסעיף האחרון<br/>
+יש הסבר מעניין מאוד בעניין…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5049.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T14:35:35Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  2:35pm
+                  </time>
+<meta content="2020-10-18T14:35:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הסיבה למקרה הספציפי שאייל הציג היא שבמימושים מסוימים של פייתון, כולל בזה שאנחנו משתמשים בו, יש אופטימיזציות מסוימות.<br/>
+קודם כל – int הוא immutable, אבל זה עדיין לא מסביר למה a is b (במילים אחרות: מדוע הם מפנים לאותה כתובת).<br/>
+ב¯CPython כל אחד מה¯int¯ים בטווח מ¯<code>-5</code> ועד <code>256</code> שמורים במקום קבוע בזיכרון.<br/>
+ראו כאן: <a href="https://levelup.gitconnected.com/optimization-in-python-the-interning-technique-for-improved-performance-3ff14d376176">https://levelup.gitconnected.com/optimization-in-python-the-interning-technique-for-improved-performance-3ff14d376176</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/mutability-immutability/5049 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:44:04 GMT -->
+</html>

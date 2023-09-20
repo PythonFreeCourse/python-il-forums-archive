@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הבנה בסיסית בהערכת סיבוכיות</title>
+    <link>https://forums.pythonic.guru/t/topic/8593</link>
+    <description>מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.
+למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), היא מכפלה של של n בלוג n.
+אז אם כל מה שרשמתי עליו &#39;להבנתי&#39; הוא נכון, והבנתי נכון, אז נשאלת השאלה: מדוע מכפלה של לדוגמה 5 של n מבוטלת אוטומטית, אך בכל זאת לא מבטלים מכפלה של n בשבריר ממנו..?
+אז או שמשהו בסיסי בהגדרות לא הבנתי נכון, או שאין בזה ממש הגיון מובהק.. למישהו הסברים?</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 03 Jan 2021 09:10:52 +0000</lastBuildDate>
+    <category>שבוע 15</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8593.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>מצאתי מאמר נוסף שמסביר מצוין ובפירוט על כל אחת מהגדרות הסיבוכיות:<br>
+<a href="https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7" class="onebox" target="_blank" rel="noopener nofollow ugc">https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/12</link>
+        <pubDate>Sun, 03 Jan 2021 09:10:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>בואו נתחיל רגע בלהבין מה אנחנו רוצים למדוד.</h3>
+<p>כשאנחנו מודדים יעילות, אנחנו מחפשים משהו שנקרא <a href="https://en.wikipedia.org/wiki/Worst-case_complexity">סיבוכיות המקרה הגרוע ביותר</a>.</p>
+<p>במילים סמי־אקדמיות: בהינתן קלט שגודלו <span class="math">N</span>, מה החסם העליון של זמן שייקח לאלגוריתם לרוץ.<br>
+במילים פחות: בתלות בגודל הקלט – מה ה<em>מקסימום</em> זמן, בהינתן הקלט הכי גרוע שאפשר, שייקח לתוכנה שכתבתי לסיים לרוץ.<br>
+וממש בנפנופי ידיים: המטרה שלנו היא לבדוק כמה יותר זמן יקח לחשב את הפתרון כשגודל הקלט יגדל.</p>
+<hr>
+<h3>התשובה לשאלה המקורית ששאלת:</h3>
+<p>בביטוי <span class="math">5 \cdot n</span>, זונחים את 5 כי הוא מקדם של <span class="math">n</span>.</p>
+<p>למעשה, יש שני סוגים של “חלקים בביטוי” שאנחנו זונחים:</p>
+<ol>
+<li>מקדמים – כלומר, מספרים קבועים שנמצאים בביטוי (למה? ראה הרחבה למטה).</li>
+<li>אם יש כמה איברים שביניהם יש חיבור או חיסור, לוקחים רק את האיבר שגדל הכי מהר.</li>
+</ol>
+<p>מה נחשב “איבר”? כל דבר ש"דבוק" אחד לשני בעזרת כפל, חזקה, חילוק וכדומה. בין שני איברים יהיה פלוס או מינוס. בביטוי <span class="math">n^2 - n + 6</span> לדוגמה, יש לנו 3 איברים. ניקח רק את <span class="math">n^2</span>, כי הוא עולה בקצב הגבוה ביותר.</p>
+<p>למה זונחים איברים שביניהם חיבור/חיסור אבל עולים בקצב נמוך יותר? כי חיבור של איבר שקטן בסדר גודל כמעט לא משפיע על התוצאה הסופית והוא כמעט לא מעניין.<br>
+ההבדל בין <span class="math">O(n)</span> לבין <span class="math">O(n^2)</span> הוא אסטרונומי כש־ <span class="math">N=1,000,000</span> – זה יכול להיות ההבדל בין אלגוריתם שיסיים לרוץ בפחות משנייה לבין כזה שיסיים לרוץ בעוד שבוע.<br>
+אבל ההבדל בין <span class="math">O(n^2)</span> לבין <span class="math">O(n^2 + n)</span> במקרה הזה הוא כמעט בלתי נראה – ולכן מרגישים בנוח להשמיט את <span class="math">n</span> – כי מה שמחפשים הוא סדר גודל, ולא חישוב מדויק.</p>
+<hr>
+<h3>לגבי מקדמים, אני אנסה לתת gut feeling סביר:</h3>
+<ol>
+<li>בסופו של דבר, מהירות של תוכנה נגזרת מכמות הפעולות שהמעבד מריץ [קצת שקר*] ככל שיש יותר פעולות, התוכנה איטית יותר.</li>
+<li>כשאנחנו כותבים בפייתון x = x + 1, פייתון עשויה לעשות כל מני חישובים מוזרים מאחורי הקלעים (כדי לאפשר לנו לעבוד עם מספרים ממש גדולים, לדוגמה). זה יגרור די הרבה הוראות שהמעבד צריך להריץ. נזרוק סתם מספר, נניח, 50. אז x = x + 1 בפייתון גורם למעבד להריץ 50 הוראות.</li>
+<li>אם נכתוב את אותה השורה בשפת התכנות C, כיוון שב־C תוחמים את הגודל של x ו־C מלכתחילה היא שפה שקל “לתרגם” ממנה לשפה שהמעבד יבין, המעבד יצטרך להריץ ממש מעט פעולות, נניח 1. אז x = x + 1 ב־C גורמת למעבד להריץ הוראה 1.</li>
+<li>נניח שככה אני מודד את היעילות של התוכנה שלי. כתבתי פתרון לאחד התרגילים, ואני רוצה למדוד את היעילות שלו בעזרת הביטוי x = x + 1 שרץ <span class="math">N</span> פעמים. מתעוררות כמה בעיות:<br>
+4.1. האם הגיוני להגיד שהפתרון ב־C הוא <span class="math">O(N)</span> והפתרון בפייתון הוא <span class="math">O(50\cdot N)</span>? בכלל, ההמרה הזו בין שורת קוד לכמות הפעולות שהמעבד יריץ היא סופר לא טריוויאלית וכשעושים אותה צריך להתחשב בכמות עצומה של נושאים תיאורטיים מורכבים מאוד. כל פעם שנרצה לקבל תחושת בטן על יעילות נצטרך לבדוק איך מחשבים את ההשוואה הזו? אנחנו אנשי מדמ"ח, אנחנו עצלנים.<br>
+4.2.  נניח שעברנו את המשוכה הזו, אבל אז מישהו סיפר לנו שקרן הפייתון הבינלאומית מימנה את הפתרון שלנו, ופתרון הפייתון שלנו רץ על מחשב כסוף ונוצץ. הפתרון שכתוב ב־C עדיין רץ על הטרנטה שקיבלנו לבת מצווה. המחשב שקרן הפייתון קנו פי 50 חזק יותר! האם עדיין הגיוני להגיד שהתוכנה שכתובה ב־C פי 50 מהירה מזו שכתובה בפייתון?</li>
+<li>אפשר להסיק מכאן שעבור כל בעיה, אם נזרוק מספיק כסף על שרתים כסופים נוצצים, נוכל לפתור אותה ביעילות עם <em>מקדם</em> נמוך יותר. למעשה, אפילו טרחו <a href="https://en.wikipedia.org/wiki/Linear_speedup_theorem">להוכיח את זה מתמטית</a>.</li>
+<li>לכן כשאנחנו באים להעריך עד כמה אלגוריתם הוא “טוב”, נעיף מההערכה שלנו כל מקדם שהוא. המקדם הזה לא משרת אותנו ונקבל הערכה טובה יותר בלעדיו.</li>
+<li>מה כן מעניין? מה <strong>סדר הגודל</strong> של השינוי בזמן הריצה של התוכנית, כשאנחנו מקטינים או מגדילים את גודל הקלט שלנו.</li>
+</ol>
+<p>אני באמת ממש ממליץ לקרוא את <a href="https://discrete.gr/complexity/?he">המאמר שתרגמתי</a>.<br>
+(אין פה קידום אישי, נטו תרגמתי אותו וזו לא עבודה שלי <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"> )<br>
+עשיתי את זה ואני דוחף אותו בכל הזדמנות כי אני חושב שמי שכתב אותו עשה עבודה נהדרת.</p>
+<hr>
+<p>* אני משקר כאן ממש ומניח כל מני הנחות של רמאים, כמו שאין חיבור לאינטרנט ושאין קריאה/כתיבה להארד־דיסק. אבל העיקרון עצמו מובן לדעתי. זה לא מה שאנחנו באים למדוד.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/11</link>
+        <pubDate>Sat, 02 Jan 2021 08:02:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>לא בטוחה שאני מבינה את הבלבול, אבל מקווה שאני עונה על התהייה.</p>
+<p>מבחינת ההגדרה היבשה, מתעלמים מכל מספר קבוע כיוון שהוא, ובכן, קבוע. הוא אינו משתנה לפי גודל הקלט ולכן אם הקלט גדל או קטן אנו יודעים לחזות פי כמה ישתנה זמן הריצה. לעומת זאת לא מזניחים ביטויים התלויים בגודל הקלט, כדוגמת logn או n או n^5, גם אם הם נראים זניחים.</p>
+<p>בעולם האמיתי, שבו גם הביצועים חשובים, ינסו להתחשב גם בקבוע ולהוריד אותו כמה שיותר. יש הבדל בין זמן ריצה של קוד הדורש 5n פעולות לזמן ריצה של קוד הדורש 1,000,000,000n פעולות.<br>
+אבל, כאשר אנחנו מסתכלים על O אנו מנסים רק להבין כיצד זמן הריצה של הקוד יושפע משינוי בגודל הקלט, המיוצג לרוב ע"י n.<br>
+קוד המבצע 5 פעולות על כל איבר ברשימה הניתנת לו יעשה זאת בין אם מספר האיברים ברשימה הוא מאה, אלף או מיליארד. לכן, הכפלת מספר האיברים ברשימה פי 100 תוביל לזמן ריצה ארוך פי 100.<br>
+לעומתו, קוד המבצע logn פעולות על כל איבר ברשימה הניתנת לו ישנה גם את מספר הפעולות לכל איבר כאשר גודל הרשימה הניתנת לו ישתנה. כאשר הרשימה הניתנת תהיה בגודל 1,000 הוא יבצע 1,000log(1,000) פעולות, שהן log(1,000) פעולות לאיבר, ואילו כשגודל הרשימה הניתנת לו תהיה בגודל 1,000,000,000 הוא יבצע 1,000,000,000log(1,000,000,000), שהן log(1,000,000,000) פעולות לאיבר. כלומר, זמן הריצה לא יגדל רק פי גודל הרשימה אלא יותר מכך.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/10</link>
+        <pubDate>Fri, 01 Jan 2021 21:30:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>ה logn אף פעם לא היה מכפלה של n , ה n  בהתחלה הוא מכפלה של כל הביטוי logn …<br>
+אם לא אז אולי גם אני לא הבנתי.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/9</link>
+        <pubDate>Fri, 01 Jan 2021 19:27:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>ובקיצור, ב- On log n, לוג n הוא אינו מכפלה של n, אלא גם הוא שבריר של n, בדומה ל- logn, רק שהבסיס שלו שונה, והוא גדול יותר</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/8</link>
+        <pubDate>Fri, 01 Jan 2021 19:25:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אז נראה שלא ממש הבנו לעומק את ההגדרות, לפחות על פי ההסבר פה:</p><aside class="onebox stackexchange">
+  <header class="source">
+      <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" target="_blank" rel="noopener nofollow ugc">stackoverflow.com</a>
+  </header>
+  <article class="onebox-body">
+      <a href="https://stackoverflow.com/users/44084/andreas-grech" target="_blank" rel="noopener nofollow ugc">
+    <img alt="Andreas Grech" src="https://forums.pythonic.guru/uploads/default/original/2X/1/1ea2ebacc353d539314bc290b7c0a1135455ca5e.jpeg" class="thumbnail onebox-avatar" width="128" height="128">
+  </a>
+<h4>
+  <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" target="_blank" rel="noopener nofollow ugc">What does O(log n) mean exactly?</a>
+</h4>
+
+<div class="tags">
+  <strong>algorithm, time-complexity, big-o</strong>
+</div>
+
+<div class="date">
+  asked by
+  
+  <a href="https://stackoverflow.com/users/44084/andreas-grech" target="_blank" rel="noopener nofollow ugc">
+    Andreas Grech
+  </a>
+  on <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" target="_blank" rel="noopener nofollow ugc">08:05PM - 21 Feb 10 UTC</a>
+</div>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/7</link>
+        <pubDate>Fri, 01 Jan 2021 19:23:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>כי גם logn  הוא לא log5  למשל…<br>
+הביטוי מתאר את התלות של הפונקציה ב n.<br>
+במספרים גדולים - הבדלים האלו נהיים גדולים.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/6</link>
+        <pubDate>Fri, 01 Jan 2021 19:17:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נכון שמחפשים קצב צמיחה. ואם הפרמטר הגדול ב- n log n הוא n, אז בהמשך לכל ‘הכללים’ של חישוב סיבוכיות, לא ברור לי למה במצב כזה log n רלוונטי, כשהוא מהווה שבריר של n</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/5</link>
+        <pubDate>Fri, 01 Jan 2021 19:13:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>ועדיין, גם 5 וגם log n, בשני המקרים, הן מכפלות של n. כש- 5 גדול פי כמה מ- log n. אז לא ברור לי למה מהמכפלה הגדולה מתעלמים באופן גורף, גם אם היא מספר קבוע, ומהמכפלה הקטנה בהרבה לא מתעלמים. אם הבנו נכון את ההגדרות, זה פשוט לא הגיוני בשום צורה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/4</link>
+        <pubDate>Fri, 01 Jan 2021 19:09:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מניח שאם הקבוע יהיה 100000000000000000000 אז כן יחשבו עליו.<br>
+אולם עדין ממה שאני מבין בסיבוכיות מחפשים “קצב צמיחה” וקבוע לא משנה את קצב זה הוא שומר עליו קבוע.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/3</link>
+        <pubDate>Fri, 01 Jan 2021 19:08:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה טובה, אני לא כזה מבין גדול אבל יכול לשער כי:</p>
+<p>5logn  - אומר שעבור כל n  הפונקציה תעשה את logn 5 פעמים.<br>
+5 הוא מספר קבוע ולכן אנו יכולים לדעת בוודאות שהפונקציה תרוץ כל פעם 5 פעמים logn  בלי תלות בגודל ה n</p>
+<p>בגלל ש n   הוא משתנה והוא אינו קבוע כמו הספרה 5 למשל, ככל ש n  יגדל  הפקונציה תבצע יותר logn. כלומר היא תהיה בהכרח תלויה בגודלו של n  - כך שכמה שהוא יגדל ככה גם כמות הפעמים שהפונקציה תבצע logn. ולכן במקרה כזה n  הוא לא זניח ולא ניתן לבטל אותו.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/2</link>
+        <pubDate>Fri, 01 Jan 2021 19:03:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+      <item>
+        <title>הבנה בסיסית בהערכת סיבוכיות</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.<br>
+למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), היא מכפלה של של n בלוג n.<br>
+אז אם כל מה שרשמתי עליו ‘להבנתי’ הוא נכון, והבנתי נכון, אז נשאלת השאלה: מדוע מכפלה של לדוגמה 5 של n מבוטלת אוטומטית, אך בכל זאת לא מבטלים מכפלה של n בשבריר ממנו…?<br>
+אז או שמשהו בסיסי בהגדרות לא הבנתי נכון, או שאין בזה ממש הגיון מובהק… למישהו הסברים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8593/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8593/1</link>
+        <pubDate>Fri, 01 Jan 2021 18:48:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8593-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8593.rss">הבנה בסיסית בהערכת סיבוכיות</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/html-html/8350 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:59:00 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הדבקת html בתוך html - שבוע 12 - פייתון בעברית ובחינם</title>
+<meta content="היי! 
+כחלק מהעבודה בפלאסק, אני מנסה להכניס קוד שכותבת בתוך הפעולת flask לתוך הhtml שהוצג לי. ככה זה נראה- 
+ 
+הבעיה שבמקום להציג לי את הקובץ movie-list עם הפרטים שהכנסתי, הקובץ שאני מכניסה במשתנה movie_list יוצא לא מעובד &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8350.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8350.rss" rel="alternate nofollow" title="הזנת RSS של ‚הדבקת html בתוך html’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/3/345bfe7cc19809ab1bed8a2d5b26dc43e81d12f9.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/3/345bfe7cc19809ab1bed8a2d5b26dc43e81d12f9.png" property="og:image"/>
+<meta content="8350.html" property="og:url"/>
+<meta content="8350.html" name="twitter:url"/>
+<meta content="הדבקת html בתוך html" property="og:title"/>
+<meta content="הדבקת html בתוך html" name="twitter:title"/>
+<meta content="היי!  כחלק מהעבודה בפלאסק, אני מנסה להכניס קוד שכותבת בתוך הפעולת flask לתוך הhtml שהוצג לי. ככה זה נראה-    הבעיה שבמקום להציג לי את הקובץ movie-list עם הפרטים שהכנסתי, הקובץ שאני מכניסה במשתנה movie_list יוצא לא מעובד והתוצאה היא פשוט שהדפדפן מציג את את המחרוזת של הhtml שלי.  נראה ככה-     משהו נתקל או יודע איך אפשר לפתור את זה?  המון תודה!" property="og:description"/>
+<meta content="היי!  כחלק מהעבודה בפלאסק, אני מנסה להכניס קוד שכותבת בתוך הפעולת flask לתוך הhtml שהוצג לי. ככה זה נראה-    הבעיה שבמקום להציג לי את הקובץ movie-list עם הפרטים שהכנסתי, הקובץ שאני מכניסה במשתנה movie_list יוצא לא מעובד והתוצאה היא פשוט שהדפדפן מציג את את המחרוזת של הhtml שלי.  נראה ככה-     משהו נתקל או יודע איך אפשר לפתור את זה?  המון תודה!" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 12" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="html" property="og:article:tag"/>
+<meta content="2020-10-18T08:41:58+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הדבקת html בתוך html","mainEntity":{"@type":"Question","name":"הדבקת html בתוך html","text":"היי!\n\nכחלק מהעבודה בפלאסק, אני מנסה להכניס קוד שכותבת בתוך הפעולת flask לתוך הhtml שהוצג לי. ככה זה נראה-\n\n[image]\n\nהבעיה שבמקום להציג לי את הקובץ movie-list עם הפרטים שהכנסתי, הקובץ שאני מכניסה במשתנה movie_list יוצא לא מעובד והתוצאה היא פשוט שהדפדפן מציג את את המחרוזת של הhtml שלי.\n\nנראה ככה-\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/915f6401b81147064a64a2ebfc6d5ab380bfd00b\" title=\"image\">[i&hellip;<\/a>","upvoteCount":0,"answerCount":1,"dateCreated":"2020-10-18T08:41:58.277Z","author":{"@type":"Person","name":"נועם"},"acceptedAnswer":{"@type":"Answer","text":"תנסי ליצור מבנה נתונים שמחזיק את הסרטים.\n\nלאחר מכן בלולאה בתוך ה-template עצמו (בקובץ html) לרוץ על המבנה נתונים שהעברת לו ב-render template.\n\nדוגמה מהמערכת תרגילים:\n\n<a href=\"https://github.com/PythonFreeCourse/lms/blob/0aac97122846abb546d6fb1264d86260a58178d4/lms/templates/exercises.html#L12\" target=\"_blank\" rel=\"noopener\">PythonFreeCourse/lms/blob/0aac97122846abb546d6fb1264d86260a58178d4/lms/templates/exercises.html#L12<\/a>\n\n{%- block page_content&hellip;","upvoteCount":0,"dateCreated":"2020-10-18T13:35:43.495Z","url":"https://forums.pythonic.guru/t/html-html/8350/7","author":{"@type":"Person","name":"orronai"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8350.html">הדבקת html בתוך html</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/24-category/24.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 12</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/html.html" rel="tag">html</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הדבקת html בתוך html" itemprop="headline"/>
+<meta content="שבוע 12" itemprop="articleSection"/>
+<meta content="html" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/345bfe7cc19809ab1bed8a2d5b26dc43e81d12f9.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T08:41:58Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  8:41am
+                  </time>
+<meta content="2020-10-18T08:41:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי!<br/>
+כחלק מהעבודה בפלאסק, אני מנסה להכניס קוד שכותבת בתוך הפעולת flask לתוך הhtml שהוצג לי. ככה זה נראה-<br/>
+<img alt="image" data-base62-sha1="7tbVlihj5DBj4Gp2kbeZV7IauSt" height="138" src="../../uploads/default/original/2X/3/345bfe7cc19809ab1bed8a2d5b26dc43e81d12f9.png" width="353"/></p>
+<p>הבעיה שבמקום להציג לי את הקובץ movie-list עם הפרטים שהכנסתי, הקובץ שאני מכניסה במשתנה movie_list יוצא לא מעובד והתוצאה היא פשוט שהדפדפן מציג את את המחרוזת של הhtml שלי.<br/>
+נראה ככה-</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/915f6401b81147064a64a2ebfc6d5ab380bfd00b" href="../../uploads/default/original/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b.png" title="image"><img alt="image" data-base62-sha1="kK1BCjNF6c5de0ol4iaRGriTK9t" data-small-upload="../../uploads/default/optimized/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b_2_10x10.png" height="172" src="../../uploads/default/optimized/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b_2_690x172.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b_2_690x172.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b_2_1035x258.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/9/915f6401b81147064a64a2ebfc6d5ab380bfd00b_2_1380x344.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1915×480 133 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>משהו נתקל או יודע איך אפשר לפתור את זה?<br/>
+המון תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T12:59:09Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏ 12:59pm
+                  </time>
+<meta content="2020-10-18T12:59:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם אתה מראש מקבל את כל הפרטי סרטים בתוך תגיות html?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/ade532fc27a9e5191d1abfd60de3cbfdfd5090b6.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T13:25:50Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  1:25pm
+                  </time>
+<meta content="2020-10-18T13:25:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא, הכנסתי את הפרטי סרטים לתוך תגיות html, עבור כל סרט יש div, שזה המבנה שלו-<br/>
+<img alt="image" data-base62-sha1="oOlESresCAsGGFIMl76PEOK272e" height="102" src="../../uploads/default/original/2X/a/ade532fc27a9e5191d1abfd60de3cbfdfd5090b6.png" width="427"/><br/>
+יש משתנה שמחבר את כל הdiv של כל הסרטים- all_movie_details<br/>
+המבנה תקין. הבעיה קורית בפעולה render template עצמה- כשאני מריצה אותה היא מציגה את הhtml כטקסט.<br/>
+לצורך העניין, אם אני מנסה להחזיר div של סרט אחד הוא חוזר כמו שצריך,<br/>
+וגם- אם אני שמה את התבנית של כל הסרטים בתוך הקובץ של הflask הכל עובד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T13:29:08Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  1:29pm
+                  </time>
+<meta content="2020-10-18T13:29:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש לך אופציה עם Jinja לרוץ בלולאה.<br/>
+כשאת עושה render template, תעבירי את <code>all_movies_details</code> בתור מילון, רשימה או מערך נתונים אחר שתבחרי, ותוכלי ליצור כך את כל הסרטים ב-template עצמו.<br/>
+דוגמה:</p>
+<pre><code class>{% for movie in movies_details %}
+   {{ movie }}
+{% endfor %}
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T13:31:50Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  1:31pm
+                  </time>
+<meta content="2020-10-18T13:31:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הבנתי לגמרי איך ליצור את כל הסרטים בתוך התבנית. תוכל להבהיר?<br/>
+עד עכשיו כדי ליצור את all_movie_details השתמשתי בלולאת פור שעוברת על כל הdiv של כל הסרטים ומחברת אותם.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T13:35:43Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  1:35pm
+                  </time>
+<meta content="2020-10-18T13:35:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תנסי ליצור מבנה נתונים שמחזיק את הסרטים.<br/>
+לאחר מכן בלולאה בתוך ה-template עצמו (בקובץ html) לרוץ על המבנה נתונים שהעברת לו ב-render template.</p>
+<p>דוגמה מהמערכת תרגילים:<br/>
+</p><aside class="onebox githubblob">
+<header class="source">
+<a href="https://github.com/PythonFreeCourse/lms/blob/0aac97122846abb546d6fb1264d86260a58178d4/lms/templates/exercises.html#L12" rel="noopener" target="_blank">github.com</a>
+</header>
+<article class="onebox-body">
+<h4><a href="https://github.com/PythonFreeCourse/lms/blob/0aac97122846abb546d6fb1264d86260a58178d4/lms/templates/exercises.html#L12" rel="noopener" target="_blank">PythonFreeCourse/lms/blob/0aac97122846abb546d6fb1264d86260a58178d4/lms/templates/exercises.html#L12</a></h4>
+<pre class="onebox"><code class="lang-html"><ol class="start lines" start="2" style="counter-reset: li-counter 1 ;">
+<li>
+</li><li>{%- block page_content -%}</li>
+<li>&lt;div class="container"&gt;</li>
+<li>  &lt;div id="exercises-page" class="page {{ direction }}"&gt;</li>
+<li>    &lt;div id="exercises-header"&gt;</li>
+<li>      &lt;div id="main-title"&gt;</li>
+<li>        &lt;h1 id="exercises-head"&gt;{{ _('תרגילים') }}&lt;/h1&gt;</li>
+<li>      &lt;/div&gt;</li>
+<li>    &lt;/div&gt;</li>
+<li>    &lt;div id="exercises"&gt;</li>
+<li class="selected">      {%- for exercise in exercises %}</li>
+<li>      &lt;div class="exercise"&gt;</li>
+<li>        &lt;div class="right-side {{ direction }}-language"&gt;</li>
+<li>          &lt;div class="exercise-id"&gt;{{ exercise['exercise_id'] }}&lt;/div&gt;</li>
+<li>          &lt;div class="exercise-name"&gt;&lt;div class="ex-title"&gt;{{ exercise['exercise_name'] | e }}&lt;/div&gt;&lt;/div&gt;</li>
+<li>        &lt;/div&gt;</li>
+<li>        &lt;div class="left-side"&gt;</li>
+<li>          &lt;div class="comments-count"&gt;</li>
+<li>            &lt;span class="badge bg-secondary"&gt;{{ exercise['comments_num'] }}&lt;/span&gt;</li>
+<li>            &lt;span class="visually-hidden"&gt;{{ _("הערות על התרגיל") }}&lt;/span&gt;</li>
+<li>          &lt;/div&gt;</li>
+</ol></code></pre>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T13:49:52Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  1:49pm
+                  </time>
+<meta content="2020-10-18T13:49:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הבנתי איך אפשר לרוץ על זה בrender template.<br/>
+all_movie_details הוא פשוט קובץ html ענק עם רשימה של הסרטים מהחיפוש. על מה אני צריכה לעשות רנדר?<br/>
+מצרפת צילום מסך לקוד שלי כרגע ולפלט שמקבלת כשמחזירה את all_movie_details.<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/03eb77862ca04650a59270d424bebc2cf5081e29" href="../../uploads/default/original/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29.jpg" title="image"><img alt="image" data-base62-sha1="yFUUoZG6OMBtYgJCzVuDO3ZicN" data-small-upload="../../uploads/default/optimized/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29_2_204x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29_2_204x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/0/03eb77862ca04650a59270d424bebc2cf5081e29_2_306x750.jpeg 1.5x" width="204"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">381×931 136 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+הבעייה שלי היא בלהכניס את all_movie_details לתוך תבנית html של קובץ אחר- שזה צילום המסך שהעליתי למעלה.<br/>
+הקוד נראה כך-<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/23c633784204dadb5301b35b0f6520e82e3b2c33" href="../../uploads/default/original/2X/2/23c633784204dadb5301b35b0f6520e82e3b2c33.png" title="image"><img alt="image" data-base62-sha1="56tm1DzNsz4fGWik0lGfvwnHTRF" data-small-upload="../../uploads/default/optimized/2X/2/23c633784204dadb5301b35b0f6520e82e3b2c33_2_10x10.png" height="394" src="../../uploads/default/original/2X/2/23c633784204dadb5301b35b0f6520e82e3b2c33.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">765×437 10.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>החלק שלא עובד הוא הreturn השני- הפלט שלו מופיע בhtml כמו בצילום מסך הראשון ששלחתי. <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T14:17:12Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  2:17pm
+                  </time>
+<meta content="2020-10-18T14:17:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי אז זו סיטואציה שונה ממה שהבנתי. שאלתי קודם אם המשתנה הזה מראש הוא עם תגיות html ואמרת שלא.<br/>
+אז צריך לחשוב על דרך אחרת, אם יעלה לי משהו אעדכן.<br/>
+אצטרך לקבל קצת יותר קוד כדי להבין איך נראה all_movie_details</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noam100</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T18:01:43Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  6:01pm
+                  </time>
+<meta content="2020-10-18T18:01:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="4" data-topic="8350" data-username="noam100">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/noam100/40/5035_2.jpg" width="20"/> noam100:</div>
+<blockquote>
+<p>עבור כל סרט יש div, שזה המבנה שלו-<br/>
+<img alt="image" data-base62-sha1="oOlESresCAsGGFIMl76PEOK272e" height="102" src="../../uploads/default/original/2X/a/ade532fc27a9e5191d1abfd60de3cbfdfd5090b6.png" width="427"/><br/>
+יש משתנה שמחבר את כל הdiv של כל הסרטים- all_movie_details</p>
+</blockquote>
+</aside>
+<p>או דוגמה של ממש-</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30" href="../../uploads/default/original/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30.png" title="image"><img alt="image" data-base62-sha1="offEL66yAePwkjZMcnrFo31jUE8" data-small-upload="../../uploads/default/optimized/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30_2_10x10.png" height="169" src="../../uploads/default/optimized/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30_2_689x169.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30_2_689x169.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30_2_1033x253.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/a9ed8ec1d8af8bf15b9c83348d6fb77086634d30.png 2x" width="689"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1207×297 16.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T18:34:40Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  6:34pm
+                  </time>
+<meta content="2020-10-18T18:34:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבנתי שלכל div יש תמונה ותיאור. השאלה אם את יכולה להשיג את הלינק לתמונה ואת הפסקה עצמה בלי התגיות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8350.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-18T18:37:38Z" itemprop="datePublished">
+                     18 באוקטובר,‏ 2020,‏  6:37pm
+                  </time>
+<meta content="2020-10-18T18:37:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נשמע שאת מקבלת HTML ממקור חיצוני ומנסה לשלב אותו ב¯HTML שלך.</p>
+<p>האם אין לשירות שאת משתמשת בו דרך להשיג את הפרטים כ¯JSON במקום HTML? נניח, איזה API שהם מנגישים ונוח להשתמש בו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/html-html/8350 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:59:14 GMT -->
+</html>

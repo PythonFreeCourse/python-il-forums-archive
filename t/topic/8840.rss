@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+    <link>https://forums.pythonic.guru/t/topic/8840</link>
+    <description>ע&quot;מ לבצע טסטים בהצלחה ובלי לגרום לשיבושים בDB אמיתי - בקובץ conftest.py קיימת פונקציה שיוצרת את הsession לבסיס נתונים לצורך הטסטים.
+
+ ![image|690x267, 75%](upload://sUFQo4hC2Ci4ZDMMDVLvQYIOeIt.png) 
+
+אני רוצה לבצע טסט לrouter שיצרתי.
+&gt;ניתן להגדיר את ראוטר כ- Path operator 
+כלומר אופרטור נתיבים או מנהל נתיבים של האפליקציה.
+ראוטר app שיצרנו בקובץ main הוא בעצם מנהל נתיבים ראשי שאליו ניתן למזג ראוטרים אחרים.
+חלוקה של ניהול נתיבים בין מספר ראוטרים מאפשרת לייצר סביבת עבודה נקייה ומסודרת.
+
+ הrouter שאני הולך לבדוק משתמש בפונקציה get_db שיוצרת session של בסיס נתונים אמיתי.
+
+בשביל להעביר את הget_test_db במקום get_db לrouter כל מה שצריך לעשות זה להעביר את get_db לתוך 
+*path operation function* (פונקציה של הrouter) ע&quot;י פונקציה מיוחדת Depends, לדוגמא:
+
+![image|566x500, 75%](upload://bGlcgSCmfE6Evfo3cUa5RyfzElm.png) 
+
+(*בהמשך אסביר מה עושה Depends*)
+
+בנוסף יש לצור test client בתוך קובץ conftest.py שידע להעביר לפונקציה Depends את הget_test_db:
+לצורך זה עלינו לייבא את הapp שיצרנו בקובץ main
+&gt; from app.main import app
+
+עכשיו עלינו לעדכן את הapp שידע להעביר את הget_test_db לתוך router: 
+
+![image|690x299, 75%](upload://txiL3mAKj3eeczWNKLxJqPsIQV4.png) 
+
+נצור את בסיס נתונים לצורך טסטים עם test_engine
+
+![image|477x57](upload://tVJMZT15PeqdRKnkPyCpKZQumdJ.png) 
+
+ע&quot;י שורת קוד:
+
+&gt; app.dependency_overrides[profile.get_db] = get_test_db
+
+נוצר מילון:
+
+&gt; {get_db: get_test_db}
+
+עכשיו נשאר לנו רק להחזיר את הtest client עצמו ולהעביר לתוך פונקציית טסט:
+
+&gt; with TestClient(app) as client:
+        yield client
+
+בסוף ריצת הטסט כדאי לאפס את מילון dependencies 
+
+&gt; app.dependency_overrides = {}
+
+מה שקורה בהרצת הטסט זה שכשהפונקציה תרוץ, Depends תבדוק קודם האם יש לה הגדרות בתוך מילון
+app.dependency_overrides, במקרה שלנו Depends תזהה שבמקום get_db יש להשתמש בget_test_db
+ותצור session של בסיס נתונים שיצרנו עבור הטסטים.
+
+כמו שניתן לראות מהדוגמא אותו הדבר אפשר לעשות עם פונקציות אחרות,
+ולבצע טסט על פונקציות שנוצרו לצורך טסט במקום פונקציות מקוריות.
+
+![image|547x163, 75%](upload://yJLzAU1es0m2Td1sI03Nsl1uHFi.png)</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 19 Jan 2021 17:18:54 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8840.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p>נכון מאוד. סשן נסגר עם סיום ריצת get_db.<br>
+יsession.close היה רלוונטי בגרסת קוד קודמת ושכחתי להוריד.<br>
+תודה <img src="https://forums.pythonic.guru/images/emoji/twitter/slightly_smiling_face.png?v=9" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/6</link>
+        <pubDate>Tue, 19 Jan 2021 17:18:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה על ההסברים!<br>
+יש לי שאלה על הפונקציה שכתבת,<br>
+למה הוספת את השורה:</p>
+<blockquote>
+<p>sessiom.close()</p>
+</blockquote>
+<p>הרי בסיום הריצה של get_db, מתבצעת הסגירה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/5</link>
+        <pubDate>Tue, 19 Jan 2021 16:32:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>אחלה הסבר - אולי אפשר להוסיף משתנה APP_ENVIRONMENT_SETTINGS<br>
+ואז כשהופכים אותו לTESTING הוא יודע להעביר את הפונקציה הנכונה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/4</link>
+        <pubDate>Tue, 19 Jan 2021 12:07:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>הסבר מצויין, תודה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/3</link>
+        <pubDate>Tue, 19 Jan 2021 11:40:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה לך על המדריך!<br>
+אני בטוח שיעזור לכולם</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/2</link>
+        <pubDate>Tue, 19 Jan 2021 11:31:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+      <item>
+        <title>לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p>ע"מ לבצע טסטים בהצלחה ובלי לגרום לשיבושים בDB אמיתי - בקובץ conftest.py קיימת פונקציה שיוצרת את הsession לבסיס נתונים לצורך הטסטים.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d.png" data-download-href="https://forums.pythonic.guru/uploads/default/caa4f2447708d7df493d618dbdff46abd4fc432d" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d_2_517x200.png" alt="image" data-base62-sha1="sUFQo4hC2Ci4ZDMMDVLvQYIOeIt" width="517" height="200" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d_2_517x200.png, https://forums.pythonic.guru/uploads/default/optimized/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d_2_775x300.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/caa4f2447708d7df493d618dbdff46abd4fc432d_2_10x10.png"></a></div><p></p>
+<p>אני רוצה לבצע טסט לrouter שיצרתי.</p>
+<blockquote>
+<p>ניתן להגדיר את ראוטר כ- Path operator<br>
+כלומר אופרטור נתיבים או מנהל נתיבים של האפליקציה.<br>
+ראוטר app שיצרנו בקובץ main הוא בעצם מנהל נתיבים ראשי שאליו ניתן למזג ראוטרים אחרים.<br>
+חלוקה של ניהול נתיבים בין מספר ראוטרים מאפשרת לייצר סביבת עבודה נקייה ומסודרת.</p>
+</blockquote>
+<p>הrouter שאני הולך לבדוק משתמש בפונקציה get_db שיוצרת session של בסיס נתונים אמיתי.</p>
+<p>בשביל להעביר את הget_test_db במקום get_db לrouter כל מה שצריך לעשות זה להעביר את get_db לתוך<br>
+<em>path operation function</em> (פונקציה של הrouter) ע"י פונקציה מיוחדת Depends, לדוגמא:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/5/51e137450338850c6667a91141026c120a3baf24.png" data-download-href="https://forums.pythonic.guru/uploads/default/51e137450338850c6667a91141026c120a3baf24" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/5/51e137450338850c6667a91141026c120a3baf24_2_424x375.png" alt="image" data-base62-sha1="bGlcgSCmfE6Evfo3cUa5RyfzElm" width="424" height="375" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/51e137450338850c6667a91141026c120a3baf24_2_424x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/5/51e137450338850c6667a91141026c120a3baf24_2_636x562.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/51e137450338850c6667a91141026c120a3baf24.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/5/51e137450338850c6667a91141026c120a3baf24_2_10x10.png"></a></div><p></p>
+<p>(<em>בהמשך אסביר מה עושה Depends</em>)</p>
+<p>בנוסף יש לצור test client בתוך קובץ conftest.py שידע להעביר לפונקציה Depends את הget_test_db:<br>
+לצורך זה עלינו לייבא את הapp שיצרנו בקובץ main</p>
+<blockquote>
+<p>from app.main import app</p>
+</blockquote>
+<p>עכשיו עלינו לעדכן את הapp שידע להעביר את הget_test_db לתוך router:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/cf02c3ab58fd1ec094eff33c7202308d099be7a2.png" data-download-href="https://forums.pythonic.guru/uploads/default/cf02c3ab58fd1ec094eff33c7202308d099be7a2" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/c/cf02c3ab58fd1ec094eff33c7202308d099be7a2.png" alt="image" data-base62-sha1="txiL3mAKj3eeczWNKLxJqPsIQV4" width="517" height="224" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf02c3ab58fd1ec094eff33c7202308d099be7a2_2_10x10.png"></a></div><p></p>
+<p>נצור את בסיס נתונים לצורך טסטים עם test_engine</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d1c5e66bbfef40802a9b16eb4f5958637a20d35b.png" alt="image" data-base62-sha1="tVJMZT15PeqdRKnkPyCpKZQumdJ" width="477" height="57"></p>
+<p>ע"י שורת קוד:</p>
+<blockquote>
+<p>app.dependency_overrides[profile.get_db] = get_test_db</p>
+</blockquote>
+<p>נוצר מילון:</p>
+<blockquote>
+<p>{get_db: get_test_db}</p>
+</blockquote>
+<p>עכשיו נשאר לנו רק להחזיר את הtest client עצמו ולהעביר לתוך פונקציית טסט:</p>
+<blockquote>
+<p>with TestClient(app) as client:<br>
+yield client</p>
+</blockquote>
+<p>בסוף ריצת הטסט כדאי לאפס את מילון dependencies</p>
+<blockquote>
+<p>app.dependency_overrides = {}</p>
+</blockquote>
+<p>מה שקורה בהרצת הטסט זה שכשהפונקציה תרוץ, Depends תבדוק קודם האם יש לה הגדרות בתוך מילון<br>
+app.dependency_overrides, במקרה שלנו Depends תזהה שבמקום get_db יש להשתמש בget_test_db<br>
+ותצור session של בסיס נתונים שיצרנו עבור הטסטים.</p>
+<p>כמו שניתן לראות מהדוגמא אותו הדבר אפשר לעשות עם פונקציות אחרות,<br>
+ולבצע טסט על פונקציות שנוצרו לצורך טסט במקום פונקציות מקוריות.</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/f37657d1934944d1c12c449d989693ce2fe5e3ac.png" alt="image" data-base62-sha1="yJLzAU1es0m2Td1sI03Nsl1uHFi" width="410" height="122"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8840/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8840/1</link>
+        <pubDate>Tue, 19 Jan 2021 11:25:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8840-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8840.rss">לעשות טסט לראוטר עם בסיס נתונים המיועד לטסטים</source>
+      </item>
+  </channel>
+</rss>

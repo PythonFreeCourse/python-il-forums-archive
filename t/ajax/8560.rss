@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+    <link>https://forums.pythonic.guru/t/ajax/8560</link>
+    <description>היי,
+
+מנסה ליצור תיבת בחירה שמאפשרת להציג מידע על רשומה באמצעות AJAX.
+
+[details=&quot;סקריפט&quot;]
+ ```
+&lt;script&gt;
+
+  function showproj(str) {
+
+    var xhttp;    
+
+    if (str == &quot;&quot;) {
+
+      document.getElementById(&quot;txtHint&quot;).innerHTML = &quot;&quot;;
+
+      return;
+
+    }
+
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+
+      if (this.readyState == 4 &amp;&amp; this.status == 200) {
+
+        document.getElementById(&quot;txtHint&quot;).innerHTML = this.responseText;
+
+      }
+
+    };
+
+    xhttp.open(&quot;GET&quot;, &quot;/projects&quot;, true);
+
+    xhttp.send(&quot;filtered=&quot; + document.getElementById(&#39;projects&#39;).value));
+
+  }
+
+&lt;/script&gt;
+```
+[/details]
+
+
+[details=&quot;פקד לבחירת רשומות&quot;]
+```
+&lt;form action=&quot;&quot;&gt; 
+
+&lt;select name=&quot;projects&quot; onchange=&quot;showproj(this.value)&quot;&gt;
+
+&lt;option value=&quot;&quot;&gt;Select a project:&lt;/option&gt;
+
+{% for p in proj %}
+
+  &lt;option value=&quot;{{p[&#39;project_id&#39;]}}&quot;&gt;{{p[&#39;project_name&#39;]}}&lt;/option&gt;
+
+{% endfor %}
+
+&lt;/select&gt;
+
+&lt;/form&gt;
+
+&lt;br&gt;
+
+&lt;/div&gt;
+```
+[/details]
+
+[details=&quot;טבלה שמציגה את הרשומות המסוננות&quot;]
+```
+&lt;div class=&quot;container&quot; id=&quot;txtHint&quot;&gt;
+
+  &lt;h2&gt;Projects&lt;/h2&gt;
+
+  &lt;p&gt;List of all active projecct&lt;/p&gt;
+
+  
+
+  &lt;table class=&quot;table table-striped&quot;&gt;
+
+    &lt;thead&gt;
+
+      &lt;tr&gt;
+
+        &lt;th&gt;ID&lt;/th&gt;
+
+        &lt;th&gt;Project&lt;/th&gt;
+
+        &lt;th&gt;Budget&lt;/th&gt;
+
+        &lt;th&gt;Forcast&lt;/th&gt;
+
+        &lt;th&gt;End date&lt;/th&gt;
+
+        &lt;th&gt;Comments&lt;/th&gt;
+
+      &lt;/tr&gt;
+
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+
+        {% for p in proj_list %}
+
+        &lt;tr method=&quot;POST&quot; action=&quot;/projects/&quot;&gt;
+
+          &lt;td&gt;
+
+            &lt;a href=&quot;/projects/{{p[&#39;project_id&#39;]}}&quot;&gt;
+
+              {{p[&#39;project_id&#39;]}}
+
+            &lt;/a&gt;
+
+          &lt;/td&gt;
+
+          &lt;td&gt;{{p[&#39;project_name&#39;]}}&lt;/td&gt;
+
+          &lt;td&gt;{{p[&#39;budget&#39;]}}&lt;/td&gt;
+
+          &lt;td&gt;{{p[&#39;forcast&#39;]}}&lt;/td&gt;
+
+          &lt;td&gt;{{p[&#39;completion&#39;]}}&lt;/td&gt;
+
+          &lt;td&gt;{{p[&#39;comments&#39;]}}&lt;/td&gt;
+
+        &lt;/tr&gt;
+
+        {% endfor %}     
+
+    &lt;/tbody&gt;
+
+  &lt;/table&gt;
+
+&lt;/div&gt;
+```
+[/details]
+
+[details=&quot;FLASK&quot;]
+```
+@app.route(&#39;/projects/&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+
+def jsonproj():
+
+    if request.method == &#39;POST&#39;:
+
+        # filter_id = request.form[&#39;filtered&#39;]
+
+        proj_list = [row for row in Projects.select().where(
+
+            Projects.project_id == filter_id).dicts()]
+
+        return jsonify(proj_list)
+```
+[/details]
+
+לצערי כל ניסיון לשנות יוצר לי באג במקום אחר.
+אשמח מאוד לעזרה בשעות המעטות שעוד נותרו :slight_smile:</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 13 Dec 2020 14:01:50 +0000</lastBuildDate>
+    <category>שבוע 14</category>
+    <atom:link href="https://forums.pythonic.guru/t/ajax/8560.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>עדיין לא כ"כ הבנתי אם בחרת לשלוח את המידע בעזרת GET או POST.<br>
+אם בחרת בבקשת GET – אתה צריך לשנות פה לדעתי את request.form ל־request.args</p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/8</link>
+        <pubDate>Sun, 13 Dec 2020 14:01:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-8</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>קוד עדכני של Flask עם מעקף כי כרגע לא מקבל ערך מהעמוד:</p>
+<pre><code class="lang-auto">@app.route('/projects/', methods=['GET', 'POST'])
+def jsonproj():
+    if request.method == 'GET':
+        selection = request.form.get('selection', 3)
+        return_value = [
+            row for row in Projects.select().where(
+                Projects.project_id == selection).dicts()]
+        return render_template('projects.j2', proj=return_value)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/7</link>
+        <pubDate>Sun, 13 Dec 2020 13:52:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-7</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בחרת ב־GET?<br>
+שינית ב־Flask את הקוד כך שיקח את המידע מ־GET ולא מ־POST?<br>
+עיין ב־<a href="https://www.google.com/search?client=firefox-b-d&amp;q=send+get+with+parameters+xmlhttprequest">send get with parameters xmlhttprequest</a></p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/6</link>
+        <pubDate>Sun, 13 Dec 2020 13:49:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-6</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>אחרי שינוי אני רואה שאני לא מצליח לשלוח לשרת את הערך של selection</p>
+
+סקריפט <a href="https://forums.pythonic.guru/t/ajax/8560/5">(לחיצה לפרטים נוספים)</a>
+<pre><code class="lang-auto"></code></pre>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/5</link>
+        <pubDate>Sun, 13 Dec 2020 13:40:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-5</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הסתכלת בלוג וראית למה השרת קורס? האם זה קורס גם לוקאלית?</p>
+<p>–</p>
+<p>שים לב שאתה שולח את הבקשה ב־GET, אבל מנסה לאחזר ב־flask את request.form, שזו שיטה לאחזר לערכי POST.<br>
+זאת ועוד – אתה שולח את הפרמטרים בצורה שאינה תואמת GET, אלא <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send">תואמת POST.</a></p>
+<p>תבחר אחת מהשיטות – שתיהן נאות, אבל צריך להיות קונסיסטנטי גם בצד הלקוח וגם בצד השרת.</p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/4</link>
+        <pubDate>Sun, 13 Dec 2020 12:04:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-4</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מצפה שהוא יציג רשומה בודדת מטבלת השקעות (flask אמור להחזיר מילון עם הרשומה הבודדת בכל פעם)<br>
+בפועל הוא קורס שלא ניתן לעבד את התשובה מהשרת</p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/3</link>
+        <pubDate>Sun, 13 Dec 2020 12:04:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-3</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מה אתה מצפה שיקרה, ומה קורה בפועל? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+(וכדאי להוריד את ההערה מ־filter_id, ולדאוג להמיר אותו ל־int)</p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/2</link>
+        <pubDate>Sun, 13 Dec 2020 12:01:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-2</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+      <item>
+        <title>עבודה עם AJAX לדפדוף בין רשומות</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>מנסה ליצור תיבת בחירה שמאפשרת להציג מידע על רשומה באמצעות AJAX.</p>
+
+סקריפט <a href="https://forums.pythonic.guru/t/ajax/8560/1">(לחיצה לפרטים נוספים)</a>
+
+פקד לבחירת רשומות <a href="https://forums.pythonic.guru/t/ajax/8560/1">(לחיצה לפרטים נוספים)</a>
+
+טבלה שמציגה את הרשומות המסוננות <a href="https://forums.pythonic.guru/t/ajax/8560/1">(לחיצה לפרטים נוספים)</a>
+
+FLASK <a href="https://forums.pythonic.guru/t/ajax/8560/1">(לחיצה לפרטים נוספים)</a>
+<p>לצערי כל ניסיון לשנות יוצר לי באג במקום אחר.<br>
+אשמח מאוד לעזרה בשעות המעטות שעוד נותרו <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+          <p><a href="https://forums.pythonic.guru/t/ajax/8560/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/ajax/8560/1</link>
+        <pubDate>Sun, 13 Dec 2020 11:43:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8560-1</guid>
+        <source url="https://forums.pythonic.guru/t/ajax/8560.rss">עבודה עם AJAX לדפדוף בין רשומות</source>
+      </item>
+  </channel>
+</rss>

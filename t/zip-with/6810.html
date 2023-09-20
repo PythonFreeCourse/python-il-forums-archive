@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/zip-with/6810 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:20:21 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מה שמצופה מאיתנו ב - zip with - שבוע 6 - פייתון בעברית ובחינם</title>
+<meta content="כיוון שביקשו שנשתמש עם המודול operator אני נתקע עם בעיה קטנה: 
+הפונקציה add עובדת על שני מספרים להבדיל מהפונקציה max שעובדת על מספר בלתי מוגבל של מספרים: 
+
+add(num1, num2) 
+max(numbers) 
+
+הקוד שלי אמור להיות מספיק כללי ב&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6810.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6810.rss" rel="alternate nofollow" title="הזנת RSS של ‚מה שמצופה מאיתנו ב - zip with’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/0/07e666303c9c5e7679d412e601072032bee5392d.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/0/07e666303c9c5e7679d412e601072032bee5392d.png" property="og:image"/>
+<meta content="6810.html" property="og:url"/>
+<meta content="6810.html" name="twitter:url"/>
+<meta content="מה שמצופה מאיתנו ב - zip with" property="og:title"/>
+<meta content="מה שמצופה מאיתנו ב - zip with" name="twitter:title"/>
+<meta content="כיוון שביקשו שנשתמש עם המודול operator אני נתקע עם בעיה קטנה:  הפונקציה add עובדת על שני מספרים להבדיל מהפונקציה max שעובדת על מספר בלתי מוגבל של מספרים:   add(num1, num2)  max(numbers)   הקוד שלי אמור להיות מספיק כללי בשביל שהפונקציה תהיה מסוגלת לקבל/למשוך יותר מ2 מספרים, ולכן אני לא מצאתי דרך להשתמש ב add מלבד להכניס אותו לפונקציה של שורה שאני כתבתי שמחזירה:   return operator.add(iterable[0], iterable[1])   וזה הערך שיחזור לכל שני מספרים במידה ואני משתמש בפונקציה add (שמחייב אותי לשנות את שם ה..." property="og:description"/>
+<meta content="כיוון שביקשו שנשתמש עם המודול operator אני נתקע עם בעיה קטנה:  הפונקציה add עובדת על שני מספרים להבדיל מהפונקציה max שעובדת על מספר בלתי מוגבל של מספרים:   add(num1, num2)  max(numbers)   הקוד שלי אמור להיות מספיק כללי בשביל שהפונקציה תהיה מסוגלת לקבל/למשוך יותר מ2 מספרים, ולכן אני לא מצאתי דרך להשתמש ב add מלבד להכניס אותו לפונקציה של שורה שאני כתבתי שמחזירה:   return operator.add(iterable[0], iterable[1])   וזה הערך שיחזור לכל שני מספרים במידה ואני משתמש בפונקציה add (שמחייב אותי לשנות את שם ה..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 6" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="zip-with" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="6 ❤"/>
+<meta content="2020-05-30T09:51:48+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"מה שמצופה מאיתנו ב - zip with","mainEntity":{"@type":"Question","name":"מה שמצופה מאיתנו ב - zip with","text":"כיוון שביקשו שנשתמש עם המודול operator אני נתקע עם בעיה קטנה:\n\nהפונקציה add עובדת על שני מספרים להבדיל מהפונקציה max שעובדת על מספר בלתי מוגבל של מספרים:\n\nadd(num1, num2)\n\nmax(numbers)\n\nהקוד שלי אמור להיות מספיק כללי בשביל שהפונקציה תהיה מסוגלת לקבל/למשוך יותר מ2 מספרים, ולכן אני לא מצאתי דרך להשת&hellip;","upvoteCount":1,"answerCount":1,"dateCreated":"2020-05-30T09:51:48.023Z","author":{"@type":"Person","name":"דרור ביטון"},"acceptedAnswer":{"@type":"Answer","text":"במקרה הזה באמת יש טעות באיך שהעברתי את השאלה לסגל.\n\nלוקח על עצמי את הטעות וכל התשובות לשאלה הזו יתקבלו.\n\nראו עדכון כאן: <a href=\"https://forums.pythonic.guru/t/zipwith/6814\" class=\"inline-onebox\">הודעת תיקון לגבי התרגיל zipwith<\/a>","upvoteCount":4,"dateCreated":"2020-05-30T11:25:58.791Z","url":"https://forums.pythonic.guru/t/zip-with/6810/10","author":{"@type":"Person","name":"Yam"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6810.html">מה שמצופה מאיתנו ב - zip with</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week6/15.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 6</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/zip-with.html" rel="tag">zip-with</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מה שמצופה מאיתנו ב - zip with" itemprop="headline"/>
+<meta content="שבוע 6" itemprop="articleSection"/>
+<meta content="zip-with" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/07e666303c9c5e7679d412e601072032bee5392d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T09:51:48Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏  9:51am
+                  </time>
+<meta content="2020-05-30T20:27:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>כיוון שביקשו שנשתמש עם המודול operator אני נתקע עם בעיה קטנה:<br/>
+הפונקציה add עובדת על שני מספרים להבדיל מהפונקציה max שעובדת על מספר בלתי מוגבל של מספרים:</p>
+<blockquote>
+<p>add(num1, num2)<br/>
+max(numbers)</p>
+</blockquote>
+<p>הקוד שלי אמור להיות מספיק כללי בשביל שהפונקציה תהיה מסוגלת לקבל/למשוך יותר מ2 מספרים, ולכן אני לא מצאתי דרך להשתמש ב add מלבד להכניס אותו לפונקציה של שורה שאני כתבתי שמחזירה:</p>
+<blockquote>
+<p>return operator.add(iterable[0], iterable[1])</p>
+</blockquote>
+<p>וזה הערך שיחזור לכל שני מספרים במידה ואני משתמש בפונקציה add (שמחייב אותי לשנות את שם הקריאה שלה כיוון שברגע שאני פותח את המודול הקוד ישר משתייך למילה add ואני לא יכול להשתמש בו)</p>
+<p>הצלחתי להגיע עד לפה, הקוד עובד כמו שצריך ומחזיר את התוצאות המתבקשות, אבל קיבלתי מהבודק האוטומטי את ההערה הבאה:<br/>
+<img alt="image" data-base62-sha1="17SY9CKJu8purMaSPej43aCLYV7" height="45" src="../../uploads/default/original/2X/0/07e666303c9c5e7679d412e601072032bee5392d.png" width="422"/><br/>
+אני לא מצליח להבין את הערה כיוון שאם add לא היה מקבל 2 משתנים הקוד לא היה עובד, כנל בשימוש שלי איתו, הוא לוקח iterable בעל שני משתנים ועובד על iterable[0] ו- iterable[1]</p>
+<p>ולכן אני כבר לא מבין מה מצופה ממני.</p>
+<p>*עוד הערה, בשביל שהקוד יוכל לקבל את add ולרוץ רגיל, אנחנו צריכים לייבא אותו מתוך operator:</p>
+<blockquote>
+<p>from operator import add</p>
+</blockquote>
+<p>אחרת אין לי ברירה להשתמש בפונקציה חיצונית, כיוון שאין לי דרך כללית להחליט איזה פונקציה מובנית ואיזו פונקציה מיובאת, וכיוון שאנחנו מעדיפים לייבא את כל המודול, השימוש בקוד יצטרך להיראות:</p>
+<blockquote>
+<p>operator.add(num1, num2)</p>
+</blockquote>
+<p>ולא להיראות:</p>
+<blockquote>
+<p>add(num1, num2)</p>
+</blockquote>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T10:18:39Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 10:18am
+                  </time>
+<meta content="2020-05-30T10:18:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצטרף לשאלה.<br/>
+כבר פסלו לי שני פתרונות על הסיפור הזה.<br/>
+באמת שאינני יודע כיצד add  מאופרטור היא אופציה טובה כאן.<br/>
+הרי אם יש יותר משני איטרטורים בכל מקרה נצטרך לדרוס אותה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T10:56:00Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 10:56am
+                  </time>
+<meta content="2020-05-30T10:56:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="6810" data-username="DrorBiton">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/d/b77776/40.png" width="20"/> DrorBiton:</div>
+<blockquote>
+<p>return operator.add(iterable[0], iterable[1])</p>
+</blockquote>
+</aside>
+<p>אתה בטוח שהארגומנטים שאתה מעביר ל-add באמת נראים ככה? משתמע מהשגיאה ש-add מצפה לקבל שני ארגומנטים ומקבל רק אחד ( add בנוי ככה: add(a, b))</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T10:58:54Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 10:58am
+                  </time>
+<meta content="2020-05-30T10:58:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בטוח, אחרת הקוד לא היה עובד לי</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:01:23Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:01am
+                  </time>
+<meta content="2020-05-30T11:01:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זאת הבעיה, הבודק נותן לadd פרמטר אחד, אבל בקוד שלך זה לא מספיק, תכתוב את זה כך שadd תוכל לקבל (a, b) כפרמטר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:05:32Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:05am
+                  </time>
+<meta content="2020-05-30T11:05:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקי , וכאשר יש לך שלושה איטרטורים ומעלה מה את עושה ?<br/>
+אפשר לעשות הכל עם משפטי תנאי - אם הפונקציה היא max תעשה כך וכך , אם add  כך וכך - להבנתי זו לא דרך נכונה לכתוב קוד.<br/>
+אם אני מבין את המהות של התרגיל אז היא ליישם כל פונקציה שתהיה על האיטרטורים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:18:47Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:18am
+                  </time>
+<meta content="2020-05-30T11:18:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תעשה את זה כך שבסוף גם פונקציה כמו add תעבוד וגם פונקציה כמו max, ע’י שימוש בביטוי כלשהו שמתאים לכל אחת מהן</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:19:21Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:19am
+                  </time>
+<meta content="2020-05-30T11:19:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@devorack</span><br/>
+לא כל כך הבנתי את מה שכתבת, תוכלי להסביר קצת יותר?</p>
+<p><span class_="mention">@yosefco3</span><br/>
+מוודא שהבנתי אותך,<br/>
+אם ככה, במצב שיש לי 3 או יותר, הפונקציה add תעבור מספר מספר ותחבר אותם<br/>
+לדוגמא:</p>
+<blockquote>
+<p>numbers = [1, 2, 3]<br/>
+counter = 0<br/>
+counter = 0 + 1<br/>
+counter = 1 + 2<br/>
+counter = 3 + 3<br/>
+counter = 6<br/>
+return counter</p>
+</blockquote>
+<p>ובעצם אני צריך להכניס את add ללולאה במקום לדרוש שני מספרים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:22:37Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:22am
+                  </time>
+<meta content="2020-05-30T11:24:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי את זה פעמיים - פסלו לי כבר שני פתרונות !<br/>
+כי הם רוצים דווקא את הadd הזו שמקבלת שני פרמטרים , ולא את הadd שכתבתי בפתרון הראשון עם *args  או add שמקבלת tuple וכדומה (כפי שעשיתי בשני).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:25:58Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:25am
+                  </time>
+<meta content="2020-05-30T13:00:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>במקרה הזה באמת יש טעות באיך שהעברתי את השאלה לסגל.<br/>
+לוקח על עצמי את הטעות וכל התשובות לשאלה הזו יתקבלו.<br/>
+ראו עדכון כאן: <a class="inline-onebox" href="../zipwith/6814.html">הודעת תיקון לגבי התרגיל zipwith</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T11:32:43Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 11:32am
+                  </time>
+<meta content="2020-05-30T11:32:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני באמת אנסה את מה שאתה מציע , אין הרבה ברירות <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6810.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-30T12:42:48Z" itemprop="datePublished">
+                     30 במאי,‏ 2020,‏ 12:42pm
+                  </time>
+<meta content="2020-05-30T12:42:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה …<br/>
+בסוף הצלחתי עם שני פרמטרים בדרך שהצעת (לפני שראיתי את העדכון …)<br/>
+כי למעשה גם max תוכל לעבוד עם שני פרמטרים ולולאה כפי שהצעת.<br/>
+אז למדנו משהו היום.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/zip-with/6810 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:20:23 GMT -->
+</html>

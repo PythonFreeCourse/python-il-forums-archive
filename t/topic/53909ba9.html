@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5390?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:02:15 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>[אתגר] לסדר את הבלאגן - אתגר - פייתון בעברית ובחינם</title>
+<meta content="ברשימה לצורך תרגיל זה יכולים להיות רק שלושה סוגי איברים: 1, 2 ו־3. 
+כתבו פונקציה בשם sort_3 שמקבלת רשימה לא מסודרת, ומסדרת את האיברים לפי ערכם בריצה אחת בלבד על הרשימה. 
+לדוגמה: 
+
+עבור הרשימה [1, 2, 3, 2, 1] יוחזר [1, 1,&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="53909ba9.html?page=3" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5390.rss" rel="alternate nofollow" title="הזנת RSS של ‚[אתגר] לסדר את הבלאגן’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="53909ba9.html?page=3" property="og:url"/>
+<meta content="53909ba9.html?page=3" name="twitter:url"/>
+<meta content="[אתגר] לסדר את הבלאגן" property="og:title"/>
+<meta content="[אתגר] לסדר את הבלאגן" name="twitter:title"/>
+<meta content="עדיין יותר רשימה חדשה בצד ימין של ההשמה 🙂 ו־+= בערך שקול ל־extend" property="og:description"/>
+<meta content="עדיין יותר רשימה חדשה בצד ימין של ההשמה 🙂 ו־+= בערך שקול ל־extend" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="4 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="10 ❤"/>
+<meta content="2020-04-26T10:12:14+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="53904658.html?page=2" rel="prev"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5390.html">[אתגר] לסדר את הבלאגן</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="[אתגר] לסדר את הבלאגן" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_41" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:12:14Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:12am
+                  </time>
+<meta content="2020-04-26T10:12:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עדיין יותר רשימה חדשה בצד ימין של ההשמה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> ו־<code>+=</code> בערך שקול ל־extend</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_42" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">israel4001</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:13:12Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:13am
+                  </time>
+<meta content="2020-04-26T10:14:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בדקתי באמצעות<br/>
+print("ID before: " + str(id(list3)))</p>
+<p>והתוצאה שווה, כלומר הרשימה לא השתנת בכלל. אותו מיקום<br/>
+לחלופין, ניתן גם לעשות כך:</p>
+<pre><code class>def sort_3(list3):
+    index = count1 = count2 = count3 = 0
+    while index &lt; len(list3):
+        if list3[index] == 1:
+            count1 += 1
+        elif list3[index] == 2:
+            count2 += 1
+        elif list3[index] == 3:
+            count3 += 1
+        index += 1
+    return ([1] * count1) + ([2] * count2) + ([3] * count3)</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_43" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:15:12Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:15am
+                  </time>
+<meta content="2020-04-26T10:15:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן, אבל בצד ימין של ההשמה יצרת רשימה חדשה.<br/>
+ה־<code>+=</code> עושה extend לרשימה המקורית (שזה חלק ממה שאסור, לפי החוקים).</p>
+<hr/>
+<p>בקוד שהבאת עכשיו אתה עדיין יוצר רשימה חדשה ב־return</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_44" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">israel4001</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:40:24Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:40am
+                  </time>
+<meta content="2020-04-26T10:40:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מקווה שהפעם זה כבר בסדר.</p>
+<pre><code class>def sort_3(list3):
+    index = count1 = count2 = count3 = 0
+    while index &lt; len(list3):
+        if list3[index] == 1:
+            count1 += 1
+        elif list3[index] == 2:
+            count2 += 1
+        elif list3[index] == 3:
+            count3 += 1
+        index += 1
+    list3[:] = [1] * count1
+    list3[count1:] = [2] * count2
+    list3[count1+count2:] = [3] * count3
+    return list3</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_45" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:44:21Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:44am
+                  </time>
+<meta content="2020-04-26T10:44:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="44" data-topic="5390" data-username="israel4001">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/israel4001/40/1504_2.jpg" width="20"/> israel4001:</div>
+<blockquote>
+<p>t1 = count2 = count3 = 0 while index &lt; len(list3): if list3[index] == 1: count1 += 1 elif list3[index] == 2: count2 += 1 elif list3[index] == 3: count3 += 1 index += 1 list3[:] = [1] * count1 list3[count1:] = [2] * count2 list3[count1+count2:] = [3] * count3</p>
+</blockquote>
+</aside>
+<p>זה לא איזה מעקף שאתה צריך לעשות, זה פשוט שינוי של האלגוריתם.<br/>
+כל פעם שאתה כותב <code>[item]</code>, אתה יוצר רשימה חדשה שיש בה את <code>item</code>.<br/>
+חריג למקרה זה כשאתה כותב <code>l[item]</code>, שזה "גש לרשימה הקיימת l במקום <code>item</code>.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_46" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">israel4001</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:46:32Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:46am
+                  </time>
+<meta content="2020-04-26T10:46:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז יש כאן איזה חוסר הבנה בסיסית שלי, כי אם כך אני לא מבין למה כשאני בודק לפני ואחרי באמצעות:</p>
+<pre><code class>print("ID before: " + str(id(list3)))
+print("ID after: " + str(id(list3)))
+</code></pre>
+<p>אני מקבל תוצאות זהות?  לשיטתך אני אמור לקבל תוצאות שונות לא כך?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_47" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T10:50:01Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 10:50am
+                  </time>
+<meta content="2020-04-26T10:50:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יוצר רשימה חדשה, ואז מוסיף לרשימה הישנה את האיברים מהרשימה החדשה וזורק את הרשימה החדשה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_48" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:24:50Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:24am
+                  </time>
+<meta content="2020-04-26T11:24:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code>def sort_3(l):
+    i = 0
+    first_two = first_three = 0
+    while i &lt; len(l):
+        if l[i] == 1:
+            if i &gt; first_three or i &gt; first_two:
+                l[i] = l[first_three]
+                l[first_three] = l[first_two]
+                l[first_two] = 1
+            i += 1
+            first_two += 1
+            first_three += 1
+        elif l[i] == 2:
+            if i &gt; first_three:
+                l[i] = l[first_three]
+                l[first_three] = 2
+            first_three += 1
+            i += 1
+        elif l[i] == 3:
+            i += 1
+    return l</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_49" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:25:54Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:25am
+                  </time>
+<meta content="2020-04-26T11:25:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפותר הראשון, ברכות <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_50" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:44:04Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:44am
+                  </time>
+<meta content="2020-04-26T11:44:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רקורסיה נחשב הרצה אחת ? או שזה n  הרצות ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_51" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:48:04Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:48am
+                  </time>
+<meta content="2020-04-26T11:48:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא בטוח שהבנתי את השאלה כ"כ <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_52" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:48:21Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:48am
+                  </time>
+<meta content="2020-04-26T11:48:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני אפשט - מותר להשתמש ברקורסיה ? <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_53" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T11:51:37Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:51am
+                  </time>
+<meta content="2020-04-26T11:51:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן, אבל זה נחשב לולאה. שים לב שמותר לעבור על כל איבר רק פעם אחת <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_55" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noamka</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T19:19:09Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏  7:19pm
+                  </time>
+<meta content="2020-04-26T19:21:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי מצאתי פתרון שעובר על הרשימה רק פעם אחת ולא משתמש באף פונקציה של פייתון על רשימות אבל הוא מאוד לא אלגנטי ואני חושבת שאולי יש שם תנאים שחוזרים על עצמם ואפשר להוריד אותם (ניסיתי להוריד תנאים והגעתי ללולאות אינסופיות)… אשמח אם תוכל להגיד לי איזה חלקים אני יכולה לשנות כדי לקבל קוד יותר אלגנטי</p>
+<pre><code class>def sort_3(list):
+    i = 0
+    num3 = 0
+    while i &lt; len(list) - 1:
+        if list[i] == 3:
+            num3 +=1
+        if list[i] == 1 and i != 0:
+            j = 0
+            while i - 1 - j &gt;= 0:
+                temp = list[i - 1 - j]
+                list[i - 1 - j] = list[i - j]
+                list[i - j] = temp
+                j += 1
+            if list[i] == 2:
+                i += 1
+        elif list[i] == 3 and i != len(list) - 1:
+            j = 0
+            while i + 1 + j &lt;= len(list) - 1:
+                temp = list[i + 1 + j]
+                list[i + 1 + j] = list[i + j]
+                list[i + j] = temp
+                j += 1
+            if list [i] == 2:
+                i += 1
+        else:
+            i += 1
+        if i == len(list) - num3:
+            break
+    print (list)
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_56" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mgblamg</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-26T23:22:45Z" itemprop="datePublished">
+                     26 באפריל,‏ 2020,‏ 11:22pm
+                  </time>
+<meta content="2020-04-26T23:22:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ba153c5fb5ad6286b81590a7185c1d320334566c" href="../../uploads/default/original/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c.png" title="לסדר את הבלגן"><img alt="לסדר את הבלגן" data-base62-sha1="qyaj2nDeGrCjiHAnqQEBhsRW2aU" data-small-upload="../../uploads/default/optimized/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c_2_10x10.png" height="256" src="../../uploads/default/optimized/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c_2_690x256.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c_2_690x256.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c_2_1035x384.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/b/ba153c5fb5ad6286b81590a7185c1d320334566c_2_1380x512.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">לסדר את הבלגן</span><span class="informations">1501×557 66.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>רק עכשיו נחשפתי לאזור של האתגרים…<br/>
+מנסה לא להסתכל על פתרונות, אז סליחה אם יש טעות שחוזרת על עצמה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_57" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">idankor93</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/9/97a575d24f45404c65b9b521ce8135b1515ddf31.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T12:28:46Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏ 12:28pm
+                  </time>
+<meta content="2020-04-27T12:28:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מקובל? <img alt=":thinking:" class="emoji" src="../../images/emoji/twitter/thinkingc164.png?v=9" title=":thinking:"/><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/97a575d24f45404c65b9b521ce8135b1515ddf31" href="../../uploads/default/original/2X/9/97a575d24f45404c65b9b521ce8135b1515ddf31.png" title="image"><img alt="image" data-base62-sha1="lDwAT3tHvqAM0HLrjhe3lHTfarD" data-small-upload="../../uploads/default/optimized/2X/9/97a575d24f45404c65b9b521ce8135b1515ddf31_2_10x10.png" height="250" src="../../uploads/default/original/2X/9/97a575d24f45404c65b9b521ce8135b1515ddf31.png" width="310"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">706×569 19.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_58" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">shay90030</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/37494e62de637ab471f769dddae10571277f5ed2.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-28T13:40:41Z" itemprop="datePublished">
+                     28 באפריל,‏ 2020,‏  1:40pm
+                  </time>
+<meta content="2020-04-28T13:40:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/37494e62de637ab471f769dddae10571277f5ed2" href="../../uploads/default/original/2X/3/37494e62de637ab471f769dddae10571277f5ed2.png" title="Screenshot_3"><img alt="Screenshot_3" data-base62-sha1="7T5jKZiMwYYKtYapHcvtTCbYnSi" data-small-upload="../../uploads/default/optimized/2X/3/37494e62de637ab471f769dddae10571277f5ed2_2_10x10.png" height="500" src="../../uploads/default/original/2X/3/37494e62de637ab471f769dddae10571277f5ed2.png" width="338"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_3</span><span class="informations">359×530 6.94 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_59" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nitayv</span>
+</span>
+<link href="5390.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/5/517348f66ae4c5e7e451ace0246ee7f4f60b10f7.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-04T10:23:29Z" itemprop="datePublished">
+                     4 במאי,‏ 2020,‏ 10:23am
+                  </time>
+<meta content="2020-05-04T10:23:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt="‏‏לכידה" data-base62-sha1="bCxFFyxD7QKsN1tVBHa1aH5aTz1" height="379" src="../../uploads/default/original/2X/5/517348f66ae4c5e7e451ace0246ee7f4f60b10f7.png" width="604"/></p>
+<p>ואוו לקח הרבה זמן אבל נראה לי שבסוף הצלחתי <img alt=":woozy_face:" class="emoji" src="../../images/emoji/twitter/woozy_facec164.png?v=9" title=":woozy_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="53904658.html?page=2" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5390?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:02:23 GMT -->
+</html>

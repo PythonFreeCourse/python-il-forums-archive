@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-4/6895 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:28 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Advent of Code 2019 🤯 (יום 4) - אתגר - פייתון בעברית ובחינם</title>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3  שהיו משמעותית קשוחים מקודמם. 
+אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן :slight_smile: 
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אב&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6895.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6895.rss" rel="alternate nofollow" title="הזנת RSS של ‚Advent of Code 2019 🤯 (יום 4)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6895.html" property="og:url"/>
+<meta content="6895.html" name="twitter:url"/>
+<meta content="Advent of Code 2019 🤯 (יום 4)" property="og:title"/>
+<meta content="Advent of Code 2019 🤯 (יום 4)" name="twitter:title"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3  שהיו משמעותית קשוחים מקודמם.  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום הרביעי של Advent of Code!" property="og:description"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3  שהיו משמעותית קשוחים מקודמם.  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום הרביעי של Advent of Code!" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="advent-of-code" property="og:article:tag"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="28 ❤"/>
+<meta content="2020-06-01T23:20:19+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6895.html">Advent of Code 2019 🤯 (יום 4)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/advent-of-code.html" rel="tag">advent-of-code</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Advent of Code 2019 🤯 (יום 4)" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="advent-of-code, אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-01T23:20:19Z" itemprop="datePublished">
+                     1 ביוני,‏ 2020,‏ 11:20pm
+                  </time>
+<meta content="2020-06-14T19:35:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שרשור <a href="../advent-of-code-2019-1/6478.html">Advent of Code יום 1</a> נחל הצלחה גדולה, וגם ימים <a href="../advent-of-code-2019-2/6486.html">2</a> ו־<a href="../advent-of-code-2019-3/6644.html">3</a>  שהיו משמעותית קשוחים מקודמם.</p>
+<p>אני מניח שהאתגר הזה ישאר פה <strong>לפחות</strong> ליומיים שלושה, אז קחו את הזמן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.</p>
+<p>אז קדימה, פרסמו פה את הפתרונות שלכם <a href="https://adventofcode.com/2019/day/4">ליום הרביעי</a> של Advent of Code!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-6/7068.html" itemprop="url">Advent of Code 2019 🤯 (יום 6)</a>
+<meta content="5" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-5/6987.html" itemprop="url">Advent of Code 2019 🤯 (יום 5)</a>
+<meta content="6" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/88e59535cfed0fdcaf363c50cce511c87016292b.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-02T07:49:06Z" itemprop="datePublished">
+                     2 ביוני,‏ 2020,‏  7:49am
+                  </time>
+<meta content="2020-06-02T07:49:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק 1</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/88e59535cfed0fdcaf363c50cce511c87016292b" href="../../uploads/default/original/2X/8/88e59535cfed0fdcaf363c50cce511c87016292b.png" title="תמונה"><img alt="תמונה" data-base62-sha1="jx2OwL3EuSYr2Cz4D8AOMezcStZ" data-small-upload="../../uploads/default/optimized/2X/8/88e59535cfed0fdcaf363c50cce511c87016292b_2_10x10.png" height="228" src="../../uploads/default/original/2X/8/88e59535cfed0fdcaf363c50cce511c87016292b.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">848×281 10.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+<details>
+<summary>
+חלק 2</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/962515996e3d938bc26791c83975b523824d2fd0" href="../../uploads/default/original/2X/9/962515996e3d938bc26791c83975b523824d2fd0.png" title="תמונה"><img alt="תמונה" data-base62-sha1="lqf4ypG37wu1BFlwzT2QuiacZi0" data-small-upload="../../uploads/default/optimized/2X/9/962515996e3d938bc26791c83975b523824d2fd0_2_10x10.png" height="253" src="../../uploads/default/original/2X/9/962515996e3d938bc26791c83975b523824d2fd0.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">903×332 21.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-02T10:06:31Z" itemprop="datePublished">
+                     2 ביוני,‏ 2020,‏ 10:06am
+                  </time>
+<meta content="2020-06-02T10:06:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>def is_optional_password(numbers):
+    couple = False
+    for i in range(len(numbers) - 1):
+        first , second = int(numbers[i]), int(numbers[i + 1])
+        if first &gt; second:
+            return False
+        elif first == second:
+            couple = True
+    return couple
+
+
+def get_optional_paddword(x=125730, y=579381):
+    counter = 0
+    for number in range(x, y):
+        if is_optional_password(list(str(number))):
+            counter += 1
+    return counter
+
+
+get_optional_paddword()
+</code></pre>
+</details>
+<details>
+<summary>
+חלק 2 - ההבדל הוא רק בשורת התנאי</summary>
+<pre><code class>def is_optional_password(numbers):
+    couple = False
+    for i in range(len(numbers) - 1):
+        first , second = int(numbers[i]), int(numbers[i + 1])
+        if first &gt; second:
+            return False
+        elif first == second and numbers.count(str(first)) == 2:
+            couple = True
+    return couple
+
+
+def get_optional_paddword(x=125730, y=579381):
+    counter = 0
+    for number in range(x, y):
+        if is_optional_password(list(str(number))):
+            counter += 1
+    return counter
+
+
+get_optional_paddword()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-02T13:51:23Z" itemprop="datePublished">
+                     2 ביוני,‏ 2020,‏  1:51pm
+                  </time>
+<meta content="2020-06-02T13:51:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+שני החלקים</summary>
+<pre><code class>import collections
+
+PUZZLE_INPUT = '264360-746325'
+
+
+def len_is_6(pw):
+    return len(str(pw)) == 6
+
+
+def pw_has_doubles(pw):
+    pw = str(pw)
+    for i in range(1, len(pw)):
+        if pw[i] == pw[i - 1]:
+            return True
+    return False
+
+
+def pw_has_doubles_v2(pw):
+    pw = str(pw)
+    cnt = collections.Counter(pw)
+    for char in pw:
+        if cnt[char] == 2:
+            return True
+    return False
+
+
+
+def never_decreasing(pw):
+    pw = str(pw)
+    for i in range(1, len(pw)):
+        if pw[i] &lt; pw[i - 1]:
+            return False
+    return True
+
+
+def check_pw_validity(pw, v=1):
+    doubles = (pw_has_doubles, pw_has_doubles_v2)
+    functions = (len_is_6, doubles[v - 1], never_decreasing)
+    for func in functions:
+        if not func(pw):
+            return False
+    return True
+
+
+def count_valid_passwords(min_num, max_num, v=1):
+    valid_passwords = 0
+    for pw in range(int(min_num), int(max_num) + 1):
+        if check_pw_validity(pw, v):
+            valid_passwords += 1
+
+    return valid_passwords
+
+
+print(count_valid_passwords(*PUZZLE_INPUT.split('-')))
+print('-' * 10)
+print(count_valid_passwords(*PUZZLE_INPUT.split('-'), v=2))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-02T13:55:48Z" itemprop="datePublished">
+                     2 ביוני,‏ 2020,‏  1:55pm
+                  </time>
+<meta content="2020-06-02T13:55:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/> <img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/><br/>
+תרגיל כיפי - מעניין לאיפה החללית תגיע בסוף <img alt=":flying_saucer:" class="emoji" src="../../images/emoji/twitter/flying_saucerc164.png?v=9" title=":flying_saucer:"/></p>
+<details>
+<summary>
+Part 1 &amp; 2</summary>
+<pre><code class>#  day 4
+# part 1 &amp; 2
+def check_if_digits_increase_and_1_same_number(number):
+    number = str(number)
+    digit = 1
+    ident = 0
+    while digit &lt; len(number):
+        if int(number[digit - 1]) &gt; int(number[digit]):
+            return False
+        if number[digit - 1] == number[digit]:
+            ident = 1
+        digit += 1
+    if ident == 1:
+        return True
+    return False
+
+def check_if_digits_increase_and_1_same_number_part2(number):
+    number = str(number)
+    digit = 1
+    ident = {n: 0 for n in range(10)}
+    while digit &lt; len(number):
+        if int(number[digit - 1]) &gt; int(number[digit]):
+            return False
+        if number[digit - 1] == number[digit]:
+            ident[int(number[digit])] += 1
+        digit += 1
+    if 1 in ident.values():
+        return True
+    return False
+
+
+def count_in_range(num1, num2):
+    counter = 0
+    for num in range(num1, num2 + 1):
+        if check_if_digits_increase_and_1_same_number(num):
+            counter += 1
+    return counter
+
+
+def count_in_range2(num1, num2):
+    counter = 0
+    for num in range(num1, num2 + 1):
+        if check_if_digits_increase_and_1_same_number_part2(num):
+            counter += 1
+    return counter
+
+
+print(f"answer part 1 : {count_in_range(272091, 815432)}")
+print(f"answer part 2 : {count_in_range2(272091, 815432)}")
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-03T15:51:37Z" itemprop="datePublished">
+                     3 ביוני,‏ 2020,‏  3:51pm
+                  </time>
+<meta content="2020-06-03T17:09:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+תשובה - חלק 1</summary>
+<pre><code class># range input 254032-789860
+def check_if_duplicates(num):
+    set_of_digits = set()
+    for digit in str(num):
+        if digit in set_of_digits:
+            return True
+        else:
+            set_of_digits.add(digit)
+    return False
+
+
+def is_valid_number(num):
+    current_max = 0
+    for digit in str(num):
+        if int(digit) &lt; current_max:
+            return False
+        else:
+            current_max = int(digit)
+    result = check_if_duplicates(num)
+    return result
+
+
+def find_valid_passwords_count(range_from, range_to):
+    valid_pass = [num for num in range(range_from, range_to) if is_valid_number(num)]
+    return len(valid_pass)
+
+
+print(find_valid_passwords_count(254032, 789860))  # part I - 1033
+
+</code></pre>
+</details>
+<details>
+<summary>
+תשובה - חלק 2</summary>
+<pre><code class># range input 254032-789860
+def is_valid_pass(num):
+    result = False
+    for i in range(5):
+        x, y = (str(num)[i], str(num)[i+1])
+        if x == y and str(num).count(x) == 2:
+            result = True
+    return result
+
+
+def is_valid_number(num):
+    current_max = 0
+    for digit in str(num):
+        if int(digit) &lt; current_max:
+            return False
+        else:
+            current_max = int(digit)
+    result = is_valid_pass(num)
+    return result
+
+
+def find_valid_passwords_count(range_from, range_to):
+    counter = 0
+    for num in range(range_from, range_to + 1):
+        if is_valid_number(num):
+            counter += 1
+    return counter
+
+
+print(find_valid_passwords_count(254032, 789860))  # part II - 670
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-03T19:09:07Z" itemprop="datePublished">
+                     3 ביוני,‏ 2020,‏  7:09pm
+                  </time>
+<meta content="2020-06-03T19:09:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תרגיל חדש יפורסם בבוקר יום שישי – מהרו להגיש! זה תרגיל לא קשה במיוחד ושווה לנסות אותו <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zahideri</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-04T21:28:20Z" itemprop="datePublished">
+                     4 ביוני,‏ 2020,‏  9:28pm
+                  </time>
+<meta content="2020-06-04T21:28:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+תרגיל 1</summary>
+<pre><code class># Day 4
+
+def key_options():
+    return [
+        key for key in range(136818, 685980)
+        if is_bigger(list(str(key))) and is_got_couple(list(str(key)))
+    ]
+
+
+def is_bigger(digits):
+    next_num = 1
+    for num in range(len(digits) - 1):
+        if int(digits[num]) &lt;= int(digits[next_num]):
+            next_num += 1
+        else:
+            return False
+    return True
+
+
+def is_got_couple(digits):
+    next_num = 1
+    for num in range(len(digits) - 1):
+        if int(digits[num]) == int(digits[next_num]):
+            return True
+        next_num += 1
+    return False
+
+    
+len(key_options())
+
+</code></pre>
+</details>
+<details>
+<summary>
+תרגיל 2</summary>
+<pre><code class># Day 4
+
+def key_options():
+    return [
+        key for key in range(136818, 685980)
+        if is_bigger(list(str(key))) and is_got_couple(list(str(key)))
+    ]
+
+
+def is_bigger(digits):
+    next_num = 1
+    for num in range(len(digits) - 1):
+        if int(digits[num]) &lt;= int(digits[next_num]):
+            next_num += 1
+        else:
+            return False
+    return True
+
+
+def is_got_couple(digits):
+    next_num = 1
+    for num in range(len(digits) - 1):
+        if int(digits[num]) == int(digits[next_num]) and digits.count(digits[num]) == 2:
+            return True
+        next_num += 1
+    return False
+
+    
+len(key_options())
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-04T23:33:39Z" itemprop="datePublished">
+                     4 ביוני,‏ 2020,‏ 11:33pm
+                  </time>
+<meta content="2020-06-04T23:33:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+Advent of Code, Day 4</summary>
+<pre><code class="lang-python"># Advent of Code, Day 4
+def calc_passwords_amount(min_val, max_val):
+    # Part 1
+    count = 0
+    for password in range(int(min_val), int(max_val) + 1):
+        if is_valid_part1(password):
+            count += 1
+    print(count)
+    # Part 2
+    count = 0
+    for password in range(int(min_val), int(max_val) + 1):
+        if is_valid_part2(password):
+            count += 1
+    print(count)
+
+
+def is_valid_part1(password):
+    min_dig = 0
+    doubles = 0
+    i = 0
+    while i &lt; 6:
+        digit = int(str(password)[i])
+        if digit &lt; min_dig:
+            return False
+        if digit == min_dig:
+            doubles += 1
+        min_dig = digit
+        i += 1
+    if doubles &gt;= 1:
+        return True
+
+
+def is_valid_part2(password):
+    min_dig = 0
+    is_double = False
+    is_triple = False
+    digits_count = {num: 0 for num in range(10)}
+    i = 0
+    no_triples = True
+    while i &lt; 6:
+        digit = int(str(password)[i])
+        if digit &lt; min_dig:
+            return False
+        min_dig = digit
+        digits_count[digit] += 1
+        i += 1
+    for num in digits_count:
+        if digits_count.get(num) == 2:
+            is_double = True
+    if is_double:
+        return True
+
+
+calc_passwords_amount('235741', '706948')
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T01:34:06Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  1:34am
+                  </time>
+<meta content="2020-06-05T01:34:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+הפתרון שלי</summary>
+<pre><code class="lang-python">def is_increase(i):
+    return sorted(i) == list(i)
+
+
+def is_two_adjacents(i):
+    return any(i[j] == i[j-1] for j in range(1, len(i)))
+
+
+def is_exactly_two_adjacents(i):
+    return any(i.count(j) == 2 for j in set(i))
+
+
+# Part 1
+inputs = map(str, range(272091, 815432))
+matched_numbers = [i for i in inputs if is_increase(i) and is_two_adjacents(i)]
+print(len(matched_numbers))
+
+# Part 2
+print(sum(map(is_exactly_two_adjacents, matched_numbers)))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T12:48:32Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏ 12:48pm
+                  </time>
+<meta content="2020-06-05T12:48:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אחלה פתרון! אלגנטי מאוד. לא חשבתי על זה ש-any שימושי ביותר פה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-06T08:21:01Z" itemprop="datePublished">
+                     6 ביוני,‏ 2020,‏  8:21am
+                  </time>
+<meta content="2020-06-06T08:21:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code class>
+def find_how_many(begin,end):
+    c=0
+    for i in range(begin,end+1):
+        if good_pass(str(i)):
+            c+=1
+    return c  
+
+def good_pass(password):
+    password=list(password)
+    return sorted(password) == password and find_two_digits_part_two(password)
+    
+def find_two_digits_part_one(password):
+    for i in range(len(password)-1):
+        if password[i] == password[i+1]:
+            return True
+    return False
+
+def find_two_digits_part_two(password):
+    a=[]
+    for i in range(len(password)-1):
+        if password[i] == password[i+1]:
+            a.append(password.count(password[i]))
+    return 2 in a
+            
+
+
+print(find_how_many(234208,765869))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="6895.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-06T17:41:20Z" itemprop="datePublished">
+                     6 ביוני,‏ 2020,‏  5:41pm
+                  </time>
+<meta content="2020-06-06T18:07:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code class>def get_input(puzzle_input):
+    return list(map(int, puzzle_input.split('-')))
+
+
+def check_criteria_first(num):
+    if len(str(num)) != 6: 
+        return False
+
+    return check_streak_first(num)
+
+
+def check_criteria_second(num):
+    str_num = str(num)
+    str_num_length = len(str_num)
+    if str_num_length != 6: 
+        return False
+
+    success = False
+    for x in range(1, str_num_length):
+        if str_num[x] &lt; str_num[x - 1]:
+            return False
+ 
+    return check_streak_second(num)
+
+
+def check_streak_first(num):
+    str_num = str(num)
+    str_num_length = len(str_num)
+
+    success = False
+    for x in range(1, int(str_num_length)):
+        if str_num[x] &lt; str_num[x - 1]:
+            return False
+        
+        if str_num[x] == str_num[x - 1]:
+            success = True
+    
+    return success
+
+
+def check_streak_second(num):
+    str_num = str(num)
+    str_num_length = len(str_num)
+    matching = {}
+
+    streak = False
+    for x in range(str_num_length):
+        if str_num[x] == str_num[x - 1]:
+            if str_num[x] not in matching or not streak:
+                matching[str_num[x]] = 2
+            else:
+                matching[str_num[x]] += 1
+
+            streak = True
+        else:
+            streak = False
+
+    if 2 in matching.values():
+        return True
+    else:
+        return False
+
+
+def get_passwords(range_start, range_end, f):
+    iterable = range(range_start, range_end + 1)
+    return list(filter(f, iterable))
+
+
+def main():
+    puzzle_input = '273025-767253'
+    range_start, range_end = get_input(puzzle_input)
+
+    # First Part
+    passwords = get_passwords_first(range_start, range_end, check_criteria_first)
+    print(len(passwords))
+
+    # Second Part
+    passwords = get_passwords(range_start, range_end, check_criteria_second)
+    print(len(passwords))
+
+
+main()
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-4/6895 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:34 GMT -->
+</html>

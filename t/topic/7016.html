@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/7016 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:02:46 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>אליבי לרוצחים-הקדמה לפתרון - שבוע 4 - פייתון בעברית ובחינם</title>
+<meta content="למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד. 
+מדוב&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7016.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7016.rss" rel="alternate nofollow" title="הזנת RSS של ‚אליבי לרוצחים-הקדמה לפתרון’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1024x368.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1024x368.png" property="og:image"/>
+<meta content="7016.html" property="og:url"/>
+<meta content="7016.html" name="twitter:url"/>
+<meta content="אליבי לרוצחים-הקדמה לפתרון" property="og:title"/>
+<meta content="אליבי לרוצחים-הקדמה לפתרון" name="twitter:title"/>
+<meta content="למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד.  מדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובלים לאורך ורוחב N E. כאשר אנחנו משתמשים ב** ברשימה או בtuple שבו יש מילון, והמילון מרכיב את המפתחות X Y ואת הערכים המתקבלים לכל מפתח, אזי ה** נכנס לתוך המילון ומוציא את הערכים (בניגוד לפקודה * שאז הוא ..." property="og:description"/>
+<meta content="למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד.  מדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובלים לאורך ורוחב N E. כאשר אנחנו משתמשים ב** ברשימה או בtuple שבו יש מילון, והמילון מרכיב את המפתחות X Y ואת הערכים המתקבלים לכל מפתח, אזי ה** נכנס לתוך המילון ומוציא את הערכים (בניגוד לפקודה * שאז הוא ..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 4" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="unpacking" property="og:article:tag"/>
+<meta content="אליבי-לרוצחים" property="og:article:tag"/>
+<meta content="typeerror" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2020-06-07T13:24:06+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"אליבי לרוצחים-הקדמה לפתרון","mainEntity":{"@type":"Question","name":"אליבי לרוצחים-הקדמה לפתרון","text":"למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד.\n\nמדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובל&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2020-06-07T13:24:05.966Z","author":{"@type":"Person","name":"ישי"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7016.html">אליבי לרוצחים-הקדמה לפתרון</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week4/13.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 4</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/unpacking.html" rel="tag">unpacking</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%9c%d7%99%d7%91%d7%99-%d7%9c%d7%a8%d7%95%d7%a6%d7%97%d7%99%d7%9d.html" rel="tag">אליבי-לרוצחים</a>, 
+            <a class="discourse-tag" href="../../tag/typeerror.html" rel="tag">typeerror</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="אליבי לרוצחים-הקדמה לפתרון" itemprop="headline"/>
+<meta content="שבוע 4" itemprop="articleSection"/>
+<meta content="unpacking, אליבי-לרוצחים, typeerror" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">asdfg199</span>
+</span>
+<link href="7016.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-07T13:24:06Z" itemprop="datePublished">
+                     7 ביוני,‏ 2020,‏  1:24pm
+                  </time>
+<meta content="2021-09-09T18:42:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>למיטב הבנתי, אני צריך להיכנס לתוך הtuple שהצגתם עם ** (זה לדעתי בוודאות יידרש בתוך התרגיל) וככה לחלץ את הסוגיות הנוגעות לשם ולהוכחות. בשביל לעשות את זה שיחקתי קצת עם פונקציה דומה שאתם סיפקתם, וראיתי משהו מוזר מאוד.<br/>
+מדובר בפונקציה שמקבלת שני משתנים X Y, ומדפיסה את המשתנים הללו בתוספת הסימונים המקובלים לאורך ורוחב N E. כאשר אנחנו משתמשים ב** ברשימה או בtuple שבו יש מילון, והמילון מרכיב את המפתחות X Y ואת הערכים המתקבלים לכל מפתח, אזי ה** נכנס לתוך המילון ומוציא את הערכים (בניגוד לפקודה * שאז הוא היה נכנס “חצי דרך” ומוציא רק את המפתחות), כדי אז להחיל עליהם את הפקודות של הפונקציה, שמקבלת שני משתנים.<br/>
+נראה בצילום:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/8ee98172b73108090e3696de5c2fa5ad4a59ad06" href="../../uploads/default/original/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06.png" title="a"><img alt="a" data-base62-sha1="kog5eiKT13mGsfMN4qFXcsxvKlw" data-small-upload="../../uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_10x10.png" height="248" src="../../uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_690x248.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_690x248.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1035x372.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8ee98172b73108090e3696de5c2fa5ad4a59ad06_2_1380x496.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">a</span><span class="informations">1752×630 50.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br/>
+עד כאן הכול טוב ויפה.<br/>
+אממה, יש פה משהו שממש פוצץ לי את המוח. בוא נחליף את המפתח (הנומינלי לחלוטין, חסר משמעות, סטרינג ולא יותר) “X” במפתח “B”. ונריץ את אותה פקודה. הרי הפונצקיה מקבלת עדיין שני משתנים, זה שאנחנו כינינו אותם בשמות X וY לא אמור לשנות. מה נקבל?<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/64fa509d1d85aab91c47e87c87e48e80a7a659f5" href="../../uploads/default/original/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5.png" title="b"><img alt="b" data-base62-sha1="epi2K3r4ZtntbfhKvrzyqCSePTD" data-small-upload="../../uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_10x10.png" height="295" src="../../uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_690x295.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_690x295.png, https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_1035x442.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/6/64fa509d1d85aab91c47e87c87e48e80a7a659f5_2_1380x590.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">b</span><span class="informations">1673×717 64.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br/>
+ג’יזז! נראה שהבחור ממש מאוכזב מזה שלא הבאנו לו את המשתנה “X”. ואת זה אני ממש ממש ממש לא מבין. תודה רבה ואחלה יום!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">asdfg199</span>
+</span>
+<link href="7016.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-07T13:34:42Z" itemprop="datePublished">
+                     7 ביוני,‏ 2020,‏  1:34pm
+                  </time>
+<meta content="2020-06-07T13:34:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני ארחיב-כאשר נכנסתי לתמונה הקודמת, ושיניתי <strong>בפונקציה</strong> את האות X לאות B ואז שוב שיניתי את כול האותיות בtuple שקרוי treasure_maps לB אז זה כן עבד! וזה ממש ממש ממש (אמרתי כבר-ממש?) לא מובן לי הרי כול העניין של פונקציות זה שאתה מגדיר שתי משתנים שהפונקציה עובדת על פיהם, וגורם לה להתייחס לכל משתנה שאתה מכניס אליה כמו המשתנה שהגדרת (!). אז ממתי אנחנו צריכים ששם המשתנה יהיה תואם לשם של המשתנה שהגדרנו בפונקציה.<br/>
+אני חושב שהכיוון שבגללו אני טועה כל כך קשור לזה, ש** לא לגמרי עושה את העבודה. או שהוא לא מתוחכם מספיק (אפשרות שנייה סבירה לא פחות-אני לא מתוחכם מספיק <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/> ). בכול אופן אשמח מאוד להסבר ותודה מראש!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7016.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-07T17:34:15Z" itemprop="datePublished">
+                     7 ביוני,‏ 2020,‏  5:34pm
+                  </time>
+<meta content="2020-06-07T17:34:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני לא בטוחה שהבנתי בדיוק כל מה שכתבת - אבל בכללי נראה לי שפשוט מדובר פה בשמות משתנים - כדי לקבל ערך עבור מפתח מסוים, צריך לקרוא לו בשם שלו. אם קראת לו b אז כך צריך גם להביא אותו בפעם הבאה.</p>
+<p>הפונקציה תקבל את המילון לפי **kwargs ללא קשר לשמות המפתח: ערך , אבל אם אתה רוצה גם לקרוא להם ללא לדעת את שמם, צריך לכתוב לולאה מתאימה <strong>בתוך</strong> הפונקציה. רק להחליף את שם המפתח ל b ואז לנסות לקרוא לו ב x או להיפך לא יעבוד. שים לב שפה הפונקציה כמו שהוגדרה מקבלת את המפתח (ממש, השם שלו) : מה שהפונקציה מקבלת כשאתה מעביר את **location זה מה שבתוך המילון ממש:<br/>
+{‘b’: 36.671111, ‘y’: 65.808056’}<br/>
+ולזה אתה מנסה לקרוא בתוך הפונקציה לפי שם המפתח</p>
+<p>למיטב הבנתי, **kwargs משמש לקריאה למספר בלתי מוגבל של משתנים לפי שם (שבוע 5 מחברת 2), כשאתה מחליף את x ב b אתה מנסה למעשה לקרוא למשתנה לפי מיקום.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">asdfg199</span>
+</span>
+<link href="7016.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-08T10:31:40Z" itemprop="datePublished">
+                     8 ביוני,‏ 2020,‏ 10:31am
+                  </time>
+<meta content="2020-06-08T10:31:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה!<br/>
+לא הבנתי את כל מה שכתבת אבל אני רוצה להתייחס רק לפסקה הראשונה.<br/>
+את אמרת ש" כדי לקבל ערך עבור מפתח מסוים, צריך לקרוא לו בשם שלו" אני חושב שעליתי פה על משהו שממש לא הבנתי וטוב שאני מסביר אותו לעצמי עכשיו. אשמח לשמוע את דעתך בעניין.<br/>
+ראשית, ברור שהפונקציה print_treasure_location לא מחפשת מפתח. היא מקבל שני משתנים ומוסיפה להם שתי אותיות (N, E).<br/>
+למשל, ברור שאם נכתוב בפונקציה: print_treasure_location בתוך הסוגריים את האותיות (“c”, “d”) או כול אות אחרת (שאינן X Y המוגדרות), הפונקציה תרוץ בלי בעיה. זה כמובן בדיוק העניין של פונקציות הם מקבלות משתנים שמוגדרים מחוץ אליהן ופועלות בהתאם. יותר מזה, כאשר אני שם כוכבית אחת, כלומר כאשר אני מפנה את הפונקציה להדפסת <strong>המפתח</strong> ולא הדפסת הערך, הפונקציה רצה בלי בעיות ואכן מדפיסה כל מפתח שהוא, לדוגמא כאן שיניתי שוב את הX לB והפונקציה הדפיסה אותו בלי בעיה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e" href="../../uploads/default/original/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e.png" title="Capture"><img alt="Capture" data-base62-sha1="y3NNi3G3VhVp5hr4RMVoywolC2O" data-small-upload="../../uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_10x10.png" height="190" src="../../uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_690x190.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_690x190.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_1035x285.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/eeb7f8b22b7aae9afe004a145a4a70abf9c0509e_2_1380x380.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Capture</span><span class="informations">1664×459 37.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אז למה (לעזאזעל <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> ) כשאני מפנה אותן לערך מילוני, כלומר אני אומר לפונקציה לחפש את הערך של המפתח, פתאום הוא צריך שהמפתח יהיה זהה בדיוק למשתנה (המומצא) שבפונקציה? את זה אני ממש ממש לא מבין.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7016.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-08T10:52:20Z" itemprop="datePublished">
+                     8 ביוני,‏ 2020,‏ 10:52am
+                  </time>
+<meta content="2020-06-08T10:52:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני ממליצה להסתכל בשבוע 5 מחברת 2 באופן כללי, ובמונחים לקראת הסוף במיוחד. אני חזרתי לשם בשביל השאלה הזו, וגם אני הסתבכתי קצת עם ה unpacking באיזשהוא שלב. מה שאני הבנתי בסוף זה ככה: פייתון מוכנה לעשות הרבה ‘תרגום’ של פרמטרים שנשלחים לפונקציה, וזאת בתנאי שהם נשלחים בצורה שאינה דו משמעית, ולכן יש מוסכמות בינינו לבין פייתון איך אנחנו שולחים פרמטרים לפונקציה. בין השאר אנחנו יכולים לשלוח פרמטרים לפי מיקום או פרמטרים לפי שם. כאשר אנחנו שולחים פרמטרים לפי מיקום, זה לא משנה איך קוראים להם - אנחנו אומרים לפייתון - קחי את המשתנה הראשון שאת רואה ותעשי איתו {…} ואת המשתנה השני ו {…}. זה מה שקורה כשכתוב x, y או b, y וכן הלאה. הסימון * מאפשר לנו לשלוח איטרבל שמכיל משתנים שישלחו לפי מיקומם (למעשה מיקומם באיטרבל) - עבור הדוגמא שלנו דמיין רשימת המפתחות הראשון נשלח ל x עבורו מוגדרת הפונקציה והשני עבור הy.<br/>
+לעומת זאת, בשימוש ב **kwargs אנחנו שולחים משתנים לפי שם פייתון מתרגמת את זה כך עבור הדוגמא הספציפית הזאת:ש:<br/>
+(b’=36.671111, y=65.808056’)<br/>
+ואז חייבים לקרוא למשתנים בשמם שהרגע סיפקנו, כי שלחנו לפייתון משתנים לפי שם ולא לפי מיקום.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/7016 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:02:57 GMT -->
+</html>

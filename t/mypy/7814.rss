@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>ועוד בנושא הmypy</title>
+    <link>https://forums.pythonic.guru/t/mypy/7814</link>
+    <description>אפשר להתעלם מחלק מהשגיאות ? יש שגיאות שזה מציין שהן לא באמת שגיאות.</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 09 Aug 2020 06:39:04 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/mypy/7814.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>ועוד בנושא הmypy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="yosefco3" data-post="3" data-topic="7814">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p><code>pieces/piece.py:30: error: Name 'Board' is not defined  </code></p>
+</blockquote>
+</aside>
+<p>כמובן, Board אכן לא מוגדר בתוך המחלקה. mypy צודק. יש לזה פתרון, מצא אותו בגוגל <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<aside class="quote no-group" data-username="yosefco3" data-post="3" data-topic="7814">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<pre><code class="lang-auto">if st[0] in final_letters_dict and len(st) &gt; 1:
+            st = final_letters_dict.get(st[0]) + st[1:]
+</code></pre>
+</blockquote>
+</aside>
+<p>זו אכן טעות.<br>
+החתימה של get טוענת שהוא יכול להחזיר None, ולכן mypy צועקת.<br>
+אם זה לא אפשרי, בצע <code>final_letters[st[0]]</code>, שזורק <code>KeyError</code> ולא מחזיר <code>None</code> במקרה שה־Key לא קיים.</p>
+<p>גם השאר הם ככה"נ טעויות, פשוט צריך ללמוד לעבוד עם זה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+המטרה של mypy היא למנוע שגיאות בקוד שלך, ולכן היא קשוחה ומוודאת לעומק שאין מקומות שיש סיכוי שנפלת בהם.</p>
+          <p><a href="https://forums.pythonic.guru/t/mypy/7814/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy/7814/4</link>
+        <pubDate>Sun, 09 Aug 2020 06:39:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7814-4</guid>
+        <source url="https://forums.pythonic.guru/t/mypy/7814.rss">ועוד בנושא הmypy</source>
+      </item>
+      <item>
+        <title>ועוד בנושא הmypy</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי , אז למשל אני השתמשתי <a href="https://stackoverflow.com/questions/33533148/how-do-i-specify-that-the-return-type-of-a-method-is-the-same-as-the-class-itsel" rel="nofollow noopener">בפתרון הראשון כאן</a><br>
+כדי לתת טייפ לאינסטנסים של קלאסס מסוימת.<br>
+אז mypy רואה את זה כשגיאה :</p>
+<pre><code class="lang-auto">pieces/piece.py:30: error: Name 'Board' is not defined  
+</code></pre>
+<p>או למשל :</p>
+<pre><code class="lang-auto">if st[0] in final_letters_dict and len(st) &gt; 1:
+            st = final_letters_dict.get(st[0]) + st[1:]
+</code></pre>
+<p>עשיתי כאן “איבטוח” שלא יהיה מצב ש final_letters_dict.get(st[0])  יהיה שווה לNone וגם ש st[1:] לא יהיה None<br>
+עדיין הmypy רואה את זה כטעות.</p>
+<pre><code class="lang-auto">translate_book.py:82: error: Unsupported left operand type for + ("None")
+translate_book.py:82: note: Left operand is of type "Optional[str]"
+</code></pre>
+<p>ועוד ועוד. אני מקבל המון דברים כאלו.</p>
+          <p><a href="https://forums.pythonic.guru/t/mypy/7814/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy/7814/3</link>
+        <pubDate>Sun, 09 Aug 2020 06:34:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7814-3</guid>
+        <source url="https://forums.pythonic.guru/t/mypy/7814.rss">ועוד בנושא הmypy</source>
+      </item>
+      <item>
+        <title>ועוד בנושא הmypy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הן כנראה כן באמת שגיאות <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/mypy/7814/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy/7814/2</link>
+        <pubDate>Sun, 09 Aug 2020 06:04:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7814-2</guid>
+        <source url="https://forums.pythonic.guru/t/mypy/7814.rss">ועוד בנושא הmypy</source>
+      </item>
+      <item>
+        <title>ועוד בנושא הmypy</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר להתעלם מחלק מהשגיאות ? יש שגיאות שזה מציין שהן לא באמת שגיאות.</p>
+          <p><a href="https://forums.pythonic.guru/t/mypy/7814/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mypy/7814/1</link>
+        <pubDate>Sun, 09 Aug 2020 05:16:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7814-1</guid>
+        <source url="https://forums.pythonic.guru/t/mypy/7814.rss">ועוד בנושא הmypy</source>
+      </item>
+  </channel>
+</rss>

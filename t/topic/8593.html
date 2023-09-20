@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8593 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:20:50 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הבנה בסיסית בהערכת סיבוכיות - שבוע 15 - פייתון בעברית ובחינם</title>
+<meta content="מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע. 
+למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ-&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8593.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8593.rss" rel="alternate nofollow" title="הזנת RSS של ‚הבנה בסיסית בהערכת סיבוכיות’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8593.html" property="og:url"/>
+<meta content="8593.html" name="twitter:url"/>
+<meta content="הבנה בסיסית בהערכת סיבוכיות" property="og:title"/>
+<meta content="הבנה בסיסית בהערכת סיבוכיות" name="twitter:title"/>
+<meta content="מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.  למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), היא מכפלה של של n בלוג n.  אז אם כל מה שרשמתי עליו ‘להבנתי’ הוא נכון, והבנתי נכון, אז נשאלת השאלה: מדוע מכפלה של לדוגמה 5 של n מבוטלת אוטומטית, אך בכל זאת לא מבטלים מכפלה של n בשבריר ממנו…?  אז או שמשהו..." property="og:description"/>
+<meta content="מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.  למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), היא מכפלה של של n בלוג n.  אז אם כל מה שרשמתי עליו ‘להבנתי’ הוא נכון, והבנתי נכון, אז נשאלת השאלה: מדוע מכפלה של לדוגמה 5 של n מבוטלת אוטומטית, אך בכל זאת לא מבטלים מכפלה של n בשבריר ממנו…?  אז או שמשהו..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 15" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="סיבוכיות" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="12 ❤"/>
+<meta content="2021-01-01T18:48:05+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הבנה בסיסית בהערכת סיבוכיות","mainEntity":{"@type":"Question","name":"הבנה בסיסית בהערכת סיבוכיות","text":"מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.\n\nלמרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), הי&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2021-01-01T18:48:05.214Z","author":{"@type":"Person","name":"koby"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8593.html">הבנה בסיסית בהערכת סיבוכיות</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-15/27.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 15</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a1%d7%99%d7%91%d7%95%d7%9b%d7%99%d7%95%d7%aa.html" rel="tag">סיבוכיות</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הבנה בסיסית בהערכת סיבוכיות" itemprop="headline"/>
+<meta content="שבוע 15" itemprop="articleSection"/>
+<meta content="סיבוכיות" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T18:48:05Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  6:48pm
+                  </time>
+<meta content="2021-01-02T09:51:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>מכל החומרים שראיתי וקראתי עד עכשיו, הבנתי שאם נאמר הסיבוכיות של פונקציה היא O5n אז היא נחשבת ל- On, כי מתעלמים לחלוטין מהמכפלות, כמו מכל מספר פעולות קבוע.<br/>
+למרות זאת, ישנה סיבוכיות המוגדרת O n log n. להבנתי, log n קטן מ- n, מאחר והוא מייצג שבריר שלו. למרות זאת, הסיבוכיות  O n log n, להבנתי (שוב), היא מכפלה של של n בלוג n.<br/>
+אז אם כל מה שרשמתי עליו ‘להבנתי’ הוא נכון, והבנתי נכון, אז נשאלת השאלה: מדוע מכפלה של לדוגמה 5 של n מבוטלת אוטומטית, אך בכל זאת לא מבטלים מכפלה של n בשבריר ממנו…?<br/>
+אז או שמשהו בסיסי בהגדרות לא הבנתי נכון, או שאין בזה ממש הגיון מובהק… למישהו הסברים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:03:49Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:03pm
+                  </time>
+<meta content="2021-01-01T19:03:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאלה טובה, אני לא כזה מבין גדול אבל יכול לשער כי:</p>
+<p>5logn  - אומר שעבור כל n  הפונקציה תעשה את logn 5 פעמים.<br/>
+5 הוא מספר קבוע ולכן אנו יכולים לדעת בוודאות שהפונקציה תרוץ כל פעם 5 פעמים logn  בלי תלות בגודל ה n</p>
+<p>בגלל ש n   הוא משתנה והוא אינו קבוע כמו הספרה 5 למשל, ככל ש n  יגדל  הפקונציה תבצע יותר logn. כלומר היא תהיה בהכרח תלויה בגודלו של n  - כך שכמה שהוא יגדל ככה גם כמות הפעמים שהפונקציה תבצע logn. ולכן במקרה כזה n  הוא לא זניח ולא ניתן לבטל אותו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:08:00Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:08pm
+                  </time>
+<meta content="2021-01-01T19:08:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מניח שאם הקבוע יהיה 100000000000000000000 אז כן יחשבו עליו.<br/>
+אולם עדין ממה שאני מבין בסיבוכיות מחפשים “קצב צמיחה” וקבוע לא משנה את קצב זה הוא שומר עליו קבוע.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:09:16Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:09pm
+                  </time>
+<meta content="2021-01-01T19:09:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ועדיין, גם 5 וגם log n, בשני המקרים, הן מכפלות של n. כש- 5 גדול פי כמה מ- log n. אז לא ברור לי למה מהמכפלה הגדולה מתעלמים באופן גורף, גם אם היא מספר קבוע, ומהמכפלה הקטנה בהרבה לא מתעלמים. אם הבנו נכון את ההגדרות, זה פשוט לא הגיוני בשום צורה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:13:34Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:13pm
+                  </time>
+<meta content="2021-01-01T19:13:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נכון שמחפשים קצב צמיחה. ואם הפרמטר הגדול ב- n log n הוא n, אז בהמשך לכל ‘הכללים’ של חישוב סיבוכיות, לא ברור לי למה במצב כזה log n רלוונטי, כשהוא מהווה שבריר של n</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:17:50Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:17pm
+                  </time>
+<meta content="2021-01-01T19:17:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כי גם logn  הוא לא log5  למשל…<br/>
+הביטוי מתאר את התלות של הפונקציה ב n.<br/>
+במספרים גדולים - הבדלים האלו נהיים גדולים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:23:10Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:23pm
+                  </time>
+<meta content="2021-01-01T19:23:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז נראה שלא ממש הבנו לעומק את ההגדרות, לפחות על פי ההסבר פה:</p><aside class="onebox stackexchange">
+<header class="source">
+<a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" rel="noopener nofollow ugc" target="_blank">stackoverflow.com</a>
+</header>
+<article class="onebox-body">
+<a href="https://stackoverflow.com/users/44084/andreas-grech" rel="noopener nofollow ugc" target="_blank">
+<img alt="Andreas Grech" class="thumbnail onebox-avatar" height="128" src="../../uploads/default/original/2X/1/1ea2ebacc353d539314bc290b7c0a1135455ca5e.jpg" width="128"/>
+</a>
+<h4>
+<a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" rel="noopener nofollow ugc" target="_blank">What does O(log n) mean exactly?</a>
+</h4>
+<div class="tags">
+<strong>algorithm, time-complexity, big-o</strong>
+</div>
+<div class="date">
+  asked by
+  
+  <a href="https://stackoverflow.com/users/44084/andreas-grech" rel="noopener nofollow ugc" target="_blank">
+    Andreas Grech
+  </a>
+  on <a href="https://stackoverflow.com/questions/2307283/what-does-olog-n-mean-exactly" rel="noopener nofollow ugc" target="_blank">08:05PM - 21 Feb 10 UTC</a>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:25:22Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:25pm
+                  </time>
+<meta content="2021-01-01T19:25:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ובקיצור, ב- On log n, לוג n הוא אינו מכפלה של n, אלא גם הוא שבריר של n, בדומה ל- logn, רק שהבסיס שלו שונה, והוא גדול יותר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T19:27:47Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  7:27pm
+                  </time>
+<meta content="2021-01-01T19:27:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ה logn אף פעם לא היה מכפלה של n , ה n  בהתחלה הוא מכפלה של כל הביטוי logn …<br/>
+אם לא אז אולי גם אני לא הבנתי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-01T21:30:10Z" itemprop="datePublished">
+                     1 בינואר,‏ 2021,‏  9:30pm
+                  </time>
+<meta content="2021-01-01T21:30:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא בטוחה שאני מבינה את הבלבול, אבל מקווה שאני עונה על התהייה.</p>
+<p>מבחינת ההגדרה היבשה, מתעלמים מכל מספר קבוע כיוון שהוא, ובכן, קבוע. הוא אינו משתנה לפי גודל הקלט ולכן אם הקלט גדל או קטן אנו יודעים לחזות פי כמה ישתנה זמן הריצה. לעומת זאת לא מזניחים ביטויים התלויים בגודל הקלט, כדוגמת logn או n או n^5, גם אם הם נראים זניחים.</p>
+<p>בעולם האמיתי, שבו גם הביצועים חשובים, ינסו להתחשב גם בקבוע ולהוריד אותו כמה שיותר. יש הבדל בין זמן ריצה של קוד הדורש 5n פעולות לזמן ריצה של קוד הדורש 1,000,000,000n פעולות.<br/>
+אבל, כאשר אנחנו מסתכלים על O אנו מנסים רק להבין כיצד זמן הריצה של הקוד יושפע משינוי בגודל הקלט, המיוצג לרוב ע"י n.<br/>
+קוד המבצע 5 פעולות על כל איבר ברשימה הניתנת לו יעשה זאת בין אם מספר האיברים ברשימה הוא מאה, אלף או מיליארד. לכן, הכפלת מספר האיברים ברשימה פי 100 תוביל לזמן ריצה ארוך פי 100.<br/>
+לעומתו, קוד המבצע logn פעולות על כל איבר ברשימה הניתנת לו ישנה גם את מספר הפעולות לכל איבר כאשר גודל הרשימה הניתנת לו ישתנה. כאשר הרשימה הניתנת תהיה בגודל 1,000 הוא יבצע 1,000log(1,000) פעולות, שהן log(1,000) פעולות לאיבר, ואילו כשגודל הרשימה הניתנת לו תהיה בגודל 1,000,000,000 הוא יבצע 1,000,000,000log(1,000,000,000), שהן log(1,000,000,000) פעולות לאיבר. כלומר, זמן הריצה לא יגדל רק פי גודל הרשימה אלא יותר מכך.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-02T08:02:22Z" itemprop="datePublished">
+                     2 בינואר,‏ 2021,‏  8:02am
+                  </time>
+<meta content="2021-01-02T09:52:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<h3>בואו נתחיל רגע בלהבין מה אנחנו רוצים למדוד.</h3>
+<p>כשאנחנו מודדים יעילות, אנחנו מחפשים משהו שנקרא <a href="https://en.wikipedia.org/wiki/Worst-case_complexity">סיבוכיות המקרה הגרוע ביותר</a>.</p>
+<p>במילים סמי־אקדמיות: בהינתן קלט שגודלו <span class="math">N</span>, מה החסם העליון של זמן שייקח לאלגוריתם לרוץ.<br/>
+במילים פחות: בתלות בגודל הקלט – מה ה<em>מקסימום</em> זמן, בהינתן הקלט הכי גרוע שאפשר, שייקח לתוכנה שכתבתי לסיים לרוץ.<br/>
+וממש בנפנופי ידיים: המטרה שלנו היא לבדוק כמה יותר זמן יקח לחשב את הפתרון כשגודל הקלט יגדל.</p>
+<hr/>
+<h3>התשובה לשאלה המקורית ששאלת:</h3>
+<p>בביטוי <span class="math">5 \cdot n</span>, זונחים את 5 כי הוא מקדם של <span class="math">n</span>.</p>
+<p>למעשה, יש שני סוגים של “חלקים בביטוי” שאנחנו זונחים:</p>
+<ol>
+<li>מקדמים – כלומר, מספרים קבועים שנמצאים בביטוי (למה? ראה הרחבה למטה).</li>
+<li>אם יש כמה איברים שביניהם יש חיבור או חיסור, לוקחים רק את האיבר שגדל הכי מהר.</li>
+</ol>
+<p>מה נחשב “איבר”? כל דבר ש"דבוק" אחד לשני בעזרת כפל, חזקה, חילוק וכדומה. בין שני איברים יהיה פלוס או מינוס. בביטוי <span class="math">n^2 - n + 6</span> לדוגמה, יש לנו 3 איברים. ניקח רק את <span class="math">n^2</span>, כי הוא עולה בקצב הגבוה ביותר.</p>
+<p>למה זונחים איברים שביניהם חיבור/חיסור אבל עולים בקצב נמוך יותר? כי חיבור של איבר שקטן בסדר גודל כמעט לא משפיע על התוצאה הסופית והוא כמעט לא מעניין.<br/>
+ההבדל בין <span class="math">O(n)</span> לבין <span class="math">O(n^2)</span> הוא אסטרונומי כש־ <span class="math">N=1,000,000</span> – זה יכול להיות ההבדל בין אלגוריתם שיסיים לרוץ בפחות משנייה לבין כזה שיסיים לרוץ בעוד שבוע.<br/>
+אבל ההבדל בין <span class="math">O(n^2)</span> לבין <span class="math">O(n^2 + n)</span> במקרה הזה הוא כמעט בלתי נראה – ולכן מרגישים בנוח להשמיט את <span class="math">n</span> – כי מה שמחפשים הוא סדר גודל, ולא חישוב מדויק.</p>
+<hr/>
+<h3>לגבי מקדמים, אני אנסה לתת gut feeling סביר:</h3>
+<ol>
+<li>בסופו של דבר, מהירות של תוכנה נגזרת מכמות הפעולות שהמעבד מריץ [קצת שקר*] ככל שיש יותר פעולות, התוכנה איטית יותר.</li>
+<li>כשאנחנו כותבים בפייתון x = x + 1, פייתון עשויה לעשות כל מני חישובים מוזרים מאחורי הקלעים (כדי לאפשר לנו לעבוד עם מספרים ממש גדולים, לדוגמה). זה יגרור די הרבה הוראות שהמעבד צריך להריץ. נזרוק סתם מספר, נניח, 50. אז x = x + 1 בפייתון גורם למעבד להריץ 50 הוראות.</li>
+<li>אם נכתוב את אותה השורה בשפת התכנות C, כיוון שב־C תוחמים את הגודל של x ו־C מלכתחילה היא שפה שקל “לתרגם” ממנה לשפה שהמעבד יבין, המעבד יצטרך להריץ ממש מעט פעולות, נניח 1. אז x = x + 1 ב־C גורמת למעבד להריץ הוראה 1.</li>
+<li>נניח שככה אני מודד את היעילות של התוכנה שלי. כתבתי פתרון לאחד התרגילים, ואני רוצה למדוד את היעילות שלו בעזרת הביטוי x = x + 1 שרץ <span class="math">N</span> פעמים. מתעוררות כמה בעיות:<br/>
+4.1. האם הגיוני להגיד שהפתרון ב־C הוא <span class="math">O(N)</span> והפתרון בפייתון הוא <span class="math">O(50\cdot N)</span>? בכלל, ההמרה הזו בין שורת קוד לכמות הפעולות שהמעבד יריץ היא סופר לא טריוויאלית וכשעושים אותה צריך להתחשב בכמות עצומה של נושאים תיאורטיים מורכבים מאוד. כל פעם שנרצה לקבל תחושת בטן על יעילות נצטרך לבדוק איך מחשבים את ההשוואה הזו? אנחנו אנשי מדמ"ח, אנחנו עצלנים.<br/>
+4.2.  נניח שעברנו את המשוכה הזו, אבל אז מישהו סיפר לנו שקרן הפייתון הבינלאומית מימנה את הפתרון שלנו, ופתרון הפייתון שלנו רץ על מחשב כסוף ונוצץ. הפתרון שכתוב ב־C עדיין רץ על הטרנטה שקיבלנו לבת מצווה. המחשב שקרן הפייתון קנו פי 50 חזק יותר! האם עדיין הגיוני להגיד שהתוכנה שכתובה ב־C פי 50 מהירה מזו שכתובה בפייתון?</li>
+<li>אפשר להסיק מכאן שעבור כל בעיה, אם נזרוק מספיק כסף על שרתים כסופים נוצצים, נוכל לפתור אותה ביעילות עם <em>מקדם</em> נמוך יותר. למעשה, אפילו טרחו <a href="https://en.wikipedia.org/wiki/Linear_speedup_theorem">להוכיח את זה מתמטית</a>.</li>
+<li>לכן כשאנחנו באים להעריך עד כמה אלגוריתם הוא “טוב”, נעיף מההערכה שלנו כל מקדם שהוא. המקדם הזה לא משרת אותנו ונקבל הערכה טובה יותר בלעדיו.</li>
+<li>מה כן מעניין? מה <strong>סדר הגודל</strong> של השינוי בזמן הריצה של התוכנית, כשאנחנו מקטינים או מגדילים את גודל הקלט שלנו.</li>
+</ol>
+<p>אני באמת ממש ממליץ לקרוא את <a href="https://discrete.gr/complexity/?he">המאמר שתרגמתי</a>.<br/>
+(אין פה קידום אישי, נטו תרגמתי אותו וזו לא עבודה שלי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> )<br/>
+עשיתי את זה ואני דוחף אותו בכל הזדמנות כי אני חושב שמי שכתב אותו עשה עבודה נהדרת.</p>
+<hr/>
+<p>* אני משקר כאן ממש ומניח כל מני הנחות של רמאים, כמו שאין חיבור לאינטרנט ושאין קריאה/כתיבה להארד־דיסק. אבל העיקרון עצמו מובן לדעתי. זה לא מה שאנחנו באים למדוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koby</span>
+</span>
+<link href="8593.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-03T09:10:52Z" itemprop="datePublished">
+                     3 בינואר,‏ 2021,‏  9:10am
+                  </time>
+<meta content="2021-01-03T09:10:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצאתי מאמר נוסף שמסביר מצוין ובפירוט על כל אחת מהגדרות הסיבוכיות:<br/>
+<a class="onebox" href="https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7" rel="noopener nofollow ugc" target="_blank">https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8593 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:20:52 GMT -->
+</html>

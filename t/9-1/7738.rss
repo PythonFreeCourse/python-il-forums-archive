@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 9 – יום 1: סביבת עבודה</title>
+    <link>https://forums.pythonic.guru/t/9-1/7738</link>
+    <description>## הקדמה
+
+אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן :slight_smile:
+
+במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי.
+בשבועיים הקרובים (&quot;שבוע 9&quot;) נלמד את החומרים הבאים:
+
+1. סביבת עבודה (IDE, יכולות ניפוי שגיאות)
+2. עבודה בפרויקט – טיפול בקובצי פייתון מרובים, הרצת &quot;פרויקט&quot;.
+3. רמיזה על טיפוסים (Type Annotations).
+4. קשטנים (Decorators).
+
+הדינמיקה שארצה ליצור בחלק הזה של הקורס היא קצת שונה.
+השתתפו בפורומים, שאלו שאלות מעניינות, עזרו אחד לשני ושתפו פיצ&#39;רים ושימושים מגניבים שמצאתם לחומר שנלמד.
+ביחד ניצור קבוצת למידה שבה לכל אחד מכם יש מקום לתרום ולקבל ערך בחזרה.
+
+לאור גודל הקהילה שנותרה, גם אני אהיה זמין יותר, אשתף מהתובנות שלי ואשתתף בדיונים שיוצרו כאן.
+אפשר ליצור פה קהילה נחמדה ומפרה, ואני מבטיח לתגמל את החזקים שיחלקו רעיונות ויעזרו באופן תדיר.
+
+## יום 1 – סביבת עבודה
+
+אחת התוכנות הנפוצות ביותר בקרב מפתחים היא ה־IDE – &quot;סביבת הפיתוח המשולבת&quot; (Integrated Development Environment). זה בסך הכל שם מפונפן לתוכנה שבה מפתחים את הקוד שלנו, והיא מספקת לנו כלים נוחים לעשות זאת.
+
+עד כה עבדנו על Jupyter Notebook, שהיא מעין סביבה מאוד בסיסית שכזו. היא הציעה לנו יכולות בסיסיות כמו עורך קוד נוח (השלמה אוטומטית באמצעות &lt;kbd&gt;Tab&lt;/kbd&gt;, הדגשה בצבעים) ויכולת הרצת קוד בסיסית.
+רוב סביבות הפיתוח השונות מציעות את הכלים האלו, ועשויות להציע בנוסף כלים שיעזרו לכם בניפוי שגיאות, כלים שיעזרו לכם בשמירת וניהול גרסאות קודמות של הקוד שלכם, כלים לניהול עבודה בצוות, כלים לניהול בדיקות וכדומה.
+
+בקורס הזה נסקור שתי סביבות פיתוח: Visual Studio Code ו־PyCharm. אתם רשאים לבחור אחת מהן, ותדרשו לכתוב את הקוד שלכם בעזרתן בשבועות הקרובים. בכל מקרה, אמליץ לכם להתנסות ולשחק בשתיהן.
+
+----
+
+### אפשרות 1: [Visual Studio Code](https://code.visualstudio.com/)
+
+*היכרות:*
+סביבת פיתוח חדשה יחסית (2015; בת 5) שמפותחת ומתוחזקת על ידי Microsoft. 
+כל־כולה [קוד פתוח](https://github.com/microsoft/vscode), מה שמאפשר לקהילה לתרום לה יכולות חדשות.
+היא מתעדכנת [כמעט כל חודש](https://code.visualstudio.com/updates/v1_47), ויש לה קהילה רחבה שמפתחת עבורה [תוספים](https://marketplace.visualstudio.com/VSCode) באופן תדיר.
+
+*יתרונות:*
+1. סביבת העבודה נכתבה בקוד פתוח ומפותחת על ידי הקהילה. השימוש בה חינמי, גם לצורך מטרות מסחריות.
+2. היא תומכת בשפות רבות, לא רק בפייתון, כך שאם הפרויקט משלב יותר משפה אחת נוח להשתמש בה.
+3. תמיכה די טובה ב־Jupyter Notebooks.
+4. מהירה ופחות bloated ביחס ל־PyCharm.
+
+*התקנה ומדריך:* [כאן](https://code.visualstudio.com/docs/python/python-tutorial).
+*בונוס*: קראו על התוספים Live Share, IntelliCode, Code Spell Checker, Peacock, Rainbow Brackets. מומלץ גם להתקין את התוסף Code Runner כדי להריץ בנוחות קוד.
+*בונוס 2*: התקינו את התוסף Pylance, תוסף חדש מבית מיקרוסופט שאמור לשפר את התמיכה בפייתון.
+
+מצאתם תוספים מגניבים? ראיתם פיצ&#39;ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.
+
+### אפשרות 2: [PyCharm](https://www.jetbrains.com/pycharm/)
+
+*היכרות:*
+סביבת פיתוח ממוקדת פייתון שקיימת מאז 2010, מפותחת ומתוחזקת על ידי JetBrains.
+הסביבה הפופולרית ביותר, כנראה, לפיתוח פייתון.
+היא מתעדכנת [כמעט כל רבעון](https://www.jetbrains.com/pycharm/download/other.html), ויש לה קהילה רחבה שמפתחת עבורה [תוספים](https://plugins.jetbrains.com/pycharm_ce) באופן תדיר.
+היא אינה חינמית למטרות מסחריות ודורשת רישיון בתשלום לצורך כך. ישנה גרסה חינמית לשימושים לא מסחריים.
+
+*יתרונות:*
+1. סביבת העבודה נבנתה ומיועדת לפייתון מא&#39; ועד ת&#39;.
+2. יכולת ניתוח הקוד ש־PyCharm הגיעה אליה מרשימה, וה־IDE יודע לעלות ולהעיר על בעיות ולהציע השלמות בצורה טובה יותר מאשר IDEs אחרים.
+
+*התקנה ומדריך:* [כאן](https://www.jetbrains.com/help/pycharm/quick-start-guide.html).
+
+מצאתם תוספים מגניבים? ראיתם פיצ&#39;ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.
+
+---
+
+אמנם אין לי דרך לבדוק את זה, אני מבקש שתעשו את המעבר לתוכנות הללו למרות חוסר הנוחות שעלול להתלוות לתהליך. מעבר דירה הוא אף פעם לא תהליך כייפי, אבל תוך כמה ימים תתחילו להתרגל ולראות את היתרונות בשינוי.
+
+---
+
+## ניפוי שגיאות
+
+בסביבת העבודה החדשה שלכם יש כלים לניפוי שגיאות.
+הכלים אמורים לעזור לכם לעצור בנקודה מסוימת של ריצת הקוד, לבחון את תוכן המשתנים ולטייל בקוד באופן הִדּוּדִי.
+
+קראו על יכולות ניפוי השגיאות של Visual Studio [כאן](https://code.visualstudio.com/docs/python/debugging).
+קראו על יכולות ניפוי השגיאות של PyCharm [כאן](https://www.jetbrains.com/help/pycharm/part-1-debugging-python-code.html).
+
+הבינו כיצד משתמשים בכלי, מה אומר המונח breakpoint, ונסו לעבור על קוד שכתבתם בעבר בעזרת מנפה השגיאות ולבדוק כיצד להשתמש בו.
+
+להעמקה, בספר [Think Python](https://greenteapress.com/thinkpython/thinkpython.pdf) תמצאו מספר פרקים על ניפוי שגיאות.
+
+---
+
+### תרגיל: סדרת פיבואפצ&#39;י
+
+מטרת הפונקציה `fibo` היא לקבל מספר (`n`), ולהחזיר את כל המספרים בסדרת פיבונאצ&#39;י ש**קטנים ממש** מ־`n`.
+קיבלתם את המימוש הבא לפונקציה:
+```python
+def fibo(n):
+    f = 0
+    g = 1
+
+    while f &lt; n:
+        h = f + g
+        yield h
+        g = h
+        f = g
+
+
+print(&quot; &quot;.join(str(f) for f in fibo(1000)))
+```
+השתמשו בכלים לניפוי שגיאות בסביבת העבודה שלכם כדי למצוא ולתקן שתי שגיאות שקיימות בקוד.
+השתדלו לשנות את הקוד כמה שפחות.
+
+### תרגיל (אפשרות 1): מנסנס כוחב כתן
+
+תקנו את הקוד הבא כך שינגן את שיר הערש &quot;Twinkle Star&quot;.
+השתמשו במנפה השגיאות של סביבת הפיתוח שלכם כדי להבין איפה הבעיה.
+תוכלו לבחור בין התרגיל הזה לבין התרגיל הבא (עשו רק 1 מהם).
+
+```python
+import math
+import sounddevice
+
+import numpy
+
+
+d = 24000
+r = 1100
+a = [0, 7, 9, 1]
+b = [5, 4, 2, 4]
+c = [7, 5, 4, 7]
+
+
+def f(x):
+    &quot;&quot;&quot;You shouldn&#39;t change this function.&quot;&quot;&quot;
+    s = [240 * 2 ** (j / 12.0) for j in (a + b + c) * 2]
+    n = s[x // 1000]
+    m = (x % 500 &gt; 9) or (x / 1000 % 4 &gt; 2)
+    v = 6 * n * (x / r) * m
+    k = math.sin(v)
+    return k
+
+
+def f2(d):
+    l = []
+    for x in range(d):
+        h = f(x)
+        l.append(int(h * 64000 / 2))
+    return numpy.array(l, dtype=&#39;float32&#39;)
+
+
+sounddevice.play(f2(d), r)
+status = sounddevice.wait()
+```
+
+### תרגיל (אפשרות 2): ועל ים לקו שמונה מלכות
+
+לפניכם פתרון פשוט יחסית [לחידת שמונה המלכות](https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%93%D7%AA_%D7%A9%D7%9E%D7%95%D7%A0%D7%94_%D7%94%D7%9E%D7%9C%D7%9B%D7%95%D7%AA).
+בפתרון נפלו שתי טעויות. מצאו אותן ותקנו אותן.
+השתדלו לשנות את הקוד כמה שפחות.
+
+```python
+import itertools
+
+
+BOARD_SIZE = 8
+
+
+def get_rows(board):
+    yield from board
+
+
+def get_columns(board):
+    yield from zip(*board)
+
+
+def get_diagonals(board):
+    size = len(board)
+
+    # left to right, top to bottom digonals
+    for col in range(size):
+        diagonal = ((offset, col + offset) for offset in range(size - col))
+        flipped = ((y, x) for x, y in diagonal)
+        if diagonal != flipped:
+            yield [board[x][y] for x, y in flipped]
+        yield [board[x][y] for x, y in diagonal]
+
+    # left to right, bottom to top digonals
+    for col in range(size):
+        diagonal = ((col - n, n) for n in range(col + 1))
+        flipped = ((size - x - 1, size - y - 1) for x, y in diagonal)
+        yield [board[x][y] for x, y in diagonal]
+        yield [board[x][y] for x, y in flipped]
+
+
+def is_solution_valid(board):
+    check_functions = (get_rows, get_columns, get_diagonals)
+    for get_line_from_board in check_functions:
+        for line in get_line_from_board(board):
+            if line.count(True) &gt; 1:
+                return False
+    return True
+
+
+def possible_positions(max_size):
+    yield from itertools.product(range(max_size), repeat=max_size)
+
+
+def update_board(board, queen_columns):
+    board_size = len(board)
+    queen_placements = frozenset(zip(range(8), queen_columns))
+    for row in range(board_size):
+        for col in range(board_size):
+            board[row][col] = (row, col) in queen_placements
+
+
+def get_solutions(board):
+    for queen_columns in possible_positions(max_size=len(board)):
+        update_board(board, queen_columns)
+        if is_solution_valid(board):
+            yield board
+
+
+def create_board(size):
+    row = [False] * size
+    board = [row] * size
+    return board
+
+
+def print_board(board):
+    for row in board:
+        print(&#39; &#39;.join(str(&#39;Q&#39; if col else &#39;.&#39;).center(3) for col in row))
+
+
+print(&quot;Started!&quot;)
+for solution_board in get_solutions(create_board(BOARD_SIZE)):
+    print_board(solution_board)
+    print(&#39;-&#39; * 80)
+```
+
+### תרגיל: Advent of Code 12
+
+השתמשו בסביבת העבודה שלכם על מנת לפתור את [תרגיל מספר 12](https://adventofcode.com/2019/day/12) ב־Advent of Code.
+פתרו רק את חצי היום הראשון (רק את התרגיל שמוצג למשתמשים לא רשומים, או שטרם פתרו את התרגיל).</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 24 Aug 2020 08:38:41 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/9-1/7738.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אתה רוצה להחליף לתוכנה אחרת - בוינדוס תעשה חיפוש ב-start לזה:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/9/9cd0c63ec4d3ea87c7e08ecf45cefc4c8cab247b.png" alt="image" data-base62-sha1="mnfMvOh9VlRqSCAu9wllVDr14wz" width="341" height="82"><br>
+ובחלון שנפתח תוכל למצוא את py ולבחור תוכנה</p>
+<p>אם אתה רוצה להסיר בכלל - גוגל הוא חבר, אבל אתה יכול לנסות את הדרכים האלו:<br>
+</p><aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="https://forums.pythonic.guru/uploads/default/original/2X/0/0abde4873b082c488e9d401342d17e942d943f79.png" class="site-icon" width="50" height="50">
+      <a href="https://troubleshooter.xyz/wiki/how-to-remove-file-type-associations-in-windows-10/" target="_blank" rel="nofollow noopener">Troubleshooter</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:671/500;"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_671x500.png" class="thumbnail" width="671" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_671x500.png, https://forums.pythonic.guru/uploads/default/original/2X/4/45780d6267be8538b56713e816f981e00abbfde6.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/45780d6267be8538b56713e816f981e00abbfde6.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_10x10.png"></div>
+
+<h3><a href="https://troubleshooter.xyz/wiki/how-to-remove-file-type-associations-in-windows-10/" target="_blank" rel="nofollow noopener">How to Remove File Type Associations in Windows 10 - Troubleshooter</a></h3>
+
+<p>How to Remove File Type Associations in Windows 10:&nbsp;A File association associates a file with an application which can open that particular file. The job of</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/15</link>
+        <pubDate>Mon, 24 Aug 2020 08:38:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-15</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>מישהו מכיר דרך להסיר את האסוציאציה של pycharm מקבצי py?</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/14</link>
+        <pubDate>Sat, 22 Aug 2020 17:58:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-14</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה אודליה, כבר הוספתי לעצמי להגדרות</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/13</link>
+        <pubDate>Fri, 21 Aug 2020 23:25:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-13</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה ! סופר שימושי (;</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/12</link>
+        <pubDate>Fri, 21 Aug 2020 20:06:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-12</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="imimouni" data-post="10" data-topic="7738">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/i/47e85d/40.png" class="avatar"> imimouni:</div>
+<blockquote>
+<p>סתם משהו שימושי שמצאתי ונראה שלא כולם מכירים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+סידור אוטומטי של הimports!<br>
+זה מגיע כחלק מובנה בpython extension.<br>
+פשוט סמנו את כל האימפורטים שלכם בלחצן ימני ואי שם בתפריט הענק שנפתח יש sort imports שיגרמו לבודק האוטומטי להזיל ריר על האימפורטים שלכם <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"></p>
+<p>(הערה- שימו לב שזה לא מסדר לפי ABC מספר מודולים שמייבאים בתוך from ספציפי)</p>
+</blockquote>
+</aside>
+<p>גם ב-PyCharm יש - פשוט לוחצים Alt + Ctrl + O וזה מסדר הכל (או לחפש ב-CTRL + SHIFT + A את Optimize Imports)<br>
+ואלו ההגדרות שהבודק האוטומטי אוהב (אפילו מסדר את from X import A, C, B)<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e.png" data-download-href="https://forums.pythonic.guru/uploads/default/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e.png" alt="image" data-base62-sha1="pA5CQV92sxEz6FBR1YsiwjABSAC" width="690" height="277" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/11</link>
+        <pubDate>Fri, 21 Aug 2020 16:31:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-11</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[imimouni]]></dc:creator>
+        <description><![CDATA[
+            <p>סתם משהו שימושי שמצאתי ונראה שלא כולם מכירים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+סידור אוטומטי של הimports!<br>
+זה מגיע כחלק מובנה בpython extension.<br>
+פשוט השתמשו בלחצן ימני ואי שם בתפריט הענק שנפתח יש sort imports  שיגרום לבודק האוטומטי להזיל ריר על האימפורטים שלכם <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"></p>
+<p>(הערה- שימו לב שזה לא מסדר לפי ABC מספר מודולים שמייבאים בתוך from ספציפי)</p>
+<p>ועוד משהו חמוד בנושא הimports , למי שעדיין אין pylance שימו לב שהוא יודע לעשות import אוטומטי לדברים שאתם מחליטים להשתמש בהם בקוד, לתפארת הPEP והבודק. פשוט צריך לבחור מהרשימה שצצה שאתם מתחילים לכתוב… גיליתי את זה היטב בתרגילי הtyping של יום 3 חחח, שימושי!</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/10</link>
+        <pubDate>Fri, 21 Aug 2020 15:53:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-10</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[mbrodsky]]></dc:creator>
+        <description><![CDATA[
+            <p>מה שבעצם מבקשים מאיתנו לעשות כאן זה ליצור קוד שמחשב את היחס של כל “ירח” לכל שאר הירחים, במסגרת של זוגות של ירחים. זה קצת מבלבל כי המיקום משפיע על המהירות והמהירות משפיעה על המיקום. אז יש מיקום ראשוני לכל הירחים, ומהירות ראשונית ששווה לאפס. המיקום היחסי של כל ירח משפיע על המהירות של כל ירח אחר בכל אחד מהצירים. צריך לבחון כל ירח מול שלושת הירחים האחרים בשלוש זוגות. אז אם ניקח רק את ציר הX של הירחים ונסתכל רק על הירח הראשון, הוא יוצר שלוש זוגות של מיקומים עם שלושת הירחים האחרים. בכל זוג כזה הירחים משפיעים זה על זה באופן יחסי כאשר זה שהמיקום שלו יותר גדול מושך את המהירות של זה שהמיקום שלו יותר קטן כלפי “מעלה” בדרגה אחת וזה שהמיקום שלו יותר קטן מושך את המהירות של זה שהמיקום שלו יותר גדול כלפי “מטה” בדרגה אחת (אם המיקום שלהם זהה בערכו הם לא משפיעים אחד על השני). ההשפעות המצטברות של כל הזוגות האלו נסכמות ונותנות לנו את המהירות החדשה של כל אחד מהירחים בכל אחד מהצירים. בצילום המסך ניתן לראות שאחרי החישוב הראשון מהירות X של הירח הראשון הפכה מ0 ל 3, כי המיקומים של כל שאר הירחים יותר גדולים משלו. כלומר, הוא יוצר שלוש זוגות עם הירחים האחרים ובכל שלושת החישובים האלה מאחר והמיקום שלו (1-) קטן יותר משל הירח השני בזוג צריך להוסיף למהירות שלו (לא למיקום שלו) +1 (ובאופן דומה לכל אחד מהירחים האחרים צריך להוריד 1 מהמהירות בציר הX). אז הוא עולה מאפס לשלוש. את החישוב הזה צריך לבצע לכל הצירים של כל הירחים. ברגע שיש לנו את זה אז אפשר לחשב בקלות את המיקום החדש (ההסבר שם לגבי חישוב המיקום החדש הוא יותר קל וברור אז לא אכנס אליו כאן). מערך המיקומים החדש כמובן יוצר מערך חישובים חדש שמאפשר ליצור את חישוב המהירות החדש, שיוצר את חישוב המיקומים החדש וחוזר חלילה.</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/0/00a8f716c202af0dd6f8ad64a4f2d4d740661e05.png" alt="image" data-base62-sha1="5Q0o24hIahtKX4COdlph4DCNA9" width="546" height="274"></p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/9</link>
+        <pubDate>Thu, 06 Aug 2020 22:55:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-9</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>קצת באיחור, שיהיה לכולנו שבוע נהדר!<br>
+אני התחלתי כרגע לעבוד עם PyCharm (אוניבריסטה), והתחלתי להנסות עם VSCode.<br>
+אעדכן כשאתקל בתוספים מגניבים!</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/8</link>
+        <pubDate>Thu, 06 Aug 2020 16:10:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-8</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[noyleibo70]]></dc:creator>
+        <description><![CDATA[
+            <p>לא הבנתי את תרגיל 3, יש מצב להסבר קצת יותר מפורט?</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/7</link>
+        <pubDate>Wed, 05 Aug 2020 12:06:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-7</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>Jupyter Notebook ב-Vscode</p>
+<p>תלחצו ctrl + p ותריצו את הפקודה הבאה:</p>
+<pre><code>&gt;Create New Blank Jupyter Notebook
+</code></pre>
+<p>החלון שיפתח יהיה קובץ קוד בסיומת ipynb (כלומר פורמט Jupyter Notebook)<br>
+ככה תוכלו לעבוד על Vscode ולשמור בפורמט ג’ופיטר!</p>
+<p>יעבוד רק למי שהוריד את התוסף Python (סביר להניח שכבר כולנו)</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/6</link>
+        <pubDate>Tue, 04 Aug 2020 16:50:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-6</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+תוסף מגניב לvscode</p>
+<p>ממליץ להשתמש בתוסף Arepl אתם תראו את הפלט שלכם בצד, והתוסף מציג לכם את הפלט והמשתנים בקוד עוד בזמן הכתיבה.</p>
+<p>אפשר להגדיר שהתוסף ירוץ כל כמה שניות (ההגדרות הן על בסיס מאית השניה)</p>
+<p>מוזמנים לצפות בסרטון - <a href="https://www.youtube.com/watch?v=W--_EOzdTHk" rel="nofollow noopener">https://www.youtube.com/watch?v=W--_EOzdTHk</a><br>
+ההסבר על התוסף נמצא החל מ-7:10</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/5</link>
+        <pubDate>Tue, 04 Aug 2020 14:58:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-5</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[noa.izhaki]]></dc:creator>
+        <description><![CDATA[
+            <p>בינתיים דרך Jupyter notebook (תעתיק לשם את הקוד ותגיש כמו שהיית עושה עד היום)</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/4</link>
+        <pubDate>Tue, 04 Aug 2020 13:39:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-4</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[orontamir]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים</p>
+<p>איפה מגישים את התרגילים?</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/3</link>
+        <pubDate>Tue, 04 Aug 2020 08:09:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-3</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים,<br>
+את התיקונים לתרגילים לשמור אצלנו ולא לפרסם, ואת התובנות שלנו מהסביבה עבודה כן לפרסם?</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/2</link>
+        <pubDate>Tue, 04 Aug 2020 06:07:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-2</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 1: סביבת עבודה</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>הקדמה</h2>
+<p>אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי.<br>
+בשבועיים הקרובים (“שבוע 9”) נלמד את החומרים הבאים:</p>
+<ol>
+<li>סביבת עבודה (IDE, יכולות ניפוי שגיאות)</li>
+<li>עבודה בפרויקט – טיפול בקובצי פייתון מרובים, הרצת “פרויקט”.</li>
+<li>רמיזה על טיפוסים (Type Annotations).</li>
+<li>קשטנים (Decorators).</li>
+</ol>
+<p>הדינמיקה שארצה ליצור בחלק הזה של הקורס היא קצת שונה.<br>
+השתתפו בפורומים, שאלו שאלות מעניינות, עזרו אחד לשני ושתפו פיצ’רים ושימושים מגניבים שמצאתם לחומר שנלמד.<br>
+ביחד ניצור קבוצת למידה שבה לכל אחד מכם יש מקום לתרום ולקבל ערך בחזרה.</p>
+<p>לאור גודל הקהילה שנותרה, גם אני אהיה זמין יותר, אשתף מהתובנות שלי ואשתתף בדיונים שיוצרו כאן.<br>
+אפשר ליצור פה קהילה נחמדה ומפרה, ואני מבטיח לתגמל את החזקים שיחלקו רעיונות ויעזרו באופן תדיר.</p>
+<h2>יום 1 – סביבת עבודה</h2>
+<p>אחת התוכנות הנפוצות ביותר בקרב מפתחים היא ה־IDE – “סביבת הפיתוח המשולבת” (Integrated Development Environment). זה בסך הכל שם מפונפן לתוכנה שבה מפתחים את הקוד שלנו, והיא מספקת לנו כלים נוחים לעשות זאת.</p>
+<p>עד כה עבדנו על Jupyter Notebook, שהיא מעין סביבה מאוד בסיסית שכזו. היא הציעה לנו יכולות בסיסיות כמו עורך קוד נוח (השלמה אוטומטית באמצעות <kbd>Tab</kbd>, הדגשה בצבעים) ויכולת הרצת קוד בסיסית.<br>
+רוב סביבות הפיתוח השונות מציעות את הכלים האלו, ועשויות להציע בנוסף כלים שיעזרו לכם בניפוי שגיאות, כלים שיעזרו לכם בשמירת וניהול גרסאות קודמות של הקוד שלכם, כלים לניהול עבודה בצוות, כלים לניהול בדיקות וכדומה.</p>
+<p>בקורס הזה נסקור שתי סביבות פיתוח: Visual Studio Code ו־PyCharm. אתם רשאים לבחור אחת מהן, ותדרשו לכתוב את הקוד שלכם בעזרתן בשבועות הקרובים. בכל מקרה, אמליץ לכם להתנסות ולשחק בשתיהן.</p>
+<hr>
+<h3>אפשרות 1: <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+</h3>
+<p><em>היכרות:</em><br>
+סביבת פיתוח חדשה יחסית (2015; בת 5) שמפותחת ומתוחזקת על ידי Microsoft.<br>
+כל־כולה <a href="https://github.com/microsoft/vscode">קוד פתוח</a>, מה שמאפשר לקהילה לתרום לה יכולות חדשות.<br>
+היא מתעדכנת <a href="https://code.visualstudio.com/updates/v1_47">כמעט כל חודש</a>, ויש לה קהילה רחבה שמפתחת עבורה <a href="https://marketplace.visualstudio.com/VSCode">תוספים</a> באופן תדיר.</p>
+<p><em>יתרונות:</em></p>
+<ol>
+<li>סביבת העבודה נכתבה בקוד פתוח ומפותחת על ידי הקהילה. השימוש בה חינמי, גם לצורך מטרות מסחריות.</li>
+<li>היא תומכת בשפות רבות, לא רק בפייתון, כך שאם הפרויקט משלב יותר משפה אחת נוח להשתמש בה.</li>
+<li>תמיכה די טובה ב־Jupyter Notebooks.</li>
+<li>מהירה ופחות bloated ביחס ל־PyCharm.</li>
+</ol>
+<p><em>התקנה ומדריך:</em> <a href="https://code.visualstudio.com/docs/python/python-tutorial">כאן</a>.<br>
+<em>בונוס</em>: קראו על התוספים Live Share, IntelliCode, Code Spell Checker, Peacock, Rainbow Brackets. מומלץ גם להתקין את התוסף Code Runner כדי להריץ בנוחות קוד.<br>
+<em>בונוס 2</em>: התקינו את התוסף Pylance, תוסף חדש מבית מיקרוסופט שאמור לשפר את התמיכה בפייתון.</p>
+<p>מצאתם תוספים מגניבים? ראיתם פיצ’ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.</p>
+<h3>אפשרות 2: <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>
+</h3>
+<p><em>היכרות:</em><br>
+סביבת פיתוח ממוקדת פייתון שקיימת מאז 2010, מפותחת ומתוחזקת על ידי JetBrains.<br>
+הסביבה הפופולרית ביותר, כנראה, לפיתוח פייתון.<br>
+היא מתעדכנת <a href="https://www.jetbrains.com/pycharm/download/other.html">כמעט כל רבעון</a>, ויש לה קהילה רחבה שמפתחת עבורה <a href="https://plugins.jetbrains.com/pycharm_ce">תוספים</a> באופן תדיר.<br>
+היא אינה חינמית למטרות מסחריות ודורשת רישיון בתשלום לצורך כך. ישנה גרסה חינמית לשימושים לא מסחריים.</p>
+<p><em>יתרונות:</em></p>
+<ol>
+<li>סביבת העבודה נבנתה ומיועדת לפייתון מא’ ועד ת’.</li>
+<li>יכולת ניתוח הקוד ש־PyCharm הגיעה אליה מרשימה, וה־IDE יודע לעלות ולהעיר על בעיות ולהציע השלמות בצורה טובה יותר מאשר IDEs אחרים.</li>
+</ol>
+<p><em>התקנה ומדריך:</em> <a href="https://www.jetbrains.com/help/pycharm/quick-start-guide.html">כאן</a>.</p>
+<p>מצאתם תוספים מגניבים? ראיתם פיצ’ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.</p>
+<hr>
+<p>אמנם אין לי דרך לבדוק את זה, אני מבקש שתעשו את המעבר לתוכנות הללו למרות חוסר הנוחות שעלול להתלוות לתהליך. מעבר דירה הוא אף פעם לא תהליך כייפי, אבל תוך כמה ימים תתחילו להתרגל ולראות את היתרונות בשינוי.</p>
+<hr>
+<h2>ניפוי שגיאות</h2>
+<p>בסביבת העבודה החדשה שלכם יש כלים לניפוי שגיאות.<br>
+הכלים אמורים לעזור לכם לעצור בנקודה מסוימת של ריצת הקוד, לבחון את תוכן המשתנים ולטייל בקוד באופן הִדּוּדִי.</p>
+<p>קראו על יכולות ניפוי השגיאות של Visual Studio <a href="https://code.visualstudio.com/docs/python/debugging">כאן</a>.<br>
+קראו על יכולות ניפוי השגיאות של PyCharm <a href="https://www.jetbrains.com/help/pycharm/part-1-debugging-python-code.html">כאן</a>.</p>
+<p>הבינו כיצד משתמשים בכלי, מה אומר המונח breakpoint, ונסו לעבור על קוד שכתבתם בעבר בעזרת מנפה השגיאות ולבדוק כיצד להשתמש בו.</p>
+<p>להעמקה, בספר <a href="https://greenteapress.com/thinkpython/thinkpython.pdf">Think Python</a> תמצאו מספר פרקים על ניפוי שגיאות.</p>
+<hr>
+<h3>תרגיל: סדרת פיבואפצ’י</h3>
+<p>מטרת הפונקציה <code>fibo</code> היא לקבל מספר (<code>n</code>), ולהחזיר את כל המספרים בסדרת פיבונאצ’י ש<strong>קטנים ממש</strong> מ־<code>n</code>.<br>
+קיבלתם את המימוש הבא לפונקציה:</p>
+<pre><code class="lang-python">def fibo(n):
+    f = 0
+    g = 1
+
+    while f &lt; n:
+        h = f + g
+        yield h
+        g = h
+        f = g
+
+
+print(" ".join(str(f) for f in fibo(1000)))
+</code></pre>
+<p>השתמשו בכלים לניפוי שגיאות בסביבת העבודה שלכם כדי למצוא ולתקן שתי שגיאות שקיימות בקוד.<br>
+השתדלו לשנות את הקוד כמה שפחות.</p>
+<h3>תרגיל (אפשרות 1): מנסנס כוחב כתן</h3>
+<p>תקנו את הקוד הבא כך שינגן את שיר הערש “Twinkle Star”.<br>
+השתמשו במנפה השגיאות של סביבת הפיתוח שלכם כדי להבין איפה הבעיה.<br>
+תוכלו לבחור בין התרגיל הזה לבין התרגיל הבא (עשו רק 1 מהם).</p>
+<pre><code class="lang-python">import math
+import sounddevice
+
+import numpy
+
+
+d = 24000
+r = 1100
+a = [0, 7, 9, 1]
+b = [5, 4, 2, 4]
+c = [7, 5, 4, 7]
+
+
+def f(x):
+    """You shouldn't change this function."""
+    s = [240 * 2 ** (j / 12.0) for j in (a + b + c) * 2]
+    n = s[x // 1000]
+    m = (x % 500 &gt; 9) or (x / 1000 % 4 &gt; 2)
+    v = 6 * n * (x / r) * m
+    k = math.sin(v)
+    return k
+
+
+def f2(d):
+    l = []
+    for x in range(d):
+        h = f(x)
+        l.append(int(h * 64000 / 2))
+    return numpy.array(l, dtype='float32')
+
+
+sounddevice.play(f2(d), r)
+status = sounddevice.wait()
+</code></pre>
+<h3>תרגיל (אפשרות 2): ועל ים לקו שמונה מלכות</h3>
+<p>לפניכם פתרון פשוט יחסית <a href="https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%93%D7%AA_%D7%A9%D7%9E%D7%95%D7%A0%D7%94_%D7%94%D7%9E%D7%9C%D7%9B%D7%95%D7%AA">לחידת שמונה המלכות</a>.<br>
+בפתרון נפלו שתי טעויות. מצאו אותן ותקנו אותן.<br>
+השתדלו לשנות את הקוד כמה שפחות.</p>
+<pre><code class="lang-python">import itertools
+
+
+BOARD_SIZE = 8
+
+
+def get_rows(board):
+    yield from board
+
+
+def get_columns(board):
+    yield from zip(*board)
+
+
+def get_diagonals(board):
+    size = len(board)
+
+    # left to right, top to bottom digonals
+    for col in range(size):
+        diagonal = ((offset, col + offset) for offset in range(size - col))
+        flipped = ((y, x) for x, y in diagonal)
+        if diagonal != flipped:
+            yield [board[x][y] for x, y in flipped]
+        yield [board[x][y] for x, y in diagonal]
+
+    # left to right, bottom to top digonals
+    for col in range(size):
+        diagonal = ((col - n, n) for n in range(col + 1))
+        flipped = ((size - x - 1, size - y - 1) for x, y in diagonal)
+        yield [board[x][y] for x, y in diagonal]
+        yield [board[x][y] for x, y in flipped]
+
+
+def is_solution_valid(board):
+    check_functions = (get_rows, get_columns, get_diagonals)
+    for get_line_from_board in check_functions:
+        for line in get_line_from_board(board):
+            if line.count(True) &gt; 1:
+                return False
+    return True
+
+
+def possible_positions(max_size):
+    yield from itertools.product(range(max_size), repeat=max_size)
+
+
+def update_board(board, queen_columns):
+    board_size = len(board)
+    queen_placements = frozenset(zip(range(8), queen_columns))
+    for row in range(board_size):
+        for col in range(board_size):
+            board[row][col] = (row, col) in queen_placements
+
+
+def get_solutions(board):
+    for queen_columns in possible_positions(max_size=len(board)):
+        update_board(board, queen_columns)
+        if is_solution_valid(board):
+            yield board
+
+
+def create_board(size):
+    row = [False] * size
+    board = [row] * size
+    return board
+
+
+def print_board(board):
+    for row in board:
+        print(' '.join(str('Q' if col else '.').center(3) for col in row))
+
+
+print("Started!")
+for solution_board in get_solutions(create_board(BOARD_SIZE)):
+    print_board(solution_board)
+    print('-' * 80)
+</code></pre>
+<h3>תרגיל: Advent of Code 12</h3>
+<p>השתמשו בסביבת העבודה שלכם על מנת לפתור את <a href="https://adventofcode.com/2019/day/12">תרגיל מספר 12</a> ב־Advent of Code.<br>
+פתרו רק את חצי היום הראשון (רק את התרגיל שמוצג למשתמשים לא רשומים, או שטרם פתרו את התרגיל).</p>
+          <p><a href="https://forums.pythonic.guru/t/9-1/7738/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-1/7738/1</link>
+        <pubDate>Mon, 03 Aug 2020 20:05:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7738-1</guid>
+        <source url="https://forums.pythonic.guru/t/9-1/7738.rss">שבוע 9 – יום 1: סביבת עבודה</source>
+      </item>
+  </channel>
+</rss>

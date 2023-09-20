@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-6/7068 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:20:57 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Advent of Code 2019 🤯 (יום 6) - אתגר - פייתון בעברית ובחינם</title>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וצלחנו גם את ימים 2 , 3, 4 ו־5. בואו נתקדם :slight_smile: 
+אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן :slight_smile: 
+ואם לא הספקתם לפתור את הימים הקודמים &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7068.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7068.rss" rel="alternate nofollow" title="הזנת RSS של ‚Advent of Code 2019 🤯 (יום 6)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7068.html" property="og:url"/>
+<meta content="7068.html" name="twitter:url"/>
+<meta content="Advent of Code 2019 🤯 (יום 6)" property="og:title"/>
+<meta content="Advent of Code 2019 🤯 (יום 6)" name="twitter:title"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וצלחנו גם את ימים 2 , 3, 4 ו־5. בואו נתקדם 🙂  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום השישי של Advent of Code!" property="og:description"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וצלחנו גם את ימים 2 , 3, 4 ו־5. בואו נתקדם 🙂  אני מניח שהאתגר הזה ישאר פה לפחות ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום השישי של Advent of Code!" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="advent-of-code" property="og:article:tag"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="21 ❤"/>
+<meta content="2020-06-10T01:04:53+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7068.html">Advent of Code 2019 🤯 (יום 6)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/advent-of-code.html" rel="tag">advent-of-code</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Advent of Code 2019 🤯 (יום 6)" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="advent-of-code, אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-10T01:04:53Z" itemprop="datePublished">
+                     10 ביוני,‏ 2020,‏  1:04am
+                  </time>
+<meta content="2020-06-14T19:34:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שרשור <a href="../advent-of-code-2019-1/6478.html">Advent of Code יום 1</a> נחל הצלחה גדולה, וצלחנו גם את ימים <a href="../advent-of-code-2019-2/6486.html">2 </a>, <a href="../advent-of-code-2019-3/6644.html">3</a>, <a href="../advent-of-code-2019-4/6895.html">4</a> ו־<a href="../advent-of-code-2019-5/6987.html">5</a>. בואו נתקדם <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>אני מניח שהאתגר הזה ישאר פה <strong>לפחות</strong> ליומיים שלושה, אז קחו את הזמן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.</p>
+<p>אז קדימה, פרסמו פה את הפתרונות שלכם <a href="https://adventofcode.com/2019/day/6">ליום השישי</a> של Advent of Code!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/27588a78c17078787d7ac17e4ab71c4e29ccc187.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-10T07:18:25Z" itemprop="datePublished">
+                     10 ביוני,‏ 2020,‏  7:18am
+                  </time>
+<meta content="2020-06-10T07:18:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+1</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/27588a78c17078787d7ac17e4ab71c4e29ccc187" href="../../uploads/default/original/2X/2/27588a78c17078787d7ac17e4ab71c4e29ccc187.png" title="תמונה"><img alt="תמונה" data-base62-sha1="5C4jNCQWW6LU0SOumeBzEv8DbqD" data-small-upload="../../uploads/default/optimized/2X/2/27588a78c17078787d7ac17e4ab71c4e29ccc187_2_10x10.png" height="376" src="../../uploads/default/original/2X/2/27588a78c17078787d7ac17e4ab71c4e29ccc187.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">718×392 11.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+<details>
+<summary>
+2</summary>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/6de8a4bbebfd95192d1449b7edc5395978087c16" href="../../uploads/default/original/2X/6/6de8a4bbebfd95192d1449b7edc5395978087c16.png" title="תמונה"><img alt="תמונה" data-base62-sha1="fGitNFoHMqSxPMORmSdk6Cu6eH4" data-small-upload="../../uploads/default/optimized/2X/6/6de8a4bbebfd95192d1449b7edc5395978087c16_2_10x10.png" height="214" src="../../uploads/default/original/2X/6/6de8a4bbebfd95192d1449b7edc5395978087c16.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">940×292 18.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-10T07:21:21Z" itemprop="datePublished">
+                     10 ביוני,‏ 2020,‏  7:21am
+                  </time>
+<meta content="2020-06-10T07:21:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מכאן ההשראה לעץ פילוגנטי? <img alt=":palm_tree:" class="emoji" src="../../images/emoji/twitter/palm_treec164.png?v=9" title=":palm_tree:"/><br/>
+<img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/> <img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/></p>
+<details>
+<summary>
+חלק 1 ו-2</summary>
+<pre><code class>#day 6
+
+def get_puzzle_input(puzzle):
+    orbit_map = {}
+    with open(puzzle, "r") as orbits:
+        for orbit in orbits.readlines():
+            center, around = orbit.replace("\n","").split(")")
+            orbit_map[around] = center
+    return orbit_map
+
+
+def direct_indirect_orbits(puzzle):
+    orbit_map = get_puzzle_input(puzzle)
+    indirect = 0
+    for orb in orbit_map:
+        while orbit_map[orb] in orbit_map:
+            indirect += 1
+            orb = orbit_map[orb]
+    return indirect + len(orbit_map)
+
+
+def me_and_san(puzzle):
+    path_create = set()
+    orbit_map = get_puzzle_input(puzzle)
+    counter = 0
+    for orb in ["YOU", "SAN"]:
+        while orbit_map[orb] in orbit_map:
+            if orbit_map[orb] in path_create:
+                path_create.remove(orbit_map[orb])
+            else:
+                path_create.add(orbit_map[orb])
+            orb = orbit_map[orb]
+    return len(path_create)
+
+        
+
+print(direct_indirect_orbits("resources//day6.txt"))  # part 1
+print(me_and_san("resources//day6.txt"))  # part 2
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-10T17:11:10Z" itemprop="datePublished">
+                     10 ביוני,‏ 2020,‏  5:11pm
+                  </time>
+<meta content="2020-06-10T17:11:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן <img alt=":slightly_smiling_face:" class="emoji" src="../../images/emoji/twitter/slightly_smiling_facec164.png?v=9" title=":slightly_smiling_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T21:59:20Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  9:59pm
+                  </time>
+<meta content="2020-06-14T07:27:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קצת בעיכוב, המחשב שלי בתקלה <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/></p>
+<details>
+<summary>
+Advent of Code, Day 6</summary>
+<pre><code class="lang-python"># Advent of Code, Day 6
+def get_inputs(path):
+   """Create a dictionary of planets and their center.
+   
+   Args:
+       path (str): The source file path.
+
+   Returns:
+       A dictionary of planets and their center as values.
+   
+   Raises:
+       FileNotFoundError: If the file path is invalid.
+   """
+   with open(path, 'r') as file:
+       orbits = file.read().splitlines()
+       orbits = map(lambda o: o.split(")"), orbits)
+       return {planet: center for center, planet in orbits}
+
+
+def count_orbits(path):
+   """Count the number of direct and indirect orbits.
+   
+   Args:
+       path (str): The source file path.
+
+   Returns:
+       The number of orbits.
+   
+   Raises:
+       FileNotFoundError: If the file path is invalid.
+   """
+   orbits = get_inputs(path)
+   count = 0
+   for planet in orbits:
+       while orbits.get(planet) != 'COM':
+           planet = orbits[planet]
+           count += 1
+   return count + len(orbits)
+
+
+def get_orbits(orbits, planet):
+   """Create a list of orbits from planet to COM.
+   
+   Args:
+       orbits (dict): The orbits map.
+       planet (str): The planet to start from.
+
+   Returns:
+       List of planets from planet to COM based on the orbits map.
+   """
+   if planet == "COM":
+       return ["COM"]
+   return [planet] + get_orbits(orbits, orbits[planet])
+
+
+def get_orbital_distance(path):
+   """Calculate the orbital distance between YOU and SAN.
+   
+   Args:
+       path (str): The source file path.
+
+   Returns:
+       The orbital distance between YOU and SAN.
+   
+   Raises:
+       FileNotFoundError: If the file path is invalid.
+   """
+   orbits = get_inputs(path)
+   count = 0
+   you_orbits = set(get_orbits(orbits, "YOU")[1:])
+   san_orbits = set(get_orbits(orbits, "SAN")[1:])
+   return len(you_orbits ^ san_orbits)
+           
+   
+
+print(count_orbits("input.txt"))
+print(get_orbital_distance("input.txt"))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:15:19Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:15pm
+                  </time>
+<meta content="2020-06-13T16:15:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+הלך לי הסופש</summary>
+<pre><code class>FILE_LOCATION = 'resources/input.txt'
+
+def get_info():
+    with open(FILE_LOCATION, 'r') as file:
+        orbits = file.read().split()
+    all_orbits = {}
+    for couple in orbits:
+        star, orbitstar = couple.split(')')
+        if star in all_orbits:
+            all_orbits[star].append(orbitstar)
+        else:
+            all_orbits[star] = [orbitstar]
+    return all_orbits
+
+
+def path(all_orbits, star, lvl=0):
+    orbitstars = all_orbits.get(star)
+    if orbitstars is None:
+        return 0
+    lvl += 1
+    if len(orbitstars) == 1:
+        return path(all_orbits, orbitstars[0], lvl) + lvl
+    else:
+        return path(all_orbits, orbitstars[0], lvl) + path(all_orbits, orbitstars[1], lvl) + lvl * 2
+
+
+def get_key(all_orbits, star):
+    for orbit, orbitstars  in all_orbits.items():
+        if star in orbitstars:
+            return orbit
+
+def find_split_points(all_orbits, position):
+    counter = 0
+    split_points = {}
+    while position != 'COM':
+        counter += 1
+        position = get_key(all_orbits, position)
+        if len(all_orbits.get(position)) &gt; 1:
+            split_points[position] = counter
+    return split_points
+
+def find_shortest_path(all_orbits, x, y):
+    point_x = find_split_points(all_orbits, get_key(all_orbits, x))
+    point_y = find_split_points(all_orbits, get_key(all_orbits, y))
+    shortest = len(all_orbits)
+
+    for key, value in point_y.items():
+        if key in point_x:
+            s = value + point_x.get(key)
+            if s &lt; shortest:
+                shortest = s
+    return shortest
+
+
+all_orbits = get_info()
+path(all_orbits, 'COM')
+find_shortest_path(all_orbits, 'YOU', 'SAN')
+</code></pre>
+</details>
+<p>לא עשיתי פיין טיונינג בשל מגבלות זמן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T05:12:07Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  5:12am
+                  </time>
+<meta content="2020-06-14T05:12:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מחר אסגור את האתגר <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:05:42Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:05pm
+                  </time>
+<meta content="2020-06-14T19:05:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+שני החלקים</summary>
+<pre><code class>def build_orbit_map(orbit_list):
+    orbit_map = {}
+    for orbit in orbit_list:
+        mass, obj = orbit.split(')')
+        if mass not in orbit_map:
+            orbit_map[mass] = [obj]
+        else:
+            orbit_map[mass].append(obj)
+    return orbit_map
+
+
+def get_distance(orbit_map, mass):
+    distance = 0
+    temp = orbit_map.copy()
+    if mass == 'COM':
+        return 0
+    for obj in orbit_map:
+        if mass in orbit_map[obj]:
+            temp.pop(obj)
+            distance += 1 + get_distance(temp, obj)
+    return distance
+
+
+def count_orbits(orbit_map):
+    count = 0
+    orbits = [mass for orbits in orbit_map.values() for mass in orbits]
+    for mass in orbits:
+        count += get_distance(orbit_map, mass)
+    return count
+
+
+def get_orbit_path(orbit_map, mass, path=None):
+    if path is None:
+        path = set()
+    for obj in orbit_map:
+        if mass in orbit_map[obj]:
+            path.add(obj)
+            path.update(get_orbit_path(orbit_map, obj, path))
+    return path
+
+
+def count_transfers(orbit_map, origin, destination):
+    return len(get_orbit_path(orbit_map, origin) ^ get_orbit_path(orbit_map, destination))
+
+
+with open('Day 6.txt', 'r') as file_handler:
+    challenge_input = file_handler.read()
+
+orbit_list = challenge_input.split()
+orbit_map = build_orbit_map(orbit_list)
+
+print(count_orbits(orbit_map))
+print(count_transfers(orbit_map, 'YOU', 'SAN'))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:17:35Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:17pm
+                  </time>
+<meta content="2020-06-14T19:17:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+הפתרון שלי</summary>
+<pre><code class="lang-python">import functools
+from collections import defaultdict
+
+
+def get_input():
+    with open('input.txt', 'r') as challenge_input:
+        return map(str.strip, challenge_input.readlines())
+
+
+def parse_input(inputs):
+    planets = defaultdict(list)
+    for line in inputs:
+        planet, _, orbiter = line.partition(')')
+        planets[orbiter].append(planet)
+    return planets
+
+
+def map_flatter(starmap):
+    @functools.lru_cache(maxsize=None)
+    def flat_map(start):
+        if start not in starmap:
+            return []
+        stars = [s for star in starmap[start] for s in flat_map(star)]
+        return starmap[start] + stars
+    return {star: flat_map(star) for star in starmap}
+
+
+# Part 1
+data = parse_input(get_input())
+flat_orbiters = map_flatter(data)
+print(sum(map(len, flat_orbiters.values())))
+
+# Part 2
+print(len(set(flat_orbiters['YOU']) ^ set(flat_orbiters['SAN'])))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:19:05Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:19pm
+                  </time>
+<meta content="2020-06-14T19:19:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="9" data-topic="7068" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p><code>@functools.lru_cache(maxsize=None)</code></p>
+</blockquote>
+</aside>
+<p>?? מה זה הדבר הזה … ??</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:23:15Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:23pm
+                  </time>
+<meta content="2020-06-14T19:23:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>השטרודל הזה נקרא decorator.<br/>
+תכל’ס לא חייבים אותו שם כדי שזה יעבוד.<br/>
+ספציפית השורה הזו גורמת לזה שפייתון יבנה מאחורי הקלעים מילון, שבו הוא זוכר איזה פרמטרים הועברו ל־<code>flat_map</code> (אלו המפתחות של המילון) ומה הוחזר כל פרמטר שהועבר (אלו ה־values של המילון).<br/>
+פעם הבאה כש־flat_map נקראת עם פרמטר שכבר קיים כמפתח במילון, במקום להריץ את הפונקציה מחדש הוא פשוט יחזיר את מה ששמור לו ב־value של אותו key.<br/>
+הקונספט עצמו נקרא <a href="https://en.wikipedia.org/wiki/Memoization#:~:text=In%20computing%2C%20memoization%20or%20memoisation,the%20same%20inputs%20occur%20again.">memoization</a>, המימוש הספציפי נקרא <a href="https://www.interviewcake.com/concept/java/lru-cache">lru cache</a>. זה גורם לדברים לזוז יותר מהר <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:33:13Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:33pm
+                  </time>
+<meta content="2020-06-14T19:33:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שמתי לב עכשיו שיש תגית advent-of-code אבל לא כל הפוסטים נמצאים בה, וחבל.<br/>
+מודה שלא ממש הבנתי אם להוסיף תגיות לפוסטים קיימים זה משהו שאני יכול לעשות או לא, אז אגלגל את זה הלאה. <img alt=":upside_down_face:" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title=":upside_down_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T19:35:58Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  7:35pm
+                  </time>
+<meta content="2020-06-14T19:35:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה, טופל <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:24:27Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:24pm
+                  </time>
+<meta content="2020-06-14T20:24:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אנחנו נלמד את הנושאים האלה, של הדקורייטורס והממורייז ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:25:26Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:25pm
+                  </time>
+<meta content="2020-06-14T20:25:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לפי הסילבוס בשבוע הבא <img alt=":pray:" class="emoji" src="../../images/emoji/twitter/prayc164.png?v=9" title=":pray:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:39:44Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:39pm
+                  </time>
+<meta content="2020-06-14T20:39:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="9" data-topic="7068" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p><code> planet, _, orbiter = line.partition(')')</code></p>
+</blockquote>
+</aside>
+<p>יש היתרון מסויים בשימוש ב str.partition ע ל str.split ?<br/>
+כי כאילו במקרה הזה אתה צריך ליצור את המשתנה הריק _</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:40:09Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:40pm
+                  </time>
+<meta content="2020-06-14T20:40:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תמיד מחזיר 3 חלקים, גם אם מצא/לא מצא/מצא יותר מ־1</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:40:53Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:40pm
+                  </time>
+<meta content="2020-06-14T20:40:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בגדול אם נתון לנו שיש שלשה חלקים אז אפשר להניח שימוש ב split  בגדול נכון ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-14T20:41:38Z" itemprop="datePublished">
+                     14 ביוני,‏ 2020,‏  8:41pm
+                  </time>
+<meta content="2020-06-14T20:41:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":man_shrugging:" class="emoji only-emoji" src="../../images/emoji/twitter/man_shruggingc164.png?v=9" title=":man_shrugging:"/><br/>
+החיים האמיתיים יותר קשוחים מתרגילים שאנשים מנקים עבורם את הקלט, אני בכ"מ תמיד לוקח משנה זהירות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7068.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-16T15:11:27Z" itemprop="datePublished">
+                     16 ביוני,‏ 2020,‏  3:11pm
+                  </time>
+<meta content="2020-06-16T15:11:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אחד הכיפיים!</p>
+<details>
+<summary>
+חלקים 1 ו- 2</summary>
+<pre><code class>def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        return puzzle_input.readlines()
+
+
+def get_son_and_father(relationship):
+    return relationship.split(')')[1].strip(), relationship.split(')')[0].strip()
+
+
+def insert_into_relationships(relationships, father, son):
+    if father not in relationships:
+        relationships[father] =  {'Father': None, 'Sons': [son], 'Depth': 0}
+    else:
+        relationships[father]['Sons'].append(son)
+
+    if son not in relationships:
+        relationships[son] =  {'Father': father, 'Sons': [], 'Depth': 0}
+    else:
+        relationships[son]['Father'] = father
+
+    return relationships
+
+
+def get_relationships(puzzle_input):
+    relationships = {}
+    for relationship in puzzle_input:
+        son, father = get_son_and_father(relationship)
+        relationships = insert_into_relationships(relationships, father, son)
+    return relationships
+
+
+def traverse(relationships, root, depth):
+    count = 0
+    if not root:
+        return
+
+    sons = relationships[root]['Sons']
+    for son in sons:
+        relationships[son]['Depth'] = depth + 1
+        traverse(relationships, son, depth + 1)
+
+    return relationships
+
+
+def get_path_to_root(relationships, x):
+    obj = x
+    path = set()
+    while obj != 'COM':
+        obj = relationships[obj]['Father']
+        path.add(obj)
+    return path
+
+
+def part_one(traversal_result):
+    res = 0
+    for item in traversal_result:
+        res += traversal_result[item]['Depth']
+    return res
+
+
+def part_two(relationships, first, second):
+    path_from_you_to_root = get_path_to_root(relationships, first)
+    path_from_san_to_root = get_path_to_root(relationships, second)
+    part_two_result = len(path_from_you_to_root ^ path_from_san_to_root)
+    return part_two_result
+
+
+def main():
+    puzzle_input = get_input('input.txt')
+    relationships = get_relationships(puzzle_input)
+    traversal_result = traverse(relationships, 'COM', 0)
+    part_one_result = part_one(traversal_result)
+    print(f'part_one_result: {part_one_result}')
+    part_two_result = part_two(relationships, 'YOU', 'SAN')
+    print(f'part_two_result: {part_two_result}')
+
+
+main()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-6/7068 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:05 GMT -->
+</html>

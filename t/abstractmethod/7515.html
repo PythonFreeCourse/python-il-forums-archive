@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/abstractmethod/7515 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:54 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>כיוונון - מתי משתמשים ב @abstractmethod - שבוע 8 - פייתון בעברית ובחינם</title>
+<meta content="קצת מבולבלת… 
+בדוגמא במחברת 2 של Animal השתמשנו בזה גם מעל ה init 
+אבל בדוגמא של השחמט במחלקת Piece זה לא נמצא מעל האיניט 
+בשני המקרים מחלקת העל היא מחלקה מופשטת ובשני המקרים מחלקות הבת לא צריכות להוסיף כלום לinit. 
+ניסי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7515.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7515.rss" rel="alternate nofollow" title="הזנת RSS של ‚כיוונון - מתי משתמשים ב @abstractmethod’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7515.html" property="og:url"/>
+<meta content="7515.html" name="twitter:url"/>
+<meta content="כיוונון - מתי משתמשים ב @abstractmethod" property="og:title"/>
+<meta content="כיוונון - מתי משתמשים ב @abstractmethod" name="twitter:title"/>
+<meta content="קצת מבולבלת…  בדוגמא במחברת 2 של Animal השתמשנו בזה גם מעל ה init  אבל בדוגמא של השחמט במחלקת Piece זה לא נמצא מעל האיניט  בשני המקרים מחלקת העל היא מחלקה מופשטת ובשני המקרים מחלקות הבת לא צריכות להוסיף כלום לinit.  ניסיתי להבין מהתיעוד אבל לא לגמרי הבנתי מה החוקיות." property="og:description"/>
+<meta content="קצת מבולבלת…  בדוגמא במחברת 2 של Animal השתמשנו בזה גם מעל ה init  אבל בדוגמא של השחמט במחלקת Piece זה לא נמצא מעל האיניט  בשני המקרים מחלקת העל היא מחלקה מופשטת ובשני המקרים מחלקות הבת לא צריכות להוסיף כלום לinit.  ניסיתי להבין מהתיעוד אבל לא לגמרי הבנתי מה החוקיות." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 8" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="ירושה" property="og:article:tag"/>
+<meta content="abstract-method" property="og:article:tag"/>
+<meta content="מחברת-2-שבוע-8" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="15 ❤"/>
+<meta content="2020-07-10T12:36:33+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"כיוונון - מתי משתמשים ב @abstractmethod","mainEntity":{"@type":"Question","name":"כיוונון - מתי משתמשים ב @abstractmethod","text":"קצת מבולבלת…\n\nבדוגמא במחברת 2 של Animal השתמשנו בזה גם מעל ה init\n\nאבל בדוגמא של השחמט במחלקת Piece זה לא נמצא מעל האיניט\n\nבשני המקרים מחלקת העל היא מחלקה מופשטת ובשני המקרים מחלקות הבת לא צריכות להוסיף כלום לinit.\n\nניסיתי להבין מהתיעוד אבל לא לגמרי הבנתי מה החוקיות.","upvoteCount":0,"answerCount":1,"dateCreated":"2020-07-10T12:36:33.521Z","author":{"@type":"Person","name":""},"acceptedAnswer":{"@type":"Answer","text":"אני אתן לך הסבר: עבור שתי מחלקות A ו B\n\nלהלן דוגמא למחלקות האלה כאשר B יורשת את A אולם A היא לא אבסטרקטית:\n\nclass A:\n\ndef __init__(self, name):\n\nself.name = name\n\nclass B(A):\n\npass\n\nb = B(&#39;Aviad&#39;)\n\nprint(b.name)\n\nפלט:\n\nAviad\n\nאפשר לראות כי אין לנו פה את העניין של הדקורייטור ולכן המחלקה B&hellip;","upvoteCount":7,"dateCreated":"2020-07-10T15:57:17.692Z","url":"https://forums.pythonic.guru/t/abstractmethod/7515/18","author":{"@type":"Person","name":"aviadamar"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7515.html">כיוונון - מתי משתמשים ב @abstractmethod</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-8/18.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 8</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%99%d7%a8%d7%95%d7%a9%d7%94.html" rel="tag">ירושה</a>, 
+            <a class="discourse-tag" href="../../tag/abstract-method.html" rel="tag">abstract-method</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%97%d7%91%d7%a8%d7%aa-2-%d7%a9%d7%91%d7%95%d7%a2-8.html" rel="tag">מחברת-2-שבוע-8</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="כיוונון - מתי משתמשים ב @abstractmethod" itemprop="headline"/>
+<meta content="שבוע 8" itemprop="articleSection"/>
+<meta content="ירושה, abstract-method, מחברת-2-שבוע-8" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T12:36:33Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏ 12:36pm
+                  </time>
+<meta content="2021-12-26T01:51:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>קצת מבולבלת…<br/>
+בדוגמא במחברת 2 של Animal השתמשנו בזה גם מעל ה init<br/>
+אבל בדוגמא של השחמט במחלקת Piece זה לא נמצא מעל האיניט<br/>
+בשני המקרים מחלקת העל היא מחלקה מופשטת ובשני המקרים מחלקות הבת לא צריכות להוסיף כלום לinit.<br/>
+ניסיתי להבין מהתיעוד אבל לא לגמרי הבנתי מה החוקיות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T13:00:40Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  1:00pm
+                  </time>
+<meta content="2020-07-10T13:00:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לפי מה שאני הבנתי, משתמשים ב-<code>@abstractmethod</code> רק בפעולות במחלקת-העל שאנחנו רוצים שמחלקות הבת יהיו <strong>חייבות</strong> לממש בתוכן.</p>
+<p>לפי מחברת 2:</p>
+<blockquote>
+<ul>
+<li>תתי־המחלקות שיורשות מהמחלקה המופשטת, חייבות לממש את כל הפעולות שמוגדרות במחלקת־העל כמופשטות.</li>
+</ul>
+</blockquote>
+<p>שימי לב שחלק מהמחלקות שמייצגות כלים בדוגמת השח-מט יורשות ממחלקת Piece ו<strong>לא מממשות</strong> פונקציית <strong>init</strong> בתוכן (למשל מחלקות King, Queen, Rook, Bishop). לעומתן, במחלקת Pawn נדרש להוסיף תכונה שמגדירה מהו “צעד קדימה”, ולכן הפונקציה <strong>init</strong> ממומשת בתוכה ונוספת לה התכונה self.forward.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T13:06:34Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  1:06pm
+                  </time>
+<meta content="2020-07-10T15:05:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>משתמשים ב <span class="mention">@abstractmethod</span> כאשר את רוצה לומר:<br/>
+בsub classes שיווצרו מהמחלקה הזו - הפונקציות שיהיו מתחת לדקורייטור זה יהיו חייבות להיות מבוצעות.</p>
+<p>כלומר אם שמת את זה מעל ל <strong>str</strong> משמע בכל תתי המחלקות יהיה חייב ! להיות מימוש (כתוב) של הפונקציה  <strong>str</strong><br/>
+כלומר התת מחלקה תכיל בהכרח</p>
+<pre><code class>def __str__(self):
+    ...
+</code></pre>
+<p>ברגע שלא שמים את זה, באים לומר שזה בסדר מבחינתך שהתת מחלקה תירש את הפונקציה מהמחלקה הסופר כמו שהיא, ואת לא מחייבת אותה לבצע מימוש נוסף. בתוך התת מחלקה.</p>
+<p>כך שאם לא שמו ב <strong>init</strong> - משמע אפשר להשתמש ב__init__ שמקבלים מהירושה ללא צורך לממש אותו בתת מחלקה עצמה. כלומר היא עומדת בפני עצמה … ואפשר ליצור אובייקטים אשר את הפעולה הזו יורשים מהמחלקה האם.</p>
+<p><strong>לסיכום: כל פונקציה ש “לא עומדת בפני עצמה” (אומר חייבת להיות ממומשת מהתת מחלקה) נעטר אותה  בדקורייטור הזה.</strong></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:00:51Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:00pm
+                  </time>
+<meta content="2020-07-10T15:00:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז למה:</p>
+<ol>
+<li>שוב, בדוגמא של הAnimal כן מימשו את init? זה בדיוק אותה סיטואציה</li>
+<li>מחלקות בת לא היו מחויבות לממש את שאר המתודות של מחלקת העל שהיו מסומנות על ידי <span class="mention">@abstractmethod</span> ?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:11:30Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:11pm
+                  </time>
+<meta content="2020-07-10T15:11:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנוגע ל:</p>
+<ul>
+<li>1: זה שם לטובת ההסברה. כדי להראות שאם יש את <span class="mention">@abstractmethod</span> על ה <strong>init</strong> אז בהכרח הוא יופיע גם בכל התת מחלקות.</li>
+<li>2: לא. את יכולה למחוק את הדקורייטור ואת כל ה init מכל אחת מהתת מחלקות ולראות שזה עובד <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:21:52Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:21pm
+                  </time>
+<meta content="2020-07-10T15:21:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למה? לגבי 2, יש דוגמא במחברת אפילו, מה קורה אם במחלקת אב יש מעל פעולה את ה <code>abstractmethod@</code> מחלקת הבת תהיה חייבת לכלול את כל הפעולות המסומנות, אחרת תתקבל שגיאה, זה ממש מופיע במחברת, המחלקה היורשת לא חייבת להשתמש בהן, היא חייבת לכלול אותן, -לכתוב אותן בתוכה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:29:16Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:29pm
+                  </time>
+<meta content="2020-07-10T15:29:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זו השגיאה שקיבלתי כאשר שמתי את המתודה בפעולת האתחול של מחלקת האם ולא במחלקת הבת:</p>
+<pre><code class>TypeError: Can't instantiate abstract class B with abstract methods __init__</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:29:36Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:29pm
+                  </time>
+<meta content="2020-07-10T15:29:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הבנת <span class_="mention">@zurikarat</span>  כמוני או לא הבנת את מה ש <span class_="mention">@aviadamar</span>  אמר?</p>
+<p>ההסבר שלך <span class_="mention">@aviadamar</span> ב1 מאוד מבהיר לי. אבל 2, בתשובה למה שאמרת, אז למה שמנו את זה אם זה עובד גם בלי?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:31:11Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:31pm
+                  </time>
+<meta content="2020-07-10T15:31:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתן דוגמא;<br/>
+מחלקת האם:</p>
+<pre><code class>from abc import ABC, abstractmethod
+
+
+class A(ABC):
+	@abstractmethod
+	def __init__(self, a):
+		self.a = a
+
+ומחלקת הבת (כאן היא ללא פעולת האתחול, תריצי ותראי):
+
+class B(A):
+	def func(self):
+		return 5</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:32:27Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:32pm
+                  </time>
+<meta content="2020-07-10T15:32:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה דוגמא … לא שמו את זה כי בהכרח צריך, שמו את זה כדי להראות שזה מחייב אותנו.<br/>
+הרי התרגלנו למצבים בהם יורשים ולא בהכרח משתמשים ב <strong>init</strong> אז רצו להראות בדוגמא הזו שגם אם אין צורך קיומי עדין אם משים את זה זה מחייב את השאר ליישם את הפונקציה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:32:40Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:32pm
+                  </time>
+<meta content="2020-07-10T15:32:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תתקבל השגיאה שציינתי למעלה,<br/>
+מכיוון שמחלקת הבת <em>חייבת</em> לכלול בתוכה את הפעולות שסומנו ע"י המתודה. חייבת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:35:38Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:35pm
+                  </time>
+<meta content="2020-07-10T15:35:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מרגישה שהכל קצת מבולגן.<br/>
+ממש אשמח אם סגל יתייחסו ויסבירו</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:39:34Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:39pm
+                  </time>
+<meta content="2020-07-10T15:39:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><a href="https://dev.to/mmphego/explain-python-classmethod-and-abstractmethod-like-i-am-five-3799" rel="nofollow noopener">אולי זה יעזור</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:41:53Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:41pm
+                  </time>
+<meta content="2020-07-10T15:41:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><a href="https://stackoverflow.com/questions/7196376/python-abstractmethod-decorator" rel="nofollow noopener">או זה</a></p>
+<p>יש מלא דברים באינטרנט <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> , אפשר לקרוא גם על התיעוד של המתודה, זה גם יעזור</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:49:54Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:49pm
+                  </time>
+<meta content="2020-07-10T15:49:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קראתי את התיעוד, לא מובן.<br/>
+מה שהבנתי מהלינק הראשון:<br/>
+זה משפיע רק על המתודה הספציפית שהוא מעליו ואם רוצים שזה יהיה ממומש במחלקה מסוימת צריך לממש אותו שם עם משהו בפנים.<br/>
+יש מצב שזה גם היה כתוב ככה במחברת ואז התבלבלתי עם כל שאר הדברים שקרו שם.<br/>
+מאיך שהדברים התגלגלו חשבתי שזה אומר שאם שמים מעל הinit אז גם צריך מעל שאר המתודות במחלקה ושכל מחלקה שיורשת צריכה לממש את כל מה שיש מעליו את זה.</p>
+<p>אוקי נראה לי שהבנתי תודה לשניכם <span class_="mention">@aviadamar</span> <span class_="mention">@zurikarat</span> <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-10T15:57:17Z" itemprop="datePublished">
+                     10 ביולי,‏ 2020,‏  3:57pm
+                  </time>
+<meta content="2020-07-10T21:28:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני אתן לך הסבר: עבור שתי מחלקות A ו B</p>
+<p>להלן דוגמא למחלקות האלה כאשר B יורשת את A אולם A היא לא אבסטרקטית:</p>
+<pre><code class>class A:
+    def __init__(self, name):
+        self.name = name
+
+class B(A):
+    pass
+
+b = B('Aviad')
+print(b.name)
+</code></pre>
+<p>פלט:</p>
+<pre><code class>Aviad
+</code></pre>
+<p>אפשר לראות כי אין לנו פה את העניין של הדקורייטור ולכן המחלקה B  יכולה לאתחל את עצמה באמצעות <strong>init</strong> של המחלקה האם A … אין אנו מחוייבים ליישים את <strong>init</strong> גם ב B.</p>
+<p>דוגמא 2:</p>
+<pre><code class>from abc import ABC, abstractmethod
+
+class A(ABC):
+    @abstractmethod
+    def __init__(self, name):
+        self.name = name
+    
+class B(A):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+    
+b = B(name='Aviad')
+print(b.name)
+</code></pre>
+<p>פלט:</p>
+<pre><code class>Aviad
+</code></pre>
+<p>במקרה הזה אנו רואים כי A היא מחלקה אבסטרקטית וB יורשת ממנה. כמעט כמו מקודם. אולם פה מוגדר במחלקה כי הפונקציה <strong>init</strong> היא פונקציה שלא עומדת בזכות עצמה ולכן תהיה מחוייבת להיות מיושמת במחלקות היורשות ממנה.  (באמצעות הדקורייטור <span class="mention">@abstractmethod</span>)</p>
+<p>וכמו שאנחנו רואים B אכן צריכה לממש את הפונקציה <strong>init</strong> בתוכה. אם היינו מנסים כמו קודם לעשות ללא ה <strong>init</strong> בתוך B הייתה חוזרת לנו שגיאה:</p>
+<pre><code class>TypeError: Can't instantiate abstract class B with abstract methods __init__
+</code></pre>
+<p>במקרה הזה כמובן שאין לזה יותר מדי היתרונות.<br/>
+להן דוגמא 3:</p>
+<pre><code class>from abc import ABC, abstractmethod
+
+class A(ABC):
+    @abstractmethod
+    def __init__(self, name):
+        self.name = name
+    
+class B(A):
+    def __init__(self, age, **kwargs):
+        super().__init__(**kwargs)
+        self.age = age
+
+b = B(32, name='Aviad')
+print(b.name)
+print(b.age)
+</code></pre>
+<p>פלט:</p>
+<pre><code class>Aviad
+32
+</code></pre>
+<p>גם במקרה הזה כמו בשני, A מחלקה אבסטרקטית, וB יורשת ממנה ומחוייבת ליישם את <strong>init</strong> בתוכה.<br/>
+אולם פה בגלל שיש לנו מימוש של <strong>init</strong> אנו יכולים גם להרחיב את כמות הארגומנטים שיש לנו ב B. במקרה זה הוספנו “גיל”.</p>
+<p>זה יהיה בדיוק כמו לממש את הדוגמא הראשונה בצורה הנ"ל:</p>
+<pre><code class>class A:
+    def __init__(self, name):
+        self.name = name
+
+class B(A):
+    def __init__(self, name, age):
+        super().__init__(name)
+        self.age = age
+        
+
+b = B('Aviad', 32)
+print(b.name)
+print(b.age)
+</code></pre>
+<p>פלט:</p>
+<pre><code class>Aviad
+32
+</code></pre>
+<p>ההבדל הוא שאנחנו לא משתמשים פה במחלקה אבסטרקטית,  כלומר מבחינתנו, אפשר יהיה להגדיר משתנה מהמחלקה A ישירות מהמחלקה:</p>
+<pre><code class>a = A('Aviad')
+print(a.name)
+</code></pre>
+<p>והדבר הזה כמובן יעבוד במקרה של מחלקה לא אבסטרקטית.<br/>
+ונקבל:</p>
+<pre><code class>Aviad
+</code></pre>
+<p>אם ננסה לעשות יצירה של מופע A על הדוגמא בה A היא מחלקה אבסטרקטית אנו נקבל שגיאה:</p>
+<pre><code class>a = A('Aviad')
+</code></pre>
+<p>שגיאה:</p>
+<pre><code class>TypeError: Can't instantiate abstract class A with abstract methods __init__
+</code></pre>
+<p>למה להשתמש באבסטרקטית ? זה במצבים ספציפית שיש לנו מופע על שאנחנו לא רוצים ליצור אותו אלא רק את תתי המחלקות שלו (למשל חיה: וסוגי חיות, פרח, וסוגי פרחים … וכו … הסבר נוסף יש במחברת)</p>
+<p>בכל מקרה (לדעתיהאישית*)  לזרוק את “אני אשמח שהסגל יסביר” נשמע לי קצת וותרני במיוחד אחרי שמנסים לעזור פה. אם לא היינו יודעים את התשובה לא היינו מנסים. אולם כמו כן, יש המון חומר באינטרנט ואת המחברות שאני מאמין שקריאה שלהם חוזרת אחרי שעוזרים פה בפורום עושה את העבודה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">chen1</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-11T10:37:49Z" itemprop="datePublished">
+                     11 ביולי,‏ 2020,‏ 10:37am
+                  </time>
+<meta content="2020-07-11T10:37:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי מה שאמרת על התגובה לגבי הסגל, קצת קשה להבין כשכל פעם מישהו אחר נותן הסבר על משהו שהוא לא בסדר התגובות, כלומר אחרי שהתחלת אז מישהו אחר התחיל להסביר וזה היה לי קצת לא מסונכרן.<br/>
+קשה לנהל ‘שיחה’ כשכל פעם לוקח לאנשים זמן לכתוב ואז התגובות לא מסודרות אז זה מבלבל.<br/>
+זה היה קצת overwhelming אז היה לי קשה לעקוב. בסוף הבנתי והודתי וההסבר שלך בסוף עשה לי עוד יותר סדר.</p>
+<p>אבל אני גם רק אומר שלשפוט מישהו שלא מבין כי קשה לו לעקוב זה קצת ביקורתי מדי, זה שאתה יודע לא בהכרח אומר שזה בא לאחרים באותה קלות. מכל הבלגן נהייתי קצת מתוסכלת וחשבתי שאם מישהו יעשה סדר ולא יענה לרצף של עצמו זה יהיה יותר מסודר זה הכל.<br/>
+בכל מקרה בסוף הכל היה מובן, תודה רבה על העזרה. מאוד מעריכה את ההשקעה בתגובה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7515.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-11T10:48:59Z" itemprop="datePublished">
+                     11 ביולי,‏ 2020,‏ 10:48am
+                  </time>
+<meta content="2020-07-11T10:48:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני חלילה לא שופט ואם זה הרושם שקיבלת, אז חשוב לי שתביני שזה לא המצב.<br/>
+אני שמח לעזור בדברים שאני מבין ואני עושה את זה בכיף זה עוזר גם לי.<br/>
+לא הייתי משקיע בתגובה כזו אם לא היה חשוב לי לעזור.<br/>
+גם לי יש דברים שממש לא עוברי אצלי בקלות ואני נעזר באחרים פה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>אני כן מאמין באנשים ואני חושב שאפשר לנסות להתמודד גם בלי הסגל בהרבה מקרים.<br/>
+אני אקח לתשומת ליבי את עניין הביקורתיות, משתדל בדרך כלל לא להישמע ככה במיוחד שאין לי כוונה כזו.<br/>
+שמח שהסדר לך החומר בסוף זו המטרה.<br/>
+<img alt=":heart:" class="emoji only-emoji" src="../../images/emoji/twitter/heartc164.png?v=9" title=":heart:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/abstractmethod/7515 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:44:55 GMT -->
+</html>

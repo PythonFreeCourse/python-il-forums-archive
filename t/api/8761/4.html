@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/api/8761/4 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:57:03 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>יצירת API למערכת - מס׳ 4 מאת Yam - הצעות לטיקטים - פייתון בעברית ובחינם</title>
+<meta content="תיאור כללי
+הAPI יאפשר לעשות אוטומציה לפעולות שכבר ניתן לעשות במערכת, או לקבל נתונים בפורמט JSON 
+מה ההצעה כוללת?
+
+חשיפת routes ספציפיים לבקשות GET,POST אולי בהמשך גם ל-PATCH,DELETE
+יצירת מספר מבני נתונים שניתן לגשת אליהם
+&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8761.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8761.rss" rel="alternate nofollow" title="הזנת RSS של ‚יצירת API למערכת’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="4.html" property="og:url"/>
+<meta content="4.html" name="twitter:url"/>
+<meta content="יצירת API למערכת" property="og:title"/>
+<meta content="יצירת API למערכת" name="twitter:title"/>
+<meta content="חשוב להעלות את זה שאתה מחכה לבדיקה, אני עובר לעומק על הטיקט ורואה שלא חסר כלום לפני שאני מוציא אותך לדרך.  זה נראה אחלה, לך על זה 🙂" property="og:description"/>
+<meta content="חשוב להעלות את זה שאתה מחכה לבדיקה, אני עובר לעומק על הטיקט ורואה שלא חסר כלום לפני שאני מוציא אותך לדרך.  זה נראה אחלה, לך על זה 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="הצעות לטיקטים" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="טיקט" property="og:article:tag"/>
+<meta content="2021-01-14T02:39:36+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"יצירת API למערכת","mainEntity":{"@type":"Question","name":"יצירת API למערכת","text":"תיאור כללי\n\nהAPI יאפשר לעשות אוטומציה לפעולות שכבר ניתן לעשות במערכת, או לקבל נתונים בפורמט JSON\n\nמה ההצעה כוללת?\n\nחשיפת routes ספציפיים לבקשות GET,POST אולי בהמשך גם ל-PATCH,DELETE\n\nיצירת מספר מבני נתונים שניתן לגשת אליהם\n\nהרשמה ושימוש בשירות רק עם token\n\nיצירת מגבלה על כמות הבקשות שניתן לעשות כדי שלא &hellip;","upvoteCount":8,"answerCount":0,"dateCreated":"2021-01-12T17:22:04.462Z","author":{"@type":"Person","name":"עמר בנטל"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8761.html">יצירת API למערכת</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/ticket-ideas/29.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הצעות לטיקטים</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%98%d7%99%d7%a7%d7%98.html" rel="tag">טיקט</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="יצירת API למערכת" itemprop="headline"/>
+<meta content="הצעות לטיקטים" itemprop="articleSection"/>
+<meta content="טיקט" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ombental</span>
+</span>
+<link href="../8761.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T17:22:04Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  5:22pm
+                  </time>
+<meta content="2021-01-12T17:22:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h3>תיאור כללי</h3>
+<p>הAPI יאפשר לעשות אוטומציה לפעולות שכבר ניתן לעשות במערכת, או לקבל נתונים בפורמט JSON</p>
+<h3>מה ההצעה כוללת?</h3>
+<ol>
+<li>חשיפת routes ספציפיים לבקשות GET,POST אולי בהמשך גם ל-PATCH,DELETE</li>
+<li>יצירת מספר מבני נתונים שניתן לגשת אליהם</li>
+<li>הרשמה ושימוש בשירות רק עם token</li>
+<li>יצירת מגבלה על כמות הבקשות שניתן לעשות כדי שלא יוצף</li>
+<li>פרסום דוקומנטציה והסבר על השימוש</li>
+</ol>
+<p>בשלב הראשוני הscope של הtoken יהיה אישי - כלומר אפשר יהיה לבצע שינויים ולמשוך נתונים רק מהלוח שנה שלי. אני חושב שהרחבת הscope של הtoken זה כבר בסדר גודל עבודה של עוד טיקט <img alt=":stuck_out_tongue:" class="emoji" src="../../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<ol>
+<li>הוספת route לדוקומנטציה, הגשת html</li>
+<li>יצירת כפתור שמג’נרט token ומציג אותו רק אחרי הלחיצה על הכפתור (מחבר בין היוזר לtoken), אחרי שקיים טוקן הכפתור הופך להיות כפתור שמאפשר להציג את הtoken ולא ליצר. (אולי בפיתוח לעשות עוד כפתור שמאפשר יצירת רפרוש לערך הtoken)</li>
+<li>חשיפה של routes לapi</li>
+<li>כתיבת פונקציות לroutes (בשאיפה שהpost זה לחבר פשוט לפונקציות קיימות)</li>
+<li>מנגנון וידוא token</li>
+<li>מנגנון הגבלת שימוש</li>
+</ol>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>הוספת טבלה עם כל הtoken שאושרו, אולי לאסוף מידע לפי טוקן על הבקשות שהוגשו וכו’<br/>
+בשלב הראשון - חיבור בין המשתמש לטוקן</p>
+<h3>האם יהיה שינוי ב־frontend? אם כן, איפה?</h3>
+<p>הוספת כפתור / אפשרות “מפתחים” בעמוד הפרופיל שמוביל אל route שמגיש את הדוקומנטציה שבתחתית שלה אפשרות “להרשם” לשירות ולקבל token.</p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<ol>
+<li>הרשמה למערכת עובדת</li>
+<li>זיהוי טוקן שאושר עובד</li>
+<li>בקשות הPOST לroutes החשופים מבצעות את הפעולה המשויכת (למשל - יצירת אירוע)</li>
+<li>בקשות הGET לroutes החשופים מחזירות את הנתונים הנכונים</li>
+<li>נמנעת הצפת בקשות לAPI</li>
+<li>עמוד הדוקומנטציה וההסבר מוגש ומציג את כל התוכן הרצוי</li>
+</ol>
+<p>נ.ב. אעדכן ואבחר את הנתונים שייחשפו והפעולות שניתן יהיה לעשות בהתאם להצעות שיאושרו, ובמידה והטיקט יאושר אפרט בדיוק.<br/>
+כרגע המטרה היא בסיסית: 1) יצירת אירוע בלוח שנה (עם אפשרות למשתנים שאפשר בפרונט)<br/>
+2) שליפת אירוע מהלוח שנה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8761.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T19:01:21Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  7:01pm
+                  </time>
+<meta content="2021-01-12T19:01:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה רעיון מצוין!<br/>
+שים לב שממילא רוב הפונקציונליות תבנה במשהו תואם API שכזה, ככה שרוב העבודה ככה"נ תהיה על token ויצירת גישה דרכו</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ombental</span>
+</span>
+<link href="../8761.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-13T19:44:33Z" itemprop="datePublished">
+                     13 בינואר,‏ 2021,‏  7:44pm
+                  </time>
+<meta content="2021-01-13T19:44:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מחכה לבדיקה?<br/>
+או לעלות אישיו ישר?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8761.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-14T02:39:36Z" itemprop="datePublished">
+                     14 בינואר,‏ 2021,‏  2:39am
+                  </time>
+<meta content="2021-01-14T02:39:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חשוב להעלות את זה שאתה מחכה לבדיקה, אני עובר לעומק על הטיקט ורואה שלא חסר כלום לפני שאני מוציא אותך לדרך.<br/>
+זה נראה אחלה, לך על זה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/8748/7.html" itemprop="url">טיקטים לפי קטגוריות</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/api/8761/4 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:57:07 GMT -->
+</html>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>From import מתי משתמשים</title>
+    <link>https://forums.pythonic.guru/t/from-import/6089</link>
+    <description>במחברת אחת כתוב שלרוב נעדיף לייבא את כל המודול.
+
+באחד התרגילים היה לי צורך להשתמש בייבוא מהצורה from import אחרת זה לא עובד,
+אחרי שפירקתי את המודול לסך הפעולות שלו, נראה שהוא מכיל פעולות אשר זהות לשם המודול עצמו.
+
+זה מקרה נפוץ, או שיש בידי טעות?</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 11 May 2020 15:48:23 +0000</lastBuildDate>
+    <category>שבוע 5</category>
+    <atom:link href="https://forums.pythonic.guru/t/from-import/6089.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>הכוונה שלי הייתה:</p>
+<p>נניח שיש לנו במודול abc פעולה בשם x<br>
+הכוונה היא שבמקום לכתוב רק import abc<br>
+כדי לבצע פעולה x המשוייכת למודול abc, יש מקרים שבהם פייתון לא מכירה את הפעולה<br>
+אלא ישנו “מודול ביניים” שחייבים לייבא מתוך המודול העיקרי כדי להשתמש ב x.</p>
+<p>לדוגמה במקרה הזה הפעולה תרוץ:</p>
+<pre><code class="lang-python">from abc import ab (מודול ביניים ab)
+y = ab.x()
+</code></pre>
+<p>ובמקרה הזה היא לא תרוץ ונקבל שגיאה:</p>
+<pre><code class="lang-python">import abc
+y = abc.x()
+</code></pre>
+<pre><code class="lang-auto">NameError: name 'x' is not defined
+</code></pre>
+<p>ים נתן את התשובה שחיפשתי, זה פשוט עובד לפי ההגדרה של פייתון וזה לגיטימי לחלוטין, יש לבדוק דוקומנטציה כדי להבין אם הפעולה נגישה ישירות או יש צורך במודול ביניים.</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/6</link>
+        <pubDate>Mon, 11 May 2020 15:48:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-6</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>דייט (date) יכולה לעבוד רק על משתנה שנוצר כdatetime.<br>
+ולכן אם אתה מייבא אותה בנפרד אתה בכל מקרה צריך לייבא גם את המודול datetime<br>
+עצמו כדי להכיל אותו על משתנה שיצרת כdatetime והיא לא תעבוד אם לא.</p>
+<p>אם הבנתי אותך נכון.</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/5</link>
+        <pubDate>Mon, 11 May 2020 15:13:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-5</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לי איסור שליחה כי זה קשור לתרגילי הגשה,<br>
+אבל מדובר על ייבוא של date.<br>
+מהמודול datetime</p>
+<p>אחרת הפייתון כועס מאוד</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/4</link>
+        <pubDate>Mon, 11 May 2020 14:35:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-4</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>חפש בתיעוד דוגמאות לאיך משתמשים  במודול. לרוב זה מופיע בתחתית העמוד שמדבר על הספרייה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+אם הדוגמה שם כוללת יבוא בעזרת from – מה טוב, זה אומר שגם אתה רוצה להשתמש בזה כך. אם לא – תשתמש בצורה שכתובה שם.</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/3</link>
+        <pubDate>Mon, 11 May 2020 14:35:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-3</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p>אתה יכול לשלוח מה עשית. זה נשמע כאילו יש טעות…<br>
+הרי בשביל להשתמש בשדה לא צריך לייבא אותו ספציפי מהספרייה.</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/2</link>
+        <pubDate>Mon, 11 May 2020 14:28:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-2</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+      <item>
+        <title>From import מתי משתמשים</title>
+        <dc:creator><![CDATA[arieveksler]]></dc:creator>
+        <description><![CDATA[
+            <p>במחברת אחת כתוב שלרוב נעדיף לייבא את כל המודול.</p>
+<p>באחד התרגילים היה לי צורך להשתמש בייבוא מהצורה from import אחרת זה לא עובד,<br>
+אחרי שפירקתי את המודול לסך הפעולות שלו, נראה שהוא מכיל פעולות אשר זהות לשם המודול עצמו.</p>
+<p>זה מקרה נפוץ, או שיש בידי טעות?</p>
+          <p><a href="https://forums.pythonic.guru/t/from-import/6089/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/from-import/6089/1</link>
+        <pubDate>Mon, 11 May 2020 14:21:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6089-1</guid>
+        <source url="https://forums.pythonic.guru/t/from-import/6089.rss">From import מתי משתמשים</source>
+      </item>
+  </channel>
+</rss>

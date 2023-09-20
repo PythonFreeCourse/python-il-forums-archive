@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/6545?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:12:33 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2 - שבוע 6 - פייתון בעברית ובחינם</title>
+<meta content="הפונקציה עובדת מעולה" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="65454658.html?page=2" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6545.rss" rel="alternate nofollow" title="הזנת RSS של ‚שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/c/c41b1eb945267cadfccc75a1ef1dfb32208dd494_2_1023x204.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/c/c41b1eb945267cadfccc75a1ef1dfb32208dd494_2_1023x204.png" property="og:image"/>
+<meta content="65454658.html?page=2" property="og:url"/>
+<meta content="65454658.html?page=2" name="twitter:url"/>
+<meta content="שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2" property="og:title"/>
+<meta content="שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2" name="twitter:title"/>
+<meta content="הי  אני בטוחה שהכוונה שלך טובה ובטח יש כאן משהו שאני מפספסת אבל התשובה שלך מתסכלת…  עדיין אני לא מבינה מה לא בסדר…" property="og:description"/>
+<meta content="הי  אני בטוחה שהכוונה שלך טובה ובטח יש כאן משהו שאני מפספסת אבל התשובה שלך מתסכלת…  עדיין אני לא מבינה מה לא בסדר…" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 6" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="פילטר-מותאם-אישית" property="og:article:tag"/>
+<meta content="הבודק-האוטומטי" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="3 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="17 ❤"/>
+<meta content="2020-05-26T16:25:39+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="6545.html" rel="prev"/>
+<link href="65459ba9.html?page=3" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6545.html">שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week6/15.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 6</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a4%d7%99%d7%9c%d7%98%d7%a8-%d7%9e%d7%95%d7%aa%d7%90%d7%9d-%d7%90%d7%99%d7%a9%d7%99%d7%aa.html" rel="tag">פילטר-מותאם-אישית</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html" rel="tag">הבודק-האוטומטי</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2" itemprop="headline"/>
+<meta content="שבוע 6" itemprop="articleSection"/>
+<meta content="פילטר-מותאם-אישית, הבודק-האוטומטי" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">vleora</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/0458c733d1020736f448b26195c605b53e5baef2.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:25:39Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:25pm
+                  </time>
+<meta content="2020-05-26T16:25:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הי<br/>
+אני בטוחה שהכוונה שלך טובה ובטח יש כאן משהו שאני מפספסת אבל התשובה שלך מתסכלת…  עדיין אני לא מבינה מה לא בסדר…<br/>
+<img alt="image" data-base62-sha1="Cs7cvAPsc9hD20KPkqpVeZGsNA" height="111" src="../../uploads/default/original/2X/0/0458c733d1020736f448b26195c605b53e5baef2.png" width="342"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_22" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:31:39Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:31pm
+                  </time>
+<meta content="2020-05-26T16:31:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם רשימה וסט הן אותו דבר? איך נראה ההבדל ביניהם ?<br/>
+אם זה גם לא עוזר תריצי את הפקודה</p>
+<p>type()</p>
+<p>על מה שהפונקציה שלך מחזירה, על התוצאות מהבודק האוטומטי ותסתכלי טוב בהגדרת התרגיל (מה שאורפז שלחה)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_23" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:38:01Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:38pm
+                  </time>
+<meta content="2020-05-26T16:38:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני גם מקבל כזו שגיאה אע"פ שהכל עובד וקראתי <a href="https://docs.python.org/3/library/functions.html#filter" rel="nofollow noopener">כאן</a><br/>
+אולם לא ידוע לי שחוזר NONE אצלי אז מה קורה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_24" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:42:51Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:42pm
+                  </time>
+<meta content="2020-05-26T16:42:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבעיה היא לא שחוזר NoneType, מה שנאמר שם זה שמנסים לקרוא ל-NoneType, כלומר שאיפשהו בקוד יש a() כלשהו שמתורגם כ-None() מכיוון ש-a==None. נסה לחשוב באיזה מקרים זה יכול לקרות (מדברים על זה איפשהו במחברת)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_25" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:45:16Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:45pm
+                  </time>
+<meta content="2020-05-26T16:45:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote" data-post="13" data-topic="6545">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/devorack/40/904_2.jpg" width="20"/>
+<a href="6545/13.html">שגיאת בודק אוטומטי, פילטר מותאם אישית מחברת 2</a> <a class="badge-wrapper bullet" href="../../c/week6.html"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 6.">שבוע 6</span></a>
+</div>
+<blockquote>
+    בדקת לפי התיעוד (או המחברת לצורך העיניין) מה קורה אם לא מגדירים פונקציה ל filter? מה קורה אצלך במצב הזה?
+  </blockquote>
+</aside>
+<p>שורות 6-8 בלינק ששלחת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_26" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">vleora</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T16:57:48Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  4:57pm
+                  </time>
+<meta content="2020-05-26T16:57:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אה… רשימה ולא סט… עכשיו הבנתי<br/>
+תודה רבה!!!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_27" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">reimaoz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:14:52Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:14pm
+                  </time>
+<meta content="2020-05-26T18:14:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני כל כך מיואש שאני שוקל להתייאש…</p>
+<p>אחרי קריאה חוזרת ונשנית בשרשור פה ובערך מלאנתלפים תיקונים, אני מקבל את זה<br/>
+AssertionError: פלט לא תקין כאשר מעבירים את None כפונקציה assert [1, 0, True, …, <span class="chcklst-box fa fa-square-o fa-fw"></span>, '', …] == [1, True, 'test']   At index 1 diff: 0 != True   Left contains 4 more items, first extra item: False   Use -v to get the full diff</p>
+<p>אבל בקוד התייחסתי למקרה של פונקציה מועברת כ NONE<br/>
+ובכל המקומות במחברת החלפתי את הפונקציה המובנית בגרסה שלי וקיבלתי את אותה תוצאה</p>
+<p>אשמח לאיזה טיפ או למכה הגונה על הראש, כל מה שיעזור לי להגיש את התרגיל תקין</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_28" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:22:57Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:22pm
+                  </time>
+<meta content="2020-05-26T18:22:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש מצב שתעלה את הצילום מסך של ההערה זה לא הכי קריא ככה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_29" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">reimaoz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:28:01Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:28pm
+                  </time>
+<meta content="2020-05-26T18:28:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מעלה בהמשכים, זה ארור ארוך…</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39" href="../../uploads/default/original/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39.png" title="assert1"><img alt="assert1" data-base62-sha1="nDhXThnYDHCkedf2GSVPldy5a89" data-small-upload="../../uploads/default/optimized/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39_2_10x10.png" height="48" src="../../uploads/default/optimized/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39_2_690x48.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39_2_690x48.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39_2_1035x72.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a5a2faeb614d036ceb3de39f7f73f57e87d9bc39_2_1380x96.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">assert1</span><span class="informations">1387×97 14.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/400e5afed8ba0e5706ee5d631c18eebd285a3ca7" href="../../uploads/default/original/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7.png" title="assert2"><img alt="assert2" data-base62-sha1="98Fjv19HUCjW7Df15VZ0VB0xQCb" data-small-upload="../../uploads/default/optimized/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7_2_10x10.png" height="40" src="../../uploads/default/optimized/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7_2_690x40.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7_2_690x40.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7_2_1035x60.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/4/400e5afed8ba0e5706ee5d631c18eebd285a3ca7_2_1380x80.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">assert2</span><span class="informations">1391×81 12.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/144213c138c00a0d90fc35b25e81c0111373866c" href="../../uploads/default/original/2X/1/144213c138c00a0d90fc35b25e81c0111373866c.png" title="assert3"><img alt="assert3" data-base62-sha1="2Td7nLEEIGDkZE7srRSlY50EouE" data-small-upload="../../uploads/default/optimized/2X/1/144213c138c00a0d90fc35b25e81c0111373866c_2_10x10.png" height="73" src="../../uploads/default/original/2X/1/144213c138c00a0d90fc35b25e81c0111373866c.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">assert3</span><span class="informations">707×75 6.78 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_30" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:33:51Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:33pm
+                  </time>
+<meta content="2020-05-26T18:33:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה שהפונקציה שלך לא פועלת כמו שהיא אמורה, ולמשל “מעבירה” את 0 כנכון על-אף שזה לא מה ש-filter עושה. בדוק מה filter עושה ומה הפונקציה שלך עושה על הרשימה [1, 0, True, <span class="chcklst-box fa fa-square-o fa-fw"></span>] למשל</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_31" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:35:40Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:35pm
+                  </time>
+<meta content="2020-05-26T18:35:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה שאורפז.<br/>
+וגם באופן כללי, הבודק מנסה להריץ על הפונקציה שלך מקרים מסויימים כדי לראות איפה זה נופל, לרוב זה מקרי קצה למיניהם.<br/>
+והוא מציג לך אותם 1, 0, <span class="chcklst-box fa fa-square-o fa-fw"></span> וכו … שאתה רואה את זה ישר תבדוק את הדברים שהוא ניסה להריץ ותראה שלרוב לא חוזר מה שמתבקש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_32" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">reimaoz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:40:12Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:40pm
+                  </time>
+<meta content="2020-05-26T18:40:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הכוונה היא להעביר לפונקציה שלי NONE כפונקציה ואת האיטרבל הזה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_33" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:43:08Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:43pm
+                  </time>
+<meta content="2020-05-26T18:43:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן. יש דוגמא במחברת על הטריק הזה של פילטר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_34" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">reimaoz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-26T18:54:19Z" itemprop="datePublished">
+                     26 במאי,‏ 2020,‏  6:54pm
+                  </time>
+<meta content="2020-05-26T18:54:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>טוב מסתבר שיש לי בעיות בהבנת הנקרא…תודה רבה על העזרה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_35" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gALz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T08:52:50Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏  8:52am
+                  </time>
+<meta content="2020-05-27T08:52:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עברתי על ההתכבות פה ועדיין מפספס משהו.<br/>
+התייחסתי לאפשרות שmyfilter יקבל NONE. פונקציונאלית זה גם עובד ומקבל את אותה תוצאה שפילטר מחזיר, אבל הבודק האוטומטי עדיין כועס. מישהו יכול לכוון אותי?<br/>
+צירפתי במוסתר את ההתייחסות שלי לNONE.</p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code class>for item in iterable:
+         if ourfunc is None:
+             if item:
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_36" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T09:51:41Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏  9:51am
+                  </time>
+<meta content="2020-05-27T09:51:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קראתי את התיעוד, ועדיין לא מבין איפה הבעיה.<br/>
+הפונקציה שלי מחזירה ערך מסוג generator לא מבין איפה יש לי ערך שהוא None.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_37" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T09:54:33Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏  9:54am
+                  </time>
+<meta content="2020-05-27T09:54:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש במחברת מספר דוגמאות על הפונקציה פילטר, בערך שליש מחברת מעל התרגיל הזה. ממליצה לרוץ על כולן ולבדוק שכולן עובדות, זה כנראה יעזור לך לאתר את מקור הבעיה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_38" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gALz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T10:33:26Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏ 10:33am
+                  </time>
+<meta content="2020-05-27T10:33:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הרצתי את כל הדוגמאות עם המימוש שלי, הכל עובר. עדיין מקבל שגיאה מהבודק <img alt=":confused:" class="emoji" src="../../images/emoji/twitter/confusedc164.png?v=9" title=":confused:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_39" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T10:35:25Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏ 10:35am
+                  </time>
+<meta content="2020-05-27T10:35:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה השגיאה שאתה מקבל?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_40" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gALz</span>
+</span>
+<link href="6545.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-27T11:52:14Z" itemprop="datePublished">
+                     27 במאי,‏ 2020,‏ 11:52am
+                  </time>
+<meta content="2020-05-27T11:52:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/29ac10eb32f1ae1385d7583d23afcc814bb5c438" href="../../uploads/default/original/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438.png" title="image"><img alt="image" data-base62-sha1="5WEe1rSAWB9KKRQ2KlGNG2VI5C0" data-small-upload="../../uploads/default/optimized/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438_2_10x10.png" height="102" src="../../uploads/default/optimized/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438_2_690x102.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438_2_690x102.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438_2_1035x153.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/29ac10eb32f1ae1385d7583d23afcc814bb5c438_2_1380x204.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1454×216 8.76 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="6545.html" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+<span itemprop="name"><b><a href="65459ba9.html?page=3" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/6545?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:12:47 GMT -->
+</html>

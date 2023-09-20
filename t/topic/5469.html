@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5469 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 06:01:36 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>רקורסיה - איך זה עובד? - פייתון בעברית ובחינם</title>
+<meta content="שלום לכולם, 
+השאלה מופנית לכל מי שיוכל לענות לי עליה, 
+פעם חשבתי שאני ממש מגניב, אי שם בסוף תרגיל 23 כאשר הצלחתי לחשב עצרת של מספר. 
+מסתבר שהאופן שבו חישבתי את התוצאה נקרא רקורסיה. 
+בשלב מאוחר יותר אי שם אחרי תרגיל 51 הב&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="5469.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5469.rss" rel="alternate nofollow" title="הזנת RSS של ‚רקורסיה - איך זה עובד?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="5469.html" property="og:url"/>
+<meta content="5469.html" name="twitter:url"/>
+<meta content="רקורסיה - איך זה עובד?" property="og:title"/>
+<meta content="רקורסיה - איך זה עובד?" name="twitter:title"/>
+<meta content="שלום לכולם,  השאלה מופנית לכל מי שיוכל לענות לי עליה,  פעם חשבתי שאני ממש מגניב, אי שם בסוף תרגיל 23 כאשר הצלחתי לחשב עצרת של מספר.  מסתבר שהאופן שבו חישבתי את התוצאה נקרא רקורסיה.  בשלב מאוחר יותר אי שם אחרי תרגיל 51 הבחנתי לב באשכול חדש עם שם חביב.  שמו של האשכול בישראל - אתגר.  ברוב חטאי הייתי בדרך לעבודה ולא הייתה לי זמינות לסביבת עבודה, אז פשוט התחלתי לקרוא את התשובות.  ואז זה קרה דוקטור,  נגלה לעיני דבר נפלא, האופן שבו כתובות הפונקציות נעשה זר בעבורי לחלוטין.  אנשים מדברים פייתונית, אך אינ..." property="og:description"/>
+<meta content="שלום לכולם,  השאלה מופנית לכל מי שיוכל לענות לי עליה,  פעם חשבתי שאני ממש מגניב, אי שם בסוף תרגיל 23 כאשר הצלחתי לחשב עצרת של מספר.  מסתבר שהאופן שבו חישבתי את התוצאה נקרא רקורסיה.  בשלב מאוחר יותר אי שם אחרי תרגיל 51 הבחנתי לב באשכול חדש עם שם חביב.  שמו של האשכול בישראל - אתגר.  ברוב חטאי הייתי בדרך לעבודה ולא הייתה לי זמינות לסביבת עבודה, אז פשוט התחלתי לקרוא את התשובות.  ואז זה קרה דוקטור,  נגלה לעיני דבר נפלא, האופן שבו כתובות הפונקציות נעשה זר בעבורי לחלוטין.  אנשים מדברים פייתונית, אך אינ..." name="twitter:description"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="19 ❤"/>
+<meta content="2020-04-27T16:59:33+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5469.html">רקורסיה - איך זה עובד?</a>
+</h1>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="רקורסיה - איך זה עובד?" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="5469.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T16:59:33Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  4:59pm
+                  </time>
+<meta content="2020-04-27T16:59:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שלום לכולם,<br/>
+השאלה מופנית לכל מי שיוכל לענות לי עליה,<br/>
+פעם חשבתי שאני ממש מגניב, אי שם בסוף תרגיל 23 כאשר הצלחתי לחשב עצרת של מספר.<br/>
+מסתבר שהאופן שבו חישבתי את התוצאה נקרא רקורסיה.</p>
+<p>בשלב מאוחר יותר אי שם אחרי תרגיל 51 הבחנתי לב באשכול חדש עם שם חביב.<br/>
+שמו של האשכול בישראל - אתגר.<br/>
+ברוב חטאי הייתי בדרך לעבודה ולא הייתה לי זמינות לסביבת עבודה, אז פשוט התחלתי לקרוא את התשובות.</p>
+<p>ואז זה קרה דוקטור,<br/>
+נגלה לעיני דבר נפלא, האופן שבו כתובות הפונקציות נעשה זר בעבורי לחלוטין.<br/>
+אנשים מדברים פייתונית, אך איני מבין מה בפיהם.</p>
+<p>אחרי שבדקתי וקראתי הבנתי שהאנשים דיברו רקורסיבית טהורה.</p>
+<p>השאלה שלי,<br/>
+איך רקורסיה עובדת בפייתון?<br/>
+למה כשמגדירים X = פונקציה[1-:] הפונקציה מתחילה לפרק את הרשימה עד לנקודת הביקורת.<br/>
+מה קורה ברגע שהיא מגיע לreturn, ציפיתי שהפונקציה תחזיר את הערך למקום שבו קראנו לה לראשונה.</p>
+<p>למדתי שכשאני רוצה לקבל פעולת לולאה על ארגומנט אחד, הדרך לעשות את זה היא על ידי רקורסיה, ותוך כדי ניסוח השאלות עניתי לעצמי באופן חלקי.</p>
+<p>עם זאת, תשובה מפורטת תעשה יותר סדר.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="5469.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T17:25:13Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  5:25pm
+                  </time>
+<meta content="2020-04-27T17:25:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אמנם רקורסיה זה לא הצד החזק שלי, אבל אנסה את כוחי.<br/>
+רקורסיה בתכנות היא דרך לפתירת בעיות ע"י פתירת בעיות קטנות יותר והסקה על סמך הפתרון של הבעיות הקטנות מה התשובה לבעיה הגדולה. למשל, אם אתה מעוניין למצוא את האיבר ה-i בסדרת פיבונאצ’י ויש לך קסם שמגלה לך מה שני האיברים שלפניו, תוכל בקלות למצוא את האיבר ה-i - סכום שני האיברים שמצאת בקסם. אם אתה מעוניין למצוא את המקסימום ברשימה ואתה יכול למצוא את המקסימום של כל איברי הרשימה למעט הראשון, תוכל להשוות בין המקסימום הזה לבין האיבר הראשון ולהחזיר בקלות את התשובה הנכונה.</p>
+<p>הרקורסיה מורכבת משני חלקים:</p>
+<ol>
+<li>תנאי (ביחיד או ברבים) עצירה שהפונקציה תמיד תגיע אליו - אחרת בחלק מהמקרים תהיה רקורסיה אינסופית ולעולם לא תקבל תשובה כי רק תמשיך לנסות לפתור תתי בעיות יותר ויותר קטנות עד אין קץ. למעשה, לא תהיה רקורסיה אינסופית כי פייתון מונעת את זה, אבל בכל מקרה זה לא יפתור לך את הבעיה. תנאי העצירה הוא לרוב מקרה בסיס שקל לפתור (ולרוב שלא ניתן לפתור אותו על סמך נוסחת הרקורסיה כי אין בעיות קטנות יותר) - למשל אם הרשימה ריקה אין לה מקסימום ואם יש בה איבר יחיד הוא כמובן המקסימום. אם אתה מחפש את האיבר הראשון או את האיבר השני בסדרת פיבונאצ’י הרי שהם 1.</li>
+<li>פירוק הבעיה לתתי בעיות קטנות יותר וחישוב על סמך התשובה שהן מחזירות מה התשובה שלך. חשוב לשים לב שאתה באמת מקטין בכל פעם את הבעיה ובסוף מגיע לתנאי העצירה. למשל, אם תשכח חלילה להוריד איברים מהרשימה, תיכנס לרקורסיה אינסופית (עד שפייתון יזרוק לך שגיאה). צריך לדעת איך להקטין את הבעיה ואיך לפתור על סמך פתרון הבעיה הזו. למשל, עבור סדרת פיבונאצ’י שמוגדרת באופן רקורסיבי קל להבין שפירוק הבעיה יהיה להחזיר את סכום האיבר ה-i-1 והאיבר ה-i-2 - זו ממש הגדרת האיבר ה-i (ולכן זה תרגיל קלאסי להיכרות עם רקורסיה, על-אף שלפתור אותו עם לולאה זה יעיל בהרבה).<br/>
+גם ברשימה כנראה יהיה קל להבחין שאם תגלה את המקסימום של כל האיברים פרט לאחד תוכל מיידית להחזיר את המקסימום. אז אתה מוריד איבר אחד. ובפונקציה הבאה הרשימה כבר כוללת איבר אחד פחות וגם היא מורידה עוד איבר. וככה הלאה עד שאתה מגיע לזה שהפונקציה מקבלת רשימה בגודל 1 ומחזירה את האיבר היחיד - ושולחת את זה לפונקציה שקראה לה ובה היו 2 איברים ברשימה - שתחזיר את המקסימום בין שני האיברים האלה בקלות - תוך השוואה אחת. התשובה שתחזור לפונקציה שקראה לה ובה היו 3 איברים תאפשר תוך השוואה אחת להחזיר את התשובה לפונקציה שקראה לה עם רשימה ובה 4 איברים - וכך הלאה. למעשה, כל פונקציה תמתין בסבלנות לתשובה של הפונקציה שלה היא קראה עם בעיה קטנה יותר, עד שיתחילו לזרום תשובות והפונקציות יתחילו להתקפל הביתה.</li>
+</ol>
+<p>למעשה יש הרבה דברים שמאוד אינטואיטיבי לפתור ברקורסיה, אבל כדאי להיזהר מזה. על-אף שיש פתרונות מאוד אלגנטיים, יש גם מגבלות. הראשון הוא שזמן הריצה הוא לעיתים ארוך בהרבה ויש פתרונות איטרטיביים יעילים יותר. השני הוא שבהגדרות הדיפולטיות לא ניתן להשאיר יותר מ-999 (אולי 1000) קריאות פתוחות לפונקציה - ובכל פעם שאתה קורא לפונקציה עם תת בעיה אתה משאיר פונקציה פתוחה שמחכה לתשובה - ולכן יש גבול כמה רחוק ניתן להגיע ברקורסיה. זה גם דורש הרבה משאבים וזיכרון לשמור כל כך הרבה קריאות פתוחות.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e2f549caa1d1e430c79ed616907487838d4d4083" href="../../uploads/default/original/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083.jpg" title="תמונה"><img alt="תמונה" data-base62-sha1="wnLr1RJA101QNRG1ZxqCmsz1UuT" data-small-upload="../../uploads/default/optimized/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083_2_10x10.png" height="351" src="../../uploads/default/optimized/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083_2_690x351.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083_2_690x351.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/e2f549caa1d1e430c79ed616907487838d4d4083.jpeg 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">תמונה</span><span class="informations">927×472 76.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br/>
+החצים האדומים - הקריאות מלמעלה למטה. החצים הירוקים - ערכי ההחזרה של כל אחת מהקריאות לפונקציה שקראה לה.</p>
+<p>נ"ב - ממליצה לכתוב רקורסיה בגוגל, יש שם התחכמות יפה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="11" itemprop="userInteractionCount"/>
+<span class="post-likes">11 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5469.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T17:55:30Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  5:55pm
+                  </time>
+<meta content="2020-04-27T17:55:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לי יש שני דברים בראש שעוזרים לי לחשוב על תרגילים שאני רוצה לפתור ברקורסיה:</p>
+<ol>
+<li>
+<p>מה מקרה הקצה שלי, כלומר מה התנאי או המקרה הכי “קטן” אליו אני אמור להגיע עבור כל דוגמה נתונה שאני רוצה לבדוק.<br/>
+למשל: אם אני רוצה לבדוק אם מילה אפשר לקרוא אותה משני הצדדים (סתם נותן דוגמא מהיום) אז המקרה הכי קטן שלי זה או שאין לי מחרוזת יותר או שיש לי למשל תו אחד. עבור שני המקרים האלה למשל אני יודע לומר שהם מקיימים את מה שאני רוצה וגם אין מצב קטן מהם. ואז לאחר מכן אני מתחיל ליישם את מה שאסביר ב-2 שזה בעצם להתחיל לחזור אחורה ולקחת כל פעם שני איברים אחד מכל צד ולבדוק אם הם שווים.</p>
+</li>
+<li>
+<p>הדבר שאני שאני עושה הוא לחשוב על הכל במאין תור ארוך של שורות קוד שאני צריך לבדוק. אבל במקום לבדוק את הראשון וואז את השני אני סוג של מנסה להגיע לסוף (שהוא המקרה הקטן ביותר) ואז לאסוף אותם אחד אחד מהסוף חזרה להתחלה. עבור כל שורה שאני חוזר אחורה אני מקבל את התוצאה שלה (אותה אני יכול לצבור, סתם להחזיק אותה למשל כמו תשובה של True \ Flase וכו.</p>
+</li>
+</ol>
+<p>אם תרצה אשמח לעבור איתך על דוגמא פשוטה שלב שלב ולראות איך ההגיון הזה עובד (עבורי) אני יודע שזה לא הסבר מתמטי או משהו כזה אבל זה עובד לי לחשוב על זה ככה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="5469.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T18:10:53Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  6:10pm
+                  </time>
+<meta content="2020-04-27T18:10:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה!<br/>
+איזה הסבר מפורט, ממש פישט לי את העניינים.<br/>
+נשארתי עם קצת שאלות על איך זה עובד. אבל אני מניח שעם הנסיון אלמד להשתמש בזה טוב יותר <img alt=":cowboy_hat_face:" class="emoji" src="../../images/emoji/twitter/cowboy_hat_facec164.png?v=9" title=":cowboy_hat_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="5469.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T18:13:50Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  6:13pm
+                  </time>
+<meta content="2020-04-27T18:13:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה!<br/>
+בטח אשמח שנעבור על משהו ביחד</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5469 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 06:01:40 GMT -->
+</html>

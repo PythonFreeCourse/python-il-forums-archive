@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/flask/8380 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:24:17 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>איך לקבל מידע מטופס ב Flask - פייתון בעברית ובחינם</title>
+<meta content="הפרויקט שלי הוא אתר שבו מרצים יכולים ליצור בקלות בחנים שמתאימים לספר לימוד מאוד נפוץ (בעתיד אני מקווה להרחיב את זה למגוון ספרים). הרעיון הוא שמרצה יוכל לבחור את השאלות שמתאימות לו והמערכת תחזיר שלושה קבצי טקסט - בוחן שנו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8380.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8380.rss" rel="alternate nofollow" title="הזנת RSS של ‚איך לקבל מידע מטופס ב Flask’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84.png" property="og:image"/>
+<meta content="8380.html" property="og:url"/>
+<meta content="8380.html" name="twitter:url"/>
+<meta content="איך לקבל מידע מטופס ב Flask" property="og:title"/>
+<meta content="איך לקבל מידע מטופס ב Flask" name="twitter:title"/>
+<meta content="הפרויקט שלי הוא אתר שבו מרצים יכולים ליצור בקלות בחנים שמתאימים לספר לימוד מאוד נפוץ (בעתיד אני מקווה להרחיב את זה למגוון ספרים). הרעיון הוא שמרצה יוכל לבחור את השאלות שמתאימות לו והמערכת תחזיר שלושה קבצי טקסט - בוחן שנועד לעיניים אנושיות, בוחן בפורמט שמערכות דיגיטליות מסוגלות לקרוא ולהפוך לבוחן אונליין, ומפתח תשובות. המערכת גם מערבלת את סדר התשובות בכל פעם כדי ליצור בחנים קצת שונים. כבר כתבתי מאגר שאלות ואת המנוע שיוצר את הקבצים האלו. עכשיו כתבתי טופס בפלאסק שבו ניתן לסמן את השאלות שרוצים להוסי..." property="og:description"/>
+<meta content="הפרויקט שלי הוא אתר שבו מרצים יכולים ליצור בקלות בחנים שמתאימים לספר לימוד מאוד נפוץ (בעתיד אני מקווה להרחיב את זה למגוון ספרים). הרעיון הוא שמרצה יוכל לבחור את השאלות שמתאימות לו והמערכת תחזיר שלושה קבצי טקסט - בוחן שנועד לעיניים אנושיות, בוחן בפורמט שמערכות דיגיטליות מסוגלות לקרוא ולהפוך לבוחן אונליין, ומפתח תשובות. המערכת גם מערבלת את סדר התשובות בכל פעם כדי ליצור בחנים קצת שונים. כבר כתבתי מאגר שאלות ואת המנוע שיוצר את הקבצים האלו. עכשיו כתבתי טופס בפלאסק שבו ניתן לסמן את השאלות שרוצים להוסי..." name="twitter:description"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-10-23T01:24:20+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="83804658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8380.html">איך לקבל מידע מטופס ב Flask</a>
+</h1>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="איך לקבל מידע מטופס ב Flask" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-23T01:24:20Z" itemprop="datePublished">
+                     23 באוקטובר,‏ 2020,‏  1:24am
+                  </time>
+<meta content="2020-10-23T01:24:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>הפרויקט שלי הוא אתר שבו מרצים יכולים ליצור בקלות בחנים שמתאימים לספר לימוד מאוד נפוץ (בעתיד אני מקווה להרחיב את זה למגוון ספרים). הרעיון הוא שמרצה יוכל לבחור את השאלות שמתאימות לו והמערכת תחזיר שלושה קבצי טקסט - בוחן שנועד לעיניים אנושיות, בוחן בפורמט שמערכות דיגיטליות מסוגלות לקרוא ולהפוך לבוחן אונליין, ומפתח תשובות. המערכת גם מערבלת את סדר התשובות בכל פעם כדי ליצור בחנים קצת שונים. כבר כתבתי מאגר שאלות ואת המנוע שיוצר את הקבצים האלו. עכשיו כתבתי טופס בפלאסק שבו ניתן לסמן את השאלות שרוצים להוסיף/ כרגע יש רק ארבע שאלות לצרכי נוחות ובעתיד יהיו מעל מאה שאלות שכבר כתבתי ובתקווה עוד כמה מאות שאלות שאחרים יכתבו. הבעיה היא שלא הצלחתי למצוא איך בעצם ניתן לקבל את המידע מהטופס הזה בתור רשימה של שאלות שאותה ניתן להזין למנוע שמפיק את הקבצים. חיפשתי לא מעט ולא מצאתי תשובה. אני מבין שזה כנראה קשור לפרמטר action שבו ניתן להכניס URL שאליו ישלחו השאלות, אבל לא ממש הצלחתי להתקדם. כל הכוונה תתקבל בברכה.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84" href="../../uploads/default/original/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84.png" title="image"><img alt="image" data-base62-sha1="gnKtawi75KCmMeSCPrfupZqTO0Q" data-small-upload="../../uploads/default/optimized/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84_2_523x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84_2_523x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84_2_784x750.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/7/72d20dd9ed0778d3ec8c7a7744ffa820a9191c84.png 2x" width="523"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">836×798 73.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-23T05:49:22Z" itemprop="datePublished">
+                     23 באוקטובר,‏ 2020,‏  5:49am
+                  </time>
+<meta content="2020-10-23T05:49:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה קצת שולח אותך לחפש שוב בשבוע שעבר.<br/>
+חפש על אלמנטים שמתאימים להיות בתוך טופס (input וה־type־ים שלו), במקום ul.<br/>
+באופן כללי יתכן שתתקשה מעט עם הרעיון שלך כי נשמע שהוא מצריך שמירת state, וזה משהו לא טריוויאלי שאמרתי מראש שעלול לעשות קצת כאב ראש <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-23T11:07:35Z" itemprop="datePublished">
+                     23 באוקטובר,‏ 2020,‏ 11:07am
+                  </time>
+<meta content="2020-10-23T11:07:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>באסה. האתר הזה היה משהו שרציתי לעשות עוד לפני שהתחלתי את הקורס (אני מלמד באוניברסיטה ותמיד רציתי לבנות כלים שיאפשרו אוטומציה של קורסים) וקיוויתי שזו ההזדמנות לעשות אותו אז הלכתי עליו במקום על עבודה עם API. אני דווקא חשבתי שהוא יהיה יותר פשוט מעבודה עם API: משתמש בוחר שאלות &gt; אתר שולח רשימה &gt; מנוע מפיק קבצים &gt; אתר מביא לינק להורדה. אני מבין מהתשובה שלך שפספסתי משהו בסיסי באיך שאתרים כאלה אמורים לעבוד (למשל לא חשבתי שדבר כזה יצריך שמירת state ואני גם לא בטוח לגמרי מה הכוונה במושג הזה).</p>
+<p>חשוב לי להבהיר משהו לגבי הקוד שצילמתי. השאלות לבחירה נמצאות בתוך תגיות </p><p> והן תואמות לקובץ פייתון שיש בו טופס פלאסק, כשהרעיון הוא שהקובץ פשוט יחזיר את רשימת השאלות שנבחרו בצ’קבוקסים. אני מנסה לעבוד בהתאם להוראות של מדריך מאוד מקיף שמצאתי (<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms" rel="noopener nofollow ugc">https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms</a>) ובינתיים אני מצליח להבין אותו ולהשתמש בו כדי ליצור את האתר, אבל הוא עובד קצת אחרת ממה ששיערתי. רשימת התשובות היא סטטית לחלוטין והיא מופיעה בקוד רק כדי שיהיה קל למשתמש לקרוא את השאלה במלואה. ניסיתי להכניס את השאלות עם התשובות, אבל מתברר שג’ינג’ה הופכת את המחרוזות המסודרות למחרוזות של שורה אחת, מה שיוצר ממשק מאוד לא נעים. בעיקרון יצרתי קודם אתר סטטי שמשתמש בטייפים של אינפוט (מצורף צילומסך) אבל זה לא ממש תואם לאיך שהוא שהמדריך מסביר עבודה עם טפסים בפלאסק. האם אני צריך לשנות כיוון?</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/5b23fc20b15a3c38c073db84b5ad67661c9baec2" href="../../uploads/default/original/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2.png" title="image"><img alt="image" data-base62-sha1="d0gxUQK16TUjg3QD9URj5o2d3lE" data-small-upload="../../uploads/default/optimized/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2_2_592x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2_2_592x500.png, https://forums.pythonic.guru/uploads/default/original/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/5b23fc20b15a3c38c073db84b5ad67661c9baec2.png 2x" width="592"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">822×694 77.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T00:59:41Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏ 12:59am
+                  </time>
+<meta content="2020-10-24T00:59:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>נסה קצת למקד ולקצר את ההודעות שלך בבקשה כדי שאספיק לעזור לך בפוסטים בהמשך וכדי לקצר את זמני התגובה שלי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+<li>אני משוכנע שתצליח לבנות מה שרצית, פשוט אם תחליט ללכת על זה <em>כרגע</em> זה יקח מעט יותר זמן.</li>
+<li>המדריך ששלחת משתמש ב־wtfforms, שהוא מודול נוסף שהופך דברים למעט מורכבים יותר. הייתי יורד ממנו.</li>
+<li>נסה לעבוד לפי השלבים של השבוע: קודם צייר מה שאתה רוצה, אח"כ בנה אתר סטטי וסיים אותו, אח"כ גש לטיפול ב־Flask.</li>
+<li>הממשק שבנית בהודעה האחרונה אחלה. חסר כפתור submit, ולקלוט בקשת GET ב־Flask שמבינה אילו checkbox־ים סומנו.</li>
+<li>בנוגע לעיצוב הלא נעים – לחלוטין פתיר באמצעות CSS (ר’ לייב על Bootstrap)</li>
+</ol>
+<p>בהצלחה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T14:10:18Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  2:10pm
+                  </time>
+<meta content="2020-10-24T14:10:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כרגע האפפ עובד במחשב שלי (עוד לא העלית להרוקו). באיזה מהלייבים יש את ההתייחסות לבוטסטראפ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T14:15:56Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  2:15pm
+                  </time>
+<meta content="2020-10-24T14:15:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="3elFdnJexmU" data-video-start-time="4490" data-video-title=" - YouTube">
+<a href="https://www.youtube.com/watch?v=3elFdnJexmU&amp;t=4490" rel="noopener" target="_blank">
+<img class="youtube-thumbnail" height="" src="#" title=" - YouTube" width=""/>
+</a>
+</div>
+<p>
+באזור נקודת הזמן הזו</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/8b622e42b1cee7c2b7942fb1338ec3e26518350d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T18:26:27Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  6:26pm
+                  </time>
+<meta content="2020-10-24T18:26:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה. קראתי עכשיו את המדריך על איך להעלות להירוקו ואני חושש שעשיתי קצת סלט שאני לא יודע איך לפתור. כמו שאמרתי עקבתי אחרי המדריך שצירפתי, ולכן יצרתי מבנה קבצים קצת שונה. יש לי קובץ הפעלה בשם <strong>init</strong>:<br/>
+<img alt="image" data-base62-sha1="jT2IC4O9YblbzrOhJZIwgi5dA7z" height="219" src="../../uploads/default/original/2X/8/8b622e42b1cee7c2b7942fb1338ec3e26518350d.png" width="384"/></p>
+<p>יש לי קובץ נוסף בשם routes שמנהל את ההפניות באתר:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1298b1bf9b4eeceeccd13550170fe4bc669da731" href="../../uploads/default/original/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731.png" title="image"><img alt="image" data-base62-sha1="2EvJUIsXbQjBmMK3FCnJ9rcx4RP" data-small-upload="../../uploads/default/optimized/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731_2_411x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731_2_411x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731_2_616x750.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/1298b1bf9b4eeceeccd13550170fe4bc669da731.png 2x" width="411"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">728×885 69.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ויש עוד קובץ בשם quiz_app שממה שהבנתי מהמדריך נועד לטפל בבעיה של ייבוא מעגלי:<br/>
+<img alt="image" data-base62-sha1="y01BpFL7kMtwY7QWwAGAalg3Qxl" height="202" src="../../uploads/default/original/2X/e/ee4aa9d1334accb6c17215125a09b4524b6fe2ab.png" width="256"/></p>
+<p>אז עכשיו אני לא בטוח אם אני צריך להוסיף קובץ app כמו שכתוב במדריך של הקורס או לשנות משהו בקבצים שיש לי, וייתכן שאני צריך לשנות את התוכן של ה Procfile כי לקובץ הראשי שלי קוראים quiz_app ולא app. (אני נשבע שכשהתחלתי לעבוד עם המדריך ההוא זה נראה כמו רעיון טוב).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T18:29:10Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  6:29pm
+                  </time>
+<meta content="2020-10-24T18:29:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש משהו שמונע ממך לשנות את שם הקובץ הראשי ל־app? נראה לי כמו ללכת על בטוח.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T18:31:16Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  6:31pm
+                  </time>
+<meta content="2020-10-24T18:31:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא. אלא אם כן זה יעשה איזו בעיה עם היבוא המעגלי. העניין הוא שיש עוד פקודות דומות כאלה גם routes אז אני תוהה אם זה יגרום לאיזו התנגשות אם אני פשוט אעתיק את הקוד הזה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T18:33:02Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  6:33pm
+                  </time>
+<meta content="2020-10-24T18:33:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הייתי פשוט מנסה, אין הרבה מה להפסיד מזה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T18:41:37Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  6:41pm
+                  </time>
+<meta content="2020-10-24T18:41:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ביצעתי את השינוי (היה גם צורך כמובן לשנות את ההגדרה בטרמינל ל FLASK_APP=app.py) עכשיו זה רץ על המכונה שלי. שווה פשוט לנסות להעלות את זה בלי להדביק את הקוד ששמת במדריך ולקוות לטוב?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:04:09Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:04pm
+                  </time>
+<meta content="2020-10-24T19:04:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי. זה עובד בלי הקוד שצריך להדביק (תודה על העצה). עכשיו אני מבין שיש באג באפליקציה שקשור כנראה למה שאמרת לגבי שמירת state, כלומר האפליקציה מחזירה רק את הקובץ האחרון שהופק במכונה המקומית שלי, ולא יוצרת קבצים חדשים בהתאם לבחירת המשתמש. תוכל אולי להפנות אותי למקור מידע טוב כדי לנסות להתמודד עם זה? לא נראה לי שיש סיכוי שאצליח לעשות את זה בזמן, אבל כרגע זה לא שיש לי סיכוי להפיק אפליקציה אחרת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:09:44Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:09pm
+                  </time>
+<meta content="2020-10-24T19:09:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איפה בקוד אתה יוצר קובץ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/d1c7e7ce97fcd7a0465023ec7b6bab9835fabd1f.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:12:56Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:12pm
+                  </time>
+<meta content="2020-10-24T19:12:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בתוך routes. אני עושה אימפורט למנוע. המנוע מקבל מהפוסט רשימה של הצ’קבוקסים שהמשתמש בחר. הוא מחלץ ממנה את המידע הדרוש ומפיק קבצים שהוא שומר בתוך תיקיית static.<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d1c7e7ce97fcd7a0465023ec7b6bab9835fabd1f" href="../../uploads/default/original/2X/d/d1c7e7ce97fcd7a0465023ec7b6bab9835fabd1f.png" title="image"><img alt="image" data-base62-sha1="tVO5nWvzpPobJiIZVDNCBfoS7bF" data-small-upload="../../uploads/default/optimized/2X/d/d1c7e7ce97fcd7a0465023ec7b6bab9835fabd1f_2_10x10.png" height="260" src="../../uploads/default/original/2X/d/d1c7e7ce97fcd7a0465023ec7b6bab9835fabd1f.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">759×287 26 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:14:08Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:14pm
+                  </time>
+<meta content="2020-10-24T19:14:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ואז הוא מפנה לעמוד ההורדה, שמושך את הקבצים מתוך התיקייה הזו.<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44" href="../../uploads/default/original/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44.png" title="image"><img alt="image" data-base62-sha1="tH53MDNMPTorNF7yVIQ6kI7hHSs" data-small-upload="../../uploads/default/optimized/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44_2_10x10.png" height="262" src="../../uploads/default/optimized/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44_2_690x262.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44_2_690x262.png, https://forums.pythonic.guru/uploads/default/original/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d01dc0f7f8df6fd61bcadf94db6c3d0f7284ba44.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">927×352 24.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:15:03Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:15pm
+                  </time>
+<meta content="2020-10-24T19:15:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שים לב בבקשה לשאלה שלי: איפה בקוד אתה יוצר קובץ? <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:17:35Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:17pm
+                  </time>
+<meta content="2020-10-24T19:17:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9b2a67acb5c6664219324a8fcb9fa031349d2753" href="../../uploads/default/original/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753.png" title="image"><img alt="image" data-base62-sha1="m8ERkubYNOSgRpvqj7x0afY21cn" data-small-upload="../../uploads/default/optimized/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753_2_491x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753_2_491x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753_2_736x750.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/9/9b2a67acb5c6664219324a8fcb9fa031349d2753.png 2x" width="491"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">828×843 88.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T19:25:57Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  7:25pm
+                  </time>
+<meta content="2020-10-24T19:25:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נסה להיעזר ב־<a href="https://www.kite.com/python/examples/1499/flask-send-a-static-file">https://www.kite.com/python/examples/1499/flask-send-a-static-file</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/d93c88fe9736ef15684d4f034209fa1abe216738.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T20:53:36Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  8:53pm
+                  </time>
+<meta content="2020-10-24T20:53:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כנראה שהבעיה היא באיך שהקבצים מאוחסנים בשרת. במכונה המקומית אני עושה את זה:<br/>
+<img alt="image" data-base62-sha1="uZLj2anYebeVy323wt0C14x6llK" height="151" src="../../uploads/default/original/2X/d/d93c88fe9736ef15684d4f034209fa1abe216738.png" width="377"/></p>
+<p>ומקבל את זה:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d3566b88119b42709b0b9bfb90a2c1bf7f3e0d80" href="../../uploads/default/original/2X/d/d3566b88119b42709b0b9bfb90a2c1bf7f3e0d80.png" title="image"><img alt="image" data-base62-sha1="u9zTOYkWOEjauuBSGEDAOS3oxfG" data-small-upload="../../uploads/default/optimized/2X/d/d3566b88119b42709b0b9bfb90a2c1bf7f3e0d80_2_10x10.png" height="322" src="../../uploads/default/original/2X/d/d3566b88119b42709b0b9bfb90a2c1bf7f3e0d80.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">990×462 14.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כלומר הפקודה הזו אכן מפנה אותי אל הקובץ (אם כי היא לא מורידה אותו, אולי צריך בשביל זה איזה אטריביוט מיוחד או משהו). אבל כשאני מנסה את זה בלייב אני מקבל את זה:<br/>
+<img alt="image" data-base62-sha1="gyhPrF3dzsMif0KwfW11SRJd7YK" height="135" src="../../uploads/default/original/2X/7/740301e14b5b3027f363eb9f8bd0ed57f8023c9a.png" width="375"/></p>
+<p>במכונה שלי הקבצים מאוחסנים בתיקיית static שהיא ממה שהבנתי ברירת המחדל. האם יש צורך באיזו הפניה אחרת כאשר מדובר בשרת לייב? האם התיקייה הזו לא רלוונטית בגרסה החיה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8380.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T21:42:33Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏  9:42pm
+                  </time>
+<meta content="2020-10-24T21:42:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ה־Internal Server Error אומר שהבקשה לא הושלמה בהצלחה (זו שגיאת HTTP מס’ 500).<br/>
+נסה לבדוק בלוגים של Heroku למה היא התרחשה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="83804658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/flask/8380 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:24:42 GMT -->
+</html>

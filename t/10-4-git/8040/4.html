@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/10-4-git/8040/4 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:59:22 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 10 – יום 4: ניהול גרסאות ו־git - מס׳ 4 מאת Alon.B.A - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="הקדמה
+וואו, זה היה חתיכת פרויקט! 
+למעשה, זה היה הפרויקט המורכב הראשון שלכם ואם שרדתם עד כאן נראה שעשיתם עבודה מצוינת. 
+בכמה ימים האחרונים הספקתם לבנות מערכת ניהול גרסאות (Version Control System; VCS) בסיסית. 
+“מערכת לניה&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8040.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8040.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 10 – יום 4: ניהול גרסאות ו־git’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="4.html" property="og:url"/>
+<meta content="4.html" name="twitter:url"/>
+<meta content="שבוע 10 – יום 4: ניהול גרסאות ו־git" property="og:title"/>
+<meta content="שבוע 10 – יום 4: ניהול גרסאות ו־git" name="twitter:title"/>
+<meta content="כתוב בהוראות:   הגישו את הפקודות שהרצתם כדי לסיים כל אחת מהתרגילים.   אני כתבתי את הפקודות כהערות בקובץ .py (בעצת הפוסט הזה).  לדוגמה:  # Introduction Sequence # 1 # comand # comand  # 2 # comand  # comand" property="og:description"/>
+<meta content="כתוב בהוראות:   הגישו את הפקודות שהרצתם כדי לסיים כל אחת מהתרגילים.   אני כתבתי את הפקודות כהערות בקובץ .py (בעצת הפוסט הזה).  לדוגמה:  # Introduction Sequence # 1 # comand # comand  # 2 # comand  # comand" name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="git" property="og:article:tag"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-10" property="og:article:tag"/>
+<meta content="2020-09-10T19:57:52+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8040.html">שבוע 10 – יום 4: ניהול גרסאות ו־git</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/git.html" rel="tag">git</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%a9%d7%91%d7%95%d7%a2-10.html" rel="tag">שבוע-10</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 10 – יום 4: ניהול גרסאות ו־git" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="git, תוכן-הוראה, שבוע-10" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-01T03:34:00Z" itemprop="datePublished">
+                     1 בספטמבר,‏ 2020,‏  3:34am
+                  </time>
+<meta content="2020-09-01T16:37:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>הקדמה</h2>
+<p>וואו, זה היה חתיכת פרויקט!<br/>
+למעשה, זה היה הפרויקט המורכב הראשון שלכם ואם שרדתם עד כאן נראה שעשיתם עבודה מצוינת.</p>
+<p>בכמה ימים האחרונים הספקתם לבנות <strong>מערכת ניהול גרסאות</strong> (Version Control System; VCS) בסיסית.<br/>
+“מערכת לניהול גרסאות” זה שם כללי לתוכנות כמו wit, שמאפשרות לנו לנהל גרסאות שונות של הפרויקט שלנו, לשמור אותן ל"תמונה" בכל פעם שבה אנחנו מבצעים בפרויקט שינוי ולשחזר את התמונות ששמרנו במועד מאוחר יותר.</p>
+<p>מערכות מודרניות לניהול גרסאות עוזרות לנו להתמודד עם אתגרים קשים במיוחד:</p>
+<ol>
+<li>
+<em>שמירה ותיעוד של גרסאות</em> – שימוש בתוכנה לניהול גרסאות מאפשרת לנו, ובכן… לשמור גרסאות. נוכל לעקוב אחר השינויים שביצענו בקוד של התוכנה, לשמור אותם בקלות ולראות מה היו השינויים בין גרסה לגרסה. כשיהיה באג, נוכל להסתכל אחורה ולראות איזו שורה גרמה לו, או פשוט לבטל את השינוי האחרון שעשינו. יש לנו “תמונה” של כל גרסה ששמרנו בעבר, והיא לא תלך לאיבוד.</li>
+<li>
+<em>עבודה משותפת על קוד</em> – מערכות לניהול גרסאות מקלות מאוד על עבודה של כמה אנשים במקביל על פרויקט. במקום להעביר קבצים אחד לשני ולפתור באופן ידני התנגשויות בעריכה, מערכות לניהול גרסאות פשוט ידעו לבצע מיזוג בין העבודה שלכם לבין העבודה של הקולגות שלכם. זה יחסוך לנו הרבה זמן שהיה מתבזבז על העברת קבצים ממחשב למחשב, מיזוג שינויים באופן ידני ובדיקה של מי ביצע איזה מהשינויים.</li>
+<li>
+<em>גיבוי מרוחק</em> – מערכות מודרניות לניהול גרסאות מאפשרות לנו לגבות יחסית בקלות את הפרויקטים שלנו לשירותים חיצוניים, שמבטיחים לשמור על הקוד שלנו גם אם נשליך את המחשב לחבית חומצה.</li>
+</ol>
+<p>מערכת wit שכתבתם היא מערכת שכזו, עם פונקציונליות יחסית בסיסית (נניח – עדיין לא מימשתם גיבוי לאינטרנט. נכון שאני נחמד?).<br/>
+המערכת הזו דומה באופן מעורר חשד למערכת ניהול גרסאות אחרת בשם <em>git</em>, שעליה אנחנו הולכים ללמוד בימים הקרובים.</p>
+<h2>אז מי זו git?</h2>
+<p>כפי שכבר אמרנו, git היא מערכת לניהול גרסאות.<br/>
+בנה אותה אחד בשם לינוס טורבלאדס, עליו אולי יצא לכם לשמוע בזכות מערכת ההפעלה שפיתח – לינוקס.<br/>
+הוא בנה אותה כי הוא היה צריך מערכת לניהול גרסאות עבור מערכת ההפעלה שפיתח, והרגיש שאין אפשרויות מספיק טובות בשוק.<br/>
+זו מערכת ניהול הגרסאות הפופולרית ביותר היום בפער גדול מאוד, ומשתמשים בה בכל מקום בתעשייה כדי לנהל קוד.</p>
+<p>בהמשך השבוע אנחנו הולכים ללמוד להשתמש ב־git, לנהל את הקוד שלנו בעזרתה ולגבות אותו לאינטרנט.</p>
+<h3>התקנה</h3>
+<p>תוכלו להוריד את git <a href="https://git-scm.com/">מכאן</a> ולהתקין אותה על המחשב שלכם לפי המדריך <a href="https://www.youtube.com/watch?v=nbFwejIsHlY">הזה</a>.<br/>
+המדריך ממש טוב; עקבו אחרי האפשרויות שהוא מדליק וסמנו אותן גם אצלכם.<br/>
+עבור ה־Editor, בניגוד אליו, סמנו Visual Studio Code, אלא אם אתם מרגישים בנוח עם Vim.<br/>
+אם אין לכם Visual Studio Code, בחרו עורך אחר מהרשימה שלדעתכם יהיה לכם נוח לערוך בו הודעות קצרות.</p>
+<h3>הגדרות ראשוניות</h3>
+<p>פתחו שורת פקודה והקלידו את הפקודות הבאות.<br/>
+הפקודות האלו יגדירו במחשב שעליו אתם עובדים את השם ואת כתובת הדואר האלקטרונית שלכם.<br/>
+זה יעזור לזהות אתכם כשתעבדו עם אנשים אחרים.</p>
+<p>שנו את John Doe לשם שלכם, ואת <a href="mailto:johndoe@example.com">johndoe@example.com</a> לכתובת הדואר האלקטרונית שלכם.</p>
+<pre><code class="lang-bash">git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+</code></pre>
+<h3>שימוש</h3>
+<p>תיקייה שמנוהלת על ידי git נקראת Repository (“מאגר”), והיא תכיל את קובצי הפרויקט שלכם.<br/>
+בתיקייה שכזו, תהיה תת־תיקייה שנקראת <code>.git</code>, מעין “במה אחורית” שבה git תנהל את כל הגרסאות והמידע על הפרויקט שלכם.</p>
+<p>ל־git יש שלושה מצבים בהם הקבצים שלכם יכולים להיות:</p>
+<ol>
+<li>במצב modified – הקובץ נערך אבל לא ביקשנו מ־git לשמור אותו.</li>
+<li>במצב staged – ביקשנו מ־git לשמור את הגרסה הנוכחית של הקובץ, אבל עדיין לא “לקחנו תמונה”.</li>
+<li>במצב committed – הקובץ נשמר בהצלחה בגרסתו האחרונה.</li>
+</ol>
+<p>בהתאם לשלושת המצבים האלו, יש 3 “מקומות” שבהם קובץ שלכם (או עותק שלו) יכול להיות:</p>
+<ol>
+<li>ב־Working Directory – התיקייה המקורית של הפרויקט שלכם.</li>
+<li>ב־Staging Area (נקרא גם “ה־Index”) – המקום שבו נשמרים הקבצים אחרי שנערכו ולפני ש"לוקחים תמונה".</li>
+<li>“מגובים” – מקום בתוך תיקיית <code>.git</code> שבו ישמרו ה"תמונות", שהן גרסאות מגובות של הפרויקט.</li>
+</ol>
+<p>ודאי כבר הבנתם את הרעיון – המודל הזה זהה לחלוטין למודל שבניתם בעצמכם בימים האחרונים.<br/>
+שיטת העבודה היא פשוטה: עורכים קבצים, מוסיפים <strong>רק</strong> את הקבצים שרוצים לשנות ל־staging area, לוקחים “תמונה” של הפרויקט אחרי שביצענו בו את השינויים, וחוזר חלילה.</p>
+<h3>שיטת העבודה עם git</h3>
+<p>שיטת העבודה הפופולרית היום במקומות עבודה שמשתמשים ב־git נקראת “feature branch workflow”. זו שיטת עבודה שנועדה לייעל את העבודה של מספר אנשים על אותה מערכת.</p>
+<p>בשיטת העבודה הזו, כל המפתחים עובדים על מאגר git מנוהל שמשותף לכולם. הגרסה היציבה והעדכנית של המערכת מתוייגת תחת השם “master”. כל מפתח שרוצה לעשות שינוי למערכת – בין אם זה להוסיף פיצ’ר או לתקן באג, פותח “ענף” (branch) משלו ומפתח שם את הקוד שהוא רוצה להוסיף למערכת.</p>
+<p>בזמן הזה יכולים להתבצע שינויים באופן בלתי תלוי לקוד שנמצא ב־master, אבל אותו מפתח עובד על הגרסה שלו שנגזרה מהנקודה בזמן שבה הוא פתח את הענף החדש שלו. כשאותו מפתח יסיים את עבודתו, הוא יוכל למזג (merge) את השינויים שביצע חזרה ל־master. בסיום התהליך, ה־master יעודכן עם הקוד החדש של המפתח.</p>
+<p>אם נרצה לפתח פיצ’ר של בדיקת העתקות במערכת התרגילים, לדוגמה, נוכל להתפצל מהמקום אליו מצביע master כרגע, וליצור branch חדש ששמו find-cheaters. ה־branch הזה ישמש לפיתוח הפיצ’ר של בדיקת ההעתקות. כשנסיים לפתח את היכולת הזו נמזג את ה־branch שקראנו לו find-cheaters חזרה ל־master, והקוד שכתבנו יהפוך להיות חלק ממנו. כך גם אם master עבר שינויים בזמן הזה, git ידע למזג את השינויים שביצענו ונוכל לעבוד יחד בנוחות למערכת.</p>
+<p>במקומות עבודה רבים יש שני branch־ים מרכזיים: master ו־develop, כאשר master מכיל גרסאות אפויות ובדוקות שיורדות ללקוח, ו־develop הוא ה־branch שממנו יוצאים הפיצ’רים.</p>
+<p>בשיעור הבא נלמד כיצד לעבוד עם אנשים על פרוייקט אונליין, כיצד להעלות את הפרויקטים שלנו לרשת וכיצד להשתתף בפרויקטים אחרים.</p>
+<h3>מילון מונחים</h3>
+<ul>
+<li>
+<strong>מאגר – repository, repo</strong> – אוסף של קבצים שאנחנו רוצים לנהל בעזרת התוכנה לניהול גרסאות. ב־git, נכריז על תיקייה כזו באמצעות הפקודה <code>git init</code>.</li>
+<li>
+<strong>תיקיית העבודה – working tree / working directory</strong> – התיקייה המקורית שמכילה את הקבצים שאותם אנחנו רוצים לנהל באמצעות git. זו התיקייה שבתוכה תיווצר תיקיית <code>.git</code>.</li>
+<li>
+<strong>נקודת שמירה – commit</strong> – מה שקראנו לו “תמונה”. עותק של ה־repo בנקודת זמן מסוימת שנשמר בעזרת git, ושיהיה אפשר לחזור אליו בנקודת זמן מאוחרת יותר. זה גם השם של הפקודה שיוצרת את נקודת השמירה הזו.</li>
+<li>
+<strong>הראש – HEAD</strong> – הדרך של git להתייחס ל"תמונה" הנוכחית.</li>
+<li>
+<strong>ענף – branch</strong> – תווית בעלת שם שמוצמדת לאחד ה־commit־ים. אם התווית פעילה, היא תתקדם יחד עם ה־commit־ים. הרעיון מאחורי branch הוא לייצג תהליך פיתוח בלתי תלוי, שעשוי להתמזג אחר־כך חזרה לפרויקט המקורי. כל עוד החלטנו להיות “על” תהליך הפיתוח הבלתי תלוי (ה־branch “פעיל”), ה־branch יתקדם יחד איתנו ויצביע על ה־commit האחרון שנעשה.</li>
+<li>
+<strong>הענף הראשי – master</strong> – זה הענף שנהוג לשמור בו גרסאות עובדות של הפרויקט שלנו, וממנו נהוג להתפצל ל־branch־ים.</li>
+</ul>
+<h3>ניהול הקוד שלכם בעזרת git</h3>
+<p>נווטו בעזרת cmd לתיקייה בה ניהלתם את קוד ה־wit שלכם.<br/>
+כדי להגדיר אותה כתיקייה שמנוהלת בעזרת git, הקלידו <code>git init</code>.<br/>
+צרפו קבצים בעזרת <code>git add</code>, ובצעו את השמירה הראשונה בעזרת <code>git commit</code>.</p>
+<p>טיפ: תוכלו לקבל עזרה על פקודה אם תוסיפו <code>-h</code> אחריה. לדוגמה – <code>git init -h</code>.<br/>
+טיפ 2: אפשר להוסיף את כל הקבצים לפרויקט בעזרת <code>git add -A</code>.<br/>
+טיפ 3: אפשר לכתוב הודעה קצרה ב־commit בעזרת <code>git commit -m "Message"</code>.</p>
+<p>שחקו קצת עם git. נסו לערוך קובץ ולעשות commit־ים נוספים.<br/>
+הריצו בין לבין פקודת <code>git status</code> כדי לבדוק מה מצב ה־repository שלכם.<br/>
+אתם אמורים להרגיש די בנוח לשחק עם ה־repository, שכן אתם כבר מכירים היטב את הפקודות ואיך הוא עובד.<br/>
+כדי לראות את המקבילה הפחות חגיגית של <code>git graph</code> שבניתם, כיתבו <code>git log --graph --all</code>.<br/>
+הרגישו בנוח לעשות <code>checkout</code> ל־commit־ים שראיתם, ולנסות לבצע שינויים ולסבך את הגרף.</p>
+<h3>רגע! לפני האינטרנט</h3>
+<p>בקרוב אני הולך לשלוח אתכם לחקור קצת על git בעצמכם.<br/>
+מימשתם בעצמכם את wit ורכשתם בסיס נפלא לאיך פחות או יותר git עובד.<br/>
+למרות זאת, ולמרות שאתם מחזיקים בידע עמוק לגבי שיטת הפעולה הבסיסית של git, חשוב לזכור ש־git היא מערכת מסועפת ומורכבת שפותחה בידי מתכנתים ועבור מתכנתים.</p>
+<p>במילותיו של משתמש טוויטר חביב עליי במיוחד:</p>
+<blockquote>
+<p>“גיט נהיה ממש קל כשמבינים שברנצ’ים הם אנדופנקטורים הומומורפים שממפים תתי יריעות של מרחב הילברט.”<br/>
+– <em>Isaac Wolkerstorfer</em></p>
+</blockquote>
+<p>יש עשרות רבות של פקודות שלא למדתם עדיין, וכאלו שכנראה גם לא תצטרכו ללמוד לעולם.<br/>
+החלק הקשה של להבין איך git עובדת בבסיסה – מאחוריכם, ועכשיו רק צריך סבלנות וקצת משחק כדי להבין לעומק איך מרחיבים את היריעה ומגיעים למצב שבו אתם שולטים היטב גם בפקודות הפחות בסיסיות של git.<br/>
+למזלכם, בכל בעיה או חוסר הבנה תוכלו לפנות להסבר נוסף בפורומים.</p>
+<h3>תרגיל 1 – עֲנַף? עֵץ עָבֹת</h3>
+<p>האתר <a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a> מאפשר לתרגל משחקים בסיסיים עם git.<br/>
+סיימו את תרגילים 1, 2 ו־3 תחת הכותרות Introduction Sequence ו־Ramping Up.<br/>
+הגישו את הפקודות שהרצתם כדי לסיים כל אחת מהתרגילים.</p>
+<p>הרגישו בנוח, כמובן, לסיים שם תרגילים נוספים אם תרצו להרחיב את הידע שלכם על שימוש ב־git.</p>
+<h3>תרגיל 2 – וְהָ־git בּוֹ יוֹמָם וָלַיְלָה</h3>
+<p>כתבו בעברית מה כל אחת מהפקודות הבאות עושה.</p>
+<ul>
+<li>git init</li>
+<li>git add</li>
+<li>git commit</li>
+<li>git status</li>
+<li>git checkout</li>
+<li>git branch</li>
+<li>git reset</li>
+<li>git revert</li>
+<li>git diff</li>
+<li>git rm</li>
+<li>git tag</li>
+<li>git log</li>
+<li>git merge</li>
+</ul>
+<p>עבור הפקודות checkout, add, reset, rm, log צרפו הסבר על שימוש מעניין בפקודה (דגלים נוספים, פרמטרים מעניינים) שאפשר למצוא בתיעוד של git.</p>
+<p>לדוגמה:</p>
+<ul>
+<li>הפעולה <code>git log</code> מציגה את היסטוריית ה־commit־ים ב־repo. שימוש מעניין בפקודה הוא שאפשר לספק לה את הדגל <code>--oneline</code>, שבמקום להביא את המידע המלא על כל commit מביא את ה־id המקוצר של ה־commit, את ההודעה של ה־commit ואת הענף אליו הוא שייך.</li>
+</ul>
+<p>ענו גם על השאלות:</p>
+<ul>
+<li>מה ההבדל בין branch לבין tag?</li>
+<li>מה ההבדל בין reset לבין revert?</li>
+</ul>
+<h3>מקורות נוספים ללמידה</h3>
+<ol>
+<li>הרצאה נפלאה שסידרה לי הרבה דברים בראש בתחילת הדרך – <a href="https://www.youtube.com/watch?v=1ffBJ4sVUb4">Git For Ages 4 And Up</a>.</li>
+<li>
+<a href="http://marklodato.github.io/visual-git-guide/index-en.html">מדריך ויזואלי לפקודות git בסיסיות</a>.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/8206.html" itemprop="url">ריכוז חומרים: שבוע 10</a>
+<meta content="6" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-01T18:28:27Z" itemprop="datePublished">
+                     1 בספטמבר,‏ 2020,‏  6:28pm
+                  </time>
+<meta content="2020-09-01T18:28:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם זה מדריך טוב , בעברית :</p>
+<p><a class="onebox" href="https://www.codebrain.co.il/מדריך-ל-git-ניהול-גרסאות-קוד/" rel="nofollow noopener" target="_blank">https://www.codebrain.co.il/מדריך-ל-git-ניהול-גרסאות-קוד/</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T14:50:10Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  2:50pm
+                  </time>
+<meta content="2020-09-10T14:50:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8040" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<h3>תרגיל 1 – עֲנַף? עֵץ עָבֹת</h3>
+<p>האתר <a href="https://learngitbranching.js.org/" rel="nofollow noopener">https://learngitbranching.js.org/ </a> מאפשר לתרגל משחקים בסיסיים עם git.<br/>
+סיימו את תרגילים 1, 2 ו־3 תחת הכותרות Introduction Sequence ו־Ramping Up.<br/>
+הגישו את הפקודות שהרצתם כדי לסיים כל אחת מהתרגילים.</p>
+<p>הרגישו בנוח, כמובן, לסיים שם תרגילים נוספים אם תרצו להרחיב את הידע שלכם על שימוש ב־git.</p>
+</blockquote>
+</aside>
+<p>איך מגישים בדיוק את התרגיל?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T19:57:52Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  7:57pm
+                  </time>
+<meta content="2020-09-10T19:57:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כתוב בהוראות:</p>
+<blockquote>
+<p>הגישו את הפקודות שהרצתם כדי לסיים כל אחת מהתרגילים.</p>
+</blockquote>
+<p>אני כתבתי את הפקודות כהערות בקובץ .py (בעצת הפוסט <a href="../../topic/8084/2.html">הזה</a>).<br/>
+לדוגמה:</p>
+<pre><code class># Introduction Sequence
+# 1
+# comand
+# comand
+
+# 2
+# comand 
+# comand
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T20:37:05Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  8:37pm
+                  </time>
+<meta content="2020-09-10T20:37:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה , באיזה פורמט אני אמור לעלות את שאלה 2? זה טיפה יותר מורכב מכמה פקודות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8040.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T22:01:02Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏ 10:01pm
+                  </time>
+<meta content="2020-09-10T22:01:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי אותו דבר עם ההערות.<br/>
+אני לא מהצוות של הקורס אבל כנראה שבדיקת התרגיל הזה לא תהיה אוטומטית, ולכן פשוט הקפדתי שמה שאני כותב יהיה מסודר וברור למי שיקרא את זה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/10-4-git/8040/4 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:59:23 GMT -->
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8128 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:01:22 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הורים מרובים להורים מרובים? - שבוע 10 - פייתון בעברית ובחינם</title>
+<meta content="אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge. 
+אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents. 
+ל&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8128.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8128.rss" rel="alternate nofollow" title="הזנת RSS של ‚הורים מרובים להורים מרובים?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/2/2f7b8586c4fcfdae0afe4379bf74d228f32cf701.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/2/2f7b8586c4fcfdae0afe4379bf74d228f32cf701.png" property="og:image"/>
+<meta content="8128.html" property="og:url"/>
+<meta content="8128.html" name="twitter:url"/>
+<meta content="הורים מרובים להורים מרובים?" property="og:title"/>
+<meta content="הורים מרובים להורים מרובים?" name="twitter:title"/>
+<meta content="אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.  אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.  לדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?    אני חושב שזה דורש רקורסיה, ניסיתי לממש למרות שלא למדנו ואני לא מצליח.  אשמח להכוונה 🙂" property="og:description"/>
+<meta content="אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.  אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.  לדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?    אני חושב שזה דורש רקורסיה, ניסיתי לממש למרות שלא למדנו ואני לא מצליח.  אשמח להכוונה 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 10" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="wit-merge" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="7 ❤"/>
+<meta content="2020-09-09T13:36:05+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הורים מרובים להורים מרובים?","mainEntity":{"@type":"Question","name":"הורים מרובים להורים מרובים?","text":"אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.\n\nאני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.\n\nלדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?\n\n[commit_id_tree]\n\nאני &hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2020-09-09T13:36:05.457Z","author":{"@type":"Person","name":"Alon Ben Ari"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8128.html">הורים מרובים להורים מרובים?</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-10/21.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 10</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/wit-merge.html" rel="tag">wit-merge</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הורים מרובים להורים מרובים?" itemprop="headline"/>
+<meta content="שבוע 10" itemprop="articleSection"/>
+<meta content="wit-merge" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/2f7b8586c4fcfdae0afe4379bf74d228f32cf701.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T13:36:05Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  1:36pm
+                  </time>
+<meta content="2020-09-09T13:36:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.</p>
+<p>אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.</p>
+<p>לדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?<br/>
+<img alt="commit_id_tree" data-base62-sha1="6M35gkb7lOCBnyjd7aN651o3YiJ" height="122" src="../../uploads/default/original/2X/2/2f7b8586c4fcfdae0afe4379bf74d228f32cf701.png" width="414"/><br/>
+אני חושב שזה דורש רקורסיה, ניסיתי לממש למרות שלא למדנו ואני לא מצליח.<br/>
+אשמח להכוונה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:08:20Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:08pm
+                  </time>
+<meta content="2020-09-09T14:08:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא נראה לי שחייבים רקורסיה. אם אתה יכול למצוא את אחד ההורים אז באופן דומה אתה יכול למצוא יותר מהורה אחד. שים לב למבנה הקובץ ממנו אתה מנסה לחלץ את הנתונים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:22:04Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:22pm
+                  </time>
+<meta content="2020-09-09T14:22:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא שמרתי את כל הנתונים ביחד בקובץ מסוים. אני מנסה כל פעם להוציא מה- commit_id.txt האחרון את ה-parent שלו, ואז את ה-parent של ה-parent וכך הלאה ולהרכיב מזה מילון.<br/>
+הבעיה היא לא בהוצאת שני הורים מה-commit_id.txt, אלא ב"להמשיך" לחפש את ההורה של כל הורה במקרה של 2 הורים, ולהוסיף את הכל למילון.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:30:47Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:30pm
+                  </time>
+<meta content="2020-09-09T14:30:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>צודק . גם אני עשיתי כך בהתחלה לפני שהגעתי למרג’. שיניתי…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:32:40Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:32pm
+                  </time>
+<meta content="2020-09-09T14:32:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מקרה כזה בהחלט אפשרי. הוא אולי קצת מורכב, אבל אפשר לממש אותו עם ובלי רקורסיה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:37:24Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:37pm
+                  </time>
+<meta content="2020-09-09T14:37:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בכל מקרה הרבה מקרים של רקורסיה אפשר להחליף ב while נראה לי , אם ממש רוצים להמנע מרקורסיה<br/>
+(האם ההבדל ביניהם סמנטי בלבד?)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:44:45Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:44pm
+                  </time>
+<meta content="2020-09-09T14:44:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא בהכרח, רקורסיה הרבה פעמים תתפוס יותר מקום בזיכרון כי כל קריאה לפונקציה היא “יקרה” (הקצאת עוד scope של משתנים בזיכרון)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:46:58Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:46pm
+                  </time>
+<meta content="2020-09-09T14:46:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז לפי זה בכלל עדיף לולאה על פני רקורסיה. טיפה יותר פורמלי ולוקח עוד כמה שורות…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:48:18Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:48pm
+                  </time>
+<meta content="2020-09-09T14:48:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא בדיוק, הרבה פעמים רקורסיה מפרמלת נוסחת נסיגה מתמטית בצורה הרבה יותר נעימה לעין</p>
+<pre><code class>def fibonacci(x):
+    if x &lt; 2:
+        return 1
+    return fibonacci(x - 1) + fibonacci(x - 2)</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:59:08Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:59pm
+                  </time>
+<meta content="2020-09-09T14:59:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אשמח להכוונה כלשהי כי אני תקוע על זה מספר שעות ללא כל התקדמות.</p>
+<p>בינתיים אני מחלץ parent מ-commit_id.txt ש-HEAD מצביע עליו, ואם הוא רשימה (כלומר יש שני הורים) אני לוקח רק אחד מההורים (אם לא אני פשוט מגדיר שהוא ה-commit_id ומחלץ את ה-parent שלו וכך הלאה). כל זה תחת לולאת while כך שהלולאה תפסיק כאשר parent = None.<br/>
+מה אני עושה עם כל ההורים שלא התייחסתי אליהם כאשר בחרתי רק הורה אחד?<br/>
+חשבתי להוסיף אותם לרשימה ואז לחפש את ההורים של כל אחד מהם אבל אז שוב אני בלולאה אין סופית, מה אם לאחד מהם גם כן יש 2 הורים…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T15:04:06Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  3:04pm
+                  </time>
+<meta content="2020-09-09T15:04:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יהיה לי קשה לעזור כי זה סופר תלוי במימוש שלך.<br/>
+אני ממליץ לך לחפש על דגים באינטרנט (DAG - Directed Acyclic Graph, גרף מכוון ולא מעגלי) וכנראה שתמצא מספיק חומרים שיתנו לך כיוון <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T08:02:51Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  8:02am
+                  </time>
+<meta content="2020-09-10T08:02:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בינתיים בכל האתרים שקראתי על DAG מבנה הנתונים כבר היה נתון (למשל <a href="https://www.geeksforgeeks.org/generate-graph-using-dictionary-python/" rel="nofollow noopener">פה</a>, <a href="https://mungingdata.com/python/dag-directed-acyclic-graph-networkx/" rel="nofollow noopener">פה</a><br/>
+<a href="https://www.python.org/doc/essays/graphs/" rel="nofollow noopener">ופה</a>), והבעיה שלי היא בדיוק בבנייה של המילון שאעביר ל-Digraph.</p>
+<p>באחרון יש קוד למציאת נתיב בין שני nodes, ניסיתי לחקות אותו כדי לבודד את הנתיב מ-HEAD ל-None (נגיד אם יש לי מילון שכולל את כל ההורים של כל ה-commit-ים) אבל גם זה לא הצליח למצוא את כל ההורים (בכל פעם שהיו שניים הוא לקח רק אחד).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-11T14:40:03Z" itemprop="datePublished">
+                     11 בספטמבר,‏ 2020,‏  2:40pm
+                  </time>
+<meta content="2020-09-11T14:40:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני נתקעתי בזה. עבדתי באותה שיטה שבה אלון עבד (לולאת וויל) רק שלא בחרתי הורה אחד במקרה שבו היו שני הורים אלא פשוט הוספתי את שניהם לרשימה. זה כמובן יוצר כפילויות (העתקתי רשימה של קומיטים מקוצרים) שהפונקציה מפיקה וניתן לראות שחלקם מן הסתם חוזרים על עצמם. אני מנסה להבין אם יש דרך לחלץ את המבנה של הגרף מתוך המיקומים היחסיים שלהם ברשימה. אולי לעצב את הלולאה כך שהיא תפיק רשימה מקוננת? האם זה מבנה מידע שיכול להוביל לכיוון הנכון?</p>
+<p>[‘1a6c37’, ‘d63a32’, ‘c255f3’, ‘1a6c37’, ‘38f355’, ‘d9b665’, ‘38f355’, ‘820db2’, ‘857603’, ‘f2cceb’, ‘895eb6’, ‘729d5d’, ‘34456a’, ‘3c4852’, ‘5e1632’, ‘2bab16’, ‘29f803’, ‘7bc129’, ‘42176b’, ‘2c5c36’, ‘101276’, ‘2bf33a’, ‘1500f9’, ‘43f60a’, ‘f42fbc’, ‘9a5ca6’, ‘None’]</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-11T15:01:45Z" itemprop="datePublished">
+                     11 בספטמבר,‏ 2020,‏  3:01pm
+                  </time>
+<meta content="2020-09-11T15:01:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בימים האחרונים שיפרתי את הקוד שכתבתי למציאת ההורים ונראה שבינתיים זה עובד.</p>
+<p>בנוגע למבנה מידע שתעביר ליצירת הגרף, מציע לך ליצור מילון שבו כל מפתח הוא commit_id והערך שלו הוא רשימת ההורים (גם אם יש הורה אחד שיהיה ברשימה, לי זה פישט את העניינים). היה מאוד מאתגר ליצור את המילון, אבל  די פשוט ליצור את הגרף ממנו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-11T15:07:48Z" itemprop="datePublished">
+                     11 בספטמבר,‏ 2020,‏  3:07pm
+                  </time>
+<meta content="2020-09-11T15:07:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן, נראה שמילון הוא המבנה הנכון. אין לי כמובן סיכוי להגיש בזמן, אבל זה היה ברור לי כבר לפני שלושה ימים. בכל מקרה אמשיך לנסות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-11T16:23:30Z" itemprop="datePublished">
+                     11 בספטמבר,‏ 2020,‏  4:23pm
+                  </time>
+<meta content="2020-09-11T16:23:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן גם אני עשיתי בשיטה הזו והיצירה של הגרף אחרי זה הייתה ממש קלה</p>
+<p>זה או זה או רקורסיה (:</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8128 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:01:24 GMT -->
+</html>

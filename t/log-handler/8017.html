@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/log-handler/8017 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:15:03 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Log handler - קצת מסתבכת - שבוע 10 - פייתון בעברית ובחינם</title>
+<meta content="היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי. 
+אני ממש ממש אשמח אם מישהי.ו י.תוכל להסביר לי את זה" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8017.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8017.rss" rel="alternate nofollow" title="הזנת RSS של ‚Log handler - קצת מסתבכת’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8017.html" property="og:url"/>
+<meta content="8017.html" name="twitter:url"/>
+<meta content="Log handler - קצת מסתבכת" property="og:title"/>
+<meta content="Log handler - קצת מסתבכת" name="twitter:title"/>
+<meta content="היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי.  אני ממש ממש אשמח אם מישהי.ו י.תוכל להסביר לי את זה" property="og:description"/>
+<meta content="היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי.  אני ממש ממש אשמח אם מישהי.ו י.תוכל להסביר לי את זה" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 10" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="10 ❤"/>
+<meta content="2020-08-30T12:10:22+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"Log handler - קצת מסתבכת","mainEntity":{"@type":"Question","name":"Log handler - קצת מסתבכת","text":"היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי.\n\nאני ממש ממש אשמח אם מישהי.ו י.תוכל להסביר לי את זה","upvoteCount":3,"answerCount":0,"dateCreated":"2020-08-30T12:10:22.209Z","author":{"@type":"Person","name":""}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8017.html">Log handler - קצת מסתבכת</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-10/21.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 10</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Log handler - קצת מסתבכת" itemprop="headline"/>
+<meta content="שבוע 10" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ssb950</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-30T12:10:22Z" itemprop="datePublished">
+                     30 באוגוסט,‏ 2020,‏ 12:10pm
+                  </time>
+<meta content="2020-08-30T12:10:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי.<br/>
+אני ממש ממש אשמח אם מישהי.ו י.תוכל להסביר לי את זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-30T13:24:51Z" itemprop="datePublished">
+                     30 באוגוסט,‏ 2020,‏  1:24pm
+                  </time>
+<meta content="2020-08-30T13:24:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני רחוק מלהיות מומחה לזה , אני משתמש בעיקר בצורה הכי בסיסית של הלוגגינג.<br/>
+תוכלי לקרוא על זה במאמר כאן :<br/>
+</p><aside class="onebox allowlistedgeneric">
+<header class="source">
+<img class="site-icon" height="256" src="../../uploads/default/original/2X/9/9d7f9047353840b0105be503205a25a559883a3d.png" width="256"/>
+<a href="https://realpython.com/python-logging/" rel="nofollow noopener" target="_blank">realpython.com</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:690/388;"><img class="thumbnail" data-small-upload="../../uploads/default/optimized/2X/6/6e93cbf1b54efca1c777e0f17bcc4712f23e14a3_2_10x10.png" height="388" src="../../uploads/default/optimized/2X/6/6e93cbf1b54efca1c777e0f17bcc4712f23e14a3_2_690x388.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e93cbf1b54efca1c777e0f17bcc4712f23e14a3_2_690x388.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e93cbf1b54efca1c777e0f17bcc4712f23e14a3_2_1035x582.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e93cbf1b54efca1c777e0f17bcc4712f23e14a3_2_1380x776.jpeg 2x" width="690"/></div>
+<h3><a href="https://realpython.com/python-logging/" rel="nofollow noopener" target="_blank">Logging in Python – Real Python</a></h3>
+<p>Learn why and how to get started with Python's powerful logging module to meet the needs of beginners and enterprise teams alike.</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<p>מתוך המאמר :</p>
+<pre><code class>import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logging.debug('This will get logged')
+</code></pre>
+<p>שתי השורות הראשונות הן ההתקנה של זה , אני קובע את הרמה של ההודעות , יש רמות שונות ואני קובע את הרמה לDEBUG<br/>
+כעת אם אכתוב את השורה השלישית זה ידפיס לי את ההודעה כהודעת DEBUG<br/>
+אם ארצה לכתוב את ההודעה כהודעת INFO  פשוט אכתוב :</p>
+<pre><code class>logging.info('This is an info message')
+</code></pre>
+<p>מאחר והרמה שקבעתי היא DEBUG  והיא מתחת לINFO  אז אראה גם הודעות INFO  וגם הודעות דיבאג.</p>
+<p>היתרונות של זה לעומת סתם פרינט זה שניתן לקבוע רמות שונות ולשחק עם איזה סוגי הודעות נראה ואיזה לא , נקבל הקדמה לפני כל הודעה איזה סוג הודעה זה ועוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ellen</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-30T16:17:19Z" itemprop="datePublished">
+                     30 באוגוסט,‏ 2020,‏  4:17pm
+                  </time>
+<meta content="2020-08-30T16:17:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניסיתי ליצור שני לוגרים</p>
+<ul>
+<li>אחד שמדפיס</li>
+<li>שני שכותב לקובץ</li>
+</ul>
+<p>ברגע שאני משנה את הlevel לerror הוא לא מדפיס דברים למסך ואם אני מורידה את הלבל לinfo הוא רושם הכל לקובץ.<br/>
+גם מה שכתוב <a href="https://docs.python.org/3/library/logging.html" rel="nofollow noopener">בדקומנטציה</a>, <a href="https://realpython.com/python-logging/" rel="nofollow noopener">במאמר</a> ובנושא <a href="https://stackoverflow.com/questions/11548674/logging-info-doesnt-show-up-on-console-but-warn-and-error-do/11548754" rel="nofollow noopener">בסטאקאובפלו</a> (שזה אותו דבר בגדול) לא עובד אצלי.</p>
+<p>האם קורה לעוד מישהו? קצת התייאשתי…<br/>
+<span class="hashtag">#וינדואוס</span></p>
+<p>דברים שלקחתי בחשבון:</p>
+<ul>
+<li>הערך הדיפולטי הוא warning , ואם לא משתמשים בפונקציה basicConfig על לוגר האב הוא מתעלם מכל קונפיגוריה לבנים שלו.</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T12:53:12Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 12:53pm
+                  </time>
+<meta content="2020-08-31T12:53:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8017" data-username="ssb950">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/s/ebca7d/40.png" width="20"/> ssb950:</div>
+<blockquote>
+<p>היי, קראתי בכל מיני מקומות על הלוג הנדלר וזה יותר בלבל מאשר חידד אותי.</p>
+</blockquote>
+</aside>
+<p>בכיף, אבל זה נושא עצום ואני לא חושב שאוכל להסביר את זה במסגרת תגובה בודדת.<br/>
+רוצה למקד אותי במה פחות הסתדר לך?</p>
+<aside class="quote no-group" data-post="3" data-topic="8017" data-username="Ellen">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/ellen/40/180_2.jpg" width="20"/> Ellen:</div>
+<blockquote>
+<p>ניסיתי ליצור שני לוגרים</p>
+</blockquote>
+</aside>
+<p>ניסית את <a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-to-multiple-destinations">זה?</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ssb950</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T12:59:28Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 12:59pm
+                  </time>
+<meta content="2020-08-31T12:59:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת שנתקעתי די בבסיס <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/><br/>
+לא ממש הצלחתי להבין מה זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/14b0673698b241a34e219d01628e3852a404c564.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T13:14:15Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏  1:14pm
+                  </time>
+<meta content="2020-08-31T13:14:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני עוד לא הגעתי לזה אבל ממליץ מאוד על הסרטונים של הבחורציק הזה.<br/>
+הוא מסביר כל נושא בצורה מאוד ברורה ופרטנית שלב שלב.</p>
+<p>בכל הקשור ללוג יש לו 2 סרטונים בסיס ומתקדם.<br/>
+<strong>בסיס:</strong></p><div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="-ARI4Cz-awo" data-video-start-time="224s" data-video-title="Python Tutorial: Logging Basics - Logging to Files, Setting Levels, and Formatting">
+<a href="https://www.youtube.com/watch?v=-ARI4Cz-awo&amp;t=224s" rel="noopener" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="90A0B3" height="388" src="../../uploads/default/original/2X/1/14b0673698b241a34e219d01628e3852a404c564.jpg" title="Python Tutorial: Logging Basics - Logging to Files, Setting Levels, and Formatting" width="690"/>
+</a>
+</div>
+<p><strong>מתקדם:</strong></p><div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="jxmzY9soFXg" data-video-start-time="" data-video-title="Python Tutorial: Logging Advanced - Loggers, Handlers, and Formatters">
+<a href="https://www.youtube.com/watch?v=jxmzY9soFXg" rel="noopener" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="92A2B4" height="388" src="../../uploads/default/original/2X/4/40df6de17a8e97be7ab67ba7dbf02986ca5bfe24.jpg" title="Python Tutorial: Logging Advanced - Loggers, Handlers, and Formatters" width="690"/>
+</a>
+</div>
+<p>אני לא יודע בדיוק מה הקושי אבל שאני נתקע עם בעיה ללהבין משהו ברמת ה"רעיון"<br/>
+לרוב הבחור הזה עוזר לי המון.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ellen</span>
+</span>
+<link href="8017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T17:25:12Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏  5:25pm
+                  </time>
+<meta content="2020-08-31T17:25:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="4" data-topic="8017" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>ניסית את <a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-to-multiple-destinations" rel="nofollow noopener">זה? </a></p>
+</blockquote>
+</aside>
+<p>כן. אני אראה את הסרטונים שצירפו פה למטה. אעדכן מה פספסתי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/log-handler/8017 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:15:10 GMT -->
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/git/8804 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:21:50 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים! - שבוע 16 - פייתון בעברית ובחינם</title>
+<meta content="הנה קומיט ראשון בריפו אין בו כלום: 
+ 
+שיניתי ועשיתי קומיט: 
+ 
+עכשיו יצרתי בראנץ’ וקראתי לו אביעד (git branch aviad): 
+ 
+עשיתי checkout לבראנץ’ בעזרת git checkout aviad, כלומר הוא activated. 
+עכשיו כל פעם שאני אעשה commit&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8804.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8804.rss" rel="alternate nofollow" title="הזנת RSS של ‚שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/8/89a07e35ec1df68ae66340608289582a51069bcb.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/8/89a07e35ec1df68ae66340608289582a51069bcb.png" property="og:image"/>
+<meta content="8804.html" property="og:url"/>
+<meta content="8804.html" name="twitter:url"/>
+<meta content="שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!" property="og:title"/>
+<meta content="שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!" name="twitter:title"/>
+<meta content="הנה קומיט ראשון בריפו אין בו כלום:    שיניתי ועשיתי קומיט:    עכשיו יצרתי בראנץ’ וקראתי לו אביעד (git branch aviad):     עשיתי checkout לבראנץ’ בעזרת git checkout aviad, כלומר הוא activated.  עכשיו כל פעם שאני אעשה commit אני אמשוך אותו יחד איתי     (שאלה מהכיתה):   ו-main עדיין נמצא על 1, כן?   חניך מהכתה מעיר:   הmain הוא כמו עוד aviad לצורך העניין, ואם הוא נוצר עם הרפו אז הוא דבוק ל־1  ועולה איתו כל קומיט.   ים ממשיך – לא יצרנו את main, אבל בואו נניח ש¯main נוצר אוטומטית כשאנחנו מקימים ריפו:  ..." property="og:description"/>
+<meta content="הנה קומיט ראשון בריפו אין בו כלום:    שיניתי ועשיתי קומיט:    עכשיו יצרתי בראנץ’ וקראתי לו אביעד (git branch aviad):     עשיתי checkout לבראנץ’ בעזרת git checkout aviad, כלומר הוא activated.  עכשיו כל פעם שאני אעשה commit אני אמשוך אותו יחד איתי     (שאלה מהכיתה):   ו-main עדיין נמצא על 1, כן?   חניך מהכתה מעיר:   הmain הוא כמו עוד aviad לצורך העניין, ואם הוא נוצר עם הרפו אז הוא דבוק ל־1  ועולה איתו כל קומיט.   ים ממשיך – לא יצרנו את main, אבל בואו נניח ש¯main נוצר אוטומטית כשאנחנו מקימים ריפו:  ..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 16" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="4 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="19 ❤"/>
+<meta content="2021-01-16T02:41:38+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!","mainEntity":{"@type":"Question","name":"שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!","text":"הנה קומיט ראשון בריפו אין בו כלום:\n\n[image]\n\nשיניתי ועשיתי קומיט:\n\n[image]\n\nעכשיו יצרתי בראנץ’ וקראתי לו אביעד (git branch aviad):\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/d62cc37619d88fcc7c18ca5394f24293ed4165a2\" title=\"image\">[image]<\/a>\n\nעשיתי checkout לבראנץ’ בעזרת git checkout aviad, כלומר הוא activated.\n\nעכשיו כל פעם שאני אעשה commit אני אמשוך אותו יחד איתי\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b.jpeg\" data-download-href=\"https://forums.pythonic.guru/uploads/default/520f3ee87372e4ddef55a4bf215fe2b800030f1b\" title=\"image\">[image]<\/a>\n\n(שאלה מהכיתה):\n\nו-mai&hellip;","upvoteCount":16,"answerCount":0,"dateCreated":"2021-01-16T02:41:37.967Z","author":{"@type":"Person","name":"ים מסיקה"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8804.html">שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-16/28.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 16</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שיעור פרטי: סדר בראש וריענון על קונספטים של git – עם ציורים!" itemprop="headline"/>
+<meta content="שבוע 16" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8804.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/89a07e35ec1df68ae66340608289582a51069bcb.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-16T02:41:38Z" itemprop="datePublished">
+                     16 בינואר,‏ 2021,‏  2:41am
+                  </time>
+<meta content="2021-01-16T03:37:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>הנה קומיט ראשון בריפו אין בו כלום:</p>
+<p><img alt="image" data-base62-sha1="jDvgCJk3p4qbDGRyKgZJ2vyaI0H" height="219" src="../../uploads/default/original/2X/8/89a07e35ec1df68ae66340608289582a51069bcb.png" width="202"/></p>
+<p>שיניתי ועשיתי קומיט:</p>
+<p><img alt="image" data-base62-sha1="iyctFlrhouWpDkJ0llzHCTyI7ZF" height="314" src="../../uploads/default/original/2X/8/8204db8b0bd533c9926997262eca893ae99a72eb.png" width="194"/></p>
+<p>עכשיו יצרתי בראנץ’ וקראתי לו אביעד (<code>git branch aviad</code>):</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d62cc37619d88fcc7c18ca5394f24293ed4165a2" href="../../uploads/default/original/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2.jpg" title="image"><img alt="image" data-base62-sha1="uyG5dbWmjCEJ9W45SYB6H626G4i" data-small-upload="../../uploads/default/optimized/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2_2_312x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2_2_312x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2_2_468x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d62cc37619d88fcc7c18ca5394f24293ed4165a2.jpeg 2x" width="312"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">521×834 34.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עשיתי checkout לבראנץ’ בעזרת <code>git checkout aviad</code>, כלומר הוא activated.<br/>
+עכשיו כל פעם שאני אעשה commit אני אמשוך אותו יחד איתי</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/520f3ee87372e4ddef55a4bf215fe2b800030f1b" href="../../uploads/default/original/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b.jpg" title="image"><img alt="image" data-base62-sha1="bHVOChSAZgOEi4FOt2Nfep5QrBF" data-small-upload="../../uploads/default/optimized/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b_2_265x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b_2_265x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b_2_397x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/5/520f3ee87372e4ddef55a4bf215fe2b800030f1b_2_530x1000.jpeg 2x" width="265"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">538×1015 29.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>(שאלה מהכיתה):</p>
+<blockquote>
+<p>ו-main עדיין נמצא על 1, כן?</p>
+</blockquote>
+<p>חניך מהכתה מעיר:</p>
+<blockquote>
+<p>הmain הוא כמו עוד aviad לצורך העניין, ואם הוא נוצר עם הרפו אז הוא דבוק ל־1  ועולה איתו כל קומיט.</p>
+</blockquote>
+<p>ים ממשיך – לא יצרנו את main, אבל בואו נניח ש¯main נוצר אוטומטית כשאנחנו מקימים ריפו:</p>
+<p><img alt="image" data-base62-sha1="ovvLRxidDrpa11XK5eAbGXDdObL" height="355" src="../../uploads/default/original/2X/a/abc4177a20021f7f54d22db30c6899f3958b0849.jpg" width="490"/></p>
+<p>עשיתי קומיט:</p>
+<p><img alt="image" data-base62-sha1="sUD2BT3p1rLAv3qtiVBMpyVypux" height="331" src="../../uploads/default/original/2X/c/caa3a35cb4c951191949b93f5960e9f260d81449.png" width="193"/></p>
+<p>עכשיו יצרתי את הענף “אביעד” בעזרת <code>git branch aviad</code> ועשיתי אליו <code>checkout</code>, עם <code>git checkout aviad</code>.</p>
+<p>חניך:</p>
+<blockquote>
+<p>דבר ראשון שטעיתי לחשוב והאיורים סידרו לי זה שההתקדמות היא עם העץ, ולא חזרה לשורש שלו.<br/>
+אם אתה יוצר עכשיו את aviad אז ל2 יחוברו גם אביעד וגם main, נכון?</p>
+</blockquote>
+<p>איור:</p>
+<p><img alt="image" data-base62-sha1="w3C9qYEEJp4Uhh7wyXl5pwmc3NF" height="358" src="../../uploads/default/original/2X/e/e0ae307447acd4ceb2a9308044fbc2d16d2ea4d3.png" width="207"/></p>
+<p>עכשיו נעשה git commit.</p>
+<p>החניך שואל:</p>
+<blockquote>
+<p>עושים commit למי?</p>
+</blockquote>
+<p>אני עונה:</p>
+<blockquote>
+<p>מה הכוונה “למי”? שינינו קובץ, עושים קומיט.<br/>
+קומיט זו בקשה לשמור תמונה של המצב הנוכחי.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>אה אוקי<br/>
+לא משנה אם אני עושה את זה או הmain עושה את זה ?</p>
+</blockquote>
+<p>אני עונה:</p>
+<blockquote>
+<p>ה¯main לא עושה כלום. הוא סך הכל חץ שמצביע לעיגול.<br/>
+אותו דבר aviad, הם לא שותפים לתהליך.</p>
+</blockquote>
+<p>נבצע את ה־commit:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/16905bcc92dc760290ffcdcab0f252d1114b2377" href="../../uploads/default/original/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377.jpg" title="image"><img alt="image" data-base62-sha1="3dBN3nRWprv3cU5pTRbBZOa95Dp" data-small-upload="../../uploads/default/optimized/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377_2_237x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377_2_237x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377_2_355x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/16905bcc92dc760290ffcdcab0f252d1114b2377_2_474x1000.jpeg 2x" width="237"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">525×1105 42.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו נעשה <code>git checkout main</code>, ואז ונעשה <code>git branch ode</code>.<br/>
+זה יצור ענף חדש ששמו <code>ode</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e376d13a37e3bc931461d26fc5cdcf834aeff58d" href="../../uploads/default/original/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d.jpg" title="image"><img alt="image" data-base62-sha1="wseWWnEkC63jfpg29dYpXTpKBHf" data-small-upload="../../uploads/default/optimized/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d_2_244x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d_2_244x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d_2_366x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e376d13a37e3bc931461d26fc5cdcf834aeff58d_2_488x1000.jpeg 2x" width="244"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">529×1081 41.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו נפעיל את ode עם <code>git checkout ode</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e480e28adee2090ca0c1af29b4a0657d062f3891" href="../../uploads/default/original/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891.jpg" title="image"><img alt="image" data-base62-sha1="wBqZS8wstXaNJVMsbgwKUmuDiP7" data-small-upload="../../uploads/default/optimized/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891_2_212x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891_2_212x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891_2_318x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e480e28adee2090ca0c1af29b4a0657d062f3891_2_424x1000.jpeg 2x" width="212"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">447×1051 37.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ונעשה commit:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/070f62706f77385960b6449d512613f6cc0484d9" href="../../uploads/default/original/2X/0/070f62706f77385960b6449d512613f6cc0484d9.jpg" title="image"><img alt="image" data-base62-sha1="10siOCNggCMyUyCZWrDk1MlxrbX" data-small-upload="../../uploads/default/optimized/2X/0/070f62706f77385960b6449d512613f6cc0484d9_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/0/070f62706f77385960b6449d512613f6cc0484d9_2_330x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/070f62706f77385960b6449d512613f6cc0484d9_2_330x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/0/070f62706f77385960b6449d512613f6cc0484d9_2_495x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/0/070f62706f77385960b6449d512613f6cc0484d9.jpeg 2x" width="330"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">597×904 38.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו אנחנו עדיין עם אודה activated, נעשה עוד קומיט.</p>
+<p>החניך:</p>
+<blockquote>
+<p>ממנה הפעם</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>מה זה ממנה? אין ממנה ממני ממנו.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>מי עושה את הקומיט שלוקח את התמונה של הכל</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>הכל באותו מחשב. אנחנו על מחשב אחד. כרגע הכל במחשב שלי.</p>
+</blockquote>
+<p>כאמור, נעשה עוד קומיט:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/adacb8e1882655b048b5fe240f5be985654f0be3" href="../../uploads/default/original/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3.jpg" title="image"><img alt="image" data-base62-sha1="oMoENg5Rs2Y9RnljtpZfVoAcobV" data-small-upload="../../uploads/default/optimized/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3_2_10x10.png" height="499" src="../../uploads/default/optimized/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3_2_347x499.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3_2_347x499.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3_2_520x748.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/adacb8e1882655b048b5fe240f5be985654f0be3.jpeg 2x" width="347"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">622×895 42.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עשינו עוד קומיט, זה המצב כרגע</p>
+<p>החניך:</p>
+<blockquote>
+<p>עכשיו שנינו סגורים,<br/>
+אין אקטיבים (שזו צרה בפני עצמה)</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>לא, אודה עדיין activated. למה חשבת שהיא כבר לא?</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>אמממ. מה בעצם סוגר אותה? מה עשינו שסגר את אביעד?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>שום דבר. אביעד לא סגור, חלילה.</p>
+</blockquote>
+<p>חניכה מצטרפת להסביר:</p>
+<blockquote>
+<p>אודה יכל באותה מידה להיות סתם monthview או branch_1, זה סתם שם</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>למה אביעד לא התקדם עם כל קומיט, אחרי הפיצול?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>כי הענף אביעד הפסיק להיות activated, עשינו <code>checkout</code> ל־<code>main</code>.<br/>
+אני חש שאתה מתגעגע לאביעד. נחזור לאביעד: <code>git checkout aviad</code>.</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ecd611ea04196e93451b719e873df8cf6ae2ddcf" href="../../uploads/default/original/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf.jpg" title="image"><img alt="image" data-base62-sha1="xN9kcvYDSzkfJzagMUFEmooV2TZ" data-small-upload="../../uploads/default/optimized/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf_2_349x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf_2_349x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf_2_523x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/ecd611ea04196e93451b719e873df8cf6ae2ddcf.jpeg 2x" width="349"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">600×858 40 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו נעשה commit שוב:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84" href="../../uploads/default/original/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84.jpg" title="image"><img alt="image" data-base62-sha1="6m4DVng4ZRp926HbQQqkMAALkAQ" data-small-upload="../../uploads/default/optimized/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84_2_373x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84_2_373x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84_2_559x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/2/2c8bda8ec6cb35c6c29b60747f5f62273fe8aa84.jpeg 2x" width="373"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">612×819 41.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>החניך:</p>
+<blockquote>
+<p>אז checkout בעצם מייצר מעבר לנקודה אחרת.<br/>
+שאנו קובעים אותה ומקבע את כל השאר ביחס לנקודה שאנחנו עושים לה checkout.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>הוא לא מייצר, הוא רק עובר לתמונה הרלוונטית.<br/>
+אל תשכחו שכל עיגול כזה עם מספר הוא commit – מעין תמונה מסוימת שיש בה קבצים ומצב פרויקט שונה.</p>
+</blockquote>
+<p>[ממשיכים לדסקס בגדול]</p>
+<p>ים:</p>
+<blockquote>
+<p>בראנצ’ים הם סך הכל דרך נעימה לתת שמות לנקודות, ושהשמות האלו יתקדמו יחד איתכם כל עוד הם פעילים.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>נגיד הייתי עושה עכשיו checkout main. הייתי חוזר לנקודה בזמן של main.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>צ’קאווט זו דרך לעבור לנקודה או לשם של בראנץ’ כלשהו.<br/>
+אם היית עושה checkout main בדיאגרמה האחרונה כל הקבצים היו משתנים למה ששמרת בנקודה 2.</p>
+</blockquote>
+<blockquote>
+<p>אתה יכול ליצור בראנץ’ מכל נקודה שהיא,<br/>
+וכל עוד הוא activated הוא יתקדם יחד איתך.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>כאילו אני פשוט עושה checkout לנקודה שאני רוצה, ומייצר ממנה בראנץ.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>יותר מדויק: מייצר בראנץ’ שמצביע אליה.<br/>
+בוא ניתן עוד קומיט מאודה. איך נעשה את זה?</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>נעשה checkout ל־ode, ואז נעשה לה commit?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>לא נעשה לה, ode הוא לא משהו, הוא label שמוצמד לנקודה.<br/>
+אנחנו לא עושים commit על ode.</p>
+</blockquote>
+<blockquote>
+<p>כשאנחנו עושים git checkout ode זה מתורגם ל"תעבור לקומיט מספר 5", אודה זה השם שבו אנחנו משתמשים כדי להפנות לקומיט 5</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>אה. וואו. אוקיי.<br/>
+הייתי צריך את המשפט הזה</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>השמות ode ו־aviad הם רק מצביעים שיודעים להתקדם בעץ, הם לא מייצגים כלום בפני עצמם.<br/>
+כלומר, הם הבראנצ’ים, והם מייצגים בראנצ’ים. אבל זהו.</p>
+</blockquote>
+<p>נתקדם:</p>
+<pre><code class>git checkout ode
+git commit
+</code></pre>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e" href="../../uploads/default/original/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e.jpg" title="image"><img alt="image" data-base62-sha1="dfJySTrSnScAxc7chjVLJGqQKWW" data-small-upload="../../uploads/default/optimized/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e_2_294x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e_2_294x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e_2_441x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/5ce39a2762d1a6230723e6ff0d33036c5c7a4a7e.jpeg 2x" width="294"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">570×967 40.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זמן לקצת סדר.</p>
+<p>כדי לפנות מקום בלוח, אני אשרטט את העץ קצת אחרת ויזואלית, אבל בגדול מבחינת עץ אתם תוכלו לראות שזה אותו עץ:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/6990ed530de192ba6b2d712d8c0497fc55861191" href="../../uploads/default/original/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191.jpg" title="image"><img alt="image" data-base62-sha1="f3SDCXjc7tyGaniGB5DVp9bH529" data-small-upload="../../uploads/default/optimized/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191_2_314x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191_2_314x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191_2_471x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/6/6990ed530de192ba6b2d712d8c0497fc55861191.jpeg 2x" width="314"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">558×888 39.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ונשנה את השמות של ה־branch־ים. נדמיין שהבראנץ’ הראשון הוא לא aviad אלא profile-page ו¯ode היא main-page:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d12777dd8c7a5dffd8801e93d946e314acfbe9f0" href="../../uploads/default/original/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0.jpg" title="image"><img alt="image" data-base62-sha1="tQglNzbDTnJx7yfikvjeLvlyF8Y" data-small-upload="../../uploads/default/optimized/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0_2_369x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0_2_369x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0_2_553x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d12777dd8c7a5dffd8801e93d946e314acfbe9f0.jpeg 2x" width="369"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">624×845 44.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>נניח שבבראנץ’ main-page עשינו קומיטים שקשורים לעיצוב הדף הראשי.<br/>
+בבראנץ’ profile-page עשינו קומיטים שקשורים לדף הפרופיל.</p>
+<p>אלו שני פיצ’רים שונים שנניח עבדתי עליהם במקביל.</p>
+<p>חניך:</p>
+<blockquote>
+<p>כלומר מהבראנץ main, שהוא commit מספר 2, הייתה התחלה של עבודה על שני דברים שונים.<br/>
+כל אחד התפתח בכיוון שלו. כלומר הבסיס של כל אחד מהם היה זהה אבל זה התפתח שונה.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>כן. 3, 4 נגזרו מ¯2.<br/>
+שניהם שינו משהו ב¯2, אבל האבא שלהם הוא 2.<br/>
+כל אחד שינה בכיוון אחר.<br/>
+זה הוסיף דף ראשי, זה הוסיף פרופיל.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>כאילו 3 ו4 הם תמונות מצב בדרך של התתפתחות של 5. כן.</p>
+</blockquote>
+<p>המשך הסבר:</p>
+<p>עכשיו נניח כולם סיימו את עבודתם, קומיט 7 הוא דף ראשי מושלם וקומיט 6 הוא דף פרופיל מושלם.<br/>
+צריך לשלב אותם חזרה לפרויקט.</p>
+<p>חניך:</p>
+<blockquote>
+<p>ל־2? כלומר לאבא שלהם?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>בערך. אי אפשר לשנות את 2.<br/>
+כמו שאתה לא לוקח לורד ומקשקש על תמונה שצילמת. זה יהיה לא נחמד.<br/>
+לוקחים פוטושופ ומורידים את הפוני.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>נכון, הוא תמונה גם בעצמו, אז אי אפשר לשנות אותו.</p>
+</blockquote>
+<p>בכ"מ עשינו <code>git checkout main</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c51576d3f1951363ec7ba49c832a102cab56b0fa" href="../../uploads/default/original/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa.jpg" title="image"><img alt="image" data-base62-sha1="s7u30fTX117ehU89wyor9prsw8q" data-small-upload="../../uploads/default/optimized/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa_2_339x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa_2_339x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa_2_508x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/c/c51576d3f1951363ec7ba49c832a102cab56b0fa.jpeg 2x" width="339"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">613×904 46.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו אנחנו עושים <code>git merge profile-page</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/12f42729ff305b3176f36cfd91c784d01835a1b3" href="../../uploads/default/original/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3.jpg" title="image"><img alt="image" data-base62-sha1="2HFGLGCvNAVFDXOy4IvJFHBW4UP" data-small-upload="../../uploads/default/optimized/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3_2_364x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3_2_364x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3_2_546x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/12f42729ff305b3176f36cfd91c784d01835a1b3.jpeg 2x" width="364"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">600×823 43 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>יצרנו תמונה חדשה שמשולבת מ¯2 ומ¯6.</p>
+<p>חניך:</p>
+<blockquote>
+<p>ואז נגיד אתה עושה checkout ל־main-page…</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>בלי צ’קאווט. אני רק רוצה למרג’ג’.<br/>
+אני עומד על הענף שאני רוצה שימשיך הלאה ומבקש לשאוב אלי את הענף למירג’וג’</p>
+</blockquote>
+<p>נעשה <code>git merge main-page</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/5c98471c2d3a5f5789b580a8e6ccca085806752d" href="../../uploads/default/original/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d.jpg" title="image"><img alt="image" data-base62-sha1="dd8bdp9oG8eMwvYp19ChIV0Xvlj" data-small-upload="../../uploads/default/optimized/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d_2_342x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d_2_342x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d_2_513x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/5c98471c2d3a5f5789b580a8e6ccca085806752d.jpeg 2x" width="342"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">605×882 51.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כל זה בלי לצאת מהמחשב שלך ובלי לעשות שום דבר עם האינטרנט או עם עוד אנשים.<br/>
+עכשיו בוא נכניס למיקסר remote.</p>
+<p>[will it blend.gif]</p>
+<p>[הערת עריכה: ההסבר המילולי בהתחלה מעט מעורפל אבל חשוב לקרוא אותו ולנסות להבין. כשהציורים מגיעים הערפל מתפזר. י.מ]</p>
+<p>דבר ראשון נתחיל במשהו לא מובן מאליו, אין בעיה שכולם יעבדו על אותו remote.<br/>
+זה קורה הרבה כשאתה עובד בתעשייה, ואז כולם עובדים פשוט על origin.</p>
+<p>נתחיל בהמשגה: תדמיין אתר שמולו אתה פועל וממנו אתה מוריד ומעלה את הקוד. זה remote.<br/>
+כל עוד יש אחד כזה, אתה אפילו לא צריך להיות מודע לקיומו.</p>
+<p>חניך:</p>
+<blockquote>
+<p>אבל מה זה אומר שכולם עובדים מולו ישירות?<br/>
+שיש נקודה וכולם יוצאים ממנה, ומעדכנים אליה הולך ושוב?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>כולם מדברים מולו. תדמיין ענן. זה remote.<br/>
+אז בוא נניח ש¯http://github.com/yam/calendar הוא רימוט.<br/>
+אתה יכול לעשות fork, ואז יהיה <a href="http://github.com/moshik/calendar">http://github.com/moshik/calendar</a>.</p>
+</blockquote>
+<blockquote>
+<p>וזה אומר שיהיה 2 ריפוים בלתי תלויים.<br/>
+אני יכול לעשות קומיטים ובראנצ’ים ומרג’ים ובלאגן,<br/>
+וזה לא ישוקף לך ב־repo של moshik.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>זה כאילו במקום שיהיה עץ אחד כמו שהדגמנו “של הכל על המחשב שלי”,<br/>
+יש שניים כאלה שמתקיימים במקביל.<br/>
+על אותו הפרוייקט לצורך העניין.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>לא על אותו פרויקט.<br/>
+כשאתה עושה fork אתה אומר “אני רוצה את מה שיש עכשיו, תארוז לי את זה לקחת”.<br/>
+אתה לוקח את המצב הנוכחי וזהו נגמר אין קשר ביניכם יותר.<br/>
+זה מה שאתה עובד עליו מעתה ועד עולם.</p>
+</blockquote>
+<blockquote>
+<p>אז אחרי שעשית fork מ¯Yam, יש 2 ריפויים.<br/>
+הריפו הראשון נקרא Yam, ואני יכול לעבוד עליו כמה שבא לי ולשנות ולעשות בראנצ’ים ובלאגן.<br/>
+והריפו השני נקרא moshik שהוא שלך, שנגזר מנקודת הזמן שבה עשית fork לפרויקט שלי.<br/>
+אתה יכול לעשות בשלב הזה מה שבא לך על הפרויקט שלך, הפרויקט שלך לא יושפע משלי ושלי לא יושפע משלך.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>זה duplicate  אבל without dependencies.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>כן, ה¯duplication הוא של נקודה מסוימת בזמן ומאז מתנתקים.</p>
+</blockquote>
+<blockquote>
+<p>עכשיו כל אחד כזה מתנהל במיקרוקוסמוס משלו<br/>
+הוא יכול לעשות בראנצ’ים, קומיטים, לא משפיע לא משפיע.</p>
+</blockquote>
+<blockquote>
+<p>נניח, אודה ואביעד שניהם יכולים להיות ה¯owners של הריפו שנקרא aviad,<br/>
+ושניהם יכולים לעבוד עליו ביחד.</p>
+</blockquote>
+<blockquote>
+<p>עכשיו יש את הריפו aviad שאביעד ואודה מנהלים.<br/>
+נניח שאנחנו במצב שממש אחרי ה¯fork שאביעד עשה לריפו yam.</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e4847b8340829d45627a2e75d8030f9d63e6be1b" href="../../uploads/default/original/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b.jpg" title="image"><img alt="image" data-base62-sha1="wByHKvNj45sHpT17XndoYfiHl7J" data-small-upload="../../uploads/default/optimized/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b_2_10x10.png" height="189" src="../../uploads/default/optimized/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b_2_690x189.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b_2_690x189.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b_2_1035x283.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4847b8340829d45627a2e75d8030f9d63e6be1b_2_1380x378.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1875×514 74 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו אביעד ואודה עשו clone, כל אחד למחשב שלו, של הריפו aviad.<br/>
+נקרא לריפו avocado כדי שיהיה פחות מבלבל:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/68236f9da4a488d37a46e7555e074374ac079c09" href="../../uploads/default/original/2X/6/68236f9da4a488d37a46e7555e074374ac079c09.jpg" title="image"><img alt="image" data-base62-sha1="eRfzQCoOCJpTEfz30Q3JrNmbIhj" data-small-upload="../../uploads/default/optimized/2X/6/68236f9da4a488d37a46e7555e074374ac079c09_2_10x10.png" height="494" src="../../uploads/default/optimized/2X/6/68236f9da4a488d37a46e7555e074374ac079c09_2_690x494.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/68236f9da4a488d37a46e7555e074374ac079c09_2_690x494.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/6/68236f9da4a488d37a46e7555e074374ac079c09_2_1035x741.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/6/68236f9da4a488d37a46e7555e074374ac079c09_2_1380x988.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1471×1055 122 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>חניך:</p>
+<blockquote>
+<p>איך שונה ה clone מה fork?<br/>
+את הפורק אני מבין…</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>ה¯clone זו פעולה שאתה עושה כדי להוריד את הקבצים מ¯remote כלשהו אל המחשב שלך.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>אבל בדומה לפורק אני יכול לעשות שם בלאגן, ושלא ישפיע על האחרים?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>כן, אבל אתה תשאף מתישהו לעדכן את ה¯remote כי זה ה¯source of truth של כולם.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>אוקיי, אז ה־clone מעתיק אליי את הקבצים לפי תמונה שנמצא בה הרימוט שלי, במצב הנתון שלו.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>הנה סיפור שאולי יבהיר את זה: מושיק מפתח מערכת לקנייה אוטומטית של אבוקדו מהשוק.<br/>
+הוא עובד עליה במרץ עם קהילה קטנה של מפתחים מ¯2012–2017<br/>
+ב¯2017 מושיק מחליט לשנות את הלייסנס של הפרויקט, ושכל מי שירצה להשתמש במשהו חדש שמוסיפים מעתה והלאה, יצטרך לשלם כסף<br/>
+רעידת אדמה בעולם האופן סורס וכל הקהילה שעבדה יחד עם מושיק כעוסים ועצובים.<br/>
+חמגשית, הרי היא גיבורת הסיפור האמיתית, מחליטה לפתוח פרויקט Open Source משלה לקנייה אוטומטית של בננות בשוק.<br/>
+היא עושה fork מהנקודה בה מושיק החליט שהפרויקט הוא קנייני, ומתחילה ציר פיתוח נפרד.<br/>
+בזמן שמושיק קרא לפרויקט שלו Mega Bananas Extreme, חמגשית קוראת לפרויקט שלה Best Bananas Ultra.<br/>
+כל הקהילה שעבדה עם מושיק עד עכשיו מצאו תחליף. שמחים ומבסוטים הם עושים clone לפרויקט שחמגשית יצרה בעזרת ה¯fork וממשיכים לפתח משם.<br/>
+… זה ברור?</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>כן.<br/>
+הפרויקט שלהם הוא ה־repo החדש שחמגשית יצרה כשהיא עשתה fork.<br/>
+הם שואפים לעשות clone ל־fork, לשנות דברים ולעדכן אליו חזרה מתישהו.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>נכון. נניח שיש 20 מפתחים שחמגשית גייסה, כולם יעשו clone לפרויקט החדש,<br/>
+כלומר ל¯fork של חמגשית שיצא מה¯repo של מושיקו.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>כן, נכון.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>עוד סיבה לפיצול כזה עם fork, יכולה להיות ניהול הרשאות. נניח ואני שליט אכזר שמנהל 40 חניכים, ולא בא לי שיהיה לי המון בראנצ’ים מוזרים בכל מקום והפרויקט יקבל צורה מאוד מבולגנת.<br/>
+אז אני אגביל את הגישה לכתיבת הפרויקט רק אליי, ואגיד לכולם לעשות fork. בשלב הזה כולם יוכלו לעשות דברים על ה¯sandbox שלהם, ואז רק כשהם ישלחו משהו שנראה טוב אני אהיה מוכן שזה ישתלב עם ה¯repo שלי.</p>
+</blockquote>
+<p>חניך:</p>
+<blockquote>
+<p>אחלה.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>סבבה. קצת נסחפתי לשלב הבא, אבל בוא רגע נדמיין שיש רק source of truth אחד.<br/>
+בוא נדמיין שיש רק את אביעד ואת אודה שמנסים לנהל פרויקט יחד.<br/>
+שניהם סטודנטים נמרצים שמנסים להקים אתר על הריפו שלהם מתוך repo שלי שעשיתם לו fork.<br/>
+נחזור לתמונה:</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c1aa637550e98b76e1d2538b7d408525c92e40ec" href="../../uploads/default/original/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec.jpg" title="image"><img alt="image" data-base62-sha1="rDfcRBs9yYpGKPpDM1BbD7Pl580" data-small-upload="../../uploads/default/optimized/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec_2_10x10.png" height="466" src="../../uploads/default/optimized/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec_2_690x466.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec_2_690x466.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec_2_1035x699.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/c/c1aa637550e98b76e1d2538b7d408525c92e40ec_2_1380x932.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1438×972 106 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>אביעד נניח יעבוד על ה¯profile page, ויוסיף קומיטים להנאתו:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/494a4a812216094a22eebe23eec050ce9c4b9783" href="../../uploads/default/original/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783.jpg" title="image"><img alt="image" data-base62-sha1="asm1qYvPGNqhJN0c2ETh3YLuu5l" data-small-upload="../../uploads/default/optimized/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783_2_438x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783_2_438x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/494a4a812216094a22eebe23eec050ce9c4b9783.jpeg 2x" width="438"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">583×665 44.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>חשוב להדגיש:<br/>
+זה המצב במחשב שלו. זה לא מתעדכן בשרת המרוחק, ב¯remote, עד שאביעד לא מבקש מפורשות.</p>
+<p>אודה עובדת על הדף הראשי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/0065ae8b44078be517424921c893c558d7428fb5" href="../../uploads/default/original/2X/0/0065ae8b44078be517424921c893c558d7428fb5.jpg" title="image"><img alt="image" data-base62-sha1="3vQQ9Raut7uEevo26BMVG2JVxr" data-small-upload="../../uploads/default/optimized/2X/0/0065ae8b44078be517424921c893c558d7428fb5_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/0/0065ae8b44078be517424921c893c558d7428fb5_2_479x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0065ae8b44078be517424921c893c558d7428fb5_2_479x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/0/0065ae8b44078be517424921c893c558d7428fb5.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/0/0065ae8b44078be517424921c893c558d7428fb5.jpeg 2x" width="479"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">617×644 44.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ביחד העץ שלכם נראה דומה, אבל כולל דברים אחרים לגמרי:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/32f22699b23534af869da847eb6cfcab6fba6266" href="../../uploads/default/original/2X/3/32f22699b23534af869da847eb6cfcab6fba6266.jpg" title="image"><img alt="image" data-base62-sha1="7gGG6M1g3v0X9sD5utvZ8UOoiy2" data-small-upload="../../uploads/default/optimized/2X/3/32f22699b23534af869da847eb6cfcab6fba6266_2_10x10.png" height="437" src="../../uploads/default/optimized/2X/3/32f22699b23534af869da847eb6cfcab6fba6266_2_690x437.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/32f22699b23534af869da847eb6cfcab6fba6266_2_690x437.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/3/32f22699b23534af869da847eb6cfcab6fba6266_2_1035x655.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/3/32f22699b23534af869da847eb6cfcab6fba6266_2_1380x874.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1595×1012 122 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו אודה עושה push לשרת.<br/>
+היא עושה <code>git push avocado main-page</code>:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e4a4087b605e10d569806b53c792448c19624648" href="../../uploads/default/original/2X/e/e4a4087b605e10d569806b53c792448c19624648.jpg" title="image"><img alt="image" data-base62-sha1="wCEiLiKyUeI1LdXqnyAGcyfaOcU" data-small-upload="../../uploads/default/optimized/2X/e/e4a4087b605e10d569806b53c792448c19624648_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/e/e4a4087b605e10d569806b53c792448c19624648_2_681x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4a4087b605e10d569806b53c792448c19624648_2_681x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4a4087b605e10d569806b53c792448c19624648_2_1021x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e4a4087b605e10d569806b53c792448c19624648_2_1362x1000.jpeg 2x" width="681"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1463×1073 134 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ואז גם לאביעד מתחשק אז הוא עושה <code>git push avocado profile-page</code>.</p>
+<p>החניך:</p>
+<blockquote>
+<p>היא לא צריכה קודם אצלה לעשות merge עם המיין? כאילו בעץ שלה עצמה? לפני שהיתי חוזרת חזרה לריפו?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>לא.<br/>
+הענף שלה יצא מ¯main והיא דוחפת את הענף שלה שלא מפריע ל¯state של אף אחד אחר.<br/>
+זה לא שהיא תהרוס את המבנה של העץ, או לא תואמת משהו שקרה בעץ של הפרויקט הגדול.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>אוקיי.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>מה שכן, יכול להיות ש¯git יסרב לבקשה הזו של אביעד, במקרים מסוימים.<br/>
+הוא יגיד “אביעד היקר, היו שינויים מאז שמשכת דברים פעם אחרונה, נא עדכן”.<br/>
+ואז אביעד יצטרך לבצע pull, מה שיביא אליו את הענף של ode.<br/>
+זה יראה ככה, אחרי שהוא יעשה <code>git pull avocado</code>:</p>
+</blockquote>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/2846456e964651baa5e9cc74c59d342e51839b74" href="../../uploads/default/original/2X/2/2846456e964651baa5e9cc74c59d342e51839b74.jpg" title="image"><img alt="image" data-base62-sha1="5KhEyMt70Q95kFJQI9gn6bzqEQY" data-small-upload="../../uploads/default/optimized/2X/2/2846456e964651baa5e9cc74c59d342e51839b74_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/2/2846456e964651baa5e9cc74c59d342e51839b74_2_439x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2846456e964651baa5e9cc74c59d342e51839b74_2_439x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/2/2846456e964651baa5e9cc74c59d342e51839b74.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/2/2846456e964651baa5e9cc74c59d342e51839b74.jpeg 2x" width="439"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">605×689 47.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>הפקודה <code>git pull avocado</code> מביאה את כל הענפים ב־remote שנקרא avocado.<br/>
+אפשר גם <code>git pull avocado main</code>, זה יביא ספציפית את main.</p>
+<p>החניך:</p>
+<blockquote>
+<p>כשאביעד מתחבר לענף של אודה -<br/>
+הוא לוקח את הענף שלה מהרפו שהמעודכן שנוצר אחרי שהיא התחברה אליו,<br/>
+או לוקח את הענף מהקלון שלה?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>מהריפו. הוא לא יכול לגשת לקלון שלה, זה קבצים על המחשב שלה.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>קלון זה בקשה לקבל את הקבצים.<br/>
+זה לא יוצר שום דבר על העץ.<br/>
+זה מוריד מהאינטרנט את המצב של פרויקט ה¯git המרוחק, ומגדיר את ה¯remote לשרת שממנו הורדת את הקבצים.<br/>
+במקרה שלנו נתנו לו את השם avocado.</p>
+</blockquote>
+<p>יאללה. נניח שאביעד עשה git push avocado:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6" href="../../uploads/default/original/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6.jpg" title="image"><img alt="image" data-base62-sha1="tWzgOiqcFWU9QVQmfgZ7Do0Yp94" data-small-upload="../../uploads/default/optimized/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6_2_10x10.png" height="444" src="../../uploads/default/optimized/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6_2_690x444.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6_2_690x444.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6_2_1035x666.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d1ddedb8811f1ea3ee6f7e73911962f4b64297f6_2_1380x888.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1563×1006 138 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>(בשלב הזה נהייתי רעב ויצאתי להפסקת פרסומות)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1b5dfa28a2b6840d0c6f31451595becfc6da4f37" href="../../uploads/default/original/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37.jpg" title="image"><img alt="image" data-base62-sha1="3U6eGAQ1UrV6HJR4e0DgBdKqoh9" data-small-upload="../../uploads/default/optimized/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37_2_271x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37_2_271x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/1b5dfa28a2b6840d0c6f31451595becfc6da4f37.jpeg 2x" width="271"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">405×745 46.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו דמיינו שאודה עושה pull, ואז המצב בכל המחשבים ובשרת avocado זהה:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/db89978be33a21a488c617bcf897fc93fdafcdb8" href="../../uploads/default/original/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8.jpg" title="image"><img alt="image" data-base62-sha1="vk7m2tmKJXtyJTmYmMHeExhu8U8" data-small-upload="../../uploads/default/optimized/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8_2_512x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8_2_512x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/db89978be33a21a488c617bcf897fc93fdafcdb8.jpeg 2x" width="512"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">599×584 41 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>אבל לאודה נמאס מהבלאגן שאביעד עשה בריפו אז היא ממרג’ג’ת הכל ל־main:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/285698377dbf93eeaf54fe2989ac70d015fbc9d3" href="../../uploads/default/original/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3.jpg" title="image"><img alt="image" data-base62-sha1="5KQCRKrjyLBfqgVvIE08JMvGtqP" data-small-upload="../../uploads/default/optimized/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3_2_504x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3_2_504x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/2/285698377dbf93eeaf54fe2989ac70d015fbc9d3.jpeg 2x" width="504"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">621×615 46.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>עכשיו אודה מחליטה לתרום את כל הקוד שנכתב בפרויקט שלהם לריפו המקורי ממנו כל הסיפור התחיל.<br/>
+היא יכולה:</p>
+<ol>
+<li>להריץ את הפקודה <code>git remote add upstream https://github.com/yam/calendar</code>, שתוסיף remote בשם upstream שכתובתו היא <a href="https://github.com/yam/calendar">https://github.com/yam/calendar</a> (ענן שמאל בתמונה, זה שמצויר אליו חץ למטה)</li>
+<li>אחרי זה, לכתוב <code>git push upstream main</code> שידחוף את כל הקומיטים ש¯main מצביע עליהם לענן המרוחק, upstream.</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/672528943b717fac7f710edd517489277525384e" href="../../uploads/default/original/2X/6/672528943b717fac7f710edd517489277525384e.jpg" title="image"><img alt="image" data-base62-sha1="eIsN3nhzsdN424xZyFdEPtKVH9Y" data-small-upload="../../uploads/default/optimized/2X/6/672528943b717fac7f710edd517489277525384e_2_10x10.png" height="463" src="../../uploads/default/optimized/2X/6/672528943b717fac7f710edd517489277525384e_2_690x463.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/672528943b717fac7f710edd517489277525384e_2_690x463.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/6/672528943b717fac7f710edd517489277525384e_2_1035x694.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/6/672528943b717fac7f710edd517489277525384e_2_1380x926.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1595×1071 195 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>החניך:</p>
+<blockquote>
+<p>אז upstream הוא שם שנתנו לקישור שמקשר בין שני הרפו האלה?</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>לא. זה השם שנתנו לריפו השמאלי.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>אה, אוקיי.<br/>
+אז עכשיו בעצם כל החניכים בקורס עובדים על רפו משותף?<br/>
+כל אחד על הקלון שלו?</p>
+</blockquote>
+<p>החניכה:</p>
+<blockquote>
+<p>לא, כל אחד על פורק משלו.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>כל אחד יש לו פורק עם קלון של קבצים של המחשב שלו שמתחיל מהתמונה בה בוצע הפורק מהראשי.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>מדייק אותך קצת: כל אחד יוצר פורק שבעצם יוצר ריפו חדש, ואז מריץ במחשב שלו פקודת clone שמורידה את הקבצים שבריפו למחשב שלו ומגדירה את ה¯remote ששמו origin להיות אותו ריפו חדש.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>בשורה <code>git remote add upstream https://github.com/yam/calendar</code> היא מתחברת לענן השמאלי</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>בשורה הזו היא מגדירה remote חדש ששמו upstream,<br/>
+והקישור אליו הוא הקישור לריפו הראשון, הענן השמאלי, ממנו עשינו fork בהתחלה.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>הענן הראשון אין לו שם?<br/>
+זה נראה לי החור היחיד.</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>הענן שממנו אביעד ואודה עשו clone הוא avocado. הם לא באים עם שם.<br/>
+אפשר להגדיר אותו במחשב הפרטי שלך באמצעות פקודת ה¯remote,<br/>
+או כשאתה עושה clone – שם הוא מקבל את השם הדיפולטי origin.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>ה־add שהיא עושה, היא אומרת לו upstream…</p>
+</blockquote>
+<p>ים:</p>
+<blockquote>
+<p>זה שם שהיא נותנת לו.</p>
+</blockquote>
+<p>החניך:</p>
+<blockquote>
+<p>אוקיי.<br/>
+כלומר בשביל להתחבר היא נותנת לו שם, ואז עושה אליו את ה־push.<br/>
+אבל הוא היה שם גם לפני.</p>
+</blockquote>
+<p>החניכה:</p>
+<blockquote>
+<p>תחשוב על זה ככה:<br/>
+<code>git remote add &lt;local nickname for repo&gt; &lt;location/url of the repo&gt;</code></p>
+</blockquote>
+<p>לילה טוב <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="16" itemprop="userInteractionCount"/>
+<span class="post-likes">16 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="8804.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-16T03:14:35Z" itemprop="datePublished">
+                     16 בינואר,‏ 2021,‏  3:14am
+                  </time>
+<meta content="2021-01-16T03:14:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="8804.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-16T07:41:56Z" itemprop="datePublished">
+                     16 בינואר,‏ 2021,‏  7:41am
+                  </time>
+<meta content="2021-01-16T07:41:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברדיט Explain me like im 5! התגובה הזאת מקבלת הרבה Awards!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8804.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-16T08:30:30Z" itemprop="datePublished">
+                     16 בינואר,‏ 2021,‏  8:30am
+                  </time>
+<meta content="2021-01-16T08:30:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מעולה !!₪ תודה<br/>
+<img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/><img alt=":avocado:" class="emoji" src="../../images/emoji/twitter/avocadoc164.png?v=9" title=":avocado:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Itamar</span>
+</span>
+<link href="8804.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-16T13:53:33Z" itemprop="datePublished">
+                     16 בינואר,‏ 2021,‏  1:53pm
+                  </time>
+<meta content="2021-01-16T13:53:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הסבר מעולה, תודה רבה!</p>
+<p>מצרף גם קישור <a href="https://www.youtube.com/watch?v=_Q6_oCHwmoc&amp;t=22s&amp;ab_channel=DevOpsDaysTelAviv" rel="noopener nofollow ugc">להרצאה</a> שעזרה לי קצת לפתח אינטואיציה (בעיקר לגבי פקודות merge ו-rebase). הגעתי אליה דרך הפוסט <a href="https://algoritmim.co.il/resource/understanding-git-fundamentals/" rel="noopener nofollow ugc">הזה</a>.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/git/8804 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:23:20 GMT -->
+</html>

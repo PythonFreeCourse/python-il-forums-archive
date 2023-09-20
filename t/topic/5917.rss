@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>תרגילים נוספים: שבוע 4</title>
+    <link>https://forums.pythonic.guru/t/topic/5917</link>
+    <description>תודה לנגה אוסין על כתיבת התרגילים!
+
+# שבוע 4
+## מחברת 1 – לולאות for
+
+### יעקב השחור
+אתם בבלאג&#39;יו, משחקים במשחק הקלפים &quot;יַעֲקֹב הַשָּׁחֹר&quot;, לא בהגינות רבה. בכל סיבוב אתם שולפים קלף, ואתם מבינים שככל שהקלף שנשלף נמוך יותר – כך הסיכוי לשלוף קלף גבוה יותר עולה.
+כתבו פונקציה אשר מקבלת כפרמטר את רשימת ערכי הקלפים שנשלפו, וקובעת אם כדאי להשתתף גם בסיבוב הבא או לא. 
+
+הפונקציה פועלת לפי החוקיות הבאה:
+- רשימת הקלפים שנשלפו תהיה מיוצגת על־ידי ערכם המספרי בלבד. למשל, נסיך יהיה 11 ומלך יהיה 13. המשחק לא כולל ג&#39;וקר.
+- אם ערכו של הקלף הוא בין 2 ל־6 כולל, מד הסיכון ירד בנקודה אחת (כי עכשיו החבילה מכילה קלפים טובים יותר).
+- אם ערכו של הקלף הוא בין 10 ל־13 כולל, או שערכו שווה 1 (&quot;אס&quot;), מד הסיכון יעלה בנקודה אחת.
+- המספרים 7–9 הם ניטרליים, ולא מוסיפים למד סיכון או גורעים ממנו.
+- אין חשש לבעיות קלט.
+
+על הפונקציה להחזיר `True` אם מד הסיכון קטן מאפס, או `False` אם מד הסיכון גדול או שווה לאפס.
+
+#### דוגמאות:
+- עבור קלט של `[1]`, הפונקציה תחזיר False.
+- עבור קלט של `[1, 2, 3, 4, 5, 6, 7, 8, 9]`, הפונקציה תחזיר True.
+- עבור קלט של `[10, 2]`, הפונקציה תחזיר False.
+
+אתגר: ייצגו את קלפי משפחת המלוכה כמחרוזות; קרי &quot;J&quot; עבור נסיך, &quot;Q&quot; עבור מלכה ו־&quot;K&quot; עבור מלך. ממשו זאת ללא שימוש ב־or, וללא הגדרת if או elif בעבור כל אחד מהקלפים בנפרד. 
+
+### צפנת פענח
+לפניכם רשימה של רשימות. כל תת־רשימה מכילה אותיות וספרות שלמות וחיוביות:
+```
+puzzle_input = [
+    [&#39;s&#39;, &#39;1&#39;, &#39;t&#39;, &#39;9&#39;], [&#39;b&#39;, &#39;2&#39;, &#39;5&#39;], [&#39;u&#39;,&#39;3&#39;, &#39;7&#39;, &#39;y&#39;],
+    [&#39;c&#39;, &#39;4&#39;, &#39;a&#39;, &#39;6&#39;], [&#39;g&#39;, &#39;5&#39;], [&#39;c&#39;, &#39;6&#39;, &#39;3&#39;, &#39;5&#39;], [&#39;c&#39;, &#39;7&#39;, &#39;3&#39;],
+    [&#39;x&#39;, &#39;8&#39;, &#39;3&#39;], [&#39;e&#39;, &#39;9&#39;, &#39;1&#39;], [&#39;s&#39;, &#39;2&#39;, &#39;2&#39;, &#39;6&#39;], [&#39;m&#39;, &#39;12&#39;, &#39;9&#39;],
+    [&#39;s&#39;, &#39;8&#39;, &#39;2&#39;, &#39;j&#39;], [&#39;!&#39;, &#39;9&#39;, &#39;1&#39;], [&#39;?&#39;, &#39;9&#39;, &#39;2&#39;]
+]
+```
+כתבו פונקציה (תוכלו לקרוא לה foo, אם תרצו) אשר תרכיב מילה המסתתרת בתתי־הרשימות, לפי החוקיות הבאה: אם סכום המספרים בתת־רשימה מסוימת שווה ל־10, דִגמו ממנה את האות הראשונה. הפונקציה תחזיר את המילה שהתקבלה מצירוף כל האותיות בזו אחר זו.
+ 
+## מחברת 2 ו־3 – מילונים
+### טחינה
+לפניכם גרסה עדכנית של ספר בישול מהולל (או לכל הפחות, הכותרות של מתכוניו).
+
+```
+cookbook = {
+    &#39;pasta&#39;: {&#39;origin&#39;: &#39;italy&#39;, &#39;prep_time&#39;: 25, &#39;calories&#39;: 400},
+    &#39;curry&#39;: {&#39;origin&#39;: &#39;india&#39;, &#39;prep_time&#39;: 60, &#39;calories&#39;: 250},
+    &#39;chraime&#39;: {&#39;origin&#39;: &#39;morocco&#39;, &#39;prep_time&#39;: 40, &#39;calories&#39;: 350}
+}
+```
+
+לאחרונה גיליתם דבר נפלא: כל דבר הוא טעים יותר לאחר שמוסיפים לו טחינה. רק דקת הכנה נוספת, ופי 2 קלוריות!
+עדכנו בהתאם את ספר הבישול: הוסיפו דקה אחת של הכנה עבור כל מאכל, והכפילו את הקלוריות.
+
+## מחברת 4 – פריקה
+### כוהף
+ממשו פונקציה אשר מקבלת מספר זוגי ולא ידוע של פרמטרים. הפונקציה תחזיר רשימה אשר חצייה הראשון &quot;הוחלף&quot; עם חצייה השני. 
+
+#### לדוגמה:
+1. עבור הקלט 4, 3, 2, 1 – יתקבל [2, 1, 4, 3].
+2. עבור הקלט &#39;banana&#39;, &#39;nana&#39; – יתקבל [&#39;nana&#39;, &#39;banana&#39;].
+3. עבור הקלט 66, 55, 44, 33, 22, 11 – יתקבל [33, 22, 11, 66, 55, 44].
+
+השתמשו ב־slicing וב־unpacking.
+
+### רטינה יומית
+
+בעקבות המצב סיגלתם לעצמכם שגרת אימונים ביתית. כל הכבוד! לאחר כל אימון, רשמתם כמה ימים עברו מאז שהתחלתם, וכמה תרגילים עשיתם מכל סוג. הרישום נראה כך:
+
+```
+daily_routine = (
+    {&#39;day&#39;: 1, &#39;capability&#39;: {&#39;pushups&#39;: 8, &#39;squats&#39;: 20, &#39;pullups&#39;: 2}},
+    {&#39;day&#39;: 2, &#39;capability&#39;: {&#39;pushups&#39;: 13, &#39;squats&#39;: 39, &#39;pullups&#39;: 2}},
+    {&#39;day&#39;: 3, &#39;capability&#39;: {&#39;pushups&#39;: 21, &#39;squats&#39;: 51, &#39;pullups&#39;: 3}}
+)
+```
+
+חשבו את סכום התרגילים שעשיתם בכל יום, ואת ממוצע התרגילים שביצעתם סה&quot;כ (ללא תלות בסוג התרגילים).
+השתמשו ב־kwargs.
+
+(בחנו את עצמכם: הממוצע אמור להיות 53.)
+ 
+### מחברת #5 – בילטעינים
+1. ממשו מילון המציג את חמישה־עשר המספרים האי־זוגיים הראשונים החל מ־100, באופן הבא:
+
+```
+{1: 101, 2: 103, 3: 105, 4: 107, 5: 109, 6: 111, 7: 113, 8: 115, 9: 117, 10: 119, 11: 121, 12: 123, 13: 125, 14: 127, 15: 129}
+```
+ 
+## מחברת 6 – סיכום
+
+### ארנב ומזון
+
+הגשמתם חלום ואימצתם שלושה ארנבים: זיגמונד, פרידריך ואִרווין. מזל טוב!
+הנחתם לצד הארנבונים כמות שווה של גזר, חסה ובצל ירוק, ולכל אורך היום הראשון צפיתם בהם אוכלים. בכל פעם שראיתם ארנב אוכל דבר מה רשמתם בקצרה את האות הראשונה של שמו ואת האות הראשונה של מה שאכל. בסופו של דבר קיבלתם מחברת מבולגנת למדי, אשר נראית כך:
+[details=&quot;תקציר&quot;]
+```
+[&#39;I l&#39;, &#39;F l&#39;, &#39;I s&#39;, &#39;I l&#39;, &#39;I c&#39;, &#39;Z s&#39;, &#39;Z s&#39;, &#39;I l&#39;, &#39;I s&#39;, &#39;Z c&#39;, &#39;Z l&#39;, &#39;I l&#39;, &#39;I l&#39;, &#39;F c&#39;, &#39;Z c&#39;, &#39;Z c&#39;, &#39;F c&#39;, &#39;I s&#39;, &#39;F c&#39;, &#39;Z c&#39;]
+```
+[/details]
+
+על מנת להכיר את ארנביכם טוב יותר, ולדעת מהי כמות האוכל שכדאי לרכוש בפעם הבאה, ענו של השאלות הבאות:
+1. מיהו הארנב הכי זללן? כלומר, מיהו הארנב שצרך את כמות המזון הגדולה ביותר?
+2. מהו המזון החביב על הארנב הזללן ביותר?
+3. איזה מבין המזונות זכה להערכה הרבה ביותר משלושת הארנבים? כלומר, מאיזה סוג מזון נשאר הכי פחות בסוף היום?
+
+הוראות והנחות קלט:
+1. השתמשו במילונים, unpacking ולולאות for. 
+2. ניתן ליצור אך ורק מילונים ריקים. 
+3. כל מחרוזת ברשימה מכילה שתי אותיות: הראשונה מייצגת את שם הארנב, והשנייה מייצגת את סוג המזון (l עבור חסה, c עבור גזר, ו־s עבור בצל ירוק).
+4. הניחו כי כל הכמויות שוות בגודלן. מספיק להוסיף 1 לערך הכמותי של כל מאכל בעבור כל פעם שהוא רשום.</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 09 May 2020 12:05:33 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/5917.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[galmalull]]></dc:creator>
+        <description><![CDATA[
+            <p>רטינה יומית</p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/17">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/17</link>
+        <pubDate>Sat, 09 May 2020 12:05:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-17</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <h1>יעקב השחור</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>צפנת פענח</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>טחינה</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>כוהף</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>רטינה יומית</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>בילטעינים</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+<h1>ארנב ומזון</h1>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/16">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/16</link>
+        <pubDate>Fri, 08 May 2020 14:03:59 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-16</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>הבנתי…<br>
+אזכור להבא.<br>
+תודה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/15</link>
+        <pubDate>Thu, 07 May 2020 22:47:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-15</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נמצא ממש בראש הפורום <a href="https://forums.pythonic.guru/t/topic/5440/7" class="inline-onebox">הסמכה לתעודה במקרים חריגים</a><br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/3/311cdba835a5c9a2e760692ff4d6f96c26979432.png" alt="תמונה" data-base62-sha1="70tdTt9rxepqhS8JZuYa1A8sgU2" width="681" height="155"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/14</link>
+        <pubDate>Thu, 07 May 2020 20:01:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-14</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>אתחיל בזה שלא מדובר בתלונה - סיימתי את כל התרגילים הרגילים.<br>
+ראיתי רק היום את התרגילים הנוספים, כשנכנסתי לבדוק אם יש כבר תרגילים של שבוע 5.<br>
+לא מוצא “פיל או גנטיקה” ו/או/ ג’וק, סמור, בֹּנֶה.</p>
+<p>יש אפשרות שכמו ש-מחברות שבוע 1, 2,… נמצאות בראש הדף כשנכנסים לפורום, יופיעו קישורים לשאלות הנוספות?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/13</link>
+        <pubDate>Thu, 07 May 2020 20:00:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-13</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>כוהף הפתרון שלי: (לוקח בחשבון הכנסת קלטים ולא הכנסה של נתונים לפונקציה)</p>
+
+קוד <a href="https://forums.pythonic.guru/t/topic/5917/12">(לחיצה לפרטים נוספים)</a>
+<p>בילטעינים:</p>
+
+קוד <a href="https://forums.pythonic.guru/t/topic/5917/12">(לחיצה לפרטים נוספים)</a>
+<p>טחינה:</p>
+
+קוד <a href="https://forums.pythonic.guru/t/topic/5917/12">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/12</link>
+        <pubDate>Wed, 06 May 2020 09:50:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b.png" data-download-href="https://forums.pythonic.guru/uploads/default/41e72fb2b827dd8c9f93f9822f21adfc4789949b" title="99999"><img src="https://forums.pythonic.guru/uploads/default/original/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b.png" alt="99999" data-base62-sha1="9p0lHlJfcSPMTjuDrFuAs3RMxHZ" width="690" height="66" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/11</link>
+        <pubDate>Wed, 06 May 2020 08:56:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f.png" data-download-href="https://forums.pythonic.guru/uploads/default/e30260a60a2e4c0d9e09295470529708d52b734f" title="ביאור 2020-05-06 113745"><img src="https://forums.pythonic.guru/uploads/default/original/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f.png" alt="ביאור 2020-05-06 113745" data-base62-sha1="wodtJIeIX3GS76Irb8cMqwps54j" width="690" height="116" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/9</link>
+        <pubDate>Wed, 06 May 2020 08:38:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>פתרונות:<br>
+<strong>יעקב השחור:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>צפנת פענח:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>טחינה:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>כוהף:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>רטינה יומית:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>בילטעינים:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+<p><strong>ארנב ומזון:</strong></p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/8">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/8</link>
+        <pubDate>Wed, 06 May 2020 08:28:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/images/emoji/twitter/+1.png?v=9" title=":+1:" class="emoji" alt=":+1:">…<br>
+…<br>
+…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/7</link>
+        <pubDate>Wed, 06 May 2020 08:19:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>אינדקסים צריכים להיות מספר שלם ולא float</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/6</link>
+        <pubDate>Wed, 06 May 2020 08:16:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/3/30eccf7f6f141f499a17ce6a5e790462000ee252.png" alt="תמונה" data-base62-sha1="6YOhx9SdR8o1aGNxBpc9P4gc9Am" width="622" height="499"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/4</link>
+        <pubDate>Wed, 06 May 2020 07:35:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר בבקשה הסבר על ניסוח השאלה ‘כוהף’?<br>
+פונקציה אשר מקבלת מספר זוגי ולא ידוע של פרמטרים?<br>
+<code>def function(unknown)</code><br>
+הכוונה שהפרמטרים הם ב-unknown או שזה קלט מהמשתמש?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/3</link>
+        <pubDate>Wed, 06 May 2020 07:15:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p>צפנת פענח: success!<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/82a89a56c1b3a76e34619d6ec6da52072ab838bd" title="Screenshot_20200506-083908_Pydroid 3"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_236x500.jpeg" alt="Screenshot_20200506-083908_Pydroid 3" data-base62-sha1="iDRiFIKf3pxGHFVr9sfwAFhOsNf" width="236" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_236x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_354x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_472x1000.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/2</link>
+        <pubDate>Wed, 06 May 2020 05:39:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+      <item>
+        <title>תרגילים נוספים: שבוע 4</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה לנגה אוסין על כתיבת התרגילים!</p>
+<h1>
+<a name="4-1" class="anchor" href="https://forums.pythonic.guru#4-1"></a>שבוע 4</h1>
+<h2>
+<a name="1-for-2" class="anchor" href="https://forums.pythonic.guru#1-for-2"></a>מחברת 1 – לולאות for</h2>
+<h3>
+<a name="heading-3" class="anchor" href="https://forums.pythonic.guru#heading-3"></a>יעקב השחור</h3>
+<p>אתם בבלאג’יו, משחקים במשחק הקלפים “יַעֲקֹב הַשָּׁחֹר”, לא בהגינות רבה. בכל סיבוב אתם שולפים קלף, ואתם מבינים שככל שהקלף שנשלף נמוך יותר – כך הסיכוי לשלוף קלף גבוה יותר עולה.<br>
+כתבו פונקציה אשר מקבלת כפרמטר את רשימת ערכי הקלפים שנשלפו, וקובעת אם כדאי להשתתף גם בסיבוב הבא או לא.</p>
+<p>הפונקציה פועלת לפי החוקיות הבאה:</p>
+<ul>
+<li>רשימת הקלפים שנשלפו תהיה מיוצגת על־ידי ערכם המספרי בלבד. למשל, נסיך יהיה 11 ומלך יהיה 13. המשחק לא כולל ג’וקר.</li>
+<li>אם ערכו של הקלף הוא בין 2 ל־6 כולל, מד הסיכון ירד בנקודה אחת (כי עכשיו החבילה מכילה קלפים טובים יותר).</li>
+<li>אם ערכו של הקלף הוא בין 10 ל־13 כולל, או שערכו שווה 1 (“אס”), מד הסיכון יעלה בנקודה אחת.</li>
+<li>המספרים 7–9 הם ניטרליים, ולא מוסיפים למד סיכון או גורעים ממנו.</li>
+<li>אין חשש לבעיות קלט.</li>
+</ul>
+<p>על הפונקציה להחזיר <code>True</code> אם מד הסיכון קטן מאפס, או <code>False</code> אם מד הסיכון גדול או שווה לאפס.</p>
+<h4>
+<a name="heading-4" class="anchor" href="https://forums.pythonic.guru#heading-4"></a>דוגמאות:</h4>
+<ul>
+<li>עבור קלט של <code>[1]</code>, הפונקציה תחזיר False.</li>
+<li>עבור קלט של <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>, הפונקציה תחזיר True.</li>
+<li>עבור קלט של <code>[10, 2]</code>, הפונקציה תחזיר False.</li>
+</ul>
+<p>אתגר: ייצגו את קלפי משפחת המלוכה כמחרוזות; קרי “J” עבור נסיך, “Q” עבור מלכה ו־“K” עבור מלך. ממשו זאת ללא שימוש ב־or, וללא הגדרת if או elif בעבור כל אחד מהקלפים בנפרד.</p>
+<h3>
+<a name="heading-5" class="anchor" href="https://forums.pythonic.guru#heading-5"></a>צפנת פענח</h3>
+<p>לפניכם רשימה של רשימות. כל תת־רשימה מכילה אותיות וספרות שלמות וחיוביות:</p>
+<pre><code class="lang-auto">puzzle_input = [
+    ['s', '1', 't', '9'], ['b', '2', '5'], ['u','3', '7', 'y'],
+    ['c', '4', 'a', '6'], ['g', '5'], ['c', '6', '3', '5'], ['c', '7', '3'],
+    ['x', '8', '3'], ['e', '9', '1'], ['s', '2', '2', '6'], ['m', '12', '9'],
+    ['s', '8', '2', 'j'], ['!', '9', '1'], ['?', '9', '2']
+]
+</code></pre>
+<p>כתבו פונקציה (תוכלו לקרוא לה foo, אם תרצו) אשר תרכיב מילה המסתתרת בתתי־הרשימות, לפי החוקיות הבאה: אם סכום המספרים בתת־רשימה מסוימת שווה ל־10, דִגמו ממנה את האות הראשונה. הפונקציה תחזיר את המילה שהתקבלה מצירוף כל האותיות בזו אחר זו.</p>
+<h2>
+<a name="2-3-6" class="anchor" href="https://forums.pythonic.guru#2-3-6"></a>מחברת 2 ו־3 – מילונים</h2>
+<h3>
+<a name="heading-7" class="anchor" href="https://forums.pythonic.guru#heading-7"></a>טחינה</h3>
+<p>לפניכם גרסה עדכנית של ספר בישול מהולל (או לכל הפחות, הכותרות של מתכוניו).</p>
+<pre><code class="lang-auto">cookbook = {
+    'pasta': {'origin': 'italy', 'prep_time': 25, 'calories': 400},
+    'curry': {'origin': 'india', 'prep_time': 60, 'calories': 250},
+    'chraime': {'origin': 'morocco', 'prep_time': 40, 'calories': 350}
+}
+</code></pre>
+<p>לאחרונה גיליתם דבר נפלא: כל דבר הוא טעים יותר לאחר שמוסיפים לו טחינה. רק דקת הכנה נוספת, ופי 2 קלוריות!<br>
+עדכנו בהתאם את ספר הבישול: הוסיפו דקה אחת של הכנה עבור כל מאכל, והכפילו את הקלוריות.</p>
+<h2>
+<a name="4-8" class="anchor" href="https://forums.pythonic.guru#4-8"></a>מחברת 4 – פריקה</h2>
+<h3>
+<a name="heading-9" class="anchor" href="https://forums.pythonic.guru#heading-9"></a>כוהף</h3>
+<p>ממשו פונקציה אשר מקבלת מספר זוגי ולא ידוע של פרמטרים. הפונקציה תחזיר רשימה אשר חצייה הראשון “הוחלף” עם חצייה השני.</p>
+<h4>
+<a name="heading-10" class="anchor" href="https://forums.pythonic.guru#heading-10"></a>לדוגמה:</h4>
+<ol>
+<li>עבור הקלט 4, 3, 2, 1 – יתקבל [2, 1, 4, 3].</li>
+<li>עבור הקלט ‘banana’, ‘nana’ – יתקבל [‘nana’, ‘banana’].</li>
+<li>עבור הקלט 66, 55, 44, 33, 22, 11 – יתקבל [33, 22, 11, 66, 55, 44].</li>
+</ol>
+<p>השתמשו ב־slicing וב־unpacking.</p>
+<h3>
+<a name="heading-11" class="anchor" href="https://forums.pythonic.guru#heading-11"></a>רטינה יומית</h3>
+<p>בעקבות המצב סיגלתם לעצמכם שגרת אימונים ביתית. כל הכבוד! לאחר כל אימון, רשמתם כמה ימים עברו מאז שהתחלתם, וכמה תרגילים עשיתם מכל סוג. הרישום נראה כך:</p>
+<pre><code class="lang-auto">daily_routine = (
+    {'day': 1, 'capability': {'pushups': 8, 'squats': 20, 'pullups': 2}},
+    {'day': 2, 'capability': {'pushups': 13, 'squats': 39, 'pullups': 2}},
+    {'day': 3, 'capability': {'pushups': 21, 'squats': 51, 'pullups': 3}}
+)
+</code></pre>
+<p>חשבו את סכום התרגילים שעשיתם בכל יום, ואת ממוצע התרגילים שביצעתם סה"כ (ללא תלות בסוג התרגילים).<br>
+השתמשו ב־kwargs.</p>
+<p>(בחנו את עצמכם: הממוצע אמור להיות 53.)</p>
+<h3>
+<a name="5-12" class="anchor" href="https://forums.pythonic.guru#5-12"></a>מחברת <span class="hashtag">#5</span> – בילטעינים</h3>
+<ol>
+<li>ממשו מילון המציג את חמישה־עשר המספרים האי־זוגיים הראשונים החל מ־100, באופן הבא:</li>
+</ol>
+<pre><code class="lang-auto">{1: 101, 2: 103, 3: 105, 4: 107, 5: 109, 6: 111, 7: 113, 8: 115, 9: 117, 10: 119, 11: 121, 12: 123, 13: 125, 14: 127, 15: 129}
+</code></pre>
+<h2>
+<a name="6-13" class="anchor" href="https://forums.pythonic.guru#6-13"></a>מחברת 6 – סיכום</h2>
+<h3>
+<a name="heading-14" class="anchor" href="https://forums.pythonic.guru#heading-14"></a>ארנב ומזון</h3>
+<p>הגשמתם חלום ואימצתם שלושה ארנבים: זיגמונד, פרידריך ואִרווין. מזל טוב!<br>
+הנחתם לצד הארנבונים כמות שווה של גזר, חסה ובצל ירוק, ולכל אורך היום הראשון צפיתם בהם אוכלים. בכל פעם שראיתם ארנב אוכל דבר מה רשמתם בקצרה את האות הראשונה של שמו ואת האות הראשונה של מה שאכל. בסופו של דבר קיבלתם מחברת מבולגנת למדי, אשר נראית כך:</p>
+
+תקציר <a href="https://forums.pythonic.guru/t/topic/5917/1">(לחיצה לפרטים נוספים)</a>
+<p>על מנת להכיר את ארנביכם טוב יותר, ולדעת מהי כמות האוכל שכדאי לרכוש בפעם הבאה, ענו של השאלות הבאות:</p>
+<ol>
+<li>מיהו הארנב הכי זללן? כלומר, מיהו הארנב שצרך את כמות המזון הגדולה ביותר?</li>
+<li>מהו המזון החביב על הארנב הזללן ביותר?</li>
+<li>איזה מבין המזונות זכה להערכה הרבה ביותר משלושת הארנבים? כלומר, מאיזה סוג מזון נשאר הכי פחות בסוף היום?</li>
+</ol>
+<p>הוראות והנחות קלט:</p>
+<ol>
+<li>השתמשו במילונים, unpacking ולולאות for.</li>
+<li>ניתן ליצור אך ורק מילונים ריקים.</li>
+<li>כל מחרוזת ברשימה מכילה שתי אותיות: הראשונה מייצגת את שם הארנב, והשנייה מייצגת את סוג המזון (l עבור חסה, c עבור גזר, ו־s עבור בצל ירוק).</li>
+<li>הניחו כי כל הכמויות שוות בגודלן. מספיק להוסיף 1 לערך הכמותי של כל מאכל בעבור כל פעם שהוא רשום.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/topic/5917/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/5917/1</link>
+        <pubDate>Tue, 05 May 2020 18:38:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5917-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/5917.rss">תרגילים נוספים: שבוע 4</source>
+      </item>
+  </channel>
+</rss>

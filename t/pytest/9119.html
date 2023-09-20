@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/pytest/9119 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:11:54 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שגיאה בPYTEST-לא קיימת טבלה כזאת - עזרה ושיתופי פעולה - פייתון בעברית ובחינם</title>
+<meta content="מופיעה לי השגיאה הזאת. אני מממשת את האובייקטים שלי בקובץ calendar.py 
+ובבדיקה בDB BROWSER רואה שכן קיימת הטבלה שעשיתי(וכמובן שהפיצר מוצג באתר) 
+אפשר עזרה במציאת פתרון? די אובדת עצות" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9119.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9119.rss" rel="alternate nofollow" title="הזנת RSS של ‚שגיאה בPYTEST-לא קיימת טבלה כזאת’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_1024x188.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_1024x188.png" property="og:image"/>
+<meta content="9119.html" property="og:url"/>
+<meta content="9119.html" name="twitter:url"/>
+<meta content="שגיאה בPYTEST-לא קיימת טבלה כזאת" property="og:title"/>
+<meta content="שגיאה בPYTEST-לא קיימת טבלה כזאת" name="twitter:title"/>
+<meta content="מופיעה לי השגיאה הזאת. אני מממשת את האובייקטים שלי בקובץ calendar.py  ובבדיקה בDB BROWSER רואה שכן קיימת הטבלה שעשיתי(וכמובן שהפיצר מוצג באתר)  אפשר עזרה במציאת פתרון? די אובדת עצות" property="og:description"/>
+<meta content="מופיעה לי השגיאה הזאת. אני מממשת את האובייקטים שלי בקובץ calendar.py  ובבדיקה בDB BROWSER רואה שכן קיימת הטבלה שעשיתי(וכמובן שהפיצר מוצג באתר)  אפשר עזרה במציאת פתרון? די אובדת עצות" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="עזרה ושיתופי פעולה" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="2021-02-18T10:16:55+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שגיאה בPYTEST-לא קיימת טבלה כזאת","mainEntity":{"@type":"Question","name":"שגיאה בPYTEST-לא קיימת טבלה כזאת","text":"<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42\" title=\"2021-02-17 (4)\">[2021-02-17 (4)]<\/a>\n\nמופיעה לי השגיאה הזאת. אני מממשת את האובייקטים שלי בקובץ calendar.py\n\nובבדיקה בDB BROWSER רואה שכן קיימת הטבלה שעשיתי(וכמובן שהפיצר מוצג באתר)\n\nאפשר עזרה במציאת פתרון? די אובדת עצות","upvoteCount":0,"answerCount":0,"dateCreated":"2021-02-18T10:16:55.786Z","author":{"@type":"Person","name":"אילור שושן"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9119.html">שגיאה בPYTEST-לא קיימת טבלה כזאת</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/help-and-coop/31.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">עזרה ושיתופי פעולה</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שגיאה בPYTEST-לא קיימת טבלה כזאת" itemprop="headline"/>
+<meta content="עזרה ושיתופי פעולה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:16:55Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:16am
+                  </time>
+<meta content="2021-02-18T10:16:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42" href="../../uploads/default/original/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42.png" title="2021-02-17 (4)"><img alt="2021-02-17 (4)" data-base62-sha1="wOdgmgkTHlB9jrWxeGvpbCwtzl8" data-small-upload="../../uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_10x10.png" height="127" src="../../uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_690x127.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_690x127.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_1035x190.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e5f2ac1f7a9d6d9135937fc8075e9bdde0c24f42_2_1380x254.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">2021-02-17 (4)</span><span class="informations">1911×352 38 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+מופיעה לי השגיאה הזאת. אני מממשת את האובייקטים שלי בקובץ calendar.py<br/>
+ובבדיקה בDB BROWSER רואה שכן קיימת הטבלה שעשיתי(וכמובן שהפיצר מוצג באתר)<br/>
+אפשר עזרה במציאת פתרון? די אובדת עצות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:28:49Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:28am
+                  </time>
+<meta content="2021-02-18T10:28:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איך נראים הטסטים? הסתכלת באיך אחרים מימשו את הטסטים שלהם? <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:54:05Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:54am
+                  </time>
+<meta content="2021-02-18T10:54:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא אני יצרתי את הטסט,ולכן לא יודעת להצביע מה הבעיה.גם מי שכתב את הטסט הזה לא יודע להצביע</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:55:03Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:55am
+                  </time>
+<meta content="2021-02-18T10:55:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נסי להריץ את pytest עם vvv-, זה יתן Traceback של איפה זה קרס</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:57:43Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:57am
+                  </time>
+<meta content="2021-02-18T10:57:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="4" data-topic="9119" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>pytest עם vvv-,</p>
+</blockquote>
+</aside>
+<p>הכוונה לבדיקה הזאת:<br/>
+python -m pytest --cov-report term-missing --cov=app tests<br/>
+???</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T10:58:21Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 10:58am
+                  </time>
+<meta content="2021-02-18T10:58:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הרי את מקבלת פלט של pytest שנכשל.<br/>
+אז במקום להריץ pytest כרגיל, הריצי אותו עם <code>-vvv</code></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/46002f754d719ce69772bb3629403f147d04b464.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T11:25:57Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 11:25am
+                  </time>
+<meta content="2021-02-18T11:25:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/46002f754d719ce69772bb3629403f147d04b464" href="../../uploads/default/original/2X/4/46002f754d719ce69772bb3629403f147d04b464.png" title="2021-02-18"><img alt="2021-02-18" data-base62-sha1="9ZfOQw8UfBhHn8Ov3esVp2lI9MM" data-small-upload="../../uploads/default/optimized/2X/4/46002f754d719ce69772bb3629403f147d04b464_2_10x10.png" height="388" src="../../uploads/default/optimized/2X/4/46002f754d719ce69772bb3629403f147d04b464_2_690x388.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/46002f754d719ce69772bb3629403f147d04b464_2_690x388.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/46002f754d719ce69772bb3629403f147d04b464_2_1035x582.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/4/46002f754d719ce69772bb3629403f147d04b464_2_1380x776.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">2021-02-18</span><span class="informations">1920×1080 257 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+זה מחזיר לי את זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T12:10:14Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 12:10pm
+                  </time>
+<meta content="2021-02-18T12:10:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכלי להעתיק ולהדביק לפה את כל הלוג בבקשה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T12:27:45Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏ 12:27pm
+                  </time>
+<meta content="2021-02-18T12:27:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>======================================================================================== FAILURES ========================================================================================<br/>
+___________________________________________________________________________ TestCalendarGrid.test_get_calendar ___________________________________________________________________________</p>
+<p>client = &lt;starlette.testclient.TestClient object at 0x0000018ED660DA90&gt;</p>
+<pre><code>@staticmethod
+def test_get_calendar(client):
+</code></pre>
+<blockquote>
+<pre><code>  response = client.get("/calendar/month")
+</code></pre>
+</blockquote>
+<p>tests\test_calendar_grid.py:24:</p>
+<hr/>
+<p>…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:555: in get<br/>
+return self.request(‘GET’, url, **kwargs)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\testclient.py:413: in request<br/>
+return super().request(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:542: in request<br/>
+resp = self.send(prep, **send_kwargs)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:677: in send<br/>
+history = [resp for resp in gen]<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:677: in <br/>
+history = [resp for resp in gen]<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:237: in resolve_redirects<br/>
+resp = self.send(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\sessions.py:655: in send<br/>
+r = adapter.send(request, **kwargs)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\testclient.py:243: in send<br/>
+raise exc from None<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\testclient.py:240: in send<br/>
+loop.run_until_complete(self.app(scope, receive, send))<br/>
+…\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py:642: in run_until_complete<br/>
+return future.result()<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\applications.py:199: in <strong>call</strong><br/>
+await super().<strong>call</strong>(scope, receive, send)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\applications.py:111: in <strong>call</strong><br/>
+await self.middleware_stack(scope, receive, send)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\middleware\errors.py:181: in <strong>call</strong><br/>
+raise exc from None<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\middleware\errors.py:159: in <strong>call</strong><br/>
+await self.app(scope, receive, _send)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\exceptions.py:82: in <strong>call</strong><br/>
+raise exc from None<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\exceptions.py:71: in <strong>call</strong><br/>
+await self.app(scope, receive, sender)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\routing.py:566: in <strong>call</strong><br/>
+await route.handle(scope, receive, send)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\routing.py:227: in handle<br/>
+await self.app(scope, receive, send)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\routing.py:41: in app<br/>
+response = await func(request)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\routing.py:201: in app<br/>
+raw_response = await run_endpoint_function(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\fastapi\routing.py:148: in run_endpoint_function<br/>
+return await dependant.call(**values)<br/>
+app\routers\calendar.py:24: in calendar<br/>
+parasha_obj = weekly_parasha.get_all_parahot_list(session)<br/>
+app\internal\weekly_parasha.py:23: in get_all_parahot_list<br/>
+return session.query(Parasha).all()<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\query.py:3373: in all<br/>
+return list(self)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\query.py:3535: in <strong>iter</strong><br/>
+return self._execute_and_instances(context)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\query.py:3560: in _execute_and_instances<br/>
+result = conn.execute(querycontext.statement, self._params)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\base.py:1011: in execute<br/>
+return meth(self, multiparams, params)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\sql\elements.py:298: in _execute_on_connection<br/>
+return connection._execute_clauseelement(self, multiparams, params)<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\base.py:1124: in _execute_clauseelement<br/>
+ret = self._execute_context(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\base.py:1316: in _execute_context<br/>
+self.<em>handle_dbapi_exception(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\base.py:1510: in <em>handle_dbapi_exception<br/>
+util.raise</em>(<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\util\compat.py:182: in raise</em><br/>
+raise exception<br/>
+…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\base.py:1276: in _execute_context<br/>
+self.dialect.do_execute(</p>
+<hr/>
+<p>self = &lt;sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x0000018ECCB11400&gt;, cursor = &lt;sqlite3.Cursor object at 0x0000018ED52841F0&gt;<br/>
+statement = ‘SELECT parashot.id AS parashot_id, parashot.name AS parashot_name, parashot.hebrew_name AS parashot_hebrew_name, parashot.link AS parashot_link, parashot.date AS parashot_dat<br/>
+e \nFROM parashot’<br/>
+parameters = (), context = &lt;sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x0000018ED6A9F100&gt;</p>
+<pre><code>def do_execute(self, cursor, statement, parameters, context=None):
+</code></pre>
+<blockquote>
+<pre><code>  cursor.execute(statement, parameters)
+</code></pre>
+</blockquote>
+<p>E       sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: parashot<br/>
+E       [SQL: SELECT parashot.id AS parashot_id, parashot.name AS parashot_name, parashot.hebrew_name AS parashot_hebrew_name, parashot.link AS parashot_link, parashot.date AS parashot_da<br/>
+te<br/>
+E       FROM parashot]<br/>
+E       (Background on this error at: <a href="http://sqlalche.me/e/13/e3q8" rel="noopener nofollow ugc">http://sqlalche.me/e/13/e3q8</a>)</p>
+<p>…\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\engine\default.py:609: OperationalError<br/>
+==================================================================================== warnings summary ====================================================================================<br/>
+tests/test_a_telegram_asyncio.py::TestBotClient::test_user_not_registered<br/>
+tests/test_a_telegram_asyncio.py::TestBotClient::test_user_registered<br/>
+tests/test_a_telegram_asyncio.py::TestHandlers::test_today_handler<br/>
+tests/test_a_telegram_asyncio.py::TestHandlers::test_chosen_day_handler<br/>
+tests/test_a_telegram_asyncio.py::TestHandlers::test_process_new_event<br/>
+tests/test_about.py::test_about_page<br/>
+C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\site-packages_pytest\unraisableexception.py:78: PytestUnraisableExceptionWarning: Exception ignored in: &lt;function _ProactorBas<br/>
+ePipeTransport.<strong>del</strong> at 0x0000018E88B0C4C0&gt;</p>
+<p>Traceback (most recent call last):<br/>
+File “C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\asyncio\proactor_events.py”, line 116, in <strong>del</strong><br/>
+self.close()<br/>
+File “C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\asyncio\proactor_events.py”, line 108, in close<br/>
+self._loop.call_soon(self._call_connection_lost, None)<br/>
+File “C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py”, line 746, in call_soon<br/>
+self._check_closed()<br/>
+File “C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\asyncio\base_events.py”, line 510, in _check_closed<br/>
+raise RuntimeError(‘Event loop is closed’)<br/>
+RuntimeError: Event loop is closed</p>
+<pre><code>warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+</code></pre>
+<p>tests/test_comment.py::test_delete_comment<br/>
+tests/test_event.py::test_delete_comment<br/>
+C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\persistence.py:1359: SAWarning: DELETE statement on table ‘comments’ expected to delete 1 row(s);<br/>
+0 were matched.  Please set confirm_deleted_rows=False within the mapper configuration to prevent this warning.<br/>
+util.warn(</p>
+<p>tests/test_export.py::TestExport::test_export<br/>
+C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\site-packages\starlette\concurrency.py:16: DeprecationWarning: The explicit passing of coroutine objects to asyncio.wait() is d<br/>
+eprecated since Python 3.8, and scheduled for removal in Python 3.11.<br/>
+(done, pending) = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)</p>
+<p>tests/test_utils.py::TestUtils::test_delete_instance<br/>
+C:\Users\אילור\AppData\Local\Programs\Python\Python39\lib\site-packages\sqlalchemy\orm\persistence.py:1359: SAWarning: DELETE statement on table ‘users’ expected to delete 1 row(s); 0 w<br/>
+ere matched.  Please set confirm_deleted_rows=False within the mapper configuration to prevent this warning.<br/>
+util.warn(</p>
+<p>– Docs: <a class="inline-onebox" href="https://docs.pytest.org/en/stable/warnings.html" rel="noopener nofollow ugc">Warnings Capture — pytest documentation</a><br/>
+================================================================================ short test summary info =================================================================================<br/>
+FAILED tests/test_calendar_grid.py::TestCalendarGrid::test_get_calendar - sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: parashot</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T13:20:55Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏  1:20pm
+                  </time>
+<meta content="2021-02-18T13:20:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש קישור ל־PR שאפשר להסתכל עליו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/4d7007df5cacfd29b05e7a486f8ccfc90431987f.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T13:28:46Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏  1:28pm
+                  </time>
+<meta content="2021-02-18T13:28:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בטח,</p><aside class="onebox githubpullrequest">
+<header class="source">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/260" rel="noopener nofollow ugc" target="_blank">github.com/PythonFreeCourse/calendar</a>
+</header>
+<article class="onebox-body">
+<div class="github-row">
+<div class="github-icon-container" title="Pull Request">
+<svg aria-hidden="true" class="github-icon" height="60" viewbox="0 0 12 16" width="60"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+</div>
+<div class="github-info-container">
+<h4>
+<a href="https://github.com/PythonFreeCourse/calendar/pull/260" rel="noopener nofollow ugc" target="_blank">Feature/parasha</a>
+</h4>
+<div class="branches">
+<code>PythonFreeCourse:develop</code> ← <code>elor555:feature/parasha</code>
+</div>
+<div class="github-info">
+<div class="date">
+        opened <span class="discourse-local-date" data-date="2021-02-11" data-format="ll" data-time="16:56:26" data-timezone="UTC">04:56PM - 11 Feb 21 UTC</span>
+</div>
+<div class="user">
+<a href="https://github.com/elor555" rel="noopener nofollow ugc" target="_blank">
+<img alt="elor555" class="onebox-avatar-inline" height="20" src="../../uploads/default/original/2X/4/4d7007df5cacfd29b05e7a486f8ccfc90431987f.png" width="20"/>
+          elor555
+        </a>
+</div>
+<div class="lines" title="50 commits changed 12 files with 444 additions and 60 deletions">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/260/files" rel="noopener nofollow ugc" target="_blank">
+<span class="added">+444</span>
+<span class="removed">-60</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elor550</span>
+</span>
+<link href="9119.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-18T18:40:18Z" itemprop="datePublished">
+                     18 בפברואר,‏ 2021,‏  6:40pm
+                  </time>
+<meta content="2021-02-18T18:40:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצאת את הבעיה? <span class_="mention">@Yam</span> <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/pytest/9119 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:12:03 GMT -->
+</html>

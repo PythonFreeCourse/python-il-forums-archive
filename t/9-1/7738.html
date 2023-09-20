@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/9-1/7738 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:03 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 9 – יום 1: סביבת עבודה - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="הקדמה
+אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן :slight_smile: 
+במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי. 
+בשבועיים הקרובים (“שבוע 9”) נלמד את החומרים הבאים: 
+
+ס&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7738.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7738.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 9 – יום 1: סביבת עבודה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7738.html" property="og:url"/>
+<meta content="7738.html" name="twitter:url"/>
+<meta content="שבוע 9 – יום 1: סביבת עבודה" property="og:title"/>
+<meta content="שבוע 9 – יום 1: סביבת עבודה" name="twitter:title"/>
+<meta content="הקדמה אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן 🙂  במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי.  בשבועיים הקרובים (“שבוע 9”) נלמד את החומרים הבאים:   סביבת עבודה (IDE, יכולות ניפוי שגיאות) עבודה בפרויקט – טיפול בקובצי פייתון מרובים, הרצת “פרויקט”. רמיזה על טיפוסים (Type Annotations). קשטנים (Decorators).  הדינמיקה שארצה ליצור בחלק הזה של הקורס היא קצת שונה.  השתתפו בפורומים, שאלו שאלות מעניינות, עזרו אחד לשני ושתפו פיצ’רים ושימ..." property="og:description"/>
+<meta content="הקדמה אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן 🙂  במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי.  בשבועיים הקרובים (“שבוע 9”) נלמד את החומרים הבאים:   סביבת עבודה (IDE, יכולות ניפוי שגיאות) עבודה בפרויקט – טיפול בקובצי פייתון מרובים, הרצת “פרויקט”. רמיזה על טיפוסים (Type Annotations). קשטנים (Decorators).  הדינמיקה שארצה ליצור בחלק הזה של הקורס היא קצת שונה.  השתתפו בפורומים, שאלו שאלות מעניינות, עזרו אחד לשני ושתפו פיצ’רים ושימ..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-9" property="og:article:tag"/>
+<meta content="סביבת-עבודה" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="4 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="63 ❤"/>
+<meta content="2020-08-03T20:05:00+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7738.html">שבוע 9 – יום 1: סביבת עבודה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-9.html" rel="tag">שבוע-9</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a1%d7%91%d7%99%d7%91%d7%aa-%d7%a2%d7%91%d7%95%d7%93%d7%94.html" rel="tag">סביבת-עבודה</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 9 – יום 1: סביבת עבודה" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-9, סביבת-עבודה" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-03T20:05:00Z" itemprop="datePublished">
+                     3 באוגוסט,‏ 2020,‏  8:05pm
+                  </time>
+<meta content="2020-08-09T06:30:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>הקדמה</h2>
+<p>אהלן לכולם וברוכים הבאים לחלק השני של הקורס, אני נרגש שהגעתם עד כאן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>במהלך השבוע ישוחררו הנחיות כלליות, חומרים ותרגילים שניגע בהם בשבוע הנוכחי.<br/>
+בשבועיים הקרובים (“שבוע 9”) נלמד את החומרים הבאים:</p>
+<ol>
+<li>סביבת עבודה (IDE, יכולות ניפוי שגיאות)</li>
+<li>עבודה בפרויקט – טיפול בקובצי פייתון מרובים, הרצת “פרויקט”.</li>
+<li>רמיזה על טיפוסים (Type Annotations).</li>
+<li>קשטנים (Decorators).</li>
+</ol>
+<p>הדינמיקה שארצה ליצור בחלק הזה של הקורס היא קצת שונה.<br/>
+השתתפו בפורומים, שאלו שאלות מעניינות, עזרו אחד לשני ושתפו פיצ’רים ושימושים מגניבים שמצאתם לחומר שנלמד.<br/>
+ביחד ניצור קבוצת למידה שבה לכל אחד מכם יש מקום לתרום ולקבל ערך בחזרה.</p>
+<p>לאור גודל הקהילה שנותרה, גם אני אהיה זמין יותר, אשתף מהתובנות שלי ואשתתף בדיונים שיוצרו כאן.<br/>
+אפשר ליצור פה קהילה נחמדה ומפרה, ואני מבטיח לתגמל את החזקים שיחלקו רעיונות ויעזרו באופן תדיר.</p>
+<h2>יום 1 – סביבת עבודה</h2>
+<p>אחת התוכנות הנפוצות ביותר בקרב מפתחים היא ה־IDE – “סביבת הפיתוח המשולבת” (Integrated Development Environment). זה בסך הכל שם מפונפן לתוכנה שבה מפתחים את הקוד שלנו, והיא מספקת לנו כלים נוחים לעשות זאת.</p>
+<p>עד כה עבדנו על Jupyter Notebook, שהיא מעין סביבה מאוד בסיסית שכזו. היא הציעה לנו יכולות בסיסיות כמו עורך קוד נוח (השלמה אוטומטית באמצעות <kbd>Tab</kbd>, הדגשה בצבעים) ויכולת הרצת קוד בסיסית.<br/>
+רוב סביבות הפיתוח השונות מציעות את הכלים האלו, ועשויות להציע בנוסף כלים שיעזרו לכם בניפוי שגיאות, כלים שיעזרו לכם בשמירת וניהול גרסאות קודמות של הקוד שלכם, כלים לניהול עבודה בצוות, כלים לניהול בדיקות וכדומה.</p>
+<p>בקורס הזה נסקור שתי סביבות פיתוח: Visual Studio Code ו־PyCharm. אתם רשאים לבחור אחת מהן, ותדרשו לכתוב את הקוד שלכם בעזרתן בשבועות הקרובים. בכל מקרה, אמליץ לכם להתנסות ולשחק בשתיהן.</p>
+<hr/>
+<h3>אפשרות 1: <a href="https://code.visualstudio.com/">Visual Studio Code</a>
+</h3>
+<p><em>היכרות:</em><br/>
+סביבת פיתוח חדשה יחסית (2015; בת 5) שמפותחת ומתוחזקת על ידי Microsoft.<br/>
+כל־כולה <a href="https://github.com/microsoft/vscode">קוד פתוח</a>, מה שמאפשר לקהילה לתרום לה יכולות חדשות.<br/>
+היא מתעדכנת <a href="https://code.visualstudio.com/updates/v1_47">כמעט כל חודש</a>, ויש לה קהילה רחבה שמפתחת עבורה <a href="https://marketplace.visualstudio.com/VSCode">תוספים</a> באופן תדיר.</p>
+<p><em>יתרונות:</em></p>
+<ol>
+<li>סביבת העבודה נכתבה בקוד פתוח ומפותחת על ידי הקהילה. השימוש בה חינמי, גם לצורך מטרות מסחריות.</li>
+<li>היא תומכת בשפות רבות, לא רק בפייתון, כך שאם הפרויקט משלב יותר משפה אחת נוח להשתמש בה.</li>
+<li>תמיכה די טובה ב־Jupyter Notebooks.</li>
+<li>מהירה ופחות bloated ביחס ל־PyCharm.</li>
+</ol>
+<p><em>התקנה ומדריך:</em> <a href="https://code.visualstudio.com/docs/python/python-tutorial">כאן</a>.<br/>
+<em>בונוס</em>: קראו על התוספים Live Share, IntelliCode, Code Spell Checker, Peacock, Rainbow Brackets. מומלץ גם להתקין את התוסף Code Runner כדי להריץ בנוחות קוד.<br/>
+<em>בונוס 2</em>: התקינו את התוסף Pylance, תוסף חדש מבית מיקרוסופט שאמור לשפר את התמיכה בפייתון.</p>
+<p>מצאתם תוספים מגניבים? ראיתם פיצ’ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.</p>
+<h3>אפשרות 2: <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>
+</h3>
+<p><em>היכרות:</em><br/>
+סביבת פיתוח ממוקדת פייתון שקיימת מאז 2010, מפותחת ומתוחזקת על ידי JetBrains.<br/>
+הסביבה הפופולרית ביותר, כנראה, לפיתוח פייתון.<br/>
+היא מתעדכנת <a href="https://www.jetbrains.com/pycharm/download/other.html">כמעט כל רבעון</a>, ויש לה קהילה רחבה שמפתחת עבורה <a href="https://plugins.jetbrains.com/pycharm_ce">תוספים</a> באופן תדיר.<br/>
+היא אינה חינמית למטרות מסחריות ודורשת רישיון בתשלום לצורך כך. ישנה גרסה חינמית לשימושים לא מסחריים.</p>
+<p><em>יתרונות:</em></p>
+<ol>
+<li>סביבת העבודה נבנתה ומיועדת לפייתון מא’ ועד ת’.</li>
+<li>יכולת ניתוח הקוד ש־PyCharm הגיעה אליה מרשימה, וה־IDE יודע לעלות ולהעיר על בעיות ולהציע השלמות בצורה טובה יותר מאשר IDEs אחרים.</li>
+</ol>
+<p><em>התקנה ומדריך:</em> <a href="https://www.jetbrains.com/help/pycharm/quick-start-guide.html">כאן</a>.</p>
+<p>מצאתם תוספים מגניבים? ראיתם פיצ’ר או מדריך נחמד? נתקלתם בבעיה? פתחו אשכול חדש ושתפו.</p>
+<hr/>
+<p>אמנם אין לי דרך לבדוק את זה, אני מבקש שתעשו את המעבר לתוכנות הללו למרות חוסר הנוחות שעלול להתלוות לתהליך. מעבר דירה הוא אף פעם לא תהליך כייפי, אבל תוך כמה ימים תתחילו להתרגל ולראות את היתרונות בשינוי.</p>
+<hr/>
+<h2>ניפוי שגיאות</h2>
+<p>בסביבת העבודה החדשה שלכם יש כלים לניפוי שגיאות.<br/>
+הכלים אמורים לעזור לכם לעצור בנקודה מסוימת של ריצת הקוד, לבחון את תוכן המשתנים ולטייל בקוד באופן הִדּוּדִי.</p>
+<p>קראו על יכולות ניפוי השגיאות של Visual Studio <a href="https://code.visualstudio.com/docs/python/debugging">כאן</a>.<br/>
+קראו על יכולות ניפוי השגיאות של PyCharm <a href="https://www.jetbrains.com/help/pycharm/part-1-debugging-python-code.html">כאן</a>.</p>
+<p>הבינו כיצד משתמשים בכלי, מה אומר המונח breakpoint, ונסו לעבור על קוד שכתבתם בעבר בעזרת מנפה השגיאות ולבדוק כיצד להשתמש בו.</p>
+<p>להעמקה, בספר <a href="https://greenteapress.com/thinkpython/thinkpython.pdf">Think Python</a> תמצאו מספר פרקים על ניפוי שגיאות.</p>
+<hr/>
+<h3>תרגיל: סדרת פיבואפצ’י</h3>
+<p>מטרת הפונקציה <code>fibo</code> היא לקבל מספר (<code>n</code>), ולהחזיר את כל המספרים בסדרת פיבונאצ’י ש<strong>קטנים ממש</strong> מ־<code>n</code>.<br/>
+קיבלתם את המימוש הבא לפונקציה:</p>
+<pre><code class="lang-python">def fibo(n):
+    f = 0
+    g = 1
+
+    while f &lt; n:
+        h = f + g
+        yield h
+        g = h
+        f = g
+
+
+print(" ".join(str(f) for f in fibo(1000)))
+</code></pre>
+<p>השתמשו בכלים לניפוי שגיאות בסביבת העבודה שלכם כדי למצוא ולתקן שתי שגיאות שקיימות בקוד.<br/>
+השתדלו לשנות את הקוד כמה שפחות.</p>
+<h3>תרגיל (אפשרות 1): מנסנס כוחב כתן</h3>
+<p>תקנו את הקוד הבא כך שינגן את שיר הערש “Twinkle Star”.<br/>
+השתמשו במנפה השגיאות של סביבת הפיתוח שלכם כדי להבין איפה הבעיה.<br/>
+תוכלו לבחור בין התרגיל הזה לבין התרגיל הבא (עשו רק 1 מהם).</p>
+<pre><code class="lang-python">import math
+import sounddevice
+
+import numpy
+
+
+d = 24000
+r = 1100
+a = [0, 7, 9, 1]
+b = [5, 4, 2, 4]
+c = [7, 5, 4, 7]
+
+
+def f(x):
+    """You shouldn't change this function."""
+    s = [240 * 2 ** (j / 12.0) for j in (a + b + c) * 2]
+    n = s[x // 1000]
+    m = (x % 500 &gt; 9) or (x / 1000 % 4 &gt; 2)
+    v = 6 * n * (x / r) * m
+    k = math.sin(v)
+    return k
+
+
+def f2(d):
+    l = []
+    for x in range(d):
+        h = f(x)
+        l.append(int(h * 64000 / 2))
+    return numpy.array(l, dtype='float32')
+
+
+sounddevice.play(f2(d), r)
+status = sounddevice.wait()
+</code></pre>
+<h3>תרגיל (אפשרות 2): ועל ים לקו שמונה מלכות</h3>
+<p>לפניכם פתרון פשוט יחסית <a href="https://he.wikipedia.org/wiki/חידת_שמונה_המלכות">לחידת שמונה המלכות</a>.<br/>
+בפתרון נפלו שתי טעויות. מצאו אותן ותקנו אותן.<br/>
+השתדלו לשנות את הקוד כמה שפחות.</p>
+<pre><code class="lang-python">import itertools
+
+
+BOARD_SIZE = 8
+
+
+def get_rows(board):
+    yield from board
+
+
+def get_columns(board):
+    yield from zip(*board)
+
+
+def get_diagonals(board):
+    size = len(board)
+
+    # left to right, top to bottom digonals
+    for col in range(size):
+        diagonal = ((offset, col + offset) for offset in range(size - col))
+        flipped = ((y, x) for x, y in diagonal)
+        if diagonal != flipped:
+            yield [board[x][y] for x, y in flipped]
+        yield [board[x][y] for x, y in diagonal]
+
+    # left to right, bottom to top digonals
+    for col in range(size):
+        diagonal = ((col - n, n) for n in range(col + 1))
+        flipped = ((size - x - 1, size - y - 1) for x, y in diagonal)
+        yield [board[x][y] for x, y in diagonal]
+        yield [board[x][y] for x, y in flipped]
+
+
+def is_solution_valid(board):
+    check_functions = (get_rows, get_columns, get_diagonals)
+    for get_line_from_board in check_functions:
+        for line in get_line_from_board(board):
+            if line.count(True) &gt; 1:
+                return False
+    return True
+
+
+def possible_positions(max_size):
+    yield from itertools.product(range(max_size), repeat=max_size)
+
+
+def update_board(board, queen_columns):
+    board_size = len(board)
+    queen_placements = frozenset(zip(range(8), queen_columns))
+    for row in range(board_size):
+        for col in range(board_size):
+            board[row][col] = (row, col) in queen_placements
+
+
+def get_solutions(board):
+    for queen_columns in possible_positions(max_size=len(board)):
+        update_board(board, queen_columns)
+        if is_solution_valid(board):
+            yield board
+
+
+def create_board(size):
+    row = [False] * size
+    board = [row] * size
+    return board
+
+
+def print_board(board):
+    for row in board:
+        print(' '.join(str('Q' if col else '.').center(3) for col in row))
+
+
+print("Started!")
+for solution_board in get_solutions(create_board(BOARD_SIZE)):
+    print_board(solution_board)
+    print('-' * 80)
+</code></pre>
+<h3>תרגיל: Advent of Code 12</h3>
+<p>השתמשו בסביבת העבודה שלכם על מנת לפתור את <a href="https://adventofcode.com/2019/day/12">תרגיל מספר 12</a> ב־Advent of Code.<br/>
+פתרו רק את חצי היום הראשון (רק את התרגיל שמוצג למשתמשים לא רשומים, או שטרם פתרו את התרגיל).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="21" itemprop="userInteractionCount"/>
+<span class="post-likes">21 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/7728/4.html" itemprop="url">על הקטגוריה שבוע 9</a>
+<meta content="15" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/7968.html" itemprop="url">ריכוז חומרים: שבוע 9</a>
+<meta content="16" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-12/7753/11.html" itemprop="url">לגבי הadvent of code 12</a>
+<meta content="17" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ombental</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-04T06:07:02Z" itemprop="datePublished">
+                     4 באוגוסט,‏ 2020,‏  6:07am
+                  </time>
+<meta content="2020-08-04T06:07:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי ים,<br/>
+את התיקונים לתרגילים לשמור אצלנו ולא לפרסם, ואת התובנות שלנו מהסביבה עבודה כן לפרסם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orontamir</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-04T08:09:48Z" itemprop="datePublished">
+                     4 באוגוסט,‏ 2020,‏  8:09am
+                  </time>
+<meta content="2020-08-04T08:09:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי ים</p>
+<p>איפה מגישים את התרגילים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noa.izhaki</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-04T13:39:14Z" itemprop="datePublished">
+                     4 באוגוסט,‏ 2020,‏  1:39pm
+                  </time>
+<meta content="2020-08-04T13:39:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בינתיים דרך Jupyter notebook (תעתיק לשם את הקוד ותגיש כמו שהיית עושה עד היום)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-04T14:58:15Z" itemprop="datePublished">
+                     4 באוגוסט,‏ 2020,‏  2:58pm
+                  </time>
+<meta content="2020-08-04T15:07:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+תוסף מגניב לvscode</p>
+<p>ממליץ להשתמש בתוסף Arepl אתם תראו את הפלט שלכם בצד, והתוסף מציג לכם את הפלט והמשתנים בקוד עוד בזמן הכתיבה.</p>
+<p>אפשר להגדיר שהתוסף ירוץ כל כמה שניות (ההגדרות הן על בסיס מאית השניה)</p>
+<p>מוזמנים לצפות בסרטון - <a href="https://www.youtube.com/watch?v=W--_EOzdTHk" rel="nofollow noopener">https://www.youtube.com/watch?v=W--_EOzdTHk</a><br/>
+ההסבר על התוסף נמצא החל מ-7:10</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-04T16:50:55Z" itemprop="datePublished">
+                     4 באוגוסט,‏ 2020,‏  4:50pm
+                  </time>
+<meta content="2020-08-04T16:50:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>Jupyter Notebook ב-Vscode</p>
+<p>תלחצו ctrl + p ותריצו את הפקודה הבאה:</p>
+<pre><code>&gt;Create New Blank Jupyter Notebook
+</code></pre>
+<p>החלון שיפתח יהיה קובץ קוד בסיומת ipynb (כלומר פורמט Jupyter Notebook)<br/>
+ככה תוכלו לעבוד על Vscode ולשמור בפורמט ג’ופיטר!</p>
+<p>יעבוד רק למי שהוריד את התוסף Python (סביר להניח שכבר כולנו)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noyleibo70</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-05T12:06:44Z" itemprop="datePublished">
+                     5 באוגוסט,‏ 2020,‏ 12:06pm
+                  </time>
+<meta content="2020-08-05T12:06:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הבנתי את תרגיל 3, יש מצב להסבר קצת יותר מפורט?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T16:10:50Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  4:10pm
+                  </time>
+<meta content="2020-08-06T16:10:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קצת באיחור, שיהיה לכולנו שבוע נהדר!<br/>
+אני התחלתי כרגע לעבוד עם PyCharm (אוניבריסטה), והתחלתי להנסות עם VSCode.<br/>
+אעדכן כשאתקל בתוספים מגניבים!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/00a8f716c202af0dd6f8ad64a4f2d4d740661e05.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T22:55:44Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏ 10:55pm
+                  </time>
+<meta content="2020-08-07T20:51:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה שבעצם מבקשים מאיתנו לעשות כאן זה ליצור קוד שמחשב את היחס של כל “ירח” לכל שאר הירחים, במסגרת של זוגות של ירחים. זה קצת מבלבל כי המיקום משפיע על המהירות והמהירות משפיעה על המיקום. אז יש מיקום ראשוני לכל הירחים, ומהירות ראשונית ששווה לאפס. המיקום היחסי של כל ירח משפיע על המהירות של כל ירח אחר בכל אחד מהצירים. צריך לבחון כל ירח מול שלושת הירחים האחרים בשלוש זוגות. אז אם ניקח רק את ציר הX של הירחים ונסתכל רק על הירח הראשון, הוא יוצר שלוש זוגות של מיקומים עם שלושת הירחים האחרים. בכל זוג כזה הירחים משפיעים זה על זה באופן יחסי כאשר זה שהמיקום שלו יותר גדול מושך את המהירות של זה שהמיקום שלו יותר קטן כלפי “מעלה” בדרגה אחת וזה שהמיקום שלו יותר קטן מושך את המהירות של זה שהמיקום שלו יותר גדול כלפי “מטה” בדרגה אחת (אם המיקום שלהם זהה בערכו הם לא משפיעים אחד על השני). ההשפעות המצטברות של כל הזוגות האלו נסכמות ונותנות לנו את המהירות החדשה של כל אחד מהירחים בכל אחד מהצירים. בצילום המסך ניתן לראות שאחרי החישוב הראשון מהירות X של הירח הראשון הפכה מ0 ל 3, כי המיקומים של כל שאר הירחים יותר גדולים משלו. כלומר, הוא יוצר שלוש זוגות עם הירחים האחרים ובכל שלושת החישובים האלה מאחר והמיקום שלו (1-) קטן יותר משל הירח השני בזוג צריך להוסיף למהירות שלו (לא למיקום שלו) +1 (ובאופן דומה לכל אחד מהירחים האחרים צריך להוריד 1 מהמהירות בציר הX). אז הוא עולה מאפס לשלוש. את החישוב הזה צריך לבצע לכל הצירים של כל הירחים. ברגע שיש לנו את זה אז אפשר לחשב בקלות את המיקום החדש (ההסבר שם לגבי חישוב המיקום החדש הוא יותר קל וברור אז לא אכנס אליו כאן). מערך המיקומים החדש כמובן יוצר מערך חישובים חדש שמאפשר ליצור את חישוב המהירות החדש, שיוצר את חישוב המיקומים החדש וחוזר חלילה.</p>
+<p><img alt="image" data-base62-sha1="5Q0o24hIahtKX4COdlph4DCNA9" height="274" src="../../uploads/default/original/2X/0/00a8f716c202af0dd6f8ad64a4f2d4d740661e05.png" width="546"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="11" itemprop="userInteractionCount"/>
+<span class="post-likes">11 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">imimouni</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-21T15:53:09Z" itemprop="datePublished">
+                     21 באוגוסט,‏ 2020,‏  3:53pm
+                  </time>
+<meta content="2020-08-23T14:38:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>סתם משהו שימושי שמצאתי ונראה שלא כולם מכירים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+סידור אוטומטי של הimports!<br/>
+זה מגיע כחלק מובנה בpython extension.<br/>
+פשוט השתמשו בלחצן ימני ואי שם בתפריט הענק שנפתח יש sort imports  שיגרום לבודק האוטומטי להזיל ריר על האימפורטים שלכם <img alt=":upside_down_face:" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title=":upside_down_face:"/></p>
+<p>(הערה- שימו לב שזה לא מסדר לפי ABC מספר מודולים שמייבאים בתוך from ספציפי)</p>
+<p>ועוד משהו חמוד בנושא הimports , למי שעדיין אין pylance שימו לב שהוא יודע לעשות import אוטומטי לדברים שאתם מחליטים להשתמש בהם בקוד, לתפארת הPEP והבודק. פשוט צריך לבחור מהרשימה שצצה שאתם מתחילים לכתוב… גיליתי את זה היטב בתרגילי הtyping של יום 3 חחח, שימושי!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="10" itemprop="userInteractionCount"/>
+<span class="post-likes">10 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-21T16:31:45Z" itemprop="datePublished">
+                     21 באוגוסט,‏ 2020,‏  4:31pm
+                  </time>
+<meta content="2020-08-21T16:31:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="10" data-topic="7738" data-username="imimouni">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/i/47e85d/40.png" width="20"/> imimouni:</div>
+<blockquote>
+<p>סתם משהו שימושי שמצאתי ונראה שלא כולם מכירים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+סידור אוטומטי של הimports!<br/>
+זה מגיע כחלק מובנה בpython extension.<br/>
+פשוט סמנו את כל האימפורטים שלכם בלחצן ימני ואי שם בתפריט הענק שנפתח יש sort imports שיגרמו לבודק האוטומטי להזיל ריר על האימפורטים שלכם <img alt=":upside_down_face:" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title=":upside_down_face:"/></p>
+<p>(הערה- שימו לב שזה לא מסדר לפי ABC מספר מודולים שמייבאים בתוך from ספציפי)</p>
+</blockquote>
+</aside>
+<p>גם ב-PyCharm יש - פשוט לוחצים Alt + Ctrl + O וזה מסדר הכל (או לחפש ב-CTRL + SHIFT + A את Optimize Imports)<br/>
+ואלו ההגדרות שהבודק האוטומטי אוהב (אפילו מסדר את from X import A, C, B)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e" href="../../uploads/default/original/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e.png" title="image"><img alt="image" data-base62-sha1="pA5CQV92sxEz6FBR1YsiwjABSAC" data-small-upload="../../uploads/default/optimized/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e_2_10x10.png" height="277" src="../../uploads/default/original/2X/b/b34ac0fe9d5087bb21e7ee2633552dfa59792c6e.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">991×399 15.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-21T20:06:21Z" itemprop="datePublished">
+                     21 באוגוסט,‏ 2020,‏  8:06pm
+                  </time>
+<meta content="2020-08-21T20:06:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה ! סופר שימושי (;</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">danihello</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-21T23:25:51Z" itemprop="datePublished">
+                     21 באוגוסט,‏ 2020,‏ 11:25pm
+                  </time>
+<meta content="2020-08-21T23:25:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה אודליה, כבר הוספתי לעצמי להגדרות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-22T17:58:53Z" itemprop="datePublished">
+                     22 באוגוסט,‏ 2020,‏  5:58pm
+                  </time>
+<meta content="2020-08-22T17:58:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מישהו מכיר דרך להסיר את האסוציאציה של pycharm מקבצי py?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="7738.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/9/9cd0c63ec4d3ea87c7e08ecf45cefc4c8cab247b.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-24T08:38:41Z" itemprop="datePublished">
+                     24 באוגוסט,‏ 2020,‏  8:38am
+                  </time>
+<meta content="2020-08-24T08:38:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אתה רוצה להחליף לתוכנה אחרת - בוינדוס תעשה חיפוש ב-start לזה:<br/>
+<img alt="image" data-base62-sha1="mnfMvOh9VlRqSCAu9wllVDr14wz" height="82" src="../../uploads/default/original/2X/9/9cd0c63ec4d3ea87c7e08ecf45cefc4c8cab247b.png" width="341"/><br/>
+ובחלון שנפתח תוכל למצוא את py ולבחור תוכנה</p>
+<p>אם אתה רוצה להסיר בכלל - גוגל הוא חבר, אבל אתה יכול לנסות את הדרכים האלו:<br/>
+</p><aside class="onebox allowlistedgeneric">
+<header class="source">
+<img class="site-icon" height="50" src="../../uploads/default/original/2X/0/0abde4873b082c488e9d401342d17e942d943f79.png" width="50"/>
+<a href="https://troubleshooter.xyz/wiki/how-to-remove-file-type-associations-in-windows-10/" rel="nofollow noopener" target="_blank">Troubleshooter</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:671/500;"><img class="thumbnail" data-small-upload="../../uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_671x500.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/45780d6267be8538b56713e816f981e00abbfde6_2_671x500.png, https://forums.pythonic.guru/uploads/default/original/2X/4/45780d6267be8538b56713e816f981e00abbfde6.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/45780d6267be8538b56713e816f981e00abbfde6.png 2x" width="671"/></div>
+<h3><a href="https://troubleshooter.xyz/wiki/how-to-remove-file-type-associations-in-windows-10/" rel="nofollow noopener" target="_blank">How to Remove File Type Associations in Windows 10 - Troubleshooter</a></h3>
+<p>How to Remove File Type Associations in Windows 10: A File association associates a file with an application which can open that particular file. The job of</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/9-1/7738 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:13 GMT -->
+</html>

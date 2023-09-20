@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8039 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:58:49 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה? - שבוע 9 - פייתון בעברית ובחינם</title>
+<meta content="לדוגמה, נכתוב פונקציה שמדפיסה צליל של כלב: 
+ 
+ננסה לעטוף את הפונקציה בפונקציה שצועקת טקסטים בשפת האטנטרנט, ואז לקרוא ל-dog_sound: 
+ 
+ואנקונדה תצעק עלינו בחזרה שאנחנו בכלל מנסים לקרוא למחרוזת, ולא לפונקציה: 
+ 
+מכיוון שזה &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8039.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8039.rss" rel="alternate nofollow" title="הזנת RSS של ‚קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/5/5fa1c4cf274b5da66eaa03ff9e76410aa30f5ea7.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/5/5fa1c4cf274b5da66eaa03ff9e76410aa30f5ea7.png" property="og:image"/>
+<meta content="8039.html" property="og:url"/>
+<meta content="8039.html" name="twitter:url"/>
+<meta content="קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?" property="og:title"/>
+<meta content="קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?" name="twitter:title"/>
+<meta content="לדוגמה, נכתוב פונקציה שמדפיסה צליל של כלב:    ננסה לעטוף את הפונקציה בפונקציה שצועקת טקסטים בשפת האטנטרנט, ואז לקרוא ל-dog_sound:    ואנקונדה תצעק עלינו בחזרה שאנחנו בכלל מנסים לקרוא למחרוזת, ולא לפונקציה:    מכיוון שזה לא כיף לקבל צעקה מבעלי חיים שגדולים ממך (קל וחומר, אנקונדות), ננסה להבין את הרמז,  ונווכח שפתאום, בלי שימוש ב-() - אנחנו כבר קוראים לפונקציה:    טאדהה!!!1~    מה קרה פה?  ואיך פותרים את זה? 😮   עריכה:  שכחתי def בתוך הקשתן.  זה אומר שבמקום ליצור פונקציה, ולהחזיר אותה (..." property="og:description"/>
+<meta content="לדוגמה, נכתוב פונקציה שמדפיסה צליל של כלב:    ננסה לעטוף את הפונקציה בפונקציה שצועקת טקסטים בשפת האטנטרנט, ואז לקרוא ל-dog_sound:    ואנקונדה תצעק עלינו בחזרה שאנחנו בכלל מנסים לקרוא למחרוזת, ולא לפונקציה:    מכיוון שזה לא כיף לקבל צעקה מבעלי חיים שגדולים ממך (קל וחומר, אנקונדות), ננסה להבין את הרמז,  ונווכח שפתאום, בלי שימוש ב-() - אנחנו כבר קוראים לפונקציה:    טאדהה!!!1~    מה קרה פה?  ואיך פותרים את זה? 😮   עריכה:  שכחתי def בתוך הקשתן.  זה אומר שבמקום ליצור פונקציה, ולהחזיר אותה (..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 9" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="decorators" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-08-31T23:03:36+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?","mainEntity":{"@type":"Question","name":"קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?","text":"לדוגמה, נכתוב פונקציה שמדפיסה צליל של כלב:\n\n[image]\n\nננסה לעטוף את הפונקציה בפונקציה שצועקת טקסטים בשפת האטנטרנט, ואז לקרוא ל-dog_sound:\n\n[image]\n\nואנקונדה תצעק עלינו בחזרה שאנחנו בכלל מנסים לקרוא למחרוזת, ולא לפונקציה:\n\n[image]\n\nמכיוון שזה לא כיף לקבל צעקה מבעלי חיים שגדולים ממך (קל וחומר, אנקונדות&hellip;","upvoteCount":0,"answerCount":1,"dateCreated":"2020-08-31T23:03:36.273Z","author":{"@type":"Person","name":"גיא טריסקר"},"acceptedAnswer":{"@type":"Answer","text":"כותב את הדוגמה שלך בקוד כדי שיהיה קל יותר להתייחס אליה:\n\ndef scream_in_internet(f):\n\nreturn f().upper() + &quot;!!!1~&quot;\n\n@scream_in_internet\n\ndef dog_sound():\n\nreturn &quot;meow&quot;\n\nprint(dog_sound)\n\nלמה dog_sound הופכת מפונקציה למחרוזת?\n\nמזכיר מה קורה כשאנחנו כותבים decorator מעל dog_sound:\n\ndef dog_soun&hellip;","upvoteCount":1,"dateCreated":"2020-08-31T23:12:53.335Z","url":"https://forums.pythonic.guru/t/topic/8039/2","author":{"@type":"Person","name":"Yam"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8039.html">קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-9/19.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 9</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/decorators.html" rel="tag">decorators</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="קשטנים| למה נסיון הפתרון שלי עובד אם אני מצביע לפונקציה, אבל לא אם אני קורא לה?" itemprop="headline"/>
+<meta content="שבוע 9" itemprop="articleSection"/>
+<meta content="decorators" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="8039.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/5/5fa1c4cf274b5da66eaa03ff9e76410aa30f5ea7.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T23:03:36Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 11:03pm
+                  </time>
+<meta content="2020-08-31T23:20:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>לדוגמה, נכתוב פונקציה שמדפיסה צליל של כלב:<br/>
+<img alt="image" data-base62-sha1="dDZWL1K1oTvklu7jKwPz4n9FcPR" height="79" src="../../uploads/default/original/2X/5/5fa1c4cf274b5da66eaa03ff9e76410aa30f5ea7.png" width="147"/></p>
+<p>ננסה לעטוף את הפונקציה בפונקציה שצועקת טקסטים בשפת האטנטרנט, ואז לקרוא ל-dog_sound:<br/>
+<img alt="image" data-base62-sha1="clWeK09rULSpfU9tKGK6FSV2UOt" height="155" src="../../uploads/default/original/2X/5/5694f957d343735c75bb9480e1e29892124c7919.png" width="246"/></p>
+<p>ואנקונדה תצעק עלינו בחזרה שאנחנו בכלל מנסים לקרוא למחרוזת, ולא לפונקציה:<br/>
+<img alt="image" data-base62-sha1="bccNR38tMN4pkw9AtIt5YVxOSGe" height="22" src="../../uploads/default/original/2X/4/4e7926402e250b65b0e5618d644729cea3a115f2.png" width="280"/></p>
+<p>מכיוון שזה לא כיף לקבל צעקה מבעלי חיים שגדולים ממך (קל וחומר, אנקונדות), ננסה להבין את הרמז,<br/>
+ונווכח שפתאום, בלי שימוש ב-() - אנחנו כבר קוראים לפונקציה:</p>
+<p><img alt="image" data-base62-sha1="gXtwt3BjevueknuLJ4C87ZX9puY" height="154" src="../../uploads/default/original/2X/7/76dbec34f4f3d9589be3d754d1ff56bac5e7296c.png" width="261"/></p>
+<p>טאדהה!!!1~<br/>
+<img alt="image" data-base62-sha1="2wzEhODuSP3d4wPbcGLlCx98Jzq" height="32" src="../../uploads/default/original/2X/1/11b3033bf4391e5825c5a2cf5f468f00eac77e78.png" width="273"/></p>
+<p>מה קרה פה?<br/>
+ואיך פותרים את זה? <img alt=":open_mouth:" class="emoji" src="../../images/emoji/twitter/open_mouthc164.png?v=9" title=":open_mouth:"/></p>
+<hr/>
+<p>עריכה:<br/>
+שכחתי def בתוך הקשתן.<br/>
+זה אומר שבמקום ליצור פונקציה, ולהחזיר אותה (כדי שנריץ אותה בעצמנו אחרי זה) -<br/>
+הוא כבר “עוקף” צעד, ומחזיר הרצה-של…</p>
+<p>עוד עריכה:<br/>
+ים הגיב עם מגה-הסבר, צד-צעד, ודוגמאות שעושים ים סדר בחשיבה על הנושא באופן כללי!<br/>
+אז אם מישהו פספס פה כמוני - שיעוף פוסט למטה לקרוא. 3&gt;</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8039.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T23:12:53Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 11:12pm
+                  </time>
+<meta content="2020-08-31T23:12:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כותב את הדוגמה שלך בקוד כדי שיהיה קל יותר להתייחס אליה:</p>
+<pre><code class="lang-python">def scream_in_internet(f):
+    return f().upper() + "!!!1~"
+
+
+@scream_in_internet
+def dog_sound():
+    return "meow"
+
+
+print(dog_sound)
+</code></pre>
+<hr/>
+<h3>למה dog_sound הופכת מפונקציה למחרוזת?</h3>
+<p>מזכיר מה קורה כשאנחנו כותבים decorator מעל <code>dog_sound</code>:</p>
+<pre><code class="lang-python">def dog_sound():
+    return "meow"
+
+
+dog_sound = scream_in_internet(dog_sound)
+
+
+print(dog_sound)
+</code></pre>
+<p>אוקיי. מה מחזירה <code>scream_in_internet</code>?<br/>
+את <code>f().upper() + "!!!1~"</code>, כלומר:</p>
+<ol>
+<li>הקריאה ל־<code>dog_sound</code> המקורית</li>
+<li>הפיכה של ערך החזרה שלה לאותיות גדולות</li>
+<li>שרשור המחרוזת <code>!!!1~</code> אל התוצאה.</li>
+</ol>
+<p>אז <code>scream_in_internet</code> מחזירה <code>"MEOW!!!1~"</code>.</p>
+<p>זה הערך החדש של <code>dog_sound</code>.</p>
+<hr/>
+<h3>איך מתקנים?</h3>
+<p>במקום להחזיר מחרוזת, נחזיר פונקציה:</p>
+<pre><code class="lang-python">def scream_in_internet(f):
+    def helper(*args, **kwargs):
+        return f(*args, **kwargs).upper() + "!!!1~"
+    return helper</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DissonantHarmony</span>
+</span>
+<link href="8039.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T23:26:31Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 11:26pm
+                  </time>
+<meta content="2020-08-31T23:26:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>פאק! אתה מקליד במהירות בזק! <img alt=":open_mouth:" class="emoji" src="../../images/emoji/twitter/open_mouthc164.png?v=9" title=":open_mouth:"/><br/>
+לא הספקתי להגיב שמצאתי את הפאשלה, ושכבר הסתדרתי, וכבר שזרת פה הסברים צעד-צעד, עם דוגמאות. <img alt=":open_mouth:" class="emoji" src="../../images/emoji/twitter/open_mouthc164.png?v=9" title=":open_mouth:"/></p>
+<p>שאלונת אחרונה, במטותא:<br/>
+האם: “helper” זהו שם נפוץ ומקובל לפונקציית-זר מן הסגנון הזה?<br/>
+(או שזה סתם היה לשם הדוגמה?)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8039.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-31T23:33:59Z" itemprop="datePublished">
+                     31 באוגוסט,‏ 2020,‏ 11:33pm
+                  </time>
+<meta content="2020-08-31T23:33:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא, אני לא מכיר קונבנציה בעניין.<br/>
+אני חושב שבעיקר ראיתי את השם <code>wrapper</code>.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8039 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:58:55 GMT -->
+</html>

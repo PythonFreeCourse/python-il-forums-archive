@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>לגבי branch , לא סגור שהבנתי</title>
+    <link>https://forums.pythonic.guru/t/branch/8045</link>
+    <description>אני לא בטוח שהבנתי :
+
+&gt;  בעת הרצת הפקודה `python path/to/wit.py branch NAME` , צרו שורה חדשה ב־ `references.txt` . השורה תראה כך: `NAME=COMMIT_ID` , כאשר במקום `NAME` יופיע שמו של ה־branch, ובמקום `COMMIT_ID` יופיע מספרו של ה־commit שבו נמצא ה־HEAD בעת הרצת הפקודה.
+
+האם הכוונה היא **שבמקום** השורה עם המאסטר תיווצר שורה עם שם הbranch והid המקושר אליו ? זאת אומרת שעדיין אנחנו כותבים שם רק שתי שורות , אחת head והשניה branch ?
+
+&gt; בעת הרצת פקודת `checkout` , יעודכן בקובץ בשם activated.txt שנמצא ישירות תחת התיקייה `.wit` , שמו של ה־branch שנמצא במצב “פעיל” בעת ביצוע הפקודה. זה יהיה כל תוכנו של הקובץ, ולכן אפשר להרגיש בנוח לדרוס אותו.
+
+כל צ&#39;קאאוט ? כולל כזה עם מספר ולא עם שם של branch ? 
+(או שבמצב כזה יתעדכן master ? אם אנחנו עליו)
+
+&gt; בניגוד למה שנכתב ביום 2, בעת פקודת commit, התווית master כבר לא תתקדם כל פעם שהיא וה־HEAD נמצאים באותו מקום. כדי שתתקדם, היא חייבת שהתנאי המדובר יתקיים **וגם** שהענף יהיה “מופעל”. הענף master “מופעל” והתווית תתקדם רק אם ה־checkout האחרון שהתבצע היה `python wit.py checkout master`
+
+כלומר בתחילת האיניט הענף מאסטר מופעל כברירת מחדל , ומאסטר מתקדם בזמן commit , רק שאם עשינו צ&#39;קאאוט לבראנץ מסוים הוא לא מתקדם יותר ובמקומו יהיה כתוב שם הbranch ?</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 05 Sep 2020 01:23:59 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/branch/8045.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>לגבי branch , לא סגור שהבנתי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>2 פוסטים פוצלו לנושא חדש: <a href="https://forums.pythonic.guru/t/branch/8079">לפי הדוגמה בשאלה, יכולים להיות כמה branch־ים פעילים?</a></p>
+          <p><a href="https://forums.pythonic.guru/t/branch/8045/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/branch/8045/5</link>
+        <pubDate>Sat, 05 Sep 2020 01:25:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8045-5</guid>
+        <source url="https://forums.pythonic.guru/t/branch/8045.rss">לגבי branch , לא סגור שהבנתי</source>
+      </item>
+      <item>
+        <title>לגבי branch , לא סגור שהבנתי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="yosefco3" data-post="3" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>5 הבראנצ’ים הללו כוללים אך ורק בראנצים שאני עשיתי (זה די ברור שאין לי שליטה על קוד במחשב של מישהו אחר , עדיין רוצה לוודא).</p>
+</blockquote>
+</aside>
+<p>כרגע כן.</p>
+<aside class="quote no-group" data-username="yosefco3" data-post="3" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>מתוכם יש בראנצ אחד או 0 פעילים (אם 0 אז למעשה המאסטר פעיל) ,</p>
+</blockquote>
+</aside>
+<p>אני אדייק את זה טיפה, ברשותך. ה־master הוא branch לכל דבר, זאת אומרת ש:</p>
+<ol>
+<li>כשה־master פעיל שאר ה־branch־ים לא פעילים</li>
+<li>כש־branch מסוים שאינו ה־master פעיל, בהכרח ה־master הופך להיות לא פעיל.</li>
+</ol>
+<p>אפשר שיהיו 0 בראנצ’ים פעילים אם נכתוב: <code>git checkout commit_id</code>.<br>
+במקרה כזה, לא יהיה אף ענף פעיל.</p>
+<p>נוכל לחזור למצב בו אנחנו על ענף פעיל בכל שלב אם נכתוב <code>git checkout branch_name</code>.</p>
+<aside class="quote no-group" data-username="yosefco3" data-post="3" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>שאר הבראנצ’ים אלו בראנצים שהיו פעילים בעבר וכעת לא, אך אני עדיין כותב אותם בתוך הreferences בכל פעם שאני עושה קומיט. כמו כן אני גם יכול להחזיר אותם לפעולה עם צ’קאאוט.</p>
+</blockquote>
+</aside>
+<p>אני אענה קונקרטית: כל ה־references לכל ה־branch־ים צריכים להישאר, כדי שיהיה אפשר לחזור אליהם אחר כך.</p>
+          <p><a href="https://forums.pythonic.guru/t/branch/8045/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/branch/8045/4</link>
+        <pubDate>Wed, 02 Sep 2020 00:09:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8045-4</guid>
+        <source url="https://forums.pythonic.guru/t/branch/8045.rss">לגבי branch , לא סגור שהבנתי</source>
+      </item>
+      <item>
+        <title>לגבי branch , לא סגור שהבנתי</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה , שאלה אחרונה בעניין הזה -</p>
+<blockquote>
+<p>א, בנוסף. זאת אומרת, אם יצרת 5 branch־ים, אמורים להיות 7 שורות: HEAD (המקום הנוכחי שלך), master (שזה למעשה branch שנוצר עבור המשתמש אוטומטית כשעשינו git init), ועוד שורה עבור כל branch.</p>
+</blockquote>
+<p>5 הבראנצ’ים הללו כוללים אך ורק בראנצים שאני עשיתי (זה די ברור שאין לי שליטה על קוד במחשב של מישהו אחר , עדיין רוצה לוודא).<br>
+מתוכם יש בראנצ אחד או 0 פעילים (אם 0 אז למעשה המאסטר פעיל) , שאר הבראנצ’ים אלו בראנצים שהיו פעילים בעבר וכעת לא, אך אני עדיין כותב אותם בתוך הreferences בכל פעם  שאני עושה קומיט. כמו כן אני גם יכול להחזיר אותם לפעולה  עם צ’קאאוט.</p>
+          <p><a href="https://forums.pythonic.guru/t/branch/8045/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/branch/8045/3</link>
+        <pubDate>Tue, 01 Sep 2020 23:57:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8045-3</guid>
+        <source url="https://forums.pythonic.guru/t/branch/8045.rss">לגבי branch , לא סגור שהבנתי</source>
+      </item>
+      <item>
+        <title>לגבי branch , לא סגור שהבנתי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="yosefco3" data-post="1" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>האם הכוונה היא <strong>שבמקום</strong> השורה עם המאסטר תיווצר שורה עם שם הbranch והid המקושר אליו ? זאת אומרת שעדיין אנחנו כותבים שם רק שתי שורות , אחת head והשניה branch ?</p>
+</blockquote>
+</aside>
+<p>לא, בנוסף. זאת אומרת, אם יצרת 5 branch־ים, אמורים להיות 7 שורות: HEAD (המקום הנוכחי שלך), master (שזה למעשה branch שנוצר עבור המשתמש אוטומטית כשעשינו git init), ועוד שורה עבור כל branch.</p>
+<aside class="quote no-group" data-username="yosefco3" data-post="1" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>כל צ’קאאוט ? כולל כזה עם מספר ולא עם שם של branch ?<br>
+(או שבמצב כזה יתעדכן master ? אם אנחנו עליו)</p>
+</blockquote>
+</aside>
+<p>אם זה יהיה מספר, לא יהיה branch פעיל בפועל.</p>
+<aside class="quote no-group" data-username="yosefco3" data-post="1" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>כלומר בתחילת האיניט הענף מאסטר מופעל כברירת מחדל , ומאסטר מתקדם בזמן commit</p>
+</blockquote>
+</aside>
+<p>כן</p>
+<aside class="quote no-group" data-username="yosefco3" data-post="1" data-topic="8045">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/y/77aa72/40.png" class="avatar"> yosefco3:</div>
+<blockquote>
+<p>רק שאם עשינו צ’קאאוט לבראנץ מסוים הוא לא מתקדם יותר ובמקומו יהיה כתוב שם הbranch ?</p>
+</blockquote>
+</aside>
+<p>לא בדיוק.<br>
+כל זמן נתון יש branch אחד, או 0 branch־ים שנחשבים “activated”.<br>
+אם ה־branch שנחשב activated וה־HEAD מצביעים לאותו מקום, ואז ביצעת commit:</p>
+<ol>
+<li>ה־HEAD יתקדם ל־commit החדש (כרגיל).</li>
+<li>אותו branch ש־activated יצביע ל־commit החדש.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/branch/8045/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/branch/8045/2</link>
+        <pubDate>Tue, 01 Sep 2020 21:55:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8045-2</guid>
+        <source url="https://forums.pythonic.guru/t/branch/8045.rss">לגבי branch , לא סגור שהבנתי</source>
+      </item>
+      <item>
+        <title>לגבי branch , לא סגור שהבנתי</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא בטוח שהבנתי :</p>
+<blockquote>
+<p>בעת הרצת הפקודה <code>python path/to/wit.py branch NAME</code> , צרו שורה חדשה ב־ <code>references.txt</code> . השורה תראה כך: <code>NAME=COMMIT_ID</code> , כאשר במקום <code>NAME</code> יופיע שמו של ה־branch, ובמקום <code>COMMIT_ID</code> יופיע מספרו של ה־commit שבו נמצא ה־HEAD בעת הרצת הפקודה.</p>
+</blockquote>
+<p>האם הכוונה היא <strong>שבמקום</strong> השורה עם המאסטר תיווצר שורה עם שם הbranch והid המקושר אליו ? זאת אומרת שעדיין אנחנו כותבים שם רק שתי שורות , אחת head והשניה branch ?</p>
+<blockquote>
+<p>בעת הרצת פקודת <code>checkout</code> , יעודכן בקובץ בשם activated.txt שנמצא ישירות תחת התיקייה <code>.wit</code> , שמו של ה־branch שנמצא במצב “פעיל” בעת ביצוע הפקודה. זה יהיה כל תוכנו של הקובץ, ולכן אפשר להרגיש בנוח לדרוס אותו.</p>
+</blockquote>
+<p>כל צ’קאאוט ? כולל כזה עם מספר ולא עם שם של branch ?<br>
+(או שבמצב כזה יתעדכן master ? אם אנחנו עליו)</p>
+<blockquote>
+<p>בניגוד למה שנכתב ביום 2, בעת פקודת commit, התווית master כבר לא תתקדם כל פעם שהיא וה־HEAD נמצאים באותו מקום. כדי שתתקדם, היא חייבת שהתנאי המדובר יתקיים <strong>וגם</strong> שהענף יהיה “מופעל”. הענף master “מופעל” והתווית תתקדם רק אם ה־checkout האחרון שהתבצע היה <code>python wit.py checkout master</code></p>
+</blockquote>
+<p>כלומר בתחילת האיניט הענף מאסטר מופעל כברירת מחדל , ומאסטר מתקדם בזמן commit , רק שאם עשינו צ’קאאוט לבראנץ מסוים הוא לא מתקדם יותר ובמקומו יהיה כתוב שם הbranch ?</p>
+          <p><a href="https://forums.pythonic.guru/t/branch/8045/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/branch/8045/1</link>
+        <pubDate>Tue, 01 Sep 2020 18:34:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8045-1</guid>
+        <source url="https://forums.pythonic.guru/t/branch/8045.rss">לגבי branch , לא סגור שהבנתי</source>
+      </item>
+  </channel>
+</rss>

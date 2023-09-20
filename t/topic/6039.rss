@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלה על מבנה של פונקציות</title>
+    <link>https://forums.pythonic.guru/t/topic/6039</link>
+    <description>שבוע טוב! 
+ממשיך לשבור את הראש על פונקציות ומקווה שהפונקציות יישברו ראשונות ;-)
+אז ככה, במטלה שדרשה מאיתנו לחשב האם דני יכול לרוץ מרתון בפחות משלוש שעות כתבתי את 
+ הפונקציות הבאות. (אם אתה המשיב ורוצה לקצר-השאלה שלי נוגעת לפונקציה השנייה בשורה 4)
+def kph (hrs, km):
+    kph=(km/hrs)
+    return kph
+def success(kph):
+    hours_to_finish_marathon = 42.195 / kph
+    return hours_to_finish_marathon &lt;= 3  
+def success_message ():
+    if success:
+        print(&quot; you have made a marathon is less than three hours! that&#39;s a Winner! &quot;)
+    else: print(&quot; run faster, faster you must run ! &quot;)
+נשים לב שכאן ניסיתי להיות קצת יותר מתוחכם ולהניח שלא תמיד דני רץ חמש קילומטר, ולכן היא מאפשרת הזנת משתנה המרחק בנוסף למשתנה הזמן. 
+התוכנה מסרבת להבין את הפונקציה השנייה. כלומר את:
+success
+והיא טוענת בתוקף:
+TypeError: unsupported operand type(s) for /: &#39;float&#39; and &#39;function&#39;
+ואני ממש מתקשה בהבנה של העניין הזה, כי לכאורה הפונקציה הזו היא ממש חיקוי מדויק של העקרונות שאתם הפגנתם בפתרון לדוגמא. נתבונן בה:
+def check_if_run_marathon_in_three_hours(km_per_hour):
+    hours_to_finish_marathon = 42.195 / km_per_hour
+    return hours_to_finish_marathon &lt;= 3
+והיא עובדת יופי ולכן  אני לא מבין מה עשיתי לא נכון. 
+תודה מראש!</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 10 May 2020 15:29:50 +0000</lastBuildDate>
+    <category>שבוע 2</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/6039.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה לי שהבנתי (עכשיו גם נעזרתי בחבר מתכנת והוא אמר דברים דומים למה שאמרת).<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/9</link>
+        <pubDate>Sun, 10 May 2020 15:29:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[Almog]]></dc:creator>
+        <description><![CDATA[
+            <p>בשמחה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>אני חושבת שעניין השמות, שבא כדי להקל על הקריאות של הפונקציה מבלבל אותך.<br>
+אני אנתח את החלק הרלוונטי בפתרון לדוגמה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172.png" data-download-href="https://forums.pythonic.guru/uploads/default/31cf07b5088e5ca89c87541eec63ada14f684172" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172_2_646x500.png" alt="image" data-base62-sha1="76CXgTD06v0VjfmnlKfHVJDqTEC" width="646" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172_2_646x500.png, https://forums.pythonic.guru/uploads/default/original/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/31cf07b5088e5ca89c87541eec63ada14f684172_2_10x10.png"></a></div><p></p>
+<p>בתרגיל לדוגמה הוגדר <strong>מחוץ</strong> לפונקציות משתנה בשם km_per_hour ואנחנו עושים השמה לתוכו עם ערך ההחזרה של הפונקציה calculate_km_per_hour (במקרה גם בתוך הפונקציה זה השם של הערך).</p>
+<p>המשתנה שלך נמצא בתוך הפונקציה, ולכן אין לו משמעות מחוץ לה, אלא אם נחזיר אותו. מה שחשוב לזכור הוא שגם אם נבחר להחזיר אותו, השם שלו כבר לא יהיה השם הקצר והקולע שלו אלא הקריאה לפונקציה עם הערכים הרלוונטיים.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/a6f5cce170d4ff3d450f771e5c9174d974b99dc7.png" data-download-href="https://forums.pythonic.guru/uploads/default/a6f5cce170d4ff3d450f771e5c9174d974b99dc7" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/a6f5cce170d4ff3d450f771e5c9174d974b99dc7.png" alt="image" data-base62-sha1="nOZSRkhrVCzSf6blba63u6riJvN" width="689" height="395" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a6f5cce170d4ff3d450f771e5c9174d974b99dc7_2_10x10.png"></a></div><p></p>
+<p>אני אנסה להשתמש בדוגמה הזו כדי לתאר את מה שעשית, כי היא קצת יותר פשוטה. בדוגמה התחתונה כאן אנחנו רוצים להשתמש במספר הקלוריות שחישבנו מקודם, ואנחנו ממש קוראים לפונקציה שמחשבת קלוריות, כי הערך שיחזור ממנה הוא מה שאנחנו רוצים. האנלוגיה למה שאתה עשית היא שחישבת בפונקציה הראשונה את מספר הקלוריות ואז בפונקציה אחרת ניסית להשתמש במשתנה קלוריות ששמר את הערך בפונקציה הראשונה.<br>
+מקווה שזה מובן יותר עכשיו <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/8</link>
+        <pubDate>Sun, 10 May 2020 12:38:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>דבר ראשון שוב תודה על התגובות וכו.<br>
+אני לא בטוח שאני מבין אותך אבל בואי נשאל ככה.<br>
+איפה ההבדל בין הפעולה הנוכחית שלי לבין הפעולה של הפתרון לדוגמא?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/7</link>
+        <pubDate>Sun, 10 May 2020 12:22:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[Almog]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="asdfg199" data-post="5" data-topic="6039">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/b9bd4f/40.png" class="avatar"> asdfg199:</div>
+<blockquote>
+<p>כרגע יש תחת kph משתנה שמוגדר בפונקציה הראשונה, ואני משתמש בו בפוקנציה השנייה.</p>
+</blockquote>
+</aside>
+<p>זה לא אותו דבר כי kph הוא משתנה שחי רק בסקופ של הפונקציה שבה הגדרת אותו.<br>
+העובדה שאתה מחזיר אותו בסוף הפונקציה הראשונה תאפשר לך להשתמש בערך שלו בפונקציות אחרות, לא בשם שלו.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/6</link>
+        <pubDate>Sun, 10 May 2020 12:20:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>ממש תודה על התגובה. שימי לב שאני חושב שאת טוענת משהו קצת שונה. אלמוג אמרה שתחת השם “kph” יש לי גם פונקציה וגם משתנה. אבל אני שיניתי את זה. וכרגע יש תחת kph משתנה שמוגדר בפונקציה הראשונה, ואני משתמש בו בפוקנציה השנייה. ממה שאני מבין זה מה שאת אומרת. שבעייתי. גם אני חשבתי שזה יכול להיות בעייתי, אבל זה בדיוק מה שהחבר’ה עושים. נסתכל על הפונקציה שלהם:<br>
+ddef calculate_km_per_hour_for_5_km(hours_to_finish):<br>
+km_per_hour = 5 / hours_to_finish<br>
+return km_per_hour</p>
+<p>def check_if_run_marathon_in_three_hours(km_per_hour):<br>
+hours_to_finish_marathon = 42.195 / km_per_hour<br>
+return hours_to_finish_marathon &lt;= 3<br>
+מה הם עושים? מגדירים משתנה בפונקציה הראשונה, קוראים לה (ומקבלים אותו) ואז משתמשים בו בפונקציה השנייה.<br>
+נסתכל רגע על מה שאני עושה:<br>
+def kilometers_per_hour (hrs, km):<br>
+kph=(km/hrs)<br>
+return kph<br>
+def success(kph):<br>
+hours_to_finish_marathon = 42.195 / kph<br>
+return hours_to_finish_marathon &lt;= 3<br>
+לכאורה, נראה בדיוק אותו דבר.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/5</link>
+        <pubDate>Sun, 10 May 2020 12:13:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>לא רק שאפשר לטעון את מה שאלמוג אמרה, זה גם מה שפייתון, דרך שהשגיאה שנזרקה לך, טען - היה כתוב שאתה מנסה לחלק פונקציה במספר כי מבחינת פייתון kph הוא פונקציה. השם kph כמספר קיים אך ורק בפונקציה שבה הגדרת את השם הזה, ולכן בעייתי להשתמש בשם משתנה שלקוח מפונקציה אחרת - גם אם דרשת ממנה להחזיר אותו - אלא אם כן.</p>
+<p>ממליצה לעבור שוב על מה בדיוק return עושה ואיך אתה יכול להשתמש בערך שהפונקציה החזירה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/4</link>
+        <pubDate>Sun, 10 May 2020 12:05:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה!<br>
+לדעתי זה לא מה שיוצר את הבעיה, כי גם כאשר שיניתי את שם הפונקציה בהתאם להמלצך וכתבתי בשם הפונקציה<br>
+kilometers_per_hour<br>
+במקום:<br>
+kph<br>
+והשארתי את שם המשתנה כפי שהיה (kph) הבעיה לא נפתרה. ממש נראה שהבעיה היא בפונקציה השנייה, כלומר בפונקציה:<br>
+def success(kph):<br>
+hours_to_finish_marathon = 42.195 / kph<br>
+return hours_to_finish_marathon &lt;= 3<br>
+ואני לא מצליח להבין מה היא. שימי לב שהפתרון שאת מציעה מתייחס להגדרה של הפונקציה הראשונה, ושם אין בעיות. בנוסף, אי אפשר לטעון שזה בעייתי להשתמש בשם משתנה שלקוח מפונקציה אחרת (כל עוד דרשת מהפונקציה להחזיר אותו). ולכן אני קצת תקוע. בכל אופן תודה על ההשקעה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/3</link>
+        <pubDate>Sun, 10 May 2020 11:52:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[Almog]]></dc:creator>
+        <description><![CDATA[
+            <p>שים לב שתחת השם “kph” יש לך גם פונקציה וגם משתנה, לדעתי זה מה שיוצר את הבעיה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/2</link>
+        <pubDate>Sun, 10 May 2020 11:40:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+      <item>
+        <title>שאלה על מבנה של פונקציות</title>
+        <dc:creator><![CDATA[asdfg199]]></dc:creator>
+        <description><![CDATA[
+            <p>שבוע טוב!<br>
+ממשיך לשבור את הראש על פונקציות ומקווה שהפונקציות יישברו ראשונות <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=10" title=":wink:" class="emoji" alt=":wink:"><br>
+אז ככה, במטלה שדרשה מאיתנו לחשב האם דני יכול לרוץ מרתון בפחות משלוש שעות כתבתי את<br>
+הפונקציות הבאות. (אם אתה המשיב ורוצה לקצר-השאלה שלי נוגעת לפונקציה השנייה בשורה 4)<br>
+def kph (hrs, km):<br>
+kph=(km/hrs)<br>
+return kph<br>
+def success(kph):<br>
+hours_to_finish_marathon = 42.195 / kph<br>
+return hours_to_finish_marathon &lt;= 3<br>
+def success_message ():<br>
+if success:<br>
+print(" you have made a marathon is less than three hours! that’s a Winner! “)<br>
+else: print(” run faster, faster you must run ! ")<br>
+נשים לב שכאן ניסיתי להיות קצת יותר מתוחכם ולהניח שלא תמיד דני רץ חמש קילומטר, ולכן היא מאפשרת הזנת משתנה המרחק בנוסף למשתנה הזמן.<br>
+התוכנה מסרבת להבין את הפונקציה השנייה. כלומר את:<br>
+success<br>
+והיא טוענת בתוקף:<br>
+TypeError: unsupported operand type(s) for /: ‘float’ and ‘function’<br>
+ואני ממש מתקשה בהבנה של העניין הזה, כי לכאורה הפונקציה הזו היא ממש חיקוי מדויק של העקרונות שאתם הפגנתם בפתרון לדוגמא. נתבונן בה:<br>
+def check_if_run_marathon_in_three_hours(km_per_hour):<br>
+hours_to_finish_marathon = 42.195 / km_per_hour<br>
+return hours_to_finish_marathon &lt;= 3<br>
+והיא עובדת יופי ולכן  אני לא מבין מה עשיתי לא נכון.<br>
+תודה מראש!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6039/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6039/1</link>
+        <pubDate>Sun, 10 May 2020 11:08:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6039-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6039.rss">שאלה על מבנה של פונקציות</source>
+      </item>
+  </channel>
+</rss>

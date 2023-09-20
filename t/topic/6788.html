@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/6788 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:39:15 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב - דיבורים - פייתון בעברית ובחינם</title>
+<meta content="תורמים ועוזרים לשנות אותו :stuck_out_tongue: 
+סיפור קצרצר על קוד פתוח. 
+זה התחיל מזה שהמודול בו אני משתמש כדי להציג לכם לפני כמה זמן הנוטיפיקציה נשלחה אליכם במערכת התרגילים – הקריס את המערכת. מסתבר שלא הייתה תמיכה בשבועו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6788.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6788.rss" rel="alternate nofollow" title="הזנת RSS של ‚כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/3/3443e7cefc517625a533d54cca64fc3c250f8128.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/3/3443e7cefc517625a533d54cca64fc3c250f8128.jpg" property="og:image"/>
+<meta content="6788.html" property="og:url"/>
+<meta content="6788.html" name="twitter:url"/>
+<meta content="כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב" property="og:title"/>
+<meta content="כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב" name="twitter:title"/>
+<meta content="תורמים ועוזרים לשנות אותו 😛  סיפור קצרצר על קוד פתוח.  זה התחיל מזה שהמודול בו אני משתמש כדי להציג לכם לפני כמה זמן הנוטיפיקציה נשלחה אליכם במערכת התרגילים – הקריס את המערכת. מסתבר שלא הייתה תמיכה בשבועות (לפני X שבועות החזיר שגיאה), ואז קלטתי שגם התמיכה ביחיד ובו’ החיבור שם לא עובדות 😱  כמעט כל ספריות הפייתון משוחררות בקוד פתוח, בפרויקטים שאפשר לתרום להם קוד. זה מה שעשיתי, ובקרוב הנוטיפיקציות יראו טוב יותר בזכות זה 💃  לתרום לקוד פתוח זה מגניב, וגם אחלה נקודות ברזו..." property="og:description"/>
+<meta content="תורמים ועוזרים לשנות אותו 😛  סיפור קצרצר על קוד פתוח.  זה התחיל מזה שהמודול בו אני משתמש כדי להציג לכם לפני כמה זמן הנוטיפיקציה נשלחה אליכם במערכת התרגילים – הקריס את המערכת. מסתבר שלא הייתה תמיכה בשבועות (לפני X שבועות החזיר שגיאה), ואז קלטתי שגם התמיכה ביחיד ובו’ החיבור שם לא עובדות 😱  כמעט כל ספריות הפייתון משוחררות בקוד פתוח, בפרויקטים שאפשר לתרום להם קוד. זה מה שעשיתי, ובקרוב הנוטיפיקציות יראו טוב יותר בזכות זה 💃  לתרום לקוד פתוח זה מגניב, וגם אחלה נקודות ברזו..." name="twitter:description"/>
+<meta content="דיבורים" property="og:article:section"/>
+<meta content="3AB54A" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="21 ❤"/>
+<meta content="2020-05-29T11:10:45+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6788.html">כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/offtopic/12.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #3AB54A"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">דיבורים</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="כשהמודול שעוזר להציג תאריכים בעברית במערכת הנוטיפיקציות לא מספיק טוב" itemprop="headline"/>
+<meta content="דיבורים" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/3443e7cefc517625a533d54cca64fc3c250f8128.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T11:10:45Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏ 11:10am
+                  </time>
+<meta content="2020-05-29T11:10:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>תורמים ועוזרים לשנות אותו <img alt=":stuck_out_tongue:" class="emoji" src="../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+<p>סיפור קצרצר על קוד פתוח.<br/>
+זה התחיל מזה שהמודול בו אני משתמש כדי להציג לכם לפני כמה זמן הנוטיפיקציה נשלחה אליכם במערכת התרגילים – הקריס את המערכת. מסתבר שלא הייתה תמיכה בשבועות (לפני X שבועות החזיר שגיאה), ואז קלטתי שגם התמיכה ביחיד ובו’ החיבור שם לא עובדות <img alt=":scream:" class="emoji" src="../../images/emoji/twitter/screamc164.png?v=9" title=":scream:"/><br/>
+כמעט כל ספריות הפייתון משוחררות בקוד פתוח, בפרויקטים שאפשר לתרום להם קוד. זה מה שעשיתי, ובקרוב הנוטיפיקציות יראו טוב יותר בזכות זה <img alt=":dancer:" class="emoji" src="../../images/emoji/twitter/dancerc164.png?v=9" title=":dancer:"/><br/>
+לתרום לקוד פתוח זה מגניב, וגם אחלה נקודות ברזומה. אם אתם רואים הזדמנות כזו – קפצו עליה!</p>
+<p>(בעתיד גם נלמד להתנהל עם GitHub, ככה שזה יהיה אפילו יותר קל וכיף)</p>
+<aside class="onebox githubpullrequest">
+<header class="source">
+<a href="https://github.com/crsmithdev/arrow/pull/794/files" target="_blank">github.com/crsmithdev/arrow</a>
+</header>
+<article class="onebox-body">
+<div class="github-row">
+<div class="github-icon-container" title="Pull Request">
+<svg aria-hidden="true" class="github-icon" height="60" viewbox="0 0 12 16" width="60"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+</div>
+<div class="github-info-container">
+<h4>
+<a href="https://github.com/crsmithdev/arrow/pull/794" target="_blank">Add weeks translation for Hebrew</a>
+</h4>
+<div class="branches">
+<code>crsmithdev:master</code> ← <code>yammesicka:fix-hebrew-localization</code>
+</div>
+<div class="github-info">
+<div class="date">
+        opened <span class="discourse-local-date" data-date="2020-05-28" data-format="ll" data-time="18:34:17" data-timezone="UTC">06:34PM - 28 May 20 UTC</span>
+</div>
+<div class="user">
+<a href="https://github.com/yammesicka" target="_blank">
+<img alt="yammesicka" class="onebox-avatar-inline" height="20" src="../../uploads/default/original/2X/3/3443e7cefc517625a533d54cca64fc3c250f8128.jpg" width="20"/>
+          yammesicka
+        </a>
+</div>
+<div class="lines" title="4 commits changed 2 files with 68 additions and 6 deletions">
+<a href="https://github.com/crsmithdev/arrow/pull/794/files" target="_blank">
+<span class="added">+68</span>
+<span class="removed">-6</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="10" itemprop="userInteractionCount"/>
+<span class="post-likes">10 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T12:36:40Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏ 12:36pm
+                  </time>
+<meta content="2020-05-29T12:36:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מאוד נותן מוטיבציה, תודה רבה! האם יש צורך/כדאי לשלוט בשפות נוספות כמו javascript כדי שנוכל לתרום לקוד פתוח? כמו כן, האם אפשר להתחיל כבר עכשיו או שהידע הנוכחי מבחינת חומרי הקורס לא מספיק עדיין לתרומה לקוד פתוח ברוב המקרים?<br/>
+שאלה אחרונה - ממה כדאי להתחיל/איפה לחפש את הפרוייקטים הראשונים כדי להתחיל להכנס לעניינים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T12:43:12Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏ 12:43pm
+                  </time>
+<meta content="2020-05-29T12:43:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איזה כיף <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>כמו שאתה רואה, התרומה שלי למודול הזה היא פייתונית בלבד.<br/>
+יש פרויקטים (כמו המערכת לבדיקת תרגילים שלנו) שהרבה יותר קל לתרום להם אם אתה מכיר שפות נוספות, כמו JavaScript שמשמשת אותנו להצגת המידע ללקוח.<br/>
+לשאלתך לגבי הידע: כן, לגמרי יש לכם את הידע והיכולת לתרום קוד בשלב הזה. אני מאמין שתוך שבועיים נסגור את הפינות האחרונות וטכנית יהיה מעט מאוד דברים בפייתון שתהיו clueless לגביהם, ככה שקריאה של קוד במודולים ותרומה אליהם תהיה קלה מאוד מבחינה רעיונית עוד שבועיים, וממש ממש פיזיבילית בעוד בערך 3 שבועות.<br/>
+לשאלה לגבי חיפוש מודולים שאפשר לתרום אליהם; יש אתרים שמקבצים כאלו:<br/>
+</p><aside class="onebox whitelistedgeneric">
+<header class="source">
+<img class="site-icon" height="196" src="../../uploads/default/original/2X/f/f7372814851771921642b0254406ebaac773a87d.png" width="196"/>
+<a href="https://up-for-grabs.net/#/filters?tags=python" target="_blank">up-for-grabs.net</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:200/230;"><img class="thumbnail" height="230" src="../../uploads/default/original/2X/1/1c34536a99ea6811112485eeb0b236c14e017d7d.png" width="200"/></div>
+<h3><a href="https://up-for-grabs.net/#/filters?tags=python" target="_blank">Up For Grabs</a></h3>
+<p>Want to contribute to open source, but not sure where to start?</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<br/>
+אבל בגדול פשוט דברים שאתה משתמש בהם שנראה לך שהיה אפשר לשפר <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-29T12:46:36Z" itemprop="datePublished">
+                     29 במאי,‏ 2020,‏ 12:46pm
+                  </time>
+<meta content="2020-05-29T12:46:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה על התשובה המפורטת! אנסה להתחיל לעבוד על אחד מאלו מייד לאחר ההגשות של השבוע <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-31T15:07:26Z" itemprop="datePublished">
+                     31 במאי,‏ 2020,‏  3:07pm
+                  </time>
+<meta content="2020-05-31T15:07:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בשעה טובה תוספת הקוד שלי ל־arrow אושרה, וכשתשוחרר גרסה חדשה תאריכים בעברית יראו טוב יותר במערכת הנוטיפיקציות <img alt=":confetti_ball:" class="emoji" src="../../images/emoji/twitter/confetti_ballc164.png?v=9" title=":confetti_ball:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-31T22:13:02Z" itemprop="datePublished">
+                     31 במאי,‏ 2020,‏ 10:13pm
+                  </time>
+<meta content="2020-05-31T22:13:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תשמע, מדהים <img alt=":fire:" class="emoji" src="../../images/emoji/twitter/firec164.png?v=9" title=":fire:"/><br/>
+ממש מעורר השראה, כמו שאמרו כאן לפניי.<br/>
+אני מת להתחיל לעשות קצת קוד פתוח. אני מניח שאני עדיין מרגיש ״נוב״ מידי ומעורבות בגיט קצת מפחידה אותי.<br/>
+שמעתי פודקאסט לא מזמן (״עושים תוכנה״) ודיברו על סוגיית  המבוכה (ממליץ מאוד לשמוע!). עדיין לא יצאתי סופר מעודד <img alt=":joy:" class="emoji" src="../../images/emoji/twitter/joyc164.png?v=9" title=":joy:"/><br/>
+מצד שני, יכול להיות דווקא נחמד להיות ״הכי טיפש בחדר״ בתנאי שהקהילה מאוד תומכת ועוטפת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6788.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/7/73d60fae5cf1e8eb31abc1f59e21dd3e9d4cb2c9.gif" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-31T22:16:07Z" itemprop="datePublished">
+                     31 במאי,‏ 2020,‏ 10:16pm
+                  </time>
+<meta content="2020-05-31T22:16:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ותגובה מיוחדת לאורי - אין על קראש <img alt=":fox_face:" class="emoji" src="../../images/emoji/twitter/fox_facec164.png?v=9" title=":fox_face:"/><br/>
+20 תווים וכו׳<br/>
+<a class="onebox" href="https://media.giphy.com/media/3oKIP9hfEsvPHxfIk0/giphy.gif" rel="nofollow ugc noopener" target="_blank">
+<img height="364" src="../../uploads/default/original/2X/7/73d60fae5cf1e8eb31abc1f59e21dd3e9d4cb2c9.gif" width="480"/>
+</a>
+</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/6788 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:39:20 GMT -->
+</html>

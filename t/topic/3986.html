@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/3986 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:44 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מחברת 2- מחשבון מס הכנסה - שבוע 2 - פייתון בעברית ובחינם</title>
+<meta content="היי, אשמח להבהרה לגבי התרגיל הזה- 
+האם בפתרון התרגיל עליי להניח כי הנתונים יהיו קבועים גם בעתיד? או שעליי ליצור קוד שיתאים גם במקרה בו הנתונים ישתנו (כלומר, מדרגות המס או המיסוי עליהם ישתנה)? 
+ושוב תודה רבה! עד כה ההסברי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="3986.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="3986.rss" rel="alternate nofollow" title="הזנת RSS של ‚מחברת 2- מחשבון מס הכנסה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="3986.html" property="og:url"/>
+<meta content="3986.html" name="twitter:url"/>
+<meta content="מחברת 2- מחשבון מס הכנסה" property="og:title"/>
+<meta content="מחברת 2- מחשבון מס הכנסה" name="twitter:title"/>
+<meta content="היי, אשמח להבהרה לגבי התרגיל הזה-  האם בפתרון התרגיל עליי להניח כי הנתונים יהיו קבועים גם בעתיד? או שעליי ליצור קוד שיתאים גם במקרה בו הנתונים ישתנו (כלומר, מדרגות המס או המיסוי עליהם ישתנה)?  ושוב תודה רבה! עד כה ההסברים מ-ו-ש-ל-מ-י-ם! 🙂" property="og:description"/>
+<meta content="היי, אשמח להבהרה לגבי התרגיל הזה-  האם בפתרון התרגיל עליי להניח כי הנתונים יהיו קבועים גם בעתיד? או שעליי ליצור קוד שיתאים גם במקרה בו הנתונים ישתנו (כלומר, מדרגות המס או המיסוי עליהם ישתנה)?  ושוב תודה רבה! עד כה ההסברים מ-ו-ש-ל-מ-י-ם! 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 2" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="קבועים" property="og:article:tag"/>
+<meta content="מס-הכנסה" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="3 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="11 ❤"/>
+<meta content="2020-04-06T04:43:45+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="39864658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="3986.html">מחברת 2- מחשבון מס הכנסה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/9-category/9.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 2</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a7%d7%91%d7%95%d7%a2%d7%99%d7%9d.html" rel="tag">קבועים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%a1-%d7%94%d7%9b%d7%a0%d7%a1%d7%94.html" rel="tag">מס-הכנסה</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מחברת 2- מחשבון מס הכנסה" itemprop="headline"/>
+<meta content="שבוע 2" itemprop="articleSection"/>
+<meta content="קבועים, מס-הכנסה" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">slimorna</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T04:43:45Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  4:43am
+                  </time>
+<meta content="2021-09-04T19:36:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי, אשמח להבהרה לגבי התרגיל הזה-<br/>
+האם בפתרון התרגיל עליי להניח כי הנתונים יהיו קבועים גם בעתיד? או שעליי ליצור קוד שיתאים גם במקרה בו הנתונים ישתנו (כלומר, מדרגות המס או המיסוי עליהם ישתנה)?</p>
+<p>ושוב תודה רבה! עד כה ההסברים מ-ו-ש-ל-מ-י-ם! <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">89michael.sl</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T07:41:10Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  7:41am
+                  </time>
+<meta content="2020-04-06T07:41:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,</p>
+<p>אמנם אני לא מהסגל אבל אציג את החשיבה שלי בתור רואה חשבון.<br/>
+מדי שנה מס הכנסה יכול ומעדכן את מדרגות המס השולי על השכר ומכאן שנראה פעם בשנה לפחות נצטרך לעדכן את גובה המדרגות ואת אחוז המס.</p>
+<p>בכללי חשוב לדעתי לנסות לחשוב על מה הבעיה שאנו פותרים והאם יש השפעות על המשתנים או התוכן שלה כמו כאן. השפעה חיצונית של גוף ממשלתי במקרה הזה וההבנה שיכולים לחול שינויים במיסוי.</p>
+<p>מקווה שעזרתי.<br/>
+בהצלחה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>מיכאל</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mortur123</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T12:28:28Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏ 12:28pm
+                  </time>
+<meta content="2020-04-06T12:28:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ועוד שאלה:<br/>
+מי שמרווח פחות 6310 ש"ח (שכר המינימום בתרגיל)  משלם 10% מהמשכורת שהוא מרווח, כן?<br/>
+ז"א 630 ש"ח (10% מ-6310) הוא לא מס קבוע ללא קשר אם השכר נמוך מ- 6310</p>
+<p>תודה לעונים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mike</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T16:44:45Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  4:44pm
+                  </time>
+<meta content="2020-04-06T16:44:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הוא ישלם 10% מהשכר שהוא מרוויח ולא 10% מגובה המדרגה.<br/>
+משמע, אם הוא מרוויח 5000 שח הוא ישלם 5000*0.1=500</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:08:05Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:08pm
+                  </time>
+<meta content="2020-04-06T17:08:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מתקשה בפתרון התרגיל, אחרי מעט מאמץ הבנתי את העניין עם המדרגות ויצרתי מערכת של if elif ו else,<br/>
+נעזרתי ברעיון שנכתב כאן, להתחיל מהמדרגות הגבוהות ולרדת עד לראשונה.<br/>
+אבל עדיין משהו לא רץ, בגלל שהתוכנית יחסית ארוכה, אני לא מבין איך תוכלו לעזור לי להגיע לפתרון אם לא אשתף את הקוד שכתבתי, איך נדע מה שגוי? אני לא רוצה לראות פתרון סופי מול העיניים אבל יש כאן בעייתיות…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">om3riko</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:15:01Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:15pm
+                  </time>
+<meta content="2020-04-06T17:15:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם הקוד לא רץ עדיין, אני חושב שאתה יכול לפרסם אותו כי זה לא התשובה.<br/>
+זה יעזור להרבה אנשים לעזור לך<br/>
+בנימה כללית:<br/>
+לא לשכוח סוגריים בכל החישובים<br/>
+לא לשכוח נקודיים אחרי if else וכו’<br/>
+שים לב שבין &lt;= ל=&lt; יש תוצאות אחרות או שגיאות<br/>
+צריך להיות לעבור שורה שורה ולראות תקלות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:18:03Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:18pm
+                  </time>
+<meta content="2020-04-06T17:18:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר לשלוח לך? אולי תבין איפה התקלה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:28:22Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:28pm
+                  </time>
+<meta content="2020-04-06T17:28:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ביקשו לא לפרסם תשובות…<br/>
+אתה יכול לשלוח פה ואנשים יעזרו לך להבין איפה הטעות. זו המטרה של הפורום</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:31:17Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:31pm
+                  </time>
+<meta content="2020-04-06T17:33:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקי, זה מה שכתבתי בנתיים</p>
+<p>sallary = int(input ("insert your current sallary to calculate the tax "))<br/>
+if sallary &gt;= 54130:<br/>
+step7 = sallary - 54130<br/>
+tax1 = step7 * 0.5<br/>
+taxtotal = tax1 + ((54130-42030) * 0.47) + ((42030-20200) * 0.35) + ((20200-14530) * 0.31) + ((14530 - 9050) * 0.2) + ((9050-6310) * 0.14) + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+elif sallary &gt;= 42030:<br/>
+step6 = sallary - 42030<br/>
+tax1 = step6 * 0.47<br/>
+taxtotal = tax1 + ((42030-20200) * 0.35) + ((20200-14530) * 0.31) + ((14530 - 9050) * 0.2) + ((9050-6310) * 0.14) + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+elif sallary &gt;= 20200:<br/>
+step5 = sallary - 20200<br/>
+tax1 = step5 * 0.35<br/>
+taxtotal = tax1 + ((20200-14530) * 0.31) + ((14530 - 9050) * 0.2) + ((9050-6310) * 0.14) + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+elif sallary &gt;= 14530:<br/>
+step4 = sallary - 14530<br/>
+tax1 = step4 * 0.31<br/>
+taxtotal = tax1 + ((14530 - 9050) * 0.2) + ((9050-6310) * 0.14) + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+elif sallary &gt;= 9050:<br/>
+step3 = sallary - 9050<br/>
+tax1 = step3 * 0.2<br/>
+taxtotal = ((9050-6310) * 0.14) + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+elif sallary &gt;= 6310:<br/>
+step2 = sallary - 6310<br/>
+tax1 = step2 * 0.14<br/>
+taxtotal = tax1 + (6310 * 0.1)<br/>
+print ("your tax to pay is: " + taxtotal)<br/>
+else :<br/>
+taxtotal = (sallary) * (0.1)</p>
+<p>print ("your tax to pay is: " + taxtotal)</p>
+<p>וזו מבין התקלות שעולות</p>
+<p>TypeError                                 Traceback (most recent call last)<br/>
+ in <br/>
+29     tax1 = step2*0.14<br/>
+30     taxtotal = tax1 + (6310 * 0.1)<br/>
+—&gt; 31     print ("your tax to pay is: " + taxtotal)<br/>
+32 else :<br/>
+33     taxtotal = (sallary) * (0.1)</p>
+<p>TypeError: can only concatenate str (not “float”) to str</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:46:15Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:46pm
+                  </time>
+<meta content="2020-04-06T17:46:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא התעמקתי בכל הפקדות התניות שכתבת אבל…<br/>
+אי אפשר להדפיס מחרוזת ואינטג’ר ביחד.<br/>
+תגדיר את המשתנה taxtotal עם str לפני הפקודת הדפסה --&gt; (taxtotal = str(taxtotal</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">imimouni</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:46:56Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:46pm
+                  </time>
+<meta content="2020-04-06T17:46:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כדאי שתמחוק את הפתרון עצממו אבל לדעתי הבעיה היא שאתה מנסה לחבר בשורה האחרונה בין מחרוזת לבין משתנה מספרי, תמיר את taxtotal למחרוזת והתקלה הזו תעלם</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">om3riko</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:54:17Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:54pm
+                  </time>
+<meta content="2020-04-06T17:54:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בפתרון שלי הפכתי את כל מדרגות המס ומדרגות השכר למשתנים.<br/>
+זה מאוד אקל עלי לכתוב את הקוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T20:38:46Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  8:38pm
+                  </time>
+<meta content="2020-04-06T21:06:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה צודק יאיר, תודה ואימימוני, אחרי כל מיני החלפות התברר לי שצדקת.<br/>
+תודה לכל מי שעוזר!</p>
+<p>עכשיו יש לי בעיה חדשה, לא שהיא קריטית, פייתון מוציא כפלט את המס פעמיים<br/>
+דוגמא -<br/>
+your tax to pay is: 4990130.8<br/>
+your tax to pay is: 4990130.8</p>
+<p>למה זה קורה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">juliya0402</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T00:08:12Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏ 12:08am
+                  </time>
+<meta content="2020-04-07T00:08:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/27954f04dd516900e1dd5f95be3cc855a6443561" href="../../uploads/default/original/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561.png" title="מחשבון מס הכנסה"><img alt="מחשבון מס הכנסה" data-base62-sha1="5EavQDvb7uuhMsyoDtjO8WV7jB7" data-small-upload="../../uploads/default/optimized/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561_2_10x10.png" height="350" src="../../uploads/default/optimized/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561_2_690x350.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561_2_690x350.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561_2_1035x525.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/27954f04dd516900e1dd5f95be3cc855a6443561_2_1380x700.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">מחשבון מס הכנסה</span><span class="informations">2525×1282 176 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>אנלא מצליחה לפתוח על זה נושא, אבל אשמח לעזרה עם השאלה על המחשבון של המס הכנסה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noa.izhaki</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T00:26:37Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏ 12:26am
+                  </time>
+<meta content="2020-04-07T00:26:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כי כתבת בסוף כל תנאי שזה ידפיס את התוצאה, וגם בסוף הקוד כתבת שזה ידפיס את התוצאה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofiravraham</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T09:51:07Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏  9:51am
+                  </time>
+<meta content="2020-04-07T10:26:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+אם המשכורת היא 9050 זה כלול במדרגת מס השנייה או שזה עד ולא כולל?<br/>
+כמו כן, בהוראה האחרונה כתוב 50 אחוז מסכום זה האם הכוונה לכול המשכורת או באותה צורה כמו כול התרגיל ( מהסכום שנותר מחיסור בין המשכורת לרף המדרגה האחרונה)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Elisheva.Joseph</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T10:41:11Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏ 10:41am
+                  </time>
+<meta content="2020-04-07T10:41:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אשמח לקבל עזרה מאחד המדריכים בנוגע לשאלה זו<br/>
+תודנ רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T10:45:35Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏ 10:45am
+                  </time>
+<meta content="2020-04-07T10:45:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לפי מה שהבנתי אם המשכורת היא 9050 אז המס כולל את הדרוג השני אבל לא את הדירוג השלישי, אז צריך לנתח 2 חלקים של המשכורת עם 2 אחוזי ניקוי שונים. בהוראה האחרונה הרעיון זהה, אם המשכורת עוברת את הסכום של הדירוג אז צריך להוסיף נתח מהמשכורת שממנו אתה מחשב מס של 50 אחוז</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">koshwiz</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T10:46:54Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏ 10:46am
+                  </time>
+<meta content="2020-04-07T10:46:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מבין את מה שאמרת, אבל מה הגישה לפתרון? להוסיף תנאי חיצוני של הדפסה? או פקודת הדפסה אחת בסוף הקוד?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">noa.izhaki</span>
+</span>
+<link href="3986.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-07T13:22:58Z" itemprop="datePublished">
+                     7 באפריל,‏ 2020,‏  1:22pm
+                  </time>
+<meta content="2020-04-07T13:22:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כבר יש לך פקודת הדפסה אחת בסוף הקוד.<br/>
+אני לא כל כך יודעת למה אתה מתכוון ב"תנאי חיצוני של הדפסה", אבל שורת ההדפסה בסוף הקוד שלך בעצצם אומרת, "לא משנה איזה תנאי הקוד מימש, תדפיס לי את המשתנה taxtotal.<br/>
+ולכן אין סיבה שבתוך כל תנאי המשתנה הזה יודפס.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="39864658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/3986 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:49 GMT -->
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8656/3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:41:57 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הוספת זימון אירועים כאירוע חוזר - מס׳ 3 מאת gonny - הצעות לטיקטים - פייתון בעברית ובחינם</title>
+<meta content="מה ההצעה כוללת? 
+הוספת אופציה לעשות אירוע כאירוע חוזר 
+איך אתם מתכוונים לממש אותה? 
+להוסיף פיצר שמקבל ערך בוליאני וטווח זמן (כל חודש/ שבוע/ יום)ומייצר אירועים זהיים בקבועי הזמן הרלוונטים 
+אם היא כוללת שינויים במסד הנתוני&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8656.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8656.rss" rel="alternate nofollow" title="הזנת RSS של ‚הוספת זימון אירועים כאירוע חוזר’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="3.html" property="og:url"/>
+<meta content="3.html" name="twitter:url"/>
+<meta content="הוספת זימון אירועים כאירוע חוזר" property="og:title"/>
+<meta content="הוספת זימון אירועים כאירוע חוזר" name="twitter:title"/>
+<meta content="כפתורי ברירת מחדל לדחייה קדימה של אירועים מתעסק עם משהו מאוד דומה, אז לבדוק שאתם לא עולים אחד על השני במימוש." property="og:description"/>
+<meta content="כפתורי ברירת מחדל לדחייה קדימה של אירועים מתעסק עם משהו מאוד דומה, אז לבדוק שאתם לא עולים אחד על השני במימוש." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="הצעות לטיקטים" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="2021-01-11T12:58:53+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הוספת זימון אירועים כאירוע חוזר","mainEntity":{"@type":"Question","name":"הוספת זימון אירועים כאירוע חוזר","text":"מה ההצעה כוללת?\n\nהוספת אופציה לעשות אירוע כאירוע חוזר\n\nאיך אתם מתכוונים לממש אותה?\n\nלהוסיף פיצר שמקבל ערך בוליאני וטווח זמן (כל חודש/ שבוע/ יום)ומייצר אירועים זהיים בקבועי הזמן הרלוונטים\n\nאם היא כוללת שינויים במסד הנתונים: אילו שינויים?\n\nכן,\n\nהוספה של ערך אירוע חוזר באירוע בטבלת events שיכיל ID משות&hellip;","upvoteCount":8,"answerCount":0,"dateCreated":"2021-01-10T19:55:42.382Z","author":{"@type":"Person","name":"מיכאל בן דוד"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8656.html">הוספת זימון אירועים כאירוע חוזר</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/ticket-ideas/29.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הצעות לטיקטים</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הוספת זימון אירועים כאירוע חוזר" itemprop="headline"/>
+<meta content="הצעות לטיקטים" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T19:55:42Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏  7:55pm
+                  </time>
+<meta content="2021-01-12T09:11:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p><strong>מה ההצעה כוללת?</strong><br/>
+הוספת אופציה לעשות אירוע כאירוע חוזר</p>
+<p><strong>איך אתם מתכוונים לממש אותה?</strong><br/>
+להוסיף פיצר שמקבל ערך בוליאני וטווח זמן (כל חודש/ שבוע/ יום)ומייצר אירועים זהיים בקבועי הזמן הרלוונטים</p>
+<p><strong>אם היא כוללת שינויים במסד הנתונים: אילו שינויים?</strong><br/>
+כן,<br/>
+הוספה של ערך אירוע חוזר באירוע בטבלת events שיכיל ID משותף לרצף האירועים<br/>
+קישור לטבלת עזר שמכילה מזהיים של אירועים חוזרים (במידה ונרצה לגשת לכל האירועים האלו בבת אחת)</p>
+<p><strong>האם היא דורשת frontend?</strong><br/>
+לא</p>
+<p><strong>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</strong><br/>
+זימון אירוע בכל אחד מהטווחים האפשריים ובדיקה שהוא קיים בקבועי הזמן הרלוונטים בשנה הקרובה לפחות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../8803/4.html" itemprop="url">בואו נתמיד - ארוע מתמשך</a>
+<meta content="1" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../8803/2.html" itemprop="url">בואו נתמיד - ארוע מתמשך</a>
+<meta content="2" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../8699/6.html" itemprop="url">פיצ'ר שכפול אירוע</a>
+<meta content="3" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T21:11:03Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏  9:11pm
+                  </time>
+<meta content="2021-01-10T21:11:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר לחשוב על איך להכניס לזה ערך נוסף.<br/>
+היום שזה קורה - זה פשוט ממקם על הימים בטווח קבוע גם אם אתה לא נמצא או יש חג.<br/>
+שזה הרבה פעמים על הפנים כי פגישות מתבטלות למרות שאולי כן יש צורך באותו שבוע לקדם משהו חשוב.</p>
+<p>אולי במצב של חג או יום שאתה לא נמצא (חופשה)<br/>
+זה יתן פלט של ימים שזה מתבטל ואולי הצעה ליום אחרי או יום לפני.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-11T12:58:53Z" itemprop="datePublished">
+                     11 בינואר,‏ 2021,‏ 12:58pm
+                  </time>
+<meta content="2021-01-11T12:58:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><a class="inline-onebox" href="../8680.html">כפתורי ברירת מחדל לדחייה קדימה של אירועים</a> מתעסק עם משהו מאוד דומה, אז לבדוק שאתם לא עולים אחד על השני במימוש.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-11T13:02:47Z" itemprop="datePublished">
+                     11 בינואר,‏ 2021,‏  1:02pm
+                  </time>
+<meta content="2021-01-11T13:02:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יכול להיות שהבחירה הנכונה כאן תהיה לשלב את הפונקציונליות של הפיצ’רים האלה. מה שאני מציע כולל מחיקה של האירוע שממנו יוצרים את האירוע העתידי, שזה שונה (אבל לא בהרבה) ממה שהוצע כאן. יכול להיות שנצטרך להשתמש באותו בסיס קוד ולפתח וריאציות. אני מניח שנגלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T08:48:06Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:48am
+                  </time>
+<meta content="2021-01-12T08:48:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איך שאני מבין את זה בהצעה שלך אתה מדבר על לקבוע מחדש זימון ואני מדבר על הפיכת אירוע לאירוע חוזר<br/>
+אז גם בעיני זה דברים נפרדים…<br/>
+אבל אין לי בעיה שנסתנכרן על זה במורד הדרך</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T08:49:05Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:49am
+                  </time>
+<meta content="2021-01-12T08:49:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קיימת אופציה לסמן יום כיום חופש/חג? זה לא פשוט עוד EVENT?<br/>
+אם כן אני אתחבר לחבר’ה שעושים את זה ונכניס את התנאי בקוד…</p>
+<p>תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T08:49:44Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:49am
+                  </time>
+<meta content="2021-01-12T08:49:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בחיי זקנו של מרלין,</p>
+<p>מבקש בדיקה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T14:24:48Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  2:24pm
+                  </time>
+<meta content="2021-01-12T14:24:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="8" data-topic="8656" data-username="mbdi007">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/m/3ec8ea/40.png" width="20"/> mbdi007:</div>
+<blockquote>
+<p>בחיי זקנו של מרלין,</p>
+</blockquote>
+</aside>
+<p>אני דווקא מתחבר יותר ל</p>
+<blockquote>
+<p>אמור לי, למה בדיוק משמשים ברווזי גומי?</p>
+</blockquote>
+<p>אשמח לראות Mock ו־ERD, זה פיצ’ר לא פשוט</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T16:49:44Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  4:49pm
+                  </time>
+<meta content="2021-01-12T18:29:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה הERD שלי - (ותודה ל <span class_="mention">@Ode</span> על העצות)</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ee7b4624a38d331429195580c58bc68f0193d4bc" href="../../../uploads/default/original/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc.png" title="image"><img alt="image" data-base62-sha1="y1HKzWAPltHmOoeXUQotA97cksQ" data-small-upload="../../../uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_10x10.png" height="299" src="../../../uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_690x299.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_690x299.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_1035x448.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_1380x598.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1406×611 25.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זה הMOCK שלי -</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/21ef66f376f2af7a3614849c84a662a7132d7dcd" href="../../../uploads/default/original/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd.png" title="image"><img alt="image" data-base62-sha1="4QcFK3jN63DtQkBAZLJwkSTVDpX" data-small-upload="../../../uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_10x10.png" height="260" src="../../../uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_690x260.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_690x260.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_1035x390.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_1380x520.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1588×600 42.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T20:39:46Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:39pm
+                  </time>
+<meta content="2021-01-12T20:39:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברווזי גומי וזה<br/>
+מבקש שוב אישור</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T20:43:38Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:43pm
+                  </time>
+<meta content="2021-01-12T20:43:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חסר לי מידע –<br/>
+איך אני מחליט כל כמה זמן האירוע חוזר? מה האפשרויות?<br/>
+איך זה נראה ב־DB?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T20:49:51Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:49pm
+                  </time>
+<meta content="2021-01-12T20:49:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר לראות בMOCK את האופציות לחזרתיות של אירוע (יומי, חודשי וכו’)<br/>
+בגדול אם קיים שם מידע (זה שדה אופציונאלי) אז לייצר עוד אירועים שהם זהים לאירוע המקורי רק שמדלגים ע"פ הזמן שהיוזר הכניס<br/>
+לכל אירוע כזה נוצר מזהה שמאגד את כל האירועים החוזרים האלו (כדי שיהיה אפשר לגשת אליהם בעתיד בצורה נוחה) ונשמר בטבלת צד “RepeatedEvents” ומוכנס כ-FK לטבלת Events</p>
+<p>אחרי מחשבה נוספת אני פשוט אכניס אופציה של ללא חזרתיות שהיא תהיה הדיפולט ויהיה אפשר לשנות אותה מרשימה נפתחת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T20:58:23Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:58pm
+                  </time>
+<meta content="2021-01-12T20:58:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כמה שאלות:</p>
+<ol>
+<li>מה קורה כשאין יום כזה בשנה/בחודש?</li>
+<li>התכנון של “להכניס בדילוגים” הוא טיפה בעייתי כי אדם שעושה זימון יומי עד 2100 בקלות יוצר לך מעל 10K ערכים ב־DB על אירוע בודד.</li>
+<li>מה עם תאריך סיום?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T21:12:23Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  9:12pm
+                  </time>
+<meta content="2021-01-12T21:44:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>אני חשבתי לעבוד בקפיצות של מספר ימים קדימה (1/7/30/365) ולא ע"פ תאריכים<br/>
+ולגבי 2 הנק’ האחרות אז חשבתי לשים תאריך סיום לכולם של 50 שנה קדימה ובמידה ומישהו מזמן משהו מעל מס’ תוצאות גבוה (לדוג’ 10K) אז להגביל אותו ולעדכן את היוזר שהגבלנו את הזימון עד לתאריך מסויים<br/>
+כמובן שסתם זרקתי פה מספרים ויכול להיות שעדיף להקטין את הסיכון</li>
+</ol>
+<p>אני מודה שזה לא התשובות הכי טובות אבל זה מה שעולה לי כרגע, אנסה לחקור על זה טיפה יותר בהמשך<br/>
+אשמח לשמוע רעיונות נוספים!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../8656.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T22:32:40Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏ 10:32pm
+                  </time>
+<meta content="2021-01-12T22:32:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הייתי ממליץ על טווח זמנים רחב יותר, למשל כל x ימים או כל x חודשים, אבל גם אופציות מובנות כמו אותו תאריך חודש קדימה, בימים קובעים אט אפילו באותו יום ושבוע בחודש הבא, יכול להיות שיש כאן עוד קצת עבודה אבל זה נשמע שווה את המאמץ.<br/>
+מבחינת הגבלה הייתי נוטה להעדיף הגבלה כמותית כלשהי, 50 אירועים למשל מאפשרים כמעט שנה של אירועים שבועיים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8656/3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:41:57 GMT -->
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Operetional Error כשני מנסה להזין אימייל</title>
+    <link>https://forums.pythonic.guru/t/operetional-error/8505</link>
+    <description>אני התחלתי לבנות את הקוד הפייתוני הראשון שמבצע פעולה, אני מנסה להתחיל עם פעולה ליצירת משתמש.
+אני מצליח לשלוף את הID האחרון בלי בעיה, אבל כשאני מנסה ליצור שורה חדשה בטבלה אני מקבל את ההתראה באימייל, ספציפית `&#39;@gmail&#39;`
+
+כשהרצתי את השורה לדוגמא כרגיל:
+
+&gt; database.execute(&quot;INSERT INTO users VALUES (1, &#39;username&#39;, &#39;password&#39;, &#39;example@domain.com&#39;)&quot;)
+
+לא הייתה בעיה, אבל כשאני מנסה להריץ אותה בתור פונקציה:
+&gt; database.execute(f&quot;INSERT INTO users VALUES ({id + 1}, {name}, {password}, {email} WHERE {name} NOT IN users)&quot;)
+
+אני מקבל את ההתראה המדוברת,
+חיפוש באינטרנט לא הועיל במיוחד, מישהו יודע איך להתמודד עם זה?</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 03 Dec 2020 09:27:29 +0000</lastBuildDate>
+    <category>שבוע 14</category>
+    <atom:link href="https://forums.pythonic.guru/t/operetional-error/8505.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Operetional Error כשני מנסה להזין אימייל</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה לי שמה שאתה צריך לעשות זה לשנות את החוקיות ב-WHERE  -</p>
+<blockquote>
+<p>database.execute(f"INSERT INTO users VALUES ({id + 1}, {name}, {password}, {email} WHERE name != {name})</p>
+</blockquote>
+          <p><a href="https://forums.pythonic.guru/t/operetional-error/8505/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/operetional-error/8505/3</link>
+        <pubDate>Thu, 03 Dec 2020 09:27:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8505-3</guid>
+        <source url="https://forums.pythonic.guru/t/operetional-error/8505.rss">Operetional Error כשני מנסה להזין אימייל</source>
+      </item>
+      <item>
+        <title>Operetional Error כשני מנסה להזין אימייל</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>ניסית לעטוף בגרש מכל צד עבור כל משתנה ששומר טקסט? גם יש מצב ששמת את הסוגר שאחרי<br>
+IN users במקום הלא נכון, נראה לי שהוא חסר לפני ה WHERE.</p>
+          <p><a href="https://forums.pythonic.guru/t/operetional-error/8505/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/operetional-error/8505/2</link>
+        <pubDate>Thu, 03 Dec 2020 04:30:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8505-2</guid>
+        <source url="https://forums.pythonic.guru/t/operetional-error/8505.rss">Operetional Error כשני מנסה להזין אימייל</source>
+      </item>
+      <item>
+        <title>Operetional Error כשני מנסה להזין אימייל</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>אני התחלתי לבנות את הקוד הפייתוני הראשון שמבצע פעולה, אני מנסה להתחיל עם פעולה ליצירת משתמש.<br>
+אני מצליח לשלוף את הID האחרון בלי בעיה, אבל כשאני מנסה ליצור שורה חדשה בטבלה אני מקבל את ההתראה באימייל, ספציפית <code>'@gmail'</code></p>
+<p>כשהרצתי את השורה לדוגמא כרגיל:</p>
+<blockquote>
+<p>database.execute(“INSERT INTO users VALUES (1, ‘username’, ‘password’, ‘example@domain.com’)”)</p>
+</blockquote>
+<p>לא הייתה בעיה, אבל כשאני מנסה להריץ אותה בתור פונקציה:</p>
+<blockquote>
+<p>database.execute(f"INSERT INTO users VALUES ({id + 1}, {name}, {password}, {email} WHERE {name} NOT IN users)")</p>
+</blockquote>
+<p>אני מקבל את ההתראה המדוברת,<br>
+חיפוש באינטרנט לא הועיל במיוחד, מישהו יודע איך להתמודד עם זה?</p>
+          <p><a href="https://forums.pythonic.guru/t/operetional-error/8505/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/operetional-error/8505/1</link>
+        <pubDate>Thu, 03 Dec 2020 02:31:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8505-1</guid>
+        <source url="https://forums.pythonic.guru/t/operetional-error/8505.rss">Operetional Error כשני מנסה להזין אימייל</source>
+      </item>
+  </channel>
+</rss>

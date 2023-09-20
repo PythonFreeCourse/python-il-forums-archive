@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</title>
+    <link>https://forums.pythonic.guru/t/topic/3624</link>
+    <description>הקוד שכתבתי בתרגיל הראשון הוא:
+&gt; 
+&gt; l = 50
+&gt; w = 25
+&gt; d = (l`**`2 + w`**`2)**0.5
+&gt; print(&quot;The distance you have to swim is:&quot;, d)
+
+בחישוב מחדש:
+&gt; l = l * 2
+&gt; w = w + l
+&gt; print(&quot;Bad news, the NEW distance you have to swim is:&quot;, d)
+
+הייתי מצפה שפייתון יקח את הערכים **החדשים** של w ו-l ויזין אותם בנוסחה של d, הרי d הוגדר כנוסחה תלויית משתנים ולא כערך ספציפי. במילים אחרות, על d להשתנות עם כל שינוי במשתנים המרכיבים את הנוסחה. 
+בפועל, מסתבר שהציפיות שלי ושל פייתון לא זהות וההשמה של d הייתה בפועל מספר ולא נוסחה. האם בגלל זה יש הכרח להגדיר שוב את d לפי הערכים החדשים? איך אפשר להימנע מכך? 
+האם זה עובד כך בכל הסביבות של פייתון?
+
+תודה רבה!</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 28 Aug 2021 13:58:48 +0000</lastBuildDate>
+    <category>שבוע 1</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/3624.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>היי, זו שאלה טובה אז מגיב פה למען הדורות הבאים (יודע שזה בשנה+ של איחור, אבל לא תמיד מספיקים הכל :))</p>
+<p>כשפייתון קורא את קוד, הוא קורא אותו שורה שורה מלמעלה למטה.<br>
+הוא לעולם לא יחזור להסתכל על שורה שכתבת למעלה.</p>
+<p>סדר הריצה תמיד קבוע:</p>
+<ol>
+<li>קוראים את השורה הראשונה</li>
+<li>קוראים את השורה השנייה</li>
+<li>קוראים את השורה השלישית</li>
+</ol>
+<p>וכן הלאה.</p>
+<p>כאשר אנחנו מבצעים השמה (<code>x = y + 1</code>, לדוגמה), אנחנו מבקשים מפייתון:</p>
+<ol>
+<li>להבין מה הם הערכים שנמצאים בצד ימין (לתרגם את y לערך שלו. נניח המספר 5, סתם כדוגמה).</li>
+<li>לחשב אותם כך שיהיה ערך “חד משמעי” בצד ימין של ההשמה (במקרה שלנו: <code>5 + 1</code> זה <code>6</code>)</li>
+<li>להגדיר את השם בצד שמאל כך שיצביע על הערך שיצא מהחישוב בצד ימין. (במקרה שלנו: <code>x</code> הוא מעין קרן לייזר שמצביעה על הערך <code>6</code>).</li>
+</ol>
+<p>בשלב הזה המשתנה x בכלל לא יודע שהוא מורכב גם מ־y. הוא סתם קרן לייזר שמצביעה על <code>6</code>.<br>
+אם נשנה שורה אחר כך את <code>y</code>, נניח עם הביטוי <code>y = 100</code>, המשתנה <code>x</code> לא יחושב מחדש:</p>
+<ol>
+<li>גם כי אנחנו לא קוראים שוב שורות “מלמעלה”</li>
+<li>וגם כי <code>x</code> בכלל לא יודע שהוא תוצר חיבור של <code>y + 1</code> – בשלב הזה הוא סתם יצור שמצביע על הערך <code>6</code>.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/topic/3624/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/3624/3</link>
+        <pubDate>Sat, 28 Aug 2021 13:58:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-3624-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/3624.rss">מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</source>
+      </item>
+      <item>
+        <title>מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</title>
+        <dc:creator><![CDATA[BigBertha]]></dc:creator>
+        <description><![CDATA[
+            <p>לא תשובה,<br>
+תהייה איתך ביחד,</p>
+<p>מכיוון ש d = (l <code>**</code> 2 + w <code>**</code> 2)**0.5<br>
+רץ פעם אחת, אז הערך של d  הוא מהריצה הקודמת,<br>
+אחת כך, אתה קורה ל d בלי שאמרת לו בעצם להשתנות, אז הערך של d נשאר כשהיה בהרצה הראשונה,<br>
+אם היית כותב את זה:<br>
+l = l * 2<br>
+w = w + l<br>
+d = (l <code>**</code> 2 + w <code>**</code> 2)**0.5<br>
+print(“Bad news, the NEW distance you have to swim is:”, d)</p>
+<p>אז עכשיו היית מקבל ערך חדש ל d אחרת הוא משתמש רק ב ערך האחרון שנשמר לו</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/3624/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/3624/2</link>
+        <pubDate>Tue, 31 Mar 2020 18:29:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-3624-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/3624.rss">מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</source>
+      </item>
+      <item>
+        <title>מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</title>
+        <dc:creator><![CDATA[davmta]]></dc:creator>
+        <description><![CDATA[
+            <p>הקוד שכתבתי בתרגיל הראשון הוא:</p>
+<blockquote>
+<p>l = 50<br>
+w = 25<br>
+d = (l<code>**</code>2 + w<code>**</code>2)**0.5<br>
+print(“The distance you have to swim is:”, d)</p>
+</blockquote>
+<p>בחישוב מחדש:</p>
+<blockquote>
+<p>l = l * 2<br>
+w = w + l<br>
+print(“Bad news, the NEW distance you have to swim is:”, d)</p>
+</blockquote>
+<p>הייתי מצפה שפייתון יקח את הערכים <strong>החדשים</strong> של w ו-l ויזין אותם בנוסחה של d, הרי d הוגדר כנוסחה תלויית משתנים ולא כערך ספציפי. במילים אחרות, על d להשתנות עם כל שינוי במשתנים המרכיבים את הנוסחה.<br>
+בפועל, מסתבר שהציפיות שלי ושל פייתון לא זהות וההשמה של d הייתה בפועל מספר ולא נוסחה. האם בגלל זה יש הכרח להגדיר שוב את d לפי הערכים החדשים? איך אפשר להימנע מכך?<br>
+האם זה עובד כך בכל הסביבות של פייתון?</p>
+<p>תודה רבה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/3624/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/3624/1</link>
+        <pubDate>Tue, 31 Mar 2020 18:12:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-3624-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/3624.rss">מחברת 4, מבריחים מהבריכה: השמה כנוסחה (וחשיבות תיאום ציפיות)</source>
+      </item>
+  </channel>
+</rss>

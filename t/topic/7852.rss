@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+    <link>https://forums.pythonic.guru/t/topic/7852</link>
+    <description>במסגרת המימוש של השחמט בחלוקה לקבצים, 
+אני מקבלת שגיאה על כך ששם מסוים (של מחלקה) לא מוגדר.
+אותה מחלקה מיובאת מקובץ אחר. כשאני עוברת עם הdebugger - נראה שהייבוא של הקובץ שבו המחלקה נמצאת מתבצע באופן תקין (הdebugger קופץ לקובץ השני ועובר עליו), אבל כשחוזרים לקובץ הקודם, ומגיעים לשורה שבה צריך לעשות שימוש במחלקה - קופצת ה-NameError. רעיונות איך להתקדם?
+תודה מראש לעוזרים</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 16 Aug 2020 05:00:49 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/7852.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>נכון <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>אם מעניין – ה־syntax של from… import מוגדר פורמלית ככה:</p>
+<pre><code class="lang-python">import_from: ('from' (('.' | '...')* dotted_name | ('.' | '...')+)
+              'import' ('*' | '(' import_as_names ')' | import_as_names))
+
+dotted_name: NAME ('.' NAME)*
+
+import_as_name: NAME ['as' NAME]
+import_as_names: import_as_name (',' import_as_name)* [',']
+</code></pre>
+<p>כוכבית אומר שהביטוי שלפניה יכול להופיע 0 עד אינסוף פעמים<br>
+פלוס אומר שהביטוי שלפניו יכול להופיע 1 עד אינסוף פעמים<br>
+סוגריים מרובעים אומרים שהביטוי שהם מכילים יכול להופיע  0 או 1 פעמים<br>
+| אומר “או”</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/16</link>
+        <pubDate>Sun, 16 Aug 2020 05:00:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-16</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>כלומר - אחרי from יבוא “שרשור” של הקבצים (X.Y), ואחרי ה-import יבוא התוכן מתוך הקובץ, קרי המחלקה (Z)?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/15</link>
+        <pubDate>Sun, 16 Aug 2020 03:49:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-15</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אה! כן, אי אפשר לרשום <code>from X import Y.Z</code>.<br>
+תצטרכי לרשום: <code>from X.Y import Z</code> במקום <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/14</link>
+        <pubDate>Sun, 16 Aug 2020 03:03:43 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-14</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>כאן קופצת השגיאה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/c6a0726e43024789bbad21d72005129a1249477b.png" data-download-href="https://forums.pythonic.guru/uploads/default/c6a0726e43024789bbad21d72005129a1249477b" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/c/c6a0726e43024789bbad21d72005129a1249477b.png" alt="image" data-base62-sha1="sl8iiWoBiItavr58Ids7yIiYApt" width="690" height="369" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c6a0726e43024789bbad21d72005129a1249477b_2_10x10.png"></a></div><p></p>
+<p>וזה מה שקורה בתוך newplayers.py:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/167221a65e425e09c3c1ac853028a327f9727e62.png" data-download-href="https://forums.pythonic.guru/uploads/default/167221a65e425e09c3c1ac853028a327f9727e62" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/1/167221a65e425e09c3c1ac853028a327f9727e62_2_690x196.png" alt="image" data-base62-sha1="3cz1QIluTcUzMjRQltDGZkyeMBY" width="690" height="196" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/167221a65e425e09c3c1ac853028a327f9727e62_2_690x196.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/167221a65e425e09c3c1ac853028a327f9727e62_2_1035x294.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/167221a65e425e09c3c1ac853028a327f9727e62.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/167221a65e425e09c3c1ac853028a327f9727e62_2_10x10.png"></a></div><p></p>
+<p>וזה מה שקורה בתוך הקובץ piece:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/2/2d5710510989b1dd0c0db0bb50ccfb831fbe5830.png" data-download-href="https://forums.pythonic.guru/uploads/default/2d5710510989b1dd0c0db0bb50ccfb831fbe5830" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/2/2d5710510989b1dd0c0db0bb50ccfb831fbe5830.png" alt="image" data-base62-sha1="6t61crkh9NgMRMI5ChErx9SVtiE" width="690" height="196" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/2/2d5710510989b1dd0c0db0bb50ccfb831fbe5830_2_10x10.png"></a></div><p></p>
+<p>תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/13</link>
+        <pubDate>Sun, 16 Aug 2020 01:06:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-13</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר לראות את השורה בבקשה? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/12</link>
+        <pubDate>Sat, 15 Aug 2020 22:26:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>זורק לי SyntaxError<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/sob.png?v=9" title=":sob:" class="emoji only-emoji" alt=":sob:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/11</link>
+        <pubDate>Sat, 15 Aug 2020 20:53:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>תנסי:<br>
+<code>piece.Piece</code><br>
+זה לקחת מתוך הקובץ piece את המחלקה Piece</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/10</link>
+        <pubDate>Sat, 15 Aug 2020 20:38:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>מחלקת Camel אמורה לרשת את מחלקת Piece מתוך הקובץ שמיובא בראש הקובץ המצולם (from players import piece)<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8.png" data-download-href="https://forums.pythonic.guru/uploads/default/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8_2_690x245.png" alt="image" data-base62-sha1="3pY8UUMAkwjLlEUDT6PN6rE3QBa" width="690" height="245" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8_2_690x245.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8_2_1035x367.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/17f60d13e7ea4d3c05dad32072bd7368b20b9dd8_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/9</link>
+        <pubDate>Sat, 15 Aug 2020 19:37:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>אם תוכלי לשלוח פה בבקשה את השגיאה המלאה וגם את הפונקציה שמקפיצה את הבעיה זה יעזור</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/8</link>
+        <pubDate>Sat, 15 Aug 2020 19:34:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה על המענה. ניסיתי אבל אותה בעיה קיימת -<br>
+אני רצה עם ה-debugger, נראה כאילו הייבוא מתבצע (ברגע שיש פקודת ייבוא, זה קופץ לקובץ שביקשתי לייבא) אבל ברגע שצריך להשתמש במחלקה שנמצאת בתוך הקובץ  -זה לא מזהה אותה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/7</link>
+        <pubDate>Sat, 15 Aug 2020 18:01:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>כן זאת הייתה הכוונה - צד שמאל.</p>
+<p>תנסי לפתוח את הפרוייקט עצמו בלבד - File &gt; Open Folder ולאחר מכן תבחרי את תיקיית ה-chess.<br>
+תעדכני אם צצה בעיה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/6</link>
+        <pubDate>Sat, 15 Aug 2020 14:07:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/0/0264195e52de1284e58bb01c16574c746d8dd0a3.png" alt="image" data-base62-sha1="l9pO7m3VghWNNerHXDEPhFStb5" width="233" height="390"><br>
+מקווה שצירפתי את מה שהתכוונת, זה היה בצד שמאל</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/5</link>
+        <pubDate>Fri, 14 Aug 2020 13:41:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה שה-<code>sys.path</code> שלך הוא לא התיקייה הראשית של הפרוייקט.<br>
+תצלמי בבקשה את היררכיית הקבצים מצד ימין של ה-IDE</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/4</link>
+        <pubDate>Fri, 14 Aug 2020 07:04:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>לא, אני לא רואה את זה כשאני מדפיסה sys.modules.<br>
+היבוא נראה from y import x</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/3</link>
+        <pubDate>Fri, 14 Aug 2020 02:50:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בשורה שאחרי import … תדפיסי את <code>sys.modules</code>.<br>
+האם הוא נמצא שם באחד ה־keys?</p>
+<p>איך הייבוא נראה? import X או from Y import X?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/2</link>
+        <pubDate>Fri, 14 Aug 2020 02:26:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+      <item>
+        <title>קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>במסגרת המימוש של השחמט בחלוקה לקבצים,<br>
+אני מקבלת שגיאה על כך ששם מסוים (של מחלקה) לא מוגדר.<br>
+אותה מחלקה מיובאת מקובץ אחר. כשאני עוברת עם הdebugger - נראה שהייבוא של הקובץ שבו המחלקה נמצאת מתבצע באופן תקין (הdebugger קופץ לקובץ השני ועובר עליו), אבל כשחוזרים לקובץ הקודם, ומגיעים לשורה שבה צריך לעשות שימוש במחלקה - קופצת ה-NameError. רעיונות איך להתקדם?<br>
+תודה מראש לעוזרים</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7852/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7852/1</link>
+        <pubDate>Fri, 14 Aug 2020 02:16:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7852-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7852.rss">קובץ מצליח ליבא קובץ אחר אבל לא &quot;קולט&quot; את המחלקה שבתוכו</source>
+      </item>
+  </channel>
+</rss>

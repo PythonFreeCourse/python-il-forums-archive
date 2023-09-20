@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בדיקות לפרוייקט wit</title>
+    <link>https://forums.pythonic.guru/t/wit/8144</link>
+    <description>הכנתי לעצמי בדיקות אז אני משתף. רשמתי בהערות איפה אתם צריכים להשלים את החיבור לקוד שלכם.
+לדוגמא:
+```
+    head_id = &quot;&quot;  # Get head ID from references file
+```
+פה תצטרכו לגשת לקובץ ה references שלכם ולהביא את הID של ה HEAD. מכיוון שכל אחד כתב כנראה את הקוד אחרת, תצטרכו למלא את החלקים האלה.
+
+בתחילת הקובץ יש פונקציה ריקה.
+```
+def main(args):
+    # Pass this to your functions.
+    # Data is passed like it would be passed via cmd.
+    pass
+```
+הפונקציה main מדמה הכנסת נתונים כמו דרך cmd אז פשוט תחברו את זה לקוד שלכם שמקבל את הקלט.
+
+דבר אחרון, הפונקציה reset_tests נועדה לאפס את התקייה. תצטרכו להוסיף בשורה הראשונה קוד שמוחק את התקייה של .wit
+
+אם ראיתם שגיאה בבדיקות אשמח לדעת. כמו כן, זה מן הסתם לא בודק את כל התוכנה אז אם יש לכם בדיקות נוספות תרגישו חופשי לשתף.
+
+[details=&quot;קוד&quot;]
+```
+import pathlib
+
+
+def reset_tests():
+    # Important! Delete the wit directory
+    with open(&quot;references file&quot;, &quot;w&quot;) as text_file:
+        text_file.write(&quot;&quot;)
+
+    with open(&quot;activated branch file&quot;, &quot;w&quot;) as text_file:
+        text_file.write(&quot;&quot;)
+
+
+
+def main(args):
+    # Pass this to your functions.
+    # Data is passed like it would be passed via cmd.
+    pass
+
+
+def test_init():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    activated_branch = &quot;&quot;  # Get the activated branch name from file
+    print(&quot;master&quot; == activated_branch)
+
+
+def test_add_file():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    files = &quot;&quot;  # Get the files from your staging area dir
+    print(len(files) == 1)
+
+
+def test_add_two_files():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    files = &quot;&quot;  # Get the files from your staging area dir
+    print(len(files) == 2)
+
+
+def test_add_file_in_dir():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;test&quot;).joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    files = &quot;&quot;  # Get the files from your staging area dir
+    print(len(files) == 1)
+
+
+def test_commit_head_and_master():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    head = &quot;&quot;  # Get head ID from references file
+    master = &quot;&quot;  # Get master ID from references file
+    print(head and head == master)
+
+
+def test_commit_branch_checkout_head_master_and_branch_same():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    main([&quot;&quot;, &quot;branch&quot;, &quot;branch1&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;branch1&quot;])
+    head_id = &quot;&quot;  # Get head ID from references file
+    master_id = &quot;&quot;  # Get master ID from references file
+    branch_id = &quot;&quot;  # Get branch1 ID from references file
+    print(head_id and head_id == master_id and head_id == branch_id)
+
+
+def test_commit_branch_checkout_head_master_and_branch_not_same():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    main([&quot;&quot;, &quot;branch&quot;, &quot;branch1&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;branch1&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;second&quot;])
+    head_id = &quot;&quot;  # Get head ID from references file
+    master_id = &quot;&quot;  # Get master ID from references file
+    branch_id = &quot;&quot;  # Get branch1 ID from references file
+    print(head_id and head_id != master_id and head_id == branch_id)
+
+
+def test_get_changes_to_be_committed_same_file():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    result = &quot;&quot;  # Get changes to be committed
+    print(len(result) == 1)
+
+
+def test_get_changes_to_be_committed_different_file():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    result = &quot;&quot;  # Get changes to be committed
+    print(len(result) == 1)
+
+
+def test_get_changes_to_be_committed_two_files():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    result = &quot;&quot;  # Get changes to be committed
+    print(len(result) == 2)
+
+
+def test_get_changes_not_staged_for_commit_same_file():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    result = &quot;&quot;  # Get changes not staged for commit
+    print(len(result) == 1)
+
+
+def test_get_changes_not_staged_for_commit_different_file():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    result = &quot;&quot;  # Get changes not staged for commit
+    print(len(result) == 0)
+
+
+def test_get_changes_not_staged_for_commit_two_files():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    result = &quot;&quot;  # Get changes not staged for commit
+    print(len(result) == 1)
+
+
+def test_file_in_both_changes_to_be_committed_and_changes_not_staged_for_commit():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    result1 = &quot;&quot;  # Get changes to be committed
+    result2 = &quot;&quot;  # Get changes not staged for commit
+    print(len(result1) == 2 and len(result2) == 1)
+
+
+def test_branch_checkout():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    main([&quot;&quot;, &quot;branch&quot;, &quot;branch1&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;branch1&quot;])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;second&quot;])
+    main([&quot;&quot;, &quot;branch&quot;, &quot;branch2&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;branch2&quot;])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;third&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;master&quot;])
+
+    head_id = &quot;&quot;  # Get head ID from references file
+    master_id = &quot;&quot;  # Get master ID from references file
+    activated_branch = &quot;&quot;  # Get the activated branch name from file
+    check1 = &quot;master&quot; == activated_branch
+    check2 = head_id == master_id
+    files = &quot;&quot;  # Get the files from your staging area dir
+    check3 = len(files) == 1
+    print(check1 and check2 and check3)
+
+
+def test_merge():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])  # 0000
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;second&quot;])  # 1111
+    head_before_branch = &quot;&quot;  # Get head ID from references file
+    main([&quot;&quot;, &quot;branch&quot;, &quot;meow&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;meow&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;third&quot;])  # 2222
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;fourth&quot;])  # 3333
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;master&quot;])
+    main([&quot;&quot;, &quot;merge&quot;, &quot;meow&quot;])  # 4444 - parents of this commit are 1111 and 3333
+    main([&quot;&quot;, &quot;graph&quot;])
+
+    head_id = &quot;&quot;  # Get head ID from references file
+    master_id = &quot;&quot;  # Get master ID from references file
+    meow_id = &quot;&quot;  # Get meow ID from references file
+    merge_parents = &quot;&quot;  # Get head ID parents from head commit file
+    print(merge_parents == f&quot;{head_before_branch},{meow_id}&quot; and head_id == master_id and head_id != meow_id)
+
+
+def test_merge_fail():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    text_file2 = pathlib.Path.cwd().joinpath(&quot;text_file2.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;second&quot;])
+    main([&quot;&quot;, &quot;branch&quot;, &quot;meow&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;meow&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;third&quot;])
+    with open(text_file2, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file2])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;fourth&quot;])
+    main([&quot;&quot;, &quot;checkout&quot;, &quot;master&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;merge&quot;, &quot;meow&quot;])
+
+
+def test_linear_graph():
+    reset_tests()
+    main([&quot;&quot;, &quot;init&quot;])
+    text_file1 = pathlib.Path.cwd().joinpath(&quot;text_file1.txt&quot;)
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;first&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;second&quot;])
+    with open(text_file1, &quot;a&quot;) as text_file:
+        text_file.write(&quot;test &quot;)
+    main([&quot;&quot;, &quot;add&quot;, text_file1])
+    main([&quot;&quot;, &quot;commit&quot;, &quot;third&quot;])
+    main([&quot;&quot;, &quot;graph&quot;])
+
+# test_init()
+# test_add_file()
+# test_add_two_files()
+# test_add_file_in_dir()
+# test_commit_head_and_master()
+# test_commit_branch_checkout_head_master_and_branch_same()
+# test_commit_branch_checkout_head_master_and_branch_not_same()
+# test_get_changes_to_be_committed_same_file()
+# test_get_changes_to_be_committed_different_file()
+# test_get_changes_to_be_committed_two_files()
+# test_get_changes_not_staged_for_commit_same_file()
+# test_get_changes_not_staged_for_commit_different_file()
+# test_get_changes_not_staged_for_commit_two_files()
+# test_get_changes_not_staged_for_commit()
+# test_file_in_both_changes_to_be_committed_and_changes_not_staged_for_commit()
+# test_branch_checkout()
+# test_merge()
+# test_merge_fail()
+# test_linear_graph()
+```
+[/details]</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 10 Mar 2022 03:42:32 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/wit/8144.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בדיקות לפרוייקט wit</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>הכנתי לעצמי בדיקות אז אני משתף. רשמתי בהערות איפה אתם צריכים להשלים את החיבור לקוד שלכם.<br>
+לדוגמא:</p>
+<pre><code class="lang-auto">    head_id = ""  # Get head ID from references file
+</code></pre>
+<p>פה תצטרכו לגשת לקובץ ה references שלכם ולהביא את הID של ה HEAD. מכיוון שכל אחד כתב כנראה את הקוד אחרת, תצטרכו למלא את החלקים האלה.</p>
+<p>בתחילת הקובץ יש פונקציה ריקה.</p>
+<pre><code class="lang-auto">def main(args):
+    # Pass this to your functions.
+    # Data is passed like it would be passed via cmd.
+    pass
+</code></pre>
+<p>הפונקציה main מדמה הכנסת נתונים כמו דרך cmd אז פשוט תחברו את זה לקוד שלכם שמקבל את הקלט.</p>
+<p>דבר אחרון, הפונקציה reset_tests נועדה לאפס את התקייה. תצטרכו להוסיף בשורה הראשונה קוד שמוחק את התקייה של .wit</p>
+<p>אם ראיתם שגיאה בבדיקות אשמח לדעת. כמו כן, זה מן הסתם לא בודק את כל התוכנה אז אם יש לכם בדיקות נוספות תרגישו חופשי לשתף.</p>
+
+קוד <a href="https://forums.pythonic.guru/t/wit/8144/1">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/wit/8144/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/wit/8144/1</link>
+        <pubDate>Thu, 10 Sep 2020 17:29:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8144-1</guid>
+        <source url="https://forums.pythonic.guru/t/wit/8144.rss">בדיקות לפרוייקט wit</source>
+      </item>
+  </channel>
+</rss>

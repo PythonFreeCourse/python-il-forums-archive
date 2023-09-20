@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>קוד לקטלוג סיומות</title>
+    <link>https://forums.pythonic.guru/t/topic/8282</link>
+    <description>אהלן חברים,
+
+כל התחיל כשסיימתי את שיעורי הבית של שבוע 11 ולכל תרגיל יצרתי 2 קבצים האחד css והשני html.
+אחרי שסיימתי את כל התרגילים, הכתה בי הארה שאפשר להגיש רק קובץ אחד לכל תרגיל (תוציאו רגע את zip גם בזה נזכרתי מאוחר יותר).
+
+אז עברתי כל קובץ html והוספתי את התגית style ולשם הדבקתי את הקוד של ה-css - ככה ל-50 תרגילים.
+
+ופתאום אני מוצא את עצמי מול בערך 100 קבצים וצריך לשלוף רק את הקבצי html בכדי לעלות אותם לבודק האוטומטי.
+ואז אמרתי לעצמי, אין מצב שאני עושה עוד עבודה סיזיפית אחרי שהעתקתי את כל קבצי ה-css ל-html.
+אז בניתי קוד בפייתון שיוצר תיקייה לכל סיומת של קובץ.
+
+אני חושב שזה יכול להיות שימושי לעוד אנשים פה.
+אז הקוד מצורף למטה, ועכשיו הסבר על איך הקוד עובד (עם תמונות!):
+
+החלטתי לקרוא לקובץ extention.py, מוזמנים לבחור שמות פחות גנריים.
+
+אז כמו שאתם רואים יש הרבה קבצים בתיקייה (100 items):
+![image|690x414](upload://qjBBTRAUDIVdkNM8Wpm2Lc7klPE.png) 
+
+
+הרצתי את הקוד ב-cmd, גם vscode יעבוד מעולה.
+שאלה ראשונה שנשאל מהקוד - מה הם הסיומות הרלוונטים שאנחנו רוצים ליצור עבורם תיקייה, במקרה שלנו css, html
+*בין כל 2 סיומות חייב להיות פסיק.
+![image|596x175](upload://pRgvJCEucufzclRxAI4JPxyTyeh.png) 
+
+נקליק enter
+שאלה שניה שנשאל - מה נתיב המקור של הקבצים שאנחנו מעוניינים לקטלג:
+![image|596x175](upload://w1MFgtyHpGkTZLGS4ezdcj9Srb.png) 
+
+נקליק enter
+שאלה אחרונה שנשאל - מה נתיב היעד ששם יווצרו תיקיות לכל סיומת שציינו בשאלה הראשונה:
+![image|596x244](upload://tHuDuq0BPEN2T6n0qpUCkcEtfCL.png) 
+
+נקליק enter
+![image|596x244](upload://85RkpKjsoOymCuwlpZ6BxTv763Z.png) 
+
+והנה התוצאה - שימו לב שהקוד לא יצר תיקיות לסיומות rar txt שהיו בתיקייה 1 כי לא ציינו אותן בשאלה הראשונה.
+![image|690x263](upload://kykcOjN9HiLLtHkasSNxdelJtmj.png) 
+![image|690x263](upload://uIBKoD36elVZ5Jx9etl7K3k8p3C.png) 
+![image|690x263](upload://rJj6fXnj1IMTKIiCAvy8nfQzZOP.png) 
+
+בהשראת שבוע 10
+
+הקוד כנראה לא מושלם ולא הכי יעיל אבל הוא עושה את העבודה, מוזמנים לשפר ולהוסיף פיצרים לקוד וכמובן לשתף.
+
+```
+import os
+from shutil import copy
+
+
+print(&quot;what are the extensions?&quot;)
+take = input()
+
+extensions_temp = take.split(&quot;,&quot;)
+
+extensions = set()
+for i in extensions_temp:
+    if i[0] != &quot;.&quot;:
+        extensions.add(&quot;.&quot; + i.strip().lower())
+    else:
+        extensions.add(i.strip().lower())
+
+print(&quot;what is the path of the source folder?&quot;)
+source = input()
+
+if not os.path.exists(source):
+    raise(&quot;the path does not exsit&quot;)
+
+
+print(&quot;what is the path of the destination folder?&quot;)
+destination = input()
+
+if not os.path.exists(destination):
+    raise(&quot;the path does not exsit&quot;)
+    
+print(&quot;working!&quot;)
+os.chdir(source)
+for i in os.listdir():
+    if os.path.isfile(i):
+        extension = os.path.splitext(i)[1].lower()
+        if extension in extensions:
+            if not os.path.exists(os.path.join(destination, extension)):
+                os.chdir(destination)
+                os.mkdir(extension)
+                os.chdir(source)
+            copy(os.path.join(source, i), os.path.join(destination, extension))
+print(&quot;done!&quot;)</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 04 Oct 2020 13:52:29 +0000</lastBuildDate>
+    <category>דיבורים</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8282.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>קוד לקטלוג סיומות</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>הצעה לתוספת:</p>
+<p>import tkinter as tk<br>
+from tkinter import filedialog as fd</p>
+<p>root = tk.Tk()<br>
+root.withdraw()</p>
+<p>source = fd.askdirectory()<br>
+destination = fd.askdirectory()</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8282/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8282/4</link>
+        <pubDate>Sun, 04 Oct 2020 13:52:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8282-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8282.rss">קוד לקטלוג סיומות</source>
+      </item>
+      <item>
+        <title>קוד לקטלוג סיומות</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>מעולה! עבודה ממש יפה.<br>
+אני במקומך הייתי לוקח את זה צעד קדימה - תוסיף על התוכנה עוד פיצ׳רים מגניבים לניהול קבצים, ואולי תוכל לעשות פה כלי טוב לעבודה. גם אם תמצא דרך טובה להריץ את התוכנה יותר בקלות, או אולי לבנות לה GUI - זו תהיה רמה גבוהה.</p>
+<p>אבל יש גם המון עבודה בקורס, אז מה שנראה לך לנכון <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+<p>בהצלחה חבר!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8282/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8282/3</link>
+        <pubDate>Sat, 03 Oct 2020 20:37:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8282-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8282.rss">קוד לקטלוג סיומות</source>
+      </item>
+      <item>
+        <title>קוד לקטלוג סיומות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כל הכבוד על היוזמה! (:</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8282/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8282/2</link>
+        <pubDate>Sat, 03 Oct 2020 16:43:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8282-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8282.rss">קוד לקטלוג סיומות</source>
+      </item>
+      <item>
+        <title>קוד לקטלוג סיומות</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>אהלן חברים,</p>
+<p>כל התחיל כשסיימתי את שיעורי הבית של שבוע 11 ולכל תרגיל יצרתי 2 קבצים האחד css והשני html.<br>
+אחרי שסיימתי את כל התרגילים, הכתה בי הארה שאפשר להגיש רק קובץ אחד לכל תרגיל (תוציאו רגע את zip גם בזה נזכרתי מאוחר יותר).</p>
+<p>אז עברתי כל קובץ html והוספתי את התגית style ולשם הדבקתי את הקוד של ה-css - ככה ל-50 תרגילים.</p>
+<p>ופתאום אני מוצא את עצמי מול בערך 100 קבצים וצריך לשלוף רק את הקבצי html בכדי לעלות אותם לבודק האוטומטי.<br>
+ואז אמרתי לעצמי, אין מצב שאני עושה עוד עבודה סיזיפית אחרי שהעתקתי את כל קבצי ה-css ל-html.<br>
+אז בניתי קוד בפייתון שיוצר תיקייה לכל סיומת של קובץ.</p>
+<p>אני חושב שזה יכול להיות שימושי לעוד אנשים פה.<br>
+אז הקוד מצורף למטה, ועכשיו הסבר על איך הקוד עובד (עם תמונות!):</p>
+<p>החלטתי לקרוא לקובץ extention.py, מוזמנים לבחור שמות פחות גנריים.</p>
+<p>אז כמו שאתם רואים יש הרבה קבצים בתיקייה (100 items):<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/b86fe7d88729586f57d1a0b831112ed0cb9380e6.png" data-download-href="https://forums.pythonic.guru/uploads/default/b86fe7d88729586f57d1a0b831112ed0cb9380e6" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/b/b86fe7d88729586f57d1a0b831112ed0cb9380e6.png" alt="image" data-base62-sha1="qjBBTRAUDIVdkNM8Wpm2Lc7klPE" width="690" height="414" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/b86fe7d88729586f57d1a0b831112ed0cb9380e6_2_10x10.png"></a></div><p></p>
+<p>הרצתי את הקוד ב-cmd, גם vscode יעבוד מעולה.<br>
+שאלה ראשונה שנשאל מהקוד - מה הם הסיומות הרלוונטים שאנחנו רוצים ליצור עבורם תיקייה, במקרה שלנו css, html<br>
+*בין כל 2 סיומות חייב להיות פסיק.<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/b/b53bc912b010477958e6b46fa94e941d9cb50185.png" alt="image" data-base62-sha1="pRgvJCEucufzclRxAI4JPxyTyeh" width="596" height="175"></p>
+<p>נקליק enter<br>
+שאלה שניה שנשאל - מה נתיב המקור של הקבצים שאנחנו מעוניינים לקטלג:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/0/039edbbf0820037984f23c662c7e30b102803395.png" alt="image" data-base62-sha1="w1MFgtyHpGkTZLGS4ezdcj9Srb" width="596" height="175"></p>
+<p>נקליק enter<br>
+שאלה אחרונה שנשאל - מה נתיב היעד ששם יווצרו תיקיות לכל סיומת שציינו בשאלה הראשונה:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d029b0f5cbde94ab038db6f520ea8348751801b7.png" alt="image" data-base62-sha1="tHuDuq0BPEN2T6n0qpUCkcEtfCL" width="596" height="244"></p>
+<p>נקליק enter<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/3/38baf97639392255abbcb106f5cb74c7063edca7.png" alt="image" data-base62-sha1="85RkpKjsoOymCuwlpZ6BxTv763Z" width="596" height="244"></p>
+<p>והנה התוצאה - שימו לב שהקוד לא יצר תיקיות לסיומות rar txt שהיו בתיקייה 1 כי לא ציינו אותן בשאלה הראשונה.<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3.png" data-download-href="https://forums.pythonic.guru/uploads/default/900cd00752bac13f797bdb33ebd0a8494c6545c3" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3_2_690x263.png" alt="image" data-base62-sha1="kykcOjN9HiLLtHkasSNxdelJtmj" width="690" height="263" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3_2_690x263.png, https://forums.pythonic.guru/uploads/default/original/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/9/900cd00752bac13f797bdb33ebd0a8494c6545c3_2_10x10.png"></a></div><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4.png" data-download-href="https://forums.pythonic.guru/uploads/default/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4_2_690x263.png" alt="image" data-base62-sha1="uIBKoD36elVZ5Jx9etl7K3k8p3C" width="690" height="263" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4_2_690x263.png, https://forums.pythonic.guru/uploads/default/original/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d74c1f6b37454e8d04a1f34c30dae4a29dbedfe4_2_10x10.png"></a></div><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b.png" data-download-href="https://forums.pythonic.guru/uploads/default/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b_2_690x263.png" alt="image" data-base62-sha1="rJj6fXnj1IMTKIiCAvy8nfQzZOP" width="690" height="263" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b_2_690x263.png, https://forums.pythonic.guru/uploads/default/original/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c259d5e2f0a7f73d64eb87186c8b1d3d80ae4b4b_2_10x10.png"></a></div><p></p>
+<p>בהשראת שבוע 10</p>
+<p>הקוד כנראה לא מושלם ולא הכי יעיל אבל הוא עושה את העבודה, מוזמנים לשפר ולהוסיף פיצרים לקוד וכמובן לשתף.</p>
+<pre><code class="lang-auto">import os
+from shutil import copy
+
+
+print("what are the extensions?")
+take = input()
+
+extensions_temp = take.split(",")
+
+extensions = set()
+for i in extensions_temp:
+    if i[0] != ".":
+        extensions.add("." + i.strip().lower())
+    else:
+        extensions.add(i.strip().lower())
+
+print("what is the path of the source folder?")
+source = input()
+
+if not os.path.exists(source):
+    raise("the path does not exsit")
+
+
+print("what is the path of the destination folder?")
+destination = input()
+
+if not os.path.exists(destination):
+    raise("the path does not exsit")
+    
+print("working!")
+os.chdir(source)
+for i in os.listdir():
+    if os.path.isfile(i):
+        extension = os.path.splitext(i)[1].lower()
+        if extension in extensions:
+            if not os.path.exists(os.path.join(destination, extension)):
+                os.chdir(destination)
+                os.mkdir(extension)
+                os.chdir(source)
+            copy(os.path.join(source, i), os.path.join(destination, extension))
+print("done!")</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/8282/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8282/1</link>
+        <pubDate>Sat, 03 Oct 2020 16:33:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8282-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8282.rss">קוד לקטלוג סיומות</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>חיפוש אובייקט ברשימה</title>
+    <link>https://forums.pythonic.guru/t/topic/7227</link>
+    <description>אם אני לוקח רשימה של אובייקטים list1, ומשכפל אותה ע&quot;י הפקודה copy (או deepcopy לצורך העניין) לתוך list2, מדוע בחיפוש של
+if x in list2
+אני לא יכול למצוא את האובייקט? האם בהכרח הדרך היא רק ע&quot;י השוואה של מאפיינים של האוביקט (כמו שם או משתנים אחרים שיש לעצם מהמחלקה).
+
+באופן כללי, מתי כן ניתן בעת שכפול לחפש ישירות משהו בתוך רשימה, ומתי חייבים לעשות השוואה יותר מורכבת?</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 20 Jun 2020 18:44:35 +0000</lastBuildDate>
+    <category>שבוע 7</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/7227.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>חיפוש אובייקט ברשימה</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>החיפוש ברשימה של אובייקטים מתרחש באופן הבא:<br>
+אנחנו עוברים על כל אחד מהאיברים לפי הסדר ובודקים האם הוא שווה לאיבר הנוכחי. אם כן מחזירים True ואחרת ממשיכים לאיבר הבא, ואם לאחר מעבר על כל הרשימה לא מצאנו את האיבר נחזיר False.<br>
+אז מה מוקד הבעיה? ההשוואה. ההשוואה נעשית ע"י המתודה החביבה <code>__eq__</code> שמחזירה האם העצם שאתה מחפש שווה לעצם עליו אנו עוברים. אתה יכול להגדיר את הפונקציה הזו איך שאתה רוצה - שתחזיר תמיד True, שתחזיר תמיד False, שתשווה לפי מאפיין אחד או שתשווה לפי הרבה מאפיינים. אפשר לעשות עם זה הרבה דברים הגיוניים יותר או פחות.<br>
+ואם לא הגדרת את המתודה הזו? אז ההשוואה תהיה לפי הכתובת בזיכרון של האובייקט. כלומר, אם יש לך מחלקה A שאין בה שום דבר מרגש, למעט אולי פונקציית init חביבה, ואתה מבצע <code>a = A()</code> ואז מכניס את a לרשימה ובודק האם a בה - תקבל שכן. אבל אם למשל תצפה להכניס נקודה לרשימה ואז ליצור נקודה עם אותם ערכים ולקבל שהיא נמצאת ברשימה אתה צפוי מעט להתאכזב - עד שתגדיר את מתודת הקסם החביבה כך שתפעל כרצונך.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7227/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7227/2</link>
+        <pubDate>Sat, 20 Jun 2020 18:44:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7227-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7227.rss">חיפוש אובייקט ברשימה</source>
+      </item>
+      <item>
+        <title>חיפוש אובייקט ברשימה</title>
+        <dc:creator><![CDATA[of313]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אני לוקח רשימה של אובייקטים list1, ומשכפל אותה ע"י הפקודה copy (או deepcopy לצורך העניין) לתוך list2, מדוע בחיפוש של<br>
+if x in list2<br>
+אני לא יכול למצוא את האובייקט? האם בהכרח הדרך היא רק ע"י השוואה של מאפיינים של האוביקט (כמו שם או משתנים אחרים שיש לעצם מהמחלקה).</p>
+<p>באופן כללי, מתי כן ניתן בעת שכפול לחפש ישירות משהו בתוך רשימה, ומתי חייבים לעשות השוואה יותר מורכבת?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7227/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7227/1</link>
+        <pubDate>Sat, 20 Jun 2020 18:35:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7227-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7227.rss">חיפוש אובייקט ברשימה</source>
+      </item>
+  </channel>
+</rss>

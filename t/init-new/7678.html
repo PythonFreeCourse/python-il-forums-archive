@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/init-new/7678 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:19:29 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מה ההבדל בין __init__ ל-__new__? - שבוע 8 - פייתון בעברית ובחינם</title>
+<meta content="מה שכתוב בכותרת ועוד 20 תווים" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7678.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7678.rss" rel="alternate nofollow" title="הזנת RSS של ‚מה ההבדל בין __init__ ל-__new__?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7678.html" property="og:url"/>
+<meta content="7678.html" name="twitter:url"/>
+<meta content="מה ההבדל בין __init__ ל-__new__?" property="og:title"/>
+<meta content="מה ההבדל בין __init__ ל-__new__?" name="twitter:title"/>
+<meta content="מה שכתוב בכותרת ועוד 20 תווים" property="og:description"/>
+<meta content="מה שכתוב בכותרת ועוד 20 תווים" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 8" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="מחלקות" property="og:article:tag"/>
+<meta content="מתודות-של-מחלקות" property="og:article:tag"/>
+<meta content="מתודות-קסם" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="39 ❤"/>
+<meta content="2020-07-28T19:12:55+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"מה ההבדל בין __init__ ל-__new__?","mainEntity":{"@type":"Question","name":"מה ההבדל בין __init__ ל-__new__?","text":"מה שכתוב בכותרת ועוד 20 תווים","upvoteCount":3,"answerCount":1,"dateCreated":"2020-07-28T19:12:55.203Z","author":{"@type":"Person","name":"אלעד"},"acceptedAnswer":{"@type":"Answer","text":"אנסה לתת פה את ה־2 סנט שלי, עם דוגמה שאולי תועיל (הבטחתי).\n\nהבדלים שטחיים:\n\nהפעולה  __new__  נקראת לפני __init__.\n\nהפעולה __new__ מקבלת כפרמטר ראשון ייחוס למחלקה עצמה (cls), ולא למופע שנוצר ממנה (self).\n\nהפעולה __new__ מחזירה ערך.\n\nנכניס להבדלים הללו מהות:\n\nבזמן הקריאה לפעולה __new__ המופע עדיין לא &hellip;","upvoteCount":15,"dateCreated":"2020-07-30T12:04:15.135Z","url":"https://forums.pythonic.guru/t/init-new/7678/7","author":{"@type":"Person","name":"Yam"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7678.html">מה ההבדל בין __init__ ל-__new__?</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-8/18.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 8</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%9e%d7%97%d7%9c%d7%a7%d7%95%d7%aa.html" rel="tag">מחלקות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a9%d7%9c-%d7%9e%d7%97%d7%9c%d7%a7%d7%95%d7%aa.html" rel="tag">מתודות-של-מחלקות</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%a7%d7%a1%d7%9d.html" rel="tag">מתודות-קסם</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מה ההבדל בין __init__ ל-__new__?" itemprop="headline"/>
+<meta content="שבוע 8" itemprop="articleSection"/>
+<meta content="מחלקות, מתודות-של-מחלקות, מתודות-קסם" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elador9</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-28T19:12:55Z" itemprop="datePublished">
+                     28 ביולי,‏ 2020,‏  7:12pm
+                  </time>
+<meta content="2021-12-03T23:26:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>מה שכתוב בכותרת ועוד 20 תווים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-28T22:09:14Z" itemprop="datePublished">
+                     28 ביולי,‏ 2020,‏ 10:09pm
+                  </time>
+<meta content="2020-07-28T22:14:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שברתי על זה את הראש מול התיעוד כשעלו מתודות קסם בחומר.<br/>
+מבחינה מעשית מה שהבנתי זה שnew מתבצע לפני init<br/>
+מבחינת קונבנציה ושימוש מקובל, היה נראה שכל מיני מתבלבלים. אם הבנתי ואני זוכרת נכון, לא נהוג להשתמש בnew להענקת תכונות, לא ברור לי מה המצב שבו כדאי להתעסק עם new</p>
+<p>.* יש מצב שיש הבדל גם בשימוש ב self בין השניים - כיוון ש new הוא יצירת המופע , ועבור init המופע כבר נוצר לפני</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-29T00:15:23Z" itemprop="datePublished">
+                     29 ביולי,‏ 2020,‏ 12:15am
+                  </time>
+<meta content="2020-07-29T00:15:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/0726470a7245fe28cf3b0d52459af5b0023bf570" href="../../uploads/default/original/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570.jpg" title="Screenshot_2020-07-29-03-14-29-912_com.reddit.frontpage"><img alt="Screenshot_2020-07-29-03-14-29-912_com.reddit.frontpage" data-base62-sha1="11flN236QcXoZBX4yfo7In2WhtS" data-small-upload="../../uploads/default/optimized/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570_2_10x10.png" height="500" src="../../uploads/default/optimized/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570_2_230x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570_2_230x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570_2_345x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0726470a7245fe28cf3b0d52459af5b0023bf570_2_460x1000.jpeg 2x" width="230"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_2020-07-29-03-14-29-912_com.reddit.frontpage</span><span class="informations">1080×2340 900 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elador9</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-29T09:51:11Z" itemprop="datePublished">
+                     29 ביולי,‏ 2020,‏  9:51am
+                  </time>
+<meta content="2020-07-29T09:51:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז בעצם <code>__init__</code> משתמשת ב-<code>__new__</code> כדי ליצור את self?</p>
+<p>אם כך, איזה שימושים פרקטיים יכולים להיות להגדרה מחדש של <code>__new__</code>?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-29T11:04:01Z" itemprop="datePublished">
+                     29 ביולי,‏ 2020,‏ 11:04am
+                  </time>
+<meta content="2020-07-29T11:04:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>י. init זו פעולה שמתבצעת אחרי שהמופע כבר נוצר, היא פשוט נקראת אוטומטית אחרי יצירת המופע, כמו לכתוב:<br/>
+Class()<br/>
+self.init()<br/>
+לא חייבים init במחלקה לצורך העיניין -  לא רוצה להכנס כאן לעיניינים של מקובלות וכו’ (כי זה לא) - אבל מבחינת ביצוע נטו, לא חייבים להגדיר init : אם הייתי רוצה, הייתי יכולה להגדיר מחלקה בלי תכונות בכלל ויותר מאוחר לקרוא לפעולה בשם שמתחשק לי להוסיף תכונות (נדמה לי שככה זה בדוגמאות הראשונות במחברת, לא?).<br/>
+init לא ‘משתמשת’ ב new ,  כי init מתחילה אחרי ש new כבר נגמרה.<br/>
+לעומת זאת, אתה לא יכול ליצור מופע בלי new. פייתון יוצרת את המופע עם new . אתה תשנה את new אם אתה רוצה ליצור מופע בצורה אחרת ממה שפייתון עושה, וזה החלק שאני לא יודעת: מתי רוצים לעשות את זה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elador9</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-29T12:14:03Z" itemprop="datePublished">
+                     29 ביולי,‏ 2020,‏ 12:14pm
+                  </time>
+<meta content="2020-07-29T12:14:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עכשיו אני מבין, תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-30T12:04:15Z" itemprop="datePublished">
+                     30 ביולי,‏ 2020,‏ 12:04pm
+                  </time>
+<meta content="2020-07-30T12:04:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אנסה לתת פה את ה־2 סנט שלי, עם דוגמה שאולי תועיל (הבטחתי).</p>
+<p>הבדלים שטחיים:</p>
+<ol>
+<li>הפעולה  <code>__new__</code>  נקראת לפני <code>__init__</code>.</li>
+<li>הפעולה <code>__new__</code> מקבלת כפרמטר ראשון ייחוס למחלקה עצמה (<code>cls</code>), ולא למופע שנוצר ממנה (<code>self</code>).</li>
+<li>הפעולה <code>__new__</code> מחזירה ערך.</li>
+</ol>
+<p>נכניס להבדלים הללו מהות:</p>
+<ol>
+<li>בזמן הקריאה לפעולה <code>__new__</code> המופע עדיין לא קיים, ולכן אי אפשר להתייחס ל־<code>self</code>.</li>
+<li>הערך ש־<code>__new__</code> מחזירה הוא הוא המופע ש־<code>__init__</code> תקבל לתוך ה־<code>self</code> שלה.</li>
+<li>אם <code>__new__</code> רוצה, היא יכולה להחזיר מחרוזת, לדוגמה. במקרה כזה, במקום לקבל אובייקט מסוג <code>cls</code> תקבל אובייקט מסוג מחרוזת.</li>
+</ol>
+<p>נראה דוגמה:</p>
+<pre><code class="lang-python">class Table:
+    def __new__(self):
+        return 'Hello!!'
+    
+Table()
+</code></pre>
+<p>יחזיר פשוט את המחרוזת <code>'Hello!!'</code>, במקום מופע מסוג <code>Table</code>.</p>
+<p>דוגמה מעניינת לשימוש יכולה להיות בתבנית עיצוב שנקראת Singleton.<br/>
+ב־Singleton, אנחנו רוצים שיצירת אובייקט פעם ראשונה תחזיר לנו מופע חדש (נקרא לו X), וניסיון ליצירת אובייקט בפעמים הבאות יחזיר את אותו X (לא מופע חדש).<br/>
+זה שימושי, לדוגמה, אם אנחנו מתעסקים עם חיבורים ל־database: הרבה פעמים אנחנו רוצים לנהל רק חיבור אחד ל־database ולכן נרצה שקריאה למחלקה DatabaseConnection תחזיר תיצור פעם אחת חיבור למסד־הנתונים, ובפעמים הבאות פשוט תחזיר את החיבור שכבר נוצר.</p>
+<p>נממש בעזרת <code>__new__</code>:</p>
+<pre><code class="lang-python">class DatabaseConnection:
+    connection = None
+
+    def __new__(cls, **kwargs):
+        if cls.connection is not None:
+            return cls.connection
+        cls.connection = super().__new__(cls, **kwargs)
+        return cls.connection
+</code></pre>
+<pre><code class>first_connection = DatabaseConnection()
+second_connection = DatabaseConnection()
+print(first_connection is second_connection)
+</code></pre>
+<blockquote>
+<p>True</p>
+</blockquote>
+<hr/>
+<p>בונוס:</p>
+<p>בהרבה שפות יש משהו שנקרא Constructor, או בנאי. זו פונקציה של המחלקה שאחראית ליצור את האובייקט עצמו.<br/>
+בספר <a href="https://diveinto.org/python3/iterators.html#init-method">Dive Into Python</a> יש פסקה מעניינת שאומרת ככה:</p>
+<blockquote>
+<p>הפעולה  <code>__init__()</code>  נקראת מייד אחרי שמופע של המחלקה נוצר. יהיה זה מפתה אך שגוי לקרוא [ל־<code>__init__</code>] הבנאי של המחלקה. זה מפתה, כיוון שהיא נראית כמו בנאי (כמוסכמה, <code>__init__</code> היא הפעולה הראשונה המוגדרת עבור המחלקה), מתנהגת כאחד (זו חתיכת הקוד הראשונה שרצה כשיוצרים מופע מהמחלקה) ואפילו נשמעת כמו אחד (“init” ודאי רומז על טבע בנאי־י). שגוי, כיוון שהאובייקט כבר נבנה עד ש־<code>__init__</code> נקראה, ויש לכם ייחוס למופע של המחלקה.</p>
+</blockquote>
+<p><a href="https://stackoverflow.com/questions/6578487/init-as-a-constructor">הדעות חלוקות</a> האם הם צודקים והאם <code>__init__</code> ראוי להיקרא בנאי או לא.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="15" itemprop="userInteractionCount"/>
+<span class="post-likes">15 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-30T19:13:17Z" itemprop="datePublished">
+                     30 ביולי,‏ 2020,‏  7:13pm
+                  </time>
+<meta content="2020-07-30T19:13:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם <strong>new</strong> הוא הבנאי למעשה??</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-07-31T07:24:36Z" itemprop="datePublished">
+                     31 ביולי,‏ 2020,‏  7:24am
+                  </time>
+<meta content="2020-07-31T07:24:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה איזה הסבר מציין !</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-02T22:40:49Z" itemprop="datePublished">
+                     2 באוגוסט,‏ 2020,‏ 10:40pm
+                  </time>
+<meta content="2020-08-02T22:40:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת הסבר ממש מעניין, יש הרבה דברים שלא קיימים ב פייתון אך יחסית נפוצים בשפות אחרות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-02T23:53:24Z" itemprop="datePublished">
+                     2 באוגוסט,‏ 2020,‏ 11:53pm
+                  </time>
+<meta content="2020-08-02T23:53:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברור.<br/>
+כל שפת תכנות בוחרת את האופי שלה והרעיונות שהיא מממשת.<br/>
+בכל שפה יהיו תכונות שסותרות תכונות של שפות אחרות, או תכונות שבשפות אחרות יש ובה אין.</p>
+<p>יש את הדף <a href="https://en.wikipedia.org/wiki/Comparison_of_programming_languages">הזה</a> של השוואה, אבל הוא מחלק דברים בצורה די גסה.<br/>
+לדעתי שווה לקרוא לעומק את הדף על <a href="https://en.wikipedia.org/wiki/Programming_language#Design_and_implementation">שפות תכנות</a> בוויקיפדיה. הוא כתוב ממש אחלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="7678.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-03T07:10:16Z" itemprop="datePublished">
+                     3 באוגוסט,‏ 2020,‏  7:10am
+                  </time>
+<meta content="2020-08-03T07:10:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה, נתחיל להתעניין יותר נקווה שזה יעזור יותר להבין גם דרך לכתוב את הקוד</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/init-new/7678 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:19:33 GMT -->
+</html>

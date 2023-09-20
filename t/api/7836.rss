@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאיבת דאטה מ-API לדאטה בייס</title>
+    <link>https://forums.pythonic.guru/t/api/7836</link>
+    <description>היי,
+
+כתבתי קוד ששואב דאטה מלינק API (הלינק עצמו נמצא בדאטה בייס) ומכניס את הנתונים של הAPI לקובץ CSV.
+אשמח לקבל ביקורות / שיטות יעול על הקוד.
+
+ויש לי שאלה אולי מישהו יודע, בספיירת Stam שיצרתי קיימים יוזר וסיסמה לסרבר וכמובן ה-ip שלו.
+יש דרך להצפין את הקובץ?
+
+*עריכה*
+אחרי ניסיון להעתיק את הקוד לתוכן (ההזחות נעלמו) צילום של הקוד (אין אפשרות לעשות קבצים בסיומת py)
+
+![image|690x373](upload://nzSuNAFgqp37jcgFQglBGRPHkbs.png) 
+![image|690x373](upload://cibCDxEIjEeHU4yQYKyGjT9VdO8.png)</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 27 Aug 2020 08:23:30 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/api/7836.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>עובד!! (ועוד כמה תווים)</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/10</link>
+        <pubDate>Thu, 27 Aug 2020 08:23:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-10</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>מבטיח לעדכן בימים הקרובים!</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/9</link>
+        <pubDate>Wed, 19 Aug 2020 10:33:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-9</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <pre><code class="lang-auto">import csv
+import logging
+from datetime import datetime, timedelta
+from typing import List, NamedTuple, TYPE_CHECKING, TextIO
+
+from bs4 import BeautifulSoup  # type: ignore
+import pyodbc  # type: ignore
+import requests
+
+
+if TYPE_CHECKING:
+    import _csv
+
+
+logger = logging.getLogger(__name__)
+
+
+# Constants
+CSV_PATH = r'F:\myScripts\API\CX_Report.csv'
+LINK_BRANDS_QUERY = 'SELECT * FROM Users;'
+REPORT_COMMAND = 'report'
+
+
+# Configurations
+class ServerDetails(NamedTuple):
+    driver: str
+    server: str
+    database: str
+
+
+def get_db_connection(
+        driver: str, server: str, database: str,
+) -&gt; pyodbc.Connection:
+    try:
+        return pyodbc.connect(
+            f'Driver={driver};Server={server};'
+            f'Database={database};Trusted_Connection=yes;',
+        )
+    except pyodbc.InterfaceError:
+        logger.exception('The connection failed.')
+        raise
+
+
+def run_query(query: str, server_details: ServerDetails):
+    conn = get_db_connection(*server_details)
+    cursor = conn.cursor()
+    cursor.execute(query)
+    try:
+        results = cursor.fetchall()
+    except pyodbc.ProgrammingError:
+        logger.exception('Query - error in the sql code.')
+        raise
+    finally:
+        conn.close()
+    return results
+
+
+def get_yesterday() -&gt; str:
+    return datetime.strftime(datetime.now() - timedelta(1), r'%m-%d-%y')
+
+
+def safely_get_file(path: str) -&gt; TextIO:
+    try:
+        return open(path, 'w', newline='')
+    except PermissionError:
+        logger.exception(
+            'There is a problem with the CSV file,'
+            "check if it's open and close it",
+        )
+        raise
+
+
+def get_link(
+        link: str, username: str, password: str, command: str, yesterday: str,
+) -&gt; str:
+    return (
+        f'{link}'
+        f'?username={username}&amp;password={password}'
+        f'&amp;command={command}'
+        f"&amp;fromdate={yesterday}&amp;todate='{yesterday}"
+    )
+
+
+def is_affiliate_data_zero(report) -&gt; bool:
+    return (
+        report.Registrations.get_text() == '0'
+        and report.FTD.get_text() == '0'
+        and report.Deposits.get_text() == '0'
+        and report.WithDrawals.get_text() == '0'
+        and report.Comission.get_text() == '0'
+    )
+
+
+def get_report_data(report) -&gt; List[str]:
+    affiliate_id = report.AffiliateID.get_text()
+    registrations = report.Registrations.get_text()
+    ftd = report.FTD.get_text()
+    deposits = report.Deposits.get_text()
+    withdrawls = report.WithDrawals.get_text()
+    comission = report.Comission.get_text()
+    created = report.Day.get_text()
+
+    return [
+        brand_name, affiliate_id, registrations, ftd,
+        deposits, withdrawls, comission, created,
+    ]
+
+
+def write_brands_to_file(
+        writer: '_csv._writer', link: str, brand_name: str,
+) -&gt; None:
+    response = requests.get(link)
+
+    if not response.ok:
+        logger.error(
+            f'The API of the brand {brand_name} does not work,'
+            f'error code {response.status_code} for {link}',
+        )
+        return
+
+    xmlContent = response.content
+    if not xmlContent:
+        return
+
+    soup = BeautifulSoup(xmlContent, 'xml')
+    for report in soup.ResultSet:
+        if not is_affiliate_data_zero(report):
+            writer.writerow(get_report_data(report))
+
+
+if __name__ == '__main__':
+    server_details = ServerDetails(driver='', server='', database='')
+    link_brand = run_query(LINK_BRANDS_QUERY, server_details)
+    file = safely_get_file(CSV_PATH)
+    writer = csv.writer(file)
+    for brand_name, link, user, password in link_brand:
+        link = get_link(link, user, password, REPORT_COMMAND, get_yesterday())
+        write_brands_to_file(writer, link, brand_name)
+    file.close()
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/8</link>
+        <pubDate>Tue, 18 Aug 2020 20:30:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-8</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אהיה מחר בשיעור!</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/7</link>
+        <pubDate>Mon, 17 Aug 2020 17:03:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-7</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מייזל טוייף!!! <img src="https://forums.pythonic.guru/images/emoji/twitter/wedding.png?v=9" title=":wedding:" class="emoji" alt=":wedding:"><img src="https://forums.pythonic.guru/images/emoji/twitter/partying_face.png?v=9" title=":partying_face:" class="emoji" alt=":partying_face:"><br>
+אל דאגה, אם תראה את הלייב המוקלט ויהיו שאלות שלא כיסיתי פנה בפרטי או ע"ג הפורום ואשלים לך.</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/6</link>
+        <pubDate>Sun, 16 Aug 2020 19:04:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-6</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים,<br>
+תודה רבה על הפרגון, בוודאי שאשמח!<br>
+הלייב יהיה ביום שלישי? כי אני פשוט מתחתן ב1/9 וקבענו כמה עניינים לחתונה ליום שלישי… ואני לא רוצה לפספס בכדי לשמוע ביקורות או רעיונות נוספים על הקוד.</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/5</link>
+        <pubDate>Sun, 16 Aug 2020 18:26:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-5</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="EliranRefaely" data-post="3" data-topic="7836">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/e/8e8cbc/40.png" class="avatar"> EliranRefaely:</div>
+<blockquote>
+<pre><code class="lang-auto">import csv
+from datetime import datetime, timedelta
+
+from bs4 import BeautifulSoup
+import pyodbc
+import requests
+
+
+def run_query(conn, query):
+    cursor = conn.cursor()
+    cursor.execute(query)
+    return cursor.fetchall()
+    
+script_name = __file__
+
+try:
+    conn = pyodbc.connect("Driver={xxx};"
+                        "Server=xxx;"
+                        "Database=xxx;"
+                        "Trusted_Connection=yes;"
+    )
+except pyodbc.InterfaceError as err:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; The connection failed, {err}, {script_name}\n")
+    raise
+
+
+query = "exec query"
+
+try:
+    link_brand = run_query(conn, query)
+    # link_brand = [BrandName, Link, User, Pass]
+    
+except pyodbc.ProgrammingError as err:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; Query - error in the sql code {err}, {script_name}\n")
+    raise 
+
+finally:       
+    conn.close()
+
+command = 'report'
+yesterday = datetime.strftime(datetime.now() - timedelta(1), r'%m-%d-%y')
+
+try:
+    with open(r'F:\myScripts\API\CX_Report.csv', 'w', newline = "") as file:
+        writer = csv.writer(file)
+
+        for i in link_brand:
+            link = f"{i[1]}?username={i[2]}&amp;password={i[3]}&amp;command={command}&amp;fromdate={yesterday}&amp;todate='{yesterday}"
+
+            response = requests.get(link)
+
+            if response.status_code != 200:
+                with open('log.txt', 'a') as log:
+                    log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; The API of the brand {i[0]} does not work, error code {response.status_code}, {script_name}\n {link}\n")
+                continue
+              
+
+            xmlContent = response.content
+
+            if xmlContent is None:
+                continue
+            
+            soup = BeautifulSoup(xmlContent, 'xml')
+        
+            
+            for report in soup.ResultSet:
+
+                # Checking if affiliate's data is 0, if yes continue to the next one
+                if report.Registrations.get_text() == '0' and report.FTD.get_text() == '0' and report.Deposits.get_text() == '0' and report.WithDrawals.get_text() == '0' and report.Comission.get_text() == '0':
+                    continue
+
+                # Titles in the DB = ["Brand", "AffiliateID", "Registrations", "FTD", "Deposits", "WithDrawals", "Comission", "Created"]
+                writer.writerow([i[0], # Brand
+                                report.AffiliateID.get_text(),
+                                report.Registrations.get_text(),
+                                report.FTD.get_text(),
+                                report.Deposits.get_text(),
+                                report.WithDrawals.get_text(),
+                                report.Comission.get_text(),
+                                report.Day.get_text(),
+                                ])
+except PermissionError:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; There is a problem with the CSV file, check if it's open and close it, {script_name}\n")
+</code></pre>
+</blockquote>
+</aside>
+<p>כל הכבוד על הקוד!<br>
+אני חושב שיש מקומות שבהם אפשר לנקות קצת את הקוד.<br>
+יש לי הצעה נחמדה: אני מוכן לשפר עבורך את הסקריפט בלייב הבא. נשמע דיל הוגן? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/4</link>
+        <pubDate>Sun, 16 Aug 2020 17:55:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-4</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>שפצתי עוד קצת את הקוד:</p>
+<pre><code class="lang-auto">import csv
+from datetime import datetime, timedelta
+
+from bs4 import BeautifulSoup
+import pyodbc
+import requests
+
+
+def run_query(conn, query):
+    cursor = conn.cursor()
+    cursor.execute(query)
+    return cursor.fetchall()
+    
+script_name = __file__
+
+try:
+    conn = pyodbc.connect("Driver={xxx};"
+                        "Server=xxx;"
+                        "Database=xxx;"
+                        "Trusted_Connection=yes;"
+    )
+except pyodbc.InterfaceError as err:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; The connection failed, {err}, {script_name}\n")
+    raise
+
+
+query = "exec query"
+
+try:
+    link_brand = run_query(conn, query)
+    # link_brand = [BrandName, Link, User, Pass]
+    
+except pyodbc.ProgrammingError as err:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; Query - error in the sql code {err}, {script_name}\n")
+    raise 
+
+finally:       
+    conn.close()
+
+command = 'report'
+yesterday = datetime.strftime(datetime.now() - timedelta(1), r'%m-%d-%y')
+
+try:
+    with open(r'F:\myScripts\API\CX_Report.csv', 'w', newline = "") as file:
+        writer = csv.writer(file)
+
+        for i in link_brand:
+            link = f"{i[1]}?username={i[2]}&amp;password={i[3]}&amp;command={command}&amp;fromdate={yesterday}&amp;todate='{yesterday}"
+
+            response = requests.get(link)
+
+            if response.status_code != 200:
+                with open('log.txt', 'a') as log:
+                    log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; The API of the brand {i[0]} does not work, error code {response.status_code}, {script_name}\n {link}\n")
+                continue
+              
+
+            xmlContent = response.content
+
+            if xmlContent is None:
+                continue
+            
+            soup = BeautifulSoup(xmlContent, 'xml')
+        
+            
+            for report in soup.ResultSet:
+
+                # Checking if affiliate's data is 0, if yes continue to the next one
+                if report.Registrations.get_text() == '0' and report.FTD.get_text() == '0' and report.Deposits.get_text() == '0' and report.WithDrawals.get_text() == '0' and report.Comission.get_text() == '0':
+                    continue
+
+                # Titles in the DB = ["Brand", "AffiliateID", "Registrations", "FTD", "Deposits", "WithDrawals", "Comission", "Created"]
+                writer.writerow([i[0], # Brand
+                                report.AffiliateID.get_text(),
+                                report.Registrations.get_text(),
+                                report.FTD.get_text(),
+                                report.Deposits.get_text(),
+                                report.WithDrawals.get_text(),
+                                report.Comission.get_text(),
+                                report.Day.get_text(),
+                                ])
+except PermissionError:
+    with open('log.txt', 'a') as log:
+        log.write(f"&gt;&gt;{datetime.today()}&lt;&lt; There is a problem with the CSV file, check if it's open and close it, {script_name}\n")
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/3</link>
+        <pubDate>Sun, 16 Aug 2020 09:20:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-3</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אשמח אם תוכל <a href="https://forums.pythonic.guru/t/topic/6087">להדביק כקוד</a> בכ"ז.</p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/2</link>
+        <pubDate>Wed, 12 Aug 2020 15:23:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-2</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+      <item>
+        <title>שאיבת דאטה מ-API לדאטה בייס</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>כתבתי קוד ששואב דאטה מלינק API (הלינק עצמו נמצא בדאטה בייס) ומכניס את הנתונים של הAPI לקובץ CSV.<br>
+אשמח לקבל ביקורות / שיטות יעול על הקוד.</p>
+<p>ויש לי שאלה אולי מישהו יודע, בספיירת Stam שיצרתי קיימים יוזר וסיסמה לסרבר וכמובן ה-ip שלו.<br>
+יש דרך להצפין את הקובץ?</p>
+<p><em>עריכה</em><br>
+אחרי ניסיון להעתיק את הקוד לתוכן (ההזחות נעלמו) צילום של הקוד (אין אפשרות לעשות קבצים בסיומת py)</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e.png" data-download-href="https://forums.pythonic.guru/uploads/default/a54047118ed60ea8648587655b55322f6aa71c4e" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e_2_690x373.png" alt="image" data-base62-sha1="nzSuNAFgqp37jcgFQglBGRPHkbs" width="690" height="373" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e_2_690x373.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e_2_1035x559.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e_2_1380x746.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a54047118ed60ea8648587655b55322f6aa71c4e_2_10x10.png"></a></div><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00.png" data-download-href="https://forums.pythonic.guru/uploads/default/562866e4c0bca73883e241a8dcb893fcdc3f0c00" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00_2_690x373.png" alt="image" data-base62-sha1="cibCDxEIjEeHU4yQYKyGjT9VdO8" width="690" height="373" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00_2_690x373.png, https://forums.pythonic.guru/uploads/default/optimized/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00_2_1035x559.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00_2_1380x746.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/5/562866e4c0bca73883e241a8dcb893fcdc3f0c00_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/api/7836/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api/7836/1</link>
+        <pubDate>Wed, 12 Aug 2020 08:33:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7836-1</guid>
+        <source url="https://forums.pythonic.guru/t/api/7836.rss">שאיבת דאטה מ-API לדאטה בייס</source>
+      </item>
+  </channel>
+</rss>

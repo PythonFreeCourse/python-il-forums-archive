@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלות לשיעור לייב מס&#39; 2</title>
+    <link>https://forums.pythonic.guru/t/topic/8511</link>
+    <description>כאן תוכלו להעלות שאלות לים עבור הלייב היום בערב.</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 08 Dec 2020 01:05:13 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8511.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הקוד המעודכן – החיבור להרוקו:</p>
+<pre><code class="lang-auto">import private
+
+
+database = PostgresqlDatabase(
+    private.DATABASE,
+    user=private.USER,
+    password=private.PASSWORD,
+    host=private.HOST,
+    port=private.PORT,
+)
+</code></pre>
+<p>app.py:</p>
+<pre><code class="lang-auto">from typing import Any, List
+
+import bcrypt
+from flask import Flask, abort, render_template, request, session, url_for
+from playhouse.shortcuts import model_to_dict
+import peewee
+from werkzeug.utils import redirect
+
+from models import (
+    Companies, Movies, MoviesCompany, Users, database
+)
+
+
+app = Flask(__name__)
+app.config.from_pyfile('config.py')
+
+
+@app.before_request
+def _db_connect():
+    database.connect()
+
+
+@app.teardown_request
+def _db_close(_):
+    if not database.is_closed():
+        database.close()
+
+
+@app.route('/movie/&lt;int:movie_id&gt;')
+def show_movie_page(movie_id: int) -&gt; List[Any]:
+    if session.get('username') is None:
+        return abort(403, 'You must be logged in to view the movies page')
+    # movie = Movies.select().where(Movies.id == movie_id).get()
+    try:
+        movie = Movies.get_by_id(movie_id)
+    except peewee.DoesNotExist:
+        abort(404, f'Error: movie {movie_id} does not exists')
+    movie_dict = model_to_dict(movie)
+    return render_template('movie.j2', **movie_dict)
+
+
+@app.route('/movies')
+def movies_list():
+    movies_query = (
+        Movies
+        .select(
+            Movies.id.alias('id'),
+            peewee.fn.ARRAY_TO_STRING(
+                peewee.fn.ARRAY_AGG(Companies.name), ', ',
+            ).alias('companies'),
+        )
+        .join(MoviesCompany)
+        .join(Companies)
+        .group_by(Movies.id)
+        .limit(50)
+    )
+    full_query = (
+        Movies
+        .select(Movies, movies_query.c.companies.alias('companies'))
+        .join(movies_query, on=(Movies.id == movies_query.c.id))
+    )
+    movies = list(full_query.dicts())
+    return render_template('list.j2', movies=movies)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        return render_template('register.j2')
+
+    salt = bcrypt.gensalt(prefix=b'2b', rounds=10)
+    unhashed_password = request.form['password'].encode('utf-8')
+    hashed_password = bcrypt.hashpw(unhashed_password, salt)
+    fields = {
+        **request.form,
+        'password': hashed_password,
+        'level': 1,
+    }
+    user = Users(**fields)
+    user.save()
+    return 'Success!'
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.j2')
+
+    username = request.form['username']
+    if username is None:
+        return abort(400, 'No username supplied')
+
+    try:
+        user = Users.select().where(Users.username == username).get()
+    except peewee.DoesNotExist:
+        return abort(404, f'User {username} does not exists')
+
+    password = request.form['password'].encode('utf-8')
+    real_password = str(user.password).encode('utf-8')
+    if not bcrypt.checkpw(password, real_password):
+        return abort(403, 'Username and password does not match')
+
+    session['username'] = user.username
+    session['name'] = user.name
+    return redirect(url_for('hello_world'))
+
+
+@app.route('/admin/movie/&lt;int:movie_id&gt;', methods=['GET', 'POST'])
+def admin(movie_id):
+    if request.method == 'GET':
+        if session.get('username') is None:
+            return abort(403, 'You must be logged in to view the movies page')
+        try:
+            movie = Movies.get_by_id(movie_id)
+        except peewee.DoesNotExist:
+            abort(404, f'Error: movie {movie_id} does not exists')
+        movie_dict = model_to_dict(movie)
+        return render_template('admin.j2', **movie_dict)
+    
+    elif request.method == 'POST':
+        print(dict(request.form))
+        movie_id = request.form['id']
+        movie = (
+            Movies
+            .update(**request.form)
+            .where(Movies.id == movie_id)
+            .execute()
+        )
+        return redirect(url_for('show_movie_page', movie_id=movie_id))
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    for session_value in ('username', 'name', 'level'):
+        session.pop(session_value, None)
+    return redirect(url_for('hello_world'))
+
+
+@app.route('/')
+def hello_world():
+    if 'username' in session:
+        return f"Hello, {session['username']}!"
+    return 'Hello World!'
+
+
+if __name__ == '__main__':
+    app.run()
+
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/11</link>
+        <pubDate>Tue, 08 Dec 2020 01:05:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>המחברת: <a class="attachment" href="https://forums.pythonic.guru/uploads/short-url/hwpsnwGKNxRe4Gjb1JpXrBCxZHe.ipynb">Untitled2.ipynb</a> (8.5 ק״ב)<br>
+אתר הסרטים: <a class="attachment" href="https://forums.pythonic.guru/uploads/short-url/gNLzaIuvmLvOhqM5FtUGjP71mQ7.zip">movies_site.zip</a> (2.3 מ״ב)</p>
+<p>חשבתי כמה פעמים אם להעלות כי טכנית חלק גדול מהתרגיל הוא להיות מסוגלים לחפש בעצמכם באינטרנט –<br>
+כיוון שזה חלק משמעותי מהעבודה כמתכנתים.<br>
+אם אתם יכולים, נסו להתמודד בעצמכם לפני שאתם מסתכלים על הפתרון שב־zip.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/10</link>
+        <pubDate>Mon, 07 Dec 2020 09:44:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[nellie]]></dc:creator>
+        <description><![CDATA[
+            <p>תוכל בבקשה להעלות את הקוד שהיה בלייב?<br>
+תודה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/9</link>
+        <pubDate>Mon, 07 Dec 2020 01:01:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אה, הבנתי.<br>
+זה קצת יותר טריקי אם אנחנו רוצים לשמור על ה־404 ועלול לדרוש JavaScript.<br>
+אם מוכנים לוותר על ה־404, פשוט יוצרים div ריק בעמוד ה־login ובו שמים <code>{{error}}</code>.<br>
+אם יש שגיאה, מעבירים ל־render template את הפרמטר error ואז היא מופיעה.<br>
+אם לא, אפשר להעביר מחרוזת ריקה או לא להעביר <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/8</link>
+        <pubDate>Mon, 07 Dec 2020 00:04:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>הצגת את האפשרות הבאה (שגיאה לא בדף האתר):</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/0/0f07411d262ec6136be215af69103b90e2dedaf1.png" alt="image" data-base62-sha1="28WHFPTY0c1YvRx4qL3Sfg0otPz" width="261" height="130"></p>
+<p>אני מתכוונת לתצוגה הבאה:</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/6/6d8cd2e850c1c9f0694ad0e68a6faaef5dccdaed.png" alt="image" data-base62-sha1="fD7KZL3OxuSixOLprwdGO4QVq0d" width="393" height="295"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/7</link>
+        <pubDate>Sun, 06 Dec 2020 23:59:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>עשינו את זה בשיעור היום לדעתי (העברנו הודעה ל¯abort בפרמטר השני)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/6</link>
+        <pubDate>Sun, 06 Dec 2020 23:37:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>אשמח גם לראות איך מחזירים שגיאה שלא מפילה את הדף עם שגיאה(404), אלא מציין מה השגיאה. לדוגמה: שם המשתמש או הסיסמה לא תקינים</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/5</link>
+        <pubDate>Sun, 06 Dec 2020 21:22:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>בעבודה עם flask-wtforms, לאחר יצירת טופס עם מספר שדות, אני לא מוצא דרך לעשות שאילתה על form.field.data בפונקציה של הראוט. רק במשלוח של הדאטה לשאילתה באופן ישיר ל query בדאטה בייס</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/4</link>
+        <pubDate>Sun, 06 Dec 2020 18:07:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>הייתי שמח להצעות על טיפול במצבים בהם אין לנו תוצאות למשל אם יוזר מנסה להכניס משתמש שלא קיים \ או אימייל שלא קיים לנו בDB - ואיך מודיעים למשתמש חזרה בfron למשל.</p>
+<p>אני יודע שיש מדריכים לזה אבל אני אישית ממש הסתבכתי גם בפרוייקט הקודם.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/3</link>
+        <pubDate>Sun, 06 Dec 2020 14:02:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>בשם אליאור:</p>
+<ul>
+<li>התייחסות לסוגיית: Sqlite  עם Heroku</li>
+<li>לדבר קצת על הנושא של אבטחה במאגר נתונים ולכל הסוגיה של Authentication. (במיוחד בכל הקשור ליוזרים שאנו יוצרים המידע עליהם וכו)</li>
+<li>קצת ORM דוגמא לשימוש בorm מסויים שהוצע בפורום. היתרונות \ חסרונות.</li>
+</ul>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/2</link>
+        <pubDate>Sun, 06 Dec 2020 13:41:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+      <item>
+        <title>שאלות לשיעור לייב מס&#39; 2</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>כאן תוכלו להעלות שאלות לים עבור הלייב היום בערב.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8511/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8511/1</link>
+        <pubDate>Sun, 06 Dec 2020 11:51:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8511-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8511.rss">שאלות לשיעור לייב מס&#39; 2</source>
+      </item>
+  </channel>
+</rss>

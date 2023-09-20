@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>קוד: שבוע 12, שידור חי מספר 3</title>
+    <link>https://forums.pythonic.guru/t/12-3/8339</link>
+    <description>```
+from flask import Flask, render_template
+import requests
+
+app = Flask(__name__)
+
+
+@app.route(&#39;/&lt;pokemon_name&gt;&#39;)
+def hello_world(pokemon_name):
+    pokemon_name = pokemon_name.lower()
+    resp = requests.get(f&#39;https://pokeapi.co/api/v2/pokemon/{pokemon_name}&#39;)
+    resp_json = resp.json()
+    image = resp_json[&#39;sprites&#39;][&#39;front_default&#39;]
+    return render_template(
+        &#39;index.html&#39;,
+        name=pokemon_name,
+        image_url=image,
+    )
+```
+
+```
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;{{name | title}}&lt;/h1&gt;
+      &lt;img src=&quot;{{image_url}}&quot; alt=&quot;{{name | title}} image&quot;&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+```</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 18 Oct 2020 05:35:43 +0000</lastBuildDate>
+    <category>שבוע 12</category>
+    <atom:link href="https://forums.pythonic.guru/t/12-3/8339.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>קוד: שבוע 12, שידור חי מספר 3</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <pre><code class="lang-auto">from flask import Flask, render_template
+import requests
+
+app = Flask(__name__)
+
+
+@app.route('/&lt;pokemon_name&gt;')
+def hello_world(pokemon_name):
+    pokemon_name = pokemon_name.lower()
+    resp = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
+    resp_json = resp.json()
+    image = resp_json['sprites']['front_default']
+    return render_template(
+        'index.html',
+        name=pokemon_name,
+        image_url=image,
+    )
+</code></pre>
+<pre><code class="lang-auto">&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;{{name | title}}&lt;/h1&gt;
+      &lt;img src="{{image_url}}" alt="{{name | title}} image"&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/12-3/8339/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-3/8339/1</link>
+        <pubDate>Thu, 15 Oct 2020 18:24:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8339-1</guid>
+        <source url="https://forums.pythonic.guru/t/12-3/8339.rss">קוד: שבוע 12, שידור חי מספר 3</source>
+      </item>
+  </channel>
+</rss>

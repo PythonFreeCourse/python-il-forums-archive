@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/mypy/7868/2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:30:47 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שגיאות של mypy בתרגיל שחמט - מס׳ 2 מאת Almog - שבוע 9 - פייתון בעברית ובחינם</title>
+<meta content="נותרו לי בתרגיל כמה שגיאות שmypy מקפיץ שאני לא מצליחה להיפתר מהן… 
+אשמח לעזרה: 
+1- המתודה במחלקת color מוגדרת בלי self וזה מקפיץ שגיאה בmypy. האם יש דרך לטפל בזה, להגדיר איכשהו את המחלקה כסטטית?? 
+2- שגיאה של ריבוי אר&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../7868.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../7868.rss" rel="alternate nofollow" title="הזנת RSS של ‚שגיאות של mypy בתרגיל שחמט’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="2.html" property="og:url"/>
+<meta content="2.html" name="twitter:url"/>
+<meta content="שגיאות של mypy בתרגיל שחמט" property="og:title"/>
+<meta content="שגיאות של mypy בתרגיל שחמט" name="twitter:title"/>
+<meta content="עוד לא הגעתי לתרגיל אז לצערי לא אוכל לעזור לך, אבל אולי זה יעזור לסעיף 3?" property="og:description"/>
+<meta content="עוד לא הגעתי לתרגיל אז לצערי לא אוכל לעזור לך, אבל אולי זה יעזור לסעיף 3?" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 9" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="מט-פיי" property="og:article:tag"/>
+<meta content="2020-08-16T15:01:10+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="../78684658.html?page=2" rel="next"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"שגיאות של mypy בתרגיל שחמט","mainEntity":{"@type":"Question","name":"שגיאות של mypy בתרגיל שחמט","text":"<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/a/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a\" title=\"שגיאות mypy\">[שגיאות mypy]<\/a>\n\nנותרו לי בתרגיל כמה שגיאות שmypy מקפיץ שאני לא מצליחה להיפתר מהן…\n\nאשמח לעזרה:\n\n1- המתודה במחלקת color מוגדרת בלי self וזה מקפיץ שגיאה בmypy. האם יש דרך לטפל בזה, להגדיר איכשהו את המחלקה כסטטית??\n\n2- שגיאה של ריבוי ארגומנטים- מופיעה מספר פעמים בעיקר במתודות init שיש ירושה ושימוש ב**k&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2020-08-16T14:46:32.263Z","author":{"@type":"Person","name":"Zohar "}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../7868.html">שגיאות של mypy בתרגיל שחמט</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/week-9/19.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 9</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%9e%d7%98-%d7%a4%d7%99%d7%99.html" rel="tag">מט-פיי</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שגיאות של mypy בתרגיל שחמט" itemprop="headline"/>
+<meta content="שבוע 9" itemprop="articleSection"/>
+<meta content="מט-פיי" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zoharya</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/a/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-16T14:46:32Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2020,‏  2:46pm
+                  </time>
+<meta content="2022-01-15T01:16:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a" href="../../../uploads/default/original/2X/a/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a.png" title="שגיאות mypy"><img alt="שגיאות mypy" data-base62-sha1="nFiZX9dZp60xLvdwU7ziDjqNFz4" data-small-upload="../../../uploads/default/optimized/2X/a/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a_2_10x10.png" height="379" src="../../../uploads/default/original/2X/a/a5dd56c91fd6d2f1c37faefbe594c5d10b63c29a.png" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use href="#far-image"></use></svg><span class="filename">שגיאות mypy</span><span class="informations">754×415 4.44 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>נותרו לי בתרגיל כמה שגיאות שmypy מקפיץ שאני לא מצליחה להיפתר מהן…<br/>
+אשמח לעזרה:<br/>
+1- המתודה במחלקת color מוגדרת בלי self וזה מקפיץ שגיאה בmypy. האם יש דרך לטפל בזה, להגדיר איכשהו את המחלקה כסטטית??<br/>
+2- שגיאה של ריבוי ארגומנטים- מופיעה מספר פעמים בעיקר במתודות init שיש ירושה ושימוש ב**kwargs.<br/>
+3- במחלקות ה- mixin- קופצות שגיאה על התכונה directions שהיא לא מזוהה… על אף שהיא מוגדרת במחלקת piece.<br/>
+האם ניתן להתעלם משגיאות אלו או שיש דרך טובה לטפל בהן?<br/>
+תודה רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Almog</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-16T15:01:10Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2020,‏  3:01pm
+                  </time>
+<meta content="2020-08-16T15:01:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עוד לא הגעתי לתרגיל אז לצערי לא אוכל לעזור לך, אבל אולי זה יעזור לסעיף 3?<br/>
+<aside class="quote" data-post="4" data-topic="7848">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/nirpn1/40/2944_2.jpg" width="20"/>
+<a href="../../topic/7848/4.html">יום 2 - משחק שחמט</a> <a class="badge-wrapper bullet" href="../../../c/old/week-9/19.html"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 9.">שבוע 9</span></a>
+</div>
+<blockquote>
+    אממ 
+השגיאה מתייחסת לכך שאין הפנייה ל directions שקיימת ב Piece 
+אני לא יודע איך בדיוק ה import- ים אצלך אבל לדעתי מה שקורה זה 
+
+יש קריאה ממקום כלשהו ל WalkDiagonallyMixin
+הוא מאתחל עם פונקציית הקסם init
+מגיע ל directions לפני שאותחל במחלקת הPiece ואין לו מושג ש directions הוא סט ובוודאי לא יכול לעשות את פעולת ה update השייכת לסט
+
+מקווה שאני לא מטעה אותך והלוואי שתצליחי <img alt="chess_pawn" class="emoji" src="../../../images/emoji/twitter/chess_pawnc164.png?v=9" title="chess_pawn"/>
+</blockquote>
+</aside>
+</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-16T19:01:18Z" itemprop="datePublished">
+                     16 באוגוסט,‏ 2020,‏  7:01pm
+                  </time>
+<meta content="2020-08-16T19:01:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>אפשר להשתמש ב־enum כמו שהראיתי באחד הלייבים</li>
+<li>אני צריך קצת יותר קונטקסט</li>
+<li>מה שאלמוג <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nellie</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/a/a530904de1cbc616485f4dd6795db8a7a4092ff6.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T01:08:55Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  1:08am
+                  </time>
+<meta content="2020-08-17T01:08:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני לא הצלחתי להתגבר על שתי השגיאות: 2 ו3<br/>
+מנסה להוסיף קצת יותר הֶקְשֵׁר ל 2. השגיאות הנרשמות הן:<br/>
+Too many arguments for “<strong>init</strong>” of “object” - במחלקת piece ובמחלקות ה mixin<br/>
+Too many arguments for “get_valid_moves” of “Piece” - במחלקות knight  ו king<br/>
+מה שמשותף לכולן זה ה **kwargs ב init. בחיפוש של השגיאה נראה שאולי זאת שגיאה של mypy.<br/>
+</p><aside class="onebox githubissue">
+<header class="source">
+<a href="https://github.com/python/mypy/issues/5887" rel="nofollow noopener" target="_blank">github.com/python/mypy</a>
+</header>
+<article class="onebox-body">
+<div class="github-row">
+<div class="github-icon-container" title="Issue">
+<svg aria-hidden="true" class="github-icon" height="60" viewbox="0 0 14 16" width="60"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+</div>
+<div class="github-info-container">
+<h4>
+<a href="https://github.com/python/mypy/issues/5887" rel="nofollow noopener" target="_blank">super().__init__(....) in mixins fails with `Too many arguments for "__init__" of "object" `</a>
+</h4>
+<div class="github-info">
+<div class="date">
+        opened <span class="discourse-local-date" data-date="2018-11-12" data-format="ll" data-time="14:20:39" data-timezone="UTC">02:20PM - 12 Nov 18 UTC</span>
+</div>
+<div class="user">
+<a href="https://github.com/kurtgn" rel="nofollow noopener" target="_blank">
+<img alt="kurtgn" class="onebox-avatar-inline" height="20" src="../../../uploads/default/original/2X/a/a530904de1cbc616485f4dd6795db8a7a4092ff6.jpg" width="20"/>
+          kurtgn
+        </a>
+</div>
+</div>
+</div>
+</div>
+<div class="github-row">
+<p class="github-content">When I create a mixin class that extends the logic of __init__, the regular thing to do is:
+class ExtraValuemixin:
+ def __init__(self,...</p>
+</div>
+<div class="labels">
+<span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">false-positive</span>
+<span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">feature</span>
+<span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">priority-1-normal</span>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T09:59:42Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  9:59am
+                  </time>
+<meta content="2020-08-17T13:44:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי 3 .<br/>
+…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yosefco3</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T12:59:15Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏ 12:59pm
+                  </time>
+<meta content="2020-08-17T13:44:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נמחק<br/>
+…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T16:23:40Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  4:23pm
+                  </time>
+<meta content="2020-08-17T16:23:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני תקוע על Error 2. לא מצליח לגרום ל-mixins או למחלקות אבסטרקטיות שמבצעות super עם kwargs לעבור בדיקת mypy.<br/>
+מישהו יכול לעזור?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-18T17:25:16Z" itemprop="datePublished">
+                     18 באוגוסט,‏ 2020,‏  5:25pm
+                  </time>
+<meta content="2020-08-18T17:25:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני לא מסתדר עם התקלה: <code>"Too many arguments for “ init ” of “object</code></p>
+<p>אחרי יותר מדיי התעמקות בההתכתבויות בשני הקישורים:<br/>
+<a href="https://github.com/python/mypy/issues/4001" rel="nofollow noopener">https://github.com/python/mypy/issues/4001</a><br/>
+<a href="https://github.com/python/mypy/issues/5887" rel="nofollow noopener">https://github.com/python/mypy/issues/5887</a> (קישור שפורסם פה למעלה גם ע"י <span class_="mention">@nellie</span>)</p>
+<p>אני חושב שזו תקלה שעוד לא תוקנה, יכול להיות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-18T21:05:48Z" itemprop="datePublished">
+                     18 באוגוסט,‏ 2020,‏  9:05pm
+                  </time>
+<meta content="2020-08-18T21:05:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני רואה שזה גורף ואני מעדיף כרגע להשקיע את הזמן בסיום העלאת הקבצים המרובים למערכת התרגילים.<br/>
+מאמין לכם שזה מאתגר במיוחד, תתעלמו מהשגיאה הזו ע"י <code># type: ignore</code></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../mixin-type-annotations/7812/3.html" itemprop="url">Mixin Type Annotations</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-18T21:57:53Z" itemprop="datePublished">
+                     18 באוגוסט,‏ 2020,‏  9:57pm
+                  </time>
+<meta content="2020-08-18T21:57:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בשביל לטפל בהודעה:</p>
+<blockquote>
+<p>"Too many arguments for “ init ” of “object</p>
+</blockquote>
+<p>שמגיעה מהמיקסינג (נראה לי רק משם) מחקתי את השורה:</p>
+<pre><code class>super().__init__(**kwargs)
+</code></pre>
+<p>מה init של Piece.</p>
+<p>הקוד עובד וmypy לא מעיר לי על זה. לא יודע אם יש לזה השלכות שליליות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-18T22:16:29Z" itemprop="datePublished">
+                     18 באוגוסט,‏ 2020,‏ 10:16pm
+                  </time>
+<meta content="2020-08-18T22:16:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש לזה השלכות שליליות <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+אם נחליט לצרף מעל Piece בשרשרת הירושה מחלקה אחרת, היא לא תדע לקבל את התכונות של מחלקת־העל החדשה שלה (ובפוטנציאל: גם של המחלקות שיצרו אח"כ מעליה). זה קוטע את רצף הירושה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T01:39:01Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  1:39am
+                  </time>
+<meta content="2020-08-19T01:39:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מקווה שתענה לנו על זה בשבוע הבא <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> מאוד מורכב להבין מה עושים במקרה כזה.<br/>
+אגב, זה קרה לי בעוד מקום:<br/>
+כשאני מנסה להגדיר את הפונקציה is_possible_target ב-WalksMultipleStepsMixin, אני משתמש ב-Callable.<br/>
+מה הבעיה?<br/>
+כש-mypy קוראת אותה, היא חושבת שהפונקציה שבפועל מקבלת (board, target), צריכה לקבל גם self!<br/>
+והיא כמובן גם משימה את board ו-target ל-self ו-board בהתאמה, ומחזירה too many arguments…</p>
+<p>במקרה הזה אגב מצאתי פתרון, אבל הוא פתרון מתחמק, לא אמיתי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T07:00:03Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  7:00am
+                  </time>
+<meta content="2020-08-19T07:00:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אני מצרף מעל Piece אובייקט, אני בכל מקרה אצטרך לשנות את הקוד שלו כך שהוא ידע שהוא יורש מהמחלקה החדשה. אם זאת ההשלכה היחידה, לזכור להוסיף את הסופר, אז זה לא באמת סיפור, כי זה כמו להגיד שאני אצטרך לזכור לרשת <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T11:23:04Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏ 11:23am
+                  </time>
+<meta content="2020-08-19T11:23:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה לי שמדובר פה במשהו יותר עקרוני בשרשרת ירושה (ו Piece כן מעורבת כבר בירושה) אז למה לא להשתמש ב type: ignore # במקום למחוק שורה שאולי תצטרך להחזיר?<br/>
+הוא יותר עדין מלמחוק שורה ממש (הוא רק מעלים את השורה מ mypy)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T13:40:26Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  1:40pm
+                  </time>
+<meta content="2020-08-19T13:40:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני שוב אשאל, אם המטרה היחידה של השורה הזאת, זה שבעתיד אם וכאשר אני ארצה ליצור אב אחר לpiece הוא יהיה כבר במקום, אז השאלה שלך היא הפוכה. כי את יוצאת מנקודת הנחה שהשורה הזאת קיימת, אני טוען, שאם זה כל המטרה שלה, אז אין לה סיבה להיות קיימת מראש. אם אני אוסיף אב נוסף, אז אני אוסיף באותה הזדמנות גם את הסופר.</p>
+<p>אני גם מסתכל ב<a href="https://github.com/python/cpython/blob/3.8/Lib/abc.py" rel="nofollow noopener">קוד של המחלקה עצמה</a> ולא ב- ABC ולא ב-ABCMeta שממנה היא יורשת יש init. מה שמוביל אותי עוד לחשוב שאצלנו בקוד, כפי שהוא כתוב, הסופר לא שייך לכלום.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T15:56:43Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  3:56pm
+                  </time>
+<meta content="2020-08-19T15:56:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רק רוצה להגיד שזה שאין בהם <code>__init__</code> דווקא קצת מחזק את הטענה.<br/>
+אם היה בהן <code>__init__</code>, משמע שהן דורסות את ה־<code>__init__</code> של מחלקת־העל.<br/>
+דווקא כיוון שאין בהן <code>__init__</code> ההתנהגות הדיפולטית היא לקרוא ל־<code>__init__</code> של מחלקת העל של ABC/ABCMeta, שזה בדיוק מה שאנחנו מנסים לחקות כשאנחנו עושים <code>super().__init__(**kwargs)</code></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-20T09:40:33Z" itemprop="datePublished">
+                     20 באוגוסט,‏ 2020,‏  9:40am
+                  </time>
+<meta content="2020-08-20T09:40:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מחלקת ABC יורשת מ object (לפי ה mro), כמו כל מחלקה רגילה לא אבסטרקטית. במחברת שלימדת על מחלקות ובמחברת שלימדת על הורשה מרובה לא הוספת init במקומות האלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-20T18:09:06Z" itemprop="datePublished">
+                     20 באוגוסט,‏ 2020,‏  6:09pm
+                  </time>
+<meta content="2020-08-20T18:09:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי 3, אני לא מבין בדיוק מה הבעיה שנוצרת ומה הקשר ל mypy. ההסבר שאלמוג קישרה אליו ניתן כהסבר למה הקוד של השואל לא עובד. אבל במקרה הזה אני גם נתקל בבעיה הזו ב mypy, אבל הקוד עצמו עובד. אם האימפורטים שלי לא נכונים (לטענת mypy) למה הקוד בכל זאת עובד?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">PureDream</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-20T18:14:59Z" itemprop="datePublished">
+                     20 באוגוסט,‏ 2020,‏  6:14pm
+                  </time>
+<meta content="2020-08-20T18:14:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בקשר לenum הלייבים ירדו מהיוטיוב…אפשר הסבר?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Almog</span>
+</span>
+<link href="../7868.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-20T18:38:20Z" itemprop="datePublished">
+                     20 באוגוסט,‏ 2020,‏  6:38pm
+                  </time>
+<meta content="2020-08-20T18:38:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הם לא ירדו, הרשאת הגישה שלהם מאפשרת להיכנס רק באמצעות לינק ישיר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="../78684658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/mypy/7868/2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:30:48 GMT -->
+</html>

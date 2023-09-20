@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מימוש לדוגמא דוד- מחברת 2</title>
+    <link>https://forums.pythonic.guru/t/topic/4111</link>
+    <description>היי בדוגמא של המימוש קוד לדוד, במקרה שהשעה אחרי 7 אך לא אחרי 8 והדוד דלוק , הקוד מנחה לכבות את הדוד. 
+לא ברור לי האם זה אמור להיות ככה מדרישת המימוש או שזו מקרה קצה בתוכנית?
+
+אלעד.</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 11 Apr 2020 14:30:06 +0000</lastBuildDate>
+    <category>שבוע 2</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/4111.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>שאלה 1</h3>
+<p>משתנה הוא סך הכל שם ששומר מצב. is_boiler_on הוא משתנה שבתוכו יש או True, או False. אם בתוך המשתנה יש True אז הדוד דולק, ואם בתוכו יש False הדוד כבוי.<br>
+משמע, not is_boiler_on יתקיים רק אם הדוד כבוי, ולכן <strong>אנחנו נדליק את הדוד אם הוא כבוי, והשעה היא בין 7:00 ל־8 (לא כולל קצוות)</strong>.</p>
+<p>לא הבנתי את שאלה 2.</p>
+<h2>שאלה 3</h2>
+<p>המשתנה <code>boiler_status</code> הוא סך הכל מחרוזת שהמטרה שלה היא נוחות עבור המשתמש. אם <code>is_boiler_on</code> (אם הדוד דולק) היא תהיה “on”, ואם <code>not is_boiler_on</code> היא תהיה “off”. אין לזה משמעות מבחינת תכנות, אלא אלו פשוט מילים שנוח יותר לבן־אדם לקרוא. אנחנו משתמשים בזה אח"כ להדפסה עבור המשתמש כדי שיהיה לו נעים לקרוא משפט קוהרנטי באנגלית.<br>
+זה פשוט יותר נעים לקרוא “Boiler is on right now” מאשר לקרוא: “Is the boiler on right now? True”</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/11</link>
+        <pubDate>Sat, 11 Apr 2020 14:30:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[nogabod]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לי כמה דברים שאני לא סגורה עליהם לגבי צורת הפיתרון:</p>
+<ol>
+<li>מה משמעות המשתנה של “is_boiler_on”? האם הוא מתייחס למצב הנתון (כרגע הדוד דולק/כבוי) או למצב הרצוי (יש להדליק/לכבות אותו בהתאם להוראה)? למשל</li>
+</ol>
+<pre><code class="lang-python">if not is_boiler_on and hour == 7 and minute &gt; 0:
+    is_boiler_on = True
+</code></pre>
+<p><em>למשל פה- נראה שבשורת התנאי המשתנה מתייחס למצב הנתון (שהדוד כבוי) אבל בפקודה הוא דלוק, מה שגורם לי להבין שהמשתנה מתייחס להוראה “הדלק את הדוד”</em><br>
+2. ממה שאני מבינה, בחלק של ה-“else” יש התייחסות רק למצב בו התנאי “הדוד דלוק” מוביל לביטוי שקר ואז בעצם נגמרת התכנית, אבל לא ברור לי איפה החלק של האמת שמוביל להוראה לכבות את הדוד. אני מתכוונת לחלק הזה:</p>
+<pre><code class="lang-python">else:
+    if is_boiler_on:
+        is_boiler_on = False
+</code></pre>
+<ol start="3">
+<li>החלק שהכי פחות הבנתי זה ההתייחסות למשתנה חדש “boiler_status”- מה משמעותו? לאיזה חלק בגרף הוא מתייחס? ואיך אפשר בכלל להוסיף אותו בתנאים בלי להגדיר אותו מראש עם יתר המשתנים? הכוונה לחלק הזה:</li>
+</ol>
+<pre><code class="lang-auto">if is_boiler_on:
+    boiler_status = "on"
+else:
+    boiler_status = "off"
+
+print("Boiler is " + boiler_status + " right now.")
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/10</link>
+        <pubDate>Sat, 11 Apr 2020 10:06:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>סמני את התא, לחצי esc, אז y ואז shift+enter</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/9</link>
+        <pubDate>Fri, 10 Apr 2020 21:41:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[SuperKeren]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לי שאלה שקשורה לאותה דוגמא. להלן רצף התהליכים:</p>
+<ol>
+<li>הרצתי את הקוד כפי שניתן בדוגמא (לא ערכתי).</li>
+<li>הזנתי את השעה חצות ו-23 דקות, 00:23.</li>
+<li>קיבלתי הודעת שגיאה (קוד לא תקין).</li>
+<li>ניסיתי לערוך את הקוד (לחצתי על שדה הטקסט), אך כשלחצתי עליו, הוא הפך משדה כתיבת קוד רגיל למה שרואים בתמונה המצורפת:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/ce0fbe32a142cae40c87ea178399c122b47e193d.png" data-download-href="https://forums.pythonic.guru/uploads/default/ce0fbe32a142cae40c87ea178399c122b47e193d" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/c/ce0fbe32a142cae40c87ea178399c122b47e193d.png" alt="image" data-base62-sha1="toU5ssvvsasi9Wm7v2WVeyQEhKl" width="690" height="195" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/ce0fbe32a142cae40c87ea178399c122b47e193d_2_10x10.png"></a></div>
+</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/8</link>
+        <pubDate>Fri, 10 Apr 2020 21:28:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[aviramsparsky1]]></dc:creator>
+        <description><![CDATA[
+            <p>אם הדוד היה כבוי אז הוא נדלק רק ב07:01 לפי הקוד<br>
+בגלל זה הבלבול ניראה לי.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/7</link>
+        <pubDate>Fri, 10 Apr 2020 18:13:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בודקים האם הבוילר דלוק. המטרה היא לכבות אותו אם כן</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/6</link>
+        <pubDate>Wed, 08 Apr 2020 18:59:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[LorenFatal]]></dc:creator>
+        <description><![CDATA[
+            <p><a class="mention" href="https://forums.pythonic.guru/u/yam">@Yam</a> אשמח לשאול שאלה בהקשר-<br>
+בתנאי השני, לא הבנתי למה השורה שסימנתי פה בבולד נחוצה?</p>
+<p>if not is_boiler_on and hour == 7 and minute &gt; 0:<br>
+is_boiler_on = True<br>
+else:<br>
+<em><strong>if is_boiler_on:</strong></em><br>
+is_boiler_on = False</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/5</link>
+        <pubDate>Tue, 07 Apr 2020 19:13:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>התעוררתי בבהלה ב־7 וקלטתי שהשארתי ת’דוד דלוק מהיום לפני <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/4</link>
+        <pubDate>Tue, 07 Apr 2020 18:53:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[eladhux]]></dc:creator>
+        <description><![CDATA[
+            <p>אם הדוד כבר דלוק והשעה אחרי 7 ולא לפני 8 , לא הייתי רוצה שהדוד ישאר דולק? במקרה הזה בדיוק רק כשהדוד מכובה ניתנת פקודה להדליק.<br>
+מנסה רק להבין את ההיגיון שמאחורי…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/3</link>
+        <pubDate>Tue, 07 Apr 2020 18:41:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>דרישות מימוש, ר’ גרף שמופיע לפני</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/2</link>
+        <pubDate>Tue, 07 Apr 2020 16:20:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+      <item>
+        <title>מימוש לדוגמא דוד- מחברת 2</title>
+        <dc:creator><![CDATA[eladhux]]></dc:creator>
+        <description><![CDATA[
+            <p>היי בדוגמא של המימוש קוד לדוד, במקרה שהשעה אחרי 7 אך לא אחרי 8 והדוד דלוק , הקוד מנחה לכבות את הדוד.<br>
+לא ברור לי האם זה אמור להיות ככה מדרישת המימוש או שזו מקרה קצה בתוכנית?</p>
+<p>אלעד.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/4111/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/4111/1</link>
+        <pubDate>Tue, 07 Apr 2020 16:16:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-4111-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/4111.rss">מימוש לדוגמא דוד- מחברת 2</source>
+      </item>
+  </channel>
+</rss>

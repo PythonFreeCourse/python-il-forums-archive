@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>טסטים ללא API KEY</title>
+    <link>https://forums.pythonic.guru/t/api-key/8902</link>
+    <description>היי כולם הטסטים שלי תלויים בAPI KEY ובלעדיו הם יכשלו...
+אני לא יכול ליצור אובייקט שמחקה את מה שהAPI אמור להחזיר לי כי צריך לשלוח את האובייקט בבקשת רשת ואם הוא לא תואם את הנתונים הרצויים זה זורק שגיאה (access_token) 
+
+איך אפשר לעבור את זה?
+תודה לעוזרים!</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 28 Jan 2021 16:47:50 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/api-key/8902.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <ol>
+<li>מה ניסית לעשות?</li>
+<li>איפה קראת?</li>
+<li>אילו קטעי קוד כבר כתבת?</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/57">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/57</link>
+        <pubDate>Thu, 28 Jan 2021 16:47:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-57</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים אכן codecov עושה לי בעיות, ועשיתי לפונקציות שדורשות קשר עם השרת Monkey patching אך עדיין codecov מסמן לי המון דברים באדום, יש דרך מסויימת שאני צריך לעשות את הMonkey patching כדי שיעבוד עם codecov?</p>
+<p>תודה <img src="https://forums.pythonic.guru/images/emoji/twitter/slightly_smiling_face.png?v=9" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/56">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/56</link>
+        <pubDate>Thu, 28 Jan 2021 11:55:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-56</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>וואוו תודה רבה !!! <img src="https://forums.pythonic.guru/images/emoji/twitter/grin.png?v=9" title=":grin:" class="emoji" alt=":grin:"></p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/55">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/55</link>
+        <pubDate>Wed, 27 Jan 2021 09:13:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-55</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מפרגן לך בדוגמה חצי אפויה על זה שהגעת עד לכאן.</p>
+<hr>
+<p>הדבר הראשון שרציתי זה לחקות את build – כיוון שהיא הפונקציה הראשונה שלא הצלחתי לכתוב לה טסט באופן מיידי.</p>
+<p>הבעיה היא ש־build מתחברת לאינטרנט, ואנחנו לא אוהבים בדיקות שמתחברות לאינטרנט מהרבה סיבות:</p>
+<ol>
+<li>בקשות רשת זה דבר איטי, וזה יעכב אותנו מאוד כל פעם שנרצה להריץ את הבדיקות.</li>
+<li>הרבה פעמים בקשות API עולות כסף. נעדיף לחסוך ולא לשלם על הבדיקות.</li>
+<li>הרבה פעמים יהיה rate limit – נניח עד 100 בקשות ליום. גם במקרה הזה נעדיף לחסוך.</li>
+<li>התלות במשאב חיצוני יוצרת חוסר דטרמיניסטיות שמועד לפורענות – יכול להיות שהאתר שניסינו להתחבר אליו נפל, או שאין לנו אינטרנט. עדיף להימנע מהמצב שהטסטים לא עובדים בגלל דברים כאלו.</li>
+</ol>
+<p>אז אנחנו מבינים שצריך משהו שיחליף את build במהלך הטסט, כך שהיא תתנהג דומה – רק בלי התחברות לאינטרנט.<br>
+איך אנחנו מגדירים “תתנהג דומה”?<br>
+התשובה היא שמדובר בפונקציה, ואנחנו מגדירים “התנהגות של פונקציה” כ(פחות או יותר) – עבור קלט X הפונקציה תחזיר Y.<br>
+כלומר, נגיד ש־build מתנהגת דומה אם עבור הפרמטרים שהיא מקבלת היא תחזיר לנו פלט “רגיל”, כאילו הייתה מחוברת לאינטרנט.</p>
+<p>אנחנו הולכים להשתמש בשתי טכניקות כדי להשיג את התוצאה הזו.</p>
+<p>הראשונה נקראת Mock, שמשמעו לחקות.<br>
+אנחנו למעשה הולכים ליצור אצלנו תשובה שנראית בדיוק כמו התשובה ש־build הייתה מחזירה לנו לו הייתה מחוברת לאינטרנט.<br>
+איך נעשה את זה? נתחבר לאינטרנט, נשלח בקשה בעזרת build ונשמור את התשובה שחזרה ממנה איכשהו.<br>
+התוצר שנשמר נקרא ה־Mock object – איזשהו אובייקט לא אמיתי, שמחקה את האובייקט האמיתי.<br>
+זה אובייקט שדומה מאוד לאובייקט שהיינו מקבלים מ־build האותנטית לו היינו מחוברים לאינטרנט.</p>
+<p>אחרי שיצרנו אובייקט שדומה למה ש־build הייתה מחזירה, אנחנו אמורים לגרום לה באמת להחזיר אותו במקרה של הטסטים.<br>
+כלומר: ש־build לא באמת תשלח קריאה לאינטרנט, אלא פשוט תחזיר את ה־Mock object שיצרנו.<br>
+התהליך שאנחנו הולכים לבצע נקרא <a href="https://en.wikipedia.org/wiki/Monkey_patch">Monkey patching</a>.<br>
+זה תהליך שבו אנחנו משפיעים על קוד מסוים מבחוץ – כשמאיזושהי סיבה אנחנו לא יכולים/רוצים לערוך את הקוד המקורי.<br>
+זה המצב בבדיקות שלנו: אנחנו לא רוצים לערוך את build או את הפונקציה שאנחנו בודקים, אבל אנחנו כן רוצים ש־build תתנהג שונה במלך ריצת הבדיקות.</p>
+<p>לעבודה.</p>
+<hr>
+<p>דבר ראשון התחלתי בלחפש קצת חומר על Google Calendar API כדי להבין עם מה יש לי עסק.<br>
+הגעתי ל:</p>
+<ol>
+<li>תיעוד הרשמי ש<a href="https://googleapis.github.io/google-api-python-client/docs/mocks.html">כאן</a> דרך חיפוש בגוגל, שמסביר איך משתמשים ב־Mock objects, אבל לא איך מייצרים אותם. ראיתי שהם משתמשים בשני קבצים שנקראים books-discovery.json ו־books-android.json</li>
+<li>הגעתי לאיזו <a href="https://stackoverflow.com/questions/45128133/getting-the-response-discovery-json-for-the-client-mocker">שאלה ב־S/O</a> שמדברת על ה־<a href="https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest">Discovery Service</a>, ושמתי לב שזה גם השם של המודול שממנו את ה־build. עוד קצת בירורים ונראה שאפשר להשיג מהקישור האחרון ממש את ה־JSON שיוחזר מ־build. זה מושלם ל־Mock שלנו.</li>
+</ol>
+<p>לקחתי את ה־JSON שקיבלתי ודחפתי אותו ב־calendar-disocovery.json.<br>
+לא לפני שוידאתי שה־API Key או פרטים מזהים חשובים אחרים שלי לא נמצאים שם.</p>
+<p>ואם כבר יש ממשק מצחיק כזה שמוציא JSON־ים מתנה, אולי יהיה אחד כזה גם עבור הבקשה השנייה (<code>service.events</code>) – ואכן, <a href="https://developers.google.com/calendar/v3/reference/events/list?apix_params=%7B%22calendarId%22%3A%22primary%22%7D">יש כזה</a> – והוא אפילו מאפשר להזין פרמטרים כמו בקוד המקורי.</p>
+<p>נשבע בזקנו של מרלין שזה לא לקח יותר מחצי שעה של חיפוש.</p>
+<p>לא שוכחים להעיף דברים אישיים ו־API Keys אם יש, ושומרים כ־calendar-linux.json (או כל שם אחר שבא לנו).</p>
+<p>עכשיו אפשר להשתמש ממש בקוד שהופיע במאמר של גוגל:</p>
+<pre><code class="lang-python">from googleapiclient.http import HttpMock
+import pprint
+
+http = HttpMock('calendar-discovery.json', {'status': '200'})
+service = build('calendar', 'v3', http=http)
+request = service.events().list(calendarId='primary',
+        timeMin=datetime(2021,1,1).isoformat(),
+        timeMax=datetime(2022, 1, 1).isoformat(),
+        singleEvents=True,
+        orderBy='startTime'
+)
+http = HttpMock('calendar-linux.json', {'status': '200'})
+response = request.execute(http=http)
+pprint.pprint(response)
+</code></pre>
+<p>עובד בובה.</p>
+<hr>
+<p>נגמר לי הדלק להיום, אז אם codecov יראה שלא הגעת לכל הנקודות בקוד ולא יהיה מרוצה –<br>
+משאיר לך להבין איך עושים את ה־Monkey patching בעצמך <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/54">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/54</link>
+        <pubDate>Tue, 26 Jan 2021 22:46:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-54</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>חחחחחח אני לא מאמין!</p>
+<p>תודה רבה על העזרה ים <img src="https://forums.pythonic.guru/images/emoji/twitter/raised_hands.png?v=9" title=":raised_hands:" class="emoji" alt=":raised_hands:"></p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/53">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/53</link>
+        <pubDate>Tue, 26 Jan 2021 20:44:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-53</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה בדיוק Mock, זה נשמע לי נהדר</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/52">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/52</link>
+        <pubDate>Tue, 26 Jan 2021 20:43:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-52</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אז הרעיון הבא זה לקחת את הפורמט json של אירועים של google calendar, ליצור כמה אובייקטים שמדמיים את האירועים שמגיעים מהAPI ולתת לזה לרוץ.</p>
+</blockquote>
+</aside>
+<p>כמו שאמרתי כאן.<br>
+אני יכול ליצור אובייקטים שמדמים את מה שחוזר מהשרת ולתת לקוד לרוץ.</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/51">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/51</link>
+        <pubDate>Tue, 26 Jan 2021 20:41:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-51</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Liran_C" data-post="49" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>פשוט mock מדמה איך הכל עובר ברשת.</p>
+</blockquote>
+</aside>
+<p>המונח Mock מתאר אובייקט שמחקה אובייקט אותנטי, זה הכל <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<aside class="quote no-group" data-username="Liran_C" data-post="49" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אם זה בסדר לעשות דוגמאות של אירועים עם הפורמט של google calendar api, אז אני יכול לעשות את זה.</p>
+</blockquote>
+</aside>
+<p>לא לגמרי עקבתי. תוכל בבקשה להסביר מה זה אומר אירועים עם הפורמט של Google Calendar API?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/50">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/50</link>
+        <pubDate>Tue, 26 Jan 2021 20:39:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-50</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="48" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>מה לדעתך ההבדל בין מה שתיארת לבין Mock?</p>
+</blockquote>
+</aside>
+<p>בתוצאת הסופית אין הבדל.<br>
+פשוט mock מדמה איך הכל עובר ברשת.</p>
+<p>אם זה בסדר לעשות דוגמאות של אירועים עם הפורמט של google calendar api, אז אני יכול לעשות את זה.</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/49">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/49</link>
+        <pubDate>Tue, 26 Jan 2021 20:37:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-49</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>כן כי מבחינת רצף זה נראה הגיוני, לא בעיה להפריד אותם.</p>
+</blockquote>
+</aside>
+<p>אני מסכים איתך שזה הגיוני מבחינת רצף, אבל זה עדיין פונקציה אחת שמבצעת שני תפקידים.<br>
+מהסיבה הזו כדאי להפריד <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אני צריך גישה לAPI או לmock.</p>
+</blockquote>
+</aside>
+<p>מעולה</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>תהיה לי גישה לAPI גם ככה שאני אעלה לגיט כי לא יהיה API KEY…</p>
+</blockquote>
+</aside>
+<p>לא הבנתי את המשפט, אבל אני חושב שניסית לכתוב שלא תהיה גישה ל־API.<br>
+זה נכון.<br>
+גם כתבתי בהודעה קודמת שבאופן כללי עדיף לא להסתמך בטסטים על חיבור לאינטרנט.</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>וmock אני לא מצליח ליצור…</p>
+</blockquote>
+</aside>
+<p>באיזה שלב עצרת? מה עשית שלא עבד בניסיון ליצור Mock?</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="47" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אז הרעיון הבאה זה לקחת את הפורמט json של אירועים של google calendar, ליצור כמה אובייקטים שמדמיים את האירועים שמגיעים מהAPI ולתת לזה לרוץ.</p>
+</blockquote>
+</aside>
+<p>מה לדעתך ההבדל בין מה שתיארת לבין Mock?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/48">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/48</link>
+        <pubDate>Tue, 26 Jan 2021 20:33:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-48</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="46" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>אומר שלפונקציה יש <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle" rel="noopener nofollow ugc">יותר מתפקיד אחד</a></p>
+</blockquote>
+</aside>
+<p>כן כי מבחינת רצף זה נראה הגיוני, לא בעיה להפריד אותם.</p>
+<aside class="quote no-group" data-username="Yam" data-post="46" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>בוא ננסה קודם לתפור את הטסטים לחלק הראשון – זה שמביא את האירועים מ־google calendar api.<br>
+מה חסר לך כדי שכן תוכל לבנות עבורו טסט?</p>
+</blockquote>
+</aside>
+<p>אני צריך גישה לAPI או לmock.<br>
+לא תהיה לי גישה לAPI גם ככה שאני אעלה לגיט כי לא יהיה API KEY…<br>
+וmock אני לא מצליח ליצור…</p>
+<p>אז הרעיון הבא זה לקחת את הפורמט json של אירועים של google calendar, ליצור כמה אובייקטים שמדמיים את האירועים שמגיעים מהAPI ולתת לזה לרוץ.</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/47">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/47</link>
+        <pubDate>Tue, 26 Jan 2021 20:31:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-47</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה כבר נושא אחר שנצטרך להתייחס אליו בהמשך – עצם השימוש בו’ החיבור כאן:</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="45" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>מביאה את האירועים מgoogle calendar api</p>
+</blockquote>
+</aside>
+<aside class="quote no-group" data-username="Liran_C" data-post="45" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>ומכניסה אותם לדטה בייס לטבלת אירועים</p>
+</blockquote>
+</aside>
+<p>אומר שלפונקציה יש <a href="https://en.wikipedia.org/wiki/Single-responsibility_principle">יותר מתפקיד אחד</a>, ואני מניח שזה חלק ממה שמקשה עליך לראות איך מגיעים לטסטים עובדים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>בוא ננסה קודם לתפור את הטסטים לחלק הראשון – זה שמביא את האירועים מ־google calendar api.<br>
+מה חסר לך כדי שכן תוכל לבנות עבורו טסט?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/46">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/46</link>
+        <pubDate>Tue, 26 Jan 2021 20:24:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-46</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="44" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>יש מצב שפספסתי משהו בהליך הלוגי. תוכל לפרט בבקשה איך מסד הנתונים נכנס לעניין?</p>
+</blockquote>
+</aside>
+<p>מה שהפונקציה get_current_year_events עושה זה מביאה את האירועים מgoogle calendar api<br>
+ומכניסה אותם לדטה בייס לטבלת אירועים בשביל שיהיה קל לרנדר אותם.</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/45">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/45</link>
+        <pubDate>Tue, 26 Jan 2021 20:21:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-45</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Liran_C" data-post="43" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>חסר גישה לapi</p>
+</blockquote>
+</aside>
+<p>אני אדייק אותך מעט: יש גישה ל־API.<br>
+אנחנו כותבים טסטים ואנחנו מעדיפים שלא יתבצע חיבור לאינטרנט.</p>
+<p>מהרבה סיבות: בקשות API עלולות לעלות כסף ולא נרצה לבזבז אותן על טסטים, יכול להיות rate limit, בקשות רשת איטיות, יכול להיות שהאינטרנט שלנו לא עובד והבדיקות יפלו בגלל זה.</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="43" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אבל אם אנחנו הבנו שאי אפשר לעשות mock לגוגל api</p>
+</blockquote>
+</aside>
+<p>רגע, בלי לקפוץ למסקנות בבקשה</p>
+<aside class="quote no-group" data-username="Liran_C" data-post="43" data-topic="8902">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/liran_c/40/5153_2.png" class="avatar"> Liran_C:</div>
+<blockquote>
+<p>אז חסר רק לקחת את הפורמט json של מה שהapi מחזיר ולהכניס את הדוגמאות לדטה בייס.</p>
+</blockquote>
+</aside>
+<p>יש מצב שפספסתי משהו בהליך הלוגי. תוכל לפרט בבקשה איך מסד הנתונים נכנס לעניין?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/44">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/44</link>
+        <pubDate>Tue, 26 Jan 2021 20:08:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-44</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>חסר גישה לapi, אבל אם אנחנו הבנו שאי אפשר לעשות mock לגוגל api, אז חסר רק לקחת את הפורמט json של מה שהapi מחזיר ולהכניס את הדוגמאות לדטה בייס.</p>
+<p>לזה התכוונת?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/43">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/43</link>
+        <pubDate>Tue, 26 Jan 2021 20:05:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-43</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>התכוונתי צעד אחורה בחשיבה, לא בקוד.<br>
+אחזור על השאלה: הסכמנו שאנחנו לא מצליחים לבנות טסט על get_current_year_events, וזה לא טוב.<br>
+מה חסר לך כדי שכן תוכל לבנות עבורו טסט?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/42">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/42</link>
+        <pubDate>Tue, 26 Jan 2021 19:50:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-42</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>אין צד יותר אחורה מזה.<br>
+יש קדימה db_cleanup.</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/41">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/41</link>
+        <pubDate>Tue, 26 Jan 2021 19:49:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-41</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בוא ניקח צעד אחורה.<br>
+הסכמנו שאנחנו לא מצליחים לבנות טסט על get_current_year_events, וזה לא טוב.<br>
+מה חסר לך כדי שכן תוכל לבנות עבורו טסט?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/40">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/40</link>
+        <pubDate>Tue, 26 Jan 2021 19:37:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-40</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>זה לא הרעיון? לבדוק את הקוד.</p>
+<p>בגדול הmock לא עוזר לכלום כשחושבים על זה לעומק רק מדמה את החיבור לשרת…</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/39">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/39</link>
+        <pubDate>Tue, 26 Jan 2021 19:35:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-39</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>למה אנחנו לא יכולים בלי ה־Mock? למה ה־Mock יעזור לנו?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/38">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/38</link>
+        <pubDate>Tue, 26 Jan 2021 19:31:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-38</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>זה יאפשר לנו לכתוב בדיקה ליחידה הבסיסית ממעלה 2 get_current_year_events</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/37">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/37</link>
+        <pubDate>Tue, 26 Jan 2021 19:30:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-37</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי.<br>
+מה המטרה של ה־Mock שאנחנו מנסים לכתוב פה בעצם?<br>
+אם נצליח לכתוב Mock כזה, מה נשיג? מה זה יאפשר לנו?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/36">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/36</link>
+        <pubDate>Tue, 26 Jan 2021 19:17:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-36</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote quote-modified" data-post="1" data-topic="6087">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <img alt="" width="20" height="20" src="/user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.png" class="avatar">
+    <a href="https://forums.pythonic.guru/t/topic/6087">איך להכניס קוד לפוסט \ תגובה בפורום</a> 
+  </div>
+  <blockquote>
+    היי, 
+בפורום ישנו פיצר שמאפשר להציג את הקוד שלכם בצורה ברורה כאילו היה כתוב 
+בjupyer  או editor כזה או אחר. 
+מכיוון שראיתי שהמון לא משתמשים בזה אלא עושים העתק הדבק ישירות מהיופיטר [ אשר מציג קוד לא ברור ובלי הזחות ] 
+או עושים צילומי מסך שגם הם לא נוחים במיוחד: 
+<img width="20" height="20" src="https://forums.pythonic.guru/images/emoji/twitter/nerd_face.png?v=9" title="nerd_face" alt="nerd_face" class="emoji"> הכנתי מדריכון קצר לאיך לעשות את זה נכון במערכת הפורום. 
+מקווה שזה יעזור לכם ולאחרים <img width="20" height="20" src="https://forums.pythonic.guru/images/emoji/twitter/heart.png?v=9" title="heart" alt="heart" class="emoji"> 
+ <a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/cc5b8d4a71d9a1f4fa57899c492382474223c005.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/cc5b8d4a71d9a1f4fa57899c492382474223c005" title="מדריך - איך להכניס קוד לפורום-01">[מדריך - איך להכניס קוד לפורום-01]</a>
+  </blockquote>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/35">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/35</link>
+        <pubDate>Tue, 26 Jan 2021 16:58:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-35</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <pre><code>from datetime import datetime
+from google.oauth2.credentials import Credentials
+
+from googleapiclient.discovery import build
+from googleapiclient.http import HttpMockSequence
+
+def test_google_connect():
+    http = HttpMockSequence([({'status': '200'}, "{}")])
+    cred = Credentials()
+    service = build('calendar', 'v3', credentials=cred)
+    request = service.volumes().list(calendarId='primary',
+                                     timeMin=datetime(2021,1,1).isoformat(),
+                                     timeMax=datetime(2022, 1, 1).isoformat(),
+                                     singleEvents=True,
+                                     orderBy='startTime'
+                                     ).execute()</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/34">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/34</link>
+        <pubDate>Tue, 26 Jan 2021 16:57:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-34</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+      <item>
+        <title>טסטים ללא API KEY</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר בבקשה כטקסט כדי שאוכל להעתיק ולהדביק אצלי?</p>
+          <p><a href="https://forums.pythonic.guru/t/api-key/8902/33">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/api-key/8902/33</link>
+        <pubDate>Tue, 26 Jan 2021 16:53:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8902-33</guid>
+        <source url="https://forums.pythonic.guru/t/api-key/8902.rss">טסטים ללא API KEY</source>
+      </item>
+  </channel>
+</rss>

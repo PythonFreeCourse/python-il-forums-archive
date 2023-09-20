@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+    <link>https://forums.pythonic.guru/t/2-stackoverflow/7833</link>
+    <description>היי,
+בחלק האחרון של התשובה [בקישור](https://stackoverflow.com/questions/419163/what-does-if-name-main-do) (בחלק Food for Thought), לא הבנתי את הפלטים של הקבצים foo2 ו-foo3.
+בפלט של foo2:
+t1
+m1
+a1
+t1 &lt;== פה, למה הוא קפץ ל-t1? ציפיתי שהוא ימשיך ל-a2 ואז b כמו שמופיע אח&quot;כ.
+t2
+a2
+b
+a3
+m2
+t2</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 13 Aug 2020 19:04:56 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[yair1engel]]></dc:creator>
+        <description><![CDATA[
+            <p>מעולה, תודה רבה על התשובה אפרת <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/8</link>
+        <pubDate>Thu, 13 Aug 2020 19:04:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-8</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>לא נוצרת לולאה אין סופית מכיוון שכשמייבאים מודול הוא מתרחש פעם אחת בזמן היבוא שלו…</p>
+<p>ציטוט מתוך ‘real python’:</p>
+<p>When you <a href="https://realpython.com/absolute-vs-relative-python-imports/">import a module</a>, what really happens is that you load its contents for later access and use. The interesting thing about this process is that <a href="https://realpython.com/absolute-vs-relative-python-imports/"> <code>import</code> </a> runs the code as its final step.</p>
+<p>When the module contains only classes, functions, variables, and constants definitions, you probably won’t be aware that the code was actually run, but when the module includes calls to functions, methods, or other statements that generate visible results, then you’ll witness its execution.</p>
+<p>This provides you with another option to run Python scripts:</p>
+<pre><code class="lang-auto">import hello
+Hello World!
+</code></pre>
+<p>You’ll have to note that this option works only once per session. After the first  <code>import</code> , successive  <code>import</code>  executions do nothing, even if you modify the content of the module. This is because  <code>import</code>  operations are expensive and therefore run only once. Here’s an example:</p>
+<pre><code class="lang-auto">import hello  # Do nothing
+import hello  # Do nothing again
+</code></pre>
+<p>These two  <code>import</code>  operations do nothing, because Python knows that  <code>hello</code>  has already been imported.</p>
+<p>להרחבה: <a href="https://realpython.com/run-python-scripts/">https://realpython.com/run-python-scripts/</a></p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/7</link>
+        <pubDate>Thu, 13 Aug 2020 18:17:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-7</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[yair1engel]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+משהו אחד שלא בדיוק ברור לי ב-foo3.<br>
+מאחר ואין את התנאי שבודק את ה-main כמו ב-foo2, למה לא נוצרת לנו כאן לולאה אין סופית של קריאות?</p>
+<p>הרי אנחנו קוראים ל-functionA שקוראת ל-functionB שכמובן ללא תנאי ה-main בקובץ נוצרת קריאה נוספת<br>
+ל-functionA.</p>
+<p>(אני מניח שהוא יודע להתמודד עם זה ולכן לא נוצרת לנו לולאה אין סופית - אבל אשמח להבהרה)</p>
+<p>הרצתי את ה-debugger ובזמן הקריאה ל-functionB ראיתי משתנה count שכנראה בודק את כמות הקריאות לקובץ - אבל אני לא סגור עלזה, כמו כן היה שם משתנה נוסף של recursive שהיה false.</p>
+<p>הקוד:</p>
+<pre><code class="lang-auto">import os, sys; sys.path.insert(0, os.path.dirname(__file__)) # needed for some interpreters
+
+def functionA():
+    print("a1")
+    from foo3 import functionB
+    print("a2")
+    functionB()
+    print("a3")
+
+def functionB():
+    print("b")
+
+print("t1")
+print("m1")
+functionA()
+print("m2")
+print("t2")
+</code></pre>
+<p>תודה לעונים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/5</link>
+        <pubDate>Thu, 13 Aug 2020 16:44:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-5</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>אחלה מקור! השכלתי.<br>
+מאוד מפתיע החלק של הייבוא העצמי.</p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/4</link>
+        <pubDate>Thu, 13 Aug 2020 07:09:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-4</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>עכשיו הבנתי! והבנתי גם את foo3 <img src="https://forums.pythonic.guru/images/emoji/twitter/grin.png?v=9" title=":grin:" class="emoji" alt=":grin:"><br>
+עבדתי עם הדיבאגר, עכשיו אני מבין גם למה הוא חזר לתחילת הקוד מיד אחרי השורה <code>from foo2 import functionB</code>, זה מה שכתבת בסעיף 4.<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/3</link>
+        <pubDate>Tue, 11 Aug 2020 16:40:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-3</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ממש סחטיין על ההתעמקות, מרשים לטובה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+לא התעצלתי וכתבתי לך פה תשובה סופר מפורטת.<br>
+ועדיין, אני ממליץ לך לפני שתקרא אותך לשלוף את הדיבאגר הקרוב לביתך ולעבור איתו שורה שורה על הקוד.<br>
+זה יעזור לך להבין הרבה יותר טוב <em>בעצמך</em> איך פייתון עובדת.</p>
+<hr>
+<p>לנוחות באי האשכול, מדביק כאן את הקוד:</p>
+<pre><code class="lang-python"># Suppose this is foo2.py.
+import os, sys; sys.path.insert(0, os.path.dirname(__file__)) # needed for some interpreters
+
+def functionA():
+    print("a1")
+    from foo2 import functionB
+    print("a2")
+    functionB()
+    print("a3")
+
+def functionB():
+    print("b")
+
+print("t1")
+if __name__ == "__main__":
+    print("m1")
+    functionA()
+    print("m2")
+print("t2")
+</code></pre>
+
+ואת הפלט... <a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/2">(לחיצה לפרטים נוספים)</a>
+<ol>
+<li>מתחילים ב־t1, כי פייתון עדיין לא נכנסה לאף פונקציה.</li>
+<li>כיוון שהמודול שהורץ מלכתחילה הוא foo2, והוא נטען ישירות בעזרת הרצת <code>python foo2.py</code> (כך ה־IDE מפעיל אותו) ולא דרך import, יודפס גם m1 ותקרא הפונקציה <code>functionA</code>.</li>
+<li>היא תדפיס, בתורה, <code>a1</code>, ועכשיו יקרה החלק המעניין – <code>from foo2 import functionB</code>.</li>
+<li>כשאנחנו עושים <code>from x import Y</code> פייתון עדיין טוענת את כל המודול, כדי לא לפספס הגדרה של משתנים חשובים ב־scope הגלובאלי או פעולות (כתיבה לקובץ, תקשורת עם שרת כלשהו) שהיא צריכה לבצע.<br>
+הפונקציה <code>functionB</code> כן יובאה כבר למקום בו כתוב <code>from foo2 import functionB</code>, אבל פייתון תמשיך לקרוא את המודול שעשינו לו import עד סופו. לכן <code>t1</code> תודפס.</li>
+<li>אבל <code>__name__</code> עכשיו הוא <code>foo2</code>, ולא <code>__main__</code> (כי טענו  את המודול בעזרת <code>import</code> ולא בעזרת הרצת python), ולכן נדלג על הקוד המוזח ב־<code>if</code>.<br>
+משם ממשיכים להריץ עד סוף הקובץ (כך עובד ייבוא), ולכן נדפיס גם t2.</li>
+<li>סיימנו לטעון את <code>functionB</code>. עכשיו מדפיסים את a2, כי זו הפעולה הבאה אחרי <code>from foo2 import functionB</code>.</li>
+<li>מריצים את <code>functionB</code>, ולכן מדפיסים את <code>b</code>.</li>
+<li>סיימנו. ממשיכים ומדפיסים את <code>a3</code>.</li>
+<li>סיימנו את הקריאה ל־<code>functionA</code>, ולכן ממשיכים להדפיס את <code>m2</code>.</li>
+<li>סיימנו להיות בתוך ה־<code>if</code> – מדפיסים את <code>t2</code>.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/2</link>
+        <pubDate>Tue, 11 Aug 2020 16:20:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-2</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+      <item>
+        <title>יום 2 - שאלה על התשובה ב-Stackoverflow</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+בחלק האחרון של התשובה <a href="https://stackoverflow.com/questions/419163/what-does-if-name-main-do" rel="nofollow noopener">בקישור</a> (בחלק Food for Thought), לא הבנתי את הפלטים של הקבצים foo2 ו-foo3.<br>
+בפלט של foo2:<br>
+t1<br>
+m1<br>
+a1<br>
+t1 &lt;== פה, למה הוא קפץ ל-t1? ציפיתי שהוא ימשיך ל-a2 ואז b כמו שמופיע אח"כ.<br>
+t2<br>
+a2<br>
+b<br>
+a3<br>
+m2<br>
+t2</p>
+          <p><a href="https://forums.pythonic.guru/t/2-stackoverflow/7833/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-stackoverflow/7833/1</link>
+        <pubDate>Tue, 11 Aug 2020 16:02:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7833-1</guid>
+        <source url="https://forums.pythonic.guru/t/2-stackoverflow/7833.rss">יום 2 - שאלה על התשובה ב-Stackoverflow</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/graph/8066/43 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:12:13 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגיל graph - חיפוש מודול מתאים - מס׳ 43 מאת DrorBiton - שבוע 10 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+אני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים. 
+ניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה. 
+אחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../80669ba9.html?page=3" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8066.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגיל graph - חיפוש מודול מתאים’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702.png" name="twitter:image"/>
+<meta content="../../../uploads/default/original/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702.png" property="og:image"/>
+<meta content="43.html" property="og:url"/>
+<meta content="43.html" name="twitter:url"/>
+<meta content="תרגיל graph - חיפוש מודול מתאים" property="og:title"/>
+<meta content="תרגיל graph - חיפוש מודול מתאים" name="twitter:title"/>
+<meta content="מצטרף לבעיות, אני ממש לא מצליח להבין איך אמורים לעבוד עם המודול הזה.  כשהרצתי את הקוד של ים קיבלתי את אותו פלט כמו אלון, אבל בניסיון להריץ את הקוד של אדווה אני מקבל את אותה התראה כמו אביעד  ניסיתי להריץ ב cmd (עם אדמיניסטרטור) dot -c אבל לא נראה שזה עשה משהו.  בבדיקה של dot -V זאת הגרסא - 2.38.0 (20140413.2041)  לא יודע עד כמה זה חשוב / לא חשוב לציין אבל הסברתי גם כאן:  בהתחלה הייתה לי בעיה לייבא את המודול כיוון שהוא היה מותקן כאילו רק אל האנקונדה (בגרסא 3.7.6) בעוד שאני עבדתי על הפייתון המעודכן..." property="og:description"/>
+<meta content="מצטרף לבעיות, אני ממש לא מצליח להבין איך אמורים לעבוד עם המודול הזה.  כשהרצתי את הקוד של ים קיבלתי את אותו פלט כמו אלון, אבל בניסיון להריץ את הקוד של אדווה אני מקבל את אותה התראה כמו אביעד  ניסיתי להריץ ב cmd (עם אדמיניסטרטור) dot -c אבל לא נראה שזה עשה משהו.  בבדיקה של dot -V זאת הגרסא - 2.38.0 (20140413.2041)  לא יודע עד כמה זה חשוב / לא חשוב לציין אבל הסברתי גם כאן:  בהתחלה הייתה לי בעיה לייבא את המודול כיוון שהוא היה מותקן כאילו רק אל האנקונדה (בגרסא 3.7.6) בעוד שאני עבדתי על הפייתון המעודכן..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 10" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="wit-graph" property="og:article:tag"/>
+<meta content="2020-09-08T20:06:42+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="../80664658.html?page=2" rel="prev"/>
+<link href="../8066fdb0.html?page=4" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8066.html">תרגיל graph - חיפוש מודול מתאים</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/week-10/21.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 10</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/wit-graph.html" rel="tag">wit-graph</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגיל graph - חיפוש מודול מתאים" itemprop="headline"/>
+<meta content="שבוע 10" itemprop="articleSection"/>
+<meta content="wit-graph" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_38" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T12:39:14Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏ 12:39pm
+                  </time>
+<meta content="2020-09-08T12:39:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תפתחי את ה-cmd בתור מנהל ותריצי את הפקודה:<br/>
+<code>python -m ensurepip</code><br/>
+תגידי מה קורה אחרי זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_39" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/0/02170ace529653f15cbf8547763ecfb28b732b27.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T12:42:05Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏ 12:42pm
+                  </time>
+<meta content="2020-09-08T12:42:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/02170ace529653f15cbf8547763ecfb28b732b27" href="../../../uploads/default/original/2X/0/02170ace529653f15cbf8547763ecfb28b732b27.png" title="image"><img alt="image" data-base62-sha1="iuk0gsyLFPmbi3a3LwLZsF4kpp" data-small-upload="../../../uploads/default/optimized/2X/0/02170ace529653f15cbf8547763ecfb28b732b27_2_10x10.png" height="500" src="../../../uploads/default/original/2X/0/02170ace529653f15cbf8547763ecfb28b732b27.png" width="462"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">671×725 60.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_40" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/4/4369f6235cfcb927652f8b90c8106d07d0a74585.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T13:00:43Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  1:00pm
+                  </time>
+<meta content="2020-09-08T13:00:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כשהתקנת את python 3.8.5 איפשרת לו להתקין את pip?<br/>
+הייתי אומר לך להתקין אותו מחדש ולאפשר גם את ההוספה של PYTHON ל-PATH:<br/>
+<img alt="image" data-base62-sha1="9Cn0JT6nEdoipux5P5HayXJSatn" height="306" src="../../../uploads/default/original/2X/4/4369f6235cfcb927652f8b90c8106d07d0a74585.png" width="502"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_41" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T14:04:00Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  2:04pm
+                  </time>
+<meta content="2020-09-08T14:04:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אעשה את זה… ואחרי שאתקין מחדש מה אמור לצאת לי שאני מריצה</p>
+<aside class="quote group-helper" data-post="38" data-topic="8066" data-username="orronai">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/o/7c8e57/40.png" width="20"/> orronai:</div>
+<blockquote>
+<p>python -m ensurepip</p>
+</blockquote>
+</aside>
+<p>ובמידה והpip עובד אז דרכו להתקין את המודול?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_42" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T15:21:02Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  3:21pm
+                  </time>
+<meta content="2020-09-08T15:21:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה יאמר לך שכבר קיים pip.<br/>
+אם pip יעבוד לך אז זהו בגדול</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_43" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T20:06:42Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  8:06pm
+                  </time>
+<meta content="2020-09-08T20:06:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצטרף לבעיות, אני ממש לא מצליח להבין איך אמורים לעבוד עם המודול הזה.<br/>
+כשהרצתי את הקוד של ים קיבלתי את אותו פלט כמו אלון, אבל בניסיון להריץ את הקוד של אדווה אני מקבל את אותה התראה כמו אביעד<br/>
+ניסיתי להריץ ב cmd (עם אדמיניסטרטור) dot -c אבל לא נראה שזה עשה משהו.<br/>
+בבדיקה של dot -V זאת הגרסא - 2.38.0 (20140413.2041)</p>
+<p>לא יודע עד כמה זה חשוב / לא חשוב לציין אבל הסברתי גם <a href="../../graphviz/8126.html">כאן</a>:<br/>
+בהתחלה הייתה לי בעיה לייבא את המודול כיוון שהוא היה מותקן כאילו רק אל האנקונדה (בגרסא 3.7.6) בעוד שאני עבדתי על הפייתון המעודכן (גרסא 3.8.5)<br/>
+הצלחתי להתקין אותו לגרסא העדכנית ע"י <code>python -m pip install</code> ומאז לא הייתה בעיה לייבא אותו יותר, אבל כאמור עכשיו אני תקוע עם הבעיה היותר מורכבת…</p>
+<p>בניסיון הרצה של הקובץ אותה ההתראה מתקבלת גם אצלי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/29cfbd6f02319b47fd246642f3c3f57feb910702" href="../../../uploads/default/original/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702.png" title="image"><img alt="image" data-base62-sha1="5XSEK12VuYsbl74CHnyJOBWdiBI" data-small-upload="../../../uploads/default/optimized/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702_2_10x10.png" height="210" src="../../../uploads/default/original/2X/2/29cfbd6f02319b47fd246642f3c3f57feb910702.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">968×295 13 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+(אותו הדבר גם מתוך ה vsc):<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d68507c88b8613a925507eaeb98beba22c0e4829" href="../../../uploads/default/original/2X/d/d68507c88b8613a925507eaeb98beba22c0e4829.png" title="image"><img alt="image" data-base62-sha1="uBJc5AofIcDfVXwt80O2lLbxckp" data-small-upload="../../../uploads/default/optimized/2X/d/d68507c88b8613a925507eaeb98beba22c0e4829_2_10x10.png" height="162" src="../../../uploads/default/original/2X/d/d68507c88b8613a925507eaeb98beba22c0e4829.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">983×232 12 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_44" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T20:36:30Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  8:36pm
+                  </time>
+<meta content="2020-09-08T20:36:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנוגע לגרסה של graphviz, אני הורדתי את 2.44.1 .</p>
+<p>בנוסף, האם מחקת והתקנת מחדש את anaconda?<br/>
+אני לא כל כך מבין בזה וייתכן שזה משהו אחר שפתר את הבעיה, אבל זה אחד הדברים שעשיתי בדרך לפתור אותה וגם עוד אחרים שכתבו פה למעלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_45" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T07:11:02Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  7:11am
+                  </time>
+<meta content="2020-09-09T07:11:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא עובד <img alt=":pensive:" class="emoji" src="../../../images/emoji/twitter/pensivec164.png?v=9" title=":pensive:"/> <img alt=":pensive:" class="emoji" src="../../../images/emoji/twitter/pensivec164.png?v=9" title=":pensive:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_46" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T07:37:10Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  7:37am
+                  </time>
+<meta content="2020-09-09T07:37:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא להתייאש!<br/>
+את יכולה!!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_47" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T07:54:33Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  7:54am
+                  </time>
+<meta content="2020-09-09T07:54:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חחח תודה על החיזוקים, באמת אין לי מושג מה לעשות יותר…<br/>
+התקנתי מהתחלה פייתון גרסת 3.8.5 - לא עבד הpip<br/>
+עשיתי עדכון להתקנה (שמריצים את python-3.8.5.exe ועושים modify ואז הורדתי וי מpip, ואז עשיתי את זה שוב רק שסימנתי שיתקין רק את הpip)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_48" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T07:57:22Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  7:57am
+                  </time>
+<meta content="2020-09-09T07:57:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תנסי סביבות עבודה אחרות<br/>
+יש איזשהיא סביבת עבודה שזה כן עובד לך בה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_49" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T07:59:28Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  7:59am
+                  </time>
+<meta content="2020-09-09T07:59:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה הכוונה?<br/>
+הקוד עובד לגמרי בpycharm, הוא לא עובד בcmd.<br/>
+ואני לא רוצה לחזור לגרסת פייתון ישנה כי חלק מהקוד שלי משתמש בדברים שיש רק מגרסא 3.8</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_50" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/4/41b5cab00d089dcd287b1f318bb21f12a4304fe5.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T08:05:02Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  8:05am
+                  </time>
+<meta content="2020-09-09T08:12:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עדכון: תודה לכל העוזרים, עובד כרגע:)</p>
+<p>עכשיו גילית משהו מעניין, מחקתי את גרסת פייתון 3.8.5<br/>
+ועדיין בpycharm נראה שהגרסא היא 3.8</p>
+<p><img alt="image" data-base62-sha1="9niwoTlmbruA1HOZv1mICRP0m69" height="91" src="../../../uploads/default/original/2X/4/41b5cab00d089dcd287b1f318bb21f12a4304fe5.png" width="660"/></p>
+<p>יכול להיות שיש לי על המחשב עוד גרסת פייתון 3.8 לא כולל מה שהרגע מחקתי?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_51" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T09:11:45Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  9:11am
+                  </time>
+<meta content="2020-09-09T09:11:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="24" data-topic="8066" data-username="Ellen">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/ellen/40/180_2.jpg" width="20"/> Ellen:</div>
+<blockquote>
+<p>קן את ה PATH</p>
+</blockquote>
+</aside>
+<p>מה הכוונה לתקן את הpath? איך עושים את זה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_52" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/e0c540904d5b8f564f0fbbe747143c3b0a951c5e.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T10:37:05Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏ 10:37am
+                  </time>
+<meta content="2020-09-09T10:37:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e0c540904d5b8f564f0fbbe747143c3b0a951c5e" href="../../../uploads/default/original/2X/e/e0c540904d5b8f564f0fbbe747143c3b0a951c5e.png" title="image"><img alt="image" data-base62-sha1="w4pyZ4iVmoRXVhAoPujZlEcaiJ0" data-small-upload="../../../uploads/default/optimized/2X/e/e0c540904d5b8f564f0fbbe747143c3b0a951c5e_2_10x10.png" height="500" src="../../../uploads/default/original/2X/e/e0c540904d5b8f564f0fbbe747143c3b0a951c5e.png" width="620"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">818×659 15.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+ניסיתי לעקוב אחרי ההמלצות שפורסמו פה, כבר היה מותקן לי גרסא 3.8.5 של פייתון.<br/>
+לאחר מכן בדקתי את הפרטים של קונדה וראיתי שלקונדה הגרסא הייתה 3.7.9.<br/>
+ניסיתי להריץ <code>conda upgrade python</code> וקיבלתי הודעה שאני צריך לשדרג עוד כמה חבילות ושאנסה להריץ <code>conda upgrade -all</code> מיד לאחר מכן קפצה לי הודעה עם פירוט של מה צריך לשדרג ואם אני רוצה להפעיל שדרוג (<code>[y]/[n]</code>) ואישרתי.<br/>
+סיים להתקין, בדקתי שוב והגרסא של פייתון בקונדה הייתה עדיין 3.7.9, חיפוש קצר בגוגל הראה לי את הפקודה <code>conda install -c anaconda python=3.8</code> גם כאן היו שינויים לחלק מהקבצים המותקנים עם קונדה (חלק שודרגו, חלק נמחקו, וכו’) ולאחר מכן התוצאה הגרסא של פייתון היא 3.8.5 גם בקונדה (כמו שניתן לראות בתמונה).</p>
+<p>בהרצה של <code>dot -V</code> משום מה אני מקבל 2.38 למרות שהורדתי את גרסא 2.44 (זה אפילו שם התיקייה שהותקנה תחת program files) אבל אני לא בטוח עד כמה זה קריטי.<br/>
+ובניסיון הרצה (אם זה לא מובן מאליו סגרתי את ה vsc ונכנסתי אליו מחדש):<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e157f1a679e8dd9b393d3e0239d8da3f50ce0f5a" href="../../../uploads/default/original/2X/e/e157f1a679e8dd9b393d3e0239d8da3f50ce0f5a.png" title="image"><img alt="image" data-base62-sha1="w9tQGXXvjUH8u57Izv2IjOYMMMW" data-small-upload="../../../uploads/default/optimized/2X/e/e157f1a679e8dd9b393d3e0239d8da3f50ce0f5a_2_10x10.png" height="165" src="../../../uploads/default/original/2X/e/e157f1a679e8dd9b393d3e0239d8da3f50ce0f5a.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1013×243 12.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>מסקנה: אין לי שמץ מה אצלי מוגדר לא נכון, ובהתחשב בזמן שנותר לי לסיים את ימים 3-5, בהתחשב בזמן שלוקח לי להבין ולפתור כל תרגיל, ובעובדה שבכל אחד מהימים שנותרו לי יש לי להספיק גם עבודה ואימון, אלא אם כן המודול הזה הוא המודול הכי נוח / יעיל / קצר לכתיבה או הבנה שיש לתרגיל הזה, אשמח לשמוע רעיונות לתיקון המודול הזה ו/או המלצות למודולים אחרים פחות מורכבים להתקנה…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_53" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ellen</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T12:37:21Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏ 12:37pm
+                  </time>
+<meta content="2020-09-09T12:37:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="51" data-topic="8066" data-username="krauskas">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/k/bc8723/40.png" width="20"/> krauskas:</div>
+<blockquote>
+<p>מה הכוונה לתקן את הpath? איך עושים את זה?</p>
+</blockquote>
+</aside>
+<p>בוינדואוס, פייתון מסתמך על environment variables<br/>
+באחד שפציפי שנקרא path ומצביע על קבצי הריצה שלו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_54" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ellen</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T12:40:12Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏ 12:40pm
+                  </time>
+<meta content="2020-09-09T12:40:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תקשיב, זה בדיוק מה שקרה לי. מחקתי הכל והתקנתי מחדש ורק אז זה עבד. כולל את אנקונדה. מסכימה שזה מעצבן אבל הגעת עד לפה בקורס<br/>
+עברת את מפענח הצפנים ואת לחששנית וזה מה שעוצר אותך??</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_55" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">krauskas</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T12:44:26Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏ 12:44pm
+                  </time>
+<meta content="2020-09-09T12:44:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי גם וזה עבד לי, אני ממליץ</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_56" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:18:57Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:18pm
+                  </time>
+<meta content="2020-09-09T14:18:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התגלגלתי מצחוק. אלן את אלופה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_57" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">DrorBiton</span>
+</span>
+<link href="../8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-09T14:47:37Z" itemprop="datePublished">
+                     9 בספטמבר,‏ 2020,‏  2:47pm
+                  </time>
+<meta content="2020-09-09T14:47:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מחקת גם את פייתון או רק את האנקונדה?<br/>
+ופשוט להוריד מחדש מהאתר שלהם ולהתקין כמו שעשינו בתחילת הקורס?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="../80664658.html?page=2" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+<span itemprop="name"><b><a href="../8066fdb0.html?page=4" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/graph/8066/43 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:12:24 GMT -->
+</html>

@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/7128 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:59 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגול מחלקות עם פתרון: חפיסת קלפים - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="התרגיל בחסות @orpazf 
+
+תרגול מחלקות: חפיסת קלפים
+
+כתבו מחלקה בשם  Card  המממשת קלף משחק שלו שתי תכונות: צורה ומספר. 
+המחלקה תתמוך בפעולה  __str__  ותאפשר להשוות בין שני קלפים לפי מספרם בלבד בעזרת סימני השוויון:  &amp;lt; ,  &amp;lt;= &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7128.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7128.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגול מחלקות עם פתרון: חפיסת קלפים’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7128.html" property="og:url"/>
+<meta content="7128.html" name="twitter:url"/>
+<meta content="תרגול מחלקות עם פתרון: חפיסת קלפים" property="og:title"/>
+<meta content="תרגול מחלקות עם פתרון: חפיסת קלפים" name="twitter:title"/>
+<meta content="התרגיל בחסות @orpazf   תרגול מחלקות: חפיסת קלפים  כתבו מחלקה בשם  Card  המממשת קלף משחק שלו שתי תכונות: צורה ומספר.  המחלקה תתמוך בפעולה  __str__  ותאפשר להשוות בין שני קלפים לפי מספרם בלבד בעזרת סימני השוויון:  &lt; ,  &lt;= ,  == ,  &gt;= ,  &gt; . השתמשו במתודות קסם. כעת, כתבו מחלקה בשם  Deck  שתכליתה אחסון של אוסף קלפים. אם היא אינה מקבלת חפיסת קלפים היא תיצור בעצמה חפיסת קלפים רגילה בת 52 קלפים, כאשר נסיך ייוצג כ־11, מלכה כ־12 ומלך כ־13.  המחלקה תתמוך בפעולות הבאות (נסו להשתמש בכמה שיותר מתודות קסם):  ..." property="og:description"/>
+<meta content="התרגיל בחסות @orpazf   תרגול מחלקות: חפיסת קלפים  כתבו מחלקה בשם  Card  המממשת קלף משחק שלו שתי תכונות: צורה ומספר.  המחלקה תתמוך בפעולה  __str__  ותאפשר להשוות בין שני קלפים לפי מספרם בלבד בעזרת סימני השוויון:  &lt; ,  &lt;= ,  == ,  &gt;= ,  &gt; . השתמשו במתודות קסם. כעת, כתבו מחלקה בשם  Deck  שתכליתה אחסון של אוסף קלפים. אם היא אינה מקבלת חפיסת קלפים היא תיצור בעצמה חפיסת קלפים רגילה בת 52 קלפים, כאשר נסיך ייוצג כ־11, מלכה כ־12 ומלך כ־13.  המחלקה תתמוך בפעולות הבאות (נסו להשתמש בכמה שיותר מתודות קסם):  ..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תרגול-נוסף" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="18 ❤"/>
+<meta content="2020-06-13T12:23:19+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="71284658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7128.html">תרגול מחלקות עם פתרון: חפיסת קלפים</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%aa%d7%a8%d7%92%d7%95%d7%9c-%d7%a0%d7%95%d7%a1%d7%a3.html" rel="tag">תרגול-נוסף</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגול מחלקות עם פתרון: חפיסת קלפים" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תרגול-נוסף" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T12:23:19Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏ 12:23pm
+                  </time>
+<meta content="2021-09-05T13:58:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>התרגיל בחסות <span class_="mention">@orpazf</span></p>
+<h3>
+<a class="anchor" href="#heading-1" name="heading-1"></a>תרגול מחלקות: חפיסת קלפים</h3>
+<ol>
+<li>כתבו מחלקה בשם  <code>Card</code>  המממשת קלף משחק שלו שתי תכונות: צורה ומספר.<br/>
+המחלקה תתמוך בפעולה  <code>__str__</code>  ותאפשר להשוות בין שני קלפים לפי מספרם בלבד בעזרת סימני השוויון:  <code>&lt;</code> ,  <code>&lt;=</code> ,  <code>==</code> ,  <code>&gt;=</code> ,  <code>&gt;</code> . השתמשו במתודות קסם.</li>
+<li>כעת, כתבו מחלקה בשם  <code>Deck</code>  שתכליתה אחסון של אוסף קלפים. אם היא אינה מקבלת חפיסת קלפים היא תיצור בעצמה חפיסת קלפים רגילה בת 52 קלפים, כאשר נסיך ייוצג כ־11, מלכה כ־12 ומלך כ־13.<br/>
+<strong>המחלקה תתמוך בפעולות הבאות (נסו להשתמש בכמה שיותר מתודות קסם):</strong><br/>
+2.1 איחוד שתי חפיסות ליצירת חפיסה חדשה.<br/>
+2.2 בדיקה של האם קלף מסוים נמצא בחפיסה<br/>
+2.3 הפעולה  <code>len</code>  על חפיסה תחזיר את מספר הקלפים הנמצאים בה.<br/>
+2.4 טריפת החפיסה.<br/>
+2.5 שליפת קלף מהחפיסה – שליפת הקלף תוציא את הקלף מהחפיסה.<br/>
+2.6 פעולה שמקבלת כפרמטרים את מספר השחקנים ואת מספר הקלפים שיחולקו לכל שחקן. הפעולה תיצור רשימה של ידי שחקנים, כאשר יד של שחקן היא בפני עצמה רשימת הקלפים שחולקו לו.</li>
+</ol>
+<p>פתרון מוקלט בחסות <span class_="mention">@orpazf</span> יפורסם בשעה 21:00 כאן: <a class="inline-onebox" href="https://youtu.be/-Sz62DeELKA">תרגול מחלקות: חפיסת קלפים - YouTube</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="7156.html" itemprop="url">תרגול נוסף: שבוע 7</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T15:23:04Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  3:23pm
+                  </time>
+<meta content="2020-06-13T15:23:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אשמח להבהרה: Deck מקבלת רשימה של קלפים או n קלפים? רשום “חפיסת קלפים” אבל זה לא עוזר לי להבנה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T15:26:52Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  3:26pm
+                  </time>
+<meta content="2020-06-13T15:26:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מימשתי עם רשימת קלפים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T15:52:13Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  3:52pm
+                  </time>
+<meta content="2020-06-13T15:52:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מרגיש לי ש2.6 לא באמת לחלוטין אמורה להיות פעולה של המחלקה deck. לטעמי היא יותר שייכת למחלקה של משהו כמו game.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T15:57:39Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  3:57pm
+                  </time>
+<meta content="2020-06-13T15:57:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זו כמובן אפשרות. לדעתי מכיוון שחלוקת קלפים היא מחפיסה, ולא למשל מיד של שחקן או מסתם רשימת קלפים, היא מתאימה יותר להיות תחת Deck <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:00:14Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:00pm
+                  </time>
+<meta content="2020-06-13T16:00:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לכן לא אמרתי שהיא שייכת ליד של שחקן, אלא למשחק עצמו. פה אנחנו ממש מבצעים פעולות של משחק ולא פעולות של deck. מה שאנחנו מקבלים בחזרה הוא לא מאפיין של deck.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:15:50Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:15pm
+                  </time>
+<meta content="2020-06-13T16:30:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>import random
+
+
+SUITS = {
+    "clubs": "♣",
+    "diamonds": "♦",
+    "hearts": "♥",
+    "spades": "♠",
+    }
+
+
+class Deck:
+    def __init__(self, cards=None):
+        if not cards:
+            cards = self.create_deck_of_cards()
+        self.cards = cards
+
+    def __add__(self, other):
+        return Deck(self.cards + other.cards)
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if self.n &gt;= len(self.cards):
+            raise StopIteration
+        else:
+            self.n += 1
+            return self.cards[self.n - 1]
+
+    def __len__(self):
+        return len(self.cards)
+
+    def __repr__(self):
+        return f'{self.cards}'
+
+    def create_deck_of_cards(self):
+        return [Card(value, suit) for suit in SUITS.values() for value in range(1, 14)]
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+        return True
+
+    def draw_card(self):
+        return self.cards.pop()
+
+    def create_player_hands(self, number_of_players, number_of_cards_per_player):
+        if len(self.cards) &lt; number_of_players * number_of_cards_per_player:
+            return False
+
+        self.shuffle()
+        player_hands = [
+            [self.draw_card() for _ in range(number_of_cards_per_player)]
+            for _ in range(number_of_players)
+        ]
+        return player_hands
+
+
+class Card:
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+
+    def __repr__(self):
+        return f'{self.rank}{self.suit}'
+
+    def __str__(self):
+        return f'{self.rank}{self.suit}'
+
+    def __eq__(self, other):
+        return self.rank == other.rank
+
+    def __ne__(self, other):
+        return self.rank != other.rank
+
+    def __lt__(self, other):
+        return self.rank &lt; other.rank
+
+    def __gt__(self, other):
+        return self.rank &gt; other.rank
+
+    def __le__(self, other):
+        return self.rank &lt;= other.rank
+
+    def __ge__(self, other):
+        return self.rank &gt;= other.rank
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:22:20Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:22pm
+                  </time>
+<meta content="2020-06-13T16:22:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה שהקוד שלך לא מתמודד יפה עם השורה <code>d = Deck()</code></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:24:36Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:24pm
+                  </time>
+<meta content="2020-06-13T16:24:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוקן…2020</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:30:23Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:30pm
+                  </time>
+<meta content="2020-06-13T16:30:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ונראה לי שגם סעיף 2.2 לא מופיע אצלך</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:32:24Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:32pm
+                  </time>
+<meta content="2020-06-13T16:32:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא היה ממש צורך לעשות מימוש של זה מכיוון שזה עובד.</p>
+<pre><code class>d2 = Deck([Card(8, "♣"), Card(4, "♣")])
+card = Card(8, "♣")
+print(card in d2)
+</code></pre>
+<p>מדפיס True</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T16:56:17Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  4:56pm
+                  </time>
+<meta content="2020-06-13T18:17:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@orpazf</span> תרגיל מצויין</p>
+<details>
+<summary>
+פתרון</summary>
+<pre><code class>import random
+
+
+class Card:
+    def __init__(self, value, suit):
+        self.value = value
+        self.suit = suit.upper()
+
+    def __str__(self):
+        return f'{self.value}{self.suit}'
+
+    def __lt__(self, other):
+        return self.value &lt; other.value
+
+    def __le__(self, other):
+        return self.value &lt;= other.value
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __ne__(self, other):
+        return self.value != other.value
+
+    def __gt__(self, other):
+        return self.value &gt; other.value
+
+    def __ge__(self, other):
+        return self.value &gt;= other.value
+
+
+class Deck:
+    def __init__(self, *cards):
+        if cards:
+            self.cards = list(cards)
+        else:
+            self.cards = [Card(value, suit) for suit in ['c', 'd', 'h', 's'] for value in range(1, 14)]
+
+    def __str__(self):
+        return str([str(card) for card in self.cards])
+
+    def __add__(self, other):
+        return Deck(*(self.cards + other.cards))
+
+    def __len__(self):
+        return len(self.cards)
+
+    def __contains__(self, other):
+        for card in self.cards:
+            if card == other and card.suit == other.suit:
+                return True
+        return False
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def sort(self, by_value=False):
+        self.cards.sort()
+        self.cards.sort(key=lambda card: card.suit)
+        if by_value:
+            self.cards.sort()
+
+    def draw(self):
+        self.shuffle()
+        return self.cards.pop()
+
+    def deal(self, players, amount):
+        return [Deck(*[self.draw() for _ in range(amount)]) for _ in range(players)]
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T17:02:49Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  5:02pm
+                  </time>
+<meta content="2020-06-13T17:02:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למה ב-init של Deck לעשות [cards*] במקום list(cards)?<br/>
+יש לי קצת יותר בעיה עם has_card:</p>
+<ol>
+<li>חפש מה אמור להיות השם של המתודה</li>
+<li>אתה בודק את המקרה שבו הכרטיס מיוצג כמחרוזת. זה בעייתי א’ כי זה לא כרטיס גם אם זה מודפס כאילו זה כן, ממש כמו שאם יבקשו שתבדוק האם 1 ברשימה לא תבדוק האם “1” נמצא בה. ב’ אם אתה בכל זאת רוצה לבדוק, שים לב שאם מישהו מגדיר חפיסת קלפים שבה הקלפים הם diamonds, hearts וכו’ הבדיקה הזו לא תתפוס עבורם ותזרוק שגיאה של ניסיון המרה ל-int <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T17:17:31Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  5:17pm
+                  </time>
+<meta content="2020-06-13T17:17:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+פתרון</summary>
+<p>import random</p>
+<p>SHAPES = {‘C’: ‘Club’, ‘D’: ‘Diamond’, ‘H’: ‘Heart’, ‘S’: ‘Spade’}<br/>
+VALUES = [‘1’, ‘2’, ‘3’, ‘4’, ‘5’, ‘6’, ‘7’, ‘8’, ‘9’, ‘10’, ‘11’, ‘12’, ‘13’]</p>
+<p>class Card:<br/>
+def <strong>init</strong>(self, shape, value):<br/>
+self.shape = shape<br/>
+self.value = value</p>
+<pre><code>def __str__(self):
+    return f"{self.shape}{self.value}"
+
+def __lt__(self, other):
+    return self.value &lt; other.value
+
+def __gt__(self, other):
+    return self.value &gt; other.value
+
+def __le__(self, other):
+    return self.value &lt;= other.value
+
+def __ge__(self, other):
+    return self.value &gt;= other.value
+
+def __cmp__(self, other):
+    return self.value == other.value
+</code></pre>
+<p>class Deck:<br/>
+def <strong>init</strong>(self, deck=None):<br/>
+if deck is None:<br/>
+deck = [Card(x,y) for x in SHAPES for y in VALUES]<br/>
+self.deck = deck</p>
+<pre><code>def merge(self, other):
+    self.deck.extend(other.deck)
+
+def __contains__(self, item):
+    return item in self.deck
+
+def __len__(self):
+    return len(self.deck)
+
+def shuffle(self):
+    random.shuffle(self.deck)
+
+def drow_card(self):
+    return self.deck.pop()
+
+def __str__(self):
+    return str([str(x) for x in self.deck])
+</code></pre>
+</details>
+<p>בלי 2.6, כי אותו אממש כ-Game עם Deck ו-Hand</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T17:25:56Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  5:25pm
+                  </time>
+<meta content="2020-06-13T17:25:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>א. merge שלך לא יוצרת חפיסה חדשה<br/>
+ב. לדעתי הפעולה שכינית merge אמורה להיות תחת מתודת קסם (חפש איזו)<br/>
+ג. אם אתה מעדיף לא לממש את 2.6 כחלק מהמחלקה, אתה מוזמן לממש אותה כפונקציה חיצונית (מאמינה שגם במשחק אתה תפריד את הפעולה הזו משאר המשחק)<br/>
+ד. שולי למדי אבל השתרבבה לך טעות כתיב, זה אמור להיות draw ולא drow <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T17:59:19Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  5:59pm
+                  </time>
+<meta content="2020-06-13T17:59:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפתרון המוקלט של אורפז משודר כעת כאן, מוזמנים להצטרף לצפות.<br/>
+עונים על שאלות בלייב – <a href="https://www.youtube.com/watch?v=-Sz62DeELKA">https://www.youtube.com/watch?v=-Sz62DeELKA</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T18:24:59Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  6:24pm
+                  </time>
+<meta content="2020-06-13T18:24:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>כי לפעמים אני לא חושב <img alt=":upside_down_face:" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title=":upside_down_face:"/><br/>
+2.2. ההיגיון היה שניתן יהיה להעביר למתודה מחרוזת שמייצגת קלף ולא רק אובייקט של קלף ולבדוק אם הקלף שהמחרוזת מייצגת נמצא בחפיסה, אבל אכן לא חשבתי על מקרה בו הקלף יוגדר עם יותר מאות אחת, בכל מקרה עודכן.</li>
+</ol>
+<p>בנוגע לפתרון שלך<br/>
+בעקבות ההגדרה של __ eq__ שישווה רק את הערך המספרי של קלפים, נסיון לבדוק האם קלף בעל ערך מספרי קיים אך סמל “שונה” נמצא בחבילה יניב תוצאה שגויה. למשל: ‘13C’, ‘13 Clubs’ &amp; ‘13akudgfkdzf’ כולם יחזירו True לבדיקה האם הם נמצאים בחבילה. זה לפחות מה שקרה לי עד שהוספתי השוואה גם של הסמל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T18:28:17Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  6:28pm
+                  </time>
+<meta content="2020-06-13T18:28:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה צודק, זה אחד החסרונות בהגדרה השרירותית שקלפים מוגדרים רק לפי הערך המספרי שלהם. זה יהיה נכון למשל עבור המשחק מלחמה ופחות עבור משחק כמו ברידג’.<br/>
+המטרה שעמדה לנגד עיניי היתה להראות עוד כמה מתודות קסם, כולל גם את &lt;, &gt; וכו’, והם פחות תופסים עבור השוואה בין סדרות שונות - אז התפשרתי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T18:29:58Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  6:29pm
+                  </time>
+<meta content="2020-06-13T18:29:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מקבל את הפשרה. הייתי מגדיר אותה בתרגיל בכדי לחסוך כאב ראש <img alt=":laughing:" class="emoji" src="../../images/emoji/twitter/laughingc164.png?v=9" title=":laughing:"/><br/>
+אבל תכלס גם את זה פתרתי בסוף, אז זה אפילו יותר מספק.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="7128.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T18:31:15Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  6:31pm
+                  </time>
+<meta content="2020-06-13T18:31:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני בטוחה שכאב הראש רק לימד אותך <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="71284658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/7128 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:43:01 GMT -->
+</html>

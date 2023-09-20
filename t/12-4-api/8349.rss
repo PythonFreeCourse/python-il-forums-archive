@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 12, יום 4: סִדרוּת, API</title>
+    <link>https://forums.pythonic.guru/t/12-4-api/8349</link>
+    <description>## אדמיניסטרטיבי
+
+היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם.
+ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה.
+
+## סִדרוּת (Serialization)
+
+בקצרה, סִדרוּת (ביום־יום אומרים &quot;סריאליזציה&quot;), הוא תהליך של העברת מבני נתונים (כמו מילון או רשימה) לצורה בה יהיה אפשר לאחסן את מבני הנתונים בקלות, או להעביר אותו ליעד אחר. 
+לרוב הקלט של תהליך הסריאליזציה יהיה מבנה נתונים, והפלט יהיה טקסט כלשהו שמייצג את את אותו מבנה נתונים.
+בדה־סריאליזציה (deserialization) עושים את התהליך ההפוך, שבו הקלט הוא לרוב טקסט, והפלט הוא לרוב מבנה נתונים.
+
+שימושים נפוצים לסריאליזציה:
+1. אם נצטרך להעביר בין שני מחשבים מילון ששמור בפייתון, נוכל בקלות לעשות לו סריאליזציה במחשב בו הוא שמור ולשלוח אותו למחשב השני. המחשב השני יעשה דה־סריאליזציה, ובכך יוכל להשתמש במילון.
+2. אם נרצה לשמור על המחשב את אותו מילון, נוכל להמיר אותו לטקסט בעזרת סריאליזציה ולשמור אותו בקלות על קובץ.
+
+### על אודות JSON
+
+ישנם פרוטוקולים שונים לסריאליזציה, המוכר שבהם הוא JSON (קיצור ל־JavaScript Object Notation). 
+היתרון הגדול של צורות סריאליזציה מוכרות במיוחד הוא שהן נתמכות בכל שפה שנגיע אליה. זה המצב עם JSON.
+בואו נמיר tuple של מילונים בפייתון ל־JSON, ונהפוך אותה למערך של אובייקטים (המקבילה ה־JavaScript־ית) ב־JavaScript:
+```
+import json
+people = ({&#39;name&#39;: &#39;Hummus&#39;, &#39;favorite_dish&#39;: &#39;Moshe&#39;}, {&#39;name&#39;: &#39;Guyava&#39;, &#39;favorite_dish&#39;: &#39;Danna&#39;})
+print(json.dumps(people))
+```
+
+איך יראה הפלט? דומה להחריד:
+&gt; `[{&quot;name&quot;: &quot;Hummus&quot;, &quot;favorite_dish&quot;: &quot;Moshe&quot;}, {&quot;name&quot;: &quot;Guyava&quot;, &quot;favorite_dish&quot;: &quot;Danna&quot;}]`
+
+ננסה להמיר חזרה ל־Python, רק כדי לראות מה קרה כאן:
+
+```python
+json.loads(&#39;[{&quot;name&quot;: &quot;Hummus&quot;, &quot;favorite_dish&quot;: &quot;Moshe&quot;}, {&quot;name&quot;: &quot;Guyava&quot;, &quot;favorite_dish&quot;: &quot;Danna&quot;}]&#39;)
+```
+
+קיבלנו:
+```
+[{&#39;name&#39;: &#39;Hummus&#39;, &#39;favorite_dish&#39;: &#39;Moshe&#39;},
+ {&#39;name&#39;: &#39;Guyava&#39;, &#39;favorite_dish&#39;: &#39;Danna&#39;}]
+```
+
+שימו לב שאיבדנו את העובדה שמבנה הנתונים החיצוני היה tuple.
+זה קורה כיוון שב־JSON אין מבנה נתונים שקול בדיוק ל־tuple, ולכן סריאליזציה של tuple־ים ממירה אותם לרשימות. זה בד&quot;כ לא משהו שמשפיע עלינו באמת, אבל זה כן משהו לקחת בחשבון כשעושים סריאליזציה באמצעות JSON.
+
+בנוסף, פייתון דאגה למיר את התו `&#39;` לתו `&quot;`, כדי לעמוד בתקן של JSON.
+
+אם נרצה לטעון באמצעות JavaScript את ה־JSON, נוכל לכתוב:
+
+```javascript
+JSON.parse(&#39;[{&quot;name&quot;: &quot;Hummus&quot;, &quot;favorite_dish&quot;: &quot;Moshe&quot;}, {&quot;name&quot;: &quot;Guyava&quot;, &quot;favorite_dish&quot;: &quot;Danna&quot;}]&#39;)
+```
+
+חשוב לזכור ש־JSON נתמכת כמעט בכל פלטפורמה שתגיעו אליה – וזה החוזק העיקרי שלה.
+
+ב־Go, לדוגמה, תוכלו לכתוב:
+```go
+json.Unmarshal([]byte(myJsonString), &amp;myStoredVariable)
+```
+
+וב־Java תוכלו לכתוב:
+
+```
+FileReader reader = new FileReader(filename);
+JSONParser jsonParser = new JSONParser();
+return jsonParser.parse(reader);
+```
+
+### על אודות pickle
+
+כפי שראינו, החיסרון המשמעותי ביותר של JSON היא איבוד מידע. JSON לא מבטיח לשמור לכם על טיפוסי הנתונים שהמרתם, ואפילו יסרב להמיר אובייקטים מורכבים (לדוגמה: רשימת תאריכים מטיפוס datetime).
+
+כדי להתמודד עם הבעיה, פייתון מציעה את המודול הסטנדרטי pickle שמאפשר לעשות סריאליזציה לכל אובייקט פייתון שהוא. החיסרון הוא, כמובן, שמעט מאוד שפות תכנות אחרות תומכות ב־pickle ישירות מהקופסה.
+
+נראה דוגמה ליצירת pickle:
+
+```
+import datetime
+import pickle
+
+pickle.dumps(datetime.datetime.now())
+```
+
+תוצאה:
+
+&gt; b&#39;\x80\x04\x95*\x00\x00\x00\x00\x00\x00\x00\x8c\x08datetime\x94\x8c\x08datetime\x94\x93\x94C\n\x07\xe4\n\x12\x073 \x04\x02\xa1\x94\x85\x94R\x94.&#39;
+
+### תחביר
+
+השימוש ב־pickle וב־json בפייתון זהה למדי – מייבאים את הספרייה הרלוונטית, ומשתמשים באחת מארבע פעולות שזמינות בספרייה:
+1. הפעולה `load` – מאפשרת לטעון מחרוזת מקובץ ולהעביר אותה דה-סריאליזציה.
+2. הפעולה `loads` – מאפשרת לטעון מחרוזת רגילה ולהעביר אותה דה-סריאליזציה.
+3. הפעולה `dump` – מאפשרת לשמור טיפוס נתונים על קובץ אחרי שעבר סריאליזציה. 
+4. הפעולה `dumps` – מאפשרת לשמור טיפוס נתונים כמשתנה/לקבל אותו כערך אחרי שעבר סריאליזציה.
+
+### שימוש בפרויקט שלנו
+
+ננסה להבין, לדוגמה, כיצד מערכת התרגילים מציגה לכם את ההערות שקיבלתם על התרגילים שלכם.
+
+כדי לעשות את זה נלחץ F12 בדף התרגיל, נעבור ללשונית Networks ונלחץ על Refresh.
+בין הבקשות, נוכל לראות את הבקשה לדף https://solve.pythonic.guru/comments?act=fetch&amp;fileId=111088, כאשר 111088 הוא מספר הקובץ שהוגש.
+
+כסיכום ביניים, אנחנו יכולים להגיד שבעת כניסה לתרגיל, המערכת פונה באמצעות בקשת GET קלאסית לדף comments בדומיין solve.pythonic.guru, שהפרמטרים שלה הם act: fetch ו־fileId: 111088.
+
+תשובת השרת היא:
+
+```json
+[{&quot;author_name&quot;:&quot;\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9&quot;,&quot;author_role&quot;:2,&quot;comment_id&quot;:1725,&quot;file_id&quot;:111088,&quot;id&quot;:337937,&quot;is_auto&quot;:true,&quot;line_number&quot;:6,&quot;text&quot;:&quot;\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9.&quot;},{&quot;author_name&quot;:&quot;\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9&quot;,&quot;author_role&quot;:2,&quot;comment_id&quot;:1725,&quot;file_id&quot;:111088,&quot;id&quot;:337938,&quot;is_auto&quot;:true,&quot;line_number&quot;:9,&quot;text&quot;:&quot;\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9.&quot;},{&quot;author_name&quot;:&quot;\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9&quot;,&quot;author_role&quot;:2,&quot;comment_id&quot;:1725,&quot;file_id&quot;:111088,&quot;id&quot;:337939,&quot;is_auto&quot;:true,&quot;line_number&quot;:12,&quot;text&quot;:&quot;\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9.&quot;}]
+```
+
+אם אתם משתמשים בדפדפן עם כלי פיתוח מודרניים, יתכן שהוא יבחר להציג לכם את התשובה באופן נאה לעין:
+
+![image|495x500](upload://4VeL6lmY1sGvVHt2OgVmO2K7ZQ4.png) 
+
+במערכת יש קוד JavaScript שקורא את הנתונים הללו, שהתקבלו משרת ה־Flask.
+לפי אותם נתונים הוא צובע את השורות הרלוונטיות ומאפשר לכם ללחוץ עליהן כדי לקבל פרטים נוספים על ההערה. את שם הבודק ואת המלל שיוצגו לכם הוא לוקח מהשדות author_name ו־text שמופיעים ב־JSON.
+
+כשתשתמשו בפרויקט שלכם ב־API, כמעט כל השירותים יאפשרו לכם לקבל תשובות ב־JSON.
+כעת אתם יודעים מה זה הייצוג הזה, וכיצד להמיר אותו לטיפוס נתונים שאתם מכירים בפייתון.
+
+------
+
+## מה זה API?
+
+המונח API הוא ראשי תיבות של Application Programming Interface.
+תוכנות פופולריות רבות כמו Facebook, Telegram או אפילו מערכת הפורומים שלנו, רוצות לעזור למתכנתים לכתוב עבורם הרחבות ולהשתמש באותן תוכנות לצורכיהם בקלות.
+
+לשם כך אותן תוכנות כותבות עבור המתכנתים דרך נוחה וקלה לדבר איתן. לזה קוראים API.
+אותו API לרוב מתועד, כך שאם תרשמו Discourse API לדוגמה (זה השם של מערכת הפורומים שלנו) אתם תראו הוראות שימוש מפורטות.
+
+דוגמאות ל־API:
+* מערכת הפורומים שלנו יודעת להחזיר בצורת JSON את כל ההודעות הפרטיות שלכם, או אפילו לשנות תמונת פרופיל באמצעות ה־API.
+* ב־Telegram אפשר ליצור בוט שמתממשק עם הערוץ, מקבל את כל המידע ממנו ויודע לבצע כל פעולה שמשתמש רגיל יכול לעשות, מהזמנת משתמשים ועד להשעייתם.
+* גם ל־Facebook, Youtube, Twitter, Whatsapp ואפילו ל־Windows – יש API.
+
+## על אודות Flask
+
+המודול Flask הוא מודול מינימליסטי שמאפשר לכם להרים שרת web בסיסי באמצעות פייתון.
+ראו את הלייב ביום 3 ואת [דוגמת הקוד](https://forums.pythonic.guru/t/12-3/8339/2) שמצורפת אליו כדי להבין כיצד הוא עובד ומה ניתן לעשות בעזרתו.
+
+אפליקציית Flask בסיסית (תודה לוויקיפדיה):
+
+```python
+from flask import Flask
+app = Flask(__name__)
+
+@app.route(&quot;/&quot;)
+def hello():
+    return &quot;Hello World!&quot;
+
+if __name__ == &quot;__main__&quot;:
+    app.run(debug=True)
+```</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 19 Oct 2020 12:16:15 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/12-4-api/8349.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <ol>
+<li>הסבר מעולה !</li>
+<li>כדי שהדפדפן יציג json בצורה יפה , בדרך כלל נדרשת התקנת תוסף לדפדפן.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/6</link>
+        <pubDate>Mon, 19 Oct 2020 12:16:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-6</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[galmalull]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה על המענה בשידור!</p>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/5</link>
+        <pubDate>Mon, 19 Oct 2020 05:56:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-5</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>אשמח אם תסביר על REST API.</p>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/4</link>
+        <pubDate>Sun, 18 Oct 2020 14:39:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-4</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[galmalull]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים,<br>
+האם כל API נכתב כjson ומחזיר תשובה באמצעות json ?<br>
+האם יש מקום שאתה ממליץ שנוכל לקרוא בו מידע נוסף על איך יוצרים API ?<br>
+תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/3</link>
+        <pubDate>Sun, 18 Oct 2020 12:41:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-3</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>היי הייתי שמח לשני חידודים,<br>
+אחד מה כרגע הדברים שנדרש לבצע חוץ מלהעמיד אתר…אלא קצת יותר ספציפי… פשוט מרגיש שהשבוע חלקנו נאבדנו כי היינו רגליים למשימות ספציפיות<br>
+ב. עוד קצת הסברים שלך על פלאסק אם זה יהיה אפשרי</p>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/2</link>
+        <pubDate>Sun, 18 Oct 2020 07:15:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-2</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+      <item>
+        <title>שבוע 12, יום 4: סִדרוּת, API</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>אדמיניסטרטיבי</h2>
+<p>היום בשעה 18:30 אעלה לשידור חי של כשעתיים, בו אענה לשאלות שנצברו אצלכם.<br>
+ביום שלישי הקרוב (20/10) אעלה בשעה 20:00 ואראה כיצד מקימים אתר קצה לקצה.</p>
+<h2>סִדרוּת (Serialization)</h2>
+<p>בקצרה, סִדרוּת (ביום־יום אומרים “סריאליזציה”), הוא תהליך של העברת מבני נתונים (כמו מילון או רשימה) לצורה בה יהיה אפשר לאחסן את מבני הנתונים בקלות, או להעביר אותו ליעד אחר.<br>
+לרוב הקלט של תהליך הסריאליזציה יהיה מבנה נתונים, והפלט יהיה טקסט כלשהו שמייצג את את אותו מבנה נתונים.<br>
+בדה־סריאליזציה (deserialization) עושים את התהליך ההפוך, שבו הקלט הוא לרוב טקסט, והפלט הוא לרוב מבנה נתונים.</p>
+<p>שימושים נפוצים לסריאליזציה:</p>
+<ol>
+<li>אם נצטרך להעביר בין שני מחשבים מילון ששמור בפייתון, נוכל בקלות לעשות לו סריאליזציה במחשב בו הוא שמור ולשלוח אותו למחשב השני. המחשב השני יעשה דה־סריאליזציה, ובכך יוכל להשתמש במילון.</li>
+<li>אם נרצה לשמור על המחשב את אותו מילון, נוכל להמיר אותו לטקסט בעזרת סריאליזציה ולשמור אותו בקלות על קובץ.</li>
+</ol>
+<h3>על אודות JSON</h3>
+<p>ישנם פרוטוקולים שונים לסריאליזציה, המוכר שבהם הוא JSON (קיצור ל־JavaScript Object Notation).<br>
+היתרון הגדול של צורות סריאליזציה מוכרות במיוחד הוא שהן נתמכות בכל שפה שנגיע אליה. זה המצב עם JSON.<br>
+בואו נמיר tuple של מילונים בפייתון ל־JSON, ונהפוך אותה למערך של אובייקטים (המקבילה ה־JavaScript־ית) ב־JavaScript:</p>
+<pre><code class="lang-auto">import json
+people = ({'name': 'Hummus', 'favorite_dish': 'Moshe'}, {'name': 'Guyava', 'favorite_dish': 'Danna'})
+print(json.dumps(people))
+</code></pre>
+<p>איך יראה הפלט? דומה להחריד:</p>
+<blockquote>
+<p><code>[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]</code></p>
+</blockquote>
+<p>ננסה להמיר חזרה ל־Python, רק כדי לראות מה קרה כאן:</p>
+<pre><code class="lang-python">json.loads('[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]')
+</code></pre>
+<p>קיבלנו:</p>
+<pre><code class="lang-auto">[{'name': 'Hummus', 'favorite_dish': 'Moshe'},
+ {'name': 'Guyava', 'favorite_dish': 'Danna'}]
+</code></pre>
+<p>שימו לב שאיבדנו את העובדה שמבנה הנתונים החיצוני היה tuple.<br>
+זה קורה כיוון שב־JSON אין מבנה נתונים שקול בדיוק ל־tuple, ולכן סריאליזציה של tuple־ים ממירה אותם לרשימות. זה בד"כ לא משהו שמשפיע עלינו באמת, אבל זה כן משהו לקחת בחשבון כשעושים סריאליזציה באמצעות JSON.</p>
+<p>בנוסף, פייתון דאגה למיר את התו <code>'</code> לתו <code>"</code>, כדי לעמוד בתקן של JSON.</p>
+<p>אם נרצה לטעון באמצעות JavaScript את ה־JSON, נוכל לכתוב:</p>
+<pre><code class="lang-javascript">JSON.parse('[{"name": "Hummus", "favorite_dish": "Moshe"}, {"name": "Guyava", "favorite_dish": "Danna"}]')
+</code></pre>
+<p>חשוב לזכור ש־JSON נתמכת כמעט בכל פלטפורמה שתגיעו אליה – וזה החוזק העיקרי שלה.</p>
+<p>ב־Go, לדוגמה, תוכלו לכתוב:</p>
+<pre><code class="lang-auto">json.Unmarshal([]byte(myJsonString), &amp;myStoredVariable)
+</code></pre>
+<p>וב־Java תוכלו לכתוב:</p>
+<pre><code class="lang-auto">FileReader reader = new FileReader(filename);
+JSONParser jsonParser = new JSONParser();
+return jsonParser.parse(reader);
+</code></pre>
+<h3>על אודות pickle</h3>
+<p>כפי שראינו, החיסרון המשמעותי ביותר של JSON היא איבוד מידע. JSON לא מבטיח לשמור לכם על טיפוסי הנתונים שהמרתם, ואפילו יסרב להמיר אובייקטים מורכבים (לדוגמה: רשימת תאריכים מטיפוס datetime).</p>
+<p>כדי להתמודד עם הבעיה, פייתון מציעה את המודול הסטנדרטי pickle שמאפשר לעשות סריאליזציה לכל אובייקט פייתון שהוא. החיסרון הוא, כמובן, שמעט מאוד שפות תכנות אחרות תומכות ב־pickle ישירות מהקופסה.</p>
+<p>נראה דוגמה ליצירת pickle:</p>
+<pre><code class="lang-auto">import datetime
+import pickle
+
+pickle.dumps(datetime.datetime.now())
+</code></pre>
+<p>תוצאה:</p>
+<blockquote>
+<p>b’\x80\x04\x95*\x00\x00\x00\x00\x00\x00\x00\x8c\x08datetime\x94\x8c\x08datetime\x94\x93\x94C\n\x07\xe4\n\x12\x073 \x04\x02\xa1\x94\x85\x94R\x94.’</p>
+</blockquote>
+<h3>תחביר</h3>
+<p>השימוש ב־pickle וב־json בפייתון זהה למדי – מייבאים את הספרייה הרלוונטית, ומשתמשים באחת מארבע פעולות שזמינות בספרייה:</p>
+<ol>
+<li>הפעולה <code>load</code> – מאפשרת לטעון מחרוזת מקובץ ולהעביר אותה דה-סריאליזציה.</li>
+<li>הפעולה <code>loads</code> – מאפשרת לטעון מחרוזת רגילה ולהעביר אותה דה-סריאליזציה.</li>
+<li>הפעולה <code>dump</code> – מאפשרת לשמור טיפוס נתונים על קובץ אחרי שעבר סריאליזציה.</li>
+<li>הפעולה <code>dumps</code> – מאפשרת לשמור טיפוס נתונים כמשתנה/לקבל אותו כערך אחרי שעבר סריאליזציה.</li>
+</ol>
+<h3>שימוש בפרויקט שלנו</h3>
+<p>ננסה להבין, לדוגמה, כיצד מערכת התרגילים מציגה לכם את ההערות שקיבלתם על התרגילים שלכם.</p>
+<p>כדי לעשות את זה נלחץ F12 בדף התרגיל, נעבור ללשונית Networks ונלחץ על Refresh.<br>
+בין הבקשות, נוכל לראות את הבקשה לדף <a href="https://solve.pythonic.guru/comments?act=fetch&amp;fileId=111088">https://solve.pythonic.guru/comments?act=fetch&amp;fileId=111088</a>, כאשר 111088 הוא מספר הקובץ שהוגש.</p>
+<p>כסיכום ביניים, אנחנו יכולים להגיד שבעת כניסה לתרגיל, המערכת פונה באמצעות בקשת GET קלאסית לדף comments בדומיין solve.pythonic.guru, שהפרמטרים שלה הם act: fetch ו־fileId: 111088.</p>
+<p>תשובת השרת היא:</p>
+<pre><code class="lang-json">[{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337937,"is_auto":true,"line_number":6,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."},{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337938,"is_auto":true,"line_number":9,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."},{"author_name":"\u05d4\u05d1\u05d5\u05d3\u05e7 \u05d4\u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9","author_role":2,"comment_id":1725,"file_id":111088,"id":337939,"is_auto":true,"line_number":12,"text":"\u05d9\u05d1\u05d5\u05d0\u05d9 \u05d4\u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd \u05e9\u05dc\u05da \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df. \u05d4\u05e7\u05e4\u05d9\u05d3\u05d5 \u05dc\u05e1\u05d3\u05e8 \u05d0\u05d5\u05ea\u05dd \u05d1\u05e1\u05d3\u05e8 \u05d0\u05dc\u05e4\u05d1\u05ea\u05d9."}]
+</code></pre>
+<p>אם אתם משתמשים בדפדפן עם כלי פיתוח מודרניים, יתכן שהוא יבחר להציג לכם את התשובה באופן נאה לעין:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/2/22811143e5ec803cd071e694d953790ff6f61278.png" data-download-href="https://forums.pythonic.guru/uploads/default/22811143e5ec803cd071e694d953790ff6f61278" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_495x500.png" alt="image" data-base62-sha1="4VeL6lmY1sGvVHt2OgVmO2K7ZQ4" width="495" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_495x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_742x750.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_990x1000.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/2/22811143e5ec803cd071e694d953790ff6f61278_2_10x10.png"></a></div><p></p>
+<p>במערכת יש קוד JavaScript שקורא את הנתונים הללו, שהתקבלו משרת ה־Flask.<br>
+לפי אותם נתונים הוא צובע את השורות הרלוונטיות ומאפשר לכם ללחוץ עליהן כדי לקבל פרטים נוספים על ההערה. את שם הבודק ואת המלל שיוצגו לכם הוא לוקח מהשדות author_name ו־text שמופיעים ב־JSON.</p>
+<p>כשתשתמשו בפרויקט שלכם ב־API, כמעט כל השירותים יאפשרו לכם לקבל תשובות ב־JSON.<br>
+כעת אתם יודעים מה זה הייצוג הזה, וכיצד להמיר אותו לטיפוס נתונים שאתם מכירים בפייתון.</p>
+<hr>
+<h2>מה זה API?</h2>
+<p>המונח API הוא ראשי תיבות של Application Programming Interface.<br>
+תוכנות פופולריות רבות כמו Facebook, Telegram או אפילו מערכת הפורומים שלנו, רוצות לעזור למתכנתים לכתוב עבורם הרחבות ולהשתמש באותן תוכנות לצורכיהם בקלות.</p>
+<p>לשם כך אותן תוכנות כותבות עבור המתכנתים דרך נוחה וקלה לדבר איתן. לזה קוראים API.<br>
+אותו API לרוב מתועד, כך שאם תרשמו Discourse API לדוגמה (זה השם של מערכת הפורומים שלנו) אתם תראו הוראות שימוש מפורטות.</p>
+<p>דוגמאות ל־API:</p>
+<ul>
+<li>מערכת הפורומים שלנו יודעת להחזיר בצורת JSON את כל ההודעות הפרטיות שלכם, או אפילו לשנות תמונת פרופיל באמצעות ה־API.</li>
+<li>ב־Telegram אפשר ליצור בוט שמתממשק עם הערוץ, מקבל את כל המידע ממנו ויודע לבצע כל פעולה שמשתמש רגיל יכול לעשות, מהזמנת משתמשים ועד להשעייתם.</li>
+<li>גם ל־Facebook, Youtube, Twitter, Whatsapp ואפילו ל־Windows – יש API.</li>
+</ul>
+<h2>על אודות Flask</h2>
+<p>המודול Flask הוא מודול מינימליסטי שמאפשר לכם להרים שרת web בסיסי באמצעות פייתון.<br>
+ראו את הלייב ביום 3 ואת <a href="https://forums.pythonic.guru/t/12-3/8339/2">דוגמת הקוד</a> שמצורפת אליו כדי להבין כיצד הוא עובד ומה ניתן לעשות בעזרתו.</p>
+<p>אפליקציית Flask בסיסית (תודה לוויקיפדיה):</p>
+<pre><code class="lang-python">from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/12-4-api/8349/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-4-api/8349/1</link>
+        <pubDate>Sun, 18 Oct 2020 05:33:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8349-1</guid>
+        <source url="https://forums.pythonic.guru/t/12-4-api/8349.rss">שבוע 12, יום 4: סִדרוּת, API</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/4928 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:14:45 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>משחק איקס עיגול - ניהול פונקציות - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+אז ככה, סיימתי את התרגיל. 
+לא הצלחתי להבין מדוע יש שימוש בפונקציות: 
+
+אם הלוח לא מלא ואין ניצחון.
+אם הלוח מלא אבל אין ניצחון.
+
+בנוגע לראשונה - הרי אם אנחנו בודקים את כל הצירופים האפשריים ואין נצחון אז בהכרח שאין ני&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="4928.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="4928.rss" rel="alternate nofollow" title="הזנת RSS של ‚משחק איקס עיגול - ניהול פונקציות’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="4928.html" property="og:url"/>
+<meta content="4928.html" name="twitter:url"/>
+<meta content="משחק איקס עיגול - ניהול פונקציות" property="og:title"/>
+<meta content="משחק איקס עיגול - ניהול פונקציות" name="twitter:title"/>
+<meta content='היי,  אז ככה, סיימתי את התרגיל.  לא הצלחתי להבין מדוע יש שימוש בפונקציות:   אם הלוח לא מלא ואין ניצחון. אם הלוח מלא אבל אין ניצחון.  בנוגע לראשונה - הרי אם אנחנו בודקים את כל הצירופים האפשריים ואין נצחון אז בהכרח שאין ניצחון.  וכל עוד ה"סופר צעדים" שנדרשנו להכניס אינו מפסיק את הלולאה מכאן שהלוח אינו מלא וממשיכים לשחק.  הקוד שלי לדעתי בכלל לא מגיע למצב שהוא משתמש בפונקציה הזו.  בנוגע לשניה - אם אין ניצחון וסופר הצעדים הגיע למספר הצעדים התקינים המקסימלים מכאן שהלוח מלא ואין נצחון.  גם פה אני לא חו...' property="og:description"/>
+<meta content='היי,  אז ככה, סיימתי את התרגיל.  לא הצלחתי להבין מדוע יש שימוש בפונקציות:   אם הלוח לא מלא ואין ניצחון. אם הלוח מלא אבל אין ניצחון.  בנוגע לראשונה - הרי אם אנחנו בודקים את כל הצירופים האפשריים ואין נצחון אז בהכרח שאין ניצחון.  וכל עוד ה"סופר צעדים" שנדרשנו להכניס אינו מפסיק את הלולאה מכאן שהלוח אינו מלא וממשיכים לשחק.  הקוד שלי לדעתי בכלל לא מגיע למצב שהוא משתמש בפונקציה הזו.  בנוגע לשניה - אם אין ניצחון וסופר הצעדים הגיע למספר הצעדים התקינים המקסימלים מכאן שהלוח מלא ואין נצחון.  גם פה אני לא חו...' name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="ביאור-תרגילים" property="og:article:tag"/>
+<meta content="איקס-עיגול" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2020-04-17T16:03:01+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="4928.html">משחק איקס עיגול - ניהול פונקציות</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%91%d7%99%d7%90%d7%95%d7%a8-%d7%aa%d7%a8%d7%92%d7%99%d7%9c%d7%99%d7%9d.html" rel="tag">ביאור-תרגילים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%99%d7%a7%d7%a1-%d7%a2%d7%99%d7%92%d7%95%d7%9c.html" rel="tag">איקס-עיגול</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="משחק איקס עיגול - ניהול פונקציות" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="ביאור-תרגילים, איקס-עיגול" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-17T16:03:01Z" itemprop="datePublished">
+                     17 באפריל,‏ 2020,‏  4:03pm
+                  </time>
+<meta content="2021-09-06T23:38:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,</p>
+<p>אז ככה, סיימתי את התרגיל.<br/>
+לא הצלחתי להבין מדוע יש שימוש בפונקציות:</p>
+<ol>
+<li>אם הלוח לא מלא ואין ניצחון.</li>
+<li>אם הלוח מלא אבל אין ניצחון.</li>
+</ol>
+<p>בנוגע לראשונה - הרי אם אנחנו בודקים את כל הצירופים האפשריים ואין נצחון אז בהכרח שאין ניצחון.<br/>
+וכל עוד ה"סופר צעדים" שנדרשנו להכניס אינו מפסיק את הלולאה מכאן שהלוח אינו מלא וממשיכים לשחק.<br/>
+הקוד שלי לדעתי בכלל לא מגיע למצב שהוא משתמש בפונקציה הזו.</p>
+<p>בנוגע לשניה - אם אין ניצחון וסופר הצעדים הגיע למספר הצעדים התקינים המקסימלים מכאן שהלוח מלא ואין נצחון.<br/>
+גם פה אני לא חושב שהקוד שלי בכלל הגיע למצב שהוא השתמש בפונקציה הזו, ואם כן סתם הייתה לו כפילות.</p>
+<p>בגדול אם לא יהיה את סופר הצעדים אז הפונקציות האלה יהפכו להיות רללונטיות כי אז נצטרך לבדוק אותם שנריץ לולאה, אבל אחרת לא הצלחתי להבין את השימוש בהם.</p>
+<p><img alt=":slight_smile:" class="emoji only-emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+<p>כמו כן, האם יש חיה כזו של להכניס פונקציות לרשימה ואז לזמן אותם משם ?</p>
+<p><span class_="mention">@Yam</span> <span class_="mention">@itamaraviv</span> (מתייג למקרה שהפוסט התפספס)<br/>
+תודה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smileb6f5.png?v=10" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Felixmn</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-17T19:41:29Z" itemprop="datePublished">
+                     17 באפריל,‏ 2020,‏  7:41pm
+                  </time>
+<meta content="2020-04-17T19:41:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני עדיין בשלבי פתירה של התרגיל, אז התשובה שלי בעירבון מוגבל.<br/>
+אבל לפי איך שהוא מנוסח, מדובר כאן על בדיקות שצריך לבצע כדי לוודא מהם מצבי הלוח.<br/>
+זה לא בהכרח אומר שלכל מצב כזה צריכה להיות פונ’ הבודקת אותו, אלא שבמסגרת הקוד שלך תדע להתמודד עם מצבי הלוח השונים ולהחזיר תשובה נכונה לגבי מי “המנצח” ברגע הנוכחי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-17T19:44:32Z" itemprop="datePublished">
+                     17 באפריל,‏ 2020,‏  7:44pm
+                  </time>
+<meta content="2020-04-17T19:44:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה בטוח צריך להתמודד עם זה<br/>
+אולם זה הופיע בתתי סעיפים (שחולקו לשורות)<br/>
+אז הנחתי שמצפים שנעשה פונקציה שבודקת<br/>
+את זה.</p>
+<p>בגדול ברגע שהלולאה עוברת עד הסוף משמע לא היה ניצחון והלוח מלא ואם לא אז אם שהיה ניצחון או שזה עדין תוך כדי משחק.</p>
+<p>(: בכל מקרה אחלה תרגיל שברתי עליו את הראש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Felixmn</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-17T19:48:31Z" itemprop="datePublished">
+                     17 באפריל,‏ 2020,‏  7:48pm
+                  </time>
+<meta content="2020-04-17T19:48:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מניח שהשאלה בסוף היא האם הפונ’ check_board שכתבת יודעת לבדה בהינתן לוח שהיא מקבלת כפרמטר להתמודד עם 2 המצבים האלה :</p>
+<aside class="quote no-group" data-post="1" data-topic="4928" data-username="aviadamar">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.jpg" width="20"/> aviadamar:</div>
+<blockquote>
+<ul>
+<li>אם הלוח לא מלא ואין ניצחון.</li>
+<li>אם הלוח מלא אבל אין ניצחון.</li>
+</ul>
+</blockquote>
+</aside>
+<p>ומחזירה מחרוזת ריקה כתשובה<br/>
+האם כתבת לכל אחד משניהם פונ’ או לא, זה להבנתי לא החלק הקריטי בשאלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-17T19:50:43Z" itemprop="datePublished">
+                     17 באפריל,‏ 2020,‏  7:50pm
+                  </time>
+<meta content="2020-04-17T19:50:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי לשניהם פונקציות</p>
+<p>והכנסתי בהתחלה לפונקציה הזו.<br/>
+אבל זה לא הכרחי לפונקציה הזו כי בגדול גם אם היא תריץ אותן זה סוג של עוד בדיקה מיותרת.</p>
+<p>מפה לשם מחקתי אותן ממנה ועדין הכל עובד רגיל עבור כל המצבים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-18T20:16:28Z" itemprop="datePublished">
+                     18 באפריל,‏ 2020,‏  8:16pm
+                  </time>
+<meta content="2020-04-18T20:16:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="3" data-topic="4928" data-username="aviadamar">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.jpg" width="20"/> aviadamar:</div>
+<blockquote>
+<p>בגדול ברגע שהלולאה עוברת עד הסוף משמע לא היה ניצחון והלוח מלא ואם לא אז אם שהיה ניצחון או שזה עדין תוך כדי משחק.</p>
+</blockquote>
+</aside>
+<p>היי, <span class_="mention">@itamaraviv</span> כתב את השאלה אז אני משאיר לו לתקן או לשפצר לי את התשובה בזמנו החופשי.</p>
+<p>אם זה תלוי בי:</p>
+<ol>
+<li>הפונקציות האלו היו יכולות להסתמך על מונה הצעדים (נניח: אם מספר הצעדים קטן מ־9 סימן שהלוח לא מלא)</li>
+<li>יש מצב (לא בהכרח, צריך להסתכל על הקוד והשאלה לעומק) שעדיף להסתמך על הלוח בשביל לקבל פתרון גנרי יותר שמתאים לכל סוג לוח ולכל דרישה עתידית שלא תבוא (נניח אם יש וריאציה של המשחק איקס־עיגול שמאפשרת למלא תא פעמיים תחת מצבים מסוימים במשחק, או כל מני מקרים מוזרים אחרים של שינוי דרישות).</li>
+<li>יש מצב שפשוט רצו להציק לכם קצת בתרגיל. גם זה לגיטימי.</li>
+</ol>
+<p>בהצלחה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-18T20:26:59Z" itemprop="datePublished">
+                     18 באפריל,‏ 2020,‏  8:26pm
+                  </time>
+<meta content="2020-04-18T20:26:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בגדול אם אם אכן היה המצב שאתה מתאר בסעיף 2 אז אכן היה צריך להשתמש בהם בלולאה נגיד כתנאי (אני מניח) מעבר לצעדים אבל כעט להכניס את זה שם עושה לזה בדיקה מיותרת כל סיבוב <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>נכון להיום הקוד עובד לי גם בלעדיהם למרות שעשיתי אותן והם בפני עצמם עובדות.</p>
+<p>מקסימום אשאיר לאיתמר לבדוק קצת יותר במקרה ומדובר בסעיף 3 שלך :):)<img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">itamaraviv</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-18T20:59:21Z" itemprop="datePublished">
+                     18 באפריל,‏ 2020,‏  8:59pm
+                  </time>
+<meta content="2020-04-18T20:59:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+לא נתבקשת לכתוב את הפונקציות האלה במפורש.</p>
+<p>אם אתה מדבר על הסעיף שבו כתוב “כתבו 10 בדיקות” - אז המטרה היא שתכתוב טסטים לפונקציה שכתבת כבר (<code>check_board</code>) - המטרה היא שתכניס אליה 10 מצבים ותראה שהפלט הוא כמצופה, אם כתבת פונקציות אז אני שמח שתרגלת, אבל שים לב שבסעיף היה כתוב שזה למטרת בדיקה:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e9e5478120b5d51a88981ca7d3e19f24e4bf0531" href="../../uploads/default/original/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531.png" title="image"><img alt="image" data-base62-sha1="xn8tIlJnVZcXmXDt8wGkt1nbJhD" data-small-upload="../../uploads/default/optimized/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531_2_10x10.png" height="196" src="../../uploads/default/optimized/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531_2_690x196.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531_2_690x196.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531_2_1035x294.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e9e5478120b5d51a88981ca7d3e19f24e4bf0531_2_1380x392.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1608×457 27.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>הפונקציות שהיית חייב לכתוב במסגרת התרגיל הן:</p>
+<ul>
+<li><code>check_board</code></li>
+<li><code>make_turn</code></li>
+<li><code>tic_tac_toe</code></li>
+</ul>
+<p>כל השאר זה תוספות שלך <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>.<br/>
+איתמר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4928.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-18T21:16:35Z" itemprop="datePublished">
+                     18 באפריל,‏ 2020,‏  9:16pm
+                  </time>
+<meta content="2020-04-18T21:16:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מעולה איתמר  ! תודה רבה (:</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/4928 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:14:49 GMT -->
+</html>

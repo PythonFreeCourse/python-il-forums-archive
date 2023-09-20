@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Developer&#39;s Guide</title>
+    <link>https://forums.pythonic.guru/t/developers-guide/8889</link>
+    <description>אני חושב שזה יהיה רעיון טוב, ושזה מאוד יקל על מי שיכנס לקוד אחריכם, שכל אחד שמרג&#39;ג&#39;ו לו את הקוד יעלה פה הסבר קצר על הקוד שלו ועל שימוש נכון בו.
+אני אתחיל:
+
+**הסבר כללי על העדכון**
+העדכון מאפשר למשתמשים לזמין אחד את השני לאירועים. משתמש יכול להזמין אדם אחר בין אם הוא רשום ובין אם לא. במידה והמשתמש רשום, הוא מקבל הזמנה לדף ההזמנות, אחרת הוא יקבל אימייל המכיל קובץ iCalendar שאותו המוזמן יכול לייבא לתוך הלוח שנה לו.
+
+**שינויים לדאטה בייס**
+הוספתי טבלת הזמנות וטבלה מקשרת בין המשתמשים לאירועים, שמטרתה לאפשר לכל משתתף להגיע לכמה אירועים, ולכל אירוע להכיל מספר משתתפים.
+
+**שינויים ל-routers**
+הוספתי route בסיסי לאישור הזמנות
+
+**שימוש נכון בקוד**
+סופר חשוב- כאשר אתם יוצרים אירוע חדש, ממש חשוב שתשתמשו בפונקציה שמיועדת לכך. אתם תוכלו לקרוא לפונקציה בעזרת `from routers.event import create_event`
+כנ&quot;ל גם לגבי query של האירועים- יש פונקציה מתאימה.
+
+אם מישהו צריך עזרה אפשר לכתוב לי פה או בפרטי.</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 16 Feb 2021 09:36:11 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/developers-guide/8889.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Developer&#39;s Guide</title>
+        <dc:creator><![CDATA[gALz]]></dc:creator>
+        <description><![CDATA[
+            <p>היי, בפיתוח שלי של Extending OpenAPI הוספתי ועשיתי סדר בחלק מהAPI שלהם.<br>
+ניתן להגיע לswagger דרך הכתובת הבאה:<br>
+<a href="http://127.0.0.1:8000/docs#/" class="onebox" target="_blank" rel="noopener nofollow ugc">http://127.0.0.1:8000/docs#/</a><br>
+ודוקומנטציה בכתובת הבאה<br>
+<a href="http://127.0.0.1:8000/redoc" class="onebox" target="_blank" rel="noopener nofollow ugc">http://127.0.0.1:8000/redoc</a></p>
+<p>הרעיון הוא שבתור מפתחים אנחנו יכולים לעשות שימוש ישירות מול ה APIים ולראות את התשובה שאיתה אנחנו רוצים לעבוד. לדוגמא, יצירת איבנט -<br>
+<a href="http://127.0.0.1:8000/docs#/event/create_event_api_event__post" class="onebox" target="_blank" rel="noopener nofollow ugc">http://127.0.0.1:8000/docs#/event/create_event_api_event__post</a><br>
+או קבלת כל האיבנטים -<br>
+<a href="http://127.0.0.1:8000/docs#/event/get_events_event__get" class="onebox" target="_blank" rel="noopener nofollow ugc">http://127.0.0.1:8000/docs#/event/get_events_event__get</a></p>
+<p>מאז שהכנסתי את הפיתוח נוצרו עוד ראוטים חדשים, שכדיפולט מגיעים לסכמה ולעיתים אין באמת טעם להראות אותם בסוואגר (לדוגמא, ראוט של גט שמחזיר html). אם אתם עוד בפיתוח, אתם יכולים לאקסלד את הראוט שלכם בצורה הזאת לדוגמא:<br>
+<code>@router.get("/", include_in_schema=False)</code></p>
+<p>בנוסף, גם למודולים הקיימים נוספו עמודות שיש סיכוי שכרגע אני לא מחזיר. מקווה בהמשך לעדכן את הכל.</p>
+          <p><a href="https://forums.pythonic.guru/t/developers-guide/8889/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/developers-guide/8889/3</link>
+        <pubDate>Tue, 16 Feb 2021 09:36:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8889-3</guid>
+        <source url="https://forums.pythonic.guru/t/developers-guide/8889.rss">Developer&#39;s Guide</source>
+      </item>
+      <item>
+        <title>Developer&#39;s Guide</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>המערכת עכשיו תומכת בלוקליזיציה ותרגום. מה זה אומר לגביכם?</p>
+<ol>
+<li>אם הוספתם טקסט בקובץ פייתון, תעטפו את הטקסט ככה: <code>_("your text")</code>
+</li>
+<li>אם הוספתם טקסט בקובץ HTML, תעטפו את הטקסט ככה: <code>{{ gettext("your text") }}</code>
+</li>
+<li>אם הטקסט גם כולל משתנה, תרשמו אותו ככה:<br>
+<code>{{ gettext("your text is %(text)s", text=variable) }}</code> , כאשר (text) הוא המשתנה ושם הפרמטר, ו variable זה המשתנה שאתם מכניסים לתוכו.</li>
+</ol>
+<p>אחרי שהוספתם את הטקסט, אתם יכולים גם להוסיף תרגום לשפות אחרות (כרגע נתמך רק עברית) בדרך הבאה. לרשום בטרמינל:</p>
+<ol>
+<li><code>pybabel extract --mapping-file=app/babel_mapping.ini app tests -o app/locales/base.pot -c i18n</code></li>
+<li><code>pybabel update -i app/locales/base.pot -d app/locales -D base</code></li>
+<li>לתרגם את המילים בקובץ <code>app/locales/he/LC_MESSAGES/base.po</code>
+</li>
+<li><code>pybabel compile -d app/locales -D base</code></li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/developers-guide/8889/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/developers-guide/8889/2</link>
+        <pubDate>Mon, 08 Feb 2021 10:58:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8889-2</guid>
+        <source url="https://forums.pythonic.guru/t/developers-guide/8889.rss">Developer&#39;s Guide</source>
+      </item>
+      <item>
+        <title>Developer&#39;s Guide</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>אני חושב שזה יהיה רעיון טוב, ושזה מאוד יקל על מי שיכנס לקוד אחריכם, שכל אחד שמרג’ג’ו לו את הקוד יעלה פה הסבר קצר על הקוד שלו ועל שימוש נכון בו.<br>
+אני אתחיל:</p>
+<p><strong>הסבר כללי על העדכון</strong><br>
+העדכון מאפשר למשתמשים לזמין אחד את השני לאירועים. משתמש יכול להזמין אדם אחר בין אם הוא רשום ובין אם לא. במידה והמשתמש רשום, הוא מקבל הזמנה לדף ההזמנות, אחרת הוא יקבל אימייל המכיל קובץ iCalendar שאותו המוזמן יכול לייבא לתוך הלוח שנה לו.</p>
+<p><strong>שינויים לדאטה בייס</strong><br>
+הוספתי טבלת הזמנות וטבלה מקשרת בין המשתמשים לאירועים, שמטרתה לאפשר לכל משתתף להגיע לכמה אירועים, ולכל אירוע להכיל מספר משתתפים.</p>
+<p><strong>שינויים ל-routers</strong><br>
+הוספתי route בסיסי לאישור הזמנות</p>
+<p><strong>שימוש נכון בקוד</strong><br>
+סופר חשוב- כאשר אתם יוצרים אירוע חדש, ממש חשוב שתשתמשו בפונקציה שמיועדת לכך. אתם תוכלו לקרוא לפונקציה בעזרת <code>from routers.event import create_event</code><br>
+כנ"ל גם לגבי query של האירועים- יש פונקציה מתאימה.</p>
+<p>אם מישהו צריך עזרה אפשר לכתוב לי פה או בפרטי.</p>
+          <p><a href="https://forums.pythonic.guru/t/developers-guide/8889/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/developers-guide/8889/1</link>
+        <pubDate>Sun, 24 Jan 2021 11:30:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8889-1</guid>
+        <source url="https://forums.pythonic.guru/t/developers-guide/8889.rss">Developer&#39;s Guide</source>
+      </item>
+  </channel>
+</rss>

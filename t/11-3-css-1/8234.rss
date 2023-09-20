@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 11 – יום 3: CSS חלק 1</title>
+    <link>https://forums.pythonic.guru/t/11-3-css-1/8234</link>
+    <description>## הודעות מנהליות
+1. עברתי על מדריך ה־CSS של MDN, וסקרתי השבוע עוד כמה עשרות מדריכים אחרים באינטרנט.
+מי שרוצה להרים פרויקט הוראה ראוי של CSS יגרוף הרבה תהילה, כי כרגע אין אחד שראיתי והתרשמתי ממנו עמוקות, למרבה הצער.
+אנחנו נמשיך ללמוד מ־MDN, גם כי זה משתלב טוב עם מה שלמדנו עד עכשיו וגם כי הוא כנראה המדריך המקיף ביותר עבור החומרים שאנחנו צריכים לסקור. הוא לא מבריק אבל הוא בהחלט מספק את הסחורה יותר טוב מהאחרים. אני ממליץ לכם לחזק את הידע בעזרת [freeCodeCamp](https://www.freecodecamp.org/learn) ובעזרת [Interneting is Hard](https://www.internetingishard.com/html-and-css/). שניהם היו מועמדים ראויים להחלפת MDN בחלק הזה של השבוע.
+2. לאור החגים הבאים עלינו לטובה והעיכוב שלי בהוצאת חומרי ה־CSS, החלטתי לדחות את ההגשה ב־4 ימים. זאת אומרת שתאריך ההגשה זז מה־02/10 ל־06/10 (יום ג&#39;; עדיין בשעה 19:00). החומרים הבאים יפורסמו עד כניסת השבת הקרובה. מי שרוצה לחסוך לעצמו זמן יכול לרוץ על החומרים שבאתר MDN עד (וכולל) החלק של  CSS layout.
+
+## הקדמה – CSS
+
+עם התפתחות האינטרנט והפיתוח בעולמות חווית משתמש, עלה הצורך בעיצובים גרפיים עבור אתרי אינטרנט.
+בעוד ש־HTML משמשת לייצוג התוכן של האתר (המלל והעצמים שמרכיבים אותו), נדרשה יכולת נוספת שתאפשר למשתמש לקבוע לא רק *איזה* תוכן יוצג בדף, אלא גם *איך* הוא יוצג.
+
+הרעיון של [להפריד את העיצוב מהתוכן](https://en.wikipedia.org/wiki/Separation_of_content_and_presentation) אינו חדש, וטומן בחובו יתרונות רבים.
+בעקבותיו, נוצרו שתי שפות נפרדות: שפת הסימון HTML, שאחראית לייצוג תוכן הדף, ושפת עיצוב דפי האינטרנט CSS, שאחראית על מראהו.
+
+בימים הקרובים, אם כך, אנחנו הולכים ללמוד מעט על איך נראה CSS וכיצד מעצבים באמצעותו אתרים.
+
+### חומרי הלימוד והתרגילים
+
+|מספר תרגיל|עמוד לימוד|קישור לתרגיל|הערות|
+| --- | --- | --- | --- |
+| 200 | [טבלאות 1](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics), [טבלאות 2](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced)||התרגיל מופיע למטה
+| | [What is CSS?](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS) | |
+| 201 | [Getting Started with CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started) | | התרגיל מופיע למטה
+| 202 | [How CSS is structured](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured), [How CSS works](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works) | [עצבו מחדש את הפרופיל של ג&#39;ון](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Using_your_new_knowledge) | אין פה נכון או לא נכון. ודאו ששיחקתם מספיק עם מה שלמדתם והגשתם משהו ראוי. התרגיל ייבדק.
+
+
+### תרגיל 200
+
+בנו טבלה עם התוכן של יום 1 ושל יום 2, משולב.
+חפשו באינטרנט את הביטוי &quot;Inspect Element&quot;, וקראו מדריכים לאיך לקחת את קוד ה־HTML מהדפים הרלוונטיים ([יום 1](https://forums.pythonic.guru/t/11-1-html/8205), [יום 2](https://forums.pythonic.guru/t/11-2-html/8219)) כדי להקל עליכם את המשימה.
+
+![image|690x237](upload://xig772ACCHD1PwXUeWf4d4hrIQ0.png) 
+
+### תרגיל 201
+
+השתמשו ב־CSS כדי לגרום לטבלה להראות דומה לטבלה שבפורום.
+רמז: קראו על tbody ועל border-top, ועל tr ו־border-bottom.
+
+### קישורים נוספים:
+1. [אימון כייפי וברמה טובה על selectors](https://flukeout.github.io/).
+2. [רפרנס ל־CSS עם ה-מ-ו-ן ידע מועיל](https://cssreference.io/), שמוסבר בצורה חזותית נפלאה.
+3. [עוד רפרנס](https://tympanus.net/codrops/css_reference/in-range/) עם הרבה (יותר מדי) ידע מועיל.</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 27 Sep 2020 07:01:26 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/11-3-css-1/8234.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 11 – יום 3: CSS חלק 1</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>למי שמחפש סרטון על Inspect Element</p>
+<p><a href="https://www.youtube.com/watch?v=1l4xz1QQhew">How to use Google Chrome Inspect Element tool</a></p>
+
+          <p><a href="https://forums.pythonic.guru/t/11-3-css-1/8234/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/11-3-css-1/8234/2</link>
+        <pubDate>Sun, 27 Sep 2020 07:01:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8234-2</guid>
+        <source url="https://forums.pythonic.guru/t/11-3-css-1/8234.rss">שבוע 11 – יום 3: CSS חלק 1</source>
+      </item>
+      <item>
+        <title>שבוע 11 – יום 3: CSS חלק 1</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>הודעות מנהליות</h2>
+<ol>
+<li>עברתי על מדריך ה־CSS של MDN, וסקרתי השבוע עוד כמה עשרות מדריכים אחרים באינטרנט.<br>
+מי שרוצה להרים פרויקט הוראה ראוי של CSS יגרוף הרבה תהילה, כי כרגע אין אחד שראיתי והתרשמתי ממנו עמוקות, למרבה הצער.<br>
+אנחנו נמשיך ללמוד מ־MDN, גם כי זה משתלב טוב עם מה שלמדנו עד עכשיו וגם כי הוא כנראה המדריך המקיף ביותר עבור החומרים שאנחנו צריכים לסקור. הוא לא מבריק אבל הוא בהחלט מספק את הסחורה יותר טוב מהאחרים. אני ממליץ לכם לחזק את הידע בעזרת <a href="https://www.freecodecamp.org/learn">freeCodeCamp</a> ובעזרת <a href="https://www.internetingishard.com/html-and-css/">Interneting is Hard</a>. שניהם היו מועמדים ראויים להחלפת MDN בחלק הזה של השבוע.</li>
+<li>לאור החגים הבאים עלינו לטובה והעיכוב שלי בהוצאת חומרי ה־CSS, החלטתי לדחות את ההגשה ב־4 ימים. זאת אומרת שתאריך ההגשה זז מה־02/10 ל־06/10 (יום ג’; עדיין בשעה 19:00). החומרים הבאים יפורסמו עד כניסת השבת הקרובה. מי שרוצה לחסוך לעצמו זמן יכול לרוץ על החומרים שבאתר MDN עד (וכולל) החלק של  CSS layout.</li>
+</ol>
+<h2>הקדמה – CSS</h2>
+<p>עם התפתחות האינטרנט והפיתוח בעולמות חווית משתמש, עלה הצורך בעיצובים גרפיים עבור אתרי אינטרנט.<br>
+בעוד ש־HTML משמשת לייצוג התוכן של האתר (המלל והעצמים שמרכיבים אותו), נדרשה יכולת נוספת שתאפשר למשתמש לקבוע לא רק <em>איזה</em> תוכן יוצג בדף, אלא גם <em>איך</em> הוא יוצג.</p>
+<p>הרעיון של <a href="https://en.wikipedia.org/wiki/Separation_of_content_and_presentation">להפריד את העיצוב מהתוכן</a> אינו חדש, וטומן בחובו יתרונות רבים.<br>
+בעקבותיו, נוצרו שתי שפות נפרדות: שפת הסימון HTML, שאחראית לייצוג תוכן הדף, ושפת עיצוב דפי האינטרנט CSS, שאחראית על מראהו.</p>
+<p>בימים הקרובים, אם כך, אנחנו הולכים ללמוד מעט על איך נראה CSS וכיצד מעצבים באמצעותו אתרים.</p>
+<h3>חומרי הלימוד והתרגילים</h3>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>מספר תרגיל</th>
+<th>עמוד לימוד</th>
+<th>קישור לתרגיל</th>
+<th>הערות</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>
+<a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics">טבלאות 1</a>, <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced">טבלאות 2</a>
+</td>
+<td></td>
+<td>התרגיל מופיע למטה</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS">What is CSS?</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>201</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started">Getting Started with CSS</a></td>
+<td></td>
+<td>התרגיל מופיע למטה</td>
+</tr>
+<tr>
+<td>202</td>
+<td>
+<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured">How CSS is structured</a>, <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works">How CSS works</a>
+</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Using_your_new_knowledge">עצבו מחדש את הפרופיל של ג’ון</a></td>
+<td>אין פה נכון או לא נכון. ודאו ששיחקתם מספיק עם מה שלמדתם והגשתם משהו ראוי. התרגיל ייבדק.</td>
+</tr>
+</tbody>
+</table>
+</div><h3>תרגיל 200</h3>
+<p>בנו טבלה עם התוכן של יום 1 ושל יום 2, משולב.<br>
+חפשו באינטרנט את הביטוי “Inspect Element”, וקראו מדריכים לאיך לקחת את קוד ה־HTML מהדפים הרלוונטיים (<a href="https://forums.pythonic.guru/t/11-1-html/8205">יום 1</a>, <a href="https://forums.pythonic.guru/t/11-2-html/8219">יום 2</a>) כדי להקל עליכם את המשימה.</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40.png" data-download-href="https://forums.pythonic.guru/uploads/default/e95826d5062c2368d77c88342f63918e2f04ee40" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40_2_690x237.png" alt="image" data-base62-sha1="xig772ACCHD1PwXUeWf4d4hrIQ0" width="690" height="237" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40_2_690x237.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40_2_1035x355.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40_2_1380x474.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e95826d5062c2368d77c88342f63918e2f04ee40_2_10x10.png"></a></div><p></p>
+<h3>תרגיל 201</h3>
+<p>השתמשו ב־CSS כדי לגרום לטבלה להראות דומה לטבלה שבפורום.<br>
+רמז: קראו על tbody ועל border-top, ועל tr ו־border-bottom.</p>
+<h3>קישורים נוספים:</h3>
+<ol>
+<li>
+<a href="https://flukeout.github.io/">אימון כייפי וברמה טובה על selectors</a>.</li>
+<li>
+<a href="https://cssreference.io/">רפרנס ל־CSS עם ה-מ-ו-ן ידע מועיל</a>, שמוסבר בצורה חזותית נפלאה.</li>
+<li>
+<a href="https://tympanus.net/codrops/css_reference/in-range/">עוד רפרנס</a> עם הרבה (יותר מדי) ידע מועיל.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/11-3-css-1/8234/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/11-3-css-1/8234/1</link>
+        <pubDate>Wed, 23 Sep 2020 04:41:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8234-1</guid>
+        <source url="https://forums.pythonic.guru/t/11-3-css-1/8234.rss">שבוע 11 – יום 3: CSS חלק 1</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>חשמל זורם בכפות ידיך</title>
+    <link>https://forums.pythonic.guru/t/topic/7667</link>
+    <description>פותח את פוסט גם לשאלות עתידיות, אבל אתחיל עם משהו קצת שולי שממש לא ברור לי,
+אני מתכנן לבנות את התרגיל כך שהמחלקה LogicGate תהיה מחלקת אב אבסטרקטית ועליה יתבססו כל מחלקות ההשוואה (and, or וכו&#39;)
+
+מקווה שאני לא חושף את התשובה, אבל בניתי את המחלקה כך, היא מקבלת את המשתנה entries שייצג את הכניסות שלה, ואת היציאה הגדרתי עפ&quot;י פונקציה (ובמחלקת האב שמתי לה pass).
+
+לאחר מכן לכל אחת מהמחלקות אותו init ולכל אחת מהן שיניתי את הפעולה get_exit בהתאם למחלקה.
+עכשיו כשניסיתי להריץ מופע של אחת המחלקות אני לא מצליח להבין מה הבעיה שלי:
+![image|595x151](upload://AgfbsMzSwAl1N882f7biVvV53ba.png) 
+מבין שמדובר בבעיה של הגדרת משתנה, אבל הוא מוגדר וזה מה שאני לא מצליח להבין, יותר מזה, חזרתי למחברת 2 כדי להשוות לתרגילים אחרים כדוגמא, והן כתובות בדיוק אותו הדבר.
+מקווה שהדוגמא הזאת לא חושפת יותר מדי, אבל הנה דוגמא לאחת המחלקות (כולן בנויות אותו הדבר):
+```
+class NandGate(LogicGate):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+```</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 30 Jul 2020 08:06:11 +0000</lastBuildDate>
+    <category>שבוע 8</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/7667.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>מקפיץ…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/8</link>
+        <pubDate>Thu, 30 Jul 2020 08:06:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>הבנתי את הכוונה שלכם ואת הבלבול שלי, חזרתי קצת אחורה בניסיון לתקן את שיטת העבודה של האינדקסים בתקווה שזה יפתח לי את הראש לכיוון אחר לפתור את הבונוס,</p>
+<p>אני מנסה לבנות פעולה שתחליף את העיבוד עפ"י אינדקסים ושתדע עבור כל שער בקלט לזהות אם הוא בוליאני או אונרי ובהתאם לדעת להוסיף לו קלט 1 או שניים.</p>
+<p>החלק שמוזר לי הוא שהצלחתי להריץ את השורה הראשונה ולקבל True אבל בשניה אני מקבל התראה:<br>
+@<br>
+אני מצליח להבין את המשמעות של ההתראה, אבל מצליח להבין למה היא נובעת בשורה השניה אם בשורה הראשונה היא הצליחה לקרוא למחלקה OrGate ולקבל את התוצאה הנכונה.</p>
+<p>עריכה:<br>
+סיימתי עכשיו לרוץ שלב שלב ב python tutor ואין לי מושג למה הוא לא מצליח להריץ את השורה השניה.<br>
+חזרתי למחברת וניסיתי להריץ כל שורה בנפרד בתא אחר וכולן עבדו, ברגע שהוספתי שורה נוספת הקוד לא רץ ואני לא מצליח להבין למה זה פועל ככה.<br>
+ניסיתי גם להעתיק את השורה בין כל אחד:</p>
+<pre><code class="lang-auto">circuit = Connector(gate=OrGate, input_gates=[OrGate, AndGate])
+print(circuit.send_inputs([False, False, False, False]) == False)
+circuit = Connector(gate=OrGate, input_gates=[OrGate, AndGate])
+print(circuit.send_inputs([False, False, False, True]) == False)
+</code></pre>
+<p>וההדפסה יוצאת תקינה.<br>
+יש למישהו מושג למה זה קורה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/7</link>
+        <pubDate>Tue, 28 Jul 2020 14:49:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>בסעיף הראשון, בבדיקה אתה מחזיר str  או bool?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/6</link>
+        <pubDate>Tue, 28 Jul 2020 13:37:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>איך גרמת למחלקה בסעיף הראשון להחזיר ביטוי בוליאני ולא סטרינגי?<br>
+מה ההבדל בין הסעיפים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/5</link>
+        <pubDate>Tue, 28 Jul 2020 13:06:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>אני רוצה לדייק את השאלה כיוון שנתקעתי בשלב הבונוס.<br>
+כדי למצוא את הפתרון התבססתי על אינדקסים של הרשימות שאני מקבל, וכשהגעתי לבונוס הבנתי שאני לא בהכרח יכול לעשות את זה כיוון שכל  connector יכול להיות שונה.</p>
+<p>כשאני מנסה לפענח את הבונוס, את הראשון הבנתי, מוגדר כמו בהתחלה, אבל בשני לא ברור לי מה הכוונה תחת second connector:</p>
+<pre><code class="lang-auto">input_gates=[first_connector]
+</code></pre>
+<p>אני מצליח להבין שהיא אמורה לקבל את התוצאה של connector 1 + את הקלט הבא בתור (מרשימת הקלטים), אבל לא ברור לי איך אני אמור להוציא ממנה את התוצאה בניסוח הזה? הרי הניסוח שאנחנו כן מכירים שקיים כדי לתת ייצוג למחלקה הוא ע"י שימוש ב __ str __ שמחזיר סטרינג ולא ביטוי בוליאני, אז האם אני אמור לשנות את הבדיקה, ואם לא איך אני גורם למחלקה להחזיר בוליאני ולא סטרינג.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/4</link>
+        <pubDate>Tue, 28 Jul 2020 11:59:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>האמת שבדיוק באתי לערוך את הפוסט שמצאתי שביצירה של המופע, אם הגדרתי אותו כך:</p>
+<pre><code class="lang-auto">x = XorGate(entries=[False, False])
+</code></pre>
+<p>זה עבד בלי בעיה, למרות שהחלק הזה של ההשמה עדיין לא ברור לי.<br>
+בכל אופן, אני לא בטוח איך להמשיך מכאן לשאר המחלקות, אני חושב אבל שיש לי כיוון:</p>
+<pre><code class="lang-auto">circuit = Connector(gate=OrGate, input_gates=[OrGate, AndGate])
+print(circuit.send_inputs([False, False, True, True]) == True)
+</code></pre>
+<p>אם הבנתי נכון, הסדר של המחלקה connector עובד כך:<br>
+input_gates היא בעצם רשימה של 2 השערים הראשונים, עפ"י סדר, OrGate תקבל את שני ה- False ו- AndGate תקבל את שני ה- True.<br>
+לאחר מכן, התוצאה של שני השערים תיכנס לשער הראשי, Gate, ואז אני אקבל את התוצאה הסופית.<br>
+כך בעצם כל 2 משתנים יוצרים מופע של מחלקה.</p>
+<p>עוד שאלה שנובעת מכך היא השימוש במחלקות UnaryGates ו- BinaryGates, הבנתי עכשיו שהייתי צריך להשתמש בהן כמחלקות שיורשות מ- LogicGate ושבהתאם שאר המחלקות ירשו מהן, אבל אין לי באמת צורך בהן, האם פשוט ליצור 2 מחלקות ביניים שלא מוסיפות לי שום דבר?<br>
+*אני מבין את ההבדל ביניהן, אבל אני לא צריך אותן כדי להתייחס אליו כשאני רוצה לקבל את היציאה של המחלקה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/3</link>
+        <pubDate>Mon, 27 Jul 2020 18:04:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p>איך בנויה LogicGate?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/2</link>
+        <pubDate>Mon, 27 Jul 2020 17:51:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+      <item>
+        <title>חשמל זורם בכפות ידיך</title>
+        <dc:creator><![CDATA[DrorBiton]]></dc:creator>
+        <description><![CDATA[
+            <p>פותח את פוסט גם לשאלות עתידיות, אבל אתחיל עם משהו קצת שולי שממש לא ברור לי,<br>
+אני מתכנן לבנות את התרגיל כך שהמחלקה LogicGate תהיה מחלקת אב אבסטרקטית ועליה יתבססו כל מחלקות ההשוואה (and, or וכו’)</p>
+<p>מקווה שאני לא חושף את התשובה, אבל בניתי את המחלקה כך, היא מקבלת את המשתנה entries שייצג את הכניסות שלה, ואת היציאה הגדרתי עפ"י פונקציה (ובמחלקת האב שמתי לה pass).</p>
+<p>לאחר מכן לכל אחת מהמחלקות אותו init ולכל אחת מהן שיניתי את הפעולה get_exit בהתאם למחלקה.<br>
+עכשיו כשניסיתי להריץ מופע של אחת המחלקות אני לא מצליח להבין מה הבעיה שלי:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fe245ceef1dfa99c6ebed7418b80e8b38955e088.png" alt="image" data-base62-sha1="AgfbsMzSwAl1N882f7biVvV53ba" width="595" height="151"><br>
+מבין שמדובר בבעיה של הגדרת משתנה, אבל הוא מוגדר וזה מה שאני לא מצליח להבין, יותר מזה, חזרתי למחברת 2 כדי להשוות לתרגילים אחרים כדוגמא, והן כתובות בדיוק אותו הדבר.<br>
+מקווה שהדוגמא הזאת לא חושפת יותר מדי, אבל הנה דוגמא לאחת המחלקות (כולן בנויות אותו הדבר):</p>
+<pre><code class="lang-auto">class NandGate(LogicGate):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/7667/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7667/1</link>
+        <pubDate>Mon, 27 Jul 2020 17:32:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7667-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7667.rss">חשמל זורם בכפות ידיך</source>
+      </item>
+  </channel>
+</rss>

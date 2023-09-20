@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בעיה עם response.redirect</title>
+    <link>https://forums.pythonic.guru/t/response-redirect/8919</link>
+    <description>יש לי ראוט שמרנדר טופס עבור הלקוח. אני לוקח ומעבד את הנתונים מהטופס.בסוף הפעולה, אני צריך לשלוח את הנתונים הללו לראוט אחר, שאמור לקבל אותם כמילון, בבקשת פוסט.
+אני לא מצליח לבצע את הפעולה הזאת בשום דרך עם return.redirect. האם מישהו יודע  איך ניתן לבצע את זה?</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 04 Feb 2021 17:24:26 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/response-redirect/8919.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי PR  לשתי הגירסאות.<br>
+עבור גירסת api-Users, טיפלתי עד כמה שיכלתי בקונפליטקים שנוצרו בעקבות כך שהיא חייבת להיות זאת שמנהלת את טבלת user. עשיתי את המקסימום על ידי ירושה ממחלקת base שלהם, ושיניתי בהתאם את הריליישנז של כל הטבלאות.<br>
+ישנם קונפליקטים נוספים שבהם לא טיפלתי, מאחר ואין בה password עבור יוזר, אלא hashed_password. ישנם טסטים של אחרים שמחפשים את השורה הזאת, והם לא עוברים כרגע.<br>
+פירטתי כמיטב יכולתי בתיאור ה- PR.<br>
+לגבי הגירסה לניהול משתמשים שאני כתבתי: אין בה שום קונפליקטים, היא עובדת באופן מלא, כולל תמיכה בפרונט אנד. עקרונית היא מוכנה למיזוג מהבחינה הזאת. למרות זאת, הגירסה שב- PR תצטרך לעבור מספר שינויים קוסמטיים, במידה ויוחלט להשתמש בה. גם לגביה פירטתי כמיטב יכולתי בתיאור ה- PR.</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/38">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/38</link>
+        <pubDate>Thu, 04 Feb 2021 17:24:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-38</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי…</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/37">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/37</link>
+        <pubDate>Tue, 02 Feb 2021 04:33:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-37</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אצטרך שתעשה PR עם העבודה על fastapi-users כדי לראות את ה־diff, בבקשה</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/36">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/36</link>
+        <pubDate>Tue, 02 Feb 2021 03:00:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-36</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>מכייוון שנגמרו לי הרעיונות אתמול לגבי הסיפרייה הזאת, המשכתי לעבוד על המערכת שאני בניתי.<br>
+המערכת מייצרת jwt טוקן על פי הדוקומנטציה של auth2, ומכניסה אותו ל-cookie httponly.<br>
+בכל ניסיון כניסה לראוט מוגן, הטוקן נבדק. אם הוא לא קיים, לא נכון, או זמנו עבר, הקוקי נמחקת והמשתמש מופנה להתחברות.<br>
+יצרתי גם ראוט לוגאאוט שמוחק את הקוקי מהדפדפן.<br>
+צרתי דיפנדנסי עבור ראוט מוגן רק עבור יוזר מחובר, ועוד דיפנדנסי עבור קבלת יוזר מחובר אם יש כזה, ואם לא אז None, אך עדיין ניתן להיכנס לראוט.<br>
+כל מה שנותר לעשות שם זה שיפורים קטנים בניהול הודעות עבור משתמש, שלא הצליח להיכנס לראוט מסוים. אני ממשיך בינתיים לעבוד על זה כרגע עד למוצר מוגמר \ עד שנבין איך אפשר בכ"ז לעבוד עם fastapi-Users.<br>
+אשמח אם תעיף מבט על מה שעשיתי, אולי בכל זאת תרצה שנשתמש בזה… <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+עריכה: הוספתי הודעות רלוונטיות למשתמש, בכל פעם שאינו מצליח להכנס לראוט מוגן, מכל סיבה שהיא. בנוסף הוספתי הפנייה שמעבירה אותו לעמוד המוגן שאותו הוא חיפש, וזאת לאחר ההתחברות.</p><aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:420/420;"><img src="https://avatars.githubusercontent.com/u/71118404?s=400&amp;amp;v=4" class="thumbnail" width="420" height="420"></div>
+
+<h3><a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">kobyfogel/calendar</a></h3>
+
+<p><a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">feature/login</a></p>
+
+  <p><span class="label1">Contribute to kobyfogel/calendar development by creating an account on GitHub.</span></p>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/35">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/35</link>
+        <pubDate>Mon, 01 Feb 2021 06:39:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-35</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:420/420;"><img src="https://avatars.githubusercontent.com/u/71118404?s=400&amp;amp;v=4" class="thumbnail" width="420" height="420"></div>
+
+<h3><a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" target="_blank" rel="noopener nofollow ugc">kobyfogel/calendar</a></h3>
+
+<p><a href="https://github.com/kobyfogel/calendar/tree/feature/FastAPI-Users" target="_blank" rel="noopener nofollow ugc">feature/FastAPI-Users</a></p>
+
+  <p><span class="label1">Contribute to kobyfogel/calendar development by creating an account on GitHub.</span></p>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/34">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/34</link>
+        <pubDate>Mon, 01 Feb 2021 04:51:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-34</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אצטרך גישה לכל הקוד ולהריץ אותו אצלי כדי לראות למה זה קורה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/33">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/33</link>
+        <pubDate>Mon, 01 Feb 2021 00:33:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-33</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי למיטב הבנתי כמו בדוקומנטציה:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9.png" data-download-href="https://forums.pythonic.guru/uploads/default/6f958b141c8d0e972b59bf3430c719d0546436b9" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_690x385.png" alt="image" data-base62-sha1="fV7orlkPo1m9Tos6e7QNsdcCDQl" width="690" height="385" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_690x385.png, https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_1035x577.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6f958b141c8d0e972b59bf3430c719d0546436b9_2_10x10.png"></a></div><br>
+אני לא מקבל חזרה את מה שהם כותבים שאני אמור לקבל ב- headers:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f.png" data-download-href="https://forums.pythonic.guru/uploads/default/bd706eb4e89e42e402e83d10b6af383d6c4b238f" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_690x255.png" alt="image" data-base62-sha1="r1R7TqMYz5uMWLyfdWYKKgVLhrF" width="690" height="255" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_690x255.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_1035x382.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_1380x510.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd706eb4e89e42e402e83d10b6af383d6c4b238f_2_10x10.png"></a></div><br>
+אני מקבל טוקן, בדיוק כמו מקודם, בבודי<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/d823f242c55998002f14ced33360d3d788c7175a.png" data-download-href="https://forums.pythonic.guru/uploads/default/d823f242c55998002f14ced33360d3d788c7175a" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_690x296.png" alt="image" data-base62-sha1="uQ49bYuulUiPWTSS3YiNzF1n8UO" width="690" height="296" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_690x296.png, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_1035x444.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_1380x592.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d823f242c55998002f14ced33360d3d788c7175a_2_10x10.png"></a></div><br>
+גם אין קוקי<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a.png" data-download-href="https://forums.pythonic.guru/uploads/default/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_690x368.png" alt="image" data-base62-sha1="aQrHegcAjdJdgMtpZrxQvIIHftM" width="690" height="368" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_690x368.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_1035x552.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_1380x736.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4c037557259dd4ff00f293e4c8b0c2fdfa8d5a1a_2_10x10.png"></a></div><br>
+אלה הגדרות הבקאנד. כמובן ניסיתי גם לפני שביטלתי את JWT. עשיתי ניסיון גם להסיר לגמרי את ההגדרה שלו. בכל אופן, הבקאנד עבור קוקי מוגדר<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4.png" data-download-href="https://forums.pythonic.guru/uploads/default/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_690x266.png" alt="image" data-base62-sha1="x1wcWu4v0PNduyKxRLUp0FmF5WI" width="690" height="266" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_690x266.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_1035x399.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_1380x532.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e773b66c8f7ef9c3baebb52d51a6fdd8a41adcc4_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/32">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/32</link>
+        <pubDate>Sun, 31 Jan 2021 09:14:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-32</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="koby" data-post="30" data-topic="8919">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>עשיתי ב- JS פונקציה ששולחת את הנתונים מהטופס לראוט שלהם ליצירת טוקן ו- קוקי</p>
+</blockquote>
+</aside>
+<p>אתה שולח ל־JWT שלא אמור ליצור קוקי. <a href="http://localhost:8000/auth/cookie">http://localhost:8000/auth/cookie</a> אמור ליצור קוקי.<br>
+זה כתוב בתיעוד <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/31">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/31</link>
+        <pubDate>Sat, 30 Jan 2021 18:47:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-31</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי ב- JS פונקציה ששולחת את הנתונים מהטופס לראוט שלהם ליצירת טוקן ו- קוקי<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/0/0be105216930a069139e4624b937ea44ec30aa3f.png" data-download-href="https://forums.pythonic.guru/uploads/default/0be105216930a069139e4624b937ea44ec30aa3f" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_690x358.png" alt="image" data-base62-sha1="1H5m27ghpoglsvuT0FtSWsI68HB" width="690" height="358" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_690x358.png, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_1035x537.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_1380x716.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0be105216930a069139e4624b937ea44ec30aa3f_2_10x10.png"></a></div><br>
+חוזר טוקן<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f.png" data-download-href="https://forums.pythonic.guru/uploads/default/1ce236c476b3eae5cdb0a4db840964156528b72f" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f.png" alt="image" data-base62-sha1="47w1SrQ7W8RzPIcyEWmB9mUBYET" width="690" height="38" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1ce236c476b3eae5cdb0a4db840964156528b72f_2_10x10.png"></a></div><br>
+לא חוזרת קוקי<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c.png" data-download-href="https://forums.pythonic.guru/uploads/default/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c.png" alt="image" data-base62-sha1="lDPWFYUcOPbHkayEFtMSOIkmSsY" width="690" height="277" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/9/97ae7e11be269edaa3b2eb58e3b1c936c2492a6c_2_10x10.png"></a></div><br>
+לעומת זאת:<br>
+זה ראוט מוגן:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef.png" data-download-href="https://forums.pythonic.guru/uploads/default/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_690x121.png" alt="image" data-base62-sha1="mA2PSbd0kBniBwq3ZCmnXs53sLB" width="690" height="121" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_690x121.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_1035x181.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9e42ee049a3d75cf883eb02ba3d3c6dfc96326ef_2_10x10.png"></a></div><br>
+אם אני מייצר את הקוקי לבד ב- JS:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db.png" data-download-href="https://forums.pythonic.guru/uploads/default/e734dce6cd4165ebba99a7a903aaddcd88ea60db" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_690x145.png" alt="image" data-base62-sha1="wZlyldI7EsphKmhfEplQBv6pwdZ" width="690" height="145" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_690x145.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_1035x217.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_1380x290.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e734dce6cd4165ebba99a7a903aaddcd88ea60db_2_10x10.png"></a></div><br>
+מצליח להיכנס לראוט:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/9/96da1fc17a26c93592102adbdc854ce5145eba56.png" alt="image" data-base62-sha1="lwuWQEiZid9gZcITbKOdUdAjC50" width="602" height="309"><br>
+הבעיה היא שני לא יכול לייצר שם httpcookie.<br>
+לעומת זאת, אם אני מפנה לרואט שלהם ישירות מהראוט של הטופס שלי כדי שאצליח ליצור עם פייתון את הקוקי, אז הדרך היחידה שידוע לי עליה היא עם redirect. ואז הטוקן חוזר אלי כאובייקט של starlette.response.redirect. ואני לא מצליח בשום צורה לחלץ ממנו את המידע.<br>
+מקווה שהייתי ברור…<br>
+כשאני מנסה לעשות את זה מפייתון, אז הפונקציה נראית משהו בסגנון הזה:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b.png" data-download-href="https://forums.pythonic.guru/uploads/default/ea2d73e3c934ae35e6d705d2352e910a8673844b" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_690x470.png" alt="image" data-base62-sha1="xpD6OY9QAKcGJrshbMDk1qqrHsf" width="690" height="470" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_690x470.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_1035x705.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ea2d73e3c934ae35e6d705d2352e910a8673844b_2_10x10.png"></a></div><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab.png" data-download-href="https://forums.pythonic.guru/uploads/default/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab.png" alt="image" data-base62-sha1="83cMghjMUmo1AaYRvKp2qviWkif" width="690" height="259" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/386e2bc0ad1829c749e8b227b7f7f3406c9c0cab_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/30">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/30</link>
+        <pubDate>Sat, 30 Jan 2021 15:35:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-30</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לפי <a href="https://frankie567.github.io/fastapi-users/usage/flow/#cookie-backend" class="inline-onebox">Flow - FastAPI Users</a> נראה שדווקא הם כן יודעים לייצר קוקי, אם זה מה שאתה מחפש.<br>
+מה הפער הנוכחי?</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/29">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/29</link>
+        <pubDate>Sat, 30 Jan 2021 15:21:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-29</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>הפתרון הזה כבר לא רלוונטי. לאחר שיישמתי, מסתבר שהסיפרייה fastapi-userrs לא מנהלת סשן, ולא מייצרת קוקי. הצלחתי ליישם על ידי יצירת הקוקי ב- JS, אבל זה לא טוב, כי לא ניתן לייצר שם httpcoookie.<br>
+כל דרך שאני מנסה כדי לפתור את זה ולהגיע למצב שכל המכלול עובד, מעמידה בפני איזה שהוא מחסום שאני לא מצליח לעבור, בכל פעם במקום אחר.<br>
+מצאתי גם דרך ליצור ראוט, ולשלוח את הנתונים מהטופס לראוט לוגאין שהסיפרייה מספקת. אבל הדרך היחידה היא באמצעות redirectresponse. ואז הטוקן חוזר לי באובייקט של סטרלט ריספונס, ואני לא מצליח להוציא ממנו את הנתונים<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/ef213577f7a0c8372833ad33d58a64a234af0593" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_690x243.jpeg" alt="image" data-base62-sha1="y7rgr1HI4SdHR05UksYnBnKUCsP" width="690" height="243" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_690x243.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_1035x364.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef213577f7a0c8372833ad33d58a64a234af0593_2_10x10.png"></a></div><br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_690x192.jpeg" alt="image" data-base62-sha1="8a3KI8dmi7Vo1PmjPVNnSOlvvuf" width="690" height="192" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_690x192.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_1035x288.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/393486cb90ae7c459dc3ce145f4c47ef7abeb4e7_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/28">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/28</link>
+        <pubDate>Sat, 30 Jan 2021 14:23:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-28</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נשמע טוב מאוד. רק הנתונים מהטופס צריכים להישלח ב־POST</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/27">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/27</link>
+        <pubDate>Sat, 30 Jan 2021 14:16:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-27</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>לא הצלחתי להפעיל את httpx משום מה, יש שם מספר דברים שצריך להגדיר בעבודה עם שרת מקומי, והעדפתי ללכת על פתרון ה- JS למרות חוסר הניסיון והידע שלי בזה. היה נראה לי יותר הגיוני להסיר שכבה מהשרת, במקום להוסיף לו אחת.<br>
+עשיתי פונקצית JS שלוקחת ישירות את הנתונים מהטופס, מאמתת אותם, שולחת אותם לראוט של fastapi-Users, ומבצעת פעולות בהתאם לתשובה שחוזרת ממנו. בינתיים הכל עובד בסדר, אבל אני תוהה לגבי נקודה מסויימת.<br>
+הראוט שיצרתי שמפעיל את הפונקציה שמרנדרת את הטופס הוא מסוג get. לא הצלחתי להגדיר אותו כפוסט, וגם בעצם לא צריך, מאחר והפונקציה עצמה לא מקבלת נתונים. הם נשאבים ישירות מהטופס בעמוד, באמצעות JS. השאלה שלי היא האם זה בסדר ומקובל, ולא bad practice…<br>
+אם אני מנסה להגדיר את אותו הראוט בדיוק כ- GET, אני מקבל Method Not Allowed.</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/26">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/26</link>
+        <pubDate>Thu, 28 Jan 2021 18:25:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-26</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אבדוק את זה. תודה רבה על העזרה</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/25">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/25</link>
+        <pubDate>Wed, 27 Jan 2021 18:47:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-25</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אתה יכול לכתוב את ה־JS, זה לא סיפור (זה בעיקר להעתיק ולהדביק קוד קיים)<br>
+אם מאוד מאוד לא בא לך, אפשר להשתמש ב־httpx כדי לשלוח בקשת HTTP</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/24">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/24</link>
+        <pubDate>Wed, 27 Jan 2021 18:29:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-24</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>יקבל נתונים מהמשתמש וישלח אותם לראוטים שהם מספקים. בדיוק מה שאני מנסה לעשות ולא מצליח</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/23">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/23</link>
+        <pubDate>Wed, 27 Jan 2021 18:09:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-23</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מה חסר לך שה־frontend יבצע עבורך?</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/22">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/22</link>
+        <pubDate>Wed, 27 Jan 2021 18:08:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-22</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>חסר תמיכה בפרונט אנד כחלק מהפעלת האפליקציה. כמו בהמון דברים שכבר ניסיתי לבצע ב fast-api. הכל תמיד מסתמך על זה שתהיה מערכת פרונט אנד נפרדת שתשלח ג’ייסונים ותקבל אותם בחזרה</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/21">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/21</link>
+        <pubDate>Wed, 27 Jan 2021 18:07:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-21</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, זה אכן יוצר את הטוקן. אני מרגיש שאני מפספס משהו. מה חסר?</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/20">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/20</link>
+        <pubDate>Wed, 27 Jan 2021 18:04:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-20</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91.png" data-download-href="https://forums.pythonic.guru/uploads/default/cb982e712f33ec506eeb3195d20be8d70ffc3e91" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91_2_690x284.png" alt="image" data-base62-sha1="t34YmOLeu8PIELkbdk9qDJxcG8F" width="690" height="284" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91_2_690x284.png, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91_2_1035x426.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cb982e712f33ec506eeb3195d20be8d70ffc3e91_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/19">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/19</link>
+        <pubDate>Wed, 27 Jan 2021 17:59:59 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-19</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, היא כבר בקוד. היא שולחת הגדרות בסיס עבור יצירת הטוקן. לא קשור לפעולת הלוגאין.</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/18">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/18</link>
+        <pubDate>Wed, 27 Jan 2021 17:59:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-18</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>דווקא <code>JWTAuthentication</code> היא פוקציה שהם מספקים</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/17</link>
+        <pubDate>Wed, 27 Jan 2021 17:57:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-17</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>זאת לא פונקציה שהם מספקים. זה הסבר על הפונקציונליות של הסיפרייה. הגישה לפעולה הזאת היא דרך ראוט auth/jwt שהם מספקים.</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/16</link>
+        <pubDate>Wed, 27 Jan 2021 17:56:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-16</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p><a href="https://frankie567.github.io/fastapi-users/configuration/authentication/jwt/" class="onebox" target="_blank" rel="noopener">https://frankie567.github.io/fastapi-users/configuration/authentication/jwt/</a></p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/15</link>
+        <pubDate>Wed, 27 Jan 2021 17:53:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-15</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+      <item>
+        <title>בעיה עם response.redirect</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>עדכון:  הם לא מספקים פונקציה מקבילה להתחברות. אז אהיה שם בדיוק באותה הבעיה</p>
+          <p><a href="https://forums.pythonic.guru/t/response-redirect/8919/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/response-redirect/8919/14</link>
+        <pubDate>Wed, 27 Jan 2021 17:51:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8919-14</guid>
+        <source url="https://forums.pythonic.guru/t/response-redirect/8919.rss">בעיה עם response.redirect</source>
+      </item>
+  </channel>
+</rss>

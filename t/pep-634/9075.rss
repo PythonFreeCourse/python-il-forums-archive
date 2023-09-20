@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מזל טוב: התקבל PEP 634!</title>
+    <link>https://forums.pythonic.guru/t/pep-634/9075</link>
+    <description>יום חג לחנונים שאוהבים פיצ&#39;רים חדשים בפייתון (היי)
+החל מגרסה 3.10 יתווסף לפייתון כלי מגניב מאוד שצובר תאוצה בשנים האחרונות בשפות תכנות חדשות.
+
+זה נקרא Pattern Matching וזה עובד כך:
+
+```
+from enum import Enum
+class Color(Enum):
+    RED = 0
+    GREEN = 1
+    BLUE = 2
+
+match color:
+    case Color.RED:
+        print(&quot;I see red!&quot;)
+    case Color.GREEN:
+        print(&quot;Grass is green&quot;)
+    case Color.BLUE:
+        print(&quot;I&#39;m feeling the blues :(&quot;)
+```
+
+עד כאן יכול להיות שאתם שואלים &quot;איך זה שונה מ־if/elif/else?&quot; (או מ־switch case אם אתם נודדים משפות אחרות).
+
+אחד ההבדלים הוא שאפשר, בעזרת תחביר מאוד פשוט, לבקש מפייתון לבחור הסתעפות לפי סוג/גודל המבנה:
+
+```
+match command.split():
+    case [action]:
+        ... # interpret single-verb action
+    case [action, obj]:
+        ... # interpret action, obj
+```
+
+מה שקורה שם זה שפייתון מוצא איך האובייקט שלכם נראה (איבר 1 אחרי ה־split? שני איברים?) והולך ל־case הרלוונטי.
+
+אבל השוס האפילו יותר גדול, זה ש&quot;על הדרך&quot; הוא מבצע השמה: מה שיש באיבר הראשון ייכנס ל־action, ומה שיש באיבר השני (אם יש שני איברים) יכנס ל־object.
+
+אפשר לממש ככה דברים יותר מסובכים וזה נראה ממש טוב:
+
+```
+match point:
+    case (0, 0):
+        print(&quot;Origin&quot;)
+    case (0, y):
+        print(f&quot;Y={y}&quot;)
+    case (x, 0):
+        print(f&quot;X={x}&quot;)
+    case (x, y):
+        print(f&quot;X={x}, Y={y}&quot;)
+    case _:
+        raise ValueError(&quot;Not a point&quot;)
+```
+
+לעוד פרטים, ראו את המדריך לשימוש ב־PEP 634 [כאן](https://www.python.org/dev/peps/pep-0636/) (נקרא PEP 636).</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 14 Feb 2021 07:30:38 +0000</lastBuildDate>
+    <category>דיבורים</category>
+    <atom:link href="https://forums.pythonic.guru/t/pep-634/9075.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>סופסוף…<br>
+אולי עכשיו אצליח לשכנע את המנהל להתקדם מ-Cobol/Rpg<br>
+בסה"כ יש להם Select/case משנות ה-70</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/7</link>
+        <pubDate>Sun, 14 Feb 2021 07:30:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-7</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה מצויין וסופר שימושי! תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/6</link>
+        <pubDate>Thu, 11 Feb 2021 08:15:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-6</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>חשוב להגיד שזה רק מזכיר קצת switch במראה, בפועל חוץ מקצת דמיון ראשוני אין כ"כ קשר.<br>
+בד"כ switch case הוא מבנה fall through – כלומר, אם מתאמתים על האופציה הראשונה ממשיכים לשנייה ושלישית. בהרבה מקרים מתכנתים מוסיפים break אחרי כל אופציה כדי לנטרל את ההתנהגות הזו, מה שגורם למבנה להיות קצת מכוער ומנופח ויזואלית (וגורם לבאגים מעצבנים כי מתכנתים שוכחים להוסיף break).<br>
+יותר חשוב – switch case לא אחראי על bindings, כלומר, אי אפשר לעשות באמצעותו השמות. כאן יש את התוספת המגניבה והחשובה של השמה תוך כדי בדיקה, וזה סופר שימושי בהמון מקרים <img src="https://forums.pythonic.guru/images/emoji/twitter/tada.png?v=9" title=":tada:" class="emoji" alt=":tada:"></p>
+<p>הצעות קודמות להוסיף switch בפייתון נתקלו בהתנגדות חזקה של הקהילה, כי יש תחלופות פשוטות וברורות יותר – כמו בחירת ערך מילון או מבנה של if/elif/else <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/5</link>
+        <pubDate>Wed, 10 Feb 2021 13:02:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-5</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>סוף סוף! משהו כמו switch case לפייטון.</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/4</link>
+        <pubDate>Wed, 10 Feb 2021 12:24:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-4</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אם תכתוב אחת? בוודאי</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/3</link>
+        <pubDate>Wed, 10 Feb 2021 11:29:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-3</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>חחח יצא על זה מחברת?</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/2</link>
+        <pubDate>Wed, 10 Feb 2021 11:25:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-2</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+      <item>
+        <title>מזל טוב: התקבל PEP 634!</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>יום חג לחנונים שאוהבים פיצ’רים חדשים בפייתון (היי)<br>
+החל מגרסה 3.10 יתווסף לפייתון כלי מגניב מאוד שצובר תאוצה בשנים האחרונות בשפות תכנות חדשות.</p>
+<p>זה נקרא Pattern Matching וזה עובד כך:</p>
+<pre><code class="lang-auto">from enum import Enum
+class Color(Enum):
+    RED = 0
+    GREEN = 1
+    BLUE = 2
+
+match color:
+    case Color.RED:
+        print("I see red!")
+    case Color.GREEN:
+        print("Grass is green")
+    case Color.BLUE:
+        print("I'm feeling the blues :(")
+</code></pre>
+<p>עד כאן יכול להיות שאתם שואלים “איך זה שונה מ־if/elif/else?” (או מ־switch case אם אתם נודדים משפות אחרות).</p>
+<p>אחד ההבדלים הוא שאפשר, בעזרת תחביר מאוד פשוט, לבקש מפייתון לבחור הסתעפות לפי סוג/גודל המבנה:</p>
+<pre><code class="lang-auto">match command.split():
+    case [action]:
+        ... # interpret single-verb action
+    case [action, obj]:
+        ... # interpret action, obj
+</code></pre>
+<p>מה שקורה שם זה שפייתון מוצא איך האובייקט שלכם נראה (איבר 1 אחרי ה־split? שני איברים?) והולך ל־case הרלוונטי.</p>
+<p>אבל השוס האפילו יותר גדול, זה ש"על הדרך" הוא מבצע השמה: מה שיש באיבר הראשון ייכנס ל־action, ומה שיש באיבר השני (אם יש שני איברים) יכנס ל־object.</p>
+<p>אפשר לממש ככה דברים יותר מסובכים וזה נראה ממש טוב:</p>
+<pre><code class="lang-auto">match point:
+    case (0, 0):
+        print("Origin")
+    case (0, y):
+        print(f"Y={y}")
+    case (x, 0):
+        print(f"X={x}")
+    case (x, y):
+        print(f"X={x}, Y={y}")
+    case _:
+        raise ValueError("Not a point")
+</code></pre>
+<p>לעוד פרטים, ראו את המדריך לשימוש ב־PEP 634 <a href="https://www.python.org/dev/peps/pep-0636/">כאן</a> (נקרא PEP 636).</p>
+          <p><a href="https://forums.pythonic.guru/t/pep-634/9075/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/pep-634/9075/1</link>
+        <pubDate>Wed, 10 Feb 2021 11:16:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9075-1</guid>
+        <source url="https://forums.pythonic.guru/t/pep-634/9075.rss">מזל טוב: התקבל PEP 634!</source>
+      </item>
+  </channel>
+</rss>

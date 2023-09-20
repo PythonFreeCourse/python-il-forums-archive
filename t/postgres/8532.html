@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/postgres/8532 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:18:11 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>עבודה עם postgres ומסד הנתונים מהלייב - שבוע 14 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+יש לי שתי בעיות, הראשונה היא עם מסד הנתונים מהלייב. כל עוד בניית הטבלאות והכנסת הנתונים היו בsqlite הכל עבד מצויין. 
+כאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות compan&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8532.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8532.rss" rel="alternate nofollow" title="הזנת RSS של ‚עבודה עם postgres ומסד הנתונים מהלייב’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8532.html" property="og:url"/>
+<meta content="8532.html" name="twitter:url"/>
+<meta content="עבודה עם postgres ומסד הנתונים מהלייב" property="og:title"/>
+<meta content="עבודה עם postgres ומסד הנתונים מהלייב" name="twitter:title"/>
+<meta content="היי,  יש לי שתי בעיות, הראשונה היא עם מסד הנתונים מהלייב. כל עוד בניית הטבלאות והכנסת הנתונים היו בsqlite הכל עבד מצויין.  כאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות companies,movies, movies_company, movies_category את השגיאה:  OperationalError: too many SQL variables  בעיה שנייה:  הורדתי postgres , הצלחתי לעשות חיבור כללי אליו דרך dbeaver, אך כאשר אני מנסה להריץ את קובץ הפייתון עם  PostgresqlDatabase אני מקבלת הודעת שגיאה peewee.ImproperlyConfigur..." property="og:description"/>
+<meta content="היי,  יש לי שתי בעיות, הראשונה היא עם מסד הנתונים מהלייב. כל עוד בניית הטבלאות והכנסת הנתונים היו בsqlite הכל עבד מצויין.  כאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות companies,movies, movies_company, movies_category את השגיאה:  OperationalError: too many SQL variables  בעיה שנייה:  הורדתי postgres , הצלחתי לעשות חיבור כללי אליו דרך dbeaver, אך כאשר אני מנסה להריץ את קובץ הפייתון עם  PostgresqlDatabase אני מקבלת הודעת שגיאה peewee.ImproperlyConfigur..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 14" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע-14" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="5 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="1 ❤"/>
+<meta content="2020-12-09T13:39:27+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"עבודה עם postgres ומסד הנתונים מהלייב","mainEntity":{"@type":"Question","name":"עבודה עם postgres ומסד הנתונים מהלייב","text":"היי,\n\nיש לי שתי בעיות, הראשונה היא עם מסד הנתונים מהלייב. כל עוד בניית הטבלאות והכנסת הנתונים היו בsqlite הכל עבד מצויין.\n\nכאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות companies,movies, movies_company, movies_category את השגיאה:\n\nOperationalError: too ma&hellip;","upvoteCount":0,"answerCount":0,"dateCreated":"2020-12-09T13:39:26.916Z","author":{"@type":"Person","name":"Adi Faibish"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8532.html">עבודה עם postgres ומסד הנתונים מהלייב</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-14/26.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 14</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-14.html" rel="tag">שבוע-14</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="עבודה עם postgres ומסד הנתונים מהלייב" itemprop="headline"/>
+<meta content="שבוע 14" itemprop="articleSection"/>
+<meta content="שבוע-14" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:39:27Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:39pm
+                  </time>
+<meta content="2020-12-09T13:39:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,<br/>
+יש לי שתי בעיות, הראשונה היא עם מסד הנתונים מהלייב. כל עוד בניית הטבלאות והכנסת הנתונים היו בsqlite הכל עבד מצויין.<br/>
+כאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות companies,movies, movies_company, movies_category את השגיאה:<br/>
+OperationalError: too many SQL variables</p>
+<p>בעיה שנייה:<br/>
+הורדתי postgres , הצלחתי לעשות חיבור כללי אליו דרך dbeaver, אך כאשר אני מנסה להריץ את קובץ הפייתון עם<br/>
+PostgresqlDatabase אני מקבלת הודעת שגיאה peewee.ImproperlyConfigured: Postgres driver not installed!</p>
+<p>אשמח לעזרה, תודה רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:42:27Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:42pm
+                  </time>
+<meta content="2020-12-09T13:42:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8532" data-username="adi1">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/a/ecb155/40.png" width="20"/> adi1:</div>
+<blockquote>
+<p>כאשר רציתי לעבור לpeewee כמו בלייב. ואני מגיעה לחלק של הכנסה לטבלאות. אני מקבלת על הטבלאות companies,movies, movies_company, movies_category את השגיאה:<br/>
+OperationalError: too many SQL variables</p>
+</blockquote>
+</aside>
+<p>מה הקוד שניסית להריץ?<br/>
+איך נראה ה־data שאת מנסה להכניס ל־DB?</p>
+<aside class="quote no-group" data-post="1" data-topic="8532" data-username="adi1">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/a/ecb155/40.png" width="20"/> adi1:</div>
+<blockquote>
+<p>PostgresqlDatabase אני מקבלת הודעת שגיאה peewee.ImproperlyConfigured: Postgres driver not installed!</p>
+</blockquote>
+</aside>
+<p>נסי להתקין מודול שתומך ב־postgresql:<br/>
+<code>pip install psycopg2</code><br/>
+מצאתי את זה כשגיגלתי את השגיאה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:45:41Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:45pm
+                  </time>
+<meta content="2020-12-09T13:45:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>
+<p>הרצתי אחד לאחד את הקוד אשר כתבת בלייב. (בטבלת movies בחרתי פחות עמודות- עבד מצויין בsqlite) הוא עבד מצויין בוריציה שנכתבה sqlite אך במעבר לpeewee שנכתב בלייב באחרון שולח את אותה הודעת שגיאה לכל ארבעת הטבלאות שציינתי.</p>
+</li>
+<li>
+<p>אנסה להתקין  את הדרייבר</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:47:17Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:47pm
+                  </time>
+<meta content="2020-12-09T13:47:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="3" data-topic="8532" data-username="adi1">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/a/ecb155/40.png" width="20"/> adi1:</div>
+<blockquote>
+<p>הרצתי אחד לאחד את הקוד אשר כתבת בלייב. (בטבלת movies בחרתי פחות עמודות- עבד מצויין בsqlite) הוא עבד מצויין בוריציה שנכתבה sqlite אך במעבר לpeewee שנכתב בלייב באחרון שולח את אותה הודעת שגיאה לכל ארבעת הטבלאות שציינתי.</p>
+</blockquote>
+</aside>
+<p>חסכי לי בבקשה את החיפוש של מה שעשיתי ב־live <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+איך נראה הקוד? מה ה־data שניסית להכניס באמצעותו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:48:14Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:48pm
+                  </time>
+<meta content="2020-12-09T13:48:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>
+<p>צודק, סליחה, מיד שולחת.</p>
+</li>
+<li>
+<p>הדרייבר הצליח. תושה תודה תודה.</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:52:52Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:52pm
+                  </time>
+<meta content="2020-12-09T13:52:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code class>import pandas
+import json
+MOVIES_CSV = 'C:\\Users\\aharo\\Desktop\\pythonvscode\\week 13\\movies.csv'
+movies = pandas.read_csv(MOVIES_CSV)
+from peewee import (
+    DateField, FloatField, ForeignKeyField, IntegerField, Model,
+    SqliteDatabase, TextField,
+)
+
+import private
+database = SqliteDatabase('C:\\Users\\aharo\\Desktop\\pythonvscode\\week 13\\mymoviesmanage\\party_of_movies.db')
+
+
+class UnknownField(object):
+    def __init__(self, *_, **__):
+        pass
+
+
+class BaseModel(Model):
+    class Meta:
+        database = database
+
+
+class Categories(BaseModel):
+    name = TextField()
+
+    class Meta:
+        table_name = 'categories'
+
+class Companies(BaseModel):
+    name = TextField()
+
+    class Meta:
+        table_name = 'companies'
+
+
+class Movies(BaseModel):
+    budget = IntegerField(null=True)
+    homepage = TextField(null=True)
+    overview = TextField(null=True)
+    popularity = TextField(null=True)
+    title = TextField()
+    vote_average = FloatField()
+    vote_count = IntegerField()
+
+    class Meta:
+        table_name = 'movies'
+
+
+class Users(BaseModel):
+    name = TextField()
+    username = TextField(unique=True)
+    password = TextField()
+    email = TextField(unique=True)
+
+    class Meta:
+        table_name = 'users'
+
+
+class MoviesCategory(BaseModel):
+    category_id = ForeignKeyField(Categories)
+    movie_id = ForeignKeyField(Movies)
+
+    class Meta:
+        table_name = 'movies_category'
+
+class MoviesCompany(BaseModel):
+    company_id = ForeignKeyField(Companies)
+    movie_id = ForeignKeyField(Movies)
+
+    class Meta:
+        table_name = 'movies_company'
+
+
+class Reviews(BaseModel):
+    review = TextField()
+    score = IntegerField()
+    user_id = ForeignKeyField(Users)
+    movie_id = ForeignKeyField(Movies)
+
+    class Meta:
+        table_name = 'reviews'
+
+
+
+TABLES = [
+    Categories, Companies, Movies, Users,
+    MoviesCategory, Reviews, MoviesCompany
+]
+
+with database.connection_context():
+    database.create_tables(TABLES, safe=True)
+    database.commit()
+
+</code></pre>
+<pre><code class>def json_to_table(movies, column_name):
+    entities = {}
+    for line in movies[column_name]:
+        for entity in json.loads(line):
+            key = entity['id']
+            value = entity['name']
+            entities[key] = value
+    return entities
+
+def to_peewee_compatible(parsed_json):
+    return [
+        {'id': key, 'name': value}
+        for key, value
+        in parsed_json.items()
+    ]
+
+def get_all_from_table(table):
+    for category in table.select():
+        print(category)
+
+def insert_parsed_json(db, parsed_json, table_name):
+    to_insert = to_peewee_compatible(parsed_json)
+    table = get_table_class(table_name)
+    table.insert_many(to_insert).on_conflict_ignore().execute()
+    db.commit()
+    get_all_from_table(table)
+
+def get_table_class(table_name):
+    name = table_name.title()
+    tables = (t for t in TABLES if t.__name__== name)
+    return next(tables, None)
+</code></pre>
+<pre><code class>genres = json_to_table(movies, 'genres')
+companies = json_to_table(movies, 'production_companies')
+insert_parsed_json(database, genres, 'categories')
+insert_parsed_json(database, companies, 'companies')
+</code></pre>
+<p>כאן מופיעה פעם ראשונה השגיאה, genere נוצרת<br/>
+companies לא נוצרת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:56:23Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:56pm
+                  </time>
+<meta content="2020-12-09T13:56:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכלי להראות לי מה השאילתה שזה מנסה להריץ בבקשה? (להוריד את ה־execute ולשים שם print)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T13:59:51Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  1:59pm
+                  </time>
+<meta content="2020-12-09T14:00:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code class>INSERT OR IGNORE INTO "categories" ("id", "name") VALUES (28, 'Action'), (12, 'Adventure'), (14, 'Fantasy'), (878, 'Science Fiction'), (80, 'Crime'), (18, 'Drama'), (53, 'Thriller'), (16, 'Animation'), (10751, 'Family'), (37, 'Western'), (35, 'Comedy'), (10749, 'Romance'), (27, 'Horror'), (9648, 'Mystery'), (36, 'History'), (10752, 'War'), (10402, 'Music'), (99, 'Documentary'), (10769, 'Foreign'), (10770, 'TV Movie')
+
+iction'), (80, 'Crime'), (18, 'Drama'), (53, 'Thriller'), (16, 'Animation'), (10751, 'Family'), (37, 'Western'), (35, 'Comedy'), (10749, 'Romance'), (27, 'Horror'), (9648, 'Mystery'), (36, 'History'), (10752, 'War'), (10402, 'Music'), (99, 'Documentary'), (10769, 'Foreign'), (10770, 'TV Movie')
+12
+14
+16
+18
+27
+28
+35
+36
+37
+53
+80
+99
+878
+9648
+10402
+10749
+10751
+10752
+10769
+10770
+INSERT OR IGNORE INTO "companies" ("id", "name") VALUES (289, 'Ingenious Film Partners'), (306, 'Twentieth Century Fox Film Corporation'), (444, 'Dune Entertainment'), (574, 'Lightstorm Entertainment'), (2, 'Walt Disney Pictures'), (130, 'Jerry Bruckheimer Films'), (19936, 'Second Mate Productions'), (5, 'Columbia Pictures'), (10761, 'Danjaq'), (69434, 'B24'), (923, 'Legendary Pictures'), (6194, 'Warner Bros.'), (9993, 'DC Entertainment'), (9996, 'Syncopy'), (326, 'Laura Ziskin Productions'), (19551, 'Marvel Enterprises'), (6125, 'Walt Disney Animation Studios'), (420, 'Marvel Studios'), (15357, 'Prime Focus'), (76043, 'Revolution Sun Studios'), (7364, 'Heyday Films'), (429, 'DC Comics'), (507, 'Atlas Entertainment'), (9995, 'Cruel &amp; Unusual Films'), (41624, 'RatPac-Dune Entertainment'), (9168, 'Bad Hat Harry Productions'), (7576, 'Eon Productions'), (2691, 'Infinitum Nihil'), (37380, 'Silver Bullet Productions (II)'), (37381, 'Blind Wink Productions'), (37382, 'Classic Media'), (78685, 'Cruel and Unusual Films'), (5888, 'Walt Disney'), (10221, 'Walden Media'), (11345, 'Stillking Films'), (11440, 'Ozumi Films'), (11441, 'Propeler'), (11442, 'Silverbell Films'), (4, 'Paramount Pictures'), (20478, 'Moving Picture Company (MPC)'), (56, 'Amblin Entertainment'), (5627, 'Media Magik Entertainment'), (6736, 'Imagenation Abu Dhabi FZ'), (9169, 'Hemisphere Media Capital'), (11084, 'Parkes/MacDonald Productions'), (11, 'WingNut Films'), (12, 'New Line Cinema'), (174, 'Warner Bros. Pictures'), (7413, '3Foot7'), (8411, 'Metro-Goldwyn-Mayer (MGM)'), (7505, 'Marvel Entertainment'), (23, 'Imagine Entertainment'), (33, 'Universal Pictures'), (1645, 'Scott Free Productions'), (7295, 'Relativity Media'), (1473, 'Depth of Field'), (1938, 'Scholastic Productions'), (68, 'Big Primate Pictures'), (69, 'MFPV Film'), (264, 'Studio Babelsberg'), (3036, 'Walt Disney Studios Motion Pictures'), (84424, 'Vita-Ray Dutch Productions (III)'), (84425, 'Deluxe Digital Studios'), (2598, 'Hasbro'), (13778, 'Bluegrass Films'), (20153, 'Film 44'), (13, 'Universal Studios'), (3341, 'Fuji Television Network'), (6452, 'Dentsu'), (598, 'Team Todd'), (8601, 'Tim Burton Productions'), (16314, 'Roth Films'), (20004, 'Zanuck Company, The'), (431, 'Donners' Company'), (445, 'Major Studio Partners'), (12247, 'thinkfilm'), (79028, 'X3 Canada Productions'), (79029, 'X3US Productions'), (79030, 'XM3 Service'), (3, 'Pixar Animation Studios'), (27, 'DreamWorks SKG'), (435, 'Di Bonaventura Pictures'), (2481, 'Platinum Dunes'), (22826, 'Hasbro Studios'), (11413, 'China Movie Channel'), (38833, 'Ian Bryce Productions'), (31828, 'Avi Arad Productions'), (53462, 'Matt Tolmach Productions'), (7161, 'LivePlanet'), (18713, 'Prana Studios'), (23791, 'Sean Bailey Productions'), (76067, 'Kontsept Film Company'), (2609, 'De Line Pictures'), (4021, 'The Halcyon Company'), (4022, 'Wonderland Sound and Vision'), (333, 'Original Film'), (7154, 'One Race Films'), (40890, 'China Film Co.'), (86352, 'Québec Production Services Tax Credit'), (86655, 'Media Rights Capital (MRC)'), (87857, 'Abu Dhabi Film Commission'), (87858, 'Colorado Office of Film, Television &amp; Media'), (3281, 'GK Films'), (6277, 'Skydance Productions'), (11956, 'Apparatus Productions'), (19108, 'Latina Pictures'), (23644, '2DUX²'), (22213, 'TSG Entertainment'), (37336, 'Down Productions'), (11461, 'Bad Robot'), (12536, 'Kurtzman/Orci'), (8406, 'Big Kid Pictures'), (79, 'Village Roadshow Pictures'), (240, 'Bazmark Films'), (11858, 'A&amp;E Television Networks'), (14440, 'Red Wagon Entertainment'), (14604, 'Spectrum Films'), (19750, 'Disney Double Dare You (DDY)'), (19751, 'Indochina Productions'), (1, 'Lucasfilm'), (34530, 'Perfect Storm Entertainment'), (69484, 'Alibaba Pictures Group'), (82819, 'Skydance Media'), (83644, 'Sneaky Shark'), (83645, 'Huahua Media'), (93408, 'FortyFour Studios'), (347, 'Centropolis Entertainment'), (1557, 'The Mark Gordon Company'), (10905, 'Farewell Productions'), (11395, 'ImageMovers'), (450, 'Anarchos Productions'), (552, 'Dark Horse Entertainment'), (2596, 'Jerry Weintraub Productions'), (46339, 'Beagle Pug Films'), (86565, 'Riche Productions'), (86566, 'Village Roadshow Films North America'), (78091, 'Kinberg Genre'), (521, 'DreamWorks Animation'), (2507, 'Todman, Simon, LeMasters Productions'), (16774, 'Peters Entertainment'), (57088, 'Sonnenfeld Josephson Worldwide Entertainment'), (2269, 'China Film Co-Production Corporation'), (11462, 'Alphaville Films'), (19643, 'Sommers Company, The'), (158, 'Spyglass Entertainment'), (159, 'Shady Acres Entertainment'), (4171, 'Playtone'), (6687, 'Viz Media'), (12200, 'Province of British Columbia Production Services Tax Credit'), (36390, '3 Arts Entertainment'), (1073, 'Gordon Company'), (1302, 'Davis Entertainment'), (6092, 'Licht/Mueller Film Corporation'), (7297, 'Fairview Entertainment'), (290, 'Ingenious Media'), (7076, 'Chernin Entertainment'), (7299, 'Corsan'), (8186, 'Bliss Media'), (8187, 'Limelight International Media Entertainment'), (8188, 'Neelmudra Entertainment'), (76098, 'Aristos Films'), (76099, 'Singularity Productions'), (76100, 'Wildkite'), (2735, 'Mid Atlantic Films'), (4403, 'Stuber Productions'), (6292, 'Universal'), (20851, 'H2F Entertainment'), (20656, 'Babieka'), (59778, 'A113'), (1867, 'Golden Mean'), (86561, 'Stereo D'), (829, 'Vertigo Entertainment'), (20154, 'Mad Hatter Entertainment'), (763, 'Intermedia Films'), (7340, 'C-2 Pictures'), (19116, 'IMF Internationale Medien und Film GmbH &amp; Co. 3. Produktions KG'), (23636, 'Mostow/Lieberman Productions'), (54850, 'Bulletproof Cupid'), (13769, 'Lynda Obst Productions'), (5896, 'Cine Bazar'), (49301, 'Toho Pictures'), (26281, 'Ardustry Entertainment'), (26282, 'Mediastream Film GmbH &amp; Co. Productions KG'), (7383, 'Kennedy/Marshall Company, The'), (6332, 'Dune Entertainment III'), (10893, 'Big Screen Productions'), (1632, 'Lionsgate'), (5420, 'Color Force'), (831, 'Saturn Films'), (8000, 'Broken Road Productions'), (19097, 'Junction Entertainment'), (449, 'Virtual Studios'), (1633, 'Next Entertainment'), (14024, 'Irwin Allen Productions'), (18990, 'Radiant Productions'), (19943, 'Synthesis Entertainment'), (37455, 'Legend3D'), (16028, 'Blizzard Entertainment'), (13184, 'Annapurna Pictures'), (711, 'Fox 2000 Pictures'), (9195, 'Touchstone Pictures'), (20011, 'SprocketHeads'), (591, 'France 3 Cinéma'), (866, 'Pathé Renn Productions'), (4588, 'Egmond Film &amp; Television'), (10926, 'Pacifica Film'), (54997, 'WR Universal Group'), (462, 'Patalex IV Productions Limited'), (433, 'Weed Road Pictures'), (675, 'Forward Pass'), (12485, 'Overbrook Entertainment'), (28064, 'Blue Light'), (41756, 'GH Three'), (80, 'The Zanuck Company'), (45778, 'Plan B Entertainment'), (55512, 'Theobald Film Productions'), (19231, 'Patalex III Productions Limited'), (436, '1492 Pictures'), (2575, '21 Laps Entertainment'), (10224, 'Museum Canada Productions'), (9076, 'Seed Productions'), (172, 'NPV Entertainment'), (1885, 'Silver Pictures'), (375, 'Heineken Branded Entertainment'), (2537, 'Kennedy Miller Productions'), (5561, 'Panorama Films'), (8253, 'Skylark Productions'), (3639, 'Whamaphram Productions'), (3528, 'Thunder Road Pictures'), (24175, 'Cott Productions'), (24176, 'Furia de Titanes II, A.I.E.'), (9228, 'Dan Curtis Productions'), (21777, 'TC Productions'), (69485, 'Odin'), (520, 'Pacific Data Images (PDI)'), (1903, 'Columbus 81 Productions'), (2348, 'Nickelodeon Movies'), (8805, 'Industrial Light &amp; Magic (ILM)'), (12236, 'Blinding Edge Pictures'), (44, 'Cruise/Wagner Productions'), (658, 'MI 3 Film'), (14714, 'China Film Group Corporation (CFGC)'), (22102, 'The Fourth Production Company Film Group'), (34981, 'Iron Horse Entertainment (II)'), (34982, 'Mythology Entertainment (II)'), (297, 'Aardman Animations'), (27711, 'Berlanti Productions'), (73951, 'Classic Media Productions'), (73952, 'Bullwinkle Studios'), (81, 'Plan B Entertainment'), (7636, 'Nimar Studios'), (19107, 'Helena Productions'), (4607, 'Montecito Picture Company, The'), (34034, 'LStar Capital'), (61791, 'Feigco Entertainment'), (84041, 'Pascal Pictures'), (84042, 'Ghostcorps'), (11533, 'Valhalla Motion Pictures'), (441, 'Columbia Pictures Corporation'), (49325, 'Parkes+MacDonald Image Nation'), (2265, 'Shangri-La Entertainment'), (24955, 'Paramount Animation'), (76266, 'Oriental DreamWorks'), (76714, 'JC 23 Entertainment'), (14718, 'Radar Pictures'), (20634, 'Bedford Falls Company, The'), (52184, 'Volcano Films'), (23419, 'MavroCine Pictures GmbH &amp; Co. KG'), (491, 'Summit Entertainment'), (908, 'Mystery Clock Cinema'), (72441, 'TIK Films'), (88715, 'Pyramania'), (11317, 'Phoenix Pictures'), (19523, 'AFG Talons Productions'), (840, 'Lawrence Gordon Productions'), (5739, 'Donner/Shuler-Donner Productions'), (10565, 'Good Machine'), (19719, 'Saints LA'), (2233, 'Bristol Bay Productions'), (2234, 'Baldwin Entertainment Group'), (2235, 'Desertlands Entertainment'), (2767, 'Mace Neufeld Productions'), (4169, 'Kanzaman'), (12124, 'J.K. Livin Productions'), (12125, 'Moguletta'), (12126, 'Sahara Productions'), (19481, 'Babelsberg Film'), (4164, 'Square USA'), (20033, 'Chris Lee Productions'), (9118, 'Samuel Goldwyn Films'), (53009, 'Miramax'), (5219, 'Sunswept Entertainment'), (12292, 'Temple Hill Entertainment'), (28381, 'Dr D Studios'), (28382, 'Kennedy Miller Mitchell'), (25121, 'MVL Incredible Productions'), (7294, 'Reliance Entertainment'), (508, 'Regency Enterprises'), (562, 'Appian Way'), (8870, 'CatchPlay'), (10039, 'Anonymous Content'), (10104, 'New Regency Pictures'), (13796, 'Hong Kong Alpha Motion Pictures Co.'), (28732, 'RatPac Entertainment'), (52660, 'M Productions'), (77845, 'Monarchy Enterprises S.a.r.l.'), (10262, 'Blind Wink'), (862, 'The Kennedy/Marshall Company'), (11347, 'Ludlum Entertainment'), (11348, 'Motion Picture BETA Produktionsgesellschaft'), (11349, 'Bourne Again'), (10288, 'Don Simpson/Jerry Bruckheimer Films'), (7, 'DreamWorks'), (11845, 'Wintergreen Productions'), (7503, 'Protozoa Pictures'), (10256, 'Disruption Entertainment'), (437, 'Heyday films'), (7888, 'ScreenWest'), (10217, 'Walt Disney Feature Animation'), (19927, 'Government of Malta'), (9383, 'Blue Sky Studios'), (11749, 'Twentieth Century Fox Animation'), (79026, 'XM2 Productions'), (79027, 'XF2 Canada Productions'), (1225, 'One Race Productions'), (2723, 'Lin Pictures'), (23202, 'Wigram Productions'), (559, 'TriStar Pictures'), (14723, 'Carolco Pictures'), (80461, 'Carolco International N.V.'), (25716, 'Captivate Entertainment'), (1382, 'PolyGram Filmed Entertainment'), (35, 'Lions Gate Films'), (11362, 'Mark Gordon Productions'), (54502, 'Mel's Cite du Cinema'), (51199, 'Munich Film Partners &amp; Company (MFP) MI2 Productions'), (16061, 'Baltimore Spring Creek Productions'), (5755, 'Constantin Film Produktion'), (10881, 'Bernd Eichinger Productions'), (13480, 'Haishang Films'), (11370, 'Michael De Luca Productions'), (20241, 'Crystal Sky Pictures'), (20475, 'GH One'), (20476, 'Vengeance Productions Pty. Ltd.'), (29313, 'Pearl Street Films'), (31922, 'Double Negative'), (83871, 'Perfect World (Beijing) Pictures Co.'), (10239, 'Tall Trees Productions'), (19813, 'Flower Films (II)'), (19747, 'Brandywine Productions'), (5752, 'Sony Pictures Entertainment'), (2531, 'Media Rights Capital'), (7431, 'Sony Pictures Entertainment (SPE)'), (11029, 'QED International'), (18209, 'Alpha Core'), (28788, 'Genre Films'), (31076, 'Simon Kinberg Productions'), (655, 'Strike Entertainment'), (12170, 'Velocity Productions'), (18, 'Gracie Films'), (2648, 'Road Rebel'), (84, 'Tree Line Films'), (21845, 'Pink Machine'), (19647, 'Monolith Pictures (III)'), (19648, 'Radical Studios'), (47, 'Constantin Film'), (356, 'TF1 Films Productions'), (1992, 'La Petite Reine'), (1994, 'Tri Pictures'), (1995, 'Sorolla Films'), (1996, 'Novo RPI'), (5358, 'Canal+'), (8676, 'uFilm'), (9335, 'Canal+ España'), (11921, 'Le Tax Shelter du Gouvernement Fédéral de Belgique'), (20409, 'Les Editions Albert René'), (2812, 'Lion Rock Productions'), (10338, 'Perfect World Pictures'), (7470, 'Esperanto Filmoj'), (1280, 'Pacific Western'), (47354, '5150 Action'), (77208, 'Gama Entertainment Partners'), (5374, 'Marv Films'), (9078, 'Constantin Film.'), (34081, 'Flynn Picture Company'), (762, 'Mutual Film Company'), (9269, 'Global Entertainment Productions GmbH &amp; Company Medien KG'), (129, 'Section Eight'), (12202, 'WV Films III'), (1171, 'Epsilon Motion Pictures'), (10227, 'Mandeville Films'), (24097, 'NeoReel'), (14, 'Miramax Films'), (691, 'Cappa Productions'), (7380, 'Initial Entertainment Group (IEG)'), (6733, 'Reliance BIG Entertainment'), (2994, 'Hollywood Gang Productions'), (2995, 'Atmosphere Entertainment MM'), (2251, 'Sony Pictures Animation'), (7311, 'Kerner Entertainment Company'), (12087, 'Angry Films'), (76069, 'Wardour Street Pictures'), (35304, 'Blue Tulip Productions'), (3200, 'Chartoff Productions'), (3263, 'Odd Lot Entertainment'), (7296, 'K/O Paper Products'), (31825, 'Digital Domain'), (31826, 'Taleswapper'), (890, 'Cheyenne Enterprises'), (5237, 'The Saul Zaentz Company'), (53413, '80 Days Productions'), (53414, 'Spanknyce Films'), (53416, 'Fitzwilliam Productions'), (415, 'Laurence Mark Productions'), (19354, 'Mediastream Vierte Film GmbH &amp; Co. Vermarktungs KG'), (19355, 'Canlaws Productions'), (19477, 'Dune Films'), (19478, 'BK'), (19479, 'KOH'), (19480, 'Reino del Cielo'), (19482, 'Inside Track 3'), (19483, 'Calle Cruzada'), (5555, 'Global Medien KG'), (58331, 'Franklin/Waterman Productions'), (6408, 'International Traders'), (21904, 'Mill Film'), (21905, 'C &amp; L'), (21906, 'Dawliz'), (766, 'Blue Tulip Productions'), (26265, 'Ronald Shusett/Gary Goldman'), (76068, 'Digital Image Associates'), (61409, 'T2 Productions'), (11391, 'Tribeca Productions'), (11581, 'Misher Films'), (8083, 'Film Rites'), (1423, 'Escape Artists'), (2242, 'Everyman Pictures'), (7852, 'Dreamworks Pictures'), (4740, 'Gary Sanchez Productions'), (824, 'Kopelson Entertainment'), (308, 'The Weinstein Company'), (925, 'Nu Image Films'), (10254, 'Millennium Films'), (5289, 'Wild Things Productions'), (682, 'Peninsula Films'), (694, 'StudioCanal'), (3045, 'Sony Pictures Releasing'), (14577, 'Sony Pictures Worldwide Acquisitions (SPWA)'), (21212, 'Italian Tax Credit'), (23731, 'Birnbaum/Barber'), (23732, 'Cineroma SRL'), (23733, 'French Tax Credit'), (919, 'Beacon Communications'), (348, 'Bedford Falls Productions'), (430, 'Lonely Film Productions GmbH &amp; Co. KG.'), (705, 'Spring Creek Productions'), (20938, 'Liberty Pictures'), (14654, 'EMJAG Productions'), (19177, 'Red Granite Pictures'), (23243, 'Sikelia Productions'), (31080, 'Polygram Filmed Entertainment'), (23434, 'Big Bug Pictures'), (1972, 'X-Filme Creative Pool'), (7829, 'Ascension Pictures'), (10947, 'ARD Degeto Film'), (11080, 'Cloud Atlas Productions'), (11082, 'Five Drops'), (11083, 'Media Asia Group'), (19621, 'Dreams of Dragon Picture'), (8089, 'Animal Logic'), (813, 'DiNovi Pictures'), (52945, 'Frantic Films'), (52946, 'Maple Shade Films'), (52947, 'Catwoman Films'), (748, 'Mosaic Media Group'), (11916, 'Sid &amp; Marty Krofft Pictures'), (342, 'Davis-Films'), (7571, 'LionsGate'), (28384, 'Ex3 Productions'), (40822, 'Fipex Holding'), (1088, 'Alcon Entertainment'), (10289, 'DMG Entertainment'), (70993, 'Ehman Productions'), (3012, 'Pathé Distribution'), (17888, 'K. JAM Media'), (34401, 'Surf Film'), (63571, 'Enelmar Productions, A.I.E.'), (97, 'Castle Rock Entertainment'), (10163, 'Working Title Films'), (16280, 'Jean Doumanian Productions'), (21716, 'Sweetland Films'), (65514, 'Magnolia Films'), (65515, 'Jasmine Productions Inc.'), (20242,
+</code></pre>
+<p>וממשיך וממשיך, נראה שמדפיס את כל הנתונים שצריכים להכנס לטבלה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:00:42Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:00pm
+                  </time>
+<meta content="2020-12-09T14:00:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה ה־50 תווים האחרונים בשאילתה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:02:06Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:02pm
+                  </time>
+<meta content="2020-12-09T14:02:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="8" data-topic="8532" data-username="adi1">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/a/ecb155/40.png" width="20"/> adi1:</div>
+<blockquote>
+<p><code>INSERT OR IGNORE INTO "categories" ("id", "name") VALUES (28, 'Action'), (12, 'Adventure'), (14, 'Fantasy'), (878, 'Science Fiction'), (80, 'Crime'), (18, 'Drama'), (53, 'Thriller'), (16, 'Animation'), (10751, 'Family'), (37, 'Western'), (35, 'Comedy'), (10749, 'Romance'), (27, 'Horror'), (9648, 'Mystery'), (36, 'History'), (10752, 'War'), (10402, 'Music'), (99, 'Documentary'), (10769, 'Foreign'), (10770, 'TV Movie')</code></p>
+</blockquote>
+</aside>
+<p>האם הכוונה הייתה לזה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:02:18Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:02pm
+                  </time>
+<meta content="2020-12-09T14:02:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בטוחה שזה קורה ב־postgresql? כי מגוגל על השגיאה נראה שזה קורה בעיקר ב־SQLite3</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:02:48Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:02pm
+                  </time>
+<meta content="2020-12-09T14:02:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האחרונים, לא הראשונים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> ודווקא ב־Categories</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:03:51Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:03pm
+                  </time>
+<meta content="2020-12-09T14:03:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>השגיאה של postgres הייתה שגיאה נפרדת.</p>
+<p>פה, אני עדיין לא על השרת, הdb מקומי, אבל אני מכינה אותו לקראת המצב בו אצטרך להעלות נתונים לdb בheroku</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:05:43Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:05pm
+                  </time>
+<meta content="2020-12-09T14:05:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז <a href="https://www.google.com/search?q=peewee.operationalerror+too+many+sql+variables&amp;oq=OperationalError%3A+too+many+SQL+variables">גוגל</a> של שנייה מראה מה הבעיה.<br/>
+זה לא יעבוד ב־SQLite כי יש שם יותר מדי נתונים להכניס, וזה מציק ל־SQLite שלא יודע להתמודד עם זה.</p>
+<p>אני ממליץ ממש לנסות לחפש בגוגל לפני שפותחים אשכול, זה יכול לחסוך הרבה תסכול <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+אפשר לראות שגם אני לכל אורך ה־live עבדתי צמוד ממש עם Google</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:08:59Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:08pm
+                  </time>
+<meta content="2020-12-09T14:08:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עברתי מאתמול על גוגל שוב ושוב בלי למצוא פתרון, ואז הגיע התסכול <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+אז אני עדיין כנראה לא מבינה משהו, כי בלייב לפי מה שראיתי הכנסת נתונים לdb מקומי עוד לפני שהכנסת נתונים ל db ב<br/>
+heroku<br/>
+מה בעצם אני צריכה לעשות לפני ההרצה של הקוד?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:10:55Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:10pm
+                  </time>
+<meta content="2020-12-09T14:10:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התוצאה השנייה ממש בקישור ששלחתי מציעה דרך להגדיר את ה־SQLite באופן שיאפשר להכניס יותר נתונים.<br/>
+התוצאה הרביעית מציעה for, כל פעם עם קצת רשומות.</p>
+<p>משאיר אותך לנסות קצת לבד <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="8532.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-12-09T14:11:40Z" itemprop="datePublished">
+                     9 בדצמבר,‏ 2020,‏  2:11pm
+                  </time>
+<meta content="2020-12-09T14:11:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אנסה עכשיו, ממש ממש תודה רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/postgres/8532 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:18:12 GMT -->
+</html>

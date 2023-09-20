@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/10-5-git/8081 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:41:43 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 10 – יום 5: שילוב git עם שרת מרוחק - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="הקדמה
+עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם. 
+אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט. 
+זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8081.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8081.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 10 – יום 5: שילוב git עם שרת מרוחק’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_1024x70.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_1024x70.png" property="og:image"/>
+<meta content="8081.html" property="og:url"/>
+<meta content="8081.html" name="twitter:url"/>
+<meta content="שבוע 10 – יום 5: שילוב git עם שרת מרוחק" property="og:title"/>
+<meta content="שבוע 10 – יום 5: שילוב git עם שרת מרוחק" name="twitter:title"/>
+<meta content="הקדמה עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם.  אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט.  זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנו על ידי אחרים.  כשנעבוד עם git במקום העבודה שלנו או כחלק מפרויקט Open Source משותף, חשוב שנהיה מסוגלים:   להוריד את הפרויקט אלינו למחשב. לקבל עדכונים לפרויקט שהועלו על ידי שאר המתכנתים. לשלוח בקלות את הקוד שכתבנו, כך ששאר הקולגות יוכלו להוריד אותו בקלות.  הפקודות לשמחתנו, git מכ..." property="og:description"/>
+<meta content="הקדמה עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם.  אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט.  זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנו על ידי אחרים.  כשנעבוד עם git במקום העבודה שלנו או כחלק מפרויקט Open Source משותף, חשוב שנהיה מסוגלים:   להוריד את הפרויקט אלינו למחשב. לקבל עדכונים לפרויקט שהועלו על ידי שאר המתכנתים. לשלוח בקלות את הקוד שכתבנו, כך ששאר הקולגות יוכלו להוריד אותו בקלות.  הפקודות לשמחתנו, git מכ..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="git" property="og:article:tag"/>
+<meta content="שבוע-10" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="4 ❤"/>
+<meta content="2020-09-05T06:22:29+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8081.html">שבוע 10 – יום 5: שילוב git עם שרת מרוחק</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/git.html" rel="tag">git</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-10.html" rel="tag">שבוע-10</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 10 – יום 5: שילוב git עם שרת מרוחק" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="git, שבוע-10" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8081.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T06:22:29Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  6:22am
+                  </time>
+<meta content="2020-09-05T18:12:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>הקדמה</h2>
+<p>עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם.<br/>
+אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט.<br/>
+זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנו על ידי אחרים.</p>
+<p>כשנעבוד עם git במקום העבודה שלנו או כחלק מפרויקט Open Source משותף, חשוב שנהיה מסוגלים:</p>
+<ol>
+<li>להוריד את הפרויקט אלינו למחשב.</li>
+<li>לקבל עדכונים לפרויקט שהועלו על ידי שאר המתכנתים.</li>
+<li>לשלוח בקלות את הקוד שכתבנו, כך ששאר הקולגות יוכלו להוריד אותו בקלות.</li>
+</ol>
+<h2>הפקודות</h2>
+<p>לשמחתנו, git מכירה בחשיבות העניין, ומאפשרת לנו לשלוט בכך ב־3 פקודות פשוטות:</p>
+<ol>
+<li>הפקודה git clone מקבלת כפרמטר כתובת, ומורידה ממנה את ה־repository.</li>
+<li>הפקודה git pull מקבלת את כל העדכונים שהתרחשו מאז ה־git clone או ה־git pull האחרונים שנעשו.</li>
+<li>הפקודה git push מפיצה את כל ה־commit־ים שאתם עשיתם בתיקייה המקומית שלכם לשאר הקולגות שלכם.</li>
+</ol>
+<h3>איך זה עובד? – הפקודה git clone</h3>
+<p>בפקודה git clone אנחנו מבקשים מ־git להוריד פרויקט git מקישור שסיפקנו כפרמטר.</p>
+<p>הריצו לדוגמה את הפקודה הבאה בשורת הפקודה שלכם.<br/>
+הפקודה תוריד למחשב שלכם Repository שכולל את כל מחברות הפייתון של שבועות 1 עד 8.</p>
+<pre><code class="lang-bash">git clone https://github.com/PythonFreeCourse/Notebooks/
+</code></pre>
+<p>אם תיכנסו לתיקייה החדשה שנוצרה (<code>cd Notebooks</code>) תוכלו למצוא את תיקיית <code>.git</code>.<br/>
+אתם תראו שכל פקודות ה־git שלמדתם עד כה עובדות כרגיל (נסו, לדוגמה, להריץ <code>git status</code>).</p>
+<p>אם תריצו את הפקודה <code>git remote -v</code>, יופיעו כפלט שתי שורות.<br/>
+השורה הראשונה, שלידה כתוב fetch, היא המקור שממנו <code>git</code> תמשוך מידע כשנבקש ממנה לקבל עדכונים בנוגע ל־repository.<br/>
+השורה השנייה, שלידה כתוב push, היא היעד שאליו <code>git</code> תדחוף את המידע כשנבקש ממנה לשלוח עדכונים בנוגע ל־repository.</p>
+<p>המילה <code>origin</code> שנמצאת שם היא השם שניתן כברירת מחדל למיקום שממנו הורדנו את ה־repository.<br/>
+במקרה שלנו, לדוגמה, origin זה שם מקוצר ל־<code>https://github.com/PythonFreeCourse/Notebooks/</code>.</p>
+<h3>איך זה עובד? – הפקודה git push</h3>
+<p>הפקודה <code>git push</code> מאפשרת לכם לדחוף לשרת עדכונים שביצעתם ב־repository.<br/>
+לאחר הרצת הפקודה, השינויים שביצעתם ישלחו, והקולגות שלכם יוכלו להוריד אותם.</p>
+<p>יש שני קאצ’ים בפקודה:</p>
+<ol>
+<li>לפני שתוכלו לעשות git push, תתבקשו לעשות git pull – להוריד אליכם את המצב העדכני של ה־repository.</li>
+<li>הפקודה המלאה היא: <code>git push origin master</code> (או כל branch אחר שעליו אתם נמצאים במקום <code>master</code>).</li>
+</ol>
+<h3>איך זה עובד? – הפקודה git pull</h3>
+<p>הפקודה git pull מאפשרת לכם למשוך עדכונים שהתבצעו ב־repository מאז שעדכנתם אותו פעם אחרונה.</p>
+<p>היא מורכבת מ־2 חלקים:</p>
+<ol>
+<li>הפקודה <code>git fetch</code>, שמורידה אליכם את מה שקורה בשרת המרוחק</li>
+<li>הפקודה <code>git merge</code>, שמנסה למזג את מה ש־<code>git fetch</code> הורידה למחשב שלכם עם העבודה המקומית אצלכם במחשב.</li>
+</ol>
+<h4>בעיה נפוצה: merge conflict</h4>
+<p>לפעמים בעקבות הפקודה <code>git pull</code> קורה דבר מעט לא נעים שנקרא <em>merge conflict</em>.<br/>
+זה מצב שבו git לא בטוחה כיצד למזג את הגרסאות, והיא מבקשת את עזרתכם.</p>
+<p>במצב כזה, דרך הפעולה המומלצת היא:</p>
+<ol>
+<li>להקליד git status, כדי לראות עבור אילו קבצים המיזוג נכשל.</li>
+<li>לערוך אותם. git דאגה לכתוב בתוך הקובץ איפה הקונפליקט. הסירו את השורות המיותרות.</li>
+<li>הוסיפו את הקבצים המתוקנים בעזרת <code>git add</code>.</li>
+<li>עשו <code>git commit</code> כרגיל.</li>
+</ol>
+<p>בחלק מהמערכות, הפקודה <code>git mergetool</code> תמצא אצלכם במחשב כלי עזר גרפי שיכול להקל על העבודה הזו.<br/>
+ראו ב־Stackoverflow את השאלה “<a href="https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git">How to resolve merge conflicts in Git?</a>”.</p>
+<h2>אתרים מרוחקים לאחסון repositories</h2>
+<p>ישנן פלטפורמות אינטרנטיות שמציעות לנו לאחסן את הפרויקטים שלנו בחינם.<br/>
+דמיינו Google Photos, רק במקום פלטפורמה לשמירת התמונות שלכם – פלטפורמה לשיתוף הקוד שלכם <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>מתכנתים רבים משתמשים באתרים האלו מדי יום.<br/>
+לרוב, האתרים האלו משמשים לשיתוף פרויקטים שאנשים בנו – ממודולים ועד תוכני הוראה.<br/>
+אנשים רבים משתמשים בהם גם כתיק עבודות, כפרופיל אישי ברשת, כמקום למצוא חתיכות קוד מעניינות ועוד.</p>
+<p>שניים מהאתרים המובילים בתחום הם GitHub ו־GitLab.</p>
+<p>האתר GitHub פופולרי יותר בפער ניכר.<br/>
+הפלטפורמה נקנתה באוקטובר 2018 על ידי Microsoft, ולפי מדד Alexa לפופולריות של אתרים, היא נמצאת במקום ה־80 בעולם.<br/>
+זה גם האתר שבו אנחנו בחרנו לאחסן את מערכת העלאת התרגילים שלנו ואת מחברות הקורס.</p>
+<h3>איך מנווטים פה?</h3>
+<p>רוב פרויקטי הקוד הפתוח המודרניים מארחים את הקוד שלהם ב־GitHub.<br/>
+זה כולל מודולים פופולריים בפייתון, כמו <a href="https://github.com/psf/requests">requests</a>, <a href="https://github.com/tensorflow/tensorflow">tensorflow</a>, <a href="https://github.com/pallets/flask">flask</a>, <a href="https://github.com/pandas-dev/pandas">pandas</a>, <a href="https://github.com/numpy/numpy">numpy</a>, <a href="https://github.com/tqdm/tqdm">tqdm </a>, <a href="https://github.com/bokeh/bokeh">bokeh</a> ועוד.<br/>
+למעשה, אפילו קוד המקור של CPython עצמה (הפייתון שאנחנו משתמשים בו) <a href="https://github.com/python/cpython">נמצא ב־GitHub</a>.<br/>
+עוד פרויקטים שאולי אתם מכירים ומנוהלים ב־GitHub כוללים את <a href="https://github.com/Microsoft/vscode">VSCode</a> ואת <a href="https://github.com/edx/edx-platform">הפלטפורמה לקורסים חינמיים edx</a>.</p>
+<p>הטריק הוא לחפש בגוגל את השם של הפרויקט, כשלפניו יש את המילה GitHub. לדוגמה: GitHub VSCode.<br/>
+זה נחמד כשאנחנו רוצים לתרום קוד לפרויקט מסוים, לפתוח לו באג או לעיין בקוד שלו ולהבין איך הוא בנוי.<br/>
+זה גם יכול לעזור לנו להבין עד כמה הפיתוח של הפרויקט פעיל, והאם אפשר לסמוך על כך שתהיה תמיכה ועדכונים.</p>
+<p>כשנרצה לנווט, נסתכל על 4 אזורים מרכזיים:</p>
+<h4>סרגל הניווט למעלה</h4>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d0da97bd062caa58417074faf7d616bb655c7a79" href="../../uploads/default/original/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79.png" title="image"><img alt="image" data-base62-sha1="tNBE5A33xYsEycCIlQ9YEae3abv" data-small-upload="../../uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_10x10.png" height="47" src="../../uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_690x47.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_690x47.png, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_1035x70.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1057×73 8.22 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כאן מתחבאים מספר קישורים מעניינים:</p>
+<ol>
+<li>הקישור Code יאפשר לכם לגשת לראות את הקוד עצמו.</li>
+<li>הקישור Issues יאפשר לכם לראות בקשות לפיצ’רים ודיווחים על תקלים שנפתחו בידי המשתמשים.</li>
+<li>הקישור Pull Requests יאפשר לכם לראות תרומות קוד שממתינות לאישור.</li>
+<li>הקישור Insights יאפשר לכם לראות תובנות מעניינות על תרומות הקוד וקהילת המפתחים של הפרויקט.</li>
+</ol>
+<p>המונח “Pull Requests” קצת מבלבל, בעיקר כיוון שאנחנו מדברים עליו כשאנחנו עושים push.</p>
+<details>
+<summary>
+לפירוט על המונח Pull Request.</summary>
+<p>בכל פעם שתתרמו קוד לפרויקט קוד פתוח, אתם תיצרו בקשה להעלות את הקוד שלכם ל־repository המרוחק שמשותף לכולם.<br/>
+הבקשה הזו מהאדם שמתחזק את ה־repository למזג את הקוד שלכם עם הקוד הקיים נקראת “pull request” (<a href="https://stackoverflow.com/questions/21657430/why-is-a-git-pull-request-not-called-a-push-request">ולא “push request”</a>), כיוון שאתם (כביכול) מבקשים מאנשים אחרים למשוך את הקוד שלכם.<br/>
+זה שם לא מוצלח, אבל זה מה יש <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</details>
+<h4>לשונית הקוד</h4>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/be6e7b9661164c68e289e2b611993c80494e6fa8" href="../../uploads/default/original/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8.png" title="image"><img alt="image" data-base62-sha1="raDqvKpWwwN1N4YMEAaCrzEHkfK" data-small-upload="../../uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_10x10.png" height="166" src="../../uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_690x166.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_690x166.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_1035x249.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1373×331 47 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>התמונה היא מתוך פרויקט <a href="https://github.com/pythonfreecourse/LMS">LMS</a>.</p>
+<ol>
+<li>בצד שמאל העליון אנחנו יכולים לבחור על איזה branch להסתכל.</li>
+<li>בצד ימין, אם תלחצו על הכפתור הירוק “Code”, תקבלו קישורים להורדת הפרויקט (כ־zip או בעזרת git clone).</li>
+<li>בראש הרשימה אנחנו יכולים לראות את האדם האחרון שתרם קוד לפרויקט, את מספר ה־commit ואת כמות ה־commit־ים שהתבצעו בפרויקט תחת ה־branch.</li>
+<li>בהמשך אפשר לראות את הקבצים עצמם.</li>
+<li>אם נמשיך לגלול למטה, נראה את קובץ ה־README של הפרויקט, שלרוב מסביר כיצד להתקין אותו ומראה דוגמאות לשימוש בו.</li>
+</ol>
+<h4>מדדים ל־repository איכותי ב־GitHub</h4>
+<p>בבואנו להעריך האם אנחנו רוצים להשתמש במודול מסוים או בקוד שמצאנו ב־GitHub, נסתכל על כמה סימנים מעניינים:</p>
+<p><img alt="image" data-base62-sha1="nWHoxHR3XtMHTpTEqSsEncGKYl5" height="37" src="../../uploads/default/original/2X/a/a7d4ad4db7c81079cf857490b7d57cd13e547d7b.png" width="279"/></p>
+<ol>
+<li>כמות ה־Stars של הפרויקט: כמה אלפים זה מצוין, מאות זה טוב, עשרות זה מפוקפק.</li>
+<li>כמות ה־Fork־ים. זה מראה כמה אנשים יצרו פרויקט על בסיס הפרויקט הנוכחי – בד"כ כדי לתרום לפרויקט</li>
+<li>מתי הייתה התרומה האחרונה? אם לפני יותר מכמה חודשים, נראה שהפרויקט לא מתוחזק יותר. שווה לבדוק אם יש פרויקטים עדכניים יותר.</li>
+<li>כמה Commit־ים התבצעו לפרויקט? – מספר גדול בדרך כלל מראה על יותר בשלות.</li>
+<li>כמה Issue־ים פתוחים יש? האם מטפלים ב־Issue־ים או שהם נשארים פתוחים?</li>
+</ol>
+<p><img alt="image" data-base62-sha1="ucebscsBl3szb8j4EF5hw5Pmsaf" height="65" src="../../uploads/default/original/2X/d/d3a31967350fee13f7514733d646a3ddf0f2494b.png" width="275"/></p>
+<h3>תרגיל 1: צעדים ראשונים</h3>
+<ol>
+<li>פתחו לעצמכם פרופיל ב־GitHub, אם עדיין אין לכם כזה.</li>
+<li>צרו repo חדש והעלו את מערכת wit שלכם ל־GitHub.</li>
+<li>(רשות) יעזור לתפוצת הקורס – סמנו כוכב ב־Repo־ים שלנו: <a href="https://github.com/PythonFreeCourse/Notebooks">מחברות הקורס</a> ו<a href="https://github.com/PythonFreeCourse/lms/">המערכת לבדיקת תרגילים</a>.</li>
+</ol>
+<p>היעזרו במדריך <a href="https://gist.github.com/mindplace/b4b094157d7a3be6afd2c96370d39fad">הזה</a>, אם יש צורך.<br/>
+צרפו לפתרון התרגיל את הקישור ל־repository שיצרתם ב־GitHub.</p>
+<h3>תרגיל 2: התמודדות עם עבודה מרוחקת</h3>
+<p>התרגיל הזה מומלץ מאוד, אבל לא חובה להגיש אותו.<br/>
+השלימו את תרגילים 1 ו־2 בעמוד הבא:</p>
+<aside class="onebox allowlistedgeneric">
+<header class="source">
+<img class="site-icon" height="32" src="https://github.githubassets.com/favicons/favicon.svg" width="32"/>
+<a href="https://github.com/martinjrobins/exercise" rel="noopener" target="_blank">GitHub</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:400/399;"><img class="thumbnail" height="399" src="../../uploads/default/original/2X/5/51ec9d8c91fb7d535777902123efee1922d8584e.png" width="400"/></div>
+<h3><a href="https://github.com/martinjrobins/exercise" rel="noopener" target="_blank">martinjrobins/exercise</a></h3>
+<p>exercise repo for git lecture. Contribute to martinjrobins/exercise development by creating an account on GitHub.</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<h2>מקורות לימוד נוספים</h2>
+<ol>
+<li>
+<a href="https://git-scm.com/book/en/v2">ספר אונליין על Git</a>. אם תבחרו לקרוא רק דבר אחד, זה צריך להיות זה.<br/>
+ממליץ בחום לקרוא את 6 הפרקים הראשונים כדי לצלוח את הנושא ברמת ידע גבוהה.</li>
+<li>עוד <a href="https://gitimmersion.com/">מקור מפורט מאוד</a>, ספר שלוקח את זה צעד צעד בנושאי git.</li>
+<li>
+<a href="https://www.udacity.com/course/version-control-with-git--ud123">קורס אונלייני</a> שמסכם את מה שלמדנו השבוע.</li>
+<li><a href="https://www.freecodecamp.org/news/git-and-github-overview/">איך עובדים עם GitHub?</a></li>
+<li><a href="https://xdg.me/blog/a-survey-of-git-best-practices">איך נכון לעבוד ב־git עם אנשים בצוות (מתקדם)</a></li>
+<li>
+<a href="https://www.git-tower.com/learn/">אתר שמרכז מקורות מידע בנוגע לעבודה עם Git</a>.</li>
+<li>כבר נתתי לזה קישור בעבר, אבל עדיין, <a href="https://www.youtube.com/watch?v=1ffBJ4sVUb4">זו ההרצאה הכי טובה שראיתי על git</a>.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/8206.html" itemprop="url">ריכוז חומרים: שבוע 10</a>
+<meta content="27" itemprop="position"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/10-5-git/8081 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:41:54 GMT -->
+</html>

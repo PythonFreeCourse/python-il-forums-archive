@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5917/14 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:48:00 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגילים נוספים: שבוע 4 - מס׳ 14 מאת orpazf - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="תודה לנגה אוסין על כתיבת התרגילים! 
+
+שבוע 4
+
+מחברת 1 – לולאות for
+
+יעקב השחור
+אתם בבלאג’יו, משחקים במשחק הקלפים “יַעֲקֹב הַשָּׁחֹר”, לא בהגינות רבה. בכל סיבוב אתם שולפים קלף, ואתם מבינים שככל שהקלף שנשלף נמוך יותר – כך ה&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../5917.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../5917.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגילים נוספים: שבוע 4’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/2X/3/311cdba835a5c9a2e760692ff4d6f96c26979432.png" name="twitter:image"/>
+<meta content="../../../uploads/default/original/2X/3/311cdba835a5c9a2e760692ff4d6f96c26979432.png" property="og:image"/>
+<meta content="14.html" property="og:url"/>
+<meta content="14.html" name="twitter:url"/>
+<meta content="תרגילים נוספים: שבוע 4" property="og:title"/>
+<meta content="תרגילים נוספים: שבוע 4" name="twitter:title"/>
+<meta content="זה נמצא ממש בראש הפורום הסמכה לתעודה במקרים חריגים" property="og:description"/>
+<meta content="זה נמצא ממש בראש הפורום הסמכה לתעודה במקרים חריגים" name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תרגול" property="og:article:tag"/>
+<meta content="תרגול-נוסף" property="og:article:tag"/>
+<meta content="2020-05-07T20:01:07+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../5917.html">תרגילים נוספים: שבוע 4</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%aa%d7%a8%d7%92%d7%95%d7%9c.html" rel="tag">תרגול</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%aa%d7%a8%d7%92%d7%95%d7%9c-%d7%a0%d7%95%d7%a1%d7%a3.html" rel="tag">תרגול-נוסף</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגילים נוספים: שבוע 4" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תרגול, תרגול-נוסף" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-05T18:38:22Z" itemprop="datePublished">
+                     5 במאי,‏ 2020,‏  6:38pm
+                  </time>
+<meta content="2021-09-04T21:27:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>תודה לנגה אוסין על כתיבת התרגילים!</p>
+<h1>
+<a class="anchor" href="#4-1" name="4-1"></a>שבוע 4</h1>
+<h2>
+<a class="anchor" href="#1-for-2" name="1-for-2"></a>מחברת 1 – לולאות for</h2>
+<h3>
+<a class="anchor" href="#heading-3" name="heading-3"></a>יעקב השחור</h3>
+<p>אתם בבלאג’יו, משחקים במשחק הקלפים “יַעֲקֹב הַשָּׁחֹר”, לא בהגינות רבה. בכל סיבוב אתם שולפים קלף, ואתם מבינים שככל שהקלף שנשלף נמוך יותר – כך הסיכוי לשלוף קלף גבוה יותר עולה.<br/>
+כתבו פונקציה אשר מקבלת כפרמטר את רשימת ערכי הקלפים שנשלפו, וקובעת אם כדאי להשתתף גם בסיבוב הבא או לא.</p>
+<p>הפונקציה פועלת לפי החוקיות הבאה:</p>
+<ul>
+<li>רשימת הקלפים שנשלפו תהיה מיוצגת על־ידי ערכם המספרי בלבד. למשל, נסיך יהיה 11 ומלך יהיה 13. המשחק לא כולל ג’וקר.</li>
+<li>אם ערכו של הקלף הוא בין 2 ל־6 כולל, מד הסיכון ירד בנקודה אחת (כי עכשיו החבילה מכילה קלפים טובים יותר).</li>
+<li>אם ערכו של הקלף הוא בין 10 ל־13 כולל, או שערכו שווה 1 (“אס”), מד הסיכון יעלה בנקודה אחת.</li>
+<li>המספרים 7–9 הם ניטרליים, ולא מוסיפים למד סיכון או גורעים ממנו.</li>
+<li>אין חשש לבעיות קלט.</li>
+</ul>
+<p>על הפונקציה להחזיר <code>True</code> אם מד הסיכון קטן מאפס, או <code>False</code> אם מד הסיכון גדול או שווה לאפס.</p>
+<h4>
+<a class="anchor" href="#heading-4" name="heading-4"></a>דוגמאות:</h4>
+<ul>
+<li>עבור קלט של <code>[1]</code>, הפונקציה תחזיר False.</li>
+<li>עבור קלט של <code>[1, 2, 3, 4, 5, 6, 7, 8, 9]</code>, הפונקציה תחזיר True.</li>
+<li>עבור קלט של <code>[10, 2]</code>, הפונקציה תחזיר False.</li>
+</ul>
+<p>אתגר: ייצגו את קלפי משפחת המלוכה כמחרוזות; קרי “J” עבור נסיך, “Q” עבור מלכה ו־“K” עבור מלך. ממשו זאת ללא שימוש ב־or, וללא הגדרת if או elif בעבור כל אחד מהקלפים בנפרד.</p>
+<h3>
+<a class="anchor" href="#heading-5" name="heading-5"></a>צפנת פענח</h3>
+<p>לפניכם רשימה של רשימות. כל תת־רשימה מכילה אותיות וספרות שלמות וחיוביות:</p>
+<pre><code class>puzzle_input = [
+    ['s', '1', 't', '9'], ['b', '2', '5'], ['u','3', '7', 'y'],
+    ['c', '4', 'a', '6'], ['g', '5'], ['c', '6', '3', '5'], ['c', '7', '3'],
+    ['x', '8', '3'], ['e', '9', '1'], ['s', '2', '2', '6'], ['m', '12', '9'],
+    ['s', '8', '2', 'j'], ['!', '9', '1'], ['?', '9', '2']
+]
+</code></pre>
+<p>כתבו פונקציה (תוכלו לקרוא לה foo, אם תרצו) אשר תרכיב מילה המסתתרת בתתי־הרשימות, לפי החוקיות הבאה: אם סכום המספרים בתת־רשימה מסוימת שווה ל־10, דִגמו ממנה את האות הראשונה. הפונקציה תחזיר את המילה שהתקבלה מצירוף כל האותיות בזו אחר זו.</p>
+<h2>
+<a class="anchor" href="#2-3-6" name="2-3-6"></a>מחברת 2 ו־3 – מילונים</h2>
+<h3>
+<a class="anchor" href="#heading-7" name="heading-7"></a>טחינה</h3>
+<p>לפניכם גרסה עדכנית של ספר בישול מהולל (או לכל הפחות, הכותרות של מתכוניו).</p>
+<pre><code class>cookbook = {
+    'pasta': {'origin': 'italy', 'prep_time': 25, 'calories': 400},
+    'curry': {'origin': 'india', 'prep_time': 60, 'calories': 250},
+    'chraime': {'origin': 'morocco', 'prep_time': 40, 'calories': 350}
+}
+</code></pre>
+<p>לאחרונה גיליתם דבר נפלא: כל דבר הוא טעים יותר לאחר שמוסיפים לו טחינה. רק דקת הכנה נוספת, ופי 2 קלוריות!<br/>
+עדכנו בהתאם את ספר הבישול: הוסיפו דקה אחת של הכנה עבור כל מאכל, והכפילו את הקלוריות.</p>
+<h2>
+<a class="anchor" href="#4-8" name="4-8"></a>מחברת 4 – פריקה</h2>
+<h3>
+<a class="anchor" href="#heading-9" name="heading-9"></a>כוהף</h3>
+<p>ממשו פונקציה אשר מקבלת מספר זוגי ולא ידוע של פרמטרים. הפונקציה תחזיר רשימה אשר חצייה הראשון “הוחלף” עם חצייה השני.</p>
+<h4>
+<a class="anchor" href="#heading-10" name="heading-10"></a>לדוגמה:</h4>
+<ol>
+<li>עבור הקלט 4, 3, 2, 1 – יתקבל [2, 1, 4, 3].</li>
+<li>עבור הקלט ‘banana’, ‘nana’ – יתקבל [‘nana’, ‘banana’].</li>
+<li>עבור הקלט 66, 55, 44, 33, 22, 11 – יתקבל [33, 22, 11, 66, 55, 44].</li>
+</ol>
+<p>השתמשו ב־slicing וב־unpacking.</p>
+<h3>
+<a class="anchor" href="#heading-11" name="heading-11"></a>רטינה יומית</h3>
+<p>בעקבות המצב סיגלתם לעצמכם שגרת אימונים ביתית. כל הכבוד! לאחר כל אימון, רשמתם כמה ימים עברו מאז שהתחלתם, וכמה תרגילים עשיתם מכל סוג. הרישום נראה כך:</p>
+<pre><code class>daily_routine = (
+    {'day': 1, 'capability': {'pushups': 8, 'squats': 20, 'pullups': 2}},
+    {'day': 2, 'capability': {'pushups': 13, 'squats': 39, 'pullups': 2}},
+    {'day': 3, 'capability': {'pushups': 21, 'squats': 51, 'pullups': 3}}
+)
+</code></pre>
+<p>חשבו את סכום התרגילים שעשיתם בכל יום, ואת ממוצע התרגילים שביצעתם סה"כ (ללא תלות בסוג התרגילים).<br/>
+השתמשו ב־kwargs.</p>
+<p>(בחנו את עצמכם: הממוצע אמור להיות 53.)</p>
+<h3>
+<a class="anchor" href="#5-12" name="5-12"></a>מחברת <span class="hashtag">#5</span> – בילטעינים</h3>
+<ol>
+<li>ממשו מילון המציג את חמישה־עשר המספרים האי־זוגיים הראשונים החל מ־100, באופן הבא:</li>
+</ol>
+<pre><code class>{1: 101, 2: 103, 3: 105, 4: 107, 5: 109, 6: 111, 7: 113, 8: 115, 9: 117, 10: 119, 11: 121, 12: 123, 13: 125, 14: 127, 15: 129}
+</code></pre>
+<h2>
+<a class="anchor" href="#6-13" name="6-13"></a>מחברת 6 – סיכום</h2>
+<h3>
+<a class="anchor" href="#heading-14" name="heading-14"></a>ארנב ומזון</h3>
+<p>הגשמתם חלום ואימצתם שלושה ארנבים: זיגמונד, פרידריך ואִרווין. מזל טוב!<br/>
+הנחתם לצד הארנבונים כמות שווה של גזר, חסה ובצל ירוק, ולכל אורך היום הראשון צפיתם בהם אוכלים. בכל פעם שראיתם ארנב אוכל דבר מה רשמתם בקצרה את האות הראשונה של שמו ואת האות הראשונה של מה שאכל. בסופו של דבר קיבלתם מחברת מבולגנת למדי, אשר נראית כך:</p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code class>['I l', 'F l', 'I s', 'I l', 'I c', 'Z s', 'Z s', 'I l', 'I s', 'Z c', 'Z l', 'I l', 'I l', 'F c', 'Z c', 'Z c', 'F c', 'I s', 'F c', 'Z c']
+</code></pre>
+</details>
+<p>על מנת להכיר את ארנביכם טוב יותר, ולדעת מהי כמות האוכל שכדאי לרכוש בפעם הבאה, ענו של השאלות הבאות:</p>
+<ol>
+<li>מיהו הארנב הכי זללן? כלומר, מיהו הארנב שצרך את כמות המזון הגדולה ביותר?</li>
+<li>מהו המזון החביב על הארנב הזללן ביותר?</li>
+<li>איזה מבין המזונות זכה להערכה הרבה ביותר משלושת הארנבים? כלומר, מאיזה סוג מזון נשאר הכי פחות בסוף היום?</li>
+</ol>
+<p>הוראות והנחות קלט:</p>
+<ol>
+<li>השתמשו במילונים, unpacking ולולאות for.</li>
+<li>ניתן ליצור אך ורק מילונים ריקים.</li>
+<li>כל מחרוזת ברשימה מכילה שתי אותיות: הראשונה מייצגת את שם הארנב, והשנייה מייצגת את סוג המזון (l עבור חסה, c עבור גזר, ו־s עבור בצל ירוק).</li>
+<li>הניחו כי כל הכמויות שוות בגודלן. מספיק להוסיף 1 לערך הכמותי של כל מאכל בעבור כל פעם שהוא רשום.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../5995/2.html" itemprop="url">עוד תרגילים, וזמנים של השבוע הבא?</a>
+<meta content="1" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../3518.html" itemprop="url">הודעת באנר: חומרי הקורס, מועדים ועזרה נוספת</a>
+<meta content="2" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T05:39:34Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  5:39am
+                  </time>
+<meta content="2020-05-06T05:39:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>צפנת פענח: success!<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/82a89a56c1b3a76e34619d6ec6da52072ab838bd" href="../../../uploads/default/original/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd.jpg" title="Screenshot_20200506-083908_Pydroid 3"><img alt="Screenshot_20200506-083908_Pydroid 3" data-base62-sha1="iDRiFIKf3pxGHFVr9sfwAFhOsNf" data-small-upload="../../../uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_10x10.png" height="500" src="../../../uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_236x500.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_236x500.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_354x750.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/82a89a56c1b3a76e34619d6ec6da52072ab838bd_2_472x1000.jpeg 2x" width="236"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot_20200506-083908_Pydroid 3</span><span class="informations">720×1520 382 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T07:15:14Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  7:15am
+                  </time>
+<meta content="2020-05-06T07:15:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר בבקשה הסבר על ניסוח השאלה ‘כוהף’?<br/>
+פונקציה אשר מקבלת מספר זוגי ולא ידוע של פרמטרים?<br/>
+<code>def function(unknown)</code><br/>
+הכוונה שהפרמטרים הם ב-unknown או שזה קלט מהמשתמש?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/3/30eccf7f6f141f499a17ce6a5e790462000ee252.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T07:35:09Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  7:35am
+                  </time>
+<meta content="2020-05-06T07:35:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt="תמונה" data-base62-sha1="6YOhx9SdR8o1aGNxBpc9P4gc9Am" height="499" src="../../../uploads/default/original/2X/3/30eccf7f6f141f499a17ce6a5e790462000ee252.png" width="622"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T08:16:30Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  8:16am
+                  </time>
+<meta content="2020-05-06T08:16:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אינדקסים צריכים להיות מספר שלם ולא float</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T08:19:37Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  8:19am
+                  </time>
+<meta content="2020-05-06T08:19:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":+1:" class="emoji" src="../../../images/emoji/twitter/%2b1c164.png?v=9" title=":+1:"/>…<br/>
+…<br/>
+…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T08:28:11Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  8:28am
+                  </time>
+<meta content="2020-05-06T08:28:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>פתרונות:<br/>
+<strong>יעקב השחור:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Returns a boolean value - True if it's worth to play next round (according to he cards already picked list)
+CARDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
+
+def danger_rate(cards):
+    danger = 0
+    for each in cards:
+        each = CARDS.index(each) + 1
+        if 2 &lt;= each &lt;= 6:
+            danger -= 1
+        elif 9 &lt;= each &lt;= 13 or each == 1:
+            danger += 1
+    return danger &lt; 0
+
+cards = [1, 'K', 2, 7, 6, 5]
+print(danger_rate(cards))
+</code></pre>
+</details>
+<p><strong>צפנת פענח:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Returns the decryption of the word - if a list has 10 total sum the first letter is added to the word
+puzzle_input = [
+    ['s', '1', 't', '9'], ['b', '2', '5'], ['u','3', '7', 'y'],
+    ['c', '4', 'a', '6'], ['g', '5'], ['c', '6', '3', '5'], ['c', '7', '3'],
+    ['x', '8', '3'], ['e', '9', '1'], ['s', '2', '2', '6'], ['m', '12', '9'],
+    ['s', '8', '2', 'j'], ['!', '9', '1'], ['?', '9', '2']
+]
+
+def foo(puzzle):
+    word = ""
+    for each in puzzle:
+        counter = 0
+        for letter in each:
+            if letter.isnumeric():
+                counter += int(letter)
+        if counter == 10:
+            word += each[0]
+    return word
+
+print(foo(puzzle_input))
+</code></pre>
+</details>
+<p><strong>טחינה:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Adds thini to each receipe, so adds a minute prepare time to each one amd double the calories
+cookbook = {
+    'pasta': {'origin': 'italy', 'prep_time': 25, 'calories': 400},
+    'curry': {'origin': 'india', 'prep_time': 60, 'calories': 250},
+    'chraime': {'origin': 'morocco', 'prep_time': 40, 'calories': 350}
+}
+
+def add_time_and_calories(book):
+    for each in book:
+        book[each]['prep_time'] += 1
+        book[each]['calories'] *= 2
+    return book
+
+print(add_time_and_calories(cookbook))
+</code></pre>
+</details>
+<p><strong>כוהף:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Returns a list of the arguments - from the middle till the end and from the beginning till the middle
+# The number of arguments has to be even
+def get_backwards(*args):
+    middle = len(args) // 2
+    return list(args[middle:] + args[:middle])
+
+print(get_backwards("nana", "banana"))
+</code></pre>
+</details>
+<p><strong>רטינה יומית:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Prints the total amount of exercises each day and the average amount of total exercises for all days
+daily_routine = (
+    {'day': 1, 'capability': {'pushups': 8, 'squats': 20, 'pullups': 2}},
+    {'day': 2, 'capability': {'pushups': 13, 'squats': 39, 'pullups': 2}},
+    {'day': 3, 'capability': {'pushups': 21, 'squats': 51, 'pullups': 3}}
+)
+
+def get_sum(day, capability):
+    total = 0
+    for exercise in capability:
+        total += capability[exercise]
+    print(f"The total amount of exercises in day {day} is {total}")
+    return total
+
+final_sum = 0
+for each in daily_routine:
+    final_sum += get_sum(**each)
+average = final_sum / len(daily_routine)
+print(f"The average amount of exercises is: {average}")
+</code></pre>
+</details>
+<p><strong>בילטעינים:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code># Prints a dictionary which contains 15 odd numbers and starts at the number 101
+final = {}
+how_many_odds = 15
+start_at = 101
+for index, number in enumerate(range(start_at, start_at + (how_many_odds * 2), 2), 1):
+    final[index] = number
+print(final)
+</code></pre>
+</details>
+<p><strong>ארנב ומזון:</strong></p>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>rabbits_tracing = ['I l', 'F l', 'I s', 'I l', 'I c', 'Z s', 'Z s', 'I l', 'I s', 'Z c',
+                   'Z l', 'I l', 'I l', 'F c', 'Z c', 'Z c', 'F c', 'I s', 'F c', 'Z c']
+translations = {'I': 'Irvin', 'Z': 'Zigmond', 'F': 'Fredrich', 'l': 'lettuce', 'c': 'carrot', 's': 'salary'}
+
+# Returns a tuple - the first organ is how many dishes he ate and the second one is what's his favorite dish
+def get_sum(rabbit):
+    total = 0
+    favorite_dish = 0
+    for dish in rabbit:
+        current = rabbit[dish]
+        if current &gt; favorite_dish:
+            favorite_dish = current
+            favorite_dish_name = dish
+        total += current
+    return (total, favorite_dish_name)
+
+# Returns which rabbit ate the most
+def get_fatest_rabbit(rabbits):
+    fatest = 0
+    for rabbit in rabbits:
+        sum_eating, fav_dish = get_sum(rabbits[rabbit])
+        if fatest &lt; sum_eating:
+            fatest = sum_eating
+            fatest_name = rabbit
+            fatest_fav_dish = fav_dish
+    return translations[fatest_name], translations[fatest_fav_dish]
+
+# Returns the favorite dish of the rabbits
+def get_fav_dish(rabbits):
+    dishes = {}
+    for rabbit in rabbits:
+        for each in rabbits[rabbit]:
+            if each not in dishes:
+                dishes[each] = rabbits[rabbit][each]
+            else:
+                dishes[each] += rabbits[rabbit][each]
+    return translations[sorted(dishes, key=dishes.get, reverse=True)[0]]
+
+rabbits = {}    # Creates a dictionary of the rabbits - each key is a rabbit name
+for each in rabbits_tracing:    # each value is a dictionary of the dishes he ate
+    name, space, dish = each
+    if name not in rabbits:
+        temp = {}
+        temp[dish] = 1
+        rabbits[name]= temp
+    elif dish not in rabbits[name]:
+        rabbits[name][dish] = 1
+    else:
+        rabbits[name][dish] += 1
+print(rabbits)
+
+fatest, fav_dish = get_fatest_rabbit(rabbits)
+print(f"The fatest rabbit is: {fatest}, his favorite dish is: {fav_dish}")
+print(f"The favorite dish of the rabbits is: {get_fav_dish(rabbits)}")
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T08:38:08Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  8:38am
+                  </time>
+<meta content="2020-05-06T08:38:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/e30260a60a2e4c0d9e09295470529708d52b734f" href="../../../uploads/default/original/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f.png" title="ביאור 2020-05-06 113745"><img alt="ביאור 2020-05-06 113745" data-base62-sha1="wodtJIeIX3GS76Irb8cMqwps54j" data-small-upload="../../../uploads/default/optimized/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f_2_10x10.png" height="116" src="../../../uploads/default/original/2X/e/e30260a60a2e4c0d9e09295470529708d52b734f.png" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">ביאור 2020-05-06 113745</span><span class="informations">999×168 5.46 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zurikarat</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T08:56:48Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  8:56am
+                  </time>
+<meta content="2020-05-06T08:56:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/41e72fb2b827dd8c9f93f9822f21adfc4789949b" href="../../../uploads/default/original/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b.png" title="99999"><img alt="99999" data-base62-sha1="9p0lHlJfcSPMTjuDrFuAs3RMxHZ" data-small-upload="../../../uploads/default/optimized/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b_2_10x10.png" height="66" src="../../../uploads/default/original/2X/4/41e72fb2b827dd8c9f93f9822f21adfc4789949b.png" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">99999</span><span class="informations">990×96 4.08 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-06T09:50:56Z" itemprop="datePublished">
+                     6 במאי,‏ 2020,‏  9:50am
+                  </time>
+<meta content="2020-05-07T09:25:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כוהף הפתרון שלי: (לוקח בחשבון הכנסת קלטים ולא הכנסה של נתונים לפונקציה)</p>
+<details>
+<summary>
+קוד</summary>
+<pre><code class>def flip_in_helf(x):
+    middle = len(x) // 2
+    return x[middle:] + x[:middle]
+
+
+inputs = []
+given_input = 0
+zugi = 0
+while given_input != '':
+    given_input = input("Enter an input or ampty string to exit: ")
+    if given_input != '':
+        inputs.append(given_input)
+        zugi = (zugi + 1) % 2
+    elif zugi != 0:
+        given_input = 0
+
+print(flip_in_helf(inputs))
+</code></pre>
+</details>
+<p>בילטעינים:</p>
+<details>
+<summary>
+קוד</summary>
+<pre><code class>def odds(start, number_of_odds):
+    if start % 2 == 0:
+        start += 1
+    odds = {}
+    for index, number in enumerate(range(start, start + number_of_odds * 2, 2), 1):
+        odds[index] = number
+    return odds
+
+print(odds(100, 15))
+</code></pre>
+</details>
+<p>טחינה:</p>
+<details>
+<summary>
+קוד</summary>
+<pre><code class>def adding_thini(cookbook):
+    for food_name, recipe_info in cookbook.items():
+        cookbook[food_name]['prep_time'] += 2
+        cookbook[food_name]['calories'] *= 2
+    return cookbook
+        
+print(adding_thini(cookbook))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T20:00:26Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏  8:00pm
+                  </time>
+<meta content="2020-05-07T20:00:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתחיל בזה שלא מדובר בתלונה - סיימתי את כל התרגילים הרגילים.<br/>
+ראיתי רק היום את התרגילים הנוספים, כשנכנסתי לבדוק אם יש כבר תרגילים של שבוע 5.<br/>
+לא מוצא “פיל או גנטיקה” ו/או/ ג’וק, סמור, בֹּנֶה.</p>
+<p>יש אפשרות שכמו ש-מחברות שבוע 1, 2,… נמצאות בראש הדף כשנכנסים לפורום, יופיעו קישורים לשאלות הנוספות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/3/311cdba835a5c9a2e760692ff4d6f96c26979432.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T20:01:07Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏  8:01pm
+                  </time>
+<meta content="2020-05-07T20:01:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נמצא ממש בראש הפורום <a class="inline-onebox" href="../5440/7.html">הסמכה לתעודה במקרים חריגים</a><br/>
+<img alt="תמונה" data-base62-sha1="70tdTt9rxepqhS8JZuYa1A8sgU2" height="155" src="../../../uploads/default/original/2X/3/311cdba835a5c9a2e760692ff4d6f96c26979432.png" width="681"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-07T22:47:01Z" itemprop="datePublished">
+                     7 במאי,‏ 2020,‏ 10:47pm
+                  </time>
+<meta content="2020-05-07T22:47:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבנתי…<br/>
+אזכור להבא.<br/>
+תודה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ombental</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-08T14:03:59Z" itemprop="datePublished">
+                     8 במאי,‏ 2020,‏  2:03pm
+                  </time>
+<meta content="2020-05-08T15:40:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<h1>יעקב השחור</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>def game(li):
+    risk = 0
+    for card in li:
+        if card in [7, 8, 9]:
+            continue
+        elif card in [1, 10, 'J', 'Q', 'K']:
+            risk += 1
+        else:
+            risk -= 1
+    if risk &lt; 0:
+        return True
+    else:
+        return False
+</code></pre>
+</details>
+<h1>צפנת פענח</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>def foo(puzzle):
+    word = ''
+    for li in puzzle:
+        temp = 0
+        for char in li:
+            if char.isnumeric():
+                temp += int(char)
+        if temp == 10:
+            for char in li:
+                if char.isalpha():
+                    word += char
+                    break
+    return word
+
+
+puzzle_input = [
+    ['s', '1', 't', '9'], ['b', '2', '5'], ['u','3', '7', 'y'],
+    ['c', '4', 'a', '6'], ['g', '5'], ['c', '6', '3', '5'], ['c', '7', '3'],
+    ['x', '8', '3'], ['e', '9', '1'], ['s', '2', '2', '6'], ['m', '12', '9'],
+    ['s', '8', '2', 'j'], ['!', '9', '1'], ['?', '9', '2']
+]
+print(foo(puzzle_input))
+</code></pre>
+</details>
+<h1>טחינה</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>cookbook = {
+    'pasta': {'origin': 'italy', 'prep_time': 25, 'calories': 400},
+    'curry': {'origin': 'india', 'prep_time': 60, 'calories': 250},
+    'chraime': {'origin': 'morocco', 'prep_time': 40, 'calories': 350}
+}
+for recipe in cookbook:
+    for cat in cookbook[recipe]:
+        if cat == 'prep_time':
+            cookbook[recipe][cat] += 60
+        if cat == 'calories':
+            cookbook[recipe][cat] *= 2
+print(cookbook)
+</code></pre>
+</details>
+<h1>כוהף</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>def swap(li):
+    temp_li = []
+    for half in li[(len(li) // 2):]:
+        temp_li.append(half)
+    for half in li[:(len(li) // 2)]:
+        temp_li.append(half)
+    return temp_li
+
+
+print(swap([11, 22, 33, 44, 55, 66]))
+</code></pre>
+</details>
+<h1>רטינה יומית</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>def calc(day, capability):
+    tot = 0
+    for exercise in capability:
+        tot += capability[exercise]
+    print(f"In day {day} I did a total of {tot} exercises")
+    return tot
+
+
+daily_routine = (
+    {'day': 1, 'capability': {'pushups': 8, 'squats': 20, 'pullups': 2}},
+    {'day': 2, 'capability': {'pushups': 13, 'squats': 39, 'pullups': 2}},
+    {'day': 3, 'capability': {'pushups': 21, 'squats': 51, 'pullups': 3}}
+)
+
+avg = 0
+for day in daily_routine:
+    avg += calc(**day)
+print(f"Average is: {avg // 3}")
+</code></pre>
+</details>
+<h1>בילטעינים</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>d = {}
+for i in range(15):
+    d[i + 1] = 101 + (i * 2)
+</code></pre>
+</details>
+<h1>ארנב ומזון</h1>
+<details>
+<summary>
+תקציר</summary>
+<pre><code>log = ['I l', 'F l', 'I s', 'I l', 'I c', 'Z s', 'Z s', 'I l', 'I s', 'Z c', 'Z l', 'I l', 'I l', 'F c', 'Z c', 'Z c', 'F c', 'I s', 'F c', 'Z c']
+d = {}
+for insert in log:
+    name, food = insert.split(" ")
+    if d.get(name, -1) == -1:
+        d[name] = {}
+    if d[name].get(food, -1) == -1:
+        d[name][food] = 0
+    d[name][food] += 1
+    
+# 1
+total = []
+for rabbit in d:
+     total.append((sum(d[rabbit].values()), rabbit))
+rabbit_name = max(total)[1]
+if rabbit_name == 'I':
+    p_name = "Irvin"
+    print("Irvin")
+elif rabbit_name == 'F':
+    p_name = "Friedrich"
+    print("Friedrich")
+else:
+    p_name = "Zigmund"
+    print("Zigmund")
+    
+# 2
+fav_food = max(d[rabbit_name], key=lambda k: d[rabbit_name][k])
+if fav_food == 'l':
+    print(f"{p_name} likes Lettuce the most")
+elif fav_food == 'c':
+    print(f"{p_name} likes Carrot the most")
+else:
+    print(f"{p_name} likes Scallion the most")
+
+# 3
+foods = []
+for food in ['l', 's', 'c']:
+    temp = 0
+    for rabbit in d:
+        if d[rabbit].get(food, -1) != -1:
+            temp = d[rabbit][food]
+    foods.append([temp, food])
+most_food = max(foods)[1]
+if most_food == 'l':
+    print("Lettuce is the most favorite food")
+elif most_food == 'c':
+    print("Carrot is the most favorite food")
+else:
+    print("Scallion is the most favorite food")
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">galmalull</span>
+</span>
+<link href="../5917.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-09T12:05:33Z" itemprop="datePublished">
+                     9 במאי,‏ 2020,‏ 12:05pm
+                  </time>
+<meta content="2020-05-09T12:05:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רטינה יומית</p>
+<details>
+<summary>
+תקציר</summary>
+<p>def routine():<br/>
+daily_routine = (<br/>
+{‘day’: 1, ‘capability’: {‘pushups’: 8, ‘squats’: 20, ‘pullups’: 2}},<br/>
+{‘day’: 2, ‘capability’: {‘pushups’: 13, ‘squats’: 39, ‘pullups’: 2}},<br/>
+{‘day’: 3, ‘capability’: {‘pushups’: 21, ‘squats’: 51, ‘pullups’: 3}}<br/>
+)</p>
+<pre><code>sum_value = 0
+def get_sum_value(day, capability):
+     sum_line = sum(capability.values())
+     print(f"total exercises in day {day} is {sum_line}")
+     return sum_line / len(capability)
+
+for line in daily_routine:
+    sum_value += get_sum_value(**line)
+print(f"the average is: {int(sum_value)}")
+</code></pre>
+<p>routine()</p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5917/14 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:48:00 GMT -->
+</html>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 9 – יום 4: קשטנים (Decorators)</title>
+    <link>https://forums.pythonic.guru/t/9-4-decorators/7827</link>
+    <description>## קשטנים – Decorators
+
+### הקדמה
+החומר על Decorators הוא חומר קשוח במיוחד.
+אל ייאוש! חפשו באינטרנט וקראו מדריכים נוספים אם צריך.
+הקפידו לבצע את התרגילים תוך כדי קריאה במחברת. אל תתקדמו הלאה מבלי לפתור את התרגילים, ואל תציצו בפתרונות.
+
+### רענון
+
+נזכיר שפונקציות בפייתון הן אזרחיות ממדרגה ראשונה.
+זה אומר שבפועל אנחנו יכולים להתייחס לשם הפונקציה כערך לכל דבר:
+```python
+length = len
+print(length(&quot;Hello&quot;))
+```
+&gt; **Output**: 5
+
+זה מאפשר לנו לעשות הרבה דברים מוזרים נורא, כולל לערוך פונקציות שקיימות בשפה.
+נשמור את len בצד (בשביל הנימוס), ונערוך אותה כך שבמקום להחזיר אורך של sequence היא תחזיר תמיד 0:
+```python
+old_len = len
+len = lambda x: 0
+print(len(&quot;Hello&quot;))
+```
+&gt; **Output**: 0
+
+נסו, בשביל התרגיל, לשנות את `len` כך שהיא תחזיר את אורך ה־sequence שהיא קיבלה כפול 2.
+עבור &quot;Hello&quot; הפונקציה תחזיר 10, ועבור &quot;A&quot; היא תחזיר 2.
+
+[details=&quot;פתרון&quot;]
+```python
+old_len = len
+len = lambda seq: old_len(seq) * 2
+```
+[/details]
+
+### פונקציות מקוננות
+
+טריק נחמד שקיים בפייתון הוא אפשרות להזיח פונקציות בתוך פונקציות.
+היום התעוררתי במצב רוח משוגע, ומתחשק לי לכתוב פונקציה שמייצרת לי פונקציות.
+
+איך נעשה את זה? בתוך הפונקציה שנכתוב, ניצור עוד פונקציה – בהזחה.
+הפונקציה החיצונית תחזיר את הפונקציה הפנימית.
+
+נתכנת דוגמה שכזו.
+הפונקציה `create_logger` יוצרת עבורינו פונקציות שעוזרות לנו להדפיס.
+אנחנו יוצרים את הפונקציה במהלך ריצת `create_logger` באמצעות מילת המפתח `def`.
+בסוף `create_logger` אנחנו מחזירים את הפונקציה שיצרנו.
+
+```python
+def create_logger(logger_name):
+    def log(message):
+        print(f&quot;[{logger_name}] {message}&quot;)
+    return log
+
+
+log_error = create_logger(&quot;Errors&quot;)
+log_system = create_logger(&quot;System&quot;)
+log_error(&quot;CRITICAL FAILURE: Can&#39;t find Nemo.&quot;)
+log_system(&quot;Chop Suey&quot;)
+```
+
+&gt; **Output:**
+&gt; [Errors] CRITICAL FAILURE: Can&#39;t find Nemo.
+&gt; [System] Chop Suey
+
+שימו לב שלפונקציה הפנימית שמוחזרת, `log`, יש גישה לכל המשתנים והפרמטרים שהוגדרו לפני יצירתה ב־`create_logger`.
+
+### תרגול ביניים: מח(שוב?)ון
+
+כתבו פונקציה בשם `calc` שמקבלת כפרמטרים שני מספרים.
+
+הפונקציה תחזיר מילון של פונקציות: 
+- הערך של המפתח `&#39;add&#39;` יהיה פונקציה שמבצעת חיבור בין שני המספרים.
+- הערך של המפתח `&#39;sub&#39;` יהיה פונקציה שמבצעת חיסור בין שני המספרים.
+- הערך של המפתח `&#39;mul&#39;` יהיה פונקציה שמבצעת כפל בין שני המספרים.
+- הערך של המפתח `&#39;div&#39;` יהיה פונקציה שמבצעת חילוק בין שני המספרים.
+
+השתמשו בפונקציות מקוננות.
+
+### עטיפת פונקציה
+
+נשלב את הטכניקות שלמדנו עד כה.
+נניח שאנחנו רוצים ליצור פונקציה בשם `debug` שמקבלת כפרמטר פונקציה אחרת (`f`), מדפיסה &quot;Start&quot; לפני ש־`f` רצה ו־&quot;Stop&quot; אחרי ש־`f` מסיימת את ריצתה.
+נסו לממש כזו בעצמכם :)
+
+[details=&quot;פתרון&quot;]
+```python
+def debug(f):
+    print(&quot;Start&quot;)
+    f()
+    print(&quot;Stop&quot;)
+```
+[/details]
+
+שפרו את הפתרון הזה.
+דאגו לתמיכה בהעברת פרמטרים ל־f, והחזירו מ־debug את ערך ההחזרה שמתקבל מהקריאה ל־`f`.
+
+[details=&quot;פתרון&quot;]
+```
+def debug(f, *args, **kwargs):
+    print(&quot;Start&quot;)
+    return_value = f(*args, **kwargs)
+    print(&quot;Stop&quot;)
+    return return_value
+```
+[/details]
+
+נחמד!
+נסו להשתדרג אפילו יותר.
+צרו פונקציה (`debug`)  שמקבלת פונקציה (`f`), ומחזירה **פונקציה חדשה**, שיודעת לקבל את אותם ארגומנטים של פונקציה `f` המקורית (רמז: השתמשו ב־args, kwargs).
+הפונקציה שתחזור מ־`debug` תפעל בדיוק כמו `f` ותחזיר את אותו ערך, רק שלפני הרצתה של `f` יודפס `Start` ואחרי הרצתה יודפס `End`.
+זה רעיון מגניב במיוחד כי אנחנו בעצם יוצרים פונקציה שיודעת לשנות התנהגות של פונקציה קיימת.
+
+
+[details=&quot;פתרון&quot;]
+```
+def debug(f):
+    def wrapper_function(*args, **kwargs):
+        print(&quot;Start&quot;)
+        return_value = f(*args, **kwargs)
+        print(&quot;Stop&quot;)
+        return return_value
+    return wrapper_function
+```
+
+דוגמה לריצה:
+```python
+def write_file(filename, content):
+    print(&quot;Running write_file...&quot;)
+    with open(filename, &quot;w&quot;) as f:
+        f.write(content)
+
+
+debug_write_file = debug(write_file)
+debug_write_file(&quot;foo.txt&quot;, &quot;Hello World&quot;)
+```
+
+תוצאה:
+&gt; Start
+&gt; Running write_file...
+&gt; Stop
+[/details]
+
+מטורף שזה עובד :scream:
+עכשיו, טכנית, אנחנו יכולים פשוט לכתוב:
+```python
+write_file = debug(write_file)
+write_file(&quot;foo.txt&quot;, &quot;Hello World&quot;)
+```
+
+ונראה שהפונקציה write_file שלנו מדפיסה כל פעם שהיא מתחילה ומסיימת!
+נראה דוגמה נוספת:
+```python
+def add(a, b):
+    return a + b
+
+add = debug(add)
+add(5, 6)
+```
+
+ואילו על פונקציות שמגיעות עם פייתון:
+
+```python
+len = debug(len)
+len(&quot;Hello!&quot;)
+```
+
+### מתי מגיעים למה זה Decorators כבר?
+
+אה, אחרי שהבנתם את כל מה שכתוב למעלה אתם כבר די שם.
+הרעיון של decorator זה לרשום את השורה `add = debug(add)` בצורה קצת יותר יפה.
+במקום לדרוס את הפונקציה בשורה נפרדת שלא נראית קשורה לפונקציה, אפשר לעשות ככה:
+
+```python
+@debug
+def add(a, b):
+    return a + b
+```
+
+מעל הפונקציה שמנו כרוכית, ואחריה את שם הפונקציה שאנחנו רוצים שתעטוף את `add`.
+בפועל, מאחורי הקלעים, פייתון עשתה בשבילינו: `add = debug(add)`. זה כל הסיפור.
+
+### תרגילים
+
+#### תרגיל 1: יומנגוס
+כתבו decorator בשם `upper`.
+כשה־decorator יוחל על פונקציה כלשהי שמחזירה (`f`, לדוגמה), הוא ישנה את הפונקציה `f` כך שערכי ההחזרה שלה תמיד יוחזרו באותיות גדולות.
+אתם יכולים להניח ש־`f` תמיד מחזירה מחרוזת.
+
+#### תרגיל 2: פותחים שעון
+כתבו decorator בשם `profile`.
+כשה־decorator יוחל על פונקציה כלשהי (`f`, לדוגמה), הוא ישנה את הפונקציה `f` כך שבכל קריאה ל־`f` יכתב לקובץ `log.txt` מתי היא נקראה, וכמה זמן לקח להריץ אותה.
+
+#### תרגיל 3: קיבוץ גלויות
+כתבו decorator בשם `read_files`.
+שה־decorator יוחל על פונקציה כלשהי, הוא יבחן את כל הארגומנטים שהועברו לה ויחפש בהם נתיבים תקינים של קבצים שקיימים במחשב שעליו מורץ הקוד.
+כל פרמטר שהוא נתיב לקובץ, יוחלף בטקסט של אותו קובץ.
+
+נדמיין לדוגמה את הקבצים a.txt ו־b.txt:
+##### a.txt
+```text
+Hello
+```
+
+##### b.txt
+```text
+Bye
+```
+
+ואת הפונקציה `join_files`:
+
+```python
+def join(text, text2, reverse=False):
+    if reverse:
+        return text2 + text
+    return text + text2
+```
+
+אם נקרא סתם כך ל־`join_files`, נראה שהיא בסך הכל משרשרת שתי מחרוזות זו לזו: `join(&#39;Mushu&#39;, &#39;Cricket&#39;)` יחזיר MushuCricket.
+אם נחיל את `read_files` שתתכנתו על הפונקציה `join`, בצורה הבאה:
+
+```python
+@read_files
+def join(text, text2, reverse=False):
+    if reverse:
+        return text2 + text
+    return text + text2
+```
+
+הפונקציה תמשיך לעבוד אותו דבר אם תקבל כפרמטרים מחרוזות רגילות, אך אם תקבל נתיב לקובץ, היא תקרא את תוכנו במקום: ```join(&#39;a.txt&#39;, &#39;b.txt&#39;)``` יחזיר &quot;HelloBye&quot;.
+
+### מקורות לקריאה
+
+#### על החומר הנלמד
+
+1. על decorators ב־[Real Python](https://realpython.com/primer-on-python-decorators/).
+2. [מדריך](https://book.pythontips.com/en/latest/decorators.html) קצרצר נוסף על הנושא.
+3. [הסבר](https://www.python-course.eu/python3_decorators.php) מעמיק ומתקדם יחסית.
+
+#### להרחבה
+
+1. קראו על `functools.wraps`.
+2. קראו (או נסו בעצמכם) על איך משתמשים ב־class ליצירת decorators.
+3. קראו (או חשבו בעצמכם) על איך אפשר לגרום ל־decorator עצמו לקבל פרמטרים: `@log(a, b)`, לדוגמה.
+4. קראו (או חשבו בעצמכם) על מה קורה אם רוצים להחיל יותר מ־decorator אחד על פונקציה ועל איך עושים זאת.</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 12 Aug 2020 17:56:07 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/9-4-decorators/7827.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 9 – יום 4: קשטנים (Decorators)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>קשטנים – Decorators</h2>
+<h3>הקדמה</h3>
+<p>החומר על Decorators הוא חומר קשוח במיוחד.<br>
+אל ייאוש! חפשו באינטרנט וקראו מדריכים נוספים אם צריך.<br>
+הקפידו לבצע את התרגילים תוך כדי קריאה במחברת. אל תתקדמו הלאה מבלי לפתור את התרגילים, ואל תציצו בפתרונות.</p>
+<h3>רענון</h3>
+<p>נזכיר שפונקציות בפייתון הן אזרחיות ממדרגה ראשונה.<br>
+זה אומר שבפועל אנחנו יכולים להתייחס לשם הפונקציה כערך לכל דבר:</p>
+<pre><code class="lang-python">length = len
+print(length("Hello"))
+</code></pre>
+<blockquote>
+<p><strong>Output</strong>: 5</p>
+</blockquote>
+<p>זה מאפשר לנו לעשות הרבה דברים מוזרים נורא, כולל לערוך פונקציות שקיימות בשפה.<br>
+נשמור את len בצד (בשביל הנימוס), ונערוך אותה כך שבמקום להחזיר אורך של sequence היא תחזיר תמיד 0:</p>
+<pre><code class="lang-python">old_len = len
+len = lambda x: 0
+print(len("Hello"))
+</code></pre>
+<blockquote>
+<p><strong>Output</strong>: 0</p>
+</blockquote>
+<p>נסו, בשביל התרגיל, לשנות את <code>len</code> כך שהיא תחזיר את אורך ה־sequence שהיא קיבלה כפול 2.<br>
+עבור “Hello” הפונקציה תחזיר 10, ועבור “A” היא תחזיר 2.</p>
+
+פתרון <a href="https://forums.pythonic.guru/t/9-4-decorators/7827/1">(לחיצה לפרטים נוספים)</a>
+<h3>פונקציות מקוננות</h3>
+<p>טריק נחמד שקיים בפייתון הוא אפשרות להזיח פונקציות בתוך פונקציות.<br>
+היום התעוררתי במצב רוח משוגע, ומתחשק לי לכתוב פונקציה שמייצרת לי פונקציות.</p>
+<p>איך נעשה את זה? בתוך הפונקציה שנכתוב, ניצור עוד פונקציה – בהזחה.<br>
+הפונקציה החיצונית תחזיר את הפונקציה הפנימית.</p>
+<p>נתכנת דוגמה שכזו.<br>
+הפונקציה <code>create_logger</code> יוצרת עבורינו פונקציות שעוזרות לנו להדפיס.<br>
+אנחנו יוצרים את הפונקציה במהלך ריצת <code>create_logger</code> באמצעות מילת המפתח <code>def</code>.<br>
+בסוף <code>create_logger</code> אנחנו מחזירים את הפונקציה שיצרנו.</p>
+<pre><code class="lang-python">def create_logger(logger_name):
+    def log(message):
+        print(f"[{logger_name}] {message}")
+    return log
+
+
+log_error = create_logger("Errors")
+log_system = create_logger("System")
+log_error("CRITICAL FAILURE: Can't find Nemo.")
+log_system("Chop Suey")
+</code></pre>
+<blockquote>
+<p><strong>Output:</strong><br>
+[Errors] CRITICAL FAILURE: Can’t find Nemo.<br>
+[System] Chop Suey</p>
+</blockquote>
+<p>שימו לב שלפונקציה הפנימית שמוחזרת, <code>log</code>, יש גישה לכל המשתנים והפרמטרים שהוגדרו לפני יצירתה ב־<code>create_logger</code>.</p>
+<h3>תרגול ביניים: מח(שוב?)ון</h3>
+<p>כתבו פונקציה בשם <code>calc</code> שמקבלת כפרמטרים שני מספרים.</p>
+<p>הפונקציה תחזיר מילון של פונקציות:</p>
+<ul>
+<li>הערך של המפתח <code>'add'</code> יהיה פונקציה שמבצעת חיבור בין שני המספרים.</li>
+<li>הערך של המפתח <code>'sub'</code> יהיה פונקציה שמבצעת חיסור בין שני המספרים.</li>
+<li>הערך של המפתח <code>'mul'</code> יהיה פונקציה שמבצעת כפל בין שני המספרים.</li>
+<li>הערך של המפתח <code>'div'</code> יהיה פונקציה שמבצעת חילוק בין שני המספרים.</li>
+</ul>
+<p>השתמשו בפונקציות מקוננות.</p>
+<h3>עטיפת פונקציה</h3>
+<p>נשלב את הטכניקות שלמדנו עד כה.<br>
+נניח שאנחנו רוצים ליצור פונקציה בשם <code>debug</code> שמקבלת כפרמטר פונקציה אחרת (<code>f</code>), מדפיסה “Start” לפני ש־<code>f</code> רצה ו־“Stop” אחרי ש־<code>f</code> מסיימת את ריצתה.<br>
+נסו לממש כזו בעצמכם <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+
+פתרון <a href="https://forums.pythonic.guru/t/9-4-decorators/7827/1">(לחיצה לפרטים נוספים)</a>
+<p>שפרו את הפתרון הזה.<br>
+דאגו לתמיכה בהעברת פרמטרים ל־f, והחזירו מ־debug את ערך ההחזרה שמתקבל מהקריאה ל־<code>f</code>.</p>
+
+פתרון <a href="https://forums.pythonic.guru/t/9-4-decorators/7827/1">(לחיצה לפרטים נוספים)</a>
+<p>נחמד!<br>
+נסו להשתדרג אפילו יותר.<br>
+צרו פונקציה (<code>debug</code>)  שמקבלת פונקציה (<code>f</code>), ומחזירה <strong>פונקציה חדשה</strong>, שיודעת לקבל את אותם ארגומנטים של פונקציה <code>f</code> המקורית (רמז: השתמשו ב־args, kwargs).<br>
+הפונקציה שתחזור מ־<code>debug</code> תפעל בדיוק כמו <code>f</code> ותחזיר את אותו ערך, רק שלפני הרצתה של <code>f</code> יודפס <code>Start</code> ואחרי הרצתה יודפס <code>End</code>.<br>
+זה רעיון מגניב במיוחד כי אנחנו בעצם יוצרים פונקציה שיודעת לשנות התנהגות של פונקציה קיימת.</p>
+
+פתרון <a href="https://forums.pythonic.guru/t/9-4-decorators/7827/1">(לחיצה לפרטים נוספים)</a>
+<p>מטורף שזה עובד <img src="https://forums.pythonic.guru/images/emoji/twitter/scream.png?v=9" title=":scream:" class="emoji" alt=":scream:"><br>
+עכשיו, טכנית, אנחנו יכולים פשוט לכתוב:</p>
+<pre><code class="lang-python">write_file = debug(write_file)
+write_file("foo.txt", "Hello World")
+</code></pre>
+<p>ונראה שהפונקציה write_file שלנו מדפיסה כל פעם שהיא מתחילה ומסיימת!<br>
+נראה דוגמה נוספת:</p>
+<pre><code class="lang-python">def add(a, b):
+    return a + b
+
+add = debug(add)
+add(5, 6)
+</code></pre>
+<p>ואילו על פונקציות שמגיעות עם פייתון:</p>
+<pre><code class="lang-python">len = debug(len)
+len("Hello!")
+</code></pre>
+<h3>מתי מגיעים למה זה Decorators כבר?</h3>
+<p>אה, אחרי שהבנתם את כל מה שכתוב למעלה אתם כבר די שם.<br>
+הרעיון של decorator זה לרשום את השורה <code>add = debug(add)</code> בצורה קצת יותר יפה.<br>
+במקום לדרוס את הפונקציה בשורה נפרדת שלא נראית קשורה לפונקציה, אפשר לעשות ככה:</p>
+<pre><code class="lang-python">@debug
+def add(a, b):
+    return a + b
+</code></pre>
+<p>מעל הפונקציה שמנו כרוכית, ואחריה את שם הפונקציה שאנחנו רוצים שתעטוף את <code>add</code>.<br>
+בפועל, מאחורי הקלעים, פייתון עשתה בשבילינו: <code>add = debug(add)</code>. זה כל הסיפור.</p>
+<h3>תרגילים</h3>
+<h4>תרגיל 1: יומנגוס</h4>
+<p>כתבו decorator בשם <code>upper</code>.<br>
+כשה־decorator יוחל על פונקציה כלשהי שמחזירה (<code>f</code>, לדוגמה), הוא ישנה את הפונקציה <code>f</code> כך שערכי ההחזרה שלה תמיד יוחזרו באותיות גדולות.<br>
+אתם יכולים להניח ש־<code>f</code> תמיד מחזירה מחרוזת.</p>
+<h4>תרגיל 2: פותחים שעון</h4>
+<p>כתבו decorator בשם <code>profile</code>.<br>
+כשה־decorator יוחל על פונקציה כלשהי (<code>f</code>, לדוגמה), הוא ישנה את הפונקציה <code>f</code> כך שבכל קריאה ל־<code>f</code> יכתב לקובץ <code>log.txt</code> מתי היא נקראה, וכמה זמן לקח להריץ אותה.</p>
+<h4>תרגיל 3: קיבוץ גלויות</h4>
+<p>כתבו decorator בשם <code>read_files</code>.<br>
+שה־decorator יוחל על פונקציה כלשהי, הוא יבחן את כל הארגומנטים שהועברו לה ויחפש בהם נתיבים תקינים של קבצים שקיימים במחשב שעליו מורץ הקוד.<br>
+כל פרמטר שהוא נתיב לקובץ, יוחלף בטקסט של אותו קובץ.</p>
+<p>נדמיין לדוגמה את הקבצים a.txt ו־b.txt:</p>
+<h5>a.txt</h5>
+<pre><code class="lang-nohighlight">Hello
+</code></pre>
+<h5>b.txt</h5>
+<pre><code class="lang-nohighlight">Bye
+</code></pre>
+<p>ואת הפונקציה <code>join_files</code>:</p>
+<pre><code class="lang-python">def join(text, text2, reverse=False):
+    if reverse:
+        return text2 + text
+    return text + text2
+</code></pre>
+<p>אם נקרא סתם כך ל־<code>join_files</code>, נראה שהיא בסך הכל משרשרת שתי מחרוזות זו לזו: <code>join('Mushu', 'Cricket')</code> יחזיר MushuCricket.<br>
+אם נחיל את <code>read_files</code> שתתכנתו על הפונקציה <code>join</code>, בצורה הבאה:</p>
+<pre><code class="lang-python">@read_files
+def join(text, text2, reverse=False):
+    if reverse:
+        return text2 + text
+    return text + text2
+</code></pre>
+<p>הפונקציה תמשיך לעבוד אותו דבר אם תקבל כפרמטרים מחרוזות רגילות, אך אם תקבל נתיב לקובץ, היא תקרא את תוכנו במקום: <code>join('a.txt', 'b.txt')</code> יחזיר “HelloBye”.</p>
+<h3>מקורות לקריאה</h3>
+<h4>על החומר הנלמד</h4>
+<ol>
+<li>על decorators ב־<a href="https://realpython.com/primer-on-python-decorators/">Real Python</a>.</li>
+<li>
+<a href="https://book.pythontips.com/en/latest/decorators.html">מדריך</a> קצרצר נוסף על הנושא.</li>
+<li>
+<a href="https://www.python-course.eu/python3_decorators.php">הסבר</a> מעמיק ומתקדם יחסית.</li>
+</ol>
+<h4>להרחבה</h4>
+<ol>
+<li>קראו על <code>functools.wraps</code>.</li>
+<li>קראו (או נסו בעצמכם) על איך משתמשים ב־class ליצירת decorators.</li>
+<li>קראו (או חשבו בעצמכם) על איך אפשר לגרום ל־decorator עצמו לקבל פרמטרים: <code>@log(a, b)</code>, לדוגמה.</li>
+<li>קראו (או חשבו בעצמכם) על מה קורה אם רוצים להחיל יותר מ־decorator אחד על פונקציה ועל איך עושים זאת.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/9-4-decorators/7827/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-4-decorators/7827/1</link>
+        <pubDate>Mon, 10 Aug 2020 15:01:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7827-1</guid>
+        <source url="https://forums.pythonic.guru/t/9-4-decorators/7827.rss">שבוע 9 – יום 4: קשטנים (Decorators)</source>
+      </item>
+  </channel>
+</rss>

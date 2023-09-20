@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מערכת לוגאין ו - jwt token</title>
+    <link>https://forums.pythonic.guru/t/jwt-token/8898</link>
+    <description>אני עובד על יצירת מערכת ההתחברות וניהול משתמשים. סיפריית fastapi-login, שעליה בניתי בלקיחת הטיקט, התבררה לאחר שלושה ימי חפירות בתוכה, כחסרת פונקציונליות ודוקיומנטציה שמאפשרת לעבוד איתה, לכל הפחות אני לא הצלחתי.
+נאלצתי לזנוח את הניסיון ליישם איתה, ולבנות מערכת בעצמי.
+האופן שבו הגנה על ראוטים בפאסט API עובד, הוא הגדרת דיפנדנסי של JWT בכניסה לראוט. ההגדרה הזאת מייצרת בדיקה של הימצאות token ב- header של בקשת הכניסה לראוט.
+יצרתי ראוט לוגאין שמקבל נתונים מטופס התחברות, מאמת את המשתמש, ומייצר jwt token עבור המשתמש. 
+כל הדוקומנטציה, וכל המדריכים שמצאתי, מגיעים עד הנקודה הזאת, ומחזירים את הטוקן מהראוט שייצר אותו, כג&#39;ייסון.
+מכיוון שאנו בונים אפליקציה מונוליטית, אני צריך לצרף את הטוקן ל- headers של הריקווסט שבערך ההחזר של הראוט.
+מישהו התנסה במשהו כזה ויכול קצת לעזור?
+נ.ב.  אני יודע שהרבה מחכים לסיום הטיקט הזה, ואני ממש מתנצל שעדיין לא סיימתי אותו, אבל זה התברר כמשהו הרבה יותר מורכב ליישום בפאסט API מאשר בפלאסק, וזה פשוט לוקח לי מעט יותר זמן ממה שהערכתי במקור.
+עריכה:
+בניסיון לעבוד עם פלאסק לוגאין, הצלחתי להגיע למצב שהיא גם יוצרת טוקן עבור המשתמש, ומחזירה אותו, בדיוק באותו האופן. הדוקומנטציה שלה מסתיימת שם, והיא משתמשת בדיפנדנסי משלה להגנה על ראוטים.
+אז בעצם היא מביאה עד לאותה הנקודה שאני נמצא בה, עם מספר חסרונות: 
+בשונה מפלאס לוגאין, אין לה שום פונקציונליות של לוגאאוט.
+בנוסף, אין לה שום פונקציונליות של current_user. כל מה שהיא מייצרת זה טוקן.
+מעבר לכך, אין שום דבר בדוקמנטציה שלה, ואין אף מדריך שאני מצאתי, שמסביר עליה משהו. ההחלטה לזנוח אותה היתה בשיקול שעדיף לי להגיע לנקודה הזאת של יצירת טוקן בעצמי, כשאני מסתמך ישירות על OAuth2 ו- JWT, שלהם יש הרבה יותר דוקומנטציה, והסיכויים ליישם את הפונקציות הללו הרבה יותר גבוהים, כשגם יש לי גישה לפרטים של יצירת הטוקן וכל הלוגיקה. 
+בכל אופן, יש לי קובץ שמיישם את fastapi-login, אותו לא העליתי לריפו, למי שמעוניין להתנסות</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 26 Jan 2021 13:41:44 +0000</lastBuildDate>
+    <category>עזרה ושיתופי פעולה</category>
+    <atom:link href="https://forums.pythonic.guru/t/jwt-token/8898.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הייתי שמח ללכת על ב’. אני מניח שהם משתילים את ה־JWT בתור HTTPOnly Cookie בעצמם <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/16</link>
+        <pubDate>Tue, 26 Jan 2021 13:41:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-16</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אולי לא התנסחתי באופן ברור…<br>
+הכוונה שלי היתה:<br>
+אופציה א: השארת מה שעשיתי בעניין האבטחה, והוספת httpcookie לקבלת הטוקן חזרה מהלקוח.<br>
+אופציה ב: בלי httpcookie, בלי האבטחה שלי, ואולי בלי הרג’יסטר. הכל ע"י fastapi users, ובדיקה במהלך היישום אם את הרג’יסטר שלי בכל זאת אפשר להציל.<br>
+לי אין שום העדפה, באמת. אשמח להתנסות גם בסיפרייה הזאת, באותה מידה שאשמח שהקוד המקורי שלי ייושם.</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/15</link>
+        <pubDate>Tue, 26 Jan 2021 13:40:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-15</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נשמע קצת יותר מסובך.<br>
+למה לא להשתמש בשלד שלהם?</p>
+<p>בכנות זה נראה כאילו יש <a href="https://frankie567.github.io/fastapi-users/configuration/full_example/">פה</a> משהו כמעט מוכן</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/14</link>
+        <pubDate>Tue, 26 Jan 2021 13:28:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-14</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אני מיישם אותו, זה על השלד של האבטחה שכתבתי. פונקציות אימות משתמש, יצירת ואימות טוקן. לעומת מחיקת שלה,וטולי גם של הרג’יסטר המוכן, ושימוש בזה של fastapi-users</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/13</link>
+        <pubDate>Tue, 26 Jan 2021 13:24:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-13</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="koby" data-post="11" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>אז הפתרון של httpcookie הוא כזה שמקובל עליך? פשוט ממש עמדתי להתקין את fastapi-users ולעשות את זה איתה.</p>
+</blockquote>
+</aside>
+<p>נשמע מצוין, איפה הפער? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/12</link>
+        <pubDate>Tue, 26 Jan 2021 12:59:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-12</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אז הפתרון של httpcookie הוא כזה שמקובל עליך? פשוט ממש עמדתי להתקין את fastapi-users ולעשות את זה איתה.<br>
+בנוגע לכל הקשור ליצירת הטוקן שעשיתי, והאימות שלו, יש פה בפוסט קישור לגיטהאב שלי. הקוד הזה שם, בברנצ’ login. רק כדי שתראה שהאופן בו יישמתי את זה הוא מספיק טוב ובטוח. תודה רבה רבה על התשובות המפורטות</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/11</link>
+        <pubDate>Tue, 26 Jan 2021 12:18:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-11</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/d359346a6ed1e82ea660d0a76144c8580742451e.png" data-download-href="https://forums.pythonic.guru/uploads/default/d359346a6ed1e82ea660d0a76144c8580742451e" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d359346a6ed1e82ea660d0a76144c8580742451e.png" alt="image" data-base62-sha1="u9FRJ340P22EgIKBakFJHDCce2a" width="690" height="406" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d359346a6ed1e82ea660d0a76144c8580742451e_2_10x10.png"></a></div><br>
+זה פחות או יותר הקוד שמחזיר את הטוקן. אמור להיות return  response בסוף.<p></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0.png" data-download-href="https://forums.pythonic.guru/uploads/default/f67ba6d32f3565963d2907b12ee16d25df01e0b0" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0_2_690x390.png" alt="image" data-base62-sha1="zaunzrVFqHwnUtmdGSramwZWNTq" width="690" height="390" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0_2_690x390.png, https://forums.pythonic.guru/uploads/default/original/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f67ba6d32f3565963d2907b12ee16d25df01e0b0_2_10x10.png"></a></div><br>
+זאת בערך הפונקצית מידלוור. אני יודע שזה נראה נורא, עשיתי המון ניסיונות. הקוד כרגע במצב שהוציא ארור.מאוד יכול להיות שיש פה טעויות בסיסיות מאוד, אני פשוט ממש לא מכיר את הנושא, וניסיתי ‘לירות לכל הכיוונים’, עד שמשהו יתפוס. פשוט בשלב מסוים זנחתי את זה. אני מקווה שיהיה לך מובן מה ניסיתי לעשות פה.<br>
+עדכון: ההבדל בין “Authorization” ל- “authorization” טופל בשלב כלשהו. זאת לא הבעיה…<p></p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/10</link>
+        <pubDate>Tue, 26 Jan 2021 12:09:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-10</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="koby" data-post="8" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>הפתרון שכן מצאתי, הוא אכסון של הטוקן ב- htttpcookie. לקח לי המון זמן למצוא את זה. מבדיקה שעשיתי, אני מבין שזה מאובטח, מכיוון שאף קוד JS אינו יכול לגשת למידע שם, או לשנות אותו. מהבחינה הזאת זה בטוח.</p>
+</blockquote>
+</aside>
+<p>נכון, זה באמת הפתרון שמקובל על פי רוב.</p>
+<aside class="quote no-group" data-username="koby" data-post="8" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>פתרון נוסף שמצאתי, הוא אכסון הטוקן ב- session cookie בשרת. זה יותר מאובטח מקוקי רגילה, מאחר וזה לא נשלח ללקוח, אך זה פרוץ למניפולציה על ה- session. ולהבנתי, פתרון פחות טוב מהקודם.</p>
+</blockquote>
+</aside>
+<p>קוקית מעצם היותה קוקית לא נשמרת בשרת, אלא אצל הלקוח.<br>
+קוקיות הן למעשה מעין מילון של key:value, כאשר key הוא שם הקוקית ו־value הוא הערך שלה.<br>
+מה שנשמר בשרת הוא מחרוזת רנדומלית, שנשמרת גם בקוקית של המשתמש ששמה session.<br>
+כך בשרת יש התאמה חח"ע של משתמש ל־session, והשרת שומר אצלו את כל הפרטים הנוספים בנוגע לאותו משתמש.</p>
+<aside class="quote no-group" data-username="koby" data-post="8" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>בנוגע fast-api users: קראתי חלקים נרחבים מהדוקומנטציה. זאת ספרייה מאוד גדולה. להבנתי, היישום שלה ייאלץ לבצע המון שינויים. היא משתמשת במודל יוזר מוגדר שממנו צריך לרשת, וזה יאלץ המון שינויים לדעתי בהרבה מהטיקטים. מעבר לכך, כל הרג’יסטר שעשיתי כנראה יילך לפח, כי זה נראה שלא ניתן להפריד בין הפעולות. מהסיבות הללו אני מנסה בכ"ז למצוא פתרון אפשרי אחר, מבלי להשתמש בסיפרייה הזאת.</p>
+</blockquote>
+</aside>
+<p>לא התרשמתי שמדובר במודול גדול למען האמת, והוא כן מאוד מתאים לצרכים שלך. אולי שווה לשקול את זה שוב.</p>
+<aside class="quote no-group" data-username="koby" data-post="8" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>אם אתה, או מישהו אחר התנסה ביצירת ראוט middleware ויודע אילו פעולות ניתן לעשות ואילו פעולות לא ניתן לעשות, אז אשמח לדעת אם זה אפשרי, מכייוון שזהוא פתרון קלאסי. הסשן נשמר מאובטח ברמה של JWT לכל אורכו, ומערכת האבטחה עובדת כאילו זה api לכל דבר וענין.</p>
+</blockquote>
+</aside>
+<p>זה פתרון אחלה אם אתה יודע לעבוד עם JWT בצורה טובה.<br>
+שים לב שיש טעויות אבטחה נפוצות ב־JWT שחשוב לא לעשות וכדאי לקרוא על זה (יש הרבה מאמרים שם בחוץ)</p>
+<aside class="quote no-group" data-username="koby" data-post="8" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>הפעולה הספציפית שלא הצלחתי לעשות היא תפיסת הטוקן מהריספונס שחוזר מהלוגאין.</p>
+</blockquote>
+</aside>
+<p>אפשר הצצה לאיך נראה הקוד שמחזיר את הטוקן, ובעזרת איזה קוד (ואיפה) אתה מנסה לתפוס אותו?</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/9</link>
+        <pubDate>Tue, 26 Jan 2021 09:39:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-9</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אחרי המון המון חפירות, מתברר שהרבה אחרים נתקלו בבעיה הזאת. זה נראה שבמקור, fastapi מתוכננת לבניית api ולא לתכנון של בקאנד שמנהל סשן. זאת הסיבה שכל הדוקומנטציה והמדריכים השונים מסתיימים בנקודה שבה מוחזר טוקן ללקוח, ומתמקדים בייצור ובאימות שלו כאשר הוא מתקבל בחזרה. ניסיתי גם ליצור פונקצית middleware, שתעביר לי בכל פעם את הטוקן מהבקשה לריספונס, אך לא הצלחתי ליישם את זה, ואני לא יודע אם זה אפשרי בכלל. זהוא רעיון תיאורטי שחשבתי עליו,  אבל לא נתקלתי בו  בשום מקום בגוגל.<br>
+הפתרון שכן מצאתי, הוא אכסון של הטוקן ב- htttpcookie. לקח לי המון זמן למצוא את זה. מבדיקה שעשיתי, אני מבין שזה מאובטח, מכיוון שאף קוד JS אינו יכול לגשת למידע שם, או לשנות אותו. מהבחינה הזאת זה בטוח.<br>
+פתרון נוסף שמצאתי, הוא אכסון הטוקן ב- session cookie בשרת. זה יותר מאובטח מקוקי רגילה, מאחר וזה לא נשלח ללקוח, אך זה פרוץ למניפולציה על ה- session. ולהבנתי, פתרון פחות טוב מהקודם. אני מניח שהידע שלך קצת הרבה יותר רחב משלי, אז אשמח לשמוע את דעתך.<br>
+בנוגע fast-api users: קראתי חלקים נרחבים  מהדוקומנטציה. זאת ספרייה מאוד גדולה. להבנתי, היישום שלה ייאלץ לבצע המון שינויים. היא משתמשת במודל יוזר מוגדר שממנו צריך לרשת, וזה יאלץ המון שינויים לדעתי בהרבה מהטיקטים. מעבר לכך, כל הרג’יסטר שעשיתי כנראה יילך לפח, כי  זה נראה שלא ניתן להפריד בין הפעולות. מהסיבות הללו אני מנסה בכ"ז למצוא פתרון אפשרי אחר, מבלי להשתמש בסיפרייה הזאת.<br>
+אם אתה, או מישהו אחר התנסה ביצירת ראוט middleware ויודע אילו פעולות ניתן לעשות ואילו פעולות לא ניתן לעשות, אז אשמח לדעת אם זה אפשרי, מכייוון שזהוא פתרון קלאסי. הסשן נשמר מאובטח ברמה של JWT לכל אורכו, ומערכת האבטחה עובדת כאילו זה api לכל דבר וענין. הפעולה הספציפית שלא הצלחתי לעשות היא תפיסת הטוקן מהריספונס שחוזר מהלוגאין.</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/8</link>
+        <pubDate>Mon, 25 Jan 2021 21:00:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-8</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="koby" data-post="1" data-topic="8898">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/koby/40/2234_2.png" class="avatar"> koby:</div>
+<blockquote>
+<p>בניסיון לעבוד עם פלאסק לוגאין, הצלחתי להגיע למצב שהיא גם יוצרת טוקן עבור המשתמש, ומחזירה אותו, בדיוק באותו האופן. הדוקומנטציה שלה מסתיימת שם, והיא משתמשת בדיפנדנסי משלה להגנה על ראוטים.<br>
+אז בעצם היא מביאה עד לאותה הנקודה שאני נמצא בה, עם מספר חסרונות:</p>
+</blockquote>
+</aside>
+<p>הדבר המפחיד במימוש עצמי הוא כמובן המרחב הרחב מאוד לעשות שגיאות אבטחה שקשורות באותנטיקציה.</p>
+<p>זה נושא די מורכב ויש הרבה דברים שקשה לחשוב עליהם אם אתה לא מאוד מיומן באבטחת מידע. תמיד נעדיף, בנושאים האלו, להשתמש במשהו שמישהו כתב עבורנו ומתוחזק ע"י הקהילה.</p>
+<hr>
+<p>בכ"מ, גיגלתי FastAPI GitHub כדי לראות מה המודולים המומלצים. הגעתי למאגר מודולים שנקרא <a href="https://github.com/mjhea0/awesome-fastapi">Awesome FastAPI</a>. נכנסתי לכל הקישורים שקשורים לאותנטיקציה, ובדקתי למה יש הכי הרבה כוכבים.<br>
+נראה שהמודול <a href="https://github.com/frankie567/fastapi-users">FastAPI Users</a> מאוד אפוי. הייתי מציע להסתכל עליו.</p>
+<p>אם אתה רוצה להמשיך בדרך של לממש עצמאית, אפשר להסתכל על <a href="https://www.youtube.com/watch?v=6hTRw_HK3Ts">הסרטון הזה</a> או <a href="https://fastapi.tiangolo.com/tutorial/security/simple-oauth2/">המדריך הזה</a>.</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/7</link>
+        <pubDate>Mon, 25 Jan 2021 10:41:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-7</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>מציע אם ככה לנסות לבדוק א םזה אפשרי - הרי אנו מעבירים עם session מידע של המשתמש (שם משתמש, user id  וכו) וזה עוזר לנו לזהות אותו בעמודים אחרים - לפחות ככה עשינו בפרויקט קודם.</p>
+<p>אולי שווה לנסות לבדוק את הכיוון הזה</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/6</link>
+        <pubDate>Mon, 25 Jan 2021 09:31:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-6</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא יודע לגבי זה, אני גם חסר ניסיון עם הפעולות הללו</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/5</link>
+        <pubDate>Mon, 25 Jan 2021 09:27:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-5</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>אני גם לא ממש מבין בזה.<br>
+אבל להעביר מידע מסויים מעמוד לעמוד - זה לא מה שאפשר לעשות עם session ?<br>
+או שאי אפשר להעביר מידע כזה שם ?</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/4</link>
+        <pubDate>Mon, 25 Jan 2021 09:25:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-4</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>באמת שהשתדלתי להיות מאוד מפורט וממוקד בהסבר, וכתבתי בדיוק מה אני אני חושב שאני צריך. גם אני חסר ניסיון בזה לחלוטין, ויכול להיות שהפתרון נמצא במקום אחר ממה שפרטתי.<br>
+מבחינת הפונקציונליות, מה שאני צריך זה לקחת את הטוקן שייצרתי עבור משתמש לאחר פעולת לוגאין מוצלחת, ולגרום לו לעבור עם המשתמש לשאר הראוטים שאליהם הוא ממשיך.<br>
+הקוד שלי פה:</p><aside class="onebox githubfolder">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:420/420;"><img src="https://avatars.githubusercontent.com/u/71118404?s=400&amp;amp;v=4" class="thumbnail" width="420" height="420"></div>
+
+<h3><a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">kobyfogel/calendar</a></h3>
+
+<p><a href="https://github.com/kobyfogel/calendar/tree/feature/login" target="_blank" rel="noopener nofollow ugc">feature/login</a></p>
+
+  <p><span class="label1">Contribute to kobyfogel/calendar development by creating an account on GitHub.</span></p>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/3</link>
+        <pubDate>Mon, 25 Jan 2021 09:23:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-3</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[adva.alkalay]]></dc:creator>
+        <description><![CDATA[
+            <p>אין לי ניסיון, אבל אשמח לנסות לעזור איכשהו <img src="https://forums.pythonic.guru/images/emoji/twitter/pray/2.png?v=9" title=":pray:t2:" class="emoji" alt=":pray:t2:"><br>
+אתה יכול לחדד מה בדיוק אתה צריך? והאם אפשר להעיף מבט על הקוד שלך כדי להבין מה קורה שם? <img src="https://forums.pythonic.guru/images/emoji/twitter/heart.png?v=9" title=":heart:" class="emoji" alt=":heart:"></p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/2</link>
+        <pubDate>Mon, 25 Jan 2021 09:18:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-2</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+      <item>
+        <title>מערכת לוגאין ו - jwt token</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אני עובד על יצירת מערכת ההתחברות וניהול משתמשים. סיפריית fastapi-login, שעליה בניתי בלקיחת הטיקט, התבררה לאחר שלושה ימי חפירות בתוכה, כחסרת פונקציונליות ודוקיומנטציה שמאפשרת לעבוד איתה, לכל הפחות אני לא הצלחתי.<br>
+נאלצתי לזנוח את הניסיון ליישם איתה, ולבנות מערכת בעצמי.<br>
+האופן שבו הגנה על ראוטים בפאסט API עובד, הוא הגדרת דיפנדנסי של JWT בכניסה לראוט. ההגדרה הזאת מייצרת בדיקה של הימצאות token ב- header של בקשת הכניסה לראוט.<br>
+יצרתי ראוט לוגאין שמקבל נתונים מטופס התחברות, מאמת את המשתמש, ומייצר jwt token עבור המשתמש.<br>
+כל הדוקומנטציה, וכל המדריכים שמצאתי, מגיעים עד הנקודה הזאת, ומחזירים את הטוקן מהראוט שייצר אותו, כג’ייסון.<br>
+מכיוון שאנו בונים אפליקציה מונוליטית, אני צריך לצרף את הטוקן ל- headers של הריקווסט שבערך ההחזר של הראוט.<br>
+מישהו התנסה במשהו כזה ויכול קצת לעזור?<br>
+נ.ב.  אני יודע שהרבה מחכים לסיום הטיקט הזה, ואני ממש מתנצל שעדיין לא סיימתי אותו, אבל זה התברר כמשהו הרבה יותר מורכב ליישום בפאסט API מאשר בפלאסק, וזה פשוט לוקח לי מעט יותר זמן ממה שהערכתי במקור.<br>
+עריכה:<br>
+בניסיון לעבוד עם פלאסק לוגאין, הצלחתי להגיע למצב שהיא גם יוצרת טוקן עבור המשתמש, ומחזירה אותו, בדיוק באותו האופן. הדוקומנטציה שלה מסתיימת שם, והיא משתמשת בדיפנדנסי משלה להגנה על ראוטים.<br>
+אז בעצם היא מביאה עד לאותה הנקודה שאני נמצא בה, עם מספר חסרונות:<br>
+בשונה מפלאס לוגאין, אין לה שום פונקציונליות של לוגאאוט.<br>
+בנוסף, אין לה שום פונקציונליות של current_user. כל מה שהיא מייצרת זה טוקן.<br>
+מעבר לכך, אין שום דבר בדוקמנטציה שלה, ואין אף מדריך שאני מצאתי, שמסביר עליה משהו. ההחלטה לזנוח אותה היתה בשיקול שעדיף לי להגיע לנקודה הזאת של יצירת טוקן בעצמי, כשאני מסתמך ישירות על OAuth2 ו- JWT, שלהם יש הרבה יותר דוקומנטציה, והסיכויים ליישם את הפונקציות הללו הרבה יותר גבוהים, כשגם יש לי גישה לפרטים של יצירת הטוקן וכל הלוגיקה.<br>
+בכל אופן, יש לי קובץ שמיישם את fastapi-login, אותו לא העליתי לריפו, למי שמעוניין להתנסות</p>
+          <p><a href="https://forums.pythonic.guru/t/jwt-token/8898/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/jwt-token/8898/1</link>
+        <pubDate>Mon, 25 Jan 2021 08:52:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8898-1</guid>
+        <source url="https://forums.pythonic.guru/t/jwt-token/8898.rss">מערכת לוגאין ו - jwt token</source>
+      </item>
+  </channel>
+</rss>

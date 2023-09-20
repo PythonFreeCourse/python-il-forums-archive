@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Advent of Code 12 שאלה</title>
+    <link>https://forums.pythonic.guru/t/advent-of-code-12/7771</link>
+    <description>```
+After 0 steps:
+pos=&lt;x=-1, y=  0, z= 2&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 2, y=-10, z=-7&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 4, y= -8, z= 8&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 3, y=  5, z=-1&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+
+After 1 step:
+pos=&lt;x= 2, y=-1, z= 1&gt;, vel=&lt;x= 3, y=-1, z=-1&gt;
+pos=&lt;x= 3, y=-7, z=-4&gt;, vel=&lt;x= 1, y= 3, z= 3&gt;
+pos=&lt;x= 1, y=-7, z= 5&gt;, vel=&lt;x=-3, y= 1, z=-3&gt;
+pos=&lt;x= 2, y= 2, z= 0&gt;, vel=&lt;x=-1, y=-3, z= 1&gt;
+After 2 steps:
+pos=&lt;x= 5, y=-3, z=-1&gt;, vel=&lt;x= 3, y=-2, z=-2&gt;
+pos=&lt;x= 1, y=-2, z= 2&gt;, vel=&lt;x=-2, y= 5, z= 6&gt;
+pos=&lt;x= 1, y=-4, z=-1&gt;, vel=&lt;x= 0, y= 3, z=-6&gt;
+pos=&lt;x= 1, y=-4, z= 2&gt;, vel=&lt;x=-1, y=-6, z= 2&gt;
+```
+
+
+את STEP 1 הבנתי ואני מצליח להגיע לתוצאה זאת אבל בSTEP 2 אני ממש לא מצליח להבין למה הגיעו לערכים אלו
+אם יש קשר בין STEP 1 לSTEP 2
+מישהו יכול להסביר לי את השרשרת הלוגית בין STEP 1 לSTEP 2</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 06 Aug 2020 11:49:28 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/advent-of-code-12/7771.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Advent of Code 12 שאלה</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>ממליץ לקרוא שוב את ההנחיות. זה יכול להיות הרבה לעכל בקריאה ראשונה, ובקריאה שניה פתאום הכל היה לי הרבה יותר ברור. ספציפית לגבי השאלה שלך - כן יש קשר ברור בין צעד לצעד, נסה לחזור על ההנחיות ואז לחזור לדוגמא ואני בטוח שתצליח להבין אותו <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-12/7771/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-12/7771/2</link>
+        <pubDate>Thu, 06 Aug 2020 11:49:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7771-2</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-12/7771.rss">Advent of Code 12 שאלה</source>
+      </item>
+      <item>
+        <title>Advent of Code 12 שאלה</title>
+        <dc:creator><![CDATA[dimaiscool95]]></dc:creator>
+        <description><![CDATA[
+            <pre><code class="lang-auto">After 0 steps:
+pos=&lt;x=-1, y=  0, z= 2&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 2, y=-10, z=-7&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 4, y= -8, z= 8&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+pos=&lt;x= 3, y=  5, z=-1&gt;, vel=&lt;x= 0, y= 0, z= 0&gt;
+
+After 1 step:
+pos=&lt;x= 2, y=-1, z= 1&gt;, vel=&lt;x= 3, y=-1, z=-1&gt;
+pos=&lt;x= 3, y=-7, z=-4&gt;, vel=&lt;x= 1, y= 3, z= 3&gt;
+pos=&lt;x= 1, y=-7, z= 5&gt;, vel=&lt;x=-3, y= 1, z=-3&gt;
+pos=&lt;x= 2, y= 2, z= 0&gt;, vel=&lt;x=-1, y=-3, z= 1&gt;
+After 2 steps:
+pos=&lt;x= 5, y=-3, z=-1&gt;, vel=&lt;x= 3, y=-2, z=-2&gt;
+pos=&lt;x= 1, y=-2, z= 2&gt;, vel=&lt;x=-2, y= 5, z= 6&gt;
+pos=&lt;x= 1, y=-4, z=-1&gt;, vel=&lt;x= 0, y= 3, z=-6&gt;
+pos=&lt;x= 1, y=-4, z= 2&gt;, vel=&lt;x=-1, y=-6, z= 2&gt;
+</code></pre>
+<p>את STEP 1 הבנתי ואני מצליח להגיע לתוצאה זאת אבל בSTEP 2 אני ממש לא מצליח להבין למה הגיעו לערכים אלו<br>
+אם יש קשר בין STEP 1 לSTEP 2<br>
+מישהו יכול להסביר לי את השרשרת הלוגית בין STEP 1 לSTEP 2</p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-12/7771/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-12/7771/1</link>
+        <pubDate>Thu, 06 Aug 2020 11:42:43 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7771-1</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-12/7771.rss">Advent of Code 12 שאלה</source>
+      </item>
+  </channel>
+</rss>

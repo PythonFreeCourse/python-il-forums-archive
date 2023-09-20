@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+    <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636</link>
+    <description>### תיאור כללי
+
+מערכת CI/CD (או Continuous Integration/Continuous Deployment) היא מערכת שמבצעת פעולות כשעושים push לקוד חדש אל תוך הפרויקט שלנו.
+
+### מה ההצעה כוללת?
+
+1. הרצת הבדיקות לכל קוד שנכנס, כדי לבדוק שהבדיקות לא שוברות את הפרויקט.
+2. הרצה אוטומטית של flake8, כדי לוודא שכל הקוד שנכנס לפרויקט תואם ל־PEP 8 ונראה טוב.
+3. פרסום סטטיסטיקות coverage ב־PR כתגובה באופן אוטומטי – כדי לוודא שה־coverage לא ירד בעקבות ה־PR.
+3. אם הקוד עובר merge לענף main – העלאה של הקוד לשרתים שלנו, כדי שנוכל לראות את השינויים שהתרחשו.
+
+### כולל שינויים בקוד? אם כן, איפה?
+
+לא ישירות בקוד הפרויקט, אבל כן בקוד שמעליו.
+אני הולך להשתמש בטכנולוגיה שנקראת GitHub Actions שמתועדת [פה](https://github.com/features/actions).
+השימוש ב־GitHub Actions לצורך CI/CD מתועד [פה](https://docs.github.com/en/free-pro-team@latest/actions/guides/about-continuous-integration).
+
+לצורך פרסום סטטיסטיקות ה־Coverage, אני הולך להשתמש ב־[Codecov](https://github.com/apps/codecov), כיוון שיש לי ניסיון חיובי באינטגרציה שלהם ל־GitHub ב־LMS.
+
+לצורך העלאת הקוד המוכן לשרת, אני הולך להקים לנו שרת ב־Google Cloud, להקצות Static IP למכונה ולנתב את הכתובת calendar.pythonic.guru בעזרת A Record בשירות Route 53 של AWS, שם רשום כרגע הדומיין Pythonic.guru.
+
+### האם יהיו שינויים במסד הנתונים? אם כן, איפה?
+
+לא, השינוי הזה לא תלוי במסד הנתונים ולא יגרור בו שינוי.
+
+### האם יהיה שינוי ב־frontend? אם כן, איפה?
+
+לא, השינוי הזה לא תלוי ב־frontend ולא יגרור בו שינוי.
+
+### אילו טסטים יגרמו לטיקט להיחשב כ&quot;עובד&quot;, ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?
+
+לצערי אין unittests ששווה לכתוב עבור הטיקט הזה.
+
+עם זאת, יהיה אפשר להגיד שסיימתי את המשימה כאשר:
+1. בכל דחיפת קוד ל־master, יראו את השינויים מיידית ב־https://calendar.pythonic.guru.
+2. בכל דחיפת קוד לכל branch בפרויקט, נוכל לראות תגובה של הבוט של codecov עם אחוזי ה־coverage לפרויקט.
+3. בכל דחיפת קוד לכל branch בפרויקט, ירוצו הבדיקות של הפרויקט ו־flake8. אם אחד מהם נכשל, יהיה סימון ברור של הכישלון ב־PR ולא יהיה אפשרי לעשות merge ל־PR.</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 14 Jan 2021 02:35:39 +0000</lastBuildDate>
+    <category>הצעות לטיקטים</category>
+    <atom:link href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, המשכתי לעבוד על זה בכמה שעות האחרונות כיוון שהייתה בעיה עם ה־https.<br>
+פתרתי אותה עכשיו ואמור לפעול כראוי</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/14</link>
+        <pubDate>Thu, 14 Jan 2021 02:35:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-14</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>מציג שגיאה:</p>
+<h1>502 Bad Gateway</h1>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/13</link>
+        <pubDate>Wed, 13 Jan 2021 18:43:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-13</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מעדכן שפרט ל¯CD (עדכון אוטומטי של האתר בדחיפה למאסטר) הכל מוכן, והאתר זמין ב¯ <a href="https://calendar.pythonic.guru">https://calendar.pythonic.guru</a><br>
+הבדיקה האוטומטית של flake8, טסטים ו¯coverage אמורה לעבוד גם היא.</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/12</link>
+        <pubDate>Wed, 13 Jan 2021 02:03:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-12</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אני כבר עובד עליו (:</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/11</link>
+        <pubDate>Tue, 12 Jan 2021 00:36:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-11</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר לעבוד על הטיקט הזה?</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/10</link>
+        <pubDate>Mon, 11 Jan 2021 21:01:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-10</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר שתעשה את זה בלייב/מוקלט?<br>
+זה נשמע לי ממש מעניין</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/9</link>
+        <pubDate>Sun, 10 Jan 2021 21:59:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-9</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>קיבלת <img src="https://forums.pythonic.guru/images/emoji/twitter/slightly_smiling_face.png?v=9" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/8</link>
+        <pubDate>Sun, 10 Jan 2021 21:37:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-8</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>מאשר <img src="https://forums.pythonic.guru/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+<hr>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/7</link>
+        <pubDate>Sun, 10 Jan 2021 21:18:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-7</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>ראיתי את זה פעם מזמן, הוא ענק <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/6</link>
+        <pubDate>Sun, 10 Jan 2021 21:03:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-6</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר להכניס את אחמד טיבי לפרויקט? Hidden gem</p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/5</link>
+        <pubDate>Sun, 10 Jan 2021 20:53:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-5</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji only-emoji" alt=":rofl:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji only-emoji" alt=":rofl:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji only-emoji" alt=":rofl:"></p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/4</link>
+        <pubDate>Sun, 10 Jan 2021 19:15:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-4</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מבקש מיו"ר הפורום אישור בדיקה</p>
+<p><a href="https://www.youtube.com/watch?v=OMXkysjHV2Q">ערוץ הכנסת - אחמד טיבי בתפקיד כפול</a></p>
+
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/3</link>
+        <pubDate>Sun, 10 Jan 2021 19:00:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-3</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p>5 לבבות - ניתן להתקדם <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/2</link>
+        <pubDate>Sun, 10 Jan 2021 18:56:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-2</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+      <item>
+        <title>מערכת Continuous Integration ו־Continuous Deployment</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>תיאור כללי</h3>
+<p>מערכת CI/CD (או Continuous Integration/Continuous Deployment) היא מערכת שמבצעת פעולות כשעושים push לקוד חדש אל תוך הפרויקט שלנו.</p>
+<h3>מה ההצעה כוללת?</h3>
+<ol>
+<li>הרצת הבדיקות לכל קוד שנכנס, כדי לבדוק שהבדיקות לא שוברות את הפרויקט.</li>
+<li>הרצה אוטומטית של flake8, כדי לוודא שכל הקוד שנכנס לפרויקט תואם ל־PEP 8 ונראה טוב.</li>
+<li>פרסום סטטיסטיקות coverage ב־PR כתגובה באופן אוטומטי – כדי לוודא שה־coverage לא ירד בעקבות ה־PR.</li>
+<li>אם הקוד עובר merge לענף main – העלאה של הקוד לשרתים שלנו, כדי שנוכל לראות את השינויים שהתרחשו.</li>
+</ol>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<p>לא ישירות בקוד הפרויקט, אבל כן בקוד שמעליו.<br>
+אני הולך להשתמש בטכנולוגיה שנקראת GitHub Actions שמתועדת <a href="https://github.com/features/actions">פה</a>.<br>
+השימוש ב־GitHub Actions לצורך CI/CD מתועד <a href="https://docs.github.com/en/free-pro-team@latest/actions/guides/about-continuous-integration">פה</a>.</p>
+<p>לצורך פרסום סטטיסטיקות ה־Coverage, אני הולך להשתמש ב־<a href="https://github.com/apps/codecov">Codecov</a>, כיוון שיש לי ניסיון חיובי באינטגרציה שלהם ל־GitHub ב־LMS.</p>
+<p>לצורך העלאת הקוד המוכן לשרת, אני הולך להקים לנו שרת ב־Google Cloud, להקצות Static IP למכונה ולנתב את הכתובת calendar.pythonic.guru בעזרת A Record בשירות Route 53 של AWS, שם רשום כרגע הדומיין Pythonic.guru.</p>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>לא, השינוי הזה לא תלוי במסד הנתונים ולא יגרור בו שינוי.</p>
+<h3>האם יהיה שינוי ב־frontend? אם כן, איפה?</h3>
+<p>לא, השינוי הזה לא תלוי ב־frontend ולא יגרור בו שינוי.</p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<p>לצערי אין unittests ששווה לכתוב עבור הטיקט הזה.</p>
+<p>עם זאת, יהיה אפשר להגיד שסיימתי את המשימה כאשר:</p>
+<ol>
+<li>בכל דחיפת קוד ל־master, יראו את השינויים מיידית ב־<a href="https://calendar.pythonic.guru">https://calendar.pythonic.guru</a>.</li>
+<li>בכל דחיפת קוד לכל branch בפרויקט, נוכל לראות תגובה של הבוט של codecov עם אחוזי ה־coverage לפרויקט.</li>
+<li>בכל דחיפת קוד לכל branch בפרויקט, ירוצו הבדיקות של הפרויקט ו־flake8. אם אחד מהם נכשל, יהיה סימון ברור של הכישלון ב־PR ולא יהיה אפשרי לעשות merge ל־PR.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636/1</link>
+        <pubDate>Sun, 10 Jan 2021 18:50:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8636-1</guid>
+        <source url="https://forums.pythonic.guru/t/continuous-integration-continuous-deployment/8636.rss">מערכת Continuous Integration ו־Continuous Deployment</source>
+      </item>
+  </channel>
+</rss>

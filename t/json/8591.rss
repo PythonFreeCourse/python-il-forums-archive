@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>עזרה בפירוק לגורמים של Json</title>
+    <link>https://forums.pythonic.guru/t/json/8591</link>
+    <description>היי,
+
+קיבלתי API שאני אמור להוציא ממנו נתונים ל-DB.
+
+דוגמה למבנה של ה-API:
+Data =
+ 
+{Game: {GameID: xxx, Commissions: {RevShare: 0.2, BonusCap: 0.5}, Type: Standard} 
+
+
+אז בשביל להוציא את ה-BonusCap אני מריץ
+&#39;Data.get(&#39;Game&#39;).get(&#39;Commissions&#39;).get(&#39;BonusCap)
+
+אך רצה הגורל ויש שורות ב-API שאין להם את שדות Commissions או BonusCap
+נגיד שורה כזו - 
+{Game: {GameID: xxx}, Type: Standard}
+
+לכן בשורות ב-API שאין בהם את שדה Commissions וננסה לריץ DATA.get(&#39;Game&#39;).get(&#39;Commissions&#39;) נקבל None.
+
+אבל כשהקוד מנסה להמשיך להריץ את שורת הקוד None.(&#39;BonusCap&#39;)
+ואז אני מקבל שגיאה והקוד נקרס.
+
+יש למישהו רעיון איך אפשר להתמודד עם המצב הזה?
+
+חשבתי ליצור decorator ל-get, שאם פונקציה get מקבלת None שיחזור None ולא שגיאה.
+אבל לא מצאתי באינטרנט אם אפשר לשנות פונקציות bulid in ב-python.
+
+ואז חשבתי על try except אבל אז אני צריך לעשות אותו מקונן פעמים - כי יכול להיות מצב ששדה Commissions קיים אבל שדה BonusCap לא קיים.
+
+אשמח לעזרה!</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 30 Dec 2020 12:19:00 +0000</lastBuildDate>
+    <category>דיבורים</category>
+    <atom:link href="https://forums.pythonic.guru/t/json/8591.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>עזרה בפירוק לגורמים של Json</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הפעולה <code>get</code> מקבלת כפרמטר שני default value.<br>
+כלומר: אתה יכול להחליט מה בא לך להחזיר במקום <code>None</code> אם הערך לא נמצא.<br>
+במקרה שלך, הייתי בוחר להחזיר מילון. ואז <code>.get</code> עליו יחזיר None.</p>
+<p>אם מדובר בכמה פונקציות שמתנהגות זהה ומשתמשות אחת בשנייה,<br>
+ואתה רוצה שההתנהגות תהיה קונסיסטנטית בין ממשקים,<br>
+הייתי תמיד משאיר מילון בפרמטר השני:</p>
+<pre><code class="lang-python">kukuyama.get('platner', {}).get('!!!', {})</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/json/8591/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/json/8591/2</link>
+        <pubDate>Wed, 30 Dec 2020 12:19:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8591-2</guid>
+        <source url="https://forums.pythonic.guru/t/json/8591.rss">עזרה בפירוק לגורמים של Json</source>
+      </item>
+      <item>
+        <title>עזרה בפירוק לגורמים של Json</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>קיבלתי API שאני אמור להוציא ממנו נתונים ל-DB.</p>
+<p>דוגמה למבנה של ה-API:<br>
+Data =</p>
+<p>{Game: {GameID: xxx, Commissions: {RevShare: 0.2, BonusCap: 0.5}, Type: Standard}</p>
+<p>אז בשביל להוציא את ה-BonusCap אני מריץ<br>
+'Data.get(‘Game’).get(‘Commissions’).get('BonusCap)</p>
+<p>אך רצה הגורל ויש שורות ב-API שאין להם את שדות Commissions או BonusCap<br>
+נגיד שורה כזו -<br>
+{Game: {GameID: xxx}, Type: Standard}</p>
+<p>לכן בשורות ב-API שאין בהם את שדה Commissions וננסה לריץ DATA.get(‘Game’).get(‘Commissions’) נקבל None.</p>
+<p>אבל כשהקוד מנסה להמשיך להריץ את שורת הקוד None.(‘BonusCap’)<br>
+ואז אני מקבל שגיאה והקוד נקרס.</p>
+<p>יש למישהו רעיון איך אפשר להתמודד עם המצב הזה?</p>
+<p>חשבתי ליצור decorator ל-get, שאם פונקציה get מקבלת None שיחזור None ולא שגיאה.<br>
+אבל לא מצאתי באינטרנט אם אפשר לשנות פונקציות bulid in ב-python.</p>
+<p>ואז חשבתי על try except אבל אז אני צריך לעשות אותו מקונן פעמים - כי יכול להיות מצב ששדה Commissions קיים אבל שדה BonusCap לא קיים.</p>
+<p>אשמח לעזרה!</p>
+          <p><a href="https://forums.pythonic.guru/t/json/8591/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/json/8591/1</link>
+        <pubDate>Wed, 30 Dec 2020 11:16:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8591-1</guid>
+        <source url="https://forums.pythonic.guru/t/json/8591.rss">עזרה בפירוק לגורמים של Json</source>
+      </item>
+  </channel>
+</rss>

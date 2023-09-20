@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8399/8 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:19 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>האפליקציה לא עובדת בהרוקו - מס׳ 8 מאת Yam - שבוע 12 - פייתון בעברית ובחינם</title>
+<meta content="הי להלן הלוגים שלי, מחיפושים ברשת היה נשמע כאילו זה קשור לGunicorn אבל לא הצלחתי להבין מה צריך לעשות 
+  
+וזו התיקייה שלי בGITHUB:" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8399.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8399.rss" rel="alternate nofollow" title="הזנת RSS של ‚האפליקציה לא עובדת בהרוקו’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8.html" property="og:url"/>
+<meta content="8.html" name="twitter:url"/>
+<meta content="האפליקציה לא עובדת בהרוקו" property="og:title"/>
+<meta content="האפליקציה לא עובדת בהרוקו" name="twitter:title"/>
+<meta content="2 פוסטים פוצלו לנושא חדש: בעיה בהעלאת gunicorn" property="og:description"/>
+<meta content="2 פוסטים פוצלו לנושא חדש: בעיה בהעלאת gunicorn" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 12" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="heroku" property="og:article:tag"/>
+<meta content="2020-10-25T02:00:03+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"האפליקציה לא עובדת בהרוקו","mainEntity":{"@type":"Question","name":"האפליקציה לא עובדת בהרוקו","text":"הי להלן הלוגים שלי, מחיפושים ברשת היה נשמע כאילו זה קשור לGunicorn אבל לא הצלחתי להבין מה צריך לעשות\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/8c15768e5a84e31998ce043dfee2e1f6bc228bdf\" title=\"image\">[image]<\/a>\n\nוזו התיקייה שלי בGITHUB:\n\n<a class=\"lightbox\" href=\"https://forums.pythonic.guru/uploads/default/original/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9.png\" data-download-href=\"https://forums.pythonic.guru/uploads/default/704cf837e1862f734059991f4d15ce6fb195a9f9\" title=\"image\">[image]<\/a>","upvoteCount":0,"answerCount":0,"dateCreated":"2020-10-25T00:57:09.046Z","author":{"@type":"Person","name":"מיכאל בן דוד"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8399.html">האפליקציה לא עובדת בהרוקו</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/24-category/24.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 12</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/heroku.html" rel="tag">heroku</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="האפליקציה לא עובדת בהרוקו" itemprop="headline"/>
+<meta content="שבוע 12" itemprop="articleSection"/>
+<meta content="heroku" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T00:57:09Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏ 12:57am
+                  </time>
+<meta content="2022-06-14T01:03:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>הי להלן הלוגים שלי, מחיפושים ברשת היה נשמע כאילו זה קשור לGunicorn אבל לא הצלחתי להבין מה צריך לעשות<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/8c15768e5a84e31998ce043dfee2e1f6bc228bdf" href="../../../uploads/default/original/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf.png" title="image"><img alt="image" data-base62-sha1="jZePtUNE99VYD6g4jOYaMba9n6n" data-small-upload="../../../uploads/default/optimized/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf_2_10x10.png" height="201" src="../../../uploads/default/optimized/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf_2_690x201.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf_2_690x201.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf_2_1035x301.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8c15768e5a84e31998ce043dfee2e1f6bc228bdf_2_1380x402.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1577×460 38.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>וזו התיקייה שלי בGITHUB:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/704cf837e1862f734059991f4d15ce6fb195a9f9" href="../../../uploads/default/original/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9.png" title="image"><img alt="image" data-base62-sha1="g1snLpX5D7YQUTt9D9oqL8KFTMB" data-small-upload="../../../uploads/default/optimized/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9_2_10x10.png" height="297" src="../../../uploads/default/optimized/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9_2_689x297.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9_2_689x297.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9_2_1033x445.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/7/704cf837e1862f734059991f4d15ce6fb195a9f9.png 2x" width="689"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1279×552 21.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:01:49Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:01am
+                  </time>
+<meta content="2020-10-25T01:01:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>מה יש לך ב־requirements?</li>
+<li>מה יש לך ב־app?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/a/a0fc4b76d26a3e7e0fbd722b6c82b9f6b7426d0d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:32:17Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:32am
+                  </time>
+<meta content="2020-10-25T01:32:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ראיתי שאכן הייתה לי בעיה בגלל המשתנים הסביבתים - סידרתי אותה.<br/>
+עכשיו התקלה היא בכלל כזאת error 500</p>
+<p>עד עכשיו זה קרה כשהייתה בעיה עם התוצאות מהAPI אבל עוד לא הגשתי שום בקשה…</p>
+<p>זה הלוג -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a0fc4b76d26a3e7e0fbd722b6c82b9f6b7426d0d" href="../../../uploads/default/original/2X/a/a0fc4b76d26a3e7e0fbd722b6c82b9f6b7426d0d.png" title="image"><img alt="image" data-base62-sha1="mY8VVDwqAMK4xqWbFMaQ2vlF3yt" data-small-upload="../../../uploads/default/optimized/2X/a/a0fc4b76d26a3e7e0fbd722b6c82b9f6b7426d0d_2_10x10.png" height="195" src="../../../uploads/default/original/2X/a/a0fc4b76d26a3e7e0fbd722b6c82b9f6b7426d0d.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1467×416 27.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>בדקתי שוב וזה רץ לוקאלית<br/>
+מוזר…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:35:05Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:35am
+                  </time>
+<meta content="2020-10-25T01:35:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>מה כתוב בלוג?</li>
+<li>זה מופיע ישר בכניסה לאתר?</li>
+<li>מה ניסית לעשות?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:35:57Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:35am
+                  </time>
+<meta content="2020-10-25T01:35:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>צירפתי בתגובה שלי למעלה</li>
+<li>פשוט להריץ את האפליקצייה</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:36:49Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:36am
+                  </time>
+<meta content="2020-10-25T01:36:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תכבה את האפליקציה ותריץ שוב, אתה תראה שזה לא עובד לוקאלית.<br/>
+אם זה עובד זה מאוד מוזר כי אני יכול לראות את השגיאה מהלוג</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T01:41:07Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  1:41am
+                  </time>
+<meta content="2020-10-25T01:41:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/b4029ce217c652d7bcf7c4d0bb0a081457e14913" href="../../../uploads/default/original/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913.png" title="image"><img alt="image" data-base62-sha1="pGrxDSubF0FlEco3iCQyvzJKi4j" data-small-upload="../../../uploads/default/optimized/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913_2_10x10.png" height="313" src="../../../uploads/default/optimized/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913_2_690x313.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913_2_690x313.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913_2_1035x469.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/b/b4029ce217c652d7bcf7c4d0bb0a081457e14913_2_1380x626.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1879×855 136 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ככה זה נראה אחרי שאני מריץ לוקאלית</p>
+<p>לשם הסר ספק - זה תקין (<img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+וברצינות - ים, תודה על המענה בשעה כזאת…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+                
+                  נושא זה פוצל ב־
+              </span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T02:00:03Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  2:00am
+                  </time>
+<meta content="2020-10-25T02:00:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>2 פוסטים פוצלו לנושא חדש: <a href="../../gunicorn/8400.html">בעיה בהעלאת gunicorn</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T02:00:18Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  2:00am
+                  </time>
+<meta content="2020-10-25T02:00:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר בבקשה לראות את app.py?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/3/3e0cd5307155b11695581a930c7b36ba3559ad87.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T02:15:20Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  2:15am
+                  </time>
+<meta content="2020-10-25T02:15:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/3e0cd5307155b11695581a930c7b36ba3559ad87" href="../../../uploads/default/original/2X/3/3e0cd5307155b11695581a930c7b36ba3559ad87.png" title="image"><img alt="image" data-base62-sha1="8QV61PNv6mX7VGz3SvNRuh70FLN" data-small-upload="../../../uploads/default/optimized/2X/3/3e0cd5307155b11695581a930c7b36ba3559ad87_2_10x10.png" height="500" src="../../../uploads/default/original/2X/3/3e0cd5307155b11695581a930c7b36ba3559ad87.png" width="442"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">782×884 20.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/44b15a217a0cb7cec626f9394c0f6c986c73732b" href="../../../uploads/default/original/2X/4/44b15a217a0cb7cec626f9394c0f6c986c73732b.png" title="image"><img alt="image" data-base62-sha1="9NGrt6siy2tykMgMVOaX1TATC4P" data-small-upload="../../../uploads/default/optimized/2X/4/44b15a217a0cb7cec626f9394c0f6c986c73732b_2_10x10.png" height="500" src="../../../uploads/default/original/2X/4/44b15a217a0cb7cec626f9394c0f6c986c73732b.png" width="641"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1141×889 32 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/01d56d64e36b5ee1cc15240f26be6e1119470298" href="../../../uploads/default/original/2X/0/01d56d64e36b5ee1cc15240f26be6e1119470298.png" title="image"><img alt="image" data-base62-sha1="gdK5C6Xaz075oSOgXSN05Qcg2s" data-small-upload="../../../uploads/default/optimized/2X/0/01d56d64e36b5ee1cc15240f26be6e1119470298_2_10x10.png" height="500" src="../../../uploads/default/original/2X/0/01d56d64e36b5ee1cc15240f26be6e1119470298.png" width="616"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1105×896 42.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T02:44:01Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  2:44am
+                  </time>
+<meta content="2020-10-25T02:44:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>האם ב־Heroku מוגדר משתנה בשם API_KEY עם אותיות גדולות?</li>
+<li>מה יש לך ב־requirements.txt?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/f/f0eb389f3def8265c7ab4cfc549b8e76e0551aa2.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T05:59:21Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  5:59am
+                  </time>
+<meta content="2020-10-25T05:59:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>כן</li>
+<li>
+</li></ol>
+<p><img alt="image" data-base62-sha1="yngydJQh1bQnhS6x1s4nrWx2Kga" height="495" src="../../../uploads/default/original/2X/f/f0eb389f3def8265c7ab4cfc549b8e76e0551aa2.png" width="370"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:12:24Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:12am
+                  </time>
+<meta content="2020-10-25T06:27:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/46a62b2a89394607dba658e1e67c926fb3a5575c" href="../../../uploads/default/original/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c.png" title="image"><img alt="image" data-base62-sha1="a4Zr7XahFoZ1jjZS9j7zMYQcIfG" data-small-upload="../../../uploads/default/optimized/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c_2_10x10.png" height="224" src="../../../uploads/default/optimized/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c_2_690x224.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c_2_690x224.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c_2_1035x336.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/46a62b2a89394607dba658e1e67c926fb3a5575c.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1094×356 70.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זה לא עובד <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> הבאג נמצא כאן. נסה לזהות אותו.<br/>
+תוכל לשחזר אותו אם תכנס לאתר שלך <em>מחדש</em> בלי לעשות רענן. לדף הראשי.</p>
+<p>(גם אתמול הוא לא היה עובד)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:49:06Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:49am
+                  </time>
+<meta content="2020-10-25T06:49:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עדיין קורס -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/283cd35f14b4d754a33543af72bc61cd395bf642" href="../../../uploads/default/original/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642.png" title="image"><img alt="image" data-base62-sha1="5JXpRLM857P3lzEEDiHB1wtowwO" data-small-upload="../../../uploads/default/optimized/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642_2_10x10.png" height="202" src="../../../uploads/default/optimized/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642_2_690x202.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642_2_690x202.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642_2_1035x303.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/283cd35f14b4d754a33543af72bc61cd395bf642_2_1380x404.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1554×457 39.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ושיניתי את הHTML שחוזר במקרה ולא הוגשה בקשה כך שלא יכלול רכיבי JINJA<br/>
+וזה רץ לי לוקאלית…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:56:15Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:56am
+                  </time>
+<meta content="2020-10-25T06:56:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אשמח לקבל את app.py המעודכנת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/0/07630e3c3d0d4df39d0e54bc0de155f07924aa96.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:00:15Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:00am
+                  </time>
+<meta content="2020-10-25T07:00:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/07630e3c3d0d4df39d0e54bc0de155f07924aa96" href="../../../uploads/default/original/2X/0/07630e3c3d0d4df39d0e54bc0de155f07924aa96.png" title="image"><img alt="image" data-base62-sha1="13lzdcMr91MP2SFJaCVCAVTCWvc" data-small-upload="../../../uploads/default/optimized/2X/0/07630e3c3d0d4df39d0e54bc0de155f07924aa96_2_10x10.png" height="500" src="../../../uploads/default/original/2X/0/07630e3c3d0d4df39d0e54bc0de155f07924aa96.png" width="610"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1075×881 28.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a081316adba925c0acc655f28ce0595159dcf3f5" href="../../../uploads/default/original/2X/a/a081316adba925c0acc655f28ce0595159dcf3f5.png" title="image"><img alt="image" data-base62-sha1="mTTbMEzjOode7JQ53ZwNmcGyTRP" data-small-upload="../../../uploads/default/optimized/2X/a/a081316adba925c0acc655f28ce0595159dcf3f5_2_10x10.png" height="500" src="../../../uploads/default/original/2X/a/a081316adba925c0acc655f28ce0595159dcf3f5.png" width="619"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1084×875 25.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>וגם לוג טיפה יותר מפורט</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/799223f887585775cc6abf3c304471457ddd3904" href="../../../uploads/default/original/2X/7/799223f887585775cc6abf3c304471457ddd3904.png" title="image"><img alt="image" data-base62-sha1="hlsSt38pbHfq5P6wJj4DzPewm7W" data-small-upload="../../../uploads/default/optimized/2X/7/799223f887585775cc6abf3c304471457ddd3904_2_10x10.png" height="178" src="../../../uploads/default/optimized/2X/7/799223f887585775cc6abf3c304471457ddd3904_2_690x178.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/799223f887585775cc6abf3c304471457ddd3904_2_690x178.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/799223f887585775cc6abf3c304471457ddd3904_2_1035x267.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/7/799223f887585775cc6abf3c304471457ddd3904_2_1380x356.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1590×411 38 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:25:04Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:25am
+                  </time>
+<meta content="2020-10-25T07:25:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תמחק את השורה האחרונה של app.run.<br/>
+הארוקו עושה את זה בשבילך והשורה הזו גורמת להתנגשות.<br/>
+שים לב שבדוגמאות היא נכתבת מתחת ל¯if שמונע את המצב הזה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8399.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:35:03Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:35am
+                  </time>
+<meta content="2020-10-25T07:35:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ים מסיקה אתה איש מדהים וכל כך שימחת אותי עכשיו…</p>
+<p>תודה רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8399/8 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:19 GMT -->
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5175 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:34:29 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מחברת 6 איקס עיגול פונקציות בתוך פונקציות - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="אז כתבתי את הפונקציה שבודקת את כל מצבי הניצחון האפשריים, ובהתאם להוראות כתבתי כמה שיותר תתי פרנקציות. אז אחרי שהיו לי פונקציות למקרה של ניצחון אנכי, נצחון אופקי ונצחון באלכסון, הרצתי את הפונצקיה הגדולה. בתוך הפונקציה הגד&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="5175.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5175.rss" rel="alternate nofollow" title="הזנת RSS של ‚מחברת 6 איקס עיגול פונקציות בתוך פונקציות’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_1024x238.png" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_1024x238.png" property="og:image"/>
+<meta content="5175.html" property="og:url"/>
+<meta content="5175.html" name="twitter:url"/>
+<meta content="מחברת 6 איקס עיגול פונקציות בתוך פונקציות" property="og:title"/>
+<meta content="מחברת 6 איקס עיגול פונקציות בתוך פונקציות" name="twitter:title"/>
+<meta content="אז כתבתי את הפונקציה שבודקת את כל מצבי הניצחון האפשריים, ובהתאם להוראות כתבתי כמה שיותר תתי פרנקציות. אז אחרי שהיו לי פונקציות למקרה של ניצחון אנכי, נצחון אופקי ונצחון באלכסון, הרצתי את הפונצקיה הגדולה. בתוך הפונקציה הגדולה הרצתי את הפונקציות שציינתי והשמתי את ערך ההחזרה שלהן לתוך משתנים ואז הרצתי בדיקה לגבי האם המשתנים האלה הם איקס או עיגול כדי לבדוק מי מנצח. חשוב לציין שבדקתי את כל אחת מהפונקציות בנפרד, והן מחזירות את הערכים הצפויים מהן לפי מצב הלוח, כלומר כשמריצים אותן הן מחזירות  איקס, עיגול..." property="og:description"/>
+<meta content="אז כתבתי את הפונקציה שבודקת את כל מצבי הניצחון האפשריים, ובהתאם להוראות כתבתי כמה שיותר תתי פרנקציות. אז אחרי שהיו לי פונקציות למקרה של ניצחון אנכי, נצחון אופקי ונצחון באלכסון, הרצתי את הפונצקיה הגדולה. בתוך הפונקציה הגדולה הרצתי את הפונקציות שציינתי והשמתי את ערך ההחזרה שלהן לתוך משתנים ואז הרצתי בדיקה לגבי האם המשתנים האלה הם איקס או עיגול כדי לבדוק מי מנצח. חשוב לציין שבדקתי את כל אחת מהפונקציות בנפרד, והן מחזירות את הערכים הצפויים מהן לפי מצב הלוח, כלומר כשמריצים אותן הן מחזירות  איקס, עיגול..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שמות-משתנים" property="og:article:tag"/>
+<meta content="פונקציות" property="og:article:tag"/>
+<meta content="unboundlocalerror" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="5 ❤"/>
+<meta content="2020-04-21T17:09:46+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5175.html">מחברת 6 איקס עיגול פונקציות בתוך פונקציות</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a9%d7%9e%d7%95%d7%aa-%d7%9e%d7%a9%d7%aa%d7%a0%d7%99%d7%9d.html" rel="tag">שמות-משתנים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a4%d7%95%d7%a0%d7%a7%d7%a6%d7%99%d7%95%d7%aa.html" rel="tag">פונקציות</a>, 
+            <a class="discourse-tag" href="../../tag/unboundlocalerror.html" rel="tag">unboundlocalerror</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מחברת 6 איקס עיגול פונקציות בתוך פונקציות" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="שמות-משתנים, פונקציות, unboundlocalerror" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:09:46Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:09pm
+                  </time>
+<meta content="2021-09-08T03:10:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>אז כתבתי את הפונקציה שבודקת את כל מצבי הניצחון האפשריים, ובהתאם להוראות כתבתי כמה שיותר תתי פרנקציות. אז אחרי שהיו לי פונקציות למקרה של ניצחון אנכי, נצחון אופקי ונצחון באלכסון, הרצתי את הפונצקיה הגדולה. בתוך הפונקציה הגדולה הרצתי את הפונקציות שציינתי והשמתי את ערך ההחזרה שלהן לתוך משתנים ואז הרצתי בדיקה לגבי האם המשתנים האלה הם איקס או עיגול כדי לבדוק מי מנצח. חשוב לציין שבדקתי את כל אחת מהפונקציות בנפרד, והן מחזירות את הערכים הצפויים מהן לפי מצב הלוח, כלומר כשמריצים אותן הן מחזירות  איקס, עיגול, או תו ריק בהתאם.</p>
+<p>עכשיו, כשאני מריץ את הפונקציה הראשית, אני מתחיל מלהשים את ערכי ההחזרה של הפונקציות הנפרדות בתוך משתנים ואז מריץ תנאים לבדיקת ערכי המשתנים האלה כדי להחליט מי ניצח (אם בכלל). ואז פייתון צועק לי שאני קורא למשתנה לפני שהשמתי אותו. בהתחלה חשבתי שאולי זה קשור לכך שמדובר בפונקציה בתוך פונקציה, אבל למעשה גם תת הפונקציות שכתבתי לגבי מצבי הניצחון מורכבות בעצמן מתתי פונקציות, כך שלא סביר שזה העניין (אחרת הייתי נתקל בבעיה הרבה קודם, בבדיקות הפרטניות. בקיצור, אני ממש מבולבל ואשמח להכוונה לגבי המצב בו נתקלתי.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/4dcd7fa0bab3965aa145ca39316354b174586041" href="../../uploads/default/original/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041.png" title="image"><img alt="image" data-base62-sha1="b6h2ItMEOlz95MMfjg7j1uCHlRf" data-small-upload="../../uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_10x10.png" height="160" src="../../uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_690x160.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_690x160.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041_2_1035x240.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/4dcd7fa0bab3965aa145ca39316354b174586041.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1166×272 65.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:28:53Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:28pm
+                  </time>
+<meta content="2020-04-21T17:28:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא הבנתי למה התכוונת. רק כדי להסביר, מעל כל הפונקציות יש לי משתנה בשם board שמכיל את הלוח. כשאני מריץ winner = check_board(board) אני בעצם מריץ את הפונקציה ומשים את התוצאה שלך בתוך winner ואז מדפיס את winner לצרכי בדיקה (או לפחות זה מה שחשבתי שעשיתי). לכן לא ברור לי מה הבעיה (השורה האחרונה רק מדפיסה את המשתנה).</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:32:23Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:32pm
+                  </time>
+<meta content="2020-04-21T17:32:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אתה יכול להדביק פה את ההערה עצמה שזה נותן לך ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:33:57Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:33pm
+                  </time>
+<meta content="2020-04-21T17:33:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705" href="../../uploads/default/original/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705.png" title="image"><img alt="image" data-base62-sha1="30Bi6tNKpH3uRPeHFVUAouilokl" data-small-upload="../../uploads/default/optimized/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705_2_10x10.png" height="499" src="../../uploads/default/optimized/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705_2_672x499.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705_2_672x499.png, https://forums.pythonic.guru/uploads/default/original/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/1517ed85f3e5d5e16bc7752504c8dbfe8e88d705.png 2x" width="672"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">961×714 58.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:34:15Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:34pm
+                  </time>
+<meta content="2020-04-21T17:34:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה כי דרסת את הפונק’ עם השם של עצמה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:35:25Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:35pm
+                  </time>
+<meta content="2020-04-21T17:35:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עכשיו יותר מובן - שים לב שאתה נותן למשתנה את אותו השם של הפונקציות שלך ואז אתה מבצע דריסה שלהם.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:36:03Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:36pm
+                  </time>
+<meta content="2020-04-21T17:36:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אבל חשבתי שאם אני כותב את זה ככה אז זה פשוט משתנה וזהו, בלי קשר לפונקציה. אשמח להסבר על מה בעצם קרה כשנתתי למשתנה אותו שם כמו לפונקציה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:38:53Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:38pm
+                  </time>
+<meta content="2020-04-21T17:38:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברגע שפייתון באה להריץ פונקציה, היא שומרת בצד את שמות כל המשתנים ש"חיים" בתוך הפונקציה.<br/>
+בשורה של ההשמה, פייתון מסתכלת קודם על צד ימין. היא יודעת שבפונקציה הזו יש משתנה בשם horizontal, אבל היא מחפשת ורואה שעדיין לא השמת לתוכו. אז מבחינת פייתון – הולך להיות משתנה כזה בהמשך הפונקציה, אבל עדיין לא ביצעת לתוכו השמה. ולכן ה־UnboundLocalError – אתה מנסה לקרוא למשתנה שמבחינתה יהיה בו ערך בהמשך, אבל כרגע עדיין לא קיים.<br/>
+היא לא מחפשת את הפונקציה החיצונית מכיוון שהיא “יודעת” שבתוך הפונקציה הפנימית הוגדר משתנה בשם horizontal, ולו היא נותנת את הקדימות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:45:44Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:45pm
+                  </time>
+<meta content="2020-04-21T17:45:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עכשיו שיניתי את השמות (הוספתי 1 בסוף רק לצורך הבדיקה) וזה עובד. אבל אני חש שעדיין לא הגעתי להבנה מלאה. מהתשובה שלך הבנתי שפייתון מסתכלת קודם על צד ימין, אז היא רואה את שם הפונקציה horizontal. אז מבחינתה גם קיים משתנה כזה? ואז כשבצד שמאל קראתי למשתנה אחר בשם הזה אז היא לא יודעת מה לעשות, אבל אם היא רואה משתנה בשם אחר שעוד לא הוגדר בו כלום היא סבבה עם זה (תודה על ההסברים והסבלנות)?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:52:16Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:52pm
+                  </time>
+<meta content="2020-04-21T17:52:16Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מוסבר <a href="https://docs.python.org/3/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value">ב־FAQ של פייתון</a>, אבל ארחיב.</p>
+<p>שלבים עבור פייתון:</p>
+<ol>
+<li>נכנסת לשורה הראשונה של הפונקציה.</li>
+<li>מסתכלת על כל שמות המשתנים שהולכים להיות מוגדרים במהלך ריצת הפונקציה,</li>
+<li>שומרת את השמות שלהם בצד. “אלו משתנים מקומיים ואני צריכה להתייחס אליהם ככאלו”.</li>
+<li>בהשמה, כמו בכל השמה, פייתון לא מתייחסת לאגף שמאל עד שאגף ימין “פתור”. היא ממירה את board1 ללוח שלך, ואז באה לקרוא ל־horizontal עם board1 כפרמטר.</li>
+<li>אבל horizontal לפי סעיף 2 היא משתנה מקומי בכלל!</li>
+<li>אבל horizontal “המקומי” עדיין לא הוגדר בתוך הפונקציה, אין לו ערך כרגע.</li>
+<li>סתירה, קריסה, UnboundnLocalError</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">henking21</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T10:53:35Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 10:53am
+                  </time>
+<meta content="2021-09-08T03:12:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם אני מקבלת את התקלה הזו… , שיניתי את כל השמות בקוד כך שאין דברים שדומים זה לזה, ועדיין אותה תקלה… אשמח להכוונה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T11:13:09Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 11:13am
+                  </time>
+<meta content="2020-04-25T11:13:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>את יכולה לצלם את השגיאה שאת מקבלת ?&lt;</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">henking21</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/8635b774c2358f8d26337e8a51aafa0385deeb8a.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T11:16:52Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 11:16am
+                  </time>
+<meta content="2021-09-08T03:13:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הנה השגיאה:</p>
+<p><img alt="image" data-base62-sha1="j9h4eQG0zxrsu5WYyalIN2DcRHY" height="283" src="../../uploads/default/original/2X/8/8635b774c2358f8d26337e8a51aafa0385deeb8a.png" width="577"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T11:19:17Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 11:19am
+                  </time>
+<meta content="2020-04-25T11:19:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>את מגדירה את המשתנה שאת מעוניינת להחזיר רק אם את נכנסת לאחד מהתנאים. כלומר, ייתכן שיהיו מקרים בהם לא תגדירי את המשתנה ובכל זאת תנסי להחזיר אותו, וזו שגיאה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">henking21</span>
+</span>
+<link href="5175.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T11:23:34Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 11:23am
+                  </time>
+<meta content="2020-04-25T11:23:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש, עזרת לי מאוד, תודה רבה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5175 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:34:38 GMT -->
+</html>

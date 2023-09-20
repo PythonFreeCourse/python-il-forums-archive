@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</title>
+    <link>https://forums.pythonic.guru/t/generators-list-comprehension/9174</link>
+    <description>קוד קטן שמצאתי באינטרנט אפשר לי לראות בעיניים את ההבדל בין השיטות השונות מבחינת יעילות של זיכרון וזמנים וחשבתי לשתף פה את מי שהעניין מסקרן אותו. כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.
+
+אוסיף ואומר שישנם דברים שלא ברורים לי ומי שיכול להבהיר לי את העניין אודה לו מאוד.
+שאלתי כאן שלוש שאלות שהם בעצם שאלה אחת עם כמה אספקטים.
+
+א. מדוע ב the list comprehension method כאשר אני מבצע השמה למשתנה (X = list(people_interator)) הזיכרון של המערכת קופץ ישר לMB300  כאילו אני משתמש במתודה הראשונה. על פניו זה נשמע הגיוני כי אני שומר במערכת זיכרון רב, אולם מצד שני אם אני בוחר לעשות הדפסה לאותה רשימה, פעולה שמשאירה אותי עם זיכרון נמוך מאוד, אני מקבל את כל הערכים בבת אחת, וזה כאשר הgenerator כבר לא יכול להוציא עוד ערכים. ועל פניו נראה שאם אני מקבל את כל הערכים בבת אחת זה אומר שהם שמורים איפשהו במחשב לא כן? אבל אם ככה מדוע לא מופיעה במצב כזה הקפיצה בזיכרון. הסתירה כאן לא ברורה לי.
+
+א.2 אם אכן כל שמירת מידע גם generators שכל מטרתם לחסוך בזיכרון, לא יכולים לעזור לי, האם זה בעצם מייתר את העבודה שלהם במקרים רבים. כלומר כל עוד אני לא רוצה רק להדפיס מידע ספציפי אלא להשתמש בכל המידע הקיים כדי להפיק תועלת האם יכולת זו לא תוכל לעזור לי?
+
+ב. שאלה זו קשורה במעט לסעיף א. כאשר אני עושה   list comprehension איפה נשמר המידע עד שהפעולה נגמרת, הרי כל הרעיון בgenerator שכל פעם עובדים על פיסת מידע חדשה והקודמת נדרסת?
+לצורך העניין יש לי רצון לספור תווים לתוך מילון ואין לי רצון להכניס ערכים שכבר הכנסתי כיצד אני עושה זאת?
+הקוד הבא ירוץ לי שלוש פעמים במקום פעמיים. ולהוסיף if letter not in word_dic לא עושה את העבודה כי מבחינת המחשב לא הוכנסו הערכים עדיין למילון.
+פתרון אלגנטי שראיתי הוא להוריד את התנאי ואת המילון הריק ואת זה להכניס ללולאה set(word) 
+
+
+
+```
+&#39;word = &#39;aba
+word_dic = {}
+word_dic = {letter : word.count(letter) for letter in word  if letter not in word_dic}
+
+```
+
+תודה ענקית למי שמתייחס :)
+
+
+# the original method  
+Memory (Before): [18.285] Mb
+Memory (After) : [304.972] Mb
+ Took 1.5 Seconds
+
+# the generator method   
+Memory (Before): [18.289] MB
+Memory (After) : [18.300] MB
+Took 1.578 Seconds
+
+# the list comprehension method 
+ Memory (Before): [18.289] MB
+Memory (After) : [18.914] MB
+Took 1.71875 Seconds
+
+
+# כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.
+את memory_profiler תצטרכו להתקין
+
+```
+import memory_profiler
+import random
+import time
+
+names = [&#39;John&#39;, &#39;Corey&#39;, &#39;Adam&#39;, &#39;Steve&#39;, &#39;Rick&#39;, &#39;Thomas&#39;]
+majors = [&#39;Math&#39;, &#39;Engineering&#39;, &#39;CompSci&#39;, &#39;Arts&#39;, &#39;Business&#39;]
+
+print(&#39;Memory (Before): &#39; + str(memory_profiler.memory_usage()) + &#39; MB&#39; )
+
+def people_list(num_people):
+    result = []
+    for i in range(num_people):
+        person = {
+                    &#39;id&#39;: i,
+                    &#39;name&#39;: random.choice(names),
+                    &#39;major&#39;: random.choice(majors)
+                }
+        result.append(person)
+    return result
+
+def people_generator(upper_bound):
+    i = 0
+    while i &lt; upper_bound:
+        person = {
+                    &#39;id&#39;: i,
+                    &#39;name&#39;: random.choice(names),
+                    &#39;major&#39;: random.choice(majors)
+                }
+        i += 1
+        yield person
+
+t1 = time.process_time()
+
+population = 1000000
+
+# the original method  
+
+people = people_list(population)
+
+# the generator method    &lt;   -------------------------
+
+#people_interator = people_generator(population)
+#for _ in range(population):
+#    next(people_interator)
+
+# the list comprehension method    &lt;   -------------------------
+
+# people_interator = people_generator(population)
+# list(people_interator)
+
+t2 = time.process_time()
+print(&#39;Memory (After) : {} Mb&#39;.format(memory_profiler.memory_usage()))
+print( &#39;Took {} Seconds&#39;.format(t2-t1))
+
+```</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 24 Aug 2021 19:07:20 +0000</lastBuildDate>
+    <category>שבוע 6</category>
+    <atom:link href="https://forums.pythonic.guru/t/generators-list-comprehension/9174.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</title>
+        <dc:creator><![CDATA[112344asafh]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="jacov.g" data-post="2" data-topic="9174">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/jacov.g/40/61_2.png" class="avatar"> jacov.g:</div>
+<blockquote>
+<p>צה לוודא שה-KEY כבר קיים.<br>
+אז “אם התו קיים ב-KEYS” - תוסיף 1 לערך שלו. ואם טרם קיים - תציב 1 בערך שלו.<br>
+כדי לחסוך “אם” הייתי משתמש ב- defaultdict ו/או/ מקים מילון רגיל עם כל הערכים שאני מצפה עם VALUE = 0 ואז כל תו שאני פוגש - מגדיל את הכמות שלו ב-1</p>
+</blockquote>
+</aside>
+<p>נכון צודק לגמרי, חוסר תשומת לב שלי.<br>
+סליחה שלא עניתי קודם פשוט הייתי באמצע פרוייקט קטן שלקח לי טיפה זמן, יוצר ופותר סודוקו, שמשלב שימוש בסטים,  שני רקורסיות ועוד. <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"> ייצא מהמם והסיפוק אדיר! אני שוב רוצה להודות לים ולשאר המנהלים, באמת שכל מה שאגיד מתגמד לעומת הכלים שנתנו פה לכולם, באמת שעיקר החשיבה שהם פיתחו פה לאנשים בעזרת התרגילים עשתה את מרב העבודה. לא אתייג פה את ים כדי שלא תקפוץ לו סתם התראה אני מקווה שהוא רואה אותה ויידע שאני ממש מעריך את פועלו <img src="https://forums.pythonic.guru/images/emoji/twitter/smiling_face_with_three_hearts.png?v=10" title=":smiling_face_with_three_hearts:" class="emoji" alt=":smiling_face_with_three_hearts:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/heart.png?v=10" title=":heart:" class="emoji" alt=":heart:"></p>
+          <p><a href="https://forums.pythonic.guru/t/generators-list-comprehension/9174/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/generators-list-comprehension/9174/3</link>
+        <pubDate>Tue, 24 Aug 2021 18:00:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9174-3</guid>
+        <source url="https://forums.pythonic.guru/t/generators-list-comprehension/9174.rss">על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</source>
+      </item>
+      <item>
+        <title>על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="112344asafh" data-post="1" data-topic="9174">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/1/47e85d/40.png" class="avatar"> 112344asafh:</div>
+<blockquote>
+<p>רצון לספור תווים לתוך מילון ואין לי רצון להכניס ערכים שכבר הכנסתי כיצד אני עושה זאת?</p>
+</blockquote>
+</aside>
+<p>א. כמה תווים כבר יכולים להיות? 26 בשפה האנגלית. או שתרצה לספור גם את תוי הפיסוק/ רווח וכו’?<br>
+ב. אתה למעשה רוצה לוודא שה-KEY כבר קיים.<br>
+אז “אם התו קיים ב-KEYS” - תוסיף 1 לערך שלו. ואם טרם קיים - תציב 1 בערך שלו.<br>
+כדי לחסוך “אם” הייתי משתמש ב- defaultdict ו/או/ מקים מילון רגיל עם כל הערכים שאני מצפה עם VALUE = 0 ואז כל תו שאני פוגש - מגדיל את הכמות שלו ב-1</p>
+          <p><a href="https://forums.pythonic.guru/t/generators-list-comprehension/9174/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/generators-list-comprehension/9174/2</link>
+        <pubDate>Mon, 23 Aug 2021 04:38:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9174-2</guid>
+        <source url="https://forums.pythonic.guru/t/generators-list-comprehension/9174.rss">על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</source>
+      </item>
+      <item>
+        <title>על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</title>
+        <dc:creator><![CDATA[112344asafh]]></dc:creator>
+        <description><![CDATA[
+            <p>קוד קטן שמצאתי באינטרנט אפשר לי לראות בעיניים את ההבדל בין השיטות השונות מבחינת יעילות של זיכרון וזמנים וחשבתי לשתף פה את מי שהעניין מסקרן אותו. כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.</p>
+<p>אוסיף ואומר שישנם דברים שלא ברורים לי ומי שיכול להבהיר לי את העניין אודה לו מאוד.<br>
+שאלתי כאן שלוש שאלות שהם בעצם שאלה אחת עם כמה אספקטים.</p>
+<p>א. מדוע ב the list comprehension method כאשר אני מבצע השמה למשתנה (X = list(people_interator)) הזיכרון של המערכת קופץ ישר לMB300  כאילו אני משתמש במתודה הראשונה. על פניו זה נשמע הגיוני כי אני שומר במערכת זיכרון רב, אולם מצד שני אם אני בוחר לעשות הדפסה לאותה רשימה, פעולה שמשאירה אותי עם זיכרון נמוך מאוד, אני מקבל את כל הערכים בבת אחת, וזה כאשר הgenerator כבר לא יכול להוציא עוד ערכים. ועל פניו נראה שאם אני מקבל את כל הערכים בבת אחת זה אומר שהם שמורים איפשהו במחשב לא כן? אבל אם ככה מדוע לא מופיעה במצב כזה הקפיצה בזיכרון. הסתירה כאן לא ברורה לי.</p>
+<p>א.2 אם אכן כל שמירת מידע גם generators שכל מטרתם לחסוך בזיכרון, לא יכולים לעזור לי, האם זה בעצם מייתר את העבודה שלהם במקרים רבים. כלומר כל עוד אני לא רוצה רק להדפיס מידע ספציפי אלא להשתמש בכל המידע הקיים כדי להפיק תועלת האם יכולת זו לא תוכל לעזור לי?</p>
+<p>ב. שאלה זו קשורה במעט לסעיף א. כאשר אני עושה   list comprehension איפה נשמר המידע עד שהפעולה נגמרת, הרי כל הרעיון בgenerator שכל פעם עובדים על פיסת מידע חדשה והקודמת נדרסת?<br>
+לצורך העניין יש לי רצון לספור תווים לתוך מילון ואין לי רצון להכניס ערכים שכבר הכנסתי כיצד אני עושה זאת?<br>
+הקוד הבא ירוץ לי שלוש פעמים במקום פעמיים. ולהוסיף if letter not in word_dic לא עושה את העבודה כי מבחינת המחשב לא הוכנסו הערכים עדיין למילון.<br>
+פתרון אלגנטי שראיתי הוא להוריד את התנאי ואת המילון הריק ואת זה להכניס ללולאה set(word)</p>
+<pre><code class="lang-auto">'word = 'aba
+word_dic = {}
+word_dic = {letter : word.count(letter) for letter in word  if letter not in word_dic}
+
+</code></pre>
+<p>תודה ענקית למי שמתייחס <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<h1>
+<a name="the-original-method-1" class="anchor" href="https://forums.pythonic.guru#the-original-method-1"></a>the original method</h1>
+<p>Memory (Before): [18.285] Mb<br>
+Memory (After) : [304.972] Mb<br>
+Took 1.5 Seconds</p>
+<h1>
+<a name="the-generator-method-2" class="anchor" href="https://forums.pythonic.guru#the-generator-method-2"></a>the generator method</h1>
+<p>Memory (Before): [18.289] MB<br>
+Memory (After) : [18.300] MB<br>
+Took 1.578 Seconds</p>
+<h1>
+<a name="the-list-comprehension-method-3" class="anchor" href="https://forums.pythonic.guru#the-list-comprehension-method-3"></a>the list comprehension method</h1>
+<p>Memory (Before): [18.289] MB<br>
+Memory (After) : [18.914] MB<br>
+Took 1.71875 Seconds</p>
+<h1>
+<a name="comment-4" class="anchor" href="https://forums.pythonic.guru#comment-4"></a>כל פעם תפעילו מתודה אחת ותעשו comment לשניים האחרים.</h1>
+<p>את memory_profiler תצטרכו להתקין</p>
+<pre><code class="lang-auto">import memory_profiler
+import random
+import time
+
+names = ['John', 'Corey', 'Adam', 'Steve', 'Rick', 'Thomas']
+majors = ['Math', 'Engineering', 'CompSci', 'Arts', 'Business']
+
+print('Memory (Before): ' + str(memory_profiler.memory_usage()) + ' MB' )
+
+def people_list(num_people):
+    result = []
+    for i in range(num_people):
+        person = {
+                    'id': i,
+                    'name': random.choice(names),
+                    'major': random.choice(majors)
+                }
+        result.append(person)
+    return result
+
+def people_generator(upper_bound):
+    i = 0
+    while i &lt; upper_bound:
+        person = {
+                    'id': i,
+                    'name': random.choice(names),
+                    'major': random.choice(majors)
+                }
+        i += 1
+        yield person
+
+t1 = time.process_time()
+
+population = 1000000
+
+# the original method  
+
+people = people_list(population)
+
+# the generator method    &lt;   -------------------------
+
+#people_interator = people_generator(population)
+#for _ in range(population):
+#    next(people_interator)
+
+# the list comprehension method    &lt;   -------------------------
+
+# people_interator = people_generator(population)
+# list(people_interator)
+
+t2 = time.process_time()
+print('Memory (After) : {} Mb'.format(memory_profiler.memory_usage()))
+print( 'Took {} Seconds'.format(t2-t1))
+
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/generators-list-comprehension/9174/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/generators-list-comprehension/9174/1</link>
+        <pubDate>Wed, 18 Aug 2021 12:19:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9174-1</guid>
+        <source url="https://forums.pythonic.guru/t/generators-list-comprehension/9174.rss">על מהירות, וזיכרון בין השיטות generators, list comprehension ופונקציות רגילות</source>
+      </item>
+  </channel>
+</rss>

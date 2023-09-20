@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+    <link>https://forums.pythonic.guru/t/topic/8995</link>
+    <description>### תיאור כללי
+מעבר על המערכת כדי לנקות את הקוד.
+
+### מה ההצעה כוללת?
+* תיקון שגיאות ש mypy מדווח
+* תיקון שגיאות כתיב
+* הוספת TODO איפה שחסר
+* ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת
+* שימוש בfastapi.status איפה שצריך במקום מספרים
+
+
+### כולל שינויים בקוד? אם כן, איפה?
+כן. איפה שיהיה צורך.
+
+### האם יהיו שינויים במסד הנתונים? אם כן, איפה?
+לא.
+
+### האם יהיה שינוי ב־frontend? אם כן, איפה?
+כן. איפה שיהיה צורך.
+
+### אילו טסטים יגרמו לטיקט להיחשב כ&quot;עובד&quot;, ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?
+רוב השינויים לא אמורים לגרור שינוי או הוספה בטסטים הקיימים, כך שאם הטסטים הקיימים עוברים, הקוד בסדר. במקום שבו יהיה רפקטור לפונקציה ספציפית, יהיה צורך בהוספת טסט או שינוי של טסט קיים.</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 08 Feb 2021 17:18:12 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8995.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>הערות</h3>
+<aside class="quote no-group quote-modified" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol>
+<li>ההנחיות של <a href="https://google.github.io/styleguide/pyguide.html">גוגל</a> וההנחיות של <a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a> קצת סותרות אחד את השני.<br>
+בגוגל כתוב:</li>
+</ol>
+<blockquote>
+<pre><code class="lang-auto">   The docstring should be descriptive-style ("""Fetches rows from a Bigtable.""") rather than imperative-style ("""Fetch rows from a Bigtable.""")
+</code></pre>
+</blockquote>
+<p>בעוד ב PEP כתוב:</p>
+<blockquote>
+<p>The docstring is a phrase ending in a period. It prescribes the function or method’s effect as a command (“Do this”, “Return that”), not as a description; e.g. don’t write “Returns the pathname …”.</p>
+</blockquote>
+<p>לפי איזה סגנון אנחנו פועלים בפרוייקט?</p>
+</blockquote>
+</aside>
+<p>בנושא הספציפי הזה, הייתי מקפיד על ללכת לפי גוגל.</p>
+<aside class="quote no-group quote-modified" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol start="2">
+<li>בהמשך הסגנון של גוגל כתוב:</li>
+</ol>
+<blockquote>
+<p>The description should include required type(s) if the code does not contain a corresponding type annotation.</p>
+</blockquote>
+<p>מכיוון שאנחנו משתמשים ב type annotation, האם הדוקומנצטיה אצלנו כוללת אותם או לא?</p>
+</blockquote>
+</aside>
+<p>לדעתי השימוש ב־Type Annotations מייתר את הצורך בהכנסת הסוג לתיעוד, זה יהיה שכפול מידע ואנחנו אוהבים DRY</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ul>
+<li>בדוגמאות שהם נתנו, אין ציון של הtype בחלק של ה Returns. האם לכלול אותו אצלנו או לא?</li>
+</ul>
+</blockquote>
+</aside>
+<p>אותה תשובה – לדעתי אין צורך כיוון שזה כלול ב־type annotations</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol start="3">
+<li>האם הטקסט אחרי השם הפרמטר והנקודותיים באות גדולה או קטנה?</li>
+</ol>
+</blockquote>
+</aside>
+<p>לפי <a href="https://www.grammarly.com/blog/capitalization-after-colons/#:~:text=When%20a%20colon%20introduces%20a,it%20is%20a%20proper%20noun" class="inline-onebox">Capitalization After Colons | Grammarly</a>, אם זה משפט שלם חדש אפשר להשתמש ב־Uppercase. נראה לי שזה המצב כאן</p>
+<hr>
+<h3>שמות קבצים</h3>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ul>
+<li>איך נכון לכתוב שמות שמורכבים מיותר ממילה אחת: מילה אחת מחוברת, עם הפרדה בקו תחתון או במקף? לדוגמא: dayview.py, calendar_grid.py ו trash-can.svg (כל אלה קיימים בפרוייקט).</li>
+</ul>
+</blockquote>
+</aside>
+<p>נראה לי שכיוון שאנחנו משתמשים בפייתון והקונבנציה היא מקפים תחתונים גם בשמות קבצים וגם בשמות תיקיות, עדיף להמשיך ככה עבור כל הפרויקט</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol>
+<li>האם שמות כל הקבצים צריכים להתחיל באות קטנה? לדוגמא: Aquarius.svg</li>
+</ol>
+</blockquote>
+</aside>
+<p>הייתי משאיר כמו שזה, כי אתה לא רוצה ללכת לבדוק עכשיו עבור כל קובץ אם זה שם של מישהו ולשנות בהתאם.</p>
+<h3>סגנון פייתון:</h3>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol>
+<li>בסוף מילון שמחולק לשורות ביקשת להוסיף פסיק אחרי האלמנט האחרון. האם זה נכון גם לגבי אובייקטים אחרים? לדוגמא בקוד יש לנו כרגע גם סגנון כזה:</li>
+</ol>
+</blockquote>
+</aside>
+<p>עבור כל דבר שמחולק לשורות, כולל קריאה לפונקציה.<br>
+השאלה שצריכה להישאל היא “מה יקרה כשמישהו ירצה להוסיף שורה”.<br>
+התשובה שצריכים להגיע אליה היא “הוא לא יצטרך לגעת בכלל בשורות האחרות בקוד”.</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol start="2">
+<li>האם להוסיף קו תחתון בתחילת שם לפונקציות protected?</li>
+</ol>
+</blockquote>
+</aside>
+<p>אם אתה בטוח מאוד שהן protected <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<h3>סגנון HTML</h3>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ul>
+<li>האם צריך לבצע indent לטקסט בקובץ html אחרי if או for?</li>
+</ul>
+</blockquote>
+</aside>
+<p>להערכתי להזיח (כך ב־docs של Jinja2). אם רוצים להימנע מהגועל שזה גורם ב־HTML אפשר להשתמש ב־whitespace control של Jinja2</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ul>
+<li>מה כמות הרווחים בקובץ html? האם אנחנו הולכים לפי <a href="https://google.github.io/styleguide/htmlcssguide.html#Indentation">גוגל</a> שאומר 2 רווחים ל indent ולפחות 4 בcontinuation? (זה דיי שמושי לסגור כי זה משהו שאפשר להגדיר ב IDE)</li>
+</ul>
+</blockquote>
+</aside>
+<p>כן</p>
+<aside class="quote no-group" data-username="gonny" data-post="7" data-topic="8995">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" class="avatar"> gonny:</div>
+<blockquote>
+<ol>
+<li>באיזה סגנון נעשה שימוש לשמות ID, class שמורכבים מיותר ממילה אחת? <a href="https://google.github.io/styleguide/htmlcssguide.html#ID_and_Class_Name_Delimiters">גוגל</a> אומרים להשתמש במקף. כרגע בפרוייקט יש לנו שימוש בכל סוג אפשרי.</li>
+</ol>
+</blockquote>
+</aside>
+<p>בוא נשתמש במקף <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/8</link>
+        <pubDate>Mon, 08 Feb 2021 17:02:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>כמה שאלות שעלו לי בעקבות מעבר על הקוד לפני תחילת עבודה על הטיקט, שנוגעות לסגנון אחיד, מכיוון שכרגע יש עירבוב של סגנונות.</p>
+<h1>הערות:</h1>
+<ol>
+<li>ההנחיות של <a href="https://google.github.io/styleguide/pyguide.html" rel="noopener nofollow ugc">גוגל</a> וההנחיות של <a href="https://www.python.org/dev/peps/pep-0257/" rel="noopener nofollow ugc">PEP 257</a> קצת סותרות אחד את השני.<br>
+בגוגל כתוב:</li>
+</ol>
+<blockquote>
+<pre><code>   The docstring should be descriptive-style ("""Fetches rows from a Bigtable.""") rather than imperative-style ("""Fetch rows from a Bigtable.""")
+</code></pre>
+</blockquote>
+<p>בעוד ב PEP כתוב:</p>
+<blockquote>
+<p>The docstring is a phrase ending in a period. It prescribes the function or method’s effect as a command (“Do this”, “Return that”), not as a description; e.g. don’t write “Returns the pathname …”.</p>
+</blockquote>
+<p>לפי איזה סגנון אנחנו פועלים בפרוייקט?</p>
+<ol start="2">
+<li>בהמשך הסגנון של גוגל כתוב:</li>
+</ol>
+<blockquote>
+<p>The description should include required type(s) if the code does not contain a corresponding type annotation.</p>
+</blockquote>
+<p>מכיוון שאנחנו משתמשים ב type annotation, האם הדוקומנצטיה אצלנו כוללת אותם או לא?</p>
+<ol start="3">
+<li>
+<p>בדוגמאות שהם נתנו, אין ציון של הtype בחלק של ה Returns. האם לכלול אותו אצלנו או לא?</p>
+</li>
+<li>
+<p>האם הטקסט אחרי השם הפרמטר והנקודותיים באות גדולה או קטנה?</p>
+</li>
+</ol>
+<h1>שמות קבצים:</h1>
+<ol>
+<li>
+<p>איך נכון לכתוב שמות שמורכבים מיותר ממילה אחת: מילה אחת מחוברת, עם הפרדה בקו תחתון או במקף? לדוגמא: dayview.py, calendar_grid.py ו trash-can.svg (כל אלה קיימים בפרוייקט).</p>
+</li>
+<li>
+<p>האם שמות כל הקבצים צריכים להתחיל באות קטנה? לדוגמא: Aquarius.svg</p>
+</li>
+</ol>
+<h1>סגנון פייתון:</h1>
+<ol>
+<li>בסוף מילון שמחולק לשורות ביקשת להוסיף פסיק אחרי האלמנט האחרון. האם זה נכון גם לגבי אובייקטים אחרים? לדוגמא בקוד יש לנו כרגע גם סגנון כזה:</li>
+</ol>
+<pre><code class="lang-auto">router = APIRouter(
+    prefix="/calendar/month",
+    tags=["calendar"],
+    responses={404: {"description": "Not found"}},
+)
+</code></pre>
+<ol start="2">
+<li>האם להוסיף קו תחתון בתחילת שם לפונקציות protected?</li>
+</ol>
+<h1>סגנון HTML:</h1>
+<ol>
+<li>
+<p>האם צריך לבצע indent לטקסט בקובץ html אחרי if או for?</p>
+</li>
+<li>
+<p>מה כמות הרווחים בקובץ html? האם אנחנו הולכים לפי <a href="https://google.github.io/styleguide/htmlcssguide.html#Indentation" rel="noopener nofollow ugc">גוגל</a> שאומר 2 רווחים ל indent ולפחות 4 בcontinuation? (זה דיי שמושי לסגור כי זה משהו שאפשר להגדיר ב IDE)</p>
+</li>
+<li>
+<p>באיזה סגנון נעשה שימוש לשמות ID, class שמורכבים מיותר ממילה אחת? <a href="https://google.github.io/styleguide/htmlcssguide.html#ID_and_Class_Name_Delimiters" rel="noopener nofollow ugc">גוגל</a> אומרים להשתמש במקף. כרגע בפרוייקט יש לנו שימוש בכל סוג אפשרי.</p>
+</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/7</link>
+        <pubDate>Mon, 08 Feb 2021 09:43:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כיוון שמדובר במשהו שמבוסס על דעה אישית, ואחת שאין לי העדפה סופר חזקה לגביה, בנושא הזה כל אחד יכול לעשות מה שהוא מעדיף (:</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/6</link>
+        <pubDate>Tue, 02 Feb 2021 16:33:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>רק לצורך תשובה רשמית, כי כמו שאמרתי, אני יכול גם לא, להוסיף או לא להוסיף הערות TODO?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/5</link>
+        <pubDate>Tue, 02 Feb 2021 16:13:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא מנומס לא לקרוא את המאמר ולהגיד שהוא חסר תוכן <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+<p>אענה בקצרה ולא אגיב בהמשך כדי להימנע מוויכוח ארוך על משהו שהוא בכ"מ דעה חלוקה:</p>
+<p>טענות 2 ו־3 לא חסרות תוכן, ולמעשה מאוד חשובות.<br>
+טענה 2 מדברת על שכפול של TODO בכמה מקומות. החסרון המיידי הוא שיכול להיות שיישאר לך TODO בקוד למרות שכבר טיפלת בו.<br>
+טענה 3 מדברת על חוסר עדכון של הערות – משהו שאנחנו רואים הרבה (ואחת הטענות החזקות והמרכזיות נגד הערות בקוד) – אנשים מתעלמים מהערות ולא שמים לב שהן נמצאות שם, ההערות לא מתעדכנות ואז יוצא מצב שיש הערות שלא תואמות את הקוד. זה בעייתי כי ישארו issues פתוחים למרות שכבר טיפלו בהן.</p>
+<p>לגבי טענה 1 – הכוונה היא לא שקשה למצוא את ה־TODO פיזית. גם בשנה המרוחקת בה נכתב המאמר היו כלים של Find בעורכי טקסט. הבעיה היא ארגון וסדר. כשה־TODO מפוזר בקוד במקום להיות מנוהל במערכת שמיועדת לזה, המשימות לא מחולקות היטב, אין קטגוריות לכל משימה ולא ברור באיזה שלב התקדמות נמצאת כל משימה.</p>
+<p>טענה 5 גם רלוונטית, לדעתי. אין בוס, אבל לפחות בראייה אישית הרבה יותר מניע כשיש רשימה של פריטים שסימנתי, ואני יכול לסמן עליהם check ולראות כמה דברים נמצאים מאחוריי. בעבר הייתי עובד ממש עם פתקים צבעוניים פיזית ומעביר אותם בין עמודות. סופר מתגמל <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/6e2d450553ccc8e1274375650a949af286335a80" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_690x286.jpeg" alt="image" data-base62-sha1="fIFvI07XnmrnK9q31qf9uzzJXd6" width="690" height="286" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_690x286.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_10x10.png"></a></div><p></p>
+<hr>
+<p>בכ"מ הרעיון המקורי באשכול נשמע לי מצוין!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/4</link>
+        <pubDate>Tue, 02 Feb 2021 14:51:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אין עניין בזה, אז אני לא אבצע את זה. לא קראתי את כל המאמר אלא רק את הנקודות שהם ציינו אז אגיב עליהם:</p>
+<ul>
+<li>1 זאת טענה חסרת תוכן.ל IDE כמו PyCharm לדוגמא יש טאב שבו מופיעים כל ה TODO. לא צריך לחפש ידנית בקוד.</li>
+<li>2 ו3 אלו טענות בלי תוכן</li>
+<li>4 לא רלוונטית אלינו כי אנחנו לא משתמשים במערכת שמתעדפת תיקונים</li>
+<li>5 לא רלוונטית אלינו כי אין לנו בוס ואין לנו הספק שאנחנו צריכים לעמוד בו</li>
+</ul>
+<p>מה שכן רלוונטי אלינו זה שאנחנו עובדים בצורה לא הכי מסודרת, כאשר כל אחד עובד על חלק ומשאיר חלקים “מתים” בקוד לאחר כך. בלי לסמן אלו חלקים מתים, באמת נצטרך לעבור על כל השורות בקוד כדי לראות מה לא עובד ולמה (טענה 1 אצלו במאמר, רק הפוך).</p>
+<p>ובאופן משעשע, לאותו מאמר יש גם את <a href="https://wiki.c2.com/?TodoCommentsConsideredUseful" rel="noopener nofollow ugc">המאמר הנגדי</a>  <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/3</link>
+        <pubDate>Tue, 02 Feb 2021 14:14:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>שמעתי מים שיש דעות חלוקות לגבי כתיבת TODO בתוך קוד.<br>
+<a href="https://wiki.c2.com/?TodoCommentsConsideredHarmful">לינק בנושא</a> (ים, שם,שם)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/2</link>
+        <pubDate>Tue, 02 Feb 2021 14:02:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+      <item>
+        <title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <h3>תיאור כללי</h3>
+<p>מעבר על המערכת כדי לנקות את הקוד.</p>
+<h3>מה ההצעה כוללת?</h3>
+<ul>
+<li>תיקון שגיאות ש mypy מדווח</li>
+<li>תיקון שגיאות כתיב</li>
+<li>הוספת TODO איפה שחסר</li>
+<li>ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת</li>
+<li>שימוש בfastapi.status איפה שצריך במקום מספרים</li>
+</ul>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<p>כן. איפה שיהיה צורך.</p>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>לא.</p>
+<h3>האם יהיה שינוי ב־frontend? אם כן, איפה?</h3>
+<p>כן. איפה שיהיה צורך.</p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<p>רוב השינויים לא אמורים לגרור שינוי או הוספה בטסטים הקיימים, כך שאם הטסטים הקיימים עוברים, הקוד בסדר. במקום שבו יהיה רפקטור לפונקציה ספציפית, יהיה צורך בהוספת טסט או שינוי של טסט קיים.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8995/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8995/1</link>
+        <pubDate>Tue, 02 Feb 2021 12:49:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8995-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8995.rss">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</source>
+      </item>
+  </channel>
+</rss>

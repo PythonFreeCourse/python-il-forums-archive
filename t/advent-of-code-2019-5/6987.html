@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-5/6987 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:26 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Advent of Code 2019 🤯 (יום 5) - אתגר - פייתון בעברית ובחינם</title>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3 שהיו משמעותית קשוחים מקודמם. 
+אחרי שנחנו מעט עם יום 4, מגיע לו יום חדש. 
+אני מניח שהאתגר הזה ישאר פה  לפחות  ליומיים שלושה, אז קחו את הזמן :slight_smile: 
+ואם לא&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6987.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6987.rss" rel="alternate nofollow" title="הזנת RSS של ‚Advent of Code 2019 🤯 (יום 5)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6987.html" property="og:url"/>
+<meta content="6987.html" name="twitter:url"/>
+<meta content="Advent of Code 2019 🤯 (יום 5)" property="og:title"/>
+<meta content="Advent of Code 2019 🤯 (יום 5)" name="twitter:title"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3 שהיו משמעותית קשוחים מקודמם.  אחרי שנחנו מעט עם יום 4, מגיע לו יום חדש.  אני מניח שהאתגר הזה ישאר פה  לפחות  ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום החמישי של Advent of Code!" property="og:description"/>
+<meta content="שרשור Advent of Code יום 1 נחל הצלחה גדולה, וגם ימים 2 ו־3 שהיו משמעותית קשוחים מקודמם.  אחרי שנחנו מעט עם יום 4, מגיע לו יום חדש.  אני מניח שהאתגר הזה ישאר פה  לפחות  ליומיים שלושה, אז קחו את הזמן 🙂  ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.  אז קדימה, פרסמו פה את הפתרונות שלכם ליום החמישי של Advent of Code!" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="advent-of-code" property="og:article:tag"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="6 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="19 ❤"/>
+<meta content="2020-06-05T03:18:12+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6987.html">Advent of Code 2019 🤯 (יום 5)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/advent-of-code.html" rel="tag">advent-of-code</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Advent of Code 2019 🤯 (יום 5)" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="advent-of-code, אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T03:18:12Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  3:18am
+                  </time>
+<meta content="2020-06-05T03:18:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שרשור <a href="../advent-of-code-2019-1/6478.html">Advent of Code יום 1</a> נחל הצלחה גדולה, וגם ימים <a href="../advent-of-code-2019-2/6486.html">2</a> ו־<a href="../advent-of-code-2019-3/6644.html">3</a> שהיו משמעותית קשוחים מקודמם.<br/>
+אחרי שנחנו מעט עם <a href="../advent-of-code-2019-4/6895.html">יום 4</a>, מגיע לו יום חדש.</p>
+<p>אני מניח שהאתגר הזה ישאר פה  <strong>לפחות</strong>  ליומיים שלושה, אז קחו את הזמן <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.</p>
+<p>אז קדימה, פרסמו פה את הפתרונות שלכם <a href="https://adventofcode.com/2019/day/5">ליום החמישי</a> של Advent of Code!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../advent-of-code-2019-6/7068.html" itemprop="url">Advent of Code 2019 🤯 (יום 6)</a>
+<meta content="6" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T09:32:08Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  9:32am
+                  </time>
+<meta content="2020-06-05T09:32:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יכול להיות שיש דרכים לכתוב את זה בפחות שורות, אבל זה עובד!</p>
+<details>
+<summary>
+Advent of Code, Day 5</summary>
+<pre><code class="lang-python"># ADVENT OF CODE, DAY 5
+
+def get_intcode():
+    with open('input2.txt', 'r') as file:
+        intcode = file.read().split(',')
+    intcode = intcode_items_to_int(intcode)
+    return intcode
+
+
+def intcode_items_to_int(intcode):
+    for i, num in enumerate(intcode):
+        intcode[i] = int(intcode[i])
+    return intcode
+
+
+def read_instruction(code):
+    opcode = int(code) % 100
+    parameters = str(int(code) // 100).zfill(3)
+    return opcode, parameters
+
+
+def run_intcode():
+    intcode = get_intcode()
+    i = 0
+    while i &lt; len(intcode):
+        opcode, parameters = read_instruction(intcode[i])
+        if opcode == 1 or opcode == 2:            
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if parameters[1] == '0':
+                num2 = intcode[intcode[i + 2]]
+            elif parameters[1] == '1':
+                num2 = intcode[i + 2]
+            if opcode == 1:
+                intcode[intcode[i + 3]] = num1 + num2
+            else:
+                intcode[intcode[i + 3]] = num1 * num2
+            i += 4
+        if opcode == 3:
+            intcode[intcode[i + 1]] = int(input("Enter value: "))
+            i += 2
+        if opcode == 4:
+            if parameters[2] == '0':
+                print(intcode[intcode[i + 1]])
+            elif parameters[2] == '1':
+                print(intcode[i + 1])
+            i += 2
+        if opcode == 5 or opcode == 6:
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if opcode == 5:
+                if num1 != 0:
+                    if parameters[1] == '0':
+                        i = intcode[intcode[i + 2]]
+                    if parameters[1] == '1':
+                        i = intcode[i + 2]
+                else:
+                    i += 3
+            if opcode == 6:
+                if num1 == 0:
+                    if parameters[1] == '0':
+                        i = intcode[intcode[i + 2]]
+                    if parameters[1] == '1':
+                        i = intcode[i + 2]
+                else:
+                    i += 3
+        if opcode == 7 or opcode ==8:
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if parameters[1] == '0':
+                num2 = intcode[intcode[i + 2]]
+            elif parameters[1] == '1':
+                num2 = intcode[i + 2]
+            if opcode == 7:
+                if num1 &lt; num2:
+                    intcode[intcode[i + 3]] = 1
+                else:
+                    intcode[intcode[i + 3]] = 0
+            if opcode == 8:
+                if num1 == num2:
+                    intcode[intcode[i + 3]] = 1
+                else:
+                    intcode[intcode[i + 3]] = 0
+            i += 4
+        if opcode == 99:
+            return intcode
+
+
+print(run_intcode())
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T09:39:13Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  9:39am
+                  </time>
+<meta content="2020-06-05T09:39:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חשבתי התכוונת להסבר של התרגיל חחחחחחחחח ! גם אותו אפשר בפחות.<br/>
+<img alt=":crazy_face:" class="emoji only-emoji" src="../../images/emoji/twitter/crazy_facec164.png?v=9" title=":crazy_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T09:46:14Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  9:46am
+                  </time>
+<meta content="2020-06-05T09:46:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התשובות שלי, הם מגזימים עם ההסברים צריך לרשום קוד שמפרש מה רוצים בתרגיל חחח<br/>
+<img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/> <img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/></p>
+<details>
+<summary>
+Part1</summary>
+<pre><code class># day 5
+# part1
+import operator
+
+PRO_CODE = list(range(1, 5))
+
+
+def get_intcode_program(intcode):
+    with open(intcode, "r") as intcode_program:
+        intcode_program_read = intcode_program.read()
+    intcode_program_read = list(map(int, intcode_program_read.split(",")))
+    return intcode_program_read
+
+
+def opcode_3_4(intcode_pro, code):
+    if intcode_pro[code] % 100 == 3:
+        print("this is the only time we change value to 1")
+        intcode_pro[intcode_pro[code + 1]] = 1
+        return True
+    elif intcode_pro[code] % 1000 == 4:
+        if intcode_pro[intcode_pro[code + 1]] != 0:
+            return False
+    elif intcode_pro[code] % 1000 == 104:
+        if intcode_pro[code + 1] != 0:
+            return False
+    return True
+
+
+def opcode_1_2(int_code_pro, code, a, b):
+    if code == 1:
+        return operator.add(int_code_pro[a], int_code_pro[b])
+    elif code == 2:
+        return operator.mul(int_code_pro[a], int_code_pro[b])
+
+
+def retrieve_parameters_mode_and_run(int_code_pro, pos, number):
+    number = str(number).zfill(5)
+    if number[2] == "0":
+        a = int_code_pro[pos + 1]
+    else:
+        a = pos + 1
+    if number[1] == "0":
+        b = int_code_pro[pos + 2]
+    else:
+        b = pos + 2
+    return a, b
+
+
+def run_code(intcode_pro):
+    code = 0
+    while code &lt; len(intcode_pro):
+        if intcode_pro[code] % 100 in PRO_CODE[0:2]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            intcode_pro[intcode_pro[code + 3]] = opcode_1_2(intcode_pro, intcode_pro[code] % 100, a, b)
+            code += 4
+        elif intcode_pro[code] % 100 in PRO_CODE[2:4]:
+            if not opcode_3_4(intcode_pro, code):
+                if intcode_pro[code + 2] == 99:
+                    if intcode_pro[code] == 4:
+                        return f" the answer is : {intcode_pro[intcode_pro[code + 1]]}"
+                    return f" the answer is : {intcode_pro[code + 1]}"
+                print("Error")
+                return False
+            code += 2
+
+
+intcode_prog = get_intcode_program("resources//day5.txt")
+print(run_code(intcode_prog))
+
+</code></pre>
+</details>
+<details>
+<summary>
+Part2</summary>
+<pre><code class># day 5
+# part2
+import operator
+
+PRO_CODE = list(range(1, 9))
+
+
+def get_intcode_program(intcode):
+    with open(intcode, "r") as intcode_program:
+        intcode_program_read = intcode_program.read()
+    intcode_program_read = list(map(int, intcode_program_read.split(",")))
+    return intcode_program_read
+
+
+def opcode_3_4(intcode_pro, code):
+    if intcode_pro[code] % 100 == 3:
+        print("this is the only time we change value to 5")
+        intcode_pro[intcode_pro[code + 1]] = 5
+        return True
+    elif intcode_pro[code] % 1000 == 4:
+        if intcode_pro[intcode_pro[code + 1]] != 0:
+            return False
+    elif intcode_pro[code] % 1000 == 104:
+        if intcode_pro[code + 1] != 0:
+            return False
+    return True
+
+
+def opcode_1_2(int_code_pro, code, a, b):
+    if code == 1:
+        return operator.add(int_code_pro[a], int_code_pro[b])
+    elif code == 2:
+        return operator.mul(int_code_pro[a], int_code_pro[b])
+
+
+def opcode_5_6(int_code_pro, code, a, b):
+    if int_code_pro[code] % 100 == 5:
+        if int_code_pro[a] != 0:
+            return int_code_pro[b]
+    elif int_code_pro[code] % 100 == 6:
+        if int_code_pro[a] == 0:
+            return int_code_pro[b]
+    return code + 3
+
+
+def opcode_7_8(int_code_pro, code, a, b):
+    if int_code_pro[code] % 100 == 7:
+        if int_code_pro[a] &lt; int_code_pro[b]:
+            return 1
+    elif int_code_pro[code] % 100 == 8:
+        if int_code_pro[a] == int_code_pro[b]:
+            return 1
+    return 0
+
+
+def retrieve_parameters_mode_and_run(int_code_pro, pos, number):
+    number = str(number).zfill(5)
+    if number[2] == "0":
+        a = int_code_pro[pos + 1]
+    else:
+        a = pos + 1
+    if number[1] == "0":
+        b = int_code_pro[pos + 2]
+    else:
+        b = pos + 2
+    return a, b
+
+
+def run_code(intcode_pro):
+    code = 0
+    while code &lt; len(intcode_pro):
+        if intcode_pro[code] % 100 in PRO_CODE[0:2]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            intcode_pro[intcode_pro[code + 3]] = opcode_1_2(intcode_pro, intcode_pro[code] % 100, a, b)
+            code += 4
+        elif intcode_pro[code] % 100 in PRO_CODE[2:4]:
+            if not opcode_3_4(intcode_pro, code):
+                if intcode_pro[code + 2] == 99:
+                    if intcode_pro[code] == 4:
+                        return f" the answer is : {intcode_pro[intcode_pro[code + 1]]}"
+                    return f" the answer is : {intcode_pro[code + 1]}"
+                print("Error")
+                return False
+            code += 2
+        elif intcode_pro[code] % 100 in PRO_CODE[4:6]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            code = opcode_5_6(intcode_pro, code, a, b)
+        elif intcode_pro[code] % 100 in PRO_CODE[6:8]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            value = opcode_7_8(intcode_pro, code, a, b)
+            intcode_pro[intcode_pro[code + 3]] = value
+            code += 4
+
+
+intcode_prog = get_intcode_program("resources//day5.txt")
+print(run_code(intcode_prog))
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-05T09:47:27Z" itemprop="datePublished">
+                     5 ביוני,‏ 2020,‏  9:47am
+                  </time>
+<meta content="2020-06-05T09:47:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+תקציר</summary>
+<pre><code>def read_the_lst():
+    with open("resources/intcode.txt", "r") as numbers:
+        steps = numbers.read().split(",")
+    return list(map(int, steps))
+
+
+def intcode(lst):
+    step = 0
+    while step &lt; len(lst):
+        operator = lst[step] % 100
+        if operator == 99:
+            return
+        if operator &lt;= 2:
+            do_trinary_step(lst, operator, step)
+            step += 4
+        elif operator &lt;= 4:
+            do_unary_step(lst, operator, step)
+            step += 2
+        elif operator &lt;= 6:
+            step = do_jump_step(lst, operator, step)
+        else:
+            do_compae_step(lst, operator, step)
+            step += 4
+
+
+def do_unary_step(lst, operator, step):
+    target = lst[step + 1]
+    if operator == 3:
+        lst[target] = int(input("Please enter a number "))
+    else:
+        print(lst[target])
+
+
+def real_value(lst, number, mode):
+    if mode == "0":
+        return lst[number]
+    return number
+
+
+def do_trinary_step(lst, operator, step):
+    first_num, second_num, target = lst[step + 1: step + 4]
+    modes = str(lst[step] // 100).zfill(3)[::-1]
+    first_arg, second_arg = real_value(lst, first_num, modes[0]), real_value(lst, second_num, modes[1])
+    if operator == 1:
+        lst[target] = first_arg + second_arg
+    else:
+        lst[target] = first_arg * second_arg
+
+
+def do_jump_step(lst, operator, step):
+    first_num, second_num = lst[step + 1: step + 3]
+    modes = str(lst[step] // 100).zfill(3)[::-1]
+    first_arg, second_arg = real_value(lst, first_num, modes[0]), real_value(lst, second_num, modes[1])
+    if (operator == 5 and first_arg != 0) or (operator == 6 and first_arg == 0):
+        return second_arg
+    return step + 3
+
+
+def do_compae_step(lst, operator, step):
+    first_num, second_num, target = lst[step + 1: step + 4]
+    modes = str(lst[step] // 100).zfill(3)[::-1]
+    first_arg, second_arg = real_value(lst, first_num, modes[0]), real_value(lst, second_num, modes[1])
+    if operator == 7:
+        if first_arg &lt; second_arg:
+            lst[target] = 1
+        else:
+            lst[target] = 0
+    else:
+        if first_arg == second_arg:
+            lst[target] = 1
+        else:
+            lst[target] = 0
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-06T10:10:16Z" itemprop="datePublished">
+                     6 ביוני,‏ 2020,‏ 10:10am
+                  </time>
+<meta content="2020-06-06T15:44:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>def get_list_of_opcodes(text=""):
+    if text != "":
+        return list(map(int, text.strip().split(',')))
+    with open('resources/input_day5.txt', 'r') as fh:
+        return list(map(int, fh.read().strip().split(',')))
+
+
+### ACTIONS ###
+def add_action(item1, item2):
+    return item1 + item2
+
+
+def multiple_action(item1, item2):
+    return item1 * item2
+
+
+def create_input(list_of_opcodes, item_position):
+    system_id = SYSTEM_ID #input("Please provide system ID: ")
+    list_of_opcodes[item_position] = system_id
+    return list_of_opcodes
+
+
+def create_output(list_of_opcodes, item_position):
+    return print(list_of_opcodes[item_position])
+
+
+### MODES ###
+# position mode
+def get_value_from_position(list_of_opcodes, position, is_put=False):
+    if is_put:
+        return position
+    value = list_of_opcodes[position]
+    return list_of_opcodes[position]
+
+
+# immediate mode
+def get_value(list_of_opcodes, value):
+    return value
+
+
+def handle_mode_analysis(code):
+    if code &lt; 10:
+        return (code, 0, 0, 0)
+    opcode = code % 100
+    first_param = (code // 100) % 10
+    second_param = (code // 1000) % 10
+    third_param = (code // 10000)
+    modes = (opcode, first_param, second_param, third_param)
+    return modes
+
+
+def test(text=""):
+    list_of_opcodes = get_list_of_opcodes(text)
+    index = 0
+    while index &lt; len(list_of_opcodes) and int(list_of_opcodes[index]) != 99:
+        modes = handle_mode_analysis(list_of_opcodes[index])
+        code = modes[0]
+        if code == 1 or code == 2:
+            item1 = modes_dict.get(modes[1])(list_of_opcodes, list_of_opcodes[index + 1])
+            item2 = modes_dict.get(modes[2])(list_of_opcodes, list_of_opcodes[index + 2])
+            place = modes_dict.get(modes[3])(list_of_opcodes, list_of_opcodes[index + 3], True)
+            result = actions.get(code)(item1, item2)
+            list_of_opcodes[place] = result
+            index += 4
+        elif code == 3 or code == 4:
+            actions.get(code)(list_of_opcodes, list_of_opcodes[index + 1])
+            index += 2
+    return list_of_opcodes[0]
+
+
+# day 5 - part I ==&gt; 5182797
+actions = {1: add_action, 2: multiple_action, 3: create_input, 4: create_output}
+modes_dict = {0: get_value_from_position, 1: get_value}
+SYSTEM_ID = 1
+#test("3,0,4,0,99")
+#test("1002,4,3,4,33")
+test()
+</code></pre>
+</details>
+<details>
+<summary>
+חלק 2</summary>
+<pre><code class>def get_list_of_opcodes(text=""):
+    if text != "":
+        return list(map(int, text.strip().split(',')))
+    with open('resources/input_day5.txt', 'r') as fh:
+        return list(map(int, fh.read().strip().split(',')))
+
+
+### ACTIONS ###
+def add_action(item1, item2):
+    return item1 + item2
+
+
+def multiple_action(item1, item2):
+    return item1 * item2
+
+
+def create_input(list_of_opcodes, item_position):
+    system_id = int(input("Please provide system ID: "))
+    list_of_opcodes[item_position] = system_id
+    return list_of_opcodes
+
+
+def create_output(list_of_opcodes, item_position):
+    #print(item_position)
+    return print(list_of_opcodes[item_position])
+
+
+### MODES ###
+# position mode
+def get_value_from_position(list_of_opcodes, position, is_put=False):
+    if is_put:
+        return position
+    value = list_of_opcodes[position]
+    return list_of_opcodes[position]
+
+
+# immediate mode
+def get_value(list_of_opcodes, value):
+    return value
+
+
+def handle_mode_analysis(code):
+    if code &lt; 10:
+        return (code, 0, 0, 0)
+    opcode = code % 100
+    first_param = (code // 100) % 10
+    second_param = (code // 1000) % 10
+    third_param = (code // 10000)
+    modes = (opcode, first_param, second_param, third_param)
+    return modes
+
+
+def get_param(list_of_opcodes, modes, index):
+    params = [modes_dict.get(modes[i])(list_of_opcodes, list_of_opcodes[index + i]) for i in range(1, 3)]
+    #print(tuple(params))
+    return tuple(params)
+
+
+def test(text=""):
+    list_of_opcodes = get_list_of_opcodes(text)
+    index = 0
+    while index &lt; len(list_of_opcodes) and int(list_of_opcodes[index]) != 99:
+        modes = handle_mode_analysis(list_of_opcodes[index])
+        code = modes[0]
+        if code == 1 or code == 2:
+            param1, param2 = get_param(list_of_opcodes, modes, index)
+            place = modes_dict.get(modes[3])(list_of_opcodes, list_of_opcodes[index + 3], True)
+            result = actions.get(code)(param1, param2)
+            list_of_opcodes[place] = result
+            index += 4
+        elif code == 3 or code == 4:
+            actions.get(code)(list_of_opcodes, list_of_opcodes[index + 1])
+            index += 2
+        elif code == 5 or code == 6:
+            param1, param2 = get_param(list_of_opcodes, modes, index)
+            if (code == 5 and param1 != 0) or (code == 6 and param1 == 0):
+                index = param2
+            else:
+                index += 3
+        elif code == 7 or code == 8:
+            param1, param2 = get_param(list_of_opcodes, modes, index)
+            place = modes_dict.get(modes[3])(list_of_opcodes, list_of_opcodes[index + 3], True)
+            if (code == 7 and param1 &lt; param2) or (code == 8 and param1 == param2):
+                list_of_opcodes[place] = 1
+            else:
+                list_of_opcodes[place] = 0
+            index += 4
+    return list_of_opcodes[0]
+
+
+# day 5 - part I ==&gt; 5182797
+actions = {1: add_action, 2: multiple_action, 3: create_input, 4: create_output}
+modes_dict = {0: get_value_from_position, 1: get_value}
+SYSTEM_ID = 1
+#test("3,0,4,0,99")
+#test("1002,4,3,4,33")
+# day 5 - part II ==&gt; 12077198
+#test("3,9,8,9,10,9,4,9,99,-1,8") == 0
+#test("3,9,7,9,10,9,4,9,99,-1,8") == 1
+#test("3,3,1108,-1,8,3,4,3,99") == 0
+#test("3,3,1107,-1,8,3,4,3,99") == 1
+#test("3,12,6,12,15,1,13,14,13,4,13,99,-1,0,1,9")
+#test("3,3,1105,-1,9,1101,0,0,12,4,12,99,1")
+#test("3,21,1008,21,8,20,1005,20,22,107,8,21,20,1006,20,31,1106,0,36,98,0,0,1002,21,125,20,4,20,1105,1,46,104,999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99")
+test()
+
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-08T08:02:17Z" itemprop="datePublished">
+                     8 ביוני,‏ 2020,‏  8:02am
+                  </time>
+<meta content="2020-06-08T08:02:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה היום האחרון לאתגר! מהרו להגיש <img alt=":stuck_out_tongue:" class="emoji" src="../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-08T22:13:09Z" itemprop="datePublished">
+                     8 ביוני,‏ 2020,‏ 10:13pm
+                  </time>
+<meta content="2020-06-08T22:13:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברכות לכל מי שפתר את כל התרגילים! אני רואה שלכולכם יש סטרייק מרשים של 5 פתרונות <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<details>
+<summary>
+הפתרון שלי</summary>
+<pre><code class="lang-python">import operator
+
+INPUTS = iter([5])
+OPCODES = {
+    1: {'size': 4, 'function': operator.add},
+    2: {'size': 4, 'function': operator.mul},
+    3: {'size': 2, 'function': lambda: next(INPUTS)},
+    4: {'size': 2, 'function': print, 'void': 1},
+    5: {'size': 3, 'function': operator.truth},
+    6: {'size': 3, 'function': operator.not_},
+    7: {'size': 4, 'function': lambda x, y: bool(operator.lt(x, y))},
+    8: {'size': 4, 'function': lambda x, y: bool(operator.eq(x, y))},
+}
+JUMP_OPCODES = {5, 6}
+
+
+def get_input():
+    with open('input.txt', 'r') as challenge_input:
+        return list(map(int, challenge_input.read().strip().split(',')))
+
+
+def parse_command(code, instruction, *args):
+    padded_opcode = str(instruction).zfill(5)
+    modes, op = padded_opcode[2::-1], int(padded_opcode[3:])
+    yield op
+
+    argc = OPCODES[op]['size'] - 2
+    for param in range(argc + OPCODES[op].get('void', 0)):
+        yield code[args[param]] if modes[param] == '0' else args[param]
+
+    write_to = args[-1] if not OPCODES[op].get('void', False) else None
+    is_relative_jump = (op in JUMP_OPCODES and modes[argc] == '0')
+    yield code[args[-1]] if is_relative_jump else write_to
+
+
+def get_output(program):
+    i = 0
+    while program[i] != 99:
+        op_size = OPCODES[program[i] % 100]['size']
+        opcode, *command = program[i:i + op_size]
+        opcode, *args, write_to = parse_command(program, opcode, *command)
+        returns = OPCODES[opcode]['function'](*args)
+        if returns is not None and opcode not in JUMP_OPCODES:
+            program[write_to] = returns
+        i = write_to if opcode in JUMP_OPCODES and returns else (i + op_size)
+    return program[0]
+
+
+program = get_input()
+get_output(program)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-12T18:32:32Z" itemprop="datePublished">
+                     12 ביוני,‏ 2020,‏  6:32pm
+                  </time>
+<meta content="2020-06-12T18:32:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלקים 1 ו- 2 ביחד</summary>
+<pre><code class>def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        return puzzle_input.read().split(',')
+
+
+def run_input(puzzle_input, op_dict):
+    op_code = 0
+    i = 0
+    while i &lt; len(puzzle_input) and puzzle_input[i] != '99':
+        op_code = puzzle_input[i]
+        puzzle_input, to_increase, to_set = handle_op_code(op_code, i, puzzle_input, op_dict)
+        if to_increase:
+            i += int(to_increase)
+        else:
+            i = int(to_set)
+        if puzzle_input == -1:
+            return -1
+    return puzzle_input
+
+
+def handle_op_code(op_code, op_code_idx, puzzle_input, op_dict):
+    op = get_operation(op_code)
+    op_code = op_code.zfill(5)
+    mode1 = op_code[2]
+    mode2 = op_code[1]
+    mode3 = op_code[0]
+    
+    if op == 99:
+        return puzzle_input, _, 0
+    elif op == -1:
+        return puzzle_input, _, 0
+    
+    elif op == 3:
+        return handle_three(op_code_idx, puzzle_input), 2, 0
+    
+    elif op == 4:
+        if int(op_code.zfill(5)[2]):
+            mode = 1
+        else:
+            mode = 0
+        print(handle_four(op_code_idx, puzzle_input, mode))
+        return puzzle_input, 2, 0
+    
+    elif op == 5:
+        to_set = handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+            
+    
+    elif op == 6:
+        to_set = handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+    
+    elif op == 7:
+        return handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+    
+    elif op == 8:
+        return handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+        
+    else:
+        return handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1, mode2, mode3), 4,0
+
+
+
+def get_operation(op_code):
+    if op_code[-1] == '1':
+        return '+'
+    elif op_code[-1] == '2':
+        return '*'
+    elif op_code[-1] == '3':
+        return 3
+    elif op_code[-1] == '4':
+        return 4
+    elif op_code[-1] == '5':
+        return 5
+    elif op_code[-1] == '6':
+        return 6
+    elif op_code[-1] == '7':
+        return 7
+    elif op_code[-1] == '8':
+        return 8
+    elif op_code[-1] == '9':
+        return 99
+    else:
+        return -1
+
+
+def get_args(op_code_idx, puzzle_input, modes, num_args):
+    args = []
+    if num_args == 2:
+        for i in range(len(modes)):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(-1)
+
+    else:
+        for i in range(len(modes) - 1):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(op_code_idx + 3)
+    
+    return args
+
+
+def handle_three(op_code_idx, puzzle_input):
+    integer = input()
+    puzzle_input[int(puzzle_input[op_code_idx + 1])] = integer
+    return puzzle_input
+
+
+def handle_four(op_code_idx, puzzle_input, mode):
+    if mode:
+        return puzzle_input[op_code_idx + 1]
+    else:
+        return puzzle_input[int(puzzle_input[op_code_idx + 1])]
+
+
+def handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if not arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1 &lt; arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+    
+    return puzzle_input
+
+
+def handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if arg1 == arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:        
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+        
+    return puzzle_input
+
+
+def handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1='0', mode2='0', mode3='0'):
+    arg3 = int(puzzle_input[op_code_idx + 3])
+    arg2 = set_arg(op_code_idx + 2, puzzle_input, mode2)
+    arg1 = set_arg(op_code_idx + 1, puzzle_input, mode1)
+    
+    if arg1 == -1 or arg2 == -1 or arg3 == -1:
+        return -1
+    
+    operation_result = op_dict.get(op)(arg1, arg2)
+    puzzle_input[arg3] = str(op_dict.get(op)(arg1, arg2))
+    return puzzle_input
+
+
+def set_arg(idx, puzzle_input, mode):
+    if mode == '0':
+        first_input_idx = int(puzzle_input[idx])
+        arg = int(puzzle_input[first_input_idx])
+    else:
+        arg = int(puzzle_input[idx])
+    return arg
+
+
+def add(num1, num2):
+    return num1 + num2
+
+
+def multiply(num1, num2):
+    return num1 * num2
+
+
+def part_one(puzzle_input, op_dict, noun=12, verb=2):
+    program = make_program(puzzle_input, op_dict)
+    if program != -1:
+        return program[0]
+
+
+def main():
+    puzzle_input = get_input('resources/input.txt')
+    op_dict = op_dict = {'+': add, '*': multiply}
+    run_input(puzzle_input, op_dict)
+
+
+main()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T11:18:38Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏ 11:18am
+                  </time>
+<meta content="2020-06-13T11:18:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":fearful:" class="emoji only-emoji" src="../../images/emoji/twitter/fearfulc164.png?v=9" title=":fearful:"/></p>
+<details>
+<summary>
+חלק 1 + 2</summary>
+<pre><code class>FILE_LOCATION = 'resources/input.txt'
+
+
+def get_instructions():
+    with open(FILE_LOCATION, 'r') as file:
+        inputs = file.read().strip().split(',')
+    return list(map(int, inputs))
+
+
+def mode(inputs, argument):
+    if argument[1] == '0':
+        return inputs[argument[0]]
+    return argument[0]
+
+
+def position_mode(inputs, argument):
+    if argument[1] != '0':
+        return inputs[argument[0]]
+    return argument[0]
+
+
+def opecode(inputs, position):
+    parameter = inputs[position] % 100
+    instructions = str(inputs[position] // 100).zfill(3)
+    arg_1 = (inputs[position + 1] ,instructions[-1])
+    arg_2 = (inputs[position + 2] ,instructions[1])
+    arg_3 = (inputs[position + 3] ,instructions[0])
+    
+    if parameter in (1, 2, 7, 8):
+        position += 4
+        if parameter == 1:
+            inputs[position_mode(inputs, arg_3)] = mode(inputs, arg_1) + mode(inputs, arg_2)
+        elif parameter == 2:
+            inputs[position_mode(inputs, arg_3)] = mode(inputs, arg_1) * mode(inputs, arg_2)
+        elif parameter in (7, 8):
+            if (parameter == 7 and mode(inputs, arg_1) &lt; mode(inputs, arg_2))or (parameter == 8 and mode(inputs, arg_1) == mode(inputs, arg_2)):
+                inputs[arg_3[0]] = 1
+            else:
+                inputs[arg_3[0]] = 0
+
+    elif parameter == 5 or parameter == 6:
+        if (parameter == 5 and mode(inputs, arg_1) != 0) or (parameter == 6 and mode(inputs, arg_1) == 0):
+            position =  mode(inputs, arg_2)
+        else:
+            position += 3
+    return (inputs, position)
+
+
+def opecode03(inputs, position):
+    inputs[inputs[position + 1]] = int(input("Enter single integer: "))
+    return (inputs, position + 2)
+
+
+def opecode04(inputs, position):
+    print("Output:", inputs[inputs[position + 1]])
+    return (inputs, position + 2)
+
+
+def opcode(inputs, operators):
+    position = 0
+    while inputs[position] != 99:
+        parameter = inputs[position] % 100
+        inputs, position = operators[parameter](inputs, position)
+
+
+operators = {
+    1: opecode,
+    2: opecode,
+    3: opecode03,
+    4: opecode04,
+    5: opecode,
+    6: opecode,
+    7: opecode,
+    8: opecode,
+}
+
+inputs = get_instructions()
+opcode(inputs, operators)
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="6987.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-13T21:44:39Z" itemprop="datePublished">
+                     13 ביוני,‏ 2020,‏  9:44pm
+                  </time>
+<meta content="2020-06-13T21:44:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה היה ארוך ומתיש.<br/>
+אפילו נשברתי באמצע מרמת הבלאגן שזה הגיע אליה וכתבתי הכל מהתחלה.<br/>
+ועכשיו ליום הבא! <img alt=":sweat_smile:" class="emoji" src="../../images/emoji/twitter/sweat_smilec164.png?v=9" title=":sweat_smile:"/></p>
+<details>
+<summary>
+שני החלקים</summary>
+<pre><code class>import operator
+
+def intcode_computer(instructions):
+    temp = instructions.copy()
+    STATES = {
+        1: {'func': operator.add, 'inputs': 3, 'index': 4, 'type': 0},
+        2: {'func': operator.mul, 'inputs': 3, 'index': 4, 'type': 0},
+        3: {'func': lambda: int(input()), 'inputs': 1, 'index': 2, 'type': 0},
+        4: {'func': print, 'inputs': 1, 'index': 2, 'type': 1},
+        5: {'func': operator.truth, 'inputs': 2, 'index': 3, 'type': 2},
+        6: {'func': operator.not_, 'inputs': 2, 'index': 3, 'type': 2},
+        7: {'func': operator.lt, 'inputs': 3, 'index': 4, 'type': 3},
+        8: {'func': operator.eq, 'inputs': 3, 'index': 4, 'type': 3},
+             }
+
+    index = 0
+    while True:
+        opcode = str(temp[index]).zfill(5)
+        state = int(opcode[-2:])
+        if state != 99:
+            inputs = [temp[index + i + 1] for i in range(STATES[state]['inputs'])]
+            for pos in range(len(inputs) - 1):
+                if int(opcode[-3 - pos]) == 0:
+                    inputs[pos] = temp[inputs[pos]]
+            if STATES[state]['type'] == 0:
+                temp[inputs[-1]] = STATES[state]['func'](*inputs[:-1])
+            elif STATES[state]['type'] == 1:
+                if int(opcode[-3]) == 0:
+                    inputs[0] = temp[inputs[0]]
+                STATES[state]['func'](inputs[0])
+            elif STATES[state]['type'] == 3:
+                if STATES[state]['func'](*inputs[:-1]):
+                    temp[inputs[-1]] = 1
+                else:
+                    temp[inputs[-1]] = 0
+            index += STATES[state]['index']
+            if STATES[state]['type'] == 2:
+                if STATES[state]['func'](*inputs[:-1]):
+                    if int(opcode[-4]) == 0:
+                        index = temp[inputs[-1]]
+                    else:
+                        index = inputs[-1]
+        else:
+            return temp
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-5/6987 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:21:28 GMT -->
+</html>

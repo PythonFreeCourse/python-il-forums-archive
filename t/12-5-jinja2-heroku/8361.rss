@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+    <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361</link>
+    <description>## מה היא סביבה וירטואלית?
+
+נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב.
+
+פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית.
+אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח, גרסה 0.12), ושדרוג שלו ישבור את המערכת.
+
+הפרויקט השני הוא מערכת התרגילים של הקורס, שמשתמש בטכנולוגיה חדשה ונוצצת.
+בין המודולים שמככּבים בו נמצא Flask בגרסתו החדשה ביותר – גרסה 1.1.
+
+בפרויקט שלישי משל עצמכם אתם משתמשים במודולים אחרים, אבל חלק מהמודולים שבהם אתם משתמשים, נסמכים בעצמם על מודולים אחרים.
+בין המודולים, ישנו גם מודול A שבעצמו נסמך מודול B – הרי הוא Flask בגרסה 1.0.
+
+כשאתם מנסים לעבור בין פרויקטים אתם מגלים שגרסה 0.12 של Flask אינה תואמת עם גרסה 1.1,
+וגרסה 1.1 מתנהגת מעט שונה מגרסה 1.0.
+
+מובן שישנה בעיה: לא פרקטי להסיר את Flask ולהתקין את הגרסה הרצויה כל פעם שנעבור לעבוד על פרויקט אחר.
+
+### הפתרון? סביבות וירטואליות!
+
+סביבה וירטואלית מאפשרת לנו להגדיר מעין קופסה מבודדת שבה רץ פייתון בלי כל המודולים שהתקנו על המחשב.
+אם נרצה, נוכל להתקין עבור המערכת שאנחנו כותבים בעבודה סביבה וירטואלית (דמיינו חדר מבו‏ּדד וסטרילי) שבה מותקנים *רק* המודולים ששייכים לפרויקט שלנו.
+כשנרצה לעבור לפרויקט אחר, נניח, לזה של מערכת הגשת התרגילים בקורס – נוכל להגדיר עבורו סביבה וירטואלית משלו, שבה יהיו מותקנים *רק* המודולים שקשורים למערכת הגשת התרגילים בקורס.
+
+אלו שתי סביבות שונות, נפרדות אחת מהשנייה, שלא יודעות על קיומן אחת של השנייה, או על המודולים שהותקנו אחת אצל השנייה.
+זה מאפשר לנו (ולכל מי שיעבוד על המערכת שלנו) להפעיל כל אחת מהסביבות בנפרד, ולעבוד עליהן באופן בלתי תלוי.
+
+### איך עושים את זה?
+
+כל מה שצריך כדי *ליצור* סביבה וירטואלית, זה להריץ בשורת הפקודה:
+`python -m venv PROJECT_NAME`
+
+הפקודה הזו תיצור תיקייה חדשה בשם PROJECT_NAME, שבתוכה יהיו תיקיות וקבצים.
+התיקיות והקבצים הללו הם מה שמאפשר לסביבה הווירטואלית לפעול.
+מרובם אתם רוצים להתעלם בשלב הזה, אבל אתם עדיין צריכים להיכנס לתוך הסביבה הווירטואלית כדי שתפעל.
+
+כדי _להפעיל_ את הסביבה הווירטואלית, אם כך, תצטרכו לרשום:
+- בווינדוס: ```PROJECT_NAME\Scripts\activate.bat``` 
+- ב־MacOS/בלינוקס: ```source PROJECT_NAME/bin/activate``` 
+
+וזהו. כעת אתם בתוך הסביבה הווירטואלית. 
+ליד שורת הפקודה שלכם אמורה להתווסף המילה PROJECT_NAME, כדי להזכיר לכם שזה המצב.
+תוכלו לצאת מהסביבה הווירטואלית בכל זמן אם תכתבו `deactivate`.
+
+הסביבה הווירטואלית תקפה רק בחלון שבו הפעלתם אותה.
+אם תריצו פקודות בחלון אחר אתם לא תפעלו תחת הסביבה הווירטואלית ותשפיעו על גרסת הפייתון &quot;הראשית&quot; שמותקנת אצלכם במחשב.
+
+כדי להתקין מודול חדש תוכלו להשתמש ב־pip, כרגיל.
+שימו לב שהתקנת המודול תתבצע בתוך הסביבה הווירטואלית ולא תשפיע על גרסת הפייתון הראשית שמותקנת אצלכם במחשב.
+כדי לשמור את כל ההתקנות שביצעתם בסביבה וירטואלית מסוימת ולשלוח אותם לחבריכם שיוכלו להתקין אותן בקלות, כתבו:
+
+&gt; `pip freeze &gt; requirements.txt`
+
+הפקודה הזו תיצור קובץ בשם requirements.txt, שמכיל את כל החבילות שמותקנות אצלכם בסביבה.
+אם תכתבו אותו כשאתם מחוץ לסביבה הווירטואלית, ישפכו לקובץ הזה כל החבילות שמותקנות אצלכם על הגרסה הראשית של פייתון, ולא דווקא מותקנות בסביבה הווירטואלית. משמע: חשוב לוודא שאתם בתוך הסביבה הווירטואלית שלכם לפני שהרצתם pip freeze.
+
+טיפ: ודאו ש־requirements.txt נמצא אצלכם בתיקייה הראשית של הפרויקט. זה הנוהג, ויש אפילו שירותים שיאפשרו לכם להעלות חבילה של פייתון וידרשו שהקובץ הזה ישב שם.
+
+כדי להתקין את כל החבילות שנמצאות בקובץ requirements.txt שקיבלתם מחבר או בתוך פרויקט כלשהו, היכנסו לסביבה הווירטואלית וכתבו:
+
+&gt; `pip install -r requirements.txt`
+
+זהו. אתם יודעים להשתמש בסביבות וירטואליות :)
+
+### גרסאות נוספות
+
+נוסף על השיטה שהוצגה פה פה, יש שיטות נוספות ליצור סביבות וירטואליות.
+(קריאת העשרה, ממילא אין צורך לזכור את כל זה ותתקלו בדברים האלו ככל שתעבדו יותר עם פייתון)
+
+1. המודול virtualenv – אותו רעיון, אבל לא חלק מהמודולים שבאים עם פייתון ויש לו [יותר פיצ&#39;רים](https://virtualenv.pypa.io/en/latest/).
+2. המודול conda – שילוב מעניין בין מנהל חבילות לסביבה וירטואלית. לא בשימוש נרחב, אבל נוח יחסית. מאפשר גם לבחור את גרסת הפייתון שרוצים להשתמש בה, אם אתם עובדים על פרויקטים שתומכים בגרסאות פייתון שונות.
+3. המודול pipenv הוא מודול פופולרי מאוד, שבדומה ל־conda עשיר בפיצ&#39;רים לניהול סביבה וחבילות. מעבר לתפקידה של הפקודה `pipenv` שיוצרת סביבה וירטואלית, היא גם יודעת לנהל גם את החבילות שמותקנות באותה סביבה. הטריק של pipenv הוא ליצור קובץ נפרד בשם Pipfile.lock שבו יש את גרסאות החבילות שהותקנו, ללא התלויות שלהם (יכולים לחשוב על היתרונות והחסרונות? פתחו על זה דיון בפורום).
+4. המודול poetry הוא מודול שמתחיל לתפוס תאוצה בשנה האחרונה. הוא דומה ל־pipenv אבל תומך בתקנים החדשים ביותר של השפה, ונראה שהוא עובד די טוב בפועל.
+
+הקהילה די מפוצלת בנוגע לשיטת ניהול התלויות והסביבה של הפרויקט, כך שאתם מוזמנים לבחור בדרך המועדפת עליכם.
+אשאיר את קריאת ההרחבה וההשוואה על כל אחד מהמודולים הללו עבורכם.
+
+## תבניות לאתר: Jinja2
+
+כשאנחנו כותבים קוד לאתר שלנו קצה־לקצה, אנחנו כבר יודעים שנצטרך להשתמש לא מעט ב־HTML.
+הצרה היא שכשאנחנו רוצים לשלב את ה־HTML הזה עם פייתון, פעמים רבות נצטרך להכניס לדף מידע באופן דינאמי. למשל:
+1. אם קיבלנו מ־API חיצוני רשימת עצמים (מזג האוויר בשבוע הקרוב, העמלות של השקל מול הדולר בשבוע האחרון, רשימת כל הפוקימונים שקיימים) ואנחנו רוצים לשלב אותם ב־HTML באמצעות לולאה. 
+2. אם אנחנו רוצים להציג חלק מסוים בדף רק במקרים מסוימים. לדוגמה, במערכת התרגילים מוצגת בדף התרגיל האפשרות להוסיף הערה אך ורק אם המשתמש הוא המנהל.
+3. אם אנחנו רוצים להציג בכל הדפים תפריט, אבל לא רוצים לשכפל את הקוד כשאנחנו יוצרים דף חדש עבור המערכת.
+
+לצורך כך סביבות שמתעסקות באתרי אינטרנט לרוב מנגישות למתכנתים דבר שנקרא Web template engine.
+הרעיון של Web template engines הוא לאפשר למתכנתים לכתוב HTML, ולהוסיף לו Syntax מוסכם מראש שיאפשר למתכנתים להטמיע בתוך אותו HTML תוכן דינאמי.
+
+הנה, לדוגמה, קוד ב־Jinja2 (שנלקח [מכאן](https://palletsprojects.com/p/jinja/)). נניח שלקובץ קוראים user_list.html:
+
+```jinja2
+{% extends &quot;layout.html&quot; %}
+{% block body %}
+  &lt;ul&gt;
+  {% for user in users %}
+    &lt;li&gt;&lt;a href=&quot;{{ user.url }}&quot;&gt;{{ user.username }}&lt;/a&gt;&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endblock %}
+```
+
+בקוד הזה השורה הראשונה אומרת שה־HTML במסמך הזה הולך להיות &quot;מודבק&quot; בתוך מסמך אחר, שנקרא layout.html.
+התוכן שבא אחר־כך מורה על ul (רשימה לא מסודרת של תבליטים) שמכילה תבליט אחד עבור כל משתמש במשתנה user.
+עבור כל user מתוך רשימת users, יופיע קישור שיילקח מתוך user.url, והמלל של הקישור יהיה user.username.
+
+שימו לב לשילוב המעניין בין תחביר פייתוני לבין תחביר של HTML. זו היכולת המעניינת (והמועילה) שאנחנו מקבלים ב־Web template engines בכלל, וב־Jinja2 בפרט.
+
+התשתית שבה אנחנו משתמשים לבניית אתרים, Flask, משתמשת ב־Jinja2 בתור ה־Web template engine שמגיע יחד איתה.
+כל קובץ שיהיה בתוך תיקיית templates בפרויקט שלנו נחשב ל&quot;template&quot;, ו־Flask תדע לטעון אותו באמצעות הפונקציה render_template.
+אם נניח נרצה לטעון את ה־template שנקרא `user_list.html` כאשר משתמש נכנס לעמוד `/all_users`, נכתוב את הקוד הבא:
+```
+@app.route(&#39;/all_users&#39;)
+def login():
+    registered_users = get_all_users()  # נניח שהפונקציה הזו מחזירה את רשימת המשתמשים במערכת
+    render_template(&#39;user_list.html&#39;, users=registered_users)
+```
+
+ל־Jinja2 יש הרבה פיצ&#39;רים וטריקים נחמדים.
+אתם יכולים לקרוא עליהם ב[תיעוד](https://jinja.palletsprojects.com/en/2.11.x/), או לראות [דוגמאות](https://github.com/PythonFreeCourse/lms/tree/master/lms/templates) בקוד המקור של מערכת התרגילים.
+
+## אחסון באינטרנט
+
+כשאנחנו רוצים להעלות אתר דינאמי שבנינו לאינטרנט, חשוב לנו שיקרו כמה דברים:
+1. שהוא יהיה נגיש מכל מקום בעולם, והניהול שלו יהיה נגיש מכל מקום בעולם.
+2. שהגישה אליו תהיה מהירה יחסית – זה אומר שהחיבור של המקום שמאחסן את האתר לאינטרנט יהיה טוב מאוד, ואולי אפילו הגורם המאחסן ישתמש בכל מני [טריקים](https://en.wikipedia.org/wiki/Content_delivery_network) כדי להמהיר את הגישה לאתר שלנו.
+3. שיאפשר לנו לשלוט על המחשב שעליו מאוחסן האתר שלנו כאילו זה היה המחשב שלנו.
+
+ישנם מספר שירותים שעונים על הדרישות האלו, ומוגדרים כפלטפורמה נוחה להעלות אליה את אתרי האינטרנט שתכנתנו באמצעות Flask (או באמצעות כל מודול/שפת תכנות אחרים).
+
+### השרת
+
+למרות ש־Flask יודע לקבל בקשות HTTP, זו לא המומחיות שלו והוא מבצע את זה בצורה איטית וגרועה יחסית.
+Flask מיועד בעיקר לספק לנו את הסביבה לפיתוח האתר, ופחות כרכיב שאחראי להיות השרת שמטפל בפניות HTTP.
+
+לעומתו, ישנן תוכנות שייעודן לטפל בבקשות HTTP במהירות וביעילות. הן נקראות &quot;שרתי אינטרנט&quot; או &quot;שרתי HTTP&quot;, ולפעמים הן מגיעות עם פיצ&#39;רים חשובים, כמו ניהול עומסים, תמיכה ב־IPv6, ניהול זיכרון מטמון, אפשרות להוספת headers לתשובות ששולח השרת, ניהול הקונפיגורציה של התקשורת המאובטחת (HTTPS) וכן הלאה.
+
+שרתי האינטרנט המוכרים ביותר כיום הם nginx, Apache, lighttpd ו־IIS.
+לצרכים שלנו הבחירה בינו לבין Apache או לבין lighttpd היא די שרירותית.
+
+בשביל להשלים את הפאזל, נצטרך רכיב שידע לתרגם את מה שמגיע לשרת האינטרנט ל־Flask, ואת מה שיוצא מ־Flask לשרת האינטרנט. הרכיב הזה נקרא WSGI, או [Web Server Gateway Interface](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface). התוכנה שנבחר לצורך הזה נקראת Gunicorn.
+
+#### לסיכום: 
+1. יש לנו פייתון שמריץ Flask, שהוא מודול בפייתון שיודע לקבל בקשות לפי מיקום הבקשה (`app.route`) ולפיהן להחזיר תשובות. 
+2. בד&quot;כ נרצה לטעון בעזרתו templates שכתובים ב־Jinja2.
+3. את הבקשות מהאינטרנט תקבל תוכנה שזה הייעוד שלה ובזה היא טובה: שרת אינטרנט, כמו nginx או Apache.
+4. בין שרת האינטרנט ל־Flask יישב רכיב שיודע לתרגם דברים אחד לשני (WSGI). בחרנו באחד שנקרא Gunicorn.
+
+### ספק האחסון
+
+כיום יש תחרות גדולה בקרב החברות הגדולות על מי &quot;יזכה&quot; לארח את האתר שלנו באינטרנט. בין החברות הגדולות שמציעות שירותים כאלו נמצאות Amazon, Goolge ו־Microsoft עם השירותים AWS, GCP ו־Azure (בהתאמה). החברות האלו מנסות לצוד בעיקר לקוחות ענק שישלמו להם אלפי דולרים ועד מיליוני דולרים בחודש על השכרת שרתים, אבל כדגי הרקק שאנחנו – רובן יציעו לנו תוכניות חינמיות משתלמות, לפחות לשנה בחינם.
+
+ספק האחסון שנסקור הוא Heroku, שדואג לפשט את כל תהליך העלאת האתר. כדי להשתמש בו, תצטרכו [לפתוח חשבון](https://signup.heroku.com/signup/dc) ב־Heroku.
+
+צרו במחשב שלכם סביבה וירטואלית, כמו שלמדנו בתחילת היום. לצורך הדוגמה, נקרא לה heroku:
+&gt; ```python -m venv heroku```
+
+הפעילו את הסביבה הוירטואלית באמצעות `source heroku/bin/activate` או `heroku\Scripts\activate.bat`, בתלות במערכת ההפעלה שלכם.
+לאחר מכן התקינו את flask ואת gunicorn באמצעות pip.
+
+צרו קובץ חדש ששמו app.py, וכיתבו בו קוד בסיסי שמשתמש ב־Flask:
+
+```python
+from flask import Flask, request, jsonify
+app = Flask(__name__)
+
+@app.route(&#39;/&#39;)
+def index():
+    return &quot;&lt;h1&gt;Welcome to our server !!&lt;/h1&gt;&quot;
+
+if __name__ == &#39;__main__&#39;:
+    app.run(threaded=True, port=5000)
+```
+
+הריצו flask run, היכנסו ל־http://localhost:5000 ובדקו שהסביבה שלכם עובדת.
+
+צרו את קובץ requirements.txt, שמכיל את כל התלויות ש־Heroku צריכים להכיר: 
+&gt;`pip freeze &gt; requirements.txt`
+
+צרו קובץ נוסף בשם Procfile (ללא סיומת). 
+הקובץ הזה הוא קובץ מיוחד עבור Heroku, שמגדיר עבור Heroku אילו פקודות להריץ בכל מני מקרים.
+אנחנו נכתוב בתוכו רק את השורה:
+
+&gt; ```web: gunicorn app:app```
+
+שאומרת: ברגע שמגיעה בקשת אינטרנט, תפנה אותה ל־gunicorn.
+(מבולבלים? זה בסדר. Heroku דואג להרים Web server מאחורי הקלעים כדי שלא נצטרך להתעסק בזה. הוא יקבל את הבקשות ל־Web server שיעביר אותם ל־gunicorn).
+
+עכשיו צרו git שינהל את כל הקוד שכתבתם – זה הדבר המנומס לעשות.
+כתבו `git init .` בתיקייה הרלוונטית, ואז `git add -A` ו־`git commit -a -m &quot;First commit&quot;`.
+
+אנחנו כמעט מוכנים לשיגור. התחברו ל־Heroku, ולחצו על New -&gt; Create new app.
+צרו אפליקציה בשם שמתחשק לכם (שמרו אותו), וכשתגיעו לעמוד הניהול יהיו לכם שתי אפשרויות:
+1. העלאה באמצעות GitHub – אם העלתם את האפליקציה שלכם לגיטהאב זה מעולה, ותוכלו לעשות את זה ביתר קלות מכאן.
+2. העלאה באמצעות Heroku CLI – תצטרכו להתקין לפי המדריך [כאן](https://devcenter.heroku.com/articles/heroku-command-line). אחרי שהתקנתם, כתבו `heroku login` בחלון חדש של שורת פקודה. אחרי שהתחברתם היכנסו לפרויקט שלכם, הפעילו את הסביבה הוירטואלית, כיתבו `heroku git:remote -a PROJECT_NAME` ואז `git push heroku master`.
+
+עכשיו אתם אמורים להיות מסוגלים לראות את האתר שלכם ב־ `https://PROJECT_NAME.herokuapp.com/`. מזל טוב!</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 12 Nov 2020 08:02:44 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אחד הפוסטים פוצל לנושא חדש: <a href="https://forums.pythonic.guru/t/heroku/8445">תקלה בהעלאת אתר ל־Heroku</a></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/27">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/27</link>
+        <pubDate>Fri, 13 Nov 2020 03:39:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-27</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מעולה. תודה, תיקנתי <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/26">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/26</link>
+        <pubDate>Thu, 22 Oct 2020 22:11:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-26</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="1" data-topic="8361">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>source heroku/bin/activate</p>
+</blockquote>
+</aside>
+<p>ב win10 הפקודה היא</p>
+<pre><code class="lang-auto">heroku\Scripts\activate
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/25">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/25</link>
+        <pubDate>Thu, 22 Oct 2020 19:17:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-25</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>ירח דבש וירטואלי…<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji only-emoji" alt=":rofl:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/joy.png?v=9" title=":joy:" class="emoji only-emoji" alt=":joy:"></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/24">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/24</link>
+        <pubDate>Wed, 21 Oct 2020 17:47:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-24</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[lisafiluz]]></dc:creator>
+        <description><![CDATA[
+            <p>האם הסביבה הוירטואלית צריכה להיות מותקנת בתיקיית הפרוייקט או לא? מה כדאי?</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/23">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/23</link>
+        <pubDate>Wed, 21 Oct 2020 07:00:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-23</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>כן… צימר בצפון… העדפנו לא לנסוע לחו"ל בתקופה הזו.</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/22">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/22</link>
+        <pubDate>Wed, 21 Oct 2020 06:20:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-22</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>איך עושים ירח דבש בתקופה כזאת?!<br>
+אני מניח שאתם בארץ… ?!<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/sweat_smile.png?v=9" title=":sweat_smile:" class="emoji only-emoji" alt=":sweat_smile:"><img src="https://forums.pythonic.guru/images/emoji/twitter/statue_of_liberty.png?v=9" title=":statue_of_liberty:" class="emoji only-emoji" alt=":statue_of_liberty:"><img src="https://forums.pythonic.guru/images/emoji/twitter/statue_of_liberty.png?v=9" title=":statue_of_liberty:" class="emoji only-emoji" alt=":statue_of_liberty:"></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/21">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/21</link>
+        <pubDate>Wed, 21 Oct 2020 06:09:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-21</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>הגעתי עד לפה, לא יכול להפסיד!</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/20">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/20</link>
+        <pubDate>Tue, 20 Oct 2020 23:48:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-20</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Dusinka]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מנסה לדמיין את הסיטואציה שלך בירח דבש עם לפטופ <img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji" alt=":rofl:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/rofl.png?v=9" title=":rofl:" class="emoji" alt=":rofl:"><br>
+ים זה לגמרי נצחון שלך בכמה לוקחים את הקורס שלך ברצינות.</p>
+<p>ועכשיו ברצינות - המון מזל טוב <img src="https://forums.pythonic.guru/images/emoji/twitter/smiley.png?v=9" title=":smiley:" class="emoji" alt=":smiley:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/partying_face.png?v=9" title=":partying_face:" class="emoji" alt=":partying_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/19">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/19</link>
+        <pubDate>Tue, 20 Oct 2020 21:10:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-19</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה!</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d.png" data-download-href="https://forums.pythonic.guru/uploads/default/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png" alt="image" data-base62-sha1="mrtaBafWgnsB2hhKX2nPWEME1Ih" width="690" height="375" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1380x750.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/18">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/18</link>
+        <pubDate>Tue, 20 Oct 2020 19:30:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-18</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>פשוט צור קובץ index.html ב־templates</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/17</link>
+        <pubDate>Tue, 20 Oct 2020 19:16:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-17</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ים,</p>
+<p>תודה על התייחסות בסרטוןן!</p>
+<p>זה הלוג -<br>
+(אני חושב שחסרה לי תיקיית templates (בגלל flask) בגיטהאב ובגלל זה יש שגיאה, איך ניתן להקים תיקייה בגיטהאב?</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642.png" data-download-href="https://forums.pythonic.guru/uploads/default/cf64e3ded15863e9dc31484017cb9c4badaf2642" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png" alt="image" data-base62-sha1="tAGZx2h4QuxY75J7GpEBG3HZyX8" width="690" height="375" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1380x750.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/16</link>
+        <pubDate>Tue, 20 Oct 2020 19:13:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-16</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>האיסוף של כל הנתונים לוקח בממוצע בין דקה וחצי ל-2 דקות, אז לעדכן אותו כל בקשה יהיה איום ונורא.<br>
+בגדול מדובר במידע שאכן כמעט ולא משתנה (אם בכלל), אז אלך עם התחושה הראשונית ואמשוך אותו בהעלאת השרת.</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/15</link>
+        <pubDate>Tue, 20 Oct 2020 18:20:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-15</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תלוי בצורך.<br>
+אם זה מידע שלא משתנה כמעט (נניח, רשימת הפוקימונים והמתקפות שלהם) – הגיוני לבדוק בהעלאת השרת האם הקובץ הזה קיים/מעודכן ולפעול בהתאם.<br>
+אם זה מידע שמתעדכן תדיר – אולי עדיף לעדכן את הנתונים בכל בקשה.</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/14</link>
+        <pubDate>Tue, 20 Oct 2020 18:04:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-14</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>לא מצאתי API שמספק את כל המידע שרציתי בצורה מסודרת (ובכל מקרה רציתי גם להיות מסוגל לבצע חיפוש על כל המידע), אז השתמשתי ב webscraping בשביל לחלץ את כל המידע הדרוש וייצאתי אותו לקובץ json. האם נכון יותר לבצע את הפעולה הזו בכל פעם שהשרת עולה (אם זה בכלל אפשרי או הגיוני) או שמספיק לצרף את הקובץ כחלק מהקבצים לשרת ולאבד את היכולת לעדכן את המידע?</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/13</link>
+        <pubDate>Tue, 20 Oct 2020 18:00:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-13</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[EliranRefaely]]></dc:creator>
+        <description><![CDATA[
+            <p>יש אפשרות לעלות תיקיות לgithub?<br>
+כי יש לי תיקייה בשם templates ש-flask חייבת לראות שהיא קיימת.</p>
+<p>אני חושב שבגלל זה אני מקבל שגיאה.<br>
+אגב גם לא הצלחתי גם דרך התוכה של heroku הוא נתקע לי אחרי הlogin<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png" data-download-href="https://forums.pythonic.guru/uploads/default/7895bb8833777e83269ea2d3df0dba08ae8822d0" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png" alt="image" data-base62-sha1="hcK60Hpxt8P1xEaCqGRZ1lY1nri" width="690" height="222" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_1035x333.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_10x10.png"></a></div><p></p>
+<p>כמובן שעל המחשב הכל עובד</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b.png" data-download-href="https://forums.pythonic.guru/uploads/default/ef0d23e36f9494478359d9e048019cb256425d0b" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png" alt="image" data-base62-sha1="y6KgCOGATBtMR3uPKD9FeB8gge7" width="690" height="103" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1035x154.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1380x206.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_10x10.png"></a></div><p></p>
+<p>מצטער שלא יכולתי להגיע לשיעור היום! חוגגים ירח דבש</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/12</link>
+        <pubDate>Tue, 20 Oct 2020 17:30:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-12</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>זה קובץ הhtml של הטופס:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" data-download-href="https://forums.pythonic.guru/uploads/default/adcbbd5972bb8e9b26045d544c6a4317ee66460d" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" alt="image" data-base62-sha1="oNt6YHI0NSw8ezxy6i7SbkoJtKt" width="690" height="236" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d_2_10x10.png"></a></div><br>
+ספציפית מה שלא עובד זה form.submit עם מחלקת button.<br>
+זה הcss הרלוונטי:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" data-download-href="https://forums.pythonic.guru/uploads/default/79998621e5c7f8d2e18145c871111496f5098bf3" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" alt="image" data-base62-sha1="hlIHf76qbL8zehMOEvKDLYsmNyz" width="364" height="500" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3_2_10x10.png"></a></div><br>
+זה העיצוב הסופי:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png" data-download-href="https://forums.pythonic.guru/uploads/default/554f77a2d7de3e059c1c838c8f9228ec1fbeab61" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png" alt="image" data-base62-sha1="caGQgjCEzuuw7KiztCcmDGoHKFj" width="690" height="387" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_10x10.png"></a></div><br>
+אפשר לראות פה שהכפתור Trump it לא מקבל את העיצוב שנתתי לו במחלקת buttom.<p></p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/10</link>
+        <pubDate>Tue, 20 Oct 2020 16:55:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-10</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Joseph.Gati]]></dc:creator>
+        <description><![CDATA[
+            <p>ניתן להרחיב בלייב היום על הנושא של wsgi? דוגמא ספציפית תעזור מאוד.</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/9</link>
+        <pubDate>Tue, 20 Oct 2020 16:50:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-9</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>טרם קראתי, אבל קראתי שיש סכנות בקבלת קבצים מלקוח ותמיד צריך לחשוד במה המשתמש ינסה לעלות לשרת.<br>
+אם אפשר הכוונה בנושא של עבודה בצורה חכמה עם קבצים המתקבלים מלקוח אני אשמח (בפן האבטחתי)<br>
+ויכול להיות שהשאלה שלי עדיין בוסרית</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/8</link>
+        <pubDate>Tue, 20 Oct 2020 16:35:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-8</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תוכלי לשתף בבקשה את ה¯CSS ואת התוצאה הויזואלית?</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/7</link>
+        <pubDate>Tue, 20 Oct 2020 16:29:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-7</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא לגמרי הבנתי את הקשר בין אנקונדה, איך אתה משתמש באנקונדה והסביבה הוירטואלית. תוכל להרחיב בבקשה?</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/6</link>
+        <pubDate>Tue, 20 Oct 2020 16:28:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-6</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כדי שאתייחס אל זה בלייב אצטרך משהו יותר ספציפי.<br>
+קראת את הדוקומנטציה של עבודה עם קבצים ב¯Flask? מה שם לא יושב?</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/5</link>
+        <pubDate>Tue, 20 Oct 2020 16:27:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-5</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה ללייב -<br>
+לגבי קלט של טקסט הבנתי כיצד לעבוד, מסקרן אותי לדעת כיצד עובדים כאשר מקבלים קובץ מהמשתמש לדוגמה תמונה, קבצי וידאו וכד’<br>
+האם יש צורת עבודה מקובלת? מהן הסכנות שטומנות בכך?<br>
+תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/4</link>
+        <pubDate>Tue, 20 Oct 2020 16:23:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-4</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[nitayv]]></dc:creator>
+        <description><![CDATA[
+            <p>היי.<br>
+כל נושא בסביבות הוירטואלית לא ממש יושב לי טוב.<br>
+אני עד עכשיו משתמש באנקונדה ופותח משם את הסביבת עבודה ויש לי מלא בלאגן עם זה. אשמח בלייב להבין רגע מאפס איך זה עובד בלי אנקונדה ועם אנקונדה הנושא הזה של סביבה וירטואלית כי לא ממש הצלחתי להתנתק מהבייס של האנקונדה</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/3</link>
+        <pubDate>Tue, 20 Oct 2020 16:10:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-3</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+      <item>
+        <title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה ללייב של היום- יש אפשרות להדגים איך עובדים עם css בהקשר jinja ו-flask? למשל, אני משתמשת בFlaskForm כדי לייצר טופס, ויש בו כפתור submit. אבל משום מה כשאני מנסה לעצב בcss, הוא מקבל את העיצוב של ההורה (תגית form) ולא עיצוב שהגדרתי למחלקה שנתתי לו. תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361/2</link>
+        <pubDate>Tue, 20 Oct 2020 15:17:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8361-2</guid>
+        <source url="https://forums.pythonic.guru/t/12-5-jinja2-heroku/8361.rss">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</source>
+      </item>
+  </channel>
+</rss>

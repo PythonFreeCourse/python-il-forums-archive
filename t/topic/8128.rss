@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הורים מרובים להורים מרובים?</title>
+    <link>https://forums.pythonic.guru/t/topic/8128</link>
+    <description>אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.
+
+אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.
+
+לדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?
+![commit_id_tree|553x163, 75%](upload://6M35gkb7lOCBnyjd7aN651o3YiJ.png) 
+אני חושב שזה דורש רקורסיה, ניסיתי לממש למרות שלא למדנו ואני לא מצליח.
+אשמח להכוונה :slight_smile:</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 11 Sep 2020 16:23:30 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8128.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>כן גם אני עשיתי בשיטה הזו והיצירה של הגרף אחרי זה הייתה ממש קלה</p>
+<p>זה או זה או רקורסיה (:</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/16</link>
+        <pubDate>Fri, 11 Sep 2020 16:23:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-16</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[mbrodsky]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, נראה שמילון הוא המבנה הנכון. אין לי כמובן סיכוי להגיש בזמן, אבל זה היה ברור לי כבר לפני שלושה ימים. בכל מקרה אמשיך לנסות.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/15</link>
+        <pubDate>Fri, 11 Sep 2020 15:07:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-15</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>בימים האחרונים שיפרתי את הקוד שכתבתי למציאת ההורים ונראה שבינתיים זה עובד.</p>
+<p>בנוגע למבנה מידע שתעביר ליצירת הגרף, מציע לך ליצור מילון שבו כל מפתח הוא commit_id והערך שלו הוא רשימת ההורים (גם אם יש הורה אחד שיהיה ברשימה, לי זה פישט את העניינים). היה מאוד מאתגר ליצור את המילון, אבל  די פשוט ליצור את הגרף ממנו.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/14</link>
+        <pubDate>Fri, 11 Sep 2020 15:01:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-14</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[mbrodsky]]></dc:creator>
+        <description><![CDATA[
+            <p>גם אני נתקעתי בזה. עבדתי באותה שיטה שבה אלון עבד (לולאת וויל) רק שלא בחרתי הורה אחד במקרה שבו היו שני הורים אלא פשוט הוספתי את שניהם לרשימה. זה כמובן יוצר כפילויות (העתקתי רשימה של קומיטים מקוצרים) שהפונקציה מפיקה וניתן לראות שחלקם מן הסתם חוזרים על עצמם. אני מנסה להבין אם יש דרך לחלץ את המבנה של הגרף מתוך המיקומים היחסיים שלהם ברשימה. אולי לעצב את הלולאה כך שהיא תפיק רשימה מקוננת? האם זה מבנה מידע שיכול להוביל לכיוון הנכון?</p>
+<p>[‘1a6c37’, ‘d63a32’, ‘c255f3’, ‘1a6c37’, ‘38f355’, ‘d9b665’, ‘38f355’, ‘820db2’, ‘857603’, ‘f2cceb’, ‘895eb6’, ‘729d5d’, ‘34456a’, ‘3c4852’, ‘5e1632’, ‘2bab16’, ‘29f803’, ‘7bc129’, ‘42176b’, ‘2c5c36’, ‘101276’, ‘2bf33a’, ‘1500f9’, ‘43f60a’, ‘f42fbc’, ‘9a5ca6’, ‘None’]</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/13</link>
+        <pubDate>Fri, 11 Sep 2020 14:40:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-13</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>בינתיים בכל האתרים שקראתי על DAG מבנה הנתונים כבר היה נתון (למשל <a href="https://www.geeksforgeeks.org/generate-graph-using-dictionary-python/" rel="nofollow noopener">פה</a>, <a href="https://mungingdata.com/python/dag-directed-acyclic-graph-networkx/" rel="nofollow noopener">פה</a><br>
+<a href="https://www.python.org/doc/essays/graphs/" rel="nofollow noopener">ופה</a>), והבעיה שלי היא בדיוק בבנייה של המילון שאעביר ל-Digraph.</p>
+<p>באחרון יש קוד למציאת נתיב בין שני nodes, ניסיתי לחקות אותו כדי לבודד את הנתיב מ-HEAD ל-None (נגיד אם יש לי מילון שכולל את כל ההורים של כל ה-commit-ים) אבל גם זה לא הצליח למצוא את כל ההורים (בכל פעם שהיו שניים הוא לקח רק אחד).</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/12</link>
+        <pubDate>Thu, 10 Sep 2020 08:02:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>יהיה לי קשה לעזור כי זה סופר תלוי במימוש שלך.<br>
+אני ממליץ לך לחפש על דגים באינטרנט (DAG - Directed Acyclic Graph, גרף מכוון ולא מעגלי) וכנראה שתמצא מספיק חומרים שיתנו לך כיוון <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/11</link>
+        <pubDate>Wed, 09 Sep 2020 15:04:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>אשמח להכוונה כלשהי כי אני תקוע על זה מספר שעות ללא כל התקדמות.</p>
+<p>בינתיים אני מחלץ parent מ-commit_id.txt ש-HEAD מצביע עליו, ואם הוא רשימה (כלומר יש שני הורים) אני לוקח רק אחד מההורים (אם לא אני פשוט מגדיר שהוא ה-commit_id ומחלץ את ה-parent שלו וכך הלאה). כל זה תחת לולאת while כך שהלולאה תפסיק כאשר parent = None.<br>
+מה אני עושה עם כל ההורים שלא התייחסתי אליהם כאשר בחרתי רק הורה אחד?<br>
+חשבתי להוסיף אותם לרשימה ואז לחפש את ההורים של כל אחד מהם אבל אז שוב אני בלולאה אין סופית, מה אם לאחד מהם גם כן יש 2 הורים…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/10</link>
+        <pubDate>Wed, 09 Sep 2020 14:59:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא בדיוק, הרבה פעמים רקורסיה מפרמלת נוסחת נסיגה מתמטית בצורה הרבה יותר נעימה לעין</p>
+<pre><code class="lang-auto">def fibonacci(x):
+    if x &lt; 2:
+        return 1
+    return fibonacci(x - 1) + fibonacci(x - 2)</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/9</link>
+        <pubDate>Wed, 09 Sep 2020 14:48:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אז לפי זה בכלל עדיף לולאה על פני רקורסיה. טיפה יותר פורמלי ולוקח עוד כמה שורות…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/8</link>
+        <pubDate>Wed, 09 Sep 2020 14:46:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא בהכרח, רקורסיה הרבה פעמים תתפוס יותר מקום בזיכרון כי כל קריאה לפונקציה היא “יקרה” (הקצאת עוד scope של משתנים בזיכרון)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/7</link>
+        <pubDate>Wed, 09 Sep 2020 14:44:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>בכל מקרה הרבה מקרים של רקורסיה אפשר להחליף ב while נראה לי , אם ממש רוצים להמנע מרקורסיה<br>
+(האם ההבדל ביניהם סמנטי בלבד?)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/6</link>
+        <pubDate>Wed, 09 Sep 2020 14:37:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מקרה כזה בהחלט אפשרי. הוא אולי קצת מורכב, אבל אפשר לממש אותו עם ובלי רקורסיה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/5</link>
+        <pubDate>Wed, 09 Sep 2020 14:32:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>צודק . גם אני עשיתי כך בהתחלה לפני שהגעתי למרג’. שיניתי…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/4</link>
+        <pubDate>Wed, 09 Sep 2020 14:30:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>לא שמרתי את כל הנתונים ביחד בקובץ מסוים. אני מנסה כל פעם להוציא מה- commit_id.txt האחרון את ה-parent שלו, ואז את ה-parent של ה-parent וכך הלאה ולהרכיב מזה מילון.<br>
+הבעיה היא לא בהוצאת שני הורים מה-commit_id.txt, אלא ב"להמשיך" לחפש את ההורה של כל הורה במקרה של 2 הורים, ולהוסיף את הכל למילון.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/3</link>
+        <pubDate>Wed, 09 Sep 2020 14:22:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>לא נראה לי שחייבים רקורסיה. אם אתה יכול למצוא את אחד ההורים אז באופן דומה אתה יכול למצוא יותר מהורה אחד. שים לב למבנה הקובץ ממנו אתה מנסה לחלץ את הנתונים</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/2</link>
+        <pubDate>Wed, 09 Sep 2020 14:08:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+      <item>
+        <title>הורים מרובים להורים מרובים?</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מסתבך עם עדכון הפקודה graph לאחר שכתבתי את merge.</p>
+<p>אני לא מצליח למצוא דרך לחלץ את כל ה-commit-ים בדרך מ-HEAD עד ה-commit שאין לו הורה (None), במקרה שבו יש ל-commit מסוים שני parents, ולאחד מהם גם כן יש שני parents.</p>
+<p>לדוגמה, ל-444 ו-333 יש שני parents. מקרה כזה בכלל אפשרי?<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/2/2f7b8586c4fcfdae0afe4379bf74d228f32cf701.png" alt="commit_id_tree" data-base62-sha1="6M35gkb7lOCBnyjd7aN651o3YiJ" width="414" height="122"><br>
+אני חושב שזה דורש רקורסיה, ניסיתי לממש למרות שלא למדנו ואני לא מצליח.<br>
+אשמח להכוונה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8128/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8128/1</link>
+        <pubDate>Wed, 09 Sep 2020 13:36:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8128-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8128.rss">הורים מרובים להורים מרובים?</source>
+      </item>
+  </channel>
+</rss>

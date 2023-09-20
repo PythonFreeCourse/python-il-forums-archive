@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/2-0/4939?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:11:35 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>בנק 2.0 - מערכת הזדהות - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="הפונקציה authenticate מקבלת רק שם משתמש וסיסמה, ולא מקבלת את מספר הנסיונות. האם היא מבחינתי רק פונקציית עזר כדי לבצע את התרגיל? 
+אם כן אז הדוגמאות שניתנות בחלק הזה של התרגיל מבלבלות, כי זה נראה כאילו הפונקציה authenticat&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="49399ba9.html?page=3" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="4939.rss" rel="alternate nofollow" title="הזנת RSS של ‚בנק 2.0 - מערכת הזדהות’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="49399ba9.html?page=3" property="og:url"/>
+<meta content="49399ba9.html?page=3" name="twitter:url"/>
+<meta content="בנק 2.0 - מערכת הזדהות" property="og:title"/>
+<meta content="בנק 2.0 - מערכת הזדהות" name="twitter:title"/>
+<meta content="לא ענו פה לשאלה שהוצגה בהתחלה - איך מפונקציה שמחזירה ערך בוליאני אני יכול לדעת מה סיבת הכשלון? כי אם הכישלון נובע מיוזר לא קיים אני מפסיק את התוכנית, ואם זה מסיסמא לא נכונה אני נותן לו עוד צ’אנסים. אבל ערך ההחזרה לא מלמד אותי את זה.  כיוון שאני חייב לפצל ולהבחין בין המקרים, במה שאני אגיש בסוף הפונקציה authenticate תחזיר אמת או שקר, אבל היא לא זאת שתדפיס את “המשתמש לא נמצא”. את זה הפוקנציה העוטפת תדפיס" property="og:description"/>
+<meta content="לא ענו פה לשאלה שהוצגה בהתחלה - איך מפונקציה שמחזירה ערך בוליאני אני יכול לדעת מה סיבת הכשלון? כי אם הכישלון נובע מיוזר לא קיים אני מפסיק את התוכנית, ואם זה מסיסמא לא נכונה אני נותן לו עוד צ’אנסים. אבל ערך ההחזרה לא מלמד אותי את זה.  כיוון שאני חייב לפצל ולהבחין בין המקרים, במה שאני אגיש בסוף הפונקציה authenticate תחזיר אמת או שקר, אבל היא לא זאת שתדפיס את “המשתמש לא נמצא”. את זה הפוקנציה העוטפת תדפיס" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="ביאור-תרגילים" property="og:article:tag"/>
+<meta content="מערכת-הבנק-2" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="5 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="18 ❤"/>
+<meta content="2020-04-21T11:44:06+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="49394658.html?page=2" rel="prev"/>
+<link href="4939fdb0.html?page=4" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="4939.html">בנק 2.0 - מערכת הזדהות</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%91%d7%99%d7%90%d7%95%d7%a8-%d7%aa%d7%a8%d7%92%d7%99%d7%9c%d7%99%d7%9d.html" rel="tag">ביאור-תרגילים</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%a2%d7%a8%d7%9b%d7%aa-%d7%94%d7%91%d7%a0%d7%a7-2.html" rel="tag">מערכת-הבנק-2</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="בנק 2.0 - מערכת הזדהות" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="ביאור-תרגילים, מערכת-הבנק-2" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_41" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">of313</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T11:44:06Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏ 11:44am
+                  </time>
+<meta content="2020-04-21T11:53:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא ענו פה לשאלה שהוצגה בהתחלה - איך מפונקציה שמחזירה ערך בוליאני אני יכול לדעת מה סיבת הכשלון? כי אם הכישלון נובע מיוזר לא קיים אני מפסיק את התוכנית, ואם זה מסיסמא לא נכונה אני נותן לו עוד צ’אנסים. אבל ערך ההחזרה לא מלמד אותי את זה.</p>
+<p>כיוון שאני חייב לפצל ולהבחין בין המקרים, במה שאני אגיש בסוף הפונקציה authenticate תחזיר אמת או שקר, אבל היא לא זאת שתדפיס את “המשתמש לא נמצא”. את זה הפוקנציה העוטפת תדפיס</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_42" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">OrelHandler</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T13:48:29Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  1:48pm
+                  </time>
+<meta content="2020-04-21T13:48:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מתנצל, יצאתי רק מבולבל מכל התגובות פה. מישהו יכול לסכם בקצרה מה הולך כאן? עד עכשיו כל התרגילים עברו לי בצורה חלקה, אבל הניסוח של התרגיל הזה פשוט לא מובן.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_43" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T14:02:48Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  2:02pm
+                  </time>
+<meta content="2020-04-21T14:02:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הסיכום הוא שהפונקציה authenticate  צריכה לבדוק האם ישנה התחברות מוצלחת<br/>
+מחזירה אמת עם כן ושקר אם לא.</p>
+<p>היא צריכה להיות מוכלת בתוך פונקציה כללית יותר אשר מנהלת את כל מערך הכניסה<br/>
+למערכת הבנק ולא היא בעצמה מערכת הכניסה לבנק.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_44" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T14:04:14Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  2:04pm
+                  </time>
+<meta content="2020-04-21T14:04:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפונקציה authenticate צריכה לבדוק אם יש התחברות מוצלחת לבנק או לא<br/>
+לא על פי איזה פרמטר.<br/>
+לבדוק האם זה על פי הסיסמה או השם משתמש זה כבר אחריות<br/>
+של הקוד שלך לבדוק (בעוד פונקציה, או מחוץ לפונקציה, או בכל דרך שאתה רואה לנכון)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_45" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">OrelHandler</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T14:07:43Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  2:07pm
+                  </time>
+<meta content="2020-04-21T14:07:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם אני יכול להניח שלא יעשה ניסיון התחברות של משתמש שני בזמן שהמשתמש ראשון עוד לא סיים את שלוש הניסיונות שלו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_46" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T14:12:57Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  2:12pm
+                  </time>
+<meta content="2020-04-21T14:12:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן. בגדול אני חושב שנכון שהפוקנציה תתמודד עם משתמש אחד בכל פעם.<br/>
+אני אישית עשיתי עבור נסיון כניסה “אחד” כלומר עבור משתמש אחד, אם מצליח מעולה אם לא הוא נמחק וזהו.</p>
+<p>בעתיד אם ארצה כביכול אוכל לעשות מערכת כניסות אינסופית שתמיד תאפשר לך להימחק ולהירשם<br/>
+אבל היא גם תצריך אפשרות “לצאת” באופן כללי מהממשק. אבל לא נראה לי שלזה מכוונים פה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_47" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T15:55:54Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  3:55pm
+                  </time>
+<meta content="2020-04-21T16:00:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז בעצם כל הפלטים של הפונקציה authenticate שנתנו במחברת לא נכונות?<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/f85573659c1b6a91b9399db986b70fa5e36d4bfb" href="../../uploads/default/original/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb.png" title="image"><img alt="image" data-base62-sha1="zqRunWyvqNCKtG4eV8msfzt7ETh" data-small-upload="../../uploads/default/optimized/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb_2_10x10.png" height="247" src="../../uploads/default/optimized/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb_2_689x247.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb_2_689x247.png, https://forums.pythonic.guru/uploads/default/optimized/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb_2_1033x370.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/f/f85573659c1b6a91b9399db986b70fa5e36d4bfb.png 2x" width="689"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1283×460 51.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>כי היא צריכה להחזיר או TRUE אם הצליח להתחבר וFALSE אם לא הצליח</p>
+<p>בעצם הפלטים שיש פה זה של כל הקוד שאכתוב (עם עוד פונקציות), הבנתי נכון ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_49" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Felixmn</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T16:08:52Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  4:08pm
+                  </time>
+<meta content="2020-04-21T16:08:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מדויק ביותר, זו הכוונה של החידוד מעלה של איתמר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_50" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T19:25:57Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  7:25pm
+                  </time>
+<meta content="2020-04-21T20:10:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני לא מצליחה להבין איך המשתמש מכניס  שם משתמש וסיסמא חדשה במידה וטעה.<br/>
+באמצעות קריאה לפונקציה או בקבלת קלט של הסיסמא ושם המשתמש מהמשתמש?</p>
+<p>ובגלל שהפונקציה authenticate מחזירה רק TRUE או FALSE אם הצליח להתחבר או לא<br/>
+היא קצת הופכת לחסרת משמעות בקוד שלי… כאילו שמתי אותה בקוד אבל היא לא באמת נחוצה…<br/>
+האם חייב בכל זאת להגיש אותה ? או שאני מפספסת משהו ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_51" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T19:55:04Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  7:55pm
+                  </time>
+<meta content="2020-04-21T19:55:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנוסף בעת מחיקת שם המשתמש מהקובץ סיסמאות.<br/>
+לא למדנו איך מוצאים איפה מילה שאנחנו מחפשים נמצאת בקובץ.<br/>
+האם להוציא את התוכן של הקובץ לרשימה (שבה כל תא הוא שם משתמש, סיסמא, שם משתמש, סיסמא) למשל ולקבל את האינדקס שבה המילה מופיעה זה שווה ערך למיקום של המילה בקובץ ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_52" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-22T04:25:54Z" itemprop="datePublished">
+                     22 באפריל,‏ 2020,‏  4:25am
+                  </time>
+<meta content="2020-04-22T04:25:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="50" data-topic="4939" data-username="ruty3017">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/ruty3017/40/1712_2.jpg" width="20"/> ruty3017:</div>
+<blockquote>
+<p>אני לא מצליחה להבין איך המשתמש מכניס שם משתמש וסיסמא חדשה במידה וטעה.</p>
+</blockquote>
+</aside>
+<p>אני אמקד אותך: את צריכה להכניס שם משתמש וסיסמה חדשים כל עוד הקלט לא היה נכון.<br/>
+אילו מבנים שאת מכירה יודעים לקחת True/False ובהתאם לזה לבצע פעולה?</p>
+<aside class="quote no-group" data-post="51" data-topic="4939" data-username="ruty3017">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/ruty3017/40/1712_2.jpg" width="20"/> ruty3017:</div>
+<blockquote>
+<p>האם להוציא את התוכן של הקובץ לרשימה (שבה כל תא הוא שם משתמש, סיסמא, שם משתמש, סיסמא) למשל ולקבל את האינדקס שבה המילה מופיעה זה שווה ערך למיקום של המילה בקובץ ?</p>
+</blockquote>
+</aside>
+<p>אם זה יכול לעזור לך למחוק את השורה אז כל תעלול כשר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_53" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">imimouni</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-23T15:08:32Z" itemprop="datePublished">
+                     23 באפריל,‏ 2020,‏  3:08pm
+                  </time>
+<meta content="2020-04-23T15:08:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חסכת לי את השאלה! מזל שאפשר לאפס <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+כבר התחלתי לחשוב איך לעזאזל אני אשמור כמה ניסיונות כל משתמש כבר עשה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_54" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">zoharya</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T11:43:44Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏ 11:43am
+                  </time>
+<meta content="2020-04-24T11:43:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לפי מה שהבנתי מניסוח ההוראות בתרגיל, בקוד שכתבתי- אם הקלט לא היה נכון (אחרי שאימת את שם המשתמש), המערכת מבקשת להכניס רק סיסמא עוד פעמיים, ולא שוב את השם משתמש (כך שאי אפשר להחליף שם משתמש באמצע). האם זה בסדר או שאני צריכה לשנות את זה לכך שיכניס בכל ניסיון גם שם משתמש מחדש?<br/>
+תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_55" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">itamaraviv</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T11:55:22Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏ 11:55am
+                  </time>
+<meta content="2020-04-24T11:55:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה בסדר, זה לא העיקר בתרגיל ולא נתעקש על זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_56" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T12:28:40Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏ 12:28pm
+                  </time>
+<meta content="2020-04-24T12:28:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+בחלק של מערכת הזדהות- לא הבנתי האם כאשר כתוב בתרגיל שהלקוח יזין שם משתמש וסיסמה, הדבר נעשה ע"י המשתמש ב input ורק לאחר מכן מתבצעת קריאה לפונקציה?<br/>
+או האם הכוונה היא קריאה לפונקציה בלבד?<br/>
+אם הכוונה ע"י קריאה לפונקצייה בלבד כיצד ניתן לשמור את שם המשתמש אשר נמצא בקריאה לפונקצייה על מנת לוודא שלא נעשה לשם משתמש מסויים 3 קריאות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_57" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">itamaraviv</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T13:24:17Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏  1:24pm
+                  </time>
+<meta content="2020-04-24T13:24:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קראי את ההודעות בשרשור ואם עדיין אין לך תשובה תכתבי שוב.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_58" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T13:27:00Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏  1:27pm
+                  </time>
+<meta content="2020-04-24T13:27:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עברתי על כל השרשור ועל שרשורים אחרים בנושא לפני שכתבתי את השאלה ועדיין לא הצלחתי להבין.<br/>
+אשמח להסבר נוסף.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_59" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">itamaraviv</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-24T13:43:02Z" itemprop="datePublished">
+                     24 באפריל,‏ 2020,‏  1:43pm
+                  </time>
+<meta content="2020-04-24T13:43:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הכוונה היא לקלוט דרך input ואז להשתמש במידע הזה כדי לקרוא לפונקציה, לא חייבת להיות רק קריאה לפונקציה, אפשר שיהיה קוד נוסף שיאפשר את מה שמתואר בתרגיל<br/>
+איתמר</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_61" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T08:49:53Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏  8:49am
+                  </time>
+<meta content="2020-04-25T08:49:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם את פותחת קובץ במצב “w” כל מה שבתוכו נמחק אוטומטית. ייתכן שעשית זאת בטעות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_64" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">timnar312</span>
+</span>
+<link href="4939.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-25T12:10:10Z" itemprop="datePublished">
+                     25 באפריל,‏ 2020,‏ 12:10pm
+                  </time>
+<meta content="2020-04-25T12:10:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני חושבת שאת התגובה הזו צריך <strong>להדגיש</strong> .<br/>
+היא מסבירה הכל. <img alt=":ok_woman:" class="emoji" src="../../images/emoji/twitter/ok_womanc164.png?v=9" title=":ok_woman:"/><br/>
+עברתי על כל הפורום עד שקראתי פה <strong>שצריך לעשות input</strong><br/>
+)לשם כך נכנסתי לחפש תשובה כי לא היה לי ברור(.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="49394658.html?page=2" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+<span itemprop="name"><b><a href="4939fdb0.html?page=4" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/2-0/4939?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:11:40 GMT -->
+</html>

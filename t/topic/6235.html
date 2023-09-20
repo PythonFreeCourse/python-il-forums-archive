@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/6235 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:13:13 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מספרים פראיים - עצירת לולאה - שבוע 5 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+אני מקבל פלט תקין אבל אחת הפונקציה (גנרטור),שמעבירה אליי את המספר הראשוני הבא ,ממשיכה לרוץ עד שמגיעה למספר שנקלט. 
+זה נראה לי לא יעיל ואני לא מצליח למצוא תנאי עצירה או טכניקה לעצור גנרטור. 
+אפשר עזרה ?" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6235.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6235.rss" rel="alternate nofollow" title="הזנת RSS של ‚מספרים פראיים - עצירת לולאה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6235.html" property="og:url"/>
+<meta content="6235.html" name="twitter:url"/>
+<meta content="מספרים פראיים - עצירת לולאה" property="og:title"/>
+<meta content="מספרים פראיים - עצירת לולאה" name="twitter:title"/>
+<meta content="היי,  אני מקבל פלט תקין אבל אחת הפונקציה (גנרטור),שמעבירה אליי את המספר הראשוני הבא ,ממשיכה לרוץ עד שמגיעה למספר שנקלט.  זה נראה לי לא יעיל ואני לא מצליח למצוא תנאי עצירה או טכניקה לעצור גנרטור.  אפשר עזרה ?" property="og:description"/>
+<meta content="היי,  אני מקבל פלט תקין אבל אחת הפונקציה (גנרטור),שמעבירה אליי את המספר הראשוני הבא ,ממשיכה לרוץ עד שמגיעה למספר שנקלט.  זה נראה לי לא יעיל ואני לא מצליח למצוא תנאי עצירה או טכניקה לעצור גנרטור.  אפשר עזרה ?" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 5" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="מספרים-פראיים" property="og:article:tag"/>
+<meta content="generator" property="og:article:tag"/>
+<meta content="לולאה-אין-סופית" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-05-15T09:16:53+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"מספרים פראיים - עצירת לולאה","mainEntity":{"@type":"Question","name":"מספרים פראיים - עצירת לולאה","text":"היי,\n\nאני מקבל פלט תקין אבל אחת הפונקציה (גנרטור),שמעבירה אליי את המספר הראשוני הבא ,ממשיכה לרוץ עד שמגיעה למספר שנקלט.\n\nזה נראה לי לא יעיל ואני לא מצליח למצוא תנאי עצירה או טכניקה לעצור גנרטור.\n\nאפשר עזרה ?","upvoteCount":0,"answerCount":0,"dateCreated":"2020-05-15T09:16:53.860Z","author":{"@type":"Person","name":"Adiel Audi "}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6235.html">מספרים פראיים - עצירת לולאה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-5/14.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 5</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%9e%d7%a1%d7%a4%d7%a8%d7%99%d7%9d-%d7%a4%d7%a8%d7%90%d7%99%d7%99%d7%9d.html" rel="tag">מספרים-פראיים</a>, 
+            <a class="discourse-tag" href="../../tag/generator.html" rel="tag">generator</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9c%d7%95%d7%9c%d7%90%d7%94-%d7%90%d7%99%d7%9f-%d7%a1%d7%95%d7%a4%d7%99%d7%aa.html" rel="tag">לולאה-אין-סופית</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מספרים פראיים - עצירת לולאה" itemprop="headline"/>
+<meta content="שבוע 5" itemprop="articleSection"/>
+<meta content="מספרים-פראיים, generator, לולאה-אין-סופית" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adiel1988</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T09:16:53Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  9:16am
+                  </time>
+<meta content="2021-09-13T16:27:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,</p>
+<p>אני מקבל פלט תקין אבל אחת הפונקציה (גנרטור),שמעבירה אליי את המספר הראשוני הבא ,ממשיכה לרוץ עד שמגיעה למספר שנקלט.<br/>
+זה נראה לי לא יעיל ואני לא מצליח למצוא תנאי עצירה או טכניקה לעצור גנרטור.<br/>
+אפשר עזרה ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T09:22:40Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  9:22am
+                  </time>
+<meta content="2020-05-15T09:22:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש שלשה מצבים (לפחות ממה שאני הצלחתי להבין).</p>
+<ol>
+<li>
+<p>מצב בו הגנרייטור מכיל בתוכו לולואה אינסופית - ואז ה"תנאי עצירה" שלו הוא מחוץ לגנרייטור עצמו<br/>
+באמצעות לולאה for  עם טווח range או לחילופין while  עם תנאי עצירה כלשהו. כל זימון יבוצע עם הפונקציה next</p>
+</li>
+<li>
+<p>גנרייטור שרץ בלולאה פור כ generator iterable  כלומר, אנחנו מכניסים ללולאת הפור את הגנרייטור עצמו (כמו להכניס for  שירוץ על רשימה לצורך העניין)<br/>
+במצב זה אין לנו צורך בפונקציה next ו הגנרייטור ירוץ עד שהוא מגיע לסופו - כלומר בתוכו הוא מגיע לאיזה שהוא סוף (יש לו תנאי עצירה בתוך הפונקציה).</p>
+</li>
+<li>
+<p>מצב 2 כאשר בתוך הגנרייטור יש לולאה אינסופית - אנו ניכנס למצב של לולאה אינסופית. ממצב זה צריך להימנע.</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T09:27:20Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  9:27am
+                  </time>
+<meta content="2020-05-15T09:27:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גנרטורים יכולים אמנם לרוץ עד אינסוף, למשל אם יש בהם לולאה while True, אבל ממש כמו שבפונקציה רגילה שאינה גנרטור היית רוצה לעצור אחרי שמצאת את כל הגורמים של המספר, גם כאן עלייך למצוא את התנאי שיגיד "מצאת את כל הגורמים, עצור. יש הרבה אפשרויות לשחק עם זה ולמצוא תנאים - חלקם יעילים יותר וחלקם פחות (כלומר, חלקם יעצרו את הריצה שלך ברגע שסיימת וחלקם ימשיכו לרוץ עוד קצת למרות שאין עוד מה לחפש).<br/>
+אם נושא הגנרטורים אינו אינטואיטיבי לך נסי להבין איך היית עושה זאת אם היה מדובר בפונקציה שמחזירה רשימה של המספרים הללו - ולא בגנרטור - ונסי להחיל את תנאי העצירה על הגנרטור.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adiel1988</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T14:45:47Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  2:45pm
+                  </time>
+<meta content="2020-05-15T14:52:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זאת לא לולאה אינסופית.<br/>
+הקוד פשוט ממשיך לרוץ גם אחרי שמצאתי את התשובה.<br/>
+יש גנרטור שמבצע את הפירוק לגורמים וגנרטור שני שמייצר את המספר הראשוניים ושולח לגנרטור הראשון.<br/>
+הגנרטור השני ממשיך בריצה( התנאי שלו לעצירה הוא לייצר מספרים ראשוניים עד אותו מספר שנקלט), גם אחרי שהגנרטור הראשון מצא את הפלט.<br/>
+והקוד סתם ממשיך לעבוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T14:54:26Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  2:54pm
+                  </time>
+<meta content="2020-05-15T14:54:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם הוא ממשיך לרוץ זה אומר שהוא בלולאה שלא מפסיקה לרוץ… כלומר אין לו תנאי עצירה.<br/>
+יכול להיות שכשאשר הוא מגיע למספר שאתה רוצה הוא מציג תוצאה אבל זה לא אומר שהוא מפסיק להריץ אותו.</p>
+<p>ממליץ לעבוד ידנית על המספר n - 1  עד  n + 1  ולראות מה קורה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T20:38:30Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  8:38pm
+                  </time>
+<meta content="2020-05-16T20:38:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מנצלת ת’רד קיים לשאלות נוספות (קשורות יותר וקשורות פחות)</p>
+<ol>
+<li>
+<p>ראיתי פה, ובמקומות נוספים בפורום, התייחסות לבדיקה האם המספר שמגיעים אליו הוא ראשוני או לא. לא הבנתי: למה צריך את הבדיקה הזו?</p>
+</li>
+<li>
+<p>למה בבקשות התרגיל צריך להניח שהמספר שהתקבל אינו ראשוני? למה זה משנה לפתרון? (כיוון שלא עשיתי את ההנחה הזו, הוספתי הדפסת שורה נוספת שמדגישה שהתשובה שהתקבלה משמעותה שהמספר הוא ראשוני)</p>
+</li>
+<li>
+<p>לא היה ברור לי אם בתרגיל הבקשה היא ליצור פונקציה שאינה גנרטור, או גנרטור, אז למען הסר ספק עשיתי אחת מהסוג הראשון ואחד מהסוג השני (זה פחות שאלה ויותר FYI)</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="6235.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T20:44:49Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  8:44pm
+                  </time>
+<meta content="2020-05-16T20:44:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>תלוי באופן המימוש, יש מימושים שצריכים את זה.</li>
+<li>יש מימושים שבהם זה מקל משמעותית על זמן הריצה.<br/>
+אם 1 ו-2 לא ברורים לך אז כנראה שמימשת את זה בדרך יעילה יותר וזה נהדר <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+<li>בהינתן שזה תרגיל ביניים במחברת גנרטורים אני מניחה שהכוונה היתה רק לגנרטור. לממש בנוסף פונקציה שעושה את זה זה לא מאוד קשה וזו פונקציה די דומה סה"כ - אז אין בזה שום דבר רע <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/6235 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:13:14 GMT -->
+</html>

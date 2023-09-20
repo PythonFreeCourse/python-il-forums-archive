@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>מבנה קבצים - אתר</title>
+    <link>https://forums.pythonic.guru/t/topic/8606</link>
+    <description>היי, 
+
+בלייב ה5 שבו ים עובד על המערכת הקבצים של @koby - נראה כי כל קבצי ההגדרה
+נמצאים ב קובץ בשם 
+```
+__init__.py
+```
+מצ&quot;ב צילום מסך:
+![image|690x385](upload://nqUVWBWxRC0vFoQUOEONnImDz9W.jpeg) 
+
+בשונה בגדול ממה שאני אישית חשבתי שעושים. 
+ממה שהבנתי שעשינו את הפרויקט הוא שהייבוא של פלסק וההגדרות של app נעשים 
+בתוך app.py 
+ 
+ההתחברות ל database נעשhת איפה שהקוד של הdatabase 
+
+משתני סביבה וכאלה אז שוב אפשר לשים בקובץ נפרד כמו config.py  או לקבל אותם ישירות לקובץ בו צריך אותם (למשל שמבקשים DATABASR_URL  איפה שהחיבור - שהוא בעצם בקובץ של הפונקציות על המסד נתונים. 
+
+הייתי שמח לדעת איך בעצם זה עובד שהכל נמצא בinit, האם אכן זו הפרקטיקה הטובה יותר (שואל כדי לדעת להבא) 
+בנוסף יש פה עוד הגדרות שהייתי שמח להבין או כמו התנאים שקיימים פה שאומרים לו מאיפה לעבוד.
+
+קובי - הייתי שמח אם אתה מוצא זמן פנוי - היית מסביר אפילו מעט על השורות בקובץ הזה, המודולים שייבאת וכו. 
+אישית זה יעזור לי מאוד.</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 03 Jan 2021 11:58:03 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8606.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>מבנה קבצים - אתר</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אביעד אני לא יכול לומר שאני מבין לחלוטין את כל ענין ההגדרות.<br>
+ההגדרות שבהן השתמשתי הן מתוך מעקב אחר מדריכים שונים, וכן לאחר ניסיונות שונים, עד שאני מוצא את ההגדרה שעובדת…<br>
+להבנתי אין פה ממש ‘נכון’ או לא ‘נכון’ מובהקים. זה קצת ענין של בחירה אישית, איך נוח לך להגדיר.<br>
+לצורך הענין, העדפתי לא לצור קובץ קונפיג עבור שתי הגדרות בודדות. נראה לי מיותר, ובחרתי להשאיר אותן בקובץ ההפעלה. מוגדר יש בהגדרות הללו התניה שמפנה אוטומטית למשתני סביבת עבודה אם מוגדרים כאלה, ואם לא, אז ישנה השמה של ערך.<br>
+בנוגע לקובץ app.py: יש לי קובץ כזה, אך הוא חיצוני לתיקיית הפרוייקט, ומהווה קובץ הרצה בלבד. בחרתי לעשות את ייבוא המודולים בתוך איניט, מכיוון שזה מאפשר לייבא את app ישירות מתיקיית הפרוייקט. מצרף תמונת מסך של קובץ אחר בפרוייקט עבור הדגמה:<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/2/21b6543891dced5e162f54005b82042ed38abaa1.png" alt="image" data-base62-sha1="4OeosLyDrbGXhncMR2gUbL484E1" width="615" height="214">  במידה והייתי יוצר את את מופע פלאסק בקובץ שנקרא app.py, אז כל ייבוא שלו היה צריך להיראות ככה: from app import app. ולדעתי זה מעט מבלבל. אבל שוב, ענין של בחירה אישית. ניתן לעשות גם אחרת, וזה יעבוד טוב באותה המידה.<br>
+ייבוא המודולים הוא רגיל עבור עבודה עם פלאסק. אתה מייבא את פלאסק ויוצר ממנה מופע, ושם במשתנה.<br>
+מייבא את sqlalchemy ויוצר ממנו מופע על ידי שליחת המשתנה של מחלקת פלאסק, וגם אותו שומר במשתנה DB.<br>
+בדיוק אותו התהליך מיושם עבור כל אחת מסיפריות העזר של פלאסק. כל סיפרייה שאתה רוצה לעבוד איתה, אתה מייבא, ושומר במשתנה מופע של המחלקה הזאת, אותו אתה יוצר על ידי שליחת המופע של פלאסק שיצרת לאותה תת ספרייה.<br>
+הגדרת login_view היא הגדרה של סיפריית פלאסק לוגאין. כאשר אתה מגדיר ראוט מסוים כ - login requierd, פלאסק לוגאין לא תאפשר כמובן ליוזר שאינו מחובר לפנות לראוט הזה. השאלה היא מה יחזור מהשרת במקרה כזה. במידה ולא תגדיר פה כלום, אז יחזור error 401, שהוא הדיפולט של הסיפרייה. אבל פה אתה בעצם יכול להוביל את המשתמש לכל ראוט אחר. במקרה הזה, הפניתי לעמוד login. אתה יכול להפעיל את האפליקציה, ומבלי להתחבר, להקליד בשורת הכתובת account/, שהוא ראוט מוגן. ותראה שאתה מופנה לעמוד לוגאין.<br>
+מקווה שההסברים שלי עזרו קצת <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8606/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8606/2</link>
+        <pubDate>Sun, 03 Jan 2021 11:58:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8606-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8606.rss">מבנה קבצים - אתר</source>
+      </item>
+      <item>
+        <title>מבנה קבצים - אתר</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>בלייב ה5 שבו ים עובד על המערכת הקבצים של <a class="mention" href="https://forums.pythonic.guru/u/koby">@koby</a> - נראה כי כל קבצי ההגדרה<br>
+נמצאים ב קובץ בשם</p>
+<pre><code class="lang-auto">__init__.py
+</code></pre>
+<p>מצ"ב צילום מסך:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/a43cf889c8c27958ec458a785ef916fdcb6796dc.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/a43cf889c8c27958ec458a785ef916fdcb6796dc" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/a43cf889c8c27958ec458a785ef916fdcb6796dc.jpeg" alt="image" data-base62-sha1="nqUVWBWxRC0vFoQUOEONnImDz9W" width="690" height="385" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a43cf889c8c27958ec458a785ef916fdcb6796dc_2_10x10.png"></a></div><p></p>
+<p>בשונה בגדול ממה שאני אישית חשבתי שעושים.<br>
+ממה שהבנתי שעשינו את הפרויקט הוא שהייבוא של פלסק וההגדרות של app נעשים<br>
+בתוך app.py</p>
+<p>ההתחברות ל database נעשhת איפה שהקוד של הdatabase</p>
+<p>משתני סביבה וכאלה אז שוב אפשר לשים בקובץ נפרד כמו config.py  או לקבל אותם ישירות לקובץ בו צריך אותם (למשל שמבקשים DATABASR_URL  איפה שהחיבור - שהוא בעצם בקובץ של הפונקציות על המסד נתונים.</p>
+<p>הייתי שמח לדעת איך בעצם זה עובד שהכל נמצא בinit, האם אכן זו הפרקטיקה הטובה יותר (שואל כדי לדעת להבא)<br>
+בנוסף יש פה עוד הגדרות שהייתי שמח להבין או כמו התנאים שקיימים פה שאומרים לו מאיפה לעבוד.</p>
+<p>קובי - הייתי שמח אם אתה מוצא זמן פנוי - היית מסביר אפילו מעט על השורות בקובץ הזה, המודולים שייבאת וכו.<br>
+אישית זה יעזור לי מאוד.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8606/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8606/1</link>
+        <pubDate>Sun, 03 Jan 2021 11:07:18 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8606-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8606.rss">מבנה קבצים - אתר</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלה על copy() ו-id במחברת 5</title>
+    <link>https://forums.pythonic.guru/t/copy-id-5/5809</link>
+    <description>אז באחת הדוגמאות של הפעולה id
+יש את התרגול הבא:
+גרמו לכך שהקוד שמוסיף את הערך 100 לרשימה הראשונה לא ישפיע על שאר הרשימות.
+
+collections_of_numbers = [[0, 0, 0]] * 3
+print(collections_of_numbers)
+collections_of_numbers[0].append(100)
+print(collections_of_numbers)
+
+
+אז כדי להוסיף 100 רק לתת רשימה הראשונה, שיניתי את השורה הראשונה ל:
+collections_of_numbers = [[0, 0, 0], [0, 0, 0], [0, 0, 0]
+וזה עבד.
+
+אבל, למה בשימוש ב
+copy
+זה לא מסתדר?
+
+למשל:
+collections_of_numbers = [[0, 0, 0]]
+x = collections_of_numbers.copy()
+new_collections_of_numbers = collections_of_numbers + x + x
+print(new_collections_of_numbers)
+new_collections_of_numbers[0].append(100)
+print(new_collections_of_numbers)</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 03 May 2020 21:25:17 +0000</lastBuildDate>
+    <category>שבוע 4</category>
+    <atom:link href="https://forums.pythonic.guru/t/copy-id-5/5809.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>זו בהחלט דרך אפשרית - זה מה שנקרא list comprehension וזה נמצא תחת שבוע 6 לפי הסילבוס.</p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/6</link>
+        <pubDate>Sun, 03 May 2020 21:25:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-6</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[roneng]]></dc:creator>
+        <description><![CDATA[
+            <p>מצאתי שזה גם פתרון (זה כתיבה מקוצרת של for שראיתי בדוקומנטציה):<br>
+<code>collections_of_numbers = [[0 for i in range(3)] for j in range(3)]</code></p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/5</link>
+        <pubDate>Sun, 03 May 2020 21:23:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-5</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא, כי המבנה החיצוני הוא רשימה בת שלושה “לייזרים”.<br>
+הוא יוצר את הלייזרים מחדש, אבל הם מצביעים לאותו מיקומים.</p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/4</link>
+        <pubDate>Sun, 03 May 2020 16:32:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-4</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[neri]]></dc:creator>
+        <description><![CDATA[
+            <p>אם ככה, אז x  היה צריך להיות רשימה ריקה, לא?</p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/3</link>
+        <pubDate>Sun, 03 May 2020 16:29:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-3</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>שימוש ב־<code>copy</code> משכפל רק את הרשימה החיצונית, לא את כל המבנה</p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/2</link>
+        <pubDate>Sun, 03 May 2020 16:24:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-2</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+      <item>
+        <title>שאלה על copy() ו-id במחברת 5</title>
+        <dc:creator><![CDATA[neri]]></dc:creator>
+        <description><![CDATA[
+            <p>אז באחת הדוגמאות של הפעולה id<br>
+יש את התרגול הבא:<br>
+גרמו לכך שהקוד שמוסיף את הערך 100 לרשימה הראשונה לא ישפיע על שאר הרשימות.</p>
+<p>collections_of_numbers = [[0, 0, 0]] * 3<br>
+print(collections_of_numbers)<br>
+collections_of_numbers[0].append(100)<br>
+print(collections_of_numbers)</p>
+<p>אז כדי להוסיף 100 רק לתת רשימה הראשונה, שיניתי את השורה הראשונה ל:<br>
+collections_of_numbers = [[0, 0, 0], [0, 0, 0], [0, 0, 0]<br>
+וזה עבד.</p>
+<p>אבל, למה בשימוש ב<br>
+copy<br>
+זה לא מסתדר?</p>
+<p>למשל:<br>
+collections_of_numbers = [[0, 0, 0]]<br>
+x = collections_of_numbers.copy()<br>
+new_collections_of_numbers = collections_of_numbers + x + x<br>
+print(new_collections_of_numbers)<br>
+new_collections_of_numbers[0].append(100)<br>
+print(new_collections_of_numbers)</p>
+          <p><a href="https://forums.pythonic.guru/t/copy-id-5/5809/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/copy-id-5/5809/1</link>
+        <pubDate>Sun, 03 May 2020 16:19:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-5809-1</guid>
+        <source url="https://forums.pythonic.guru/t/copy-id-5/5809.rss">שאלה על copy() ו-id במחברת 5</source>
+      </item>
+  </channel>
+</rss>

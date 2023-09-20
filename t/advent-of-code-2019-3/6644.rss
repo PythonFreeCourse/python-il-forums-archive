@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Advent of Code 2019 🤯 (יום 3)</title>
+    <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644</link>
+    <description>שרשור [Advent of Code יום 1](https://forums.pythonic.guru/t/advent-of-code-2019-1/6478) נחל הצלחה גדולה, וגם [Advent of Code יום 2](https://forums.pythonic.guru/t/advent-of-code-2019-2/6486) שהיה משמעותית קשוח מקודמו.
+
+אני מניח שהאתגר הזה ישאר פה **לפחות** ליומיים שלושה, אז קחו את הזמן :slight_smile:
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.
+
+אז קדימה, פרסמו פה את הפתרונות שלכם [ליום השלישי](https://adventofcode.com/2019/day/3) של Advent of Code!</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 06 Jun 2020 17:31:02 +0000</lastBuildDate>
+    <category>אתגר</category>
+    <atom:link href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            
+חלק א' + ב' <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/17">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/17</link>
+        <pubDate>Sat, 06 Jun 2020 17:31:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-17</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[yosefco3]]></dc:creator>
+        <description><![CDATA[
+            <p>שני החלקים :</p>
+<pre><code class="lang-auto">
+
+
+def make_steps(direction, steps, current_point, points):
+    for i in range(1, int(steps) + 1):
+        if direction == "R":
+            points.append((current_point[0] + i, current_point[1]))
+        elif direction == "U":
+            points.append((current_point[0], current_point[1] + i))
+        elif direction == "L":
+            points.append((current_point[0] - i, current_point[1]))
+        else:
+            points.append((current_point[0], current_point[1] - i))
+    return points
+
+
+def points_on_route(li):
+    points = [(0, 0)]
+    for x in li:
+        points = make_steps(x[0], x[1:], points[-1], points)
+    return points
+
+
+def read_lines_from_file(path):
+    with open(path, "r") as f:
+        f = f.read().split("\n")
+        line1, line2 = f[0].split(","), f[1].split(",")
+        return line1, line2
+
+
+def common_points_two_lines(line1,line2):
+    common_points = []
+    line1 = set(points_on_route(line1))
+    line2 = set(points_on_route(line2))
+    common_points = line1.intersection(line2)
+    # common_points = common_points.remove((0, 0))
+    # common_points = [point for point in line1 if point in line2 and point != (0, 0)]
+    common_points -= {(0, 0)}
+    # print(common_points)
+    return common_points
+
+
+#####################################
+#### part 1##########################
+#####################################
+
+
+# def find_closest(path=None):
+#     if path:
+#         line1, line2 = read_lines_from_file(path)
+#     common_points = common_points_two_lines(line1,line2)
+#     common_points_distance = [
+#         sum((abs(point[0]), abs(point[1]))) for point in common_points
+#     ]
+#     return min(common_points_distance)
+
+
+# print(find_closest("lines.txt"))
+
+###############################
+###part 2######################
+###############################
+
+
+def find_min_steps(path=None):
+    if path:
+        line1, line2 = read_lines_from_file(path)
+    common_points = common_points_two_lines(line1,line2)
+    for point in common_points:
+        points_line_1_until_intersection =points_on_route_until_common_point(line1,point)
+        points_line_2_until_intersection =points_on_route_until_common_point(line2,point)
+        yield len(points_line_1_until_intersection)+len(points_line_2_until_intersection)
+            
+
+    
+def points_on_route_until_common_point(li,first_common_point):
+    points = [(0, 0)]
+    for x in li:
+        points = make_steps(x[0], x[1:], points[-1], points)
+        if first_common_point in points:
+            return points[:points.index(first_common_point)]
+
+
+        
+print(min(list(find_min_steps("lines.txt"))))
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/16</link>
+        <pubDate>Sat, 06 Jun 2020 07:56:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-16</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>כנראה אחד הדברים הפחות יעילים שכתבתי, אבל כבר לילה והתרגיל הזה התיש אותי <img src="https://forums.pythonic.guru/images/emoji/twitter/sleepy.png?v=9" title=":sleepy:" class="emoji" alt=":sleepy:"></p>
+<pre><code class="lang-auto">import math
+
+
+def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        lines =  puzzle_input.readlines()
+        return [line.split(',') for line in lines]
+
+
+def move(current_height, current_width, direction, num, moves):
+    for i in range(num):
+        if direction == 'D':
+            current_height += 1
+        elif direction == 'U':
+            current_height -= 1
+        elif direction == 'R':
+            current_width += 1
+        else:
+            current_width -= 1
+
+        moves.append((current_height, current_width))
+    return current_height, current_width, moves
+
+
+def get_intersections(path1, path2):
+    i = j = x = y = 0
+    moves_first = []
+    moves_second = []
+    intersections_first = []
+    intersections_second = []
+    
+    max_length = max(len(path1), len(path2))
+    for k in range(max_length):
+        if k &lt; len(path1):
+            i, j, moves_first = move(i, j, path1[k][0], int(path1[k][1:]), moves_first)
+        if k &lt; len(path2):
+            x, y, moves_second = move(x, y, path2[k][0], int(path2[k][1:]), moves_second)
+    
+    for i, position in enumerate(moves_first):
+        if position in moves_second:
+            intersections_first.append((position, i + 1))
+            
+    for j, pos in enumerate(moves_second):
+        if pos in moves_first:
+            intersections_second.append((pos, j + 1))
+            
+    return intersections_first, intersections_second
+
+
+def calc_manhattan_distance(p, q):
+    return abs(p[0] - q[0][0]) + abs(p[1] - q[0][1])
+
+
+def get_min_steps(intersections_first, intersections_second):
+    min_steps = math.inf
+    for intersection in intersections_first:
+        for intersection2 in intersections_second:
+            if intersection[0] == intersection2[0]:
+                if intersection[1] + intersection2[1] &lt; min_steps:
+                    min_steps = intersection[1] + intersection2[1]
+                    best = intersection[0]
+    return min_steps
+
+
+data = get_input('resources/input.txt')
+intersections_first, intersections_second = get_intersections(data[0], data[1])
+
+# First Part
+print(min([calc_manhattan_distance((0,0), intersection) for intersection in intersections_first]))
+
+# Second Part
+print(get_min_steps(intersections_first, intersections_second))
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/15</link>
+        <pubDate>Thu, 04 Jun 2020 22:11:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-15</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            
+שני החלקים <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/14">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/14</link>
+        <pubDate>Mon, 01 Jun 2020 16:20:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-14</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[eliory09]]></dc:creator>
+        <description><![CDATA[
+            <p>באיחור קטן <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+
+Advent of Code, Day 3 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/13">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/13</link>
+        <pubDate>Mon, 01 Jun 2020 09:37:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-13</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לכם עד מחר לפתור, לפני שנפרסם את יום 4 <img src="https://forums.pythonic.guru/images/emoji/twitter/partying_face.png?v=9" title=":partying_face:" class="emoji" alt=":partying_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/12</link>
+        <pubDate>Mon, 01 Jun 2020 02:57:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-12</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>ופתרון לחלק שני:<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/star2.png?v=9" title=":star2:" class="emoji only-emoji" alt=":star2:"> <img src="https://forums.pythonic.guru/images/emoji/twitter/star2.png?v=9" title=":star2:" class="emoji only-emoji" alt=":star2:"></p>
+
+חלק 2 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/11">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/11</link>
+        <pubDate>Sat, 30 May 2020 21:20:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-11</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            
+הפתרון שלי <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/10">(לחיצה לפרטים נוספים)</a>
+<p>ניצלתי קצת את היכולת של פייתון להשתמש במספרים מרוכבים <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/10</link>
+        <pubDate>Sat, 30 May 2020 16:32:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-10</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>הפתרון שלי:</p>
+<p><img src="https://forums.pythonic.guru/images/emoji/twitter/star2.png?v=9" title=":star2:" class="emoji only-emoji" alt=":star2:"></p>
+
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/9">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/9</link>
+        <pubDate>Sat, 30 May 2020 15:55:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-9</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[Almog]]></dc:creator>
+        <description><![CDATA[
+            
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/8">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/8</link>
+        <pubDate>Fri, 29 May 2020 23:14:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-8</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>וואו זה התיש אותי כל כך שאני לא בטוח שאני רוצה לדעת מה החלק השני של זה:</p>
+
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/7">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/7</link>
+        <pubDate>Fri, 29 May 2020 13:35:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-7</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>לא הקוד הכי יפה שלי, אבל נתחיל בזה…</p>
+
+חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/6">(לחיצה לפרטים נוספים)</a>
+
+חלק 1 בגרסא קצת יותר יפה <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/6">(לחיצה לפרטים נוספים)</a>
+
+חלק 2 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/6">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/6</link>
+        <pubDate>Thu, 28 May 2020 23:05:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-6</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[ron.huberfeld]]></dc:creator>
+        <description><![CDATA[
+            <p>לא הקוד הכי יפה בעולם … אבל עובד <img src="https://forums.pythonic.guru/images/emoji/twitter/shushing_face.png?v=9" title=":shushing_face:" class="emoji" alt=":shushing_face:"></p>
+
+תשובה חלק 2 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/5">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/5</link>
+        <pubDate>Wed, 27 May 2020 22:12:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-5</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[ron.huberfeld]]></dc:creator>
+        <description><![CDATA[
+            
+תשובה - חלק 1 <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/4">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/4</link>
+        <pubDate>Wed, 27 May 2020 14:24:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-4</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[zahideri]]></dc:creator>
+        <description><![CDATA[
+            <p>חלק 1:<br>
+לא הכי אלגנטי בעולם, אבל עובד…</p>
+<p>אגב, אני רק במחברת 1 השבוע! תן יותר מרווח בין אתגר לאתגר <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"></p>
+<pre><code class="lang-auto">def steps_counter(steps):
+    x = y = 0
+    positions = set()
+    for step in steps:
+        if step[0] == 'R':
+            for move in range(1, return_number(step) + 1):
+                x += 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'L':
+            for move in range(1, return_number(step) + 1):
+                x -= 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'U':
+            for move in range(1, return_number(step) + 1):
+                y += 1
+                positions.add(str(x) + '.' + str(y))
+        if step[0] == 'D':
+            for move in range(1, return_number(step) + 1):
+                y -= 1
+                positions.add(str(x) + '.' + str(y))
+    return positions   
+
+
+def return_number(cell):
+    number = ''
+    for n in cell[1:]:
+        number += n
+    return int(number)
+
+
+def who_is_the_closest(sets):
+    winner = 999999
+    for numbers in sets:
+        xy = numbers.split('.')
+        x = abs(int(xy[0]))
+        y = abs(int(xy[1]))
+        if x + y &lt; winner:
+            winner = x + y
+    return winner
+
+
+with open('day3.txt', 'r') as file:
+    text = file.read()
+    text = text.split('\n')
+    text[0] = text[0].split(',')
+    text[1] = text[1].split(',')
+
+
+steps_found1 = steps_counter(text[0])
+steps_found2 = steps_counter(text[1])
+who_is_the_closest(steps_found1.intersection(steps_found2))
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/3</link>
+        <pubDate>Tue, 26 May 2020 20:59:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-3</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[orronai]]></dc:creator>
+        <description><![CDATA[
+            
+חלק א' <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/2">(לחיצה לפרטים נוספים)</a>
+
+חלק ב' <a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/2">(לחיצה לפרטים נוספים)</a>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/2</link>
+        <pubDate>Tue, 26 May 2020 20:10:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-2</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+      <item>
+        <title>Advent of Code 2019 🤯 (יום 3)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>שרשור <a href="https://forums.pythonic.guru/t/advent-of-code-2019-1/6478">Advent of Code יום 1</a> נחל הצלחה גדולה, וגם <a href="https://forums.pythonic.guru/t/advent-of-code-2019-2/6486">Advent of Code יום 2</a> שהיה משמעותית קשוח מקודמו.</p>
+<p>אני מניח שהאתגר הזה ישאר פה <strong>לפחות</strong> ליומיים שלושה, אז קחו את הזמן <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+ואם לא הספקתם לפתור את הימים הקודמים – לא חובה, אבל לכו על זה! אלו תרגילים נחמדים מאוד שישפרו את היכולות שלכם מאוד.</p>
+<p>אז קדימה, פרסמו פה את הפתרונות שלכם <a href="https://adventofcode.com/2019/day/3">ליום השלישי</a> של Advent of Code!</p>
+          <p><a href="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/advent-of-code-2019-3/6644/1</link>
+        <pubDate>Tue, 26 May 2020 15:40:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6644-1</guid>
+        <source url="https://forums.pythonic.guru/t/advent-of-code-2019-3/6644.rss">Advent of Code 2019 🤯 (יום 3)</source>
+      </item>
+  </channel>
+</rss>

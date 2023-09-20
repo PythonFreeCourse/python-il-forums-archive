@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/12-5-jinja2-heroku/8361/27 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:00 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku - מס׳ 27 מאת Yam - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="מה היא סביבה וירטואלית?
+נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב. 
+פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית. 
+אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח,&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../83614658.html?page=2" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8361.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="27.html" property="og:url"/>
+<meta content="27.html" name="twitter:url"/>
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" property="og:title"/>
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" name="twitter:title"/>
+<meta content="אחד הפוסטים פוצל לנושא חדש: תקלה בהעלאת אתר ל־Heroku" property="og:description"/>
+<meta content="אחד הפוסטים פוצל לנושא חדש: תקלה בהעלאת אתר ל־Heroku" name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-12" property="og:article:tag"/>
+<meta content="2020-11-13T03:39:29+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="../8361.html" rel="prev"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8361.html">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%a9%d7%91%d7%95%d7%a2-12.html" rel="tag">שבוע-12</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-12" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:29:31Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:29pm
+                  </time>
+<meta content="2020-10-20T16:29:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכלי לשתף בבקשה את ה¯CSS ואת התוצאה הויזואלית?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:35:58Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:35pm
+                  </time>
+<meta content="2020-10-20T16:35:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>טרם קראתי, אבל קראתי שיש סכנות בקבלת קבצים מלקוח ותמיד צריך לחשוד במה המשתמש ינסה לעלות לשרת.<br/>
+אם אפשר הכוונה בנושא של עבודה בצורה חכמה עם קבצים המתקבלים מלקוח אני אשמח (בפן האבטחתי)<br/>
+ויכול להיות שהשאלה שלי עדיין בוסרית</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Joseph.Gati</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:50:29Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:50pm
+                  </time>
+<meta content="2020-10-20T16:50:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניתן להרחיב בלייב היום על הנושא של wsgi? דוגמא ספציפית תעזור מאוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">car.chopin</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:55:33Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:55pm
+                  </time>
+<meta content="2020-10-20T17:07:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה קובץ הhtml של הטופס:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/adcbbd5972bb8e9b26045d544c6a4317ee66460d" href="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" title="image"><img alt="image" data-base62-sha1="oNt6YHI0NSw8ezxy6i7SbkoJtKt" data-small-upload="../../../uploads/default/optimized/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d_2_10x10.png" height="236" src="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">929×319 17.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+ספציפית מה שלא עובד זה form.submit עם מחלקת button.<br/>
+זה הcss הרלוונטי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/79998621e5c7f8d2e18145c871111496f5098bf3" href="../../../uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" title="image"><img alt="image" data-base62-sha1="hlIHf76qbL8zehMOEvKDLYsmNyz" data-small-upload="../../../uploads/default/optimized/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3_2_10x10.png" height="500" src="../../../uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" width="364"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">378×518 10 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+זה העיצוב הסופי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/554f77a2d7de3e059c1c838c8f9228ec1fbeab61" href="../../../uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png" title="image"><img alt="image" data-base62-sha1="caGQgjCEzuuw7KiztCcmDGoHKFj" data-small-upload="../../../uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_10x10.png" height="387" src="../../../uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 90.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אפשר לראות פה שהכפתור Trump it לא מקבל את העיצוב שנתתי לו במחלקת buttom.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T17:30:04Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  5:30pm
+                  </time>
+<meta content="2020-10-20T17:30:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש אפשרות לעלות תיקיות לgithub?<br/>
+כי יש לי תיקייה בשם templates ש-flask חייבת לראות שהיא קיימת.</p>
+<p>אני חושב שבגלל זה אני מקבל שגיאה.<br/>
+אגב גם לא הצלחתי גם דרך התוכה של heroku הוא נתקע לי אחרי הlogin<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/7895bb8833777e83269ea2d3df0dba08ae8822d0" href="../../../uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png" title="image"><img alt="image" data-base62-sha1="hcK60Hpxt8P1xEaCqGRZ1lY1nri" data-small-upload="../../../uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_10x10.png" height="222" src="../../../uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_1035x333.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1163×375 19.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כמובן שעל המחשב הכל עובד</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ef0d23e36f9494478359d9e048019cb256425d0b" href="../../../uploads/default/original/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b.png" title="image"><img alt="image" data-base62-sha1="y6KgCOGATBtMR3uPKD9FeB8gge7" data-small-upload="../../../uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_10x10.png" height="103" src="../../../uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1035x154.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1380x206.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1387×209 20.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>מצטער שלא יכולתי להגיע לשיעור היום! חוגגים ירח דבש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:00:19Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:00pm
+                  </time>
+<meta content="2020-10-20T18:00:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא מצאתי API שמספק את כל המידע שרציתי בצורה מסודרת (ובכל מקרה רציתי גם להיות מסוגל לבצע חיפוש על כל המידע), אז השתמשתי ב webscraping בשביל לחלץ את כל המידע הדרוש וייצאתי אותו לקובץ json. האם נכון יותר לבצע את הפעולה הזו בכל פעם שהשרת עולה (אם זה בכלל אפשרי או הגיוני) או שמספיק לצרף את הקובץ כחלק מהקבצים לשרת ולאבד את היכולת לעדכן את המידע?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:04:45Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:04pm
+                  </time>
+<meta content="2020-10-20T18:04:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תלוי בצורך.<br/>
+אם זה מידע שלא משתנה כמעט (נניח, רשימת הפוקימונים והמתקפות שלהם) – הגיוני לבדוק בהעלאת השרת האם הקובץ הזה קיים/מעודכן ולפעול בהתאם.<br/>
+אם זה מידע שמתעדכן תדיר – אולי עדיף לעדכן את הנתונים בכל בקשה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:20:54Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:20pm
+                  </time>
+<meta content="2020-10-20T18:20:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האיסוף של כל הנתונים לוקח בממוצע בין דקה וחצי ל-2 דקות, אז לעדכן אותו כל בקשה יהיה איום ונורא.<br/>
+בגדול מדובר במידע שאכן כמעט ולא משתנה (אם בכלל), אז אלך עם התחושה הראשונית ואמשוך אותו בהעלאת השרת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:13:49Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:13pm
+                  </time>
+<meta content="2020-10-20T19:13:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי ים,</p>
+<p>תודה על התייחסות בסרטוןן!</p>
+<p>זה הלוג -<br/>
+(אני חושב שחסרה לי תיקיית templates (בגלל flask) בגיטהאב ובגלל זה יש שגיאה, איך ניתן להקים תיקייה בגיטהאב?</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/cf64e3ded15863e9dc31484017cb9c4badaf2642" href="../../../uploads/default/original/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642.png" title="image"><img alt="image" data-base62-sha1="tAGZx2h4QuxY75J7GpEBG3HZyX8" data-small-upload="../../../uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_10x10.png" height="375" src="../../../uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1380x750.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1915×1041 102 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:16:14Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:16pm
+                  </time>
+<meta content="2020-10-20T19:16:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>פשוט צור קובץ index.html ב־templates</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:30:19Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:30pm
+                  </time>
+<meta content="2020-10-20T19:30:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה!</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d" href="../../../uploads/default/original/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d.png" title="image"><img alt="image" data-base62-sha1="mrtaBafWgnsB2hhKX2nPWEME1Ih" data-small-upload="../../../uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_10x10.png" height="375" src="../../../uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1380x750.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1913×1041 49.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T21:10:18Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  9:10pm
+                  </time>
+<meta content="2020-10-20T21:10:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מנסה לדמיין את הסיטואציה שלך בירח דבש עם לפטופ <img alt=":rofl:" class="emoji" src="../../../images/emoji/twitter/roflc164.png?v=9" title=":rofl:"/> <img alt=":rofl:" class="emoji" src="../../../images/emoji/twitter/roflc164.png?v=9" title=":rofl:"/><br/>
+ים זה לגמרי נצחון שלך בכמה לוקחים את הקורס שלך ברצינות.</p>
+<p>ועכשיו ברצינות - המון מזל טוב <img alt=":smiley:" class="emoji" src="../../../images/emoji/twitter/smileyc164.png?v=9" title=":smiley:"/> <img alt=":partying_face:" class="emoji" src="../../../images/emoji/twitter/partying_facec164.png?v=9" title=":partying_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T23:48:52Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏ 11:48pm
+                  </time>
+<meta content="2020-10-20T23:48:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הגעתי עד לפה, לא יכול להפסיד!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T06:09:54Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  6:09am
+                  </time>
+<meta content="2020-10-21T06:09:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איך עושים ירח דבש בתקופה כזאת?!<br/>
+אני מניח שאתם בארץ… ?!<br/>
+<img alt=":sweat_smile:" class="emoji only-emoji" src="../../../images/emoji/twitter/sweat_smilec164.png?v=9" title=":sweat_smile:"/><img alt=":statue_of_liberty:" class="emoji only-emoji" src="../../../images/emoji/twitter/statue_of_libertyc164.png?v=9" title=":statue_of_liberty:"/><img alt=":statue_of_liberty:" class="emoji only-emoji" src="../../../images/emoji/twitter/statue_of_libertyc164.png?v=9" title=":statue_of_liberty:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_22" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T06:20:44Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  6:20am
+                  </time>
+<meta content="2020-10-21T06:20:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן… צימר בצפון… העדפנו לא לנסוע לחו"ל בתקופה הזו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_23" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lisafiluz</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T07:00:19Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  7:00am
+                  </time>
+<meta content="2020-10-21T07:00:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם הסביבה הוירטואלית צריכה להיות מותקנת בתיקיית הפרוייקט או לא? מה כדאי?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_24" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T17:47:34Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  5:47pm
+                  </time>
+<meta content="2020-10-21T17:47:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ירח דבש וירטואלי…<br/>
+<img alt=":rofl:" class="emoji only-emoji" src="../../../images/emoji/twitter/roflc164.png?v=9" title=":rofl:"/> <img alt=":joy:" class="emoji only-emoji" src="../../../images/emoji/twitter/joyc164.png?v=9" title=":joy:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_25" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ofirp</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-22T19:17:00Z" itemprop="datePublished">
+                     22 באוקטובר,‏ 2020,‏  7:17pm
+                  </time>
+<meta content="2020-10-22T19:17:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8361" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>source heroku/bin/activate</p>
+</blockquote>
+</aside>
+<p>ב win10 הפקודה היא</p>
+<pre><code class>heroku\Scripts\activate
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_26" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-22T22:11:45Z" itemprop="datePublished">
+                     22 באוקטובר,‏ 2020,‏ 10:11pm
+                  </time>
+<meta content="2020-10-22T22:11:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מעולה. תודה, תיקנתי <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_27" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+                
+                  נושא זה פוצל ב־
+              </span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-11-13T03:39:29Z" itemprop="datePublished">
+                     13 בנובמבר,‏ 2020,‏  3:39am
+                  </time>
+<meta content="2020-11-13T03:39:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אחד הפוסטים פוצל לנושא חדש: <a href="../../heroku/8445.html">תקלה בהעלאת אתר ל־Heroku</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="../8361.html" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/12-5-jinja2-heroku/8361/27 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:01 GMT -->
+</html>

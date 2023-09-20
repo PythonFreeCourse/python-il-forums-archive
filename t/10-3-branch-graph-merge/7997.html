@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/10-3-branch-graph-merge/7997 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:41:59 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 10 – יום 3: branch, graph, merge - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge. 
+בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים). 
+תרגיל 1: הפקודה graph
+ממשו את הפונקצי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7997.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7997.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 10 – יום 3: branch, graph, merge’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/8/869ae51276c768c6c42e2c37d704e3766fb97a98.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/8/869ae51276c768c6c42e2c37d704e3766fb97a98.png" property="og:image"/>
+<meta content="7997.html" property="og:url"/>
+<meta content="7997.html" name="twitter:url"/>
+<meta content="שבוע 10 – יום 3: branch, graph, merge" property="og:title"/>
+<meta content="שבוע 10 – יום 3: branch, graph, merge" name="twitter:title"/>
+<meta content="היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge.  בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים).  תרגיל 1: הפקודה graph ממשו את הפונקציה graph, שתופעל בעזרת הרצת הפקודה python path/to/wit.py graph .  הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה .wit.  הפקודה תצייר גרף (בעזרת מודול גרפים לבחירתכם).  בניית הגרף תתחיל מה־commit id שמסומן ב־HEAD. מה־commit id הזה יצא חץ אל עבר ה־..." property="og:description"/>
+<meta content="היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge.  בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים).  תרגיל 1: הפקודה graph ממשו את הפונקציה graph, שתופעל בעזרת הרצת הפקודה python path/to/wit.py graph .  הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה .wit.  הפקודה תצייר גרף (בעזרת מודול גרפים לבחירתכם).  בניית הגרף תתחיל מה־commit id שמסומן ב־HEAD. מה־commit id הזה יצא חץ אל עבר ה־..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-10" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="1 ❤"/>
+<meta content="2020-08-28T11:50:03+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7997.html">שבוע 10 – יום 3: branch, graph, merge</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-10.html" rel="tag">שבוע-10</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 10 – יום 3: branch, graph, merge" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-10" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7997.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/869ae51276c768c6c42e2c37d704e3766fb97a98.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-28T11:50:03Z" itemprop="datePublished">
+                     28 באוגוסט,‏ 2020,‏ 11:50am
+                  </time>
+<meta content="2020-09-05T16:08:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge.<br/>
+בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים).</p>
+<h3>תרגיל 1: הפקודה graph</h3>
+<p>ממשו את הפונקציה graph, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py graph</code> .<br/>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>הפקודה תצייר גרף (בעזרת מודול גרפים לבחירתכם).<br/>
+בניית הגרף תתחיל מה־commit id שמסומן ב־HEAD. מה־commit id הזה יצא חץ אל עבר ה־commit id שמסומן כ־parent שלו. מה־parent שלו יצא חץ ל־parent שמעליו, וכך הלאה.</p>
+<details>
+<summary>
+דוגמאות לגרף</summary>
+<pre><code class="lang-bash">python wit.py init
+python wit.py add lms
+python wit.py commit
+(Output: Commit 0000000000000000000000000000000000000000 created)
+python wit.py add C:\my\project\koko
+python wit.py commit
+(Output: Commit 1111111111111111111111111111111111111111 created)
+python wit.py graph
+</code></pre>
+<p>תוצר הקריאה ל־wit.py graph:<br/>
+(אם יותר נוח לכם, כללו רק את 6 התווים הראשונים של ה־commit id. במקרה שלנו, לדוגמה – <code>000000</code>)<br/>
+מספר ה־commit בגרף מפוצל ל־2 שורות בגלל חוסר במקום:</p>
+<p><img alt="Untitled Diagram(2)" data-base62-sha1="jcLQbhV6OkOteN8qYUFhI3UVlLa" height="165" src="../../uploads/default/original/2X/8/869ae51276c768c6c42e2c37d704e3766fb97a98.png" width="481"/></p>
+<p>אם נמשיך ונבצע גם את הפקודות האלו:</p>
+<pre><code class="lang-bash">python wit.py checkout 0000000000000000000000000000000000000000
+python wit.py add somedata
+python wit.py commit
+(Output: Commit 22222222222222222222222222222222222222222222222222 created)
+python wit.py graph
+</code></pre>
+<p>נקבל את האיור הבא:</p>
+<p><img alt="Untitled Diagram(4)" data-base62-sha1="xt62JpVyh0T2G6Y7i1Af0A21bv0" height="131" src="../../uploads/default/original/2X/e/ea91c5bde4f2ba2341b70a5773dbd89f579785c6.png" width="481"/></p>
+<p>כיוון שמהמקום בו אנחנו עומדים (HEAD הוא על 222222…) אנחנו לא יכולים לראות את commit 111111.</p>
+<p>בונוס למתקדמים: אם הועבר ל־wit.py graph הפרמטר <code>--all</code>, הציגו את כל ה־commit־ים בגרף, לא משנה איפה נמצא HEAD. אתם יכולים להניח שהגרף אינו מעגלי.</p>
+<p><strong>שימו לב</strong>: אינכם חייבים לממש את החצים של master ו־HEAD שמופיעים באיורים מעלה. עם זאת, זה בונוס נחמד שיהפוך את התרגיל שלכם בהמשך למוצלח יותר.</p>
+</details>
+<h3>תרגיל 2: הפקודה branch</h3>
+<p>ממשו את הפונקציה branch, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py branch NAME</code> .<br/>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>זו אחת הפקודות המעניינות והחשובות ביותר שנבנה ב־<code>wit.py</code> שלנו.<br/>
+הפקודה הזו מדביקה תווית עם שם (<code>NAME</code>) לקומיט שעליו אנחנו עובדים. לתווית הזו אנחנו קוראים branch (“ענף”).<br/>
+כל עוד ה־HEAD יהיה על ה־branch הזה, וה־branch הזה יהיה ב"מצב מופעל", התווית “תתקדם” יחד איתנו בכל commit שנעשה.</p>
+<p>הפקודה הזו שימושית, נניח, אם אנחנו עובדים בצוות של כמה אנשים.<br/>
+נדמיין מצב שבו ריצ’רד וחברו ארליך עובדים על בניית מערכת להעלאת תרגילים בקורס פייתון.<br/>
+ריצ’רד מתחיל לעבוד על פיצ’ר של העלאת קבצים מרובים, וארליך מתחיל לעבוד באותו זמן על פיצ’ר של התראות (נוטיפיקציות).<br/>
+שניהם נמצאים כרגע על הגרסה החדשה ביותר (ה־commit האחרון) במערכת, נניח 123456 (שם מקוצר).</p>
+<p>כדי ששניהם יוכלו לעבוד בלי “לעלות” אחד על הקומיטים של השני:</p>
+<ol>
+<li>ריצ’רד כותב <code>python wit.py branch multiple-files</code>
+</li>
+<li>ארליך כותב <code>python wit.py branch notifications</code>
+</li>
+</ol>
+<p>ה־HEAD של שניהם עדיין נמצא על 123456, ועבור שניהם master עדיין מצביע על ה־commit שמספרו 123456.</p>
+<ol>
+<li>כדי להפעיל את הענף multiple-files, ריצ’רד יכתוב <code>python wit.py checkout multiple-files</code>.</li>
+<li>כדי להפעיל את הענף notifications, ארליך יכתוב <code>python wit.py checkout notifications</code>.</li>
+</ol>
+<p>עכשיו ריצ’רד וארליך הפעילו כל אחד את הענפים הרלוונטיים עבורו. הם נשארו באותו commit id, אבל הענף של כל אחד מהם נחשב במצב “מופעל”.<br/>
+כשריצ’רד יריץ את הפקודות <code>add</code> ואז <code>commit</code> בפעם הבאה, יווצר commit חדש (נניח: 333333) שבו נמצא ריצ’רד, ואליו מצביעים multiple-files ו־HEAD. ה־parent של ה־commit שמספרו 333333 יהיה 123456.<br/>
+נניח שאחריו ארליך (שעדיין נמצא ב־commit שמספרו 123456) יריץ את הפקודות <code>add</code> ואז <code>commit</code>. במקרה כזה יווצר commit חדש (נניח: 444444) שאליו יועבר ארליך, ואליו יצביעו notifications ו־HEAD. ה־parent של ה־commit שמספרו 444444 יהיה 123456.<br/>
+גם master נחשב כ־branch. לכן, אחרי שתורץ הפקודה <code>checkout multiple-files</code>, לדוגמה, הענף multiple-files יהיה פעיל והענף master לא. זה אומר שב־commit הבא, master ישאר על ה־commit id הנוכחי, ו־multiple-files ו־HEAD יעברו ל־commit id החדש שנוצר.</p>
+<p>נביט במצב החדש בעזרת wit graph (ה־HEAD הושמט, כיוון שהוא מצביע על 33333 במחשבו של ריצ’רד ועל 44444 במחשבו של ארליך):</p>
+<p><img alt="Untitled Diagram(5)" data-base62-sha1="28fRdwn1KlSrnDZ6s5j0Cza9m0z" height="313" src="../../uploads/default/original/2X/0/0ef3418f24a879f96bcf1182cd7f2036694d0ff3.png" width="509"/></p>
+<h5>ממשו את פונקציית wit branch.</h5>
+<ol>
+<li>בעת הרצת הפקודה <code>python path/to/wit.py branch NAME</code>, צרו שורה חדשה ב־<code>references.txt</code>. השורה תראה כך: <code>NAME=COMMIT_ID</code>, כאשר במקום <code>NAME</code> יופיע שמו של ה־branch, ובמקום <code>COMMIT_ID</code> יופיע מספרו של ה־commit שבו נמצא ה־HEAD בעת הרצת הפקודה.</li>
+<li>בעת הרצת פקודת <code>checkout</code>, יעודכן בקובץ בשם activated.txt שנמצא ישירות תחת התיקייה <code>.wit</code>, שמו של ה־branch שנמצא במצב “פעיל” בעת ביצוע הפקודה. זה יהיה כל תוכנו של הקובץ, ולכן אפשר להרגיש בנוח לדרוס אותו.</li>
+<li>בעת הרצת פקודת <code>commit</code>, יתעדכן (כרגיל) ה־HEAD כך שיצביע ל־commit החדש שנוצר.<br/>
+<em>לפני עדכון ה־HEAD</em>, בדקו אם ה־branch שנמצא במצב “פעיל” מצביע לאותו מקום שבו נמצא ה־HEAD.<br/>
+אם כן, עדכנו את <code>references.txt</code> כך שה־branch יצביע למספר ה־commit החדש שנוצר.</li>
+</ol>
+<h5>שינויים שצריך לעשות:</h5>
+<ol>
+<li>בניגוד למה שנכתב ביום 2, בעת פקודת commit, התווית master כבר לא תתקדם כל פעם שהיא וה־HEAD נמצאים באותו מקום. כדי שתתקדם, היא חייבת שהתנאי המדובר יתקיים <strong>וגם</strong> שהענף יהיה “מופעל”. הענף master “מופעל” והתווית תתקדם רק אם ה־checkout האחרון שהתבצע היה <code>python wit.py checkout master</code>.</li>
+<li>בעת הרצת הפקודה <code>init</code>, יווצר קובץ חדש בשם activated.txt שבו ירשם <code>master</code>.</li>
+<li>פקודת ה־<code>checkout</code> כעת צריכה להיות מסוגלת לקבל אחת משתי האפשרויות: או commit id, או שם של branch.</li>
+</ol>
+<h3>תרגיל 3: הפקודה merge</h3>
+<p>ממשו את הפונקציה merge, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py merge BRANCH_NAME</code> .<br/>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>זו פקודת ה־wit האחרונה שנממש.<br/>
+הפקודה הזו תיצור commit חדש, שיאחד את הקבצים בין ה־commit הנוכחי שעליו מצביע ה־HEAD שלכם, לבין ה־BRANCH_NAME שהועבר כפרמטר לפקודת ה־merge.</p>
+<p>זו פקודה שימושית במיוחד, כיוון שאם ריצ’רד וארליך עשו שינויים רבים בקוד, כל אחד ב־branch שלו, הם ישמחו לפקודה נוחה שתאפשר להם למזג את העבודה שלהם ל"תמונה" אחת.</p>
+<p>פקודת ה־merge יוצרת commit חדש.<br/>
+לצורך הרכבת הקבצים שיישמרו באותו commit אנחנו צריכים למצוא “בסיס משותף” – commit שהופיע בעבר, שהוא חלק מהיסטוריית ה־commit־ים <strong>גם</strong> של HEAD, ו<strong>גם</strong> של BRANCH_NAME.</p>
+<details>
+<summary>
+דוגמאות למציאת בסיס משותף</summary>
+<p>בציור הבא, בו יש את הענפים B, C ו־D, הבסיס המשותף לכולם הוא A.</p>
+<pre><code class="lang-nohighlight">        +---- B 
+        |           
+A &lt;---- +---- C
+        |           
+        +---- D 
+</code></pre>
+<p>הנה כמה דוגמאות לגבי הבסיסים המשותפים באיור הבא: הבסיס המשותף ל־C ול־D הוא A, הבסיס המשותף ל־E ול־F הוא D, הבסיס המשותף ל־D ול־B הוא A, הבסיס המשותף ל־F ול־D הוא D, והבסיס המשותף ל־F ול־B הוא A.</p>
+<pre><code class="lang-nohighlight">        +---- B 
+        |           
+A &lt;---- +---- C
+        |          
+        +---- D ----+----- E
+                    |
+                    +----- F
+</code></pre>
+</details>
+<p>אחרי שמצאנו את הבסיס המשותף ל־commit שעליו אנחנו נמצאים (ה־<code>HEAD</code>) ול־branch שקיבלנו כפרמטר (<code>BRANCH_NAME</code>), עלינו למצוא את כל הקבצים ששונו מאז הבסיס המשותף ועד <code>BRANCH_NAME</code>.</p>
+<p>בתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME.<br/>
+בצעו commit חדש כרגיל, והעבירו את HEAD, ואת ה־branch הפעיל ל־commit id החדש. אל תעבירו את BRANCH_NAME ל־commit id החדש.</p>
+<p>לצורך התרגיל, אתם יכולים להניח שלא קיים מצב שבו הקובץ נערך גם אצלכם, וגם ב־branch שאתם מנסים למזג.</p>
+<p>שימו לב שכעת יש ל־commit האחרון יותר מ־parent אחד. הפרידו את ה־parents בשדה parent בעזרת פסיק.<br/>
+ודאו ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי.</p>
+<h5>בונוסים:</h5>
+<ol>
+<li>אפשרו שהפרמטר לפקודה לא יהיה בהכרח branch name, אלא יוכל להיות גם commit id.</li>
+<li>(קשה מאוד) הניחו שיתכן שקובץ כלשהו שונה בשני המקומות במקביל. אם שורה שונתה ביותר ממקום אחד, הכשילו את ה־commit. אם שורות שונות שונו באותו קובץ, מזגו אותו.</li>
+</ol>
+<h3>מזל טוב! סיימתם לממש את wit!</h3>
+<p>סחטיין עליכם, עבודה מעולה! זה באמת פרויקט ראוי לציון.<br/>
+נמשיך לדסקס על wit ועל השימושים שלו ביום 4.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/8206.html" itemprop="url">ריכוז חומרים: שבוע 10</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+                
+                  נסגר ב־
+              </span>
+<link href="7997.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-29T20:25:40Z" itemprop="datePublished">
+                     29 באוגוסט,‏ 2020,‏  8:25pm
+                  </time>
+<meta content="2020-08-29T20:25:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/10-3-branch-graph-merge/7997 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:03 GMT -->
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/4017 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:50 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שארית המס בין דרגה אחת לשניה - שבוע 2 - פייתון בעברית ובחינם</title>
+<meta content="שלום, 
+אני מסתבך עם תרגיל המס על השארית בין דרגה אחת לשניה, יש אולי קצת הכוונה בעניין הזה? 
+תודה רבה" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="4017.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="4017.rss" rel="alternate nofollow" title="הזנת RSS של ‚שארית המס בין דרגה אחת לשניה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="4017.html" property="og:url"/>
+<meta content="4017.html" name="twitter:url"/>
+<meta content="שארית המס בין דרגה אחת לשניה" property="og:title"/>
+<meta content="שארית המס בין דרגה אחת לשניה" name="twitter:title"/>
+<meta content="שלום,  אני מסתבך עם תרגיל המס על השארית בין דרגה אחת לשניה, יש אולי קצת הכוונה בעניין הזה?  תודה רבה" property="og:description"/>
+<meta content="שלום,  אני מסתבך עם תרגיל המס על השארית בין דרגה אחת לשניה, יש אולי קצת הכוונה בעניין הזה?  תודה רבה" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 2" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="אריתמטיקה" property="og:article:tag"/>
+<meta content="מס-הכנסה" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="3 ❤"/>
+<meta content="2020-04-06T12:54:37+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="4017.html">שארית המס בין דרגה אחת לשניה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/9-category/9.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 2</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%90%d7%a8%d7%99%d7%aa%d7%9e%d7%98%d7%99%d7%a7%d7%94.html" rel="tag">אריתמטיקה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%a1-%d7%94%d7%9b%d7%a0%d7%a1%d7%94.html" rel="tag">מס-הכנסה</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שארית המס בין דרגה אחת לשניה" itemprop="headline"/>
+<meta content="שבוע 2" itemprop="articleSection"/>
+<meta content="אריתמטיקה, מס-הכנסה" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T12:54:37Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏ 12:54pm
+                  </time>
+<meta content="2021-09-04T19:26:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>שלום,<br/>
+אני מסתבך עם תרגיל המס על השארית בין דרגה אחת לשניה, יש אולי קצת הכוונה בעניין הזה?<br/>
+תודה רבה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T13:23:34Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  1:23pm
+                  </time>
+<meta content="2020-04-06T13:23:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אתה מרוויח 10,000 ש"ח אתה נמצא במדרגה השניה:<br/>
+בדרגה הראשונה צריך לשלם מס מלא בשיעור 10% (6310 * 10%)<br/>
+במדרגה השניה משלמים על ההפרש שבין המשכורת שלך לבין גובה המדרגה הראשונה (10000-6310) * 14%.<br/>
+סה"כ המס הוא חיבור של שתי הדרגות…<br/>
+אם אתה מרוויח משכורת שנמצאת במדרגה השלישית, גם על ההפרש שבין המדרגה השלישית והשניה צריך לשלם 14% ואז להוסיף את המשכורת פחות גובה הדרגה השניה כפול 20%…  וכן הלאה…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T13:26:01Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  1:26pm
+                  </time>
+<meta content="2020-04-06T13:26:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן אבל אם אחרי כל תנאי תחסיר את הדרגה מהמשכורת, לא תמשיך הלאה אף פעם לדרגה הבאה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T13:49:01Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  1:49pm
+                  </time>
+<meta content="2020-04-06T13:49:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תחשב כל מדרגה בנפרד… לדוגמא מישהו שמרוויח שכר שנמצא במדרגה השלישית ככה זה יחושב לו (כל מדרגה מחושבת בסוגריים):<br/>
+(6310 * 10%) + ((6310 - 9050) * 14%) + ((9050 - סה"כ משכורת) * 20%) = תשלום המס</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T14:30:20Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  2:30pm
+                  </time>
+<meta content="2020-04-06T14:30:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה,<br/>
+כתבתי את זה , אתה אבל יכול להסביר את זה שאבין בדיוק מה בסיס החישוב ואיך זה עובד?<br/>
+תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T14:38:13Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  2:38pm
+                  </time>
+<meta content="2020-04-06T14:38:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>דרך הפתרון דומה לדוגמא שיש במחברת עם האלבומי מוסיקה. תגדיר את הטווחים למדרגות המס ואז תכתוב תנאים שיבדקו לאיזה מדרגת מס אנחנו מתייחסים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T14:45:51Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  2:45pm
+                  </time>
+<meta content="2020-04-06T14:45:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אמת,<br/>
+עשיתי בהתחלה טווחים (אני מצרף פה את הסוף)<br/>
+elif (sallary &lt; 42030 and sallary &gt; 20200):<br/>
+print('your VAT is: ', sallary * 35 // 100)<br/>
+elif (sallary &lt; 54130 and sallary &gt; 42030):<br/>
+print('your VAT is: ', sallary * 47 // 100)</p>
+<p>אבל…המס לא הסתדר לי בין אחד לשני וזה ההסבר שאני רוצה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T15:00:05Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  3:00pm
+                  </time>
+<meta content="2020-04-06T15:00:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת שאני לא ממש מבין מה כתבת. במקום חלוקת שלמים אני מציע שתשתמש בשבר עשרוני (20% = 0.2)…<br/>
+לגבי הפקודות בתוך ה elif: תגדיר את vat שיהיה שווה לתשלום המס לאותה מדרגה (טיפ: תתחיל מחישוב המדרגה הגבוהה ביותר, שהיא הכי ארוכה, ואח"כ יהיה לך פשוט לעשות קופי-פייסט לשאר ההתניות (אם ההתאמות הנדרשות לאותה מדרגה)… בסוף תיתן פקודת הדפסה אחת ל- vat.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">moredri31</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T15:39:08Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  3:39pm
+                  </time>
+<meta content="2020-04-06T15:39:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכל להסביר שוב למה כדאי להתחיל מהמשכורת הגבוהה? והשתמשת במספרים של המשכורות או משתנים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mike</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T16:32:59Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  4:32pm
+                  </time>
+<meta content="2020-04-06T16:32:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני הגדרתי כל מדרגת מס ואת אחוזי המס לפי המדרגות כמשתנים.</p>
+<p>ההתניה הראשונה אמורה להיות:  אם השכר קטן ממדרגת המס הראשונה תדפיס את השכר כפול אחוז המס.<br/>
+בהתנייה השניה אתה צריך לעשות: אם השכר בין שתי מדרגות המס תדפיס את השכר פחות מדרגת המס הראשונה כפול אחוז המס של המדרגה השנייה ועוד המדרגה הראשונה כפול אחוז המס של המדרגה הראשונה.</p>
+<p>וכן הלאה עד הסוף</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yair90</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:24:43Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:24pm
+                  </time>
+<meta content="2020-04-06T17:24:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>**לא חייבים להתחיל מהמדרגה הגבוהה, אפשר גם הפוך.<br/>
+לי באופן אישי היה נוח להתחיל מהחישוב של הדרגה הגבוהה כי הרעיון בחישוב די חוזר על עצמו ואפשר להעתיק ולמחוק כל פעם את המדרגה האחרונה שכבר לא רלוונטית (נשאר רק לשנות את הפעולה החשבונאית שנוגעת למדרגת מס הנבדקת).<br/>
+**המשכורות הם גם משתנים, פשוט הם קבועים. את צריכה להשתמש בהם ובעוד משתנה שקולט את המשכורת</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T17:25:26Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  5:25pm
+                  </time>
+<meta content="2020-04-06T17:25:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה המון חזרת קוד…ברעיון, המון</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-06T18:33:20Z" itemprop="datePublished">
+                     6 באפריל,‏ 2020,‏  6:33pm
+                  </time>
+<meta content="2020-04-06T18:33:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש המון פתרונות לאותו התרגיל.<br/>
+במקרה הזה, לי אישית חשוב שהפתרון יהיה כמה שיותר קריא וכמה שיותר גמיש.</p>
+<p>לדעתי, הפתרון הנוח ביותר שיאפשר למשתמש גמישות הוא כזה:</p>
+<ol>
+<li>הגדרת כלל המשתנים (מדרגות מס ושיעור המס לכל מדרגה), כך שהלקוח יוכל לערוך את הקוד בקלות לפי צרכיו.</li>
+<li>בכל פעם נבדוק האם השכר תואם למדרגת המס, בסדר עולה.</li>
+<li>כאשר התנאי לא מתקיים, משתנה “מס” צובר את סכום המס המקסימלי עבור מדרגה זו.</li>
+<li>כאשר התנאי מתקיים, מחברים את המס שנצבר עד כה להפרש שכר-מדרגת שכר * שיעור המס (מספר עשרוני) ומדפיסים.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">globerommer</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T02:53:42Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  2:53am
+                  </time>
+<meta content="2020-04-10T03:09:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,</p>
+<p>אני כתבתי את הקוד עם אותה הלוגיקה…ועדיין כותב לי invalid syntax. חשבתי שהבעיה היא ערבוב בין str ל int  אבל הגדרתי את המדרגות כ int אז לא אמורה ליהיות בעיה.<br/>
+אשמח ממש לתובנות של מי שמבין מה הבעיה כאן בקוד שכתבתי, קמתי בחמש לפנות בוקר לנסות לפתור את זה שוב (כשמגדלים ילדים בני 2 ו 5 מנסים ללמוד קוד בקצוות היום <img alt=":sleeping:" class="emoji" src="../../images/emoji/twitter/sleepingc164.png?v=9" title=":sleeping:"/>)</p>
+<p><em>עריכה - בבקשה להתייחס רק להתניית IF הראשונה, כי שם הקוד נתקע לי. אז עובדת בינתיים רק עליה (אני ידעת שבשורות למטה של ELIF אין את החישוב (</em>) בין האחוזים)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/80744cf2c2f12d7746add13d5591f4d2a69f545b" href="../../uploads/default/original/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b.png" title="image"><img alt="image" data-base62-sha1="ikmhV8VX2b4xJD5SYMO9auL6MaL" data-small-upload="../../uploads/default/optimized/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b_2_10x10.png" height="387" src="../../uploads/default/optimized/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/8/80744cf2c2f12d7746add13d5591f4d2a69f545b.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 87.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">globerommer</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T03:18:25Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  3:18am
+                  </time>
+<meta content="2020-04-10T03:18:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ואם חשבתי שהבעיה היא בסימן %…<br/>
+אז המרתי הכל ל #.0 ועדיין אותו syntax error<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a8e2dcec5d446e40659cafc9df9683aebec9bbb9" href="../../uploads/default/original/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9.png" title="image"><img alt="image" data-base62-sha1="o62gxjGPh5tWfcBYLwWArmXW6Eh" data-small-upload="../../uploads/default/optimized/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9_2_10x10.png" height="387" src="../../uploads/default/optimized/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/a8e2dcec5d446e40659cafc9df9683aebec9bbb9.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 86.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">marganib</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T04:32:50Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  4:32am
+                  </time>
+<meta content="2020-04-10T04:32:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בלי להתעמק בקוד עצמו, נראה לי שיש שם רווח כפול (אולי) בסוגריים בשורה הרלוונטית? (שורה 11?) או שיותר מדי סוגריים. וגם עדיין לא החלפת את כל הסימני % בנקודות עשרוניות, אולי אלו הבעיות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Rach</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T04:41:45Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  4:41am
+                  </time>
+<meta content="2020-04-10T04:41:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבעיה היא בהגדרת המשתנה stage 7.<br/>
+אי אפשר להגדיר משתנה עם גדול שווה, רק עם שווה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">globerommer</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T05:29:01Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  5:29am
+                  </time>
+<meta content="2020-04-10T05:29:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי תודה על התגובה, לצערי תיקנתי את הסוגריים והאחוזים ועדיין לא רץ <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">globerommer</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T05:30:00Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏  5:30am
+                  </time>
+<meta content="2020-04-10T05:30:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>או מעולה. תודה רבה, באמת לא הבנתי למה הוא נתקע לי על השלב 7. תיקנתי! לצערי עדיין לא רץ אבל לפחות זה הובן לי עכשיו</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">marganib</span>
+</span>
+<link href="4017.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-10T12:14:47Z" itemprop="datePublished">
+                     10 באפריל,‏ 2020,‏ 12:14pm
+                  </time>
+<meta content="2020-04-10T12:14:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>Sorry to hear it didn’t help <img alt=":frowning:" class="emoji" src="../../images/emoji/twitter/frowningc164.png?v=9" title=":frowning:"/><br/>
+Is it reporting another error?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/4017 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:29:58 GMT -->
+</html>

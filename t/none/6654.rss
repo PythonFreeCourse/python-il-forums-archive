@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הבודק האוטומטי ו None : יש כאן הסבר כללי</title>
+    <link>https://forums.pythonic.guru/t/none/6654</link>
+    <description>הבודק האוטומטי זורק כמה שגיאות שונות לחלוטין שבהן יכולה להופיע המילה None
+
+**1:** בראשונה, מדובר על ניסיון לקרוא לפונקציה שהוגדרה עם &quot;None&quot; במקרה הזה תופיע גם המילה &quot;callable&quot; (או ככל הנראה not callable)  זה אומר שהבודק ניסה לקרוא לפונקציה שהוגדרה בתרגיל עם None :
+
+function (None) 
+(אולי עם עוד פרמטרים, כתלות בתרגיל) 
+
+במקרה זה, יש להריץ כך :point_up_2: את הפונקציה במחברת ולהבין למה לא מתקבלת התוצאה הרצויה.
+
+**מקרה 2:** המילה None מופיעה עם סימן == לידה.
+
+במקרה הזה, הבודק הריץ בדיקה כלשהיא שלא החזירה ערך מהפונקציה (או, נדיר יותר, החזירה None)
+
+במקרה זה, הפונקציה שהוגשה לא מחזירה את הערך שהתבקשה להחזיר. כנראה הדפסתם במקום להחזיר ערך ספציפי עם return או yield , אבל יתכנו גם אפשרויות אחרות שגורמות לזה. 
+
+במקרה זה, חיזרו למחברת והריצו שורת קוד:
+
+var = function(parameters) 
+print(var)
+או
+type(var)
+
+ואז לבדוק שוב בהגדרות התרגיל מה ביקשו.
+
+צורת בדיקה זו של הפונקציה יכולה לפתור מגוון בעיות נוספות שאינן קשורות בהכרח לNone ואני אישית משתמשת בשורות אלו המון.
+
+**מקרה 3**: &quot;assert None (שם פונקציה) חסרה מתודה&quot;  
+
+במקרה זה: הבודק מנסה להריץ את הפונקציה שביקשו בתרגיל ולא מצליח
+הבעיה: שם הפונקציה כמו שמופיע בהערת הבודק לא מופיע בתרגיל
+הפתרון: בדקו שוב בעיון את שם הפונקציה ואת האיות, ושנו את שם הפונקציה בתרגיל לשם שמופיע בהערת הבודק
+
+חוץ מזה, הערות כלליות:
+
+נתקלתם בבעיה? חפשו את **שם התרגיל** בפורום. ואז *בבקשה* תקראו את כל השרשור - ורק אז תשאלו. כן, זה לוקח יותר זמן, אבל גם לענות לשאלות לוקח הרבה זמן וככל שיש יותר שאלות ותשובות באותו נושא, יותר קשה לחפש :stuck_out_tongue_winking_eye:</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 26 May 2020 17:41:43 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/none/6654.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הבודק האוטומטי ו None : יש כאן הסבר כללי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה רבה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>לדעתי הכי חשוב:<br>
+ראיתם שהבודק האוטומטי זורק שגיאה? קחו נשימה עמוקה וקראו שוב את הוראות התרגיל.<br>
+נסו להבין איפה טעיתם או מה היה יכול לא לעבוד 100%, אפילו בלי להתייחס לפלט של הבודק האוטומטי.<br>
+עדיין לא הצלחתם? חפשו בפורום את שם התרגיל, ב־80% מהמקרים השאלות שנשאלו פה חוזרות על עצמם.<br>
+עדיין לא? פתחו שאלה, התומכים פה אחלה.</p>
+          <p><a href="https://forums.pythonic.guru/t/none/6654/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/none/6654/3</link>
+        <pubDate>Tue, 26 May 2020 17:41:43 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6654-3</guid>
+        <source url="https://forums.pythonic.guru/t/none/6654.rss">הבודק האוטומטי ו None : יש כאן הסבר כללי</source>
+      </item>
+      <item>
+        <title>הבודק האוטומטי ו None : יש כאן הסבר כללי</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה ! עוזר מאוד <img src="https://forums.pythonic.guru/images/emoji/twitter/heart_eyes.png?v=9" title=":heart_eyes:" class="emoji" alt=":heart_eyes:"></p>
+          <p><a href="https://forums.pythonic.guru/t/none/6654/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/none/6654/2</link>
+        <pubDate>Tue, 26 May 2020 17:37:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6654-2</guid>
+        <source url="https://forums.pythonic.guru/t/none/6654.rss">הבודק האוטומטי ו None : יש כאן הסבר כללי</source>
+      </item>
+      <item>
+        <title>הבודק האוטומטי ו None : יש כאן הסבר כללי</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>הבודק האוטומטי זורק כמה שגיאות שונות לחלוטין שבהן יכולה להופיע המילה None</p>
+<p><strong>1:</strong> בראשונה, מדובר על ניסיון לקרוא לפונקציה שהוגדרה עם “None” במקרה הזה תופיע גם המילה “callable” (או ככל הנראה not callable)  זה אומר שהבודק ניסה לקרוא לפונקציה שהוגדרה בתרגיל עם None :</p>
+<p>function (None)<br>
+(אולי עם עוד פרמטרים, כתלות בתרגיל)</p>
+<p>במקרה זה, יש להריץ כך <img src="https://forums.pythonic.guru/images/emoji/twitter/point_up_2.png?v=9" title=":point_up_2:" class="emoji" alt=":point_up_2:"> את הפונקציה במחברת ולהבין למה לא מתקבלת התוצאה הרצויה.</p>
+<p><strong>מקרה 2:</strong> המילה None מופיעה עם סימן == לידה.</p>
+<p>במקרה הזה, הבודק הריץ בדיקה כלשהיא שלא החזירה ערך מהפונקציה (או, נדיר יותר, החזירה None)</p>
+<p>במקרה זה, הפונקציה שהוגשה לא מחזירה את הערך שהתבקשה להחזיר. כנראה הדפסתם במקום להחזיר ערך ספציפי עם return או yield , אבל יתכנו גם אפשרויות אחרות שגורמות לזה.</p>
+<p>במקרה זה, חיזרו למחברת והריצו שורת קוד:</p>
+<p>var = function(parameters)<br>
+print(var)<br>
+או<br>
+type(var)</p>
+<p>ואז לבדוק שוב בהגדרות התרגיל מה ביקשו.</p>
+<p>צורת בדיקה זו של הפונקציה יכולה לפתור מגוון בעיות נוספות שאינן קשורות בהכרח לNone ואני אישית משתמשת בשורות אלו המון.</p>
+<p><strong>מקרה 3</strong>: “assert None (שם פונקציה) חסרה מתודה”</p>
+<p>במקרה זה: הבודק מנסה להריץ את הפונקציה שביקשו בתרגיל ולא מצליח<br>
+הבעיה: שם הפונקציה כמו שמופיע בהערת הבודק לא מופיע בתרגיל<br>
+הפתרון: בדקו שוב בעיון את שם הפונקציה ואת האיות, ושנו את שם הפונקציה בתרגיל לשם שמופיע בהערת הבודק</p>
+<p>חוץ מזה, הערות כלליות:</p>
+<p>נתקלתם בבעיה? חפשו את <strong>שם התרגיל</strong> בפורום. ואז <em>בבקשה</em> תקראו את כל השרשור - ורק אז תשאלו. כן, זה לוקח יותר זמן, אבל גם לענות לשאלות לוקח הרבה זמן וככל שיש יותר שאלות ותשובות באותו נושא, יותר קשה לחפש <img src="https://forums.pythonic.guru/images/emoji/twitter/stuck_out_tongue_winking_eye.png?v=9" title=":stuck_out_tongue_winking_eye:" class="emoji" alt=":stuck_out_tongue_winking_eye:"></p>
+          <p><a href="https://forums.pythonic.guru/t/none/6654/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/none/6654/1</link>
+        <pubDate>Tue, 26 May 2020 17:36:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6654-1</guid>
+        <source url="https://forums.pythonic.guru/t/none/6654.rss">הבודק האוטומטי ו None : יש כאן הסבר כללי</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</title>
+    <link>https://forums.pythonic.guru/t/9-3-type-annotations/7782</link>
+    <description>## רמיזות על טיפוסים – Type Annotations
+
+חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות.
+
+כלי יעיל נוסף בהקשר זה, הוא הוספת type annotations לקוד שלנו. לצד כל משתנה, נוכל לכתוב מאיזה טיפוס פייתוני הוא. זה יעזור לנו מאוד כשנרצה לקרוא את הקוד בעתיד, ויעזור לנו לעשות סדר בסוגי המשתנים שמועברים לאורך התוכנית.
+
+אבל זה לא נגמר כאן! ל־type annotations יש שני יתרונות פרקטיים משמעותיים מאוד:
+1. ה־IDEs שלכם יודעים לזהות את ה־type annotation, ולהגיד לכם כשהעברתם סוג משתנה לא נכון או כשאתם מכניסים את עצמכם לפה של אריה.
+2. יש כלים חיצוניים, כמו [mypy](http://mypy-lang.org/), שמאפשרים לכם לדעת האם יש חוסר עקביות בסוגי המשתנים. לדוגמה, אם הצהרתם בעזרת type annotations שמפונקציה מסוימת אמור לחזור מילון, וניסיתם לעשות על הערך שחזר ממנה `.strip()`, הכלי החיצוני יצעק שאין פעולה כזו על מילון.
+
+----
+
+### טכניקה
+
+מספיק תיאוריה לבינתיים. בואו נראה איך זה נראה. ניקח את הקוד הבא, שבו אין type annotations:
+
+```python
+def add(a, b):
+    return a + b
+```
+
+ונוסיף לו type annotations:
+
+```python
+def add(a: int, b: int) -&gt; int:
+    return a + b
+```
+
+אחרי שם המשתנה (הפרמטר, במקרה שלנו) נכתוב נקודתיים ואז את הטיפוס שאנחנו מצפים להשים אליו.
+אחרי כותרת הפונקציה ולפני הנקודתיים, אנחנו יכולים לסמן חץ ואז את הטיפוס שהפונקציה תחזיר.
+
+קראו עוד בכללי על mypy [כאן](https://mypy.readthedocs.io/en/stable/getting_started.html).
+
+#### סיבוכים
+
+אבל רגע, מה קורה אם אנחנו רוצים לקבל `int` **או** `float`? ניתן להשתמש ב־Union מתוך ספריית typing:
+
+```python
+from typing import Union
+
+
+def add(a: Union[int, float], b: Union[int, float]) -&gt; Union[int, float]:
+    return a + b
+```
+
+אפשר גם לשמור על משתנה לשם הקריאות:
+
+```python
+from typing import Union
+
+
+Number = Union[int, float]
+
+
+def add(a: Number, b: Number) -&gt; Number:
+    return a + b
+```
+
+עבור משתנים מטיפוסים יותר מורכבים, כמו List, Tuple, Dict וכדומה, יש Type annotations יותר מורכבים.
+
+במילון מציינים את הטיפוס של המפתח, ואז את הטיפוס של הערך:
+```python
+ages: Dict[str, int] = {&quot;Yam&quot;: 28, &quot;Nimrod&quot;: 29, &quot;Lukas Graham&quot;: 7}
+```
+
+ברשימה מציינים את טיפוס הערכים מתוך הנחה שהיא הומוגנית. אם לא, אפשר להשתמש ב־Union.
+```python
+bands: List[str] = [&quot;Caravan Palace&quot;, &quot;C2C&quot;, &quot;Deluxe&quot;]
+```
+
+ב־tuple מציינים את הטיפוס של כל אחד מהמקומות ב־tuple.
+אם לא ידוע כמה איברים נמצאים ב־tuple, יש להשתמש ב־`...`:
+```python
+bands: Tuple[str, str, str] = (&quot;Caravan Palace&quot;, &quot;C2C&quot;, &quot;Deluxe&quot;)
+```
+
+או:
+```python
+bands: Tuple[str, ...] = (&quot;Caravan Palace&quot;, &quot;C2C&quot;, &quot;Deluxe&quot;)
+```
+
+קריאה מעמיקה של הדף [הזה](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html) תסדר לכם את כל החומר שצריך לדעת בנושא.
+נוסף על הרעיונות שהוצגו כאן, ודאו שאתם יודעים להשתמש ב־`Callable`, `Sequence`, `Iterable`, `Iterator`, `Optional` ו־`Any`.
+
+----
+
+כך או כך, type annotations הם רשות ופייתון עצמו מתעלמת מהם לחלוטין. אפילו אם תוסיפו Type annotations שאומר שפרמטר של פונקציה מסוימת הוא `bool`, פייתון לא תחייב אתכם לשלוח אליה ארגומנט מסוג `bool` ובפועל תוכלו לעשות מה שאתם רוצים. זה כלי עזר לא מחייב.
+
+----
+
+### הפעלת mypy
+
+הכלי mypy פותח על ידי Guido Van Russom (כן, זה הבחור שפיתח את פייתון במקור).
+מטרתו הוא לנתח קוד שיש בו type annotations ולבדוק שהתוכנה תקינה ואין &quot;התנגשויות&quot; או בעיות במהלך ההצהרות על טיפוסי המשתנים.
+
+כדי להריץ אותו, התקינו את mypy בעזרת pip install.
+לאחר מכן, פתחו שורת פקודה והקלידו בה mypy ואז את הנתיב לפרויקט/לקובץ שלכם:
+
+```text
+❯ mypy file.py
+Success: no issues found in 1 source file
+```
+
+ניתן לכתוב אחרי המילה `mypy` את הדגל `--strict`, שמחייב את כל הקוד להיות type annotated (כדי שלא נשכח), ומוסיף בדיקות מעט מחמירות יותר על טיפוסי הנתונים. לדוגמה:
+
+```text
+❯ mypy --strict sounds
+sounds/dog.py:1: error: Function is missing a return type annotation
+sounds/dog.py:1: note: Use &quot;-&gt; None&quot; if function does not return a value
+sounds/cat.py:1: error: Function is missing a return type annotation
+sounds/cat.py:1: note: Use &quot;-&gt; None&quot; if function does not return a value
+sounds/koo/mmm.py:3: error: Call to untyped function &quot;make_sound&quot; in typed context
+Found 3 errors in 3 files (checked 5 source files)
+```
+
+נסו להריץ mypy עם `--strict` על אחד התרגילים שלכם כדי להתרשם בעצמכם.
+
+----
+
+
+### תרגילים
+
+#### טיפוס אפל
+
+הספרים בספרייתו של רוספורף פיינס כושפו בכישוף נורא: כל המילים בספר התהפכו (&quot;שלום&quot; הפך ל&quot;םולש&quot;).
+חשבתם שכאן תם ונשלם הקונדס? לא ולא! במקום כל אות מופיע הערך הגימטרי שלה.
+
+לדוגמה: במשפט &quot;מי ימלל היפוגריף שאוכל?&quot; סדר האותיות התהפך: &quot;ימ ללמי ףירגופיה ?לכואש&quot;, ואז כל אות הומרה לערך הגימטרי שלה:
+```
+010040000030030040010000080010200003006080010005000?030020006001300
+```
+שימו לב שכל אות תופסת 3 תווים בדיוק (האות א&#39; מיוצגת כ־001, האות מ&#39; כ־040 וכד&#39;).
+במקום רווח הוכנס המספר 000, ושאר התווים שאינם עברית נשארו כפי שהיו במקור.
+
+כתבו פונקציה שמקבלת ספר של רוספורף פיינס (מחרוזת טקסט) ויודעת לשחזר אותו למצבו המקורי.
+דאגו לכתוב type annotations.
+
+לנוחיותכם: טבלת הגימטריה כמילון.
+
+```python
+gematria = {
+    &#39;א&#39;: 1, &#39;ב&#39;: 2, &#39;ג&#39;: 3, &#39;ד&#39;: 4, &#39;ה&#39;: 5, &#39;ו&#39;: 6, &#39;ז&#39;: 7, &#39;ח&#39;: 8, &#39;ט&#39;: 9,
+    &#39;י&#39;: 10, &#39;כ&#39;: 20, &#39;ל&#39;: 30, &#39;מ&#39;: 40, &#39;נ&#39;: 50, &#39;ס&#39;: 60, &#39;ע&#39;: 70, &#39;פ&#39;: 80,
+    &#39;צ&#39;: 90, &#39;ק&#39;: 100, &#39;ר&#39;: 200, &#39;ש&#39;: 300, &#39;ת&#39;: 400,
+    &#39;ך&#39;: 20, &#39;ם&#39;: 40, &#39;ן&#39;: 50, &#39;ף&#39;: 80, &#39;ץ&#39;: 90,
+}
+```
+
+#### מט־פיי
+
+הוסיפו type annotations לתרגיל השחמט משבוע שעבר.
+ניתן להוסיף את ה־type annotations אחרי שחילקתם את התרגיל לקבצים.
+
+---
+
+משאבים נוספים:
+1. מאמר סופר מפורט ב־[Real Python](https://realpython.com/python-type-checking/)
+2. [התיעוד](https://docs.python.org/3/library/typing.html) של הספרייה typing.
+3. [התיעוד](https://mypy.readthedocs.io/en/stable/) של mypy.</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 07 Aug 2020 04:22:12 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/9-3-type-annotations/7782.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            
+          <p><a href="https://forums.pythonic.guru/t/9-3-type-annotations/7782/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-3-type-annotations/7782/2</link>
+        <pubDate>Fri, 07 Aug 2020 04:24:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7782-2</guid>
+        <source url="https://forums.pythonic.guru/t/9-3-type-annotations/7782.rss">שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>רמיזות על טיפוסים – Type Annotations</h2>
+<p>חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות.</p>
+<p>כלי יעיל נוסף בהקשר זה, הוא הוספת type annotations לקוד שלנו. לצד כל משתנה, נוכל לכתוב מאיזה טיפוס פייתוני הוא. זה יעזור לנו מאוד כשנרצה לקרוא את הקוד בעתיד, ויעזור לנו לעשות סדר בסוגי המשתנים שמועברים לאורך התוכנית.</p>
+<p>אבל זה לא נגמר כאן! ל־type annotations יש שני יתרונות פרקטיים משמעותיים מאוד:</p>
+<ol>
+<li>ה־IDEs שלכם יודעים לזהות את ה־type annotation, ולהגיד לכם כשהעברתם סוג משתנה לא נכון או כשאתם מכניסים את עצמכם לפה של אריה.</li>
+<li>יש כלים חיצוניים, כמו <a href="http://mypy-lang.org/">mypy</a>, שמאפשרים לכם לדעת האם יש חוסר עקביות בסוגי המשתנים. לדוגמה, אם הצהרתם בעזרת type annotations שמפונקציה מסוימת אמור לחזור מילון, וניסיתם לעשות על הערך שחזר ממנה <code>.strip()</code>, הכלי החיצוני יצעק שאין פעולה כזו על מילון.</li>
+</ol>
+<hr>
+<h3>טכניקה</h3>
+<p>מספיק תיאוריה לבינתיים. בואו נראה איך זה נראה. ניקח את הקוד הבא, שבו אין type annotations:</p>
+<pre><code class="lang-python">def add(a, b):
+    return a + b
+</code></pre>
+<p>ונוסיף לו type annotations:</p>
+<pre><code class="lang-python">def add(a: int, b: int) -&gt; int:
+    return a + b
+</code></pre>
+<p>אחרי שם המשתנה (הפרמטר, במקרה שלנו) נכתוב נקודתיים ואז את הטיפוס שאנחנו מצפים להשים אליו.<br>
+אחרי כותרת הפונקציה ולפני הנקודתיים, אנחנו יכולים לסמן חץ ואז את הטיפוס שהפונקציה תחזיר.</p>
+<p>קראו עוד בכללי על mypy <a href="https://mypy.readthedocs.io/en/stable/getting_started.html">כאן</a>.</p>
+<h4>סיבוכים</h4>
+<p>אבל רגע, מה קורה אם אנחנו רוצים לקבל <code>int</code> <strong>או</strong> <code>float</code>? ניתן להשתמש ב־Union מתוך ספריית typing:</p>
+<pre><code class="lang-python">from typing import Union
+
+
+def add(a: Union[int, float], b: Union[int, float]) -&gt; Union[int, float]:
+    return a + b
+</code></pre>
+<p>אפשר גם לשמור על משתנה לשם הקריאות:</p>
+<pre><code class="lang-python">from typing import Union
+
+
+Number = Union[int, float]
+
+
+def add(a: Number, b: Number) -&gt; Number:
+    return a + b
+</code></pre>
+<p>עבור משתנים מטיפוסים יותר מורכבים, כמו List, Tuple, Dict וכדומה, יש Type annotations יותר מורכבים.</p>
+<p>במילון מציינים את הטיפוס של המפתח, ואז את הטיפוס של הערך:</p>
+<pre><code class="lang-python">ages: Dict[str, int] = {"Yam": 28, "Nimrod": 29, "Lukas Graham": 7}
+</code></pre>
+<p>ברשימה מציינים את טיפוס הערכים מתוך הנחה שהיא הומוגנית. אם לא, אפשר להשתמש ב־Union.</p>
+<pre><code class="lang-python">bands: List[str] = ["Caravan Palace", "C2C", "Deluxe"]
+</code></pre>
+<p>ב־tuple מציינים את הטיפוס של כל אחד מהמקומות ב־tuple.<br>
+אם לא ידוע כמה איברים נמצאים ב־tuple, יש להשתמש ב־<code>...</code>:</p>
+<pre><code class="lang-python">bands: Tuple[str, str, str] = ("Caravan Palace", "C2C", "Deluxe")
+</code></pre>
+<p>או:</p>
+<pre><code class="lang-python">bands: Tuple[str, ...] = ("Caravan Palace", "C2C", "Deluxe")
+</code></pre>
+<p>קריאה מעמיקה של הדף <a href="https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html">הזה</a> תסדר לכם את כל החומר שצריך לדעת בנושא.<br>
+נוסף על הרעיונות שהוצגו כאן, ודאו שאתם יודעים להשתמש ב־<code>Callable</code>, <code>Sequence</code>, <code>Iterable</code>, <code>Iterator</code>, <code>Optional</code> ו־<code>Any</code>.</p>
+<hr>
+<p>כך או כך, type annotations הם רשות ופייתון עצמו מתעלמת מהם לחלוטין. אפילו אם תוסיפו Type annotations שאומר שפרמטר של פונקציה מסוימת הוא <code>bool</code>, פייתון לא תחייב אתכם לשלוח אליה ארגומנט מסוג <code>bool</code> ובפועל תוכלו לעשות מה שאתם רוצים. זה כלי עזר לא מחייב.</p>
+<hr>
+<h3>הפעלת mypy</h3>
+<p>הכלי mypy פותח על ידי Guido Van Russom (כן, זה הבחור שפיתח את פייתון במקור).<br>
+מטרתו הוא לנתח קוד שיש בו type annotations ולבדוק שהתוכנה תקינה ואין “התנגשויות” או בעיות במהלך ההצהרות על טיפוסי המשתנים.</p>
+<p>כדי להריץ אותו, התקינו את mypy בעזרת pip install.<br>
+לאחר מכן, פתחו שורת פקודה והקלידו בה mypy ואז את הנתיב לפרויקט/לקובץ שלכם:</p>
+<pre><code class="lang-nohighlight">❯ mypy file.py
+Success: no issues found in 1 source file
+</code></pre>
+<p>ניתן לכתוב אחרי המילה <code>mypy</code> את הדגל <code>--strict</code>, שמחייב את כל הקוד להיות type annotated (כדי שלא נשכח), ומוסיף בדיקות מעט מחמירות יותר על טיפוסי הנתונים. לדוגמה:</p>
+<pre><code class="lang-nohighlight">❯ mypy --strict sounds
+sounds/dog.py:1: error: Function is missing a return type annotation
+sounds/dog.py:1: note: Use "-&gt; None" if function does not return a value
+sounds/cat.py:1: error: Function is missing a return type annotation
+sounds/cat.py:1: note: Use "-&gt; None" if function does not return a value
+sounds/koo/mmm.py:3: error: Call to untyped function "make_sound" in typed context
+Found 3 errors in 3 files (checked 5 source files)
+</code></pre>
+<p>נסו להריץ mypy עם <code>--strict</code> על אחד התרגילים שלכם כדי להתרשם בעצמכם.</p>
+<hr>
+<h3>תרגילים</h3>
+<h4>טיפוס אפל</h4>
+<p>הספרים בספרייתו של רוספורף פיינס כושפו בכישוף נורא: כל המילים בספר התהפכו (“שלום” הפך ל"םולש").<br>
+חשבתם שכאן תם ונשלם הקונדס? לא ולא! במקום כל אות מופיע הערך הגימטרי שלה.</p>
+<p>לדוגמה: במשפט “מי ימלל היפוגריף שאוכל?” סדר האותיות התהפך: “ימ ללמי ףירגופיה ?לכואש”, ואז כל אות הומרה לערך הגימטרי שלה:</p>
+<pre><code class="lang-auto">010040000030030040010000080010200003006080010005000?030020006001300
+</code></pre>
+<p>שימו לב שכל אות תופסת 3 תווים בדיוק (האות א’ מיוצגת כ־001, האות מ’ כ־040 וכד’).<br>
+במקום רווח הוכנס המספר 000, ושאר התווים שאינם עברית נשארו כפי שהיו במקור.</p>
+<p>כתבו פונקציה שמקבלת ספר של רוספורף פיינס (מחרוזת טקסט) ויודעת לשחזר אותו למצבו המקורי.<br>
+דאגו לכתוב type annotations.</p>
+<p>לנוחיותכם: טבלת הגימטריה כמילון.</p>
+<pre><code class="lang-python">gematria = {
+    'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5, 'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9,
+    'י': 10, 'כ': 20, 'ל': 30, 'מ': 40, 'נ': 50, 'ס': 60, 'ע': 70, 'פ': 80,
+    'צ': 90, 'ק': 100, 'ר': 200, 'ש': 300, 'ת': 400,
+    'ך': 20, 'ם': 40, 'ן': 50, 'ף': 80, 'ץ': 90,
+}
+</code></pre>
+<h4>מט־פיי</h4>
+<p>הוסיפו type annotations לתרגיל השחמט משבוע שעבר.<br>
+ניתן להוסיף את ה־type annotations אחרי שחילקתם את התרגיל לקבצים.</p>
+<hr>
+<p>משאבים נוספים:</p>
+<ol>
+<li>מאמר סופר מפורט ב־<a href="https://realpython.com/python-type-checking/">Real Python</a>
+</li>
+<li>
+<a href="https://docs.python.org/3/library/typing.html">התיעוד</a> של הספרייה typing.</li>
+<li>
+<a href="https://mypy.readthedocs.io/en/stable/">התיעוד</a> של mypy.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/9-3-type-annotations/7782/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-3-type-annotations/7782/1</link>
+        <pubDate>Fri, 07 Aug 2020 04:15:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7782-1</guid>
+        <source url="https://forums.pythonic.guru/t/9-3-type-annotations/7782.rss">שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</source>
+      </item>
+  </channel>
+</rss>

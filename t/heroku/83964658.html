@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/heroku/8396?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:03 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>כישלון בהעלאה לheroku - שבוע 12 - פייתון בעברית ובחינם</title>
+<meta content="אז אחרי כל כך הרבה שעות של מלחמה עם הדבר הזה, אני לא מצליח להעלות את האתר לheroku. מקבל את הדבר הזה: 
+  
+מישהו שנתקל בזה גם ויכול לעזור?" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="83964658.html?page=2" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8396.rss" rel="alternate nofollow" title="הזנת RSS של ‚כישלון בהעלאה לheroku’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/3/350f8df0e249ffb56f76e26218545eac61c41344.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/3/350f8df0e249ffb56f76e26218545eac61c41344.png" property="og:image"/>
+<meta content="83964658.html?page=2" property="og:url"/>
+<meta content="83964658.html?page=2" name="twitter:url"/>
+<meta content="כישלון בהעלאה לheroku" property="og:title"/>
+<meta content="כישלון בהעלאה לheroku" name="twitter:title"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 12" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="heroku" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="3 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="1 ❤"/>
+<meta content="2020-10-24T22:42:39+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="8396.html" rel="prev"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8396.html">כישלון בהעלאה לheroku</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/24-category/24.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 12</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/heroku.html" rel="tag">heroku</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="כישלון בהעלאה לheroku" itemprop="headline"/>
+<meta content="שבוע 12" itemprop="articleSection"/>
+<meta content="heroku" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T22:42:39Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏ 10:42pm
+                  </time>
+<meta content="2020-10-24T22:42:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote" data-post="5" data-topic="8351">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../api/8351/5.html">הגנה על קוד API</a> <a class="badge-wrapper bullet" href="../../c/old/24-category/24.html"><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 12.">שבוע 12</span></a>
+</div>
+<blockquote>
+    לגבי העלאה ל¯Netlify – אין סיבה שיעלה לשם ה¯API Key. בכ"מ אם יש לך קוד JS שעושה שימוש ב¯API, חפש בגוגל Netlify API secrets או משהו כזה. 
+בפייתון, תשתמש ב¯os.getenv('MY_API_KEY'), ותגדיר משתנה סביבה עם ה¯API Key שלך.
+  </blockquote>
+</aside>
+<aside class="quote quote-modified" data-post="4" data-topic="7513">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/>
+<a href="../topic/7513/4.html">הערה מוזרה בבודק האוטומטי</a> <a class="badge-wrapper bullet" href="../../c/old/week-8/18.html"><span class="badge-category-parent-bg" style="background-color: #0088CC;"></span><span class="badge-category-bg" style="background-color: #0088CC;"></span><span class="badge-category clear-badge" data-drop-close="true" style="" title="כאן תוכלו לשאול שאלות ולהתדיין על החומר של שבוע 8.">שבוע 8</span></a>
+</div>
+<blockquote>
+    התבקשתם, כן. הבודק האוטומטי הוא התאמה שלנו לתוכנה שרצה על תוכניות הרבה יותר גדולות ומורכבות, ובין היתר מה שהיא עושה זה לוודא שאין סיסמאות משובצות בתוך הקוד, כי זו בעיית אבטחה. לכן את מקבלת את ההערה. תוכלי להיפטר ממנה עם הפתרון שנתתי. 
+הקוד os.getenv('pass_user1') לוקח את משתנה הסביבה pass_user1 מהמחשב שלך (משתנה סביבה הוא כמו משתנה בתוכנה שלך, רק שהוא נשמר באופן קבוע במערכת ההפעלה). אם אין משתנה סביבה כזה, os.getenv תחזיר None. תוכלי להשתמש ב־os.getenv('pass_user1, 'default') כדי לתת ערך ברירת מ…
+  </blockquote>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_22" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/8/83e05e0b1996bbcc21967aee343d268804253f11.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T23:21:45Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏ 11:21pm
+                  </time>
+<meta content="2020-10-24T23:21:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הי אז שיניתי את זה למשתני הסביבה וזה רץ סבבה בflask, והעברתי לgithub והעליתי שוב לheroku ועדיין זה לא מוכן להעלות את האתר כמו שצריך ואני מקבל את התגובה הזאת:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/83e05e0b1996bbcc21967aee343d268804253f11" href="../../uploads/default/original/2X/8/83e05e0b1996bbcc21967aee343d268804253f11.png" title="image"><img alt="image" data-base62-sha1="iODfIlW3JTEfOxRp8M0TsQhQCgF" data-small-upload="../../uploads/default/optimized/2X/8/83e05e0b1996bbcc21967aee343d268804253f11_2_10x10.png" height="309" src="../../uploads/default/original/2X/8/83e05e0b1996bbcc21967aee343d268804253f11.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">709×318 8.61 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>יש לך אולי עוד רעיון לסיבה אפשרית?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_23" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-24T23:28:00Z" itemprop="datePublished">
+                     24 באוקטובר,‏ 2020,‏ 11:28pm
+                  </time>
+<meta content="2020-10-24T23:28:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>מה כתוב ב־log?</li>
+<li>איך נראית עכשיו app.py?</li>
+<li>מה עוד ניסית לעשות?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_24" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:52:50Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:52am
+                  </time>
+<meta content="2020-10-25T06:52:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>
+</li></ol>
+<p>-----&gt; Python app detected<br/>
+-----&gt; Installing python-3.6.12<br/>
+-----&gt; Installing pip 20.1.1, setuptools 47.1.1 and wheel 0.34.2<br/>
+-----&gt; Installing SQLite3<br/>
+-----&gt; Installing requirements with pip<br/>
+Collecting certifi==2020.6.20<br/>
+Downloading certifi-2020.6.20-py2.py3-none-any.whl (156 kB)<br/>
+Collecting chardet==3.0.4<br/>
+Downloading chardet-3.0.4-py2.py3-none-any.whl (133 kB)<br/>
+Collecting click==7.1.2<br/>
+Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)<br/>
+Collecting Flask==1.1.2<br/>
+Downloading Flask-1.1.2-py2.py3-none-any.whl (94 kB)<br/>
+Collecting idna==2.10<br/>
+Downloading idna-2.10-py2.py3-none-any.whl (58 kB)<br/>
+Collecting itsdangerous==1.1.0<br/>
+Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)<br/>
+Collecting Jinja2==2.11.2<br/>
+Downloading Jinja2-2.11.2-py2.py3-none-any.whl (125 kB)<br/>
+Collecting MarkupSafe==1.1.1<br/>
+Downloading MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl (27 kB)<br/>
+Collecting requests==2.24.0<br/>
+Downloading requests-2.24.0-py2.py3-none-any.whl (61 kB)<br/>
+Collecting urllib3==1.25.11<br/>
+Downloading urllib3-1.25.11-py2.py3-none-any.whl (127 kB)<br/>
+Collecting Werkzeug==1.0.1<br/>
+Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)<br/>
+Installing collected packages: certifi, chardet, click, Werkzeug, itsdangerous, MarkupSafe, Jinja2, Flask, idna, urllib3, requests<br/>
+Successfully installed Flask-1.1.2 Jinja2-2.11.2 MarkupSafe-1.1.1 Werkzeug-1.0.1 certifi-2020.6.20 chardet-3.0.4 click-7.1.2 idna-2.10 itsdangerous-1.1.0 requests-2.24.0 urllib3-1.25.11<br/>
+-----&gt; Discovering process types<br/>
+Procfile declares types -&gt; web<br/>
+-----&gt; Compressing…<br/>
+Done: 51.3M<br/>
+-----&gt; Launching…<br/>
+Released v4<br/>
+<a href="https://find-your-movie123.herokuapp.com/" rel="noopener nofollow ugc">https://find-your-movie123.herokuapp.com/</a> deployed to Heroku</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_25" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:53:44Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:53am
+                  </time>
+<meta content="2020-10-25T06:53:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol start="2">
+<li>
+</li></ol>
+<p>from flask import Flask, render_template, request</p>
+<p>import requests</p>
+<p>import os</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p><span class="mention">@app.route</span>(’/’)</p>
+<p>def main():</p>
+<pre><code>name = request.args.get("name")
+
+year = request.args.get("year")
+
+if not name:
+
+    return render_template('index.html', movies={})
+
+url = "http://www.omdbapi.com"
+
+#with open('apiKey.txt') as file:
+
+    #apiKey = file.read()
+
+apiKey = os.getenv("API_KEY")
+
+params = {'apikey': apiKey, 's': name}
+
+try:
+
+    params['y'] = int(year)
+
+except ValueError:
+
+    pass
+
+resp = requests.get(url, params=params)
+
+try:
+
+    resp_json = resp.json()
+
+except ValueError:
+
+    return render_template('index.html', movies={})
+
+return render_template('index.html', movies=resp_json.get('Search', {}))
+</code></pre>
+<p><span class="mention">@app.route</span>(’/search’)</p>
+<p>def search_by_title():</p>
+<pre><code>id = request.args.__getattribute__("choice")
+
+url = "http://www.omdbapi.com"
+
+with open('apiKey.txt') as file:
+
+    apiKey = file.read()
+
+params = {'apikey': apiKey, 't': id}
+
+resp = requests.get(url, params=params)
+
+resp_json = resp.json()
+
+return render_template('index.html', chosen_movie=resp_json)
+</code></pre>
+<p><span class="mention">@app.route</span>(’/view_image/&lt;image_name&gt;’)</p>
+<p>def search_by_image(image_name):</p>
+<pre><code>url = "http://www.omdbapi.com"
+
+with open('apiKey.txt') as file:
+
+    apiKey = file.read()
+
+params = {'apikey': apiKey, 't': image_name, 'plot': 'full'}
+
+resp = requests.get(url, params=params)
+
+resp_json = resp.json()
+
+return render_template('index.html', chosen_movie=resp_json)</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_26" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:55:27Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:55am
+                  </time>
+<meta content="2020-10-25T06:55:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עדיין יש לך מקומות בהם אתה מנסה לקרוא את הקובץ apiKey.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_27" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/c/c2d2ea7c111541ed82ac9059ad6e72cbb25129b8.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T06:57:08Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  6:57am
+                  </time>
+<meta content="2020-10-25T06:57:08Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא, אני שמתי אותם בהערה, זה לא העתיק את זה לפה משום מה.</p>
+<ol start="3">
+<li>ניסיתי לכתוב heroku logs ב cmd וזה נתן לי ערכים שאני לא מבין:</li>
+</ol>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c2d2ea7c111541ed82ac9059ad6e72cbb25129b8" href="../../uploads/default/original/2X/c/c2d2ea7c111541ed82ac9059ad6e72cbb25129b8.png" title="image"><img alt="image" data-base62-sha1="rNuvUbRuYCbbMtOo7MzXyLMBxC8" data-small-upload="../../uploads/default/optimized/2X/c/c2d2ea7c111541ed82ac9059ad6e72cbb25129b8_2_10x10.png" height="192" src="../../uploads/default/original/2X/c/c2d2ea7c111541ed82ac9059ad6e72cbb25129b8.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">826×231 7.06 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ניסיתי לגגל את זה ובאופן כללי אני בדף שלהם אבל זה לא עובד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_28" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/9/9c3c2a91322a2928a0abfa579e53b0ba00c89854.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:19:19Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:19am
+                  </time>
+<meta content="2020-10-25T07:19:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אחר כך הקלדתי heroku logs --tail וקיבלתי את כל אלה:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9c3c2a91322a2928a0abfa579e53b0ba00c89854" href="../../uploads/default/original/2X/9/9c3c2a91322a2928a0abfa579e53b0ba00c89854.png" title="image"><img alt="image" data-base62-sha1="mi7ofbfV4ht4ZEH70kqrM481Fly" data-small-upload="../../uploads/default/optimized/2X/9/9c3c2a91322a2928a0abfa579e53b0ba00c89854_2_10x10.png" height="337" src="../../uploads/default/original/2X/9/9c3c2a91322a2928a0abfa579e53b0ba00c89854.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">756×370 32.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ראיתי שהרבה הערות התייחסו לfavicon.ico אז שמתי את השורה בה הוא מופיע בהערה ועדיין אני מקבל אותו בתור error בlogs</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_29" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/7/7b93e564384592fcc26b4a634896bad6a91e904d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:38:31Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:38am
+                  </time>
+<meta content="2020-10-25T07:38:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הורדתי את favicon.ico מכל מקום אפשרי ואיכשהו אני עדיין מקבל אותו בהערות שלי<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/7b93e564384592fcc26b4a634896bad6a91e904d" href="../../uploads/default/original/2X/7/7b93e564384592fcc26b4a634896bad6a91e904d.png" title="image"><img alt="image" data-base62-sha1="hDdAS4RJW4JJGwtv6byBK50iFIN" data-small-upload="../../uploads/default/optimized/2X/7/7b93e564384592fcc26b4a634896bad6a91e904d_2_10x10.png" height="367" src="../../uploads/default/original/2X/7/7b93e564384592fcc26b4a634896bad6a91e904d.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">979×521 55.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>הוא לא מופיע בגיט האב וידאתי את זה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_30" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Geva</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:40:45Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:40am
+                  </time>
+<meta content="2020-10-25T07:40:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="27" data-topic="8396" data-username="pollakamir34">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/pollakamir34/40/4936_2.png" width="20"/> pollakamir34:</div>
+<blockquote>
+<p>ניסיתי לכתוב heroku logs ב cmd וזה נתן לי ערכים שאני לא מבין:</p>
+</blockquote>
+</aside>
+<p>אתה צריך להכניס דגל אחרי הפעולה, למשל:<br/>
+heroku logs -app YOUR_APP_NAME</p>
+<aside class="quote no-group" data-post="28" data-topic="8396" data-username="pollakamir34">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/pollakamir34/40/4936_2.png" width="20"/> pollakamir34:</div>
+<blockquote>
+<p>אחר כך הקלדתי heroku logs --tail וקיבלתי את כל אלה:</p>
+</blockquote>
+</aside>
+<p>גם לי היו לא מעט תקלות שהיו נראות לא קשורות (כולל ה-favicon שזה לא תקלה בעייתית להבנתי), גללתי למעלה קצת בlogs וראיתי שגיאת פייתון בודדה וקטנה שגרמה לאפליקציה לקרוס…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_31" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/a6490e09e71c872172e11cd53a17289a405b2586.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:46:31Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:46am
+                  </time>
+<meta content="2020-10-25T07:46:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם לך זה הראה את זה בהתחלה?</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/a6490e09e71c872172e11cd53a17289a405b2586" href="../../uploads/default/original/2X/a/a6490e09e71c872172e11cd53a17289a405b2586.png" title="image"><img alt="image" data-base62-sha1="nJ1MjSm94VAtZB3KaqI03SsjLvw" data-small-upload="../../uploads/default/optimized/2X/a/a6490e09e71c872172e11cd53a17289a405b2586_2_10x10.png" height="367" src="../../uploads/default/original/2X/a/a6490e09e71c872172e11cd53a17289a405b2586.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">979×521 52.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_32" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Geva</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:49:18Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:49am
+                  </time>
+<meta content="2020-10-25T07:49:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא, אצלי זה זיהה את האפליקציה…</p>
+<p>אולי משהו לא בסדר עם gunicorn, הוא בוודאות בrequirements?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_33" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T07:50:58Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏  7:50am
+                  </time>
+<meta content="2020-10-25T07:50:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת שזה עובד לי עם -a במקום app אבל עדיין זה מחזיר לי את אותו הלוג ממוקדם, עם הfavicon.ico, למרות שאני לא מצליח להבין מאיפה הוא מביא אותו אם מחקתי אותו לחלוטין</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_34" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">pollakamir34</span>
+</span>
+<link href="8396.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-25T10:43:53Z" itemprop="datePublished">
+                     25 באוקטובר,‏ 2020,‏ 10:43am
+                  </time>
+<meta content="2020-10-25T10:43:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבעיה שלי הייתה שלא שמתי את הgunicorn בrequirements.txt<br/>
+סוף כל סוף האתר עובד!!!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="8396.html" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/heroku/8396?page=2 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:11:19 GMT -->
+</html>

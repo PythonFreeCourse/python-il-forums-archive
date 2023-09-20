@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+    <link>https://forums.pythonic.guru/t/mutable/7108</link>
+    <description>*ספציפית: nemeses = [] בחתימת הפונקציה.
+
+הבודק האוטומטי מכיר: 
+![IMG_20200612_064537|513x500](upload://B3Qpb2Lnu66ILDWDXbas0r7syp.jpeg)
+
+כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,
+והבנתי איזו תופעה ההערה הזו נועדה למנוע. 
+
+**רק שבמקרה הזה התופעה היא מכוונת**.
+אני *רוצה* שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה). 
+
+האם יש להשאיר את זה כך למרות ההערה?</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 12 Jun 2020 13:23:25 +0000</lastBuildDate>
+    <category>שבוע 7</category>
+    <atom:link href="https://forums.pythonic.guru/t/mutable/7108.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>התחכמויות בקוד לא מובילות בד"כ למקומות טובים.<br>
+הן לא קריאות למשתמשים שבאים אחריך, ובסופו של דבר כשבאים להרחיב את התוכנה הן מתגלות כמקלות בגלגלים.<br>
+מהמקום שלי אני יכול לתרום שברוב המוחלט של המקרים עדיף לחפש את הדרך הנקייה והיסודית לכתוב קוד.</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/12</link>
+        <pubDate>Fri, 12 Jun 2020 13:23:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-12</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>אגב, בניסוי שלי קרו דברים מעניינים:</p>
+<p>ביצירת אובייקטים - כל אחד בשלו, ומצביע לאן שנראה שמתבקש.<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f" title="IMG_20200612_161514"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_690x261.jpeg" alt="IMG_20200612_161514" data-base62-sha1="AhbRc9er24rYiT3TWuiTZqn7OQ7" width="690" height="261" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_690x261.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_1035x391.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/f/fe3fbf9ce4f1266d5ae5d61c0866c4aa1c2a281f_2_10x10.png"></a></div><br>
+player_1, ו-player-3 מצביעים על רשימה ריקה;<br>
+player_2 מצביע על player_1.<p></p>
+<p>כאשר נבצע append לרשימת ה-nemeses של player_3:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/db5496b5f165ccfd59543976bd80b1057803f837.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/db5496b5f165ccfd59543976bd80b1057803f837" title="IMG_20200612_161545"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_690x318.jpeg" alt="IMG_20200612_161545" data-base62-sha1="vihNnN2esekp5NDv8gQf8E5bk5V" width="690" height="318" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_690x318.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_1035x477.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/db5496b5f165ccfd59543976bd80b1057803f837.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/db5496b5f165ccfd59543976bd80b1057803f837_2_10x10.png"></a></div><br>
+הוא מתווסף גם לרשימה של player_1.<br>
+*אך player_2 נשאר אפאתי.<p></p>
+<p>ננסה לעשות append לרשימה שאליה מצביע player_3, וזה יתווסף ל-player_1, ו-player_3, אבל player_2, שקבל ערך כשהוגדר - עדיין אפאטי.</p>
+<hr>
+<p>אני מבין מכך שכמו שאורפז אמרה - כל המשתנים שבהם nemeses הוא ברירת המחדל - חולקים את אותה הרשימה.</p>
+<p>*אבל למדתי שאלו שכן מקבלים ערך (ולא משתמשים בברירת המחדל) - יהנו מרשימה עצמאית משלהם.</p>
+<p>*זה גם מסביר למה הכל היה נראה “חלק” בהתחלה - כשהדפסתי את האויבים של player_1, ו-player_2, וחשבתי בטעות ש: “רואים? כל אחד, והאויבים שלו!” (לא: player_2 מקבל רשימה משלו, אבל כל player_x שלא הוזנה להם רשימה, ומשתמש בברירת המחדל - יחלקו רשימה משותפת, כמו שקרה עם player_1 ו-player_3 בניסוי הזה).</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/11</link>
+        <pubDate>Fri, 12 Jun 2020 13:21:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-11</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>בום. <img src="https://forums.pythonic.guru/images/emoji/twitter/heart.png?v=9" title=":heart:" class="emoji" alt=":heart:"></p>
+<p>הלכתי לערוך.<br>
+בי.</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/10</link>
+        <pubDate>Fri, 12 Jun 2020 12:48:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-10</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>אתה מניח שבאתחול של אובייקט חדש של המחלקה תהיה רשימה ריקה חדשה, ולמרבה הצער זו הנחה שגויה<br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/9/94b4a11275a69921dc119acfc9b120786ff891d4.png" alt="תמונה" data-base62-sha1="ldvF2fLzYAbhXVSTzXWSac7Ier2" width="424" height="358"></p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/9</link>
+        <pubDate>Fri, 12 Jun 2020 12:41:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-9</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מניחה שהייתי ניגשת לזה מנקודת מבט של מישהו אחר  - שקורא את הקוד / רוצה לשנות אותו.</p>
+<ol>
+<li>
+<p>האם זה קריא? כלומר, האם קל לפספס את השינוי שקורה במקרה הזה?</p>
+</li>
+<li>
+<p>אם יערכו שינויים מסוימים בתנאי המשחק, ו/או יצטרפו שימושים נוספים למשתנה או לפונקציה, האם צורת הכתיבה שבה בחרת תאפשר זאת בעריכה מינימלית?</p>
+</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/8</link>
+        <pubDate>Fri, 12 Jun 2020 12:37:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-8</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מכין את מה שאני אומר. (וזה מה שאני אעשה),<br>
+אבל אני מרגיש שמה שזה בא להשיג הפעם - לא נחוץ.</p>
+<p>ואז (בהנחה שזה באמת לא נחוץ, ולא פספסתי כלום) - אני מרגיש שזו סתם חכמולוגיה.</p>
+<p>לתפישתי (ההדיוטה), זה לא שונה מכתיבת הערה שמסבירה משהו סופר מובן, או ביצוע במבחן במתמטיקה איזו פעולה בזהירות שאין בה צורך, סתם כדי להראות לבודק שאני יודע שצריך להיות זהיר. (גם אם במקרה הזה - לא).</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/7</link>
+        <pubDate>Fri, 12 Jun 2020 12:18:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-7</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <ol>
+<li>
+<p>אתה צודק. (עכשיו גם נכנסתי לשחק עם זה, בשביל “להתלכלך, ולהרגיש בידיים”).</p>
+</li>
+<li>
+<p>זה עדיין לא עונה לי על השאלה. <img src="https://forums.pythonic.guru/images/emoji/twitter/frowning.png?v=9" title=":frowning:" class="emoji" alt=":frowning:"></p>
+</li>
+</ol>
+<hr>
+<p>-אני אחדד: הארגומנט הזה נמצא בחתימה של <code>__init__</code>.<br>
+אנחנו מגדירים ישות, והיא מקבלת פרמטר nemesis שמצביע על הרשימה שמועברת בארגומנט הזה (או לברירת המחדל: רשימה ריקה), וזהו. אין יותר התעסקות עם זה בתוך המתודה.</p>
+<p>אני <strong>מבין</strong> למה זה משמעותי בעיניך <strong>כחונך</strong> להטמיע בנו הרגלים בריאים, ואני לחלוטין מתכוון גם, כחניך, <strong>לסמוך על התהליך</strong> שאתה מתווה לנו ולתקן את זה. (וחוץ מזה: אני רוצה <strong>לכבד את הבודקים, ואת הזמן שלהם</strong> בתרגיל שלא צבוע באדום).</p>
+<p>ועם, זאת אני ממש רוצה לשאול:<br>
+בהנחה שלא פספסתי משהו - והזהירות הזו לא נחוצה <strong>הפעם</strong>: אם היית מסיר לרגע את הכובע של החונך, ומרכיב במקומו משקפים של מתכנת ותיק שפשוט בא לעבוד עם הקוד שלי - איך היית מרגיש לגבי “חכמולוגיה” כזו? (<strong>אם</strong> יוצאים מנק’ הנחה שבמקרה הזה אין בה צורך).</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/6</link>
+        <pubDate>Fri, 12 Jun 2020 12:10:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-6</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר גם להוסיף תנאי שיקבע מפורשות מה אתה רוצה שיהיה אם לרשימה יש ערך ואם היא ריקה או לא הועברה בכלל בקיראה לפונקציה. None הוא רק ערך ברירת מחדל אם לא העברת רשימה בכלל.</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/5</link>
+        <pubDate>Fri, 12 Jun 2020 04:26:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-5</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="DissonantHarmony" data-post="1" data-topic="7108">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/dissonantharmony/40/461_2.png" class="avatar"> DissonantHarmony:</div>
+<blockquote>
+<p><strong>רק שבמקרה הזה התופעה היא מכוונת</strong> .<br>
+אני <em>רוצה</em> שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).</p>
+</blockquote>
+</aside>
+<p>הדוגמה שתיארת היא לא מה שיקרה, נסה להריץ והיווכח בכך. בדוגמה שנתת אתה תקבל <code>1 * 9</code> ולא <code>1 * 14</code>, כיוון שלא השתמשת כלל בפרמטר הדיפולטי שהוגדר.<br>
+הבעיה מתחילה שאתה משנה את numbers במהלך הפונקציה:</p>
+<pre><code class="lang-auto">def a(b, c=[]):
+    c.append(b)
+    return c
+
+a(5)
+a(6)
+print(a(7))
+</code></pre>
+<p>יחזיר לך <code>[5, 6, 7]</code>.<br>
+העניין הוא שכמעט אף פעם זה לא מה שאתה רוצה.<br>
+אם אתה שומר state על ארגומנט של הפונקציה זה סימן לבחירות עיצוב לא כ"כ טובות בד"כ, ואולי היה אפשר לעשות דברים אחרת.</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/4</link>
+        <pubDate>Fri, 12 Jun 2020 04:22:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-4</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נועד על מנת שקריאה נוספת לפונקציה לא תרחיב את הרשימה שהוגדרה בפעם הראשונה.</p>
+<p>למשל: פונקציה שמקבלת מספר, ורשימה אופציונלית של שני מספרים. החזר את המכפלה של המספר, בסכום שני המספרים שברשימה:</p>
+<pre><code>def times_this (number, numbers = []):
+    return number * sum(numbers)
+</code></pre>
+<p>אם נקרא לפונקציה:</p>
+<p>times_this(1, [2, 3])<br>
+אז נקבל:<br>
+1 * 5 = 5</p>
+<p>אבל אם נקרא לפונקציה:</p>
+<p><code>times_this(1, [4, 5])</code>,</p>
+<p>אז לא נקבל:<br>
+1 * 9,</p>
+<p>אלא:<br>
+1 * 14</p>
+<p>למה?<br>
+כי הרשימה הפנימית תכיל את 2, 3 שהיו קודם,<br>
+ועכשיו היא תהיה:<br>
+[2, 3, 4, 5]</p>
+<p>ההצעה לשמור את המשתנה כ-None, ולהגדיר אותו מבפנים, נועדה למנוע את זה.</p>
+<p>*אבל אם זה המקרה הרצוי?<br>
+או אלטרנטיבית: מה אם הקוד שלי בנוי בצורה כזו שאי אפשר לקרוא לפונקציה הזו עוד פעם בלי שהרשימה הזו תהיה כבר ריקה?</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/3</link>
+        <pubDate>Fri, 12 Jun 2020 04:11:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-3</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>הנושא הוזכר המחברות.אם אתה עושה את זה כארגומנט בפונקציה אז תשתמש ב None כערך ברירת מחדל</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/2</link>
+        <pubDate>Fri, 12 Jun 2020 03:56:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-2</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+      <item>
+        <title>אתחול ארגומנט אופציונלי כ-mutable</title>
+        <dc:creator><![CDATA[DissonantHarmony]]></dc:creator>
+        <description><![CDATA[
+            <p>*ספציפית: nemeses = <span class="chcklst-box fa fa-square-o fa-fw"></span> בחתימת הפונקציה.</p>
+<p>הבודק האוטומטי מכיר:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/043082f0b301330e57a173b47eba642167eb9e3d" title="IMG_20200612_064537"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_513x500.jpeg" alt="IMG_20200612_064537" data-base62-sha1="B3Qpb2Lnu66ILDWDXbas0r7syp" width="513" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_513x500.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/0/043082f0b301330e57a173b47eba642167eb9e3d.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/0/043082f0b301330e57a173b47eba642167eb9e3d_2_10x10.png"></a></div><p></p>
+<p>כדי לוודא שאני מבין מה הוא רוצה ממני - הלכתי לקרוא,<br>
+והבנתי איזו תופעה ההערה הזו נועדה למנוע.</p>
+<p><strong>רק שבמקרה הזה התופעה היא מכוונת</strong>.<br>
+אני <em>רוצה</em> שבקריאה הראשונה לפונקציה התכנית תיצור רשימת nemeses אחת, ושכל קריאה נוספת תוסיף לה איברים (ולא תדרוס אותה).</p>
+<p>האם יש להשאיר את זה כך למרות ההערה?</p>
+          <p><a href="https://forums.pythonic.guru/t/mutable/7108/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mutable/7108/1</link>
+        <pubDate>Fri, 12 Jun 2020 03:51:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7108-1</guid>
+        <source url="https://forums.pythonic.guru/t/mutable/7108.rss">אתחול ארגומנט אופציונלי כ-mutable</source>
+      </item>
+  </channel>
+</rss>

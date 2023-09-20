@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/notes/8962 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:21:39 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה - הצעות לטיקטים - פייתון בעברית ובחינם</title>
+<meta content="תיאור כללי
+הוספת יכולת להוסיף פתק ליום בלוח השנה. 
+מה ההצעה כוללת?
+שלב 1 
+
+הוספת ישות Note לדאטהבייס
+כתיבת CRUD API לישות פתק
+כתיבת טופס ליצירת פתק
+חיבור לוגי בין FE ל BE
+
+שלב 2 
+
+הוספת שכבה לוגית לחיבור הפתק עם יום בשבו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8962.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8962.rss" rel="alternate nofollow" title="הזנת RSS של ‚הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/c/c84866840f878df38b7568969ccef18a65e99573.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/c/c84866840f878df38b7568969ccef18a65e99573.png" property="og:image"/>
+<meta content="8962.html" property="og:url"/>
+<meta content="8962.html" name="twitter:url"/>
+<meta content="הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה" property="og:title"/>
+<meta content="הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה" name="twitter:title"/>
+<meta content="תיאור כללי הוספת יכולת להוסיף פתק ליום בלוח השנה.  מה ההצעה כוללת? שלב 1   הוספת ישות Note לדאטהבייס כתיבת CRUD API לישות פתק כתיבת טופס ליצירת פתק חיבור לוגי בין FE ל BE  שלב 2   הוספת שכבה לוגית לחיבור הפתק עם יום בשבוע הוספת מנהל פתקים חיבור לוגי בין פתקים למשתמש  כולל שינויים בקוד? אם כן, איפה? כן, FE ו BE  האם יהיו שינויים במסד הנתונים? אם כן, איפה? כן, יצירת ישות חדשה “פתק”  בשלב הראשון - הישות תכיל ID, וגוף ההודעה  בשלב השני - הוספה של חיבור ליום ספציפי ולמשתמש  האם יהיה שינוי ב־frontend?..." property="og:description"/>
+<meta content="תיאור כללי הוספת יכולת להוסיף פתק ליום בלוח השנה.  מה ההצעה כוללת? שלב 1   הוספת ישות Note לדאטהבייס כתיבת CRUD API לישות פתק כתיבת טופס ליצירת פתק חיבור לוגי בין FE ל BE  שלב 2   הוספת שכבה לוגית לחיבור הפתק עם יום בשבוע הוספת מנהל פתקים חיבור לוגי בין פתקים למשתמש  כולל שינויים בקוד? אם כן, איפה? כן, FE ו BE  האם יהיו שינויים במסד הנתונים? אם כן, איפה? כן, יצירת ישות חדשה “פתק”  בשלב הראשון - הישות תכיל ID, וגוף ההודעה  בשלב השני - הוספה של חיבור ליום ספציפי ולמשתמש  האם יהיה שינוי ב־frontend?..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="הצעות לטיקטים" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="7 ❤"/>
+<meta content="2021-01-30T08:23:25+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה","mainEntity":{"@type":"Question","name":"הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה","text":"תיאור כללי\n\nהוספת יכולת להוסיף פתק ליום בלוח השנה.\n\nמה ההצעה כוללת?\n\nשלב 1\n\nהוספת ישות Note לדאטהבייס\n\nכתיבת CRUD API לישות פתק\n\nכתיבת טופס ליצירת פתק\n\nחיבור לוגי בין FE ל BE\n\nשלב 2\n\nהוספת שכבה לוגית לחיבור הפתק עם יום בשבוע\n\nהוספת מנהל פתקים\n\nחיבור לוגי בין פתקים למשתמש\n\nכולל שינויים בקוד? אם כן, איפה?\n\nכ&hellip;","upvoteCount":5,"answerCount":0,"dateCreated":"2021-01-30T08:23:25.189Z","author":{"@type":"Person","name":"רון הוברפלד"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8962.html">הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/ticket-ideas/29.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הצעות לטיקטים</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הצעה לטיקט - הוספת פתקים (Notes) ללוח השנה" itemprop="headline"/>
+<meta content="הצעות לטיקטים" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/c/c84866840f878df38b7568969ccef18a65e99573.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T08:23:25Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  8:23am
+                  </time>
+<meta content="2021-01-30T08:23:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h3>תיאור כללי</h3>
+<p>הוספת יכולת להוסיף פתק ליום בלוח השנה.</p>
+<h3>מה ההצעה כוללת?</h3>
+<p>שלב 1</p>
+<ol>
+<li>הוספת ישות Note לדאטהבייס</li>
+<li>כתיבת CRUD API לישות פתק</li>
+<li>כתיבת טופס ליצירת פתק</li>
+<li>חיבור לוגי בין FE ל BE</li>
+</ol>
+<p>שלב 2</p>
+<ol>
+<li>הוספת שכבה לוגית לחיבור הפתק עם יום בשבוע</li>
+<li>הוספת מנהל פתקים</li>
+<li>חיבור לוגי בין פתקים למשתמש</li>
+</ol>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<p>כן, FE ו BE</p>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>כן, יצירת ישות חדשה “פתק”<br/>
+בשלב הראשון - הישות תכיל ID, וגוף ההודעה<br/>
+בשלב השני - הוספה של חיבור ליום ספציפי ולמשתמש</p>
+<h3>האם יהיה שינוי ב־frontend? אם כן, איפה?</h3>
+<p>כן, טופס יצירת פתק, ומנהל (דשבורד) ע"מ לראות את הפתקים במערכת</p>
+<p><img alt="image" data-base62-sha1="szMBU0pzE7pfovSBmihwh2lUHtN" height="299" src="../../uploads/default/original/2X/c/c84866840f878df38b7568969ccef18a65e99573.png" width="421"/></p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<ol>
+<li>unittest של כל CRUD API</li>
+<li>מסמכי API מעודכנים</li>
+<li>טופס עובד</li>
+<li>דשבורד עובד</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-30T15:03:00Z" itemprop="datePublished">
+                     30 בינואר,‏ 2021,‏  3:03pm
+                  </time>
+<meta content="2021-01-30T15:03:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נשמע טוב, לך על זה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/6/60adcb322cae04a18fb58a8256472961f3c761b6.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T11:00:03Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏ 11:00am
+                  </time>
+<meta content="2021-02-16T11:00:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התייעצות לגבי PR ב WIP.<br/>
+אחרי שהכנסתי API לכל הפעולות CRUD ביחד עם טסטים, עכשיו אני בשלב להוסיף טפסים בפרונט.<br/>
+הכנסתי את הטפסים אבל הטסטים נופלים בגלל הפניית התשובות מהUI.<br/>
+<strong>השאלה להתייעצות</strong> - איך אפשר לשמור על הטסטים הקיימים בלי לשבור אותם ועדיין לעשות את ההפניות הנדרשות לדפים?</p>
+<aside class="onebox githubpullrequest">
+<header class="source">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267" rel="noopener nofollow ugc" target="_blank">github.com/PythonFreeCourse/calendar</a>
+</header>
+<article class="onebox-body">
+<div class="github-row">
+<div class="github-icon-container" title="Pull Request">
+<svg aria-hidden="true" class="github-icon" height="60" viewbox="0 0 12 16" width="60"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+</div>
+<div class="github-info-container">
+<h4>
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267" rel="noopener nofollow ugc" target="_blank">WIP: Feature 179 add notes to calendar</a>
+</h4>
+<div class="branches">
+<code>PythonFreeCourse:develop</code> ← <code>ron-huberfeld:feature-179-add-notes-to-calendar</code>
+</div>
+<div class="github-info">
+<div class="date">
+        opened <span class="discourse-local-date" data-date="2021-02-12" data-format="ll" data-time="01:46:08" data-timezone="UTC">01:46AM - 12 Feb 21 UTC</span>
+</div>
+<div class="user">
+<a href="https://github.com/ron-huberfeld" rel="noopener nofollow ugc" target="_blank">
+<img alt="ron-huberfeld" class="onebox-avatar-inline" height="20" src="../../uploads/default/original/2X/6/60adcb322cae04a18fb58a8256472961f3c761b6.jpg" width="20"/>
+          ron-huberfeld
+        </a>
+</div>
+<div class="lines" title="23 commits changed 15 files with 660 additions and 133 deletions">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267/files" rel="noopener nofollow ugc" target="_blank">
+<span class="added">+660</span>
+<span class="removed">-133</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T13:31:20Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏  1:31pm
+                  </time>
+<meta content="2021-02-16T13:31:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא ירדתי לסוף דעתך. אילו טסטים נופלים, ולמה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/28f474d4aaf67d898dbcd9eab1bea4c67ce41e61.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T16:09:48Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏  4:09pm
+                  </time>
+<meta content="2021-02-16T16:09:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לדוגמא:<br/>
+סרביס get_all -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/28f474d4aaf67d898dbcd9eab1bea4c67ce41e61" href="../../uploads/default/original/2X/2/28f474d4aaf67d898dbcd9eab1bea4c67ce41e61.png" title="image"><img alt="image" data-base62-sha1="5QiQl0C56OzB1dDDpqteBivtnwZ" data-small-upload="../../uploads/default/optimized/2X/2/28f474d4aaf67d898dbcd9eab1bea4c67ce41e61_2_10x10.png" height="134" src="../../uploads/default/original/2X/2/28f474d4aaf67d898dbcd9eab1bea4c67ce41e61.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">783×153 23.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>טסט ל get_all -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ed2ddb252bd2fc522aec047792757252f1abbd35" href="../../uploads/default/original/2X/e/ed2ddb252bd2fc522aec047792757252f1abbd35.png" title="image"><img alt="image" data-base62-sha1="xQbpcYeS8ennuygN3VI2DN2Ijzf" data-small-upload="../../uploads/default/optimized/2X/e/ed2ddb252bd2fc522aec047792757252f1abbd35_2_10x10.png" height="397" src="../../uploads/default/original/2X/e/ed2ddb252bd2fc522aec047792757252f1abbd35.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">865×498 44.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>ועושה את השינוי בסרביס כדי לרנדר לטמפלט בUI-<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c6aa0e8e3f28835153e812a4f47d18941c86b5e2" href="../../uploads/default/original/2X/c/c6aa0e8e3f28835153e812a4f47d18941c86b5e2.png" title="image"><img alt="image" data-base62-sha1="slsSPcjNMRDeFVfiNIPMF5cxDkm" data-small-upload="../../uploads/default/optimized/2X/c/c6aa0e8e3f28835153e812a4f47d18941c86b5e2_2_10x10.png" height="238" src="../../uploads/default/original/2X/c/c6aa0e8e3f28835153e812a4f47d18941c86b5e2.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">802×277 35.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>האם חייבים לפצל ל 2 מתודות שונות? (אחת לפרונט ואחת לבאקאנד)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T16:51:20Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏  4:51pm
+                  </time>
+<meta content="2021-02-16T16:51:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>טיזר לפרונט -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b" href="../../uploads/default/original/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b.jpg" title="image"><img alt="image" data-base62-sha1="4furLpAKe7a56up09SCrHyOJ33d" data-small-upload="../../uploads/default/optimized/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b_2_10x10.png" height="305" src="../../uploads/default/optimized/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b_2_690x305.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b_2_690x305.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b_2_1035x457.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1dc8fb4cad19dff002c6a9eff5ae1d5573a7d58b_2_1380x610.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1890×837 159 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T17:49:58Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏  5:49pm
+                  </time>
+<meta content="2021-02-16T17:49:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="5" data-topic="8962" data-username="ron.huberfeld">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/ron.huberfeld/40/267_2.jpg" width="20"/> ron.huberfeld:</div>
+<blockquote>
+<p>האם חייבים לפצל ל 2 מתודות שונות? (אחת לפרונט ואחת לבאקאנד)</p>
+</blockquote>
+</aside>
+<p>לא, אבל מומלץ מאוד. עבודת הארכיטקטורה שעשית שם ממש אחלה.<br/>
+מה שפספסתי – למה זה שובר לך משהו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T19:31:54Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏  7:31pm
+                  </time>
+<meta content="2021-02-16T19:31:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש לי שגיאה במפענח ג’יסון משום מה -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/3bded1ecac45bd209c96937cfc1a30f3baf3c837" href="../../uploads/default/original/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837.png" title="image"><img alt="image" data-base62-sha1="8xDyKl8w1ynFhbE4eD04lk9wESP" data-small-upload="../../uploads/default/optimized/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837_2_10x10.png" height="132" src="../../uploads/default/optimized/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837_2_690x132.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837_2_690x132.png, https://forums.pythonic.guru/uploads/default/optimized/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837_2_1035x198.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/3bded1ecac45bd209c96937cfc1a30f3baf3c837.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1259×241 39.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T22:57:48Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏ 10:57pm
+                  </time>
+<meta content="2021-02-16T22:57:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בדקת מה חוזר ב־JSON?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-16T23:02:40Z" itemprop="datePublished">
+                     16 בפברואר,‏ 2021,‏ 11:02pm
+                  </time>
+<meta content="2021-02-16T23:02:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בסוף מצאתי את הפתרון.<br/>
+הייתי צריך לשלוף מהjson שחזר את הדאטה מתוך ה context.<br/>
+עכשיו עובד על הטסט ליצירה שנופל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8962.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/6/60adcb322cae04a18fb58a8256472961f3c761b6.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-19T06:39:05Z" itemprop="datePublished">
+                     19 בפברואר,‏ 2021,‏  6:39am
+                  </time>
+<meta content="2021-02-19T06:39:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="onebox githubpullrequest">
+<header class="source">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267" rel="noopener nofollow ugc" target="_blank">github.com/PythonFreeCourse/calendar</a>
+</header>
+<article class="onebox-body">
+<div class="github-row">
+<div class="github-icon-container" title="Pull Request">
+<svg aria-hidden="true" class="github-icon" height="60" viewbox="0 0 12 16" width="60"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+</div>
+<div class="github-info-container">
+<h4>
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267" rel="noopener nofollow ugc" target="_blank">Feature 179 add notes to calendar</a>
+</h4>
+<div class="branches">
+<code>PythonFreeCourse:develop</code> ← <code>ron-huberfeld:feature-179-add-notes-to-calendar</code>
+</div>
+<div class="github-info">
+<div class="date">
+        opened <span class="discourse-local-date" data-date="2021-02-12" data-format="ll" data-time="01:46:08" data-timezone="UTC">01:46AM - 12 Feb 21 UTC</span>
+</div>
+<div class="user">
+<a href="https://github.com/ron-huberfeld" rel="noopener nofollow ugc" target="_blank">
+<img alt="ron-huberfeld" class="onebox-avatar-inline" height="20" src="../../uploads/default/original/2X/6/60adcb322cae04a18fb58a8256472961f3c761b6.jpg" width="20"/>
+          ron-huberfeld
+        </a>
+</div>
+<div class="lines" title="43 commits changed 18 files with 706 additions and 88 deletions">
+<a href="https://github.com/PythonFreeCourse/calendar/pull/267/files" rel="noopener nofollow ugc" target="_blank">
+<span class="added">+706</span>
+<span class="removed">-88</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/notes/8962 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:21:54 GMT -->
+</html>

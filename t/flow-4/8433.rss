@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלה לגבי ה-flow של יום 4</title>
+    <link>https://forums.pythonic.guru/t/flow-4/8433</link>
+    <description>לא כל כך ברור לי מה קודם למה: השרטוט של קובץ הhtml או ההפעלה של קובץ app.py,
+אני שואל בגלל שבפונקציה אנחנו רואים שימוש בrequests.args שמחזיר כמילון את הקלט שהמשתמש הכניס לאתר, אבל לאחר מכן רואים למטה שהפונקציה  hellow_world מחזירה
+את הrender_templates שהוא קובץ הhtml, לפי ההגיון נראה לי שקובץ app.py יקדם לקובץ הhtml שיקבל ממנו את הנתונים אבל החלק של קליטת המידע מהמשתמש קורה בחלק של הhtml. אשמח להבהרה בנושא.
+צירפתי פה למטה את החלק של app.py:
+
+from flask import Flask, render_template, request
+
+import requests
+
+app = Flask(__name__)
+
+@app.route(&#39;/&#39;)
+
+def hello_world():
+
+    pokemon_name = request.args.get(&#39;pokemon_name&#39;)
+
+    print(request.args)
+
+    print(pokemon_name)
+
+    if not pokemon_name:
+
+        return render_template(&#39;index.html&#39;)
+
+    resp = requests.get(f&#39;https://pokeapi.co/api/v2/pokemon/{pokemon_name}&#39;)
+
+    resp_json = resp.json()
+
+    images = resp_json[&#39;sprites&#39;]
+
+    images = {k: v for k, v in images.items() if isinstance(v, str)}
+
+    return render_template(
+
+        &#39;index.html&#39;,
+
+        title_name = pokemon_name,
+
+        sprites = images,
+
+    )</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 07 Nov 2020 12:37:20 +0000</lastBuildDate>
+    <category>שבוע 12</category>
+    <atom:link href="https://forums.pythonic.guru/t/flow-4/8433.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלה לגבי ה-flow של יום 4</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="krauskas" data-post="3" data-topic="8433">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/krauskas/40/5637_2.png" class="avatar"> krauskas:</div>
+<blockquote>
+<p>אפשר לוותר על הקוד אם רוצים, הדבקתי למען הנוחיות את הקוד של קובץ app.py מהווידאו של יום 4 בשבוע 12 (ולא הבנתי איך להדביק אותו אחרת… פשוט הדבקתי את הקוד כמו שהוא):</p>
+</blockquote>
+</aside>
+<p>ר’ את האשכול של אביעד כאן:<br>
+</p><aside class="quote quote-modified" data-post="1" data-topic="6087">
+  <div class="title">
+    <div class="quote-controls"></div>
+    <img alt="" width="20" height="20" src="/user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.png" class="avatar">
+    <a href="https://forums.pythonic.guru/t/topic/6087">איך להכניס קוד לפוסט \ תגובה בפורום</a> 
+  </div>
+  <blockquote>
+    היי, 
+בפורום ישנו פיצר שמאפשר להציג את הקוד שלכם בצורה ברורה כאילו היה כתוב 
+בjupyer  או editor כזה או אחר. 
+מכיוון שראיתי שהמון לא משתמשים בזה אלא עושים העתק הדבק ישירות מהיופיטר [ אשר מציג קוד לא ברור ובלי הזחות ] 
+או עושים צילומי מסך שגם הם לא נוחים במיוחד: 
+<img width="20" height="20" src="https://forums.pythonic.guru/images/emoji/twitter/nerd_face.png?v=9" title="nerd_face" alt="nerd_face" class="emoji"> הכנתי מדריכון קצר לאיך לעשות את זה נכון במערכת הפורום. 
+מקווה שזה יעזור לכם ולאחרים <img width="20" height="20" src="https://forums.pythonic.guru/images/emoji/twitter/heart.png?v=9" title="heart" alt="heart" class="emoji"> 
+ <a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/cc5b8d4a71d9a1f4fa57899c492382474223c005.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/cc5b8d4a71d9a1f4fa57899c492382474223c005" title="מדריך - איך להכניס קוד לפורום-01">[מדריך - איך להכניס קוד לפורום-01]</a>
+  </blockquote>
+</aside>
+<p></p>
+<aside class="quote no-group" data-username="krauskas" data-post="3" data-topic="8433">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/krauskas/40/5637_2.png" class="avatar"> krauskas:</div>
+<blockquote>
+<p>מה מתרחש קודם? ההרצה של קובץ app.py? או ההרצה של index.html?</p>
+</blockquote>
+</aside>
+<p>קובץ app.py מורץ וממתין לבקשות. כשאתה מבקש משהו בכתובת שמופיעה ב־app.route הוא מגיש את מה שכתוב ב־return. אם זה render_template עם קובץ html מסוים, הוא מגיש אותו. בסדר הזה.</p>
+<aside class="quote no-group" data-username="krauskas" data-post="4" data-topic="8433">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/krauskas/40/5637_2.png" class="avatar"> krauskas:</div>
+<blockquote>
+<p>אני שואל את זה בגלל שבפרויקט שלי אני לא מצליח להעביר את הקלט מהמשתמש לתוך משתנה בתוך הקובץ app.py,</p>
+</blockquote>
+</aside>
+<p>אתה לא אמור לגשת ישירות ל־static. אתה אמור ליצור app.route שמגיש לך את static באמצעות render_template</p>
+          <p><a href="https://forums.pythonic.guru/t/flow-4/8433/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/flow-4/8433/5</link>
+        <pubDate>Sat, 07 Nov 2020 12:37:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8433-5</guid>
+        <source url="https://forums.pythonic.guru/t/flow-4/8433.rss">שאלה לגבי ה-flow של יום 4</source>
+      </item>
+      <item>
+        <title>שאלה לגבי ה-flow של יום 4</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>אני שואל את זה בגלל שבפרויקט שלי אני לא מצליח להעביר את הקלט מהמשתמש לתוך משתנה בתוך הקובץ app.py,<br>
+כלומר בשורה:<br>
+genre = request.args.get(‘genre’)<br>
+כשאני מדפיס את genre אני מקבל את הפלט הבא:<br>
+ImmutableMultiDict(<span class="chcklst-box fa fa-square-o fa-fw"></span>), כלומר מילון ריק,<br>
+ואני לא מבין למה כי אני כן רואה שבurl מועבר המשתנה:<br>
+<a href="http://127.0.0.1:5000/static/results.html?genre=Comedy" class="onebox" target="_blank" rel="noopener nofollow ugc">http://127.0.0.1:5000/static/results.html?genre=Comedy</a></p>
+          <p><a href="https://forums.pythonic.guru/t/flow-4/8433/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/flow-4/8433/4</link>
+        <pubDate>Sat, 07 Nov 2020 09:02:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8433-4</guid>
+        <source url="https://forums.pythonic.guru/t/flow-4/8433.rss">שאלה לגבי ה-flow של יום 4</source>
+      </item>
+      <item>
+        <title>שאלה לגבי ה-flow של יום 4</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי, מקווה שההסבר הבא יהיה יותר ברור:<br>
+קודם כל התכוונתי לקוד שים כתב בלייב של שבוע 12 יום 4, הקוד הוא של אתר שבו לפי שורת חיפוש אפשר לקבל תמונות של הפוקימון שהוכנס בקלט.<br>
+השאלה שלי הייתה:<br>
+מה מתרחש קודם? ההרצה של קובץ app.py? או ההרצה של index.html?</p>
+<p>אני שואל בגלל שאני רואה שהפונקציה בקוד app.py מחזירה את הקובץ index.html כלומר קודם יש הרצה של הקובץ app.py ולאחריו מורץ הקובץ index.html,<br>
+אך אם זה כך, איך מגיע הקלט לפוקנציה בapp.py? (שהרי החלק של הקלט, כלומר שם הפוקימון קורה דרך forms שזה אלמנט בhtml).</p>
+<p>אפשר לוותר על הקוד אם רוצים, הדבקתי למען הנוחיות את הקוד של קובץ app.py מהווידאו של יום 4 בשבוע 12 (ולא הבנתי איך להדביק אותו אחרת… פשוט הדבקתי את הקוד כמו שהוא):</p>
+<p>‘’’</p>
+<p>from flask import Flask, render_template, request</p>
+<p>import requests</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p><span class="mention">@app.route</span>(’/’)</p>
+<p>def hello_world():</p>
+<pre><code>pokemon_name = request.args.get('pokemon_name')
+
+print(request.args)
+
+print(pokemon_name)
+
+if not pokemon_name:
+
+    return render_template('index.html')
+
+resp = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
+
+resp_json = resp.json()
+
+images = resp_json['sprites']
+
+images = {k: v for k, v in images.items() if isinstance(v, str)}
+
+return render_template(
+
+    'index.html',
+
+    title_name = pokemon_name,
+
+    sprites = images,
+
+)
+</code></pre>
+<p>‘’’</p>
+          <p><a href="https://forums.pythonic.guru/t/flow-4/8433/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/flow-4/8433/3</link>
+        <pubDate>Sat, 07 Nov 2020 06:27:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8433-3</guid>
+        <source url="https://forums.pythonic.guru/t/flow-4/8433.rss">שאלה לגבי ה-flow של יום 4</source>
+      </item>
+      <item>
+        <title>שאלה לגבי ה-flow של יום 4</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תוכל בבקשה לנסח את השאלה בצורה קצת יותר הדרגתית ולסדר את הדבקת הקוד? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/flow-4/8433/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/flow-4/8433/2</link>
+        <pubDate>Sat, 07 Nov 2020 03:17:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8433-2</guid>
+        <source url="https://forums.pythonic.guru/t/flow-4/8433.rss">שאלה לגבי ה-flow של יום 4</source>
+      </item>
+      <item>
+        <title>שאלה לגבי ה-flow של יום 4</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>לא כל כך ברור לי מה קודם למה: השרטוט של קובץ הhtml או ההפעלה של קובץ app.py,<br>
+אני שואל בגלל שבפונקציה אנחנו רואים שימוש בrequests.args שמחזיר כמילון את הקלט שהמשתמש הכניס לאתר, אבל לאחר מכן רואים למטה שהפונקציה  hellow_world מחזירה<br>
+את הrender_templates שהוא קובץ הhtml, לפי ההגיון נראה לי שקובץ app.py יקדם לקובץ הhtml שיקבל ממנו את הנתונים אבל החלק של קליטת המידע מהמשתמש קורה בחלק של הhtml. אשמח להבהרה בנושא.<br>
+צירפתי פה למטה את החלק של app.py:</p>
+<p>from flask import Flask, render_template, request</p>
+<p>import requests</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p><span class="mention">@app.route</span>(’/’)</p>
+<p>def hello_world():</p>
+<pre><code>pokemon_name = request.args.get('pokemon_name')
+
+print(request.args)
+
+print(pokemon_name)
+
+if not pokemon_name:
+
+    return render_template('index.html')
+
+resp = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
+
+resp_json = resp.json()
+
+images = resp_json['sprites']
+
+images = {k: v for k, v in images.items() if isinstance(v, str)}
+
+return render_template(
+
+    'index.html',
+
+    title_name = pokemon_name,
+
+    sprites = images,
+
+)</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/flow-4/8433/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/flow-4/8433/1</link>
+        <pubDate>Fri, 06 Nov 2020 20:03:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8433-1</guid>
+        <source url="https://forums.pythonic.guru/t/flow-4/8433.rss">שאלה לגבי ה-flow של יום 4</source>
+      </item>
+  </channel>
+</rss>

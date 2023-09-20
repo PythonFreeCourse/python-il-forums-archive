@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בעיה עם הרצת טסטים שעברו merge</title>
+    <link>https://forums.pythonic.guru/t/merge/8986</link>
+    <description>היי,
+אני עובדת על קובץ dayview.html של שגיא.
+רציתי להריץ את קובץ הבדיקות ששגיא יצר test_dayview.py, אך אני מקבלת את הודעת השגיאה הבאה:
+נראה שלא נוצרים לי כל הפיצ&#39;רים אשר מדמים יוזר ואירועים.
+עשיתי pull מ develop (דאגתי למחוק לפני את הdb  הקודם שהיה)
+ התקנתי  requirements
+העתקתי לconfig  את התוכן של config.example.
+בעת הרצת uvicorn נוצר לי dev.db
+ובעת הרצת pytest נוצר לי test.db
+הייתי שמחה לעזרה כיצד לפתור את הבעיה.
+קישור לקובץ הבדיקות בגיט:
+https://github.com/PythonFreeCourse/calendar/blob/develop/tests/test_dayview.py
+
+![תמונה|690x314](upload://qvIJzf98tGJ8nQzVG1mXGejwQmz.png) 
+
+תודה!</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 03 Feb 2021 03:24:05 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/merge/8986.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>מצאנו את הבעיה אצל עדי בסשן זום שהתקיים היום עם צוות הפרונטאנד. הבעיה הייתה שינוי לוקאלי באחד הקבצים.<br>
+עשינו git stash לשינויים שלה, בדקנו בעזרת git log וראינו שהיו commit¯ים. שמרנו את מספר הקומיט הנוכחי ועשינו checkout ל¯upstream/develop. כשהרצנו שם את הטסטים הכל עבד.<br>
+אם יש למישהו/י בעיות נוספות אפשר לפתוח אשכול חדש <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/11</link>
+        <pubDate>Wed, 03 Feb 2021 03:24:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-11</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>נדחפת לפוסט,<br>
+האם בטסט, כשאני מעבירה כפרמטר את client, הוא כולל בתוכו session?<br>
+ניסיתי לצור מצב מדומה שאין חיבור לdb. במקום להשתמש ב file_test_client, השתמשתי בclient וחזר לי בהצלחה פעולה שמחייבת שימוש בsession.</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/10</link>
+        <pubDate>Tue, 02 Feb 2021 15:18:59 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-10</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה לי שהבעיה היא ב-client שמועבר לטסט.<br>
+בקובץ client_fixture.py יש מספר קליינטים שונים, כשכל אחד נועד להחליף את ה-dependency שניגש ל-DB.<br>
+למעשה הבדיקה מוספיה את היוזר והאיוונטים אל test.db, אך הפונקציה שניבדקת ניגשת ל-dev.db ולכן לא מוצאת את היוזר (שימי לב שהבדיקה נכשלת בעקבות שגיאה בפונקציה המקורית ולא שגיאת assert).<br>
+מה יש לעשות אם כך זה ליצור fixture נוסף dayview_test_client לפי השבלונה של שאר הקליינטים עם הקובץ המתאים כפרמטר לפונקציה.<br>
+מקווה שזה יפתור את הבעיה</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/9</link>
+        <pubDate>Tue, 02 Feb 2021 15:14:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-9</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>האם התכוונת לשורה:</p>
+<p>Base.metadata.drop_all(bind=sqlite_test_engine)</p>
+<p>אם כן, מחקתי והרצתי ועדיין מתקבלות אותן הודעות שגיאה.<br>
+אם התכוונת לשורה אחרת , אשמח להסבר נוסף <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/8</link>
+        <pubDate>Tue, 02 Feb 2021 15:02:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-8</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ב־testdb הנתונים נמחקים אחרי שהטסטים רצים. ניסית למחוק את השורה שמוחקת את הנתונים? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/7</link>
+        <pubDate>Tue, 02 Feb 2021 14:26:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-7</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה על העזרה,<br>
+בdev.dB קיימת טבלת users עם השדות שצריכים להיות אבל היא ריקה מנתונים.</p>
+<p>test.dB נוצרה אך לא נוצרו בה טבלאות כלל.</p>
+<p>מה ניתן עוד לעשות?</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/6</link>
+        <pubDate>Tue, 02 Feb 2021 07:08:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-6</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>משונה, טכנית זה באמת אמור לעבוד אם זה עבר merge.</p>
+<p>זה נשמע שלא חוזר שום user מהשורה הראשונה ב־dayview. בדקת מה יש בטבלת users?</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/5</link>
+        <pubDate>Tue, 02 Feb 2021 03:09:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-5</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה, ניסיתי את מה שהצעת והופיעו אותן שגיאות.<br>
+בנוסף, זהו קוד שעבר merge ולאחר שיחה עם שגיא , הבנתי כי הקוד אצלו רץ תקין, ולכן הבעיה צריכה להיות אצלי, אך לצערי אני לא מצליחה לפתור אותה.</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/4</link>
+        <pubDate>Mon, 01 Feb 2021 19:02:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-4</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[itzik245]]></dc:creator>
+        <description><![CDATA[
+            <p>וגם אולי כדי להפריד את הפיקצרים לקובץ אחר.<br>
+תראי בקוד איך עושים את זה, זה יהיה יותר מסודר🙂</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/3</link>
+        <pubDate>Mon, 01 Feb 2021 16:35:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-3</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[itzik245]]></dc:creator>
+        <description><![CDATA[
+            <p>לדעתי זה בגלל שה- fixture user קיים כבר בקוד.<br>
+תנסי או להשתמש במה שקיים או לשנות את השם של הfixture שלך</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/2</link>
+        <pubDate>Mon, 01 Feb 2021 16:32:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-2</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+      <item>
+        <title>בעיה עם הרצת טסטים שעברו merge</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+אני עובדת על קובץ dayview.html של שגיא.<br>
+רציתי להריץ את קובץ הבדיקות ששגיא יצר test_dayview.py, אך אני מקבלת את הודעת השגיאה הבאה:<br>
+נראה שלא נוצרים לי כל הפיצ’רים אשר מדמים יוזר ואירועים.<br>
+עשיתי pull מ develop (דאגתי למחוק לפני את הdb  הקודם שהיה)<br>
+התקנתי  requirements<br>
+העתקתי לconfig  את התוכן של config.example.<br>
+בעת הרצת uvicorn נוצר לי dev.db<br>
+ובעת הרצת pytest נוצר לי test.db<br>
+הייתי שמחה לעזרה כיצד לפתור את הבעיה.<br>
+קישור לקובץ הבדיקות בגיט:</p><aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/PythonFreeCourse/calendar/blob/develop/tests/test_dayview.py" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/PythonFreeCourse/calendar/blob/develop/tests/test_dayview.py" target="_blank" rel="noopener nofollow ugc">PythonFreeCourse/calendar/blob/develop/tests/test_dayview.py</a></h4>
+<pre><code class="lang-py">from datetime import datetime, timedelta
+
+from bs4 import BeautifulSoup
+import pytest
+
+from app.database.models import Event, User
+from app.routers.dayview import DivAttributes
+
+
+# TODO add user session login
+@pytest.fixture
+def user():
+    return User(username='test1', email='user@email.com',
+                password='1a2b3c4e5f', full_name='test me')
+
+
+@pytest.fixture
+def event1():
+    start = datetime(year=2021, month=2, day=1, hour=7, minute=5)
+    end = datetime(year=2021, month=2, day=1, hour=9, minute=15)
+</code></pre>
+
+  This file has been truncated. <a href="https://github.com/PythonFreeCourse/calendar/blob/develop/tests/test_dayview.py" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/b9ce7d75742d1b595cdd57e26eb4037107c6f1b7.png" data-download-href="https://forums.pythonic.guru/uploads/default/b9ce7d75742d1b595cdd57e26eb4037107c6f1b7" title="תמונה"><img src="https://forums.pythonic.guru/uploads/default/original/2X/b/b9ce7d75742d1b595cdd57e26eb4037107c6f1b7.png" alt="תמונה" data-base62-sha1="qvIJzf98tGJ8nQzVG1mXGejwQmz" width="690" height="314" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/b9ce7d75742d1b595cdd57e26eb4037107c6f1b7_2_10x10.png"></a></div><p></p>
+<p>תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/merge/8986/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/merge/8986/1</link>
+        <pubDate>Mon, 01 Feb 2021 09:29:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8986-1</guid>
+        <source url="https://forums.pythonic.guru/t/merge/8986.rss">בעיה עם הרצת טסטים שעברו merge</source>
+      </item>
+  </channel>
+</rss>

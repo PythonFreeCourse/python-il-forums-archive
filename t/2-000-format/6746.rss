@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+    <link>https://forums.pythonic.guru/t/2-000-format/6746</link>
+    <description>היי לכולם,
+
+עברתי על הפוסטים בפורום בעיקר אחד שפורסם לפני 3 ימים ולמרות הרמיזות שם אני לצערי לא הצלחתי להתגבר על הבעיה.
+
+מה הבנתי:
+יש צורך להשתמש ב **kwargs וגם ב *args.
+
+כאשר אני מבצע print ל kwargs לפי הדוגמה אני מקבל שזה מילון עם הצירוף {&#39;name&#39;: &#39;Bug&#39;}
+אני מבין שאני צריך לבצע איזו פעולה בדומה לתרגיל מהחוברת השניה בשבוע 5 כדי שאני אוכל להפעיל את הפונקציה על הערכים אבל אני פשוט לא מצליח להבין איזו פעולה יש לעשות.
+
+אשמח להכוונה, כמו כן אם מי שמגיב לפוסט הזה יגיב בתקרא את חוברת 2 שבוע 5, קראתי, ניסיתי לשחק עם זה לא הצליח.
+
+תודה מראש!</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 28 May 2020 13:18:12 +0000</lastBuildDate>
+    <category>שבוע 6</category>
+    <atom:link href="https://forums.pythonic.guru/t/2-000-format/6746.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, תודה רבה! עזר מאוד</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/7</link>
+        <pubDate>Thu, 28 May 2020 13:18:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-7</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>כדי להבין את זה צריך להסתכל שניה על שלושת הצורות לשימוש בפוקנציה format<br>
+1.</p>
+<pre><code class="lang-auto">name = 'Yam'
+f"bla bla {name} bim bam" 
+</code></pre>
+<ol start="2">
+<li>
+</li></ol>
+<pre><code class="lang-auto">"bla bla {} bim bam".format('Yam')
+</code></pre>
+<ol start="3">
+<li>
+</li></ol>
+<pre><code class="lang-auto">"bla bla {name} bim bam".format(name='Yam')
+</code></pre>
+<p>אני לא ארחיב על כל אחת כי ניתן לראות לפי הדוגמאות.<br>
+מה שאנו מבינים מזה שהוא שלפונקציה format יש אפוציה "להכניס משתנים לפי סדר ההופעה שלהם *args, אולם יש לה את האופציה לקבל “kargs” כלומר זוגות של נתונים, ואותם היא מצליבה עם הטקסט.</p>
+<p>אין מדובר פה על מצב של משתנה אופציונאלי , כלומר בחתימת הפונקציה של format קיים **kargs אשר יודע לקבל את הזוגות האלה, והוא הופך אותם למילון (שזה מבנה הנתונים שיודע להתמודד עם זה"</p>
+<p>במימוש של הפונקציה שלך הדבר הזה קורה פעמיים! למה ?<br>
+בפעם הראשונה כי אתה רוצה להעביר אל תוך הפונקציה שלך את הנתונים האלה, ואז הם עוברים כמילון.<br>
+לתוך הפונקציה שלך.<br>
+כלומר: name=‘bug’ יכניס לפונקציה שלך בצורה של {‘name’: ‘Bug’} .</p>
+<p>לאחר מכן אתה תרצה שהפונקציה format תשתמש בו, ולכן מה שאתה צריך לעשות הוא להעביר את זה אליה.<br>
+(במידה ויש יותר ממילה אחת אתה צריך לעשות לזה unpaking כך שלפונקציה format יכנסו ערכים בודדים ) אותם היא תהפוך שוב למילון ואז תעשה את ההצלבות כמו שהסברתי מקודם.</p>
+<p>מקווה שזה יותר ברור <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/6</link>
+        <pubDate>Thu, 28 May 2020 11:09:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-6</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא לגמרי מבין אילו ערכים מושמים בתוך הפונקציה של format בדוגמה בתרגיל. אני מבין שה ** מכיל מילון אבל איפה למשל “יושבת” המחרוזת?</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/5</link>
+        <pubDate>Thu, 28 May 2020 10:53:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-5</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>מה הכוונה לא מבין מה הולך בתוך הפונקציה ? אני אשמח לעזור אם תגיד בדיוק מה לא מתיישב לך</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/4</link>
+        <pubDate>Thu, 28 May 2020 10:49:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-4</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>טוב אחרי ניסיון נוסף, זה הצליח. הבנתי את הטעות למרות שאני לא לגמרי מבין מה הולך בתוך הפונקציה.</p>
+<p>אם משיהו הבין את הסדר של מה מושם למה בתוך הפונקציה אני אשמח לשמוע.</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/3</link>
+        <pubDate>Thu, 28 May 2020 10:44:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-3</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>אז כך,<br>
+העניין הוא שצריך להבין שכל אחד מהם (args* ו *<em>kargs) מטפל בסוג שונה של משתנים שנכנסים אל הפונקציה.<br>
+ולכן בתוך הפונקציה צריך להתייחס לשניהם. כלומר יכול להיות שבמקרים מסויימים אתה תקבל ערכים מהתצורה args</em><br>
+ולעיתים מ **kargs</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/2</link>
+        <pubDate>Thu, 28 May 2020 10:40:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-2</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+      <item>
+        <title>ריצת 2,000 לא מצליח להבין את עניין ה format</title>
+        <dc:creator><![CDATA[danihello]]></dc:creator>
+        <description><![CDATA[
+            <p>היי לכולם,</p>
+<p>עברתי על הפוסטים בפורום בעיקר אחד שפורסם לפני 3 ימים ולמרות הרמיזות שם אני לצערי לא הצלחתי להתגבר על הבעיה.</p>
+<p>מה הבנתי:<br>
+יש צורך להשתמש ב **kwargs וגם ב *args.</p>
+<p>כאשר אני מבצע print ל kwargs לפי הדוגמה אני מקבל שזה מילון עם הצירוף {‘name’: ‘Bug’}<br>
+אני מבין שאני צריך לבצע איזו פעולה בדומה לתרגיל מהחוברת השניה בשבוע 5 כדי שאני אוכל להפעיל את הפונקציה על הערכים אבל אני פשוט לא מצליח להבין איזו פעולה יש לעשות.</p>
+<p>אשמח להכוונה, כמו כן אם מי שמגיב לפוסט הזה יגיב בתקרא את חוברת 2 שבוע 5, קראתי, ניסיתי לשחק עם זה לא הצליח.</p>
+<p>תודה מראש!</p>
+          <p><a href="https://forums.pythonic.guru/t/2-000-format/6746/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-000-format/6746/1</link>
+        <pubDate>Thu, 28 May 2020 10:33:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6746-1</guid>
+        <source url="https://forums.pythonic.guru/t/2-000-format/6746.rss">ריצת 2,000 לא מצליח להבין את עניין ה format</source>
+      </item>
+  </channel>
+</rss>

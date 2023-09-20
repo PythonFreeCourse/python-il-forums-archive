@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>הpath של תיקיית ה wit בתור משתנה גלובלי</title>
+    <link>https://forums.pythonic.guru/t/path-wit/8278</link>
+    <description>יצא שבהרבה פונקציות הייתי צריך את הpath של תיקיית הwit שנמצאת בcwd.
+
+אני יודע שלא מומלץ להגדיר בתוך פונקציה משתנה גלובלי ואז להשתמש באותו משתנה בפונקציות אחרות.
+
+השאלה היא אם זה נכון לכל סוג משתנה? והאם יש כמות חזרות של קוד שכבר נחשבת למוגזמת והיא מצדיקה שימוש במשתנה גלובלי?
+
+קוד לדוגמה:
+
+
+&gt;def a():
+    wit_path = find_main_dir() / &#39;.wit&#39;
+    ...
+&gt;
+&gt;
+&gt;def b():
+    wit_path = find_cwd() / &#39;.wit&#39;
+    do_something(wit_path)
+    ...
+&gt;
+&gt;
+&gt;def c():
+    wit_path = find_cwd() / &#39;.wit&#39;
+    do_something(wit_path)
+    ...
+&gt;
+&gt;
+&gt;def d():
+    wit_path = find_cwd() / &#39;.wit&#39;
+    do_something(wit_path)
+    ...
+
+לעומת:
+
+&gt;def a():
+    global wit_path = find_main_dir() / &#39;.wit&#39;
+    ...
+&gt;
+&gt;
+&gt;def b():
+    do_something(wit_path)
+    ...
+&gt;
+&gt;
+&gt;def c():
+    do_something(wit_path)
+    ...
+&gt;
+&gt;
+&gt;def d():
+    do_something(wit_path)
+    ...</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 03 Oct 2020 02:13:32 +0000</lastBuildDate>
+    <category>שבוע 10</category>
+    <atom:link href="https://forums.pythonic.guru/t/path-wit/8278.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>הpath של תיקיית ה wit בתור משתנה גלובלי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>אין בעיה להגדיר משתנה גלובאלי כל עוד הוא לקריאה בלבד וערכו לא משתנה במהלך הריצה.<br>
+הפחד ממשתנים גלובאליים נובע מזה ששינוי ה־state שלהם במהלך התוכנה גורם לבאגים שקשה לעקוב אחריהם, ועשוי ליצור <a href="https://en.wikipedia.org/wiki/Race_condition#Example">race conditions</a> ב־multithreading.</p>
+          <p><a href="https://forums.pythonic.guru/t/path-wit/8278/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/path-wit/8278/4</link>
+        <pubDate>Sat, 03 Oct 2020 02:13:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8278-4</guid>
+        <source url="https://forums.pythonic.guru/t/path-wit/8278.rss">הpath של תיקיית ה wit בתור משתנה גלובלי</source>
+      </item>
+      <item>
+        <title>הpath של תיקיית ה wit בתור משתנה גלובלי</title>
+        <dc:creator><![CDATA[neri]]></dc:creator>
+        <description><![CDATA[
+            <p>בגדול אני מסכים איתך אבל במקרה הנל מדובר בשורה אחת וקריאה לפונקציה היא גם שורה אחת. אז זה לא פותר את הבעיה.<br>
+אבל תודה על המענה!</p>
+          <p><a href="https://forums.pythonic.guru/t/path-wit/8278/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/path-wit/8278/3</link>
+        <pubDate>Fri, 02 Oct 2020 18:24:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8278-3</guid>
+        <source url="https://forums.pythonic.guru/t/path-wit/8278.rss">הpath של תיקיית ה wit בתור משתנה גלובלי</source>
+      </item>
+      <item>
+        <title>הpath של תיקיית ה wit בתור משתנה גלובלי</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>אם יש קטע קוד שחוזר על עצמו אני אישית אעדיף להוציא אותו לפונקציה נפרדת ולקרוא לו מפונקציה אחרת.<br>
+אני לא יודע מה הbest practice במקרה הנ"ל</p>
+          <p><a href="https://forums.pythonic.guru/t/path-wit/8278/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/path-wit/8278/2</link>
+        <pubDate>Fri, 02 Oct 2020 17:51:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8278-2</guid>
+        <source url="https://forums.pythonic.guru/t/path-wit/8278.rss">הpath של תיקיית ה wit בתור משתנה גלובלי</source>
+      </item>
+      <item>
+        <title>הpath של תיקיית ה wit בתור משתנה גלובלי</title>
+        <dc:creator><![CDATA[neri]]></dc:creator>
+        <description><![CDATA[
+            <p>יצא שבהרבה פונקציות הייתי צריך את הpath של תיקיית הwit שנמצאת בcwd.</p>
+<p>אני יודע שלא מומלץ להגדיר בתוך פונקציה משתנה גלובלי ואז להשתמש באותו משתנה בפונקציות אחרות.</p>
+<p>השאלה היא אם זה נכון לכל סוג משתנה? והאם יש כמות חזרות של קוד שכבר נחשבת למוגזמת והיא מצדיקה שימוש במשתנה גלובלי?</p>
+<p>קוד לדוגמה:</p>
+<blockquote>
+<p>def a():<br>
+wit_path = find_main_dir() / ‘.wit’<br>
+…</p>
+<p>def b():<br>
+wit_path = find_cwd() / ‘.wit’<br>
+do_something(wit_path)<br>
+…</p>
+<p>def c():<br>
+wit_path = find_cwd() / ‘.wit’<br>
+do_something(wit_path)<br>
+…</p>
+<p>def d():<br>
+wit_path = find_cwd() / ‘.wit’<br>
+do_something(wit_path)<br>
+…</p>
+</blockquote>
+<p>לעומת:</p>
+<blockquote>
+<p>def a():<br>
+global wit_path = find_main_dir() / ‘.wit’<br>
+…</p>
+<p>def b():<br>
+do_something(wit_path)<br>
+…</p>
+<p>def c():<br>
+do_something(wit_path)<br>
+…</p>
+<p>def d():<br>
+do_something(wit_path)<br>
+…</p>
+</blockquote>
+          <p><a href="https://forums.pythonic.guru/t/path-wit/8278/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/path-wit/8278/1</link>
+        <pubDate>Fri, 02 Oct 2020 15:05:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8278-1</guid>
+        <source url="https://forums.pythonic.guru/t/path-wit/8278.rss">הpath של תיקיית ה wit בתור משתנה גלובלי</source>
+      </item>
+  </channel>
+</rss>

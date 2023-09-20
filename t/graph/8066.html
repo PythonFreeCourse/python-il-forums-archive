@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/graph/8066 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:01:07 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>תרגיל graph - חיפוש מודול מתאים - שבוע 10 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+אני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים. 
+ניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה. 
+אחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעו&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8066.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8066.rss" rel="alternate nofollow" title="הזנת RSS של ‚תרגיל graph - חיפוש מודול מתאים’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8066.html" property="og:url"/>
+<meta content="8066.html" name="twitter:url"/>
+<meta content="תרגיל graph - חיפוש מודול מתאים" property="og:title"/>
+<meta content="תרגיל graph - חיפוש מודול מתאים" name="twitter:title"/>
+<meta content="היי,  אני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים.  ניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה.  אחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעוד מקפיצות לי כל מיני שגיאות שלא מצאתי להן פתרונות.  אשמח להכוונה 🙂" property="og:description"/>
+<meta content="היי,  אני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים.  ניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה.  אחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעוד מקפיצות לי כל מיני שגיאות שלא מצאתי להן פתרונות.  אשמח להכוונה 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 10" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="wit-graph" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="5 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="28 ❤"/>
+<meta content="2020-09-03T15:18:59+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="80664658.html?page=2" rel="next"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"תרגיל graph - חיפוש מודול מתאים","mainEntity":{"@type":"Question","name":"תרגיל graph - חיפוש מודול מתאים","text":"היי,\n\nאני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים.\n\nניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה.\n\nאחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעוד מקפיצות לי כל מיני שגיאות שלא מצאתי להן פתרונות.\n\nאשמח להכוונה :slight_smile:","upvoteCount":0,"answerCount":0,"dateCreated":"2020-09-03T15:18:59.683Z","author":{"@type":"Person","name":"Alon Ben Ari"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8066.html">תרגיל graph - חיפוש מודול מתאים</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-10/21.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 10</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/wit-graph.html" rel="tag">wit-graph</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="תרגיל graph - חיפוש מודול מתאים" itemprop="headline"/>
+<meta content="שבוע 10" itemprop="articleSection"/>
+<meta content="wit-graph" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-03T15:18:59Z" itemprop="datePublished">
+                     3 בספטמבר,‏ 2020,‏  3:18pm
+                  </time>
+<meta content="2020-09-04T13:38:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,</p>
+<p>אני יושב מהבוקר על התרגיל graph ובינתיים תקוע עדיין בחיפוש מודול שאפשר להציג באמצעותו גרף מתאים.<br/>
+ניסיתי את pydot ואת graphviz, בשתיהן היו לי הרבה תקלות רק בהתקנה.<br/>
+אחר כך ניסיתי את networkx אבל דוגמאות הקוד מהתיעוד מקפיצות לי כל מיני שגיאות שלא מצאתי להן פתרונות.<br/>
+אשמח להכוונה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adva.alkalay</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T07:24:26Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏  7:24am
+                  </time>
+<meta content="2020-09-04T07:24:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם מצליחים לעבור את ההתקנה של graphviz בשלום, הוא נהדר לתרגיל לדעתי <img alt=":relaxed:" class="emoji" src="../../images/emoji/twitter/relaxedc164.png?v=9" title=":relaxed:"/><br/>
+גם אני הסתבכתי קצת בהתחלה, אבל זה בהחלט אפשרי <img alt=":pray:" class="emoji" src="../../images/emoji/twitter/prayc164.png?v=9" title=":pray:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/b/b5e9fc6eb6f57d977d95232beb6f8e083beff21c.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T07:55:38Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏  7:55am
+                  </time>
+<meta content="2020-09-04T07:55:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה פשוט לא עובד לא משנה מה אני עושה.<br/>
+ניסיתי מספר התקנות. אחר כך ניסיתי לעדכן את conda, בכל פעם זה מה שאני מקבל:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/b5e9fc6eb6f57d977d95232beb6f8e083beff21c" href="../../uploads/default/original/2X/b/b5e9fc6eb6f57d977d95232beb6f8e083beff21c.png" title="cmd"><img alt="cmd" data-base62-sha1="pXhJzgPqQTDTq1lksSoZdEg4XeI" data-small-upload="../../uploads/default/optimized/2X/b/b5e9fc6eb6f57d977d95232beb6f8e083beff21c_2_10x10.png" height="376" src="../../uploads/default/original/2X/b/b5e9fc6eb6f57d977d95232beb6f8e083beff21c.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">cmd</span><span class="informations">1319×719 21.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adva.alkalay</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T07:57:29Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏  7:57am
+                  </time>
+<meta content="2020-09-04T07:57:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>להתקין/לעדכן דרך conda זה מה שעבד לי בסוף למיטב זכרוני.<br/>
+הפעלת את המחשב מחדש? גם זה יכול לעזור <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T08:37:03Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏  8:37am
+                  </time>
+<meta content="2020-09-04T08:37:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התקנתי את החבילה באמצעות conda install -c anaconda graphviz<br/>
+וגם באמצעות pip רגיל.<br/>
+התקנתי את graphviz דרך <a href="https://www.graphviz.org/download/" rel="nofollow noopener">האתר שלהם</a>.</p>
+<p>אני מריץ קוד <a href="https://graphviz.readthedocs.io/en/stable/manual.html" rel="nofollow noopener">מהדוקומנטציה</a> וקופצת לי השגיאה:<br/>
+Exception has occurred: CalledProcessError</p>
+<p>Command ‘[‘dot’, ‘-Tpdf’, ‘-O’, ‘round-table.gv’]’ returned non-zero exit status 1. [stderr: b’Format: “pdf” not recognized. Use one of:\r\n’]</p>
+<p>מצאתי בגוגל כל מיני דברים לא לגמרי קשורים, זה כנראה משהו בהתקנה.<br/>
+אני ממש מתוסכל, אני כבר יותר מיום יושב על זה ועוד לא נגעתי בתרגיל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T13:13:26Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏  1:13pm
+                  </time>
+<meta content="2020-09-04T13:13:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה נראה כאילו זה מותקן אצלך בסדר, אבל אתה מנסה לקרוא קובץ PDF ו־graphviz כעוס על זה.</p>
+<p>האם, נניח, הקוד הבא עובד אצלך?</p>
+<pre><code class="lang-python">ni = Graph('ni')
+
+ni.attr('node', shape='rarrow')
+
+ni.node('1', 'Ni!')
+
+ni.node('2', 'Ni!')
+
+ni.node('3', 'Ni!', shape='egg')
+
+ni.attr('node', shape='star')
+
+ni.node('4', 'Ni!')
+
+ni.node('5', 'Ni!')
+
+ni.attr(rankdir='LR')
+
+ni.edges(['12', '23', '34', '45'])
+
+print(ni.source)  
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-04T22:47:38Z" itemprop="datePublished">
+                     4 בספטמבר,‏ 2020,‏ 10:47pm
+                  </time>
+<meta content="2020-09-04T22:47:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניסיתי להוריד את ההתקנה לווינדוז מהאתר שלהם. זה מוריד לי קובץ זיפ שבתוכו אני לא מוצא שום קובץ התקנה. איך הצלחת לבצע את ההתקנה מהאתר עצמו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T09:32:24Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  9:32am
+                  </time>
+<meta content="2020-09-05T10:24:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אדווה <span class_="mention">@adva.alkalay</span> <strong>המדהימה</strong> עזרה לי כמה שעות עם התקלות ובסוף נראה שזה עבד עם הקוד הזה:</p>
+<pre><code class>from graphviz import Digraph
+g = Digraph('G', filename='hello', format='png')
+g.edge('Hello', 'World')
+g.view()
+</code></pre>
+<p>והדפיס את הגרף כמו שצריך. אני חושב שמה שקרה זה שהייתה לי תקלה כלשהי בconda שמנעה התקנה מלאה של החבילה. רק אחרי שמחקתי את הconda והתקנתי מחדש את conda ואת החבילה של graphviz (ואחרי עוד כמה תקלות עם PATH שאין לי שמץ מה זה) אז הדברים הסתדרו. היה מאוד מאוד מתסכל.</p>
+<p>בנוגע לקוד ששלחת, הוספתי את השורה from graphviz.dot import Graph (אין לי שמץ מה זה graphviz.dot או Graph, זה פשוט מה ש-VS Code הציע, בינתיים רק התעסקתי עם התקלה הטכנית).<br/>
+וזה הפלט:</p>
+<pre><code class>graph ni {
+        node [shape=rarrow]
+        1 [label="Ni!"]
+        2 [label="Ni!"]
+        3 [label="Ni!" shape=egg]
+        node [shape=star]
+        4 [label="Ni!"]
+        5 [label="Ni!"]
+        rankdir=LR
+        1 -- 2
+        2 -- 3
+        3 -- 4
+        4 -- 5
+}
+</code></pre>
+<p>אני מתחיל עכשיו את את התרגיל עצמו ואעדכן אם עוד יש תקלות, תודה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T09:38:51Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  9:38am
+                  </time>
+<meta content="2020-09-05T09:38:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מהאתר שלהם <a href="https://www.graphviz.org/download/" rel="nofollow noopener">פה</a>,</p>
+<h3>Windows &gt;&gt; * <a href="https://www2.graphviz.org/Packages/stable/windows" rel="nofollow noopener">Stable Windows install packages</a> &gt;&gt; * <a href="https://www2.graphviz.org/Packages/stable/windows/10/" rel="nofollow noopener">10/</a> &gt;&gt; * <a href="https://www2.graphviz.org/Packages/stable/windows/10/cmake/" rel="nofollow noopener">cmake/</a> &gt;&gt; * <a href="https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/" rel="nofollow noopener">Release/</a> &gt;&gt;</h3>
+<p>ואז תבחר 32 או 64 לפי סוג המערכת שלך.<br/>
+אני הורדתי 64 והיה קובץ התקנה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nadav</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T10:25:07Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏ 10:25am
+                  </time>
+<meta content="2020-09-05T10:25:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצאתי דרך שישר עבדה להתקנה דרך pycharm<br/>
+קרדיט: <a href="https://stackoverflow.com/a/61189654" rel="nofollow noopener">https://stackoverflow.com/a/61189654</a><br/>
+למי שיצטרך בעתיד רק לרשום את השורה הבאה:</p>
+<pre><code class>conda install -c anaconda python-graphviz
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T11:45:42Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏ 11:45am
+                  </time>
+<meta content="2020-09-05T11:45:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="10" data-topic="8066" data-username="nadav">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/nadav/40/142_2.jpg" width="20"/> nadav:</div>
+<blockquote>
+<p><code>conda install -c anaconda python-graphviz</code></p>
+</blockquote>
+</aside>
+<p>אז התקנתי את החבילה במחשב דרך האתר וביצעתי התקנה בקומנד ליין (כאדמינסטרטור) באמצעות השורות שפורסמו כאן על ידי כמה אנשים (conda install -c anaconda python-graphviz). הקוד בדיקה שפרסמת עובד, אבל הקוד דוגמה מהדוקומנטציה מחזיר לי את אותה שגיאת pdf. האם זה אומר שאני צריך להסיר את קונדה ולהתקין מחדש את כל העסק?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adva.alkalay</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T12:06:33Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏ 12:06pm
+                  </time>
+<meta content="2020-09-05T12:06:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@mbrodsky</span>  תנסה את הקוד הבא, ואם יש שגיאה תצלם:</p>
+<pre><code class>from graphviz import Digraph
+
+
+g = Digraph('G', filename='hello', format='png')
+g.edge('Hello', 'World')
+g.view()
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T12:07:58Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏ 12:07pm
+                  </time>
+<meta content="2020-09-05T12:07:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/37f7c6b2e6c032e582e7961c773f3f880ffb5536" href="../../uploads/default/original/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536.png" title="image"><img alt="image" data-base62-sha1="7Z77mUPv7p5ssaw81d572HGA0l0" data-small-upload="../../uploads/default/optimized/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536_2_10x10.png" height="284" src="../../uploads/default/optimized/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536_2_690x284.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536_2_690x284.png, https://forums.pythonic.guru/uploads/default/original/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/3/37f7c6b2e6c032e582e7961c773f3f880ffb5536.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">989×408 52.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T14:19:31Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  2:19pm
+                  </time>
+<meta content="2020-09-05T14:19:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני כבר שעות מנסה לסדר את הבעיה הזו. במסגרת החיפושים שלי קראתי שצריך לבצע אקטיבציה לפלאגינים שמאפשרים עבודה עם קבצים כמו pdf ו png באמצעות הרצה הפקודה dot -c. אז ניסיתי להריץ את הפקודות שהומלצו כאדמין:</p>
+<p>Microsoft Windows [Version 10.0.19041.450]<br/>
+© 2020 Microsoft Corporation. All rights reserved.</p>
+<p>C:\WINDOWS\system32&gt;dot -c</p>
+<p>C:\WINDOWS\system32&gt;dot -v<br/>
+dot - graphviz version 2.38.0 (20140413.2041)<br/>
+libdir = “C:\ProgramData\Anaconda3\Library\bin\graphviz”<br/>
+Activated plugin library: gvplugin_dot_layout.dll<br/>
+Using layout: dot:dot_layout<br/>
+Activated plugin library: gvplugin_core.dll<br/>
+Using render: dot:core<br/>
+Using device: dot:dot:core<br/>
+The plugin configuration file:<br/>
+C:\ProgramData\Anaconda3\Library\bin\graphviz\config6<br/>
+was successfully loaded.<br/>
+render      :  cairo dot fig gd gdiplus map pic pov ps svg tk vml vrml xdot<br/>
+layout      :  circo dot fdp neato nop nop1 nop2 osage patchwork sfdp twopi<br/>
+textlayout  :  textlayout<br/>
+device      :  bmp canon cmap cmapx cmapx_np dot emf emfplus eps fig gd gd2 gif gv imap imap_np ismap jpe jpeg jpg metafile pdf pic plain plain-ext png pov ps ps2 svg svgz tif tiff tk vml vmlz vrml wbmp xdot xdot1.2 xdot1.4<br/>
+loadimage   :  (lib) bmp eps gd gd2 gif jpe jpeg jpg png ps svg</p>
+<p>מהבדיקה שביצעתי עם  dot -v נראה שהפלאגינים אכן מותקנים. בנוסף גם ביצעתי בדיקה לנתיב ב environment variables ונראה שהנתיב נכון. אחרי שביצעתי את כל הבדיקות האלה גם עשיתי ריבוט למחשב רק כדי לראות אם זה יעזור. בינתיים אני ממשיך להתקל באותן הודעות שגיאה שאומרות לי שהוא לא מזהה את סוגי הקבצים האלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T16:44:39Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  4:44pm
+                  </time>
+<meta content="2020-09-05T16:44:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אתה מבצע:</p>
+<pre><code class="lang-python">import pydot
+print(pydot.find_graphviz())
+</code></pre>
+<p>מה יוצא?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T17:44:12Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  5:44pm
+                  </time>
+<meta content="2020-09-05T17:44:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>גם שאני מנסה להריץ את:</p>
+<pre><code class>dot.render('graph.gv', view=True)
+</code></pre>
+<p>מתקבל השגיאה:</p>
+<pre><code class>graphviz.backend.CalledProcessError: Command '['dot', '-Tpdf', '-O', 'graph.gv']' returned non-zero exit status 1. [stderr: b'Format: "pdf" not recognized. Use one of:\r\n']
+</code></pre>
+<p>האם מישהו בסוף הצליח להתגבר עלזה ?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T17:47:55Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  5:47pm
+                  </time>
+<meta content="2020-09-05T17:54:38Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="15" data-topic="8066" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<pre><code class>import pydot
+print(pydot.find_graphviz())
+</code></pre>
+</blockquote>
+</aside>
+<p>לי יוצא:</p>
+<pre><code class>AttributeError: module 'pydot' has no attribute 'find_graphviz'
+</code></pre>
+<p>אבלל ממה שקראתי בstack   הפונקציה find_graphviz לא קיימת ב pydot כבר מאז גרסא 1.2.3</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ron.huberfeld</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T18:21:53Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  6:21pm
+                  </time>
+<meta content="2020-09-05T18:21:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תבדוק את ההתקנה על המערכת הפעלה שלך:<br/>
+<a class="onebox" href="https://www.graphviz.org/download/" rel="nofollow noopener" target="_blank">https://www.graphviz.org/download/</a><br/>
+תוודא ש dot -V עובד משורת הפקודה.<br/>
+הקטע הזה בקוד צריך לאשר את ההתקנה -</p>
+<pre><code class>def check_dependencies():
+    if not shutil.which('dot'):
+        logging.error(
+            'Command "dot" was not found, visual graph will not be available.')
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T18:33:34Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  6:33pm
+                  </time>
+<meta content="2020-09-05T18:33:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>דיברתי עם <span class_="mention">@aviadamar</span> ומה שפתר את זה אצלו היה להריץ את <code>dot -c</code>  ב־cmd עם הרשאות administrator.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8066.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-05T18:34:10Z" itemprop="datePublished">
+                     5 בספטמבר,‏ 2020,‏  6:34pm
+                  </time>
+<meta content="2020-09-05T18:34:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה כתוב אחרי המילה <code>stderr</code>? (השורה האדומה האחרונה)</p>
+<p>זה נראה כאילו יש לך שני <code>dot</code> במחשב (זו התוכנה ש־graphviz מתקשר איתה כדי ליצור גרפים) וזה עושה בלאגן.<br/>
+אם תרצה מוזמן לשלוח הודעה פרטית וננסה לפתור את זה במהרה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="80664658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/graph/8066 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:01:16 GMT -->
+</html>

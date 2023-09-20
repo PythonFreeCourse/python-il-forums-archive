@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 10 – יום 3: branch, graph, merge</title>
+    <link>https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997</link>
+    <description>היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge.
+בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים).
+
+### תרגיל 1: הפקודה graph
+
+ממשו את הפונקציה graph, שתופעל בעזרת הרצת הפקודה `python path/to/wit.py graph` .
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה `.wit`.
+
+הפקודה תצייר גרף (בעזרת מודול גרפים לבחירתכם).
+בניית הגרף תתחיל מה־commit id שמסומן ב־HEAD. מה־commit id הזה יצא חץ אל עבר ה־commit id שמסומן כ־parent שלו. מה־parent שלו יצא חץ ל־parent שמעליו, וכך הלאה.
+
+[details=&quot;דוגמאות לגרף&quot;]
+```bash
+python wit.py init
+python wit.py add lms
+python wit.py commit
+(Output: Commit 0000000000000000000000000000000000000000 created)
+python wit.py add C:\my\project\koko
+python wit.py commit
+(Output: Commit 1111111111111111111111111111111111111111 created)
+python wit.py graph
+```
+
+תוצר הקריאה ל־wit.py graph:
+(אם יותר נוח לכם, כללו רק את 6 התווים הראשונים של ה־commit id. במקרה שלנו, לדוגמה – `000000`)
+מספר ה־commit בגרף מפוצל ל־2 שורות בגלל חוסר במקום:
+
+![Untitled Diagram(2)|481x165](upload://jcLQbhV6OkOteN8qYUFhI3UVlLa.png) 
+
+אם נמשיך ונבצע גם את הפקודות האלו:
+
+```bash
+python wit.py checkout 0000000000000000000000000000000000000000
+python wit.py add somedata
+python wit.py commit
+(Output: Commit 22222222222222222222222222222222222222222222222222 created)
+python wit.py graph
+```
+
+נקבל את האיור הבא:
+
+![Untitled Diagram(4)|481x131](upload://xt62JpVyh0T2G6Y7i1Af0A21bv0.png) 
+
+כיוון שמהמקום בו אנחנו עומדים (HEAD הוא על 222222...) אנחנו לא יכולים לראות את commit 111111.
+
+בונוס למתקדמים: אם הועבר ל־wit.py graph הפרמטר `--all`, הציגו את כל ה־commit־ים בגרף, לא משנה איפה נמצא HEAD. אתם יכולים להניח שהגרף אינו מעגלי.
+
+**שימו לב**: אינכם חייבים לממש את החצים של master ו־HEAD שמופיעים באיורים מעלה. עם זאת, זה בונוס נחמד שיהפוך את התרגיל שלכם בהמשך למוצלח יותר.
+[/details]
+
+
+### תרגיל 2: הפקודה branch
+
+ממשו את הפונקציה branch, שתופעל בעזרת הרצת הפקודה `python path/to/wit.py branch NAME` .
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה `.wit`.
+
+זו אחת הפקודות המעניינות והחשובות ביותר שנבנה ב־`wit.py` שלנו. 
+הפקודה הזו מדביקה תווית עם שם (`NAME`) לקומיט שעליו אנחנו עובדים. לתווית הזו אנחנו קוראים branch (&quot;ענף&quot;).
+כל עוד ה־HEAD יהיה על ה־branch הזה, וה־branch הזה יהיה ב&quot;מצב מופעל&quot;, התווית &quot;תתקדם&quot; יחד איתנו בכל commit שנעשה.
+
+הפקודה הזו שימושית, נניח, אם אנחנו עובדים בצוות של כמה אנשים.
+נדמיין מצב שבו ריצ&#39;רד וחברו ארליך עובדים על בניית מערכת להעלאת תרגילים בקורס פייתון.
+ריצ&#39;רד מתחיל לעבוד על פיצ&#39;ר של העלאת קבצים מרובים, וארליך מתחיל לעבוד באותו זמן על פיצ&#39;ר של התראות (נוטיפיקציות).
+שניהם נמצאים כרגע על הגרסה החדשה ביותר (ה־commit האחרון) במערכת, נניח 123456 (שם מקוצר).
+
+כדי ששניהם יוכלו לעבוד בלי &quot;לעלות&quot; אחד על הקומיטים של השני:
+1. ריצ&#39;רד כותב `python wit.py branch multiple-files`
+2. ארליך כותב `python wit.py branch notifications`
+
+ה־HEAD של שניהם עדיין נמצא על 123456, ועבור שניהם master עדיין מצביע על ה־commit שמספרו 123456.
+1. כדי להפעיל את הענף multiple-files, ריצ&#39;רד יכתוב `python wit.py checkout multiple-files`.
+2. כדי להפעיל את הענף notifications, ארליך יכתוב `python wit.py checkout notifications`.
+
+עכשיו ריצ&#39;רד וארליך הפעילו כל אחד את הענפים הרלוונטיים עבורו. הם נשארו באותו commit id, אבל הענף של כל אחד מהם נחשב במצב &quot;מופעל&quot;.
+כשריצ&#39;רד יריץ את הפקודות `add` ואז `commit` בפעם הבאה, יווצר commit חדש (נניח: 333333) שבו נמצא ריצ&#39;רד, ואליו מצביעים multiple-files ו־HEAD. ה־parent של ה־commit שמספרו 333333 יהיה 123456.
+נניח שאחריו ארליך (שעדיין נמצא ב־commit שמספרו 123456) יריץ את הפקודות `add` ואז `commit`. במקרה כזה יווצר commit חדש (נניח: 444444) שאליו יועבר ארליך, ואליו יצביעו notifications ו־HEAD. ה־parent של ה־commit שמספרו 444444 יהיה 123456.
+גם master נחשב כ־branch. לכן, אחרי שתורץ הפקודה `checkout multiple-files`, לדוגמה, הענף multiple-files יהיה פעיל והענף master לא. זה אומר שב־commit הבא, master ישאר על ה־commit id הנוכחי, ו־multiple-files ו־HEAD יעברו ל־commit id החדש שנוצר.
+
+נביט במצב החדש בעזרת wit graph (ה־HEAD הושמט, כיוון שהוא מצביע על 33333 במחשבו של ריצ&#39;רד ועל 44444 במחשבו של ארליך):
+
+![Untitled Diagram(5)|509x313](upload://28fRdwn1KlSrnDZ6s5j0Cza9m0z.png) 
+
+##### ממשו את פונקציית wit branch.
+
+1. בעת הרצת הפקודה `python path/to/wit.py branch NAME`, צרו שורה חדשה ב־`references.txt`. השורה תראה כך: `NAME=COMMIT_ID`, כאשר במקום `NAME` יופיע שמו של ה־branch, ובמקום `COMMIT_ID` יופיע מספרו של ה־commit שבו נמצא ה־HEAD בעת הרצת הפקודה.
+2. בעת הרצת פקודת `checkout`, יעודכן בקובץ בשם activated.txt שנמצא ישירות תחת התיקייה `.wit`, שמו של ה־branch שנמצא במצב &quot;פעיל&quot; בעת ביצוע הפקודה. זה יהיה כל תוכנו של הקובץ, ולכן אפשר להרגיש בנוח לדרוס אותו. 
+3. בעת הרצת פקודת `commit`, יתעדכן (כרגיל) ה־HEAD כך שיצביע ל־commit החדש שנוצר.
+*לפני עדכון ה־HEAD*, בדקו אם ה־branch שנמצא במצב &quot;פעיל&quot; מצביע לאותו מקום שבו נמצא ה־HEAD.
+אם כן, עדכנו את `references.txt` כך שה־branch יצביע למספר ה־commit החדש שנוצר.
+
+##### שינויים שצריך לעשות:
+
+1. בניגוד למה שנכתב ביום 2, בעת פקודת commit, התווית master כבר לא תתקדם כל פעם שהיא וה־HEAD נמצאים באותו מקום. כדי שתתקדם, היא חייבת שהתנאי המדובר יתקיים **וגם** שהענף יהיה &quot;מופעל&quot;. הענף master &quot;מופעל&quot; והתווית תתקדם רק אם ה־checkout האחרון שהתבצע היה `python wit.py checkout master`.
+2. בעת הרצת הפקודה `init`, יווצר קובץ חדש בשם activated.txt שבו ירשם `master`.
+3. פקודת ה־`checkout` כעת צריכה להיות מסוגלת לקבל אחת משתי האפשרויות: או commit id, או שם של branch.
+
+### תרגיל 3: הפקודה merge
+
+ממשו את הפונקציה merge, שתופעל בעזרת הרצת הפקודה `python path/to/wit.py merge BRANCH_NAME` .
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה `.wit`.
+
+זו פקודת ה־wit האחרונה שנממש.
+הפקודה הזו תיצור commit חדש, שיאחד את הקבצים בין ה־commit הנוכחי שעליו מצביע ה־HEAD שלכם, לבין ה־BRANCH_NAME שהועבר כפרמטר לפקודת ה־merge.
+
+זו פקודה שימושית במיוחד, כיוון שאם ריצ&#39;רד וארליך עשו שינויים רבים בקוד, כל אחד ב־branch שלו, הם ישמחו לפקודה נוחה שתאפשר להם למזג את העבודה שלהם ל&quot;תמונה&quot; אחת.
+
+פקודת ה־merge יוצרת commit חדש. 
+לצורך הרכבת הקבצים שיישמרו באותו commit אנחנו צריכים למצוא &quot;בסיס משותף&quot; – commit שהופיע בעבר, שהוא חלק מהיסטוריית ה־commit־ים **גם** של HEAD, ו**גם** של BRANCH_NAME.
+
+[details=&quot;דוגמאות למציאת בסיס משותף&quot;]
+בציור הבא, בו יש את הענפים B, C ו־D, הבסיס המשותף לכולם הוא A.
+```text
+        +---- B 
+        |           
+A &lt;---- +---- C
+        |           
+        +---- D 
+```
+
+הנה כמה דוגמאות לגבי הבסיסים המשותפים באיור הבא: הבסיס המשותף ל־C ול־D הוא A, הבסיס המשותף ל־E ול־F הוא D, הבסיס המשותף ל־D ול־B הוא A, הבסיס המשותף ל־F ול־D הוא D, והבסיס המשותף ל־F ול־B הוא A.
+
+```text
+        +---- B 
+        |           
+A &lt;---- +---- C
+        |          
+        +---- D ----+----- E
+                    |
+                    +----- F
+```
+[/details]
+
+אחרי שמצאנו את הבסיס המשותף ל־commit שעליו אנחנו נמצאים (ה־`HEAD`) ול־branch שקיבלנו כפרמטר (`BRANCH_NAME`), עלינו למצוא את כל הקבצים ששונו מאז הבסיס המשותף ועד `BRANCH_NAME`.
+
+בתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME.
+בצעו commit חדש כרגיל, והעבירו את HEAD, ואת ה־branch הפעיל ל־commit id החדש. אל תעבירו את BRANCH_NAME ל־commit id החדש.
+
+לצורך התרגיל, אתם יכולים להניח שלא קיים מצב שבו הקובץ נערך גם אצלכם, וגם ב־branch שאתם מנסים למזג.
+
+שימו לב שכעת יש ל־commit האחרון יותר מ־parent אחד. הפרידו את ה־parents בשדה parent בעזרת פסיק.
+ודאו ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי.
+
+##### בונוסים:
+1. אפשרו שהפרמטר לפקודה לא יהיה בהכרח branch name, אלא יוכל להיות גם commit id.
+2. (קשה מאוד) הניחו שיתכן שקובץ כלשהו שונה בשני המקומות במקביל. אם שורה שונתה ביותר ממקום אחד, הכשילו את ה־commit. אם שורות שונות שונו באותו קובץ, מזגו אותו.
+
+### מזל טוב! סיימתם לממש את wit!
+
+סחטיין עליכם, עבודה מעולה! זה באמת פרויקט ראוי לציון.
+נמשיך לדסקס על wit ועל השימושים שלו ביום 4.</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 29 Aug 2020 01:02:39 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 10 – יום 3: branch, graph, merge</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            
+          <p><a href="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/2</link>
+        <pubDate>Sat, 29 Aug 2020 20:25:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7997-2</guid>
+        <source url="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997.rss">שבוע 10 – יום 3: branch, graph, merge</source>
+      </item>
+      <item>
+        <title>שבוע 10 – יום 3: branch, graph, merge</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>היום נדאג לממש 3 פקודות נוספות לתוכנת ה־wit שאנחנו כותבים: branch, graph ו־merge.<br>
+בכל תרגיל, הקפידו להגיש למערכת התרגילים את כל העבודה שביצעתם עד עכשיו על wit (כולל סעיפים קודמים).</p>
+<h3>תרגיל 1: הפקודה graph</h3>
+<p>ממשו את הפונקציה graph, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py graph</code> .<br>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>הפקודה תצייר גרף (בעזרת מודול גרפים לבחירתכם).<br>
+בניית הגרף תתחיל מה־commit id שמסומן ב־HEAD. מה־commit id הזה יצא חץ אל עבר ה־commit id שמסומן כ־parent שלו. מה־parent שלו יצא חץ ל־parent שמעליו, וכך הלאה.</p>
+
+דוגמאות לגרף <a href="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/1">(לחיצה לפרטים נוספים)</a>
+<h3>תרגיל 2: הפקודה branch</h3>
+<p>ממשו את הפונקציה branch, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py branch NAME</code> .<br>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>זו אחת הפקודות המעניינות והחשובות ביותר שנבנה ב־<code>wit.py</code> שלנו.<br>
+הפקודה הזו מדביקה תווית עם שם (<code>NAME</code>) לקומיט שעליו אנחנו עובדים. לתווית הזו אנחנו קוראים branch (“ענף”).<br>
+כל עוד ה־HEAD יהיה על ה־branch הזה, וה־branch הזה יהיה ב"מצב מופעל", התווית “תתקדם” יחד איתנו בכל commit שנעשה.</p>
+<p>הפקודה הזו שימושית, נניח, אם אנחנו עובדים בצוות של כמה אנשים.<br>
+נדמיין מצב שבו ריצ’רד וחברו ארליך עובדים על בניית מערכת להעלאת תרגילים בקורס פייתון.<br>
+ריצ’רד מתחיל לעבוד על פיצ’ר של העלאת קבצים מרובים, וארליך מתחיל לעבוד באותו זמן על פיצ’ר של התראות (נוטיפיקציות).<br>
+שניהם נמצאים כרגע על הגרסה החדשה ביותר (ה־commit האחרון) במערכת, נניח 123456 (שם מקוצר).</p>
+<p>כדי ששניהם יוכלו לעבוד בלי “לעלות” אחד על הקומיטים של השני:</p>
+<ol>
+<li>ריצ’רד כותב <code>python wit.py branch multiple-files</code>
+</li>
+<li>ארליך כותב <code>python wit.py branch notifications</code>
+</li>
+</ol>
+<p>ה־HEAD של שניהם עדיין נמצא על 123456, ועבור שניהם master עדיין מצביע על ה־commit שמספרו 123456.</p>
+<ol>
+<li>כדי להפעיל את הענף multiple-files, ריצ’רד יכתוב <code>python wit.py checkout multiple-files</code>.</li>
+<li>כדי להפעיל את הענף notifications, ארליך יכתוב <code>python wit.py checkout notifications</code>.</li>
+</ol>
+<p>עכשיו ריצ’רד וארליך הפעילו כל אחד את הענפים הרלוונטיים עבורו. הם נשארו באותו commit id, אבל הענף של כל אחד מהם נחשב במצב “מופעל”.<br>
+כשריצ’רד יריץ את הפקודות <code>add</code> ואז <code>commit</code> בפעם הבאה, יווצר commit חדש (נניח: 333333) שבו נמצא ריצ’רד, ואליו מצביעים multiple-files ו־HEAD. ה־parent של ה־commit שמספרו 333333 יהיה 123456.<br>
+נניח שאחריו ארליך (שעדיין נמצא ב־commit שמספרו 123456) יריץ את הפקודות <code>add</code> ואז <code>commit</code>. במקרה כזה יווצר commit חדש (נניח: 444444) שאליו יועבר ארליך, ואליו יצביעו notifications ו־HEAD. ה־parent של ה־commit שמספרו 444444 יהיה 123456.<br>
+גם master נחשב כ־branch. לכן, אחרי שתורץ הפקודה <code>checkout multiple-files</code>, לדוגמה, הענף multiple-files יהיה פעיל והענף master לא. זה אומר שב־commit הבא, master ישאר על ה־commit id הנוכחי, ו־multiple-files ו־HEAD יעברו ל־commit id החדש שנוצר.</p>
+<p>נביט במצב החדש בעזרת wit graph (ה־HEAD הושמט, כיוון שהוא מצביע על 33333 במחשבו של ריצ’רד ועל 44444 במחשבו של ארליך):</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/0/0ef3418f24a879f96bcf1182cd7f2036694d0ff3.png" alt="Untitled Diagram(5)" data-base62-sha1="28fRdwn1KlSrnDZ6s5j0Cza9m0z" width="509" height="313"></p>
+<h5>ממשו את פונקציית wit branch.</h5>
+<ol>
+<li>בעת הרצת הפקודה <code>python path/to/wit.py branch NAME</code>, צרו שורה חדשה ב־<code>references.txt</code>. השורה תראה כך: <code>NAME=COMMIT_ID</code>, כאשר במקום <code>NAME</code> יופיע שמו של ה־branch, ובמקום <code>COMMIT_ID</code> יופיע מספרו של ה־commit שבו נמצא ה־HEAD בעת הרצת הפקודה.</li>
+<li>בעת הרצת פקודת <code>checkout</code>, יעודכן בקובץ בשם activated.txt שנמצא ישירות תחת התיקייה <code>.wit</code>, שמו של ה־branch שנמצא במצב “פעיל” בעת ביצוע הפקודה. זה יהיה כל תוכנו של הקובץ, ולכן אפשר להרגיש בנוח לדרוס אותו.</li>
+<li>בעת הרצת פקודת <code>commit</code>, יתעדכן (כרגיל) ה־HEAD כך שיצביע ל־commit החדש שנוצר.<br>
+<em>לפני עדכון ה־HEAD</em>, בדקו אם ה־branch שנמצא במצב “פעיל” מצביע לאותו מקום שבו נמצא ה־HEAD.<br>
+אם כן, עדכנו את <code>references.txt</code> כך שה־branch יצביע למספר ה־commit החדש שנוצר.</li>
+</ol>
+<h5>שינויים שצריך לעשות:</h5>
+<ol>
+<li>בניגוד למה שנכתב ביום 2, בעת פקודת commit, התווית master כבר לא תתקדם כל פעם שהיא וה־HEAD נמצאים באותו מקום. כדי שתתקדם, היא חייבת שהתנאי המדובר יתקיים <strong>וגם</strong> שהענף יהיה “מופעל”. הענף master “מופעל” והתווית תתקדם רק אם ה־checkout האחרון שהתבצע היה <code>python wit.py checkout master</code>.</li>
+<li>בעת הרצת הפקודה <code>init</code>, יווצר קובץ חדש בשם activated.txt שבו ירשם <code>master</code>.</li>
+<li>פקודת ה־<code>checkout</code> כעת צריכה להיות מסוגלת לקבל אחת משתי האפשרויות: או commit id, או שם של branch.</li>
+</ol>
+<h3>תרגיל 3: הפקודה merge</h3>
+<p>ממשו את הפונקציה merge, שתופעל בעזרת הרצת הפקודה <code>python path/to/wit.py merge BRANCH_NAME</code> .<br>
+הפונקציה תרוץ אך ורק אם אחת מתיקיות האב של תיקיית העבודה הנוכחית מכילה את התיקייה <code>.wit</code>.</p>
+<p>זו פקודת ה־wit האחרונה שנממש.<br>
+הפקודה הזו תיצור commit חדש, שיאחד את הקבצים בין ה־commit הנוכחי שעליו מצביע ה־HEAD שלכם, לבין ה־BRANCH_NAME שהועבר כפרמטר לפקודת ה־merge.</p>
+<p>זו פקודה שימושית במיוחד, כיוון שאם ריצ’רד וארליך עשו שינויים רבים בקוד, כל אחד ב־branch שלו, הם ישמחו לפקודה נוחה שתאפשר להם למזג את העבודה שלהם ל"תמונה" אחת.</p>
+<p>פקודת ה־merge יוצרת commit חדש.<br>
+לצורך הרכבת הקבצים שיישמרו באותו commit אנחנו צריכים למצוא “בסיס משותף” – commit שהופיע בעבר, שהוא חלק מהיסטוריית ה־commit־ים <strong>גם</strong> של HEAD, ו<strong>גם</strong> של BRANCH_NAME.</p>
+
+דוגמאות למציאת בסיס משותף <a href="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/1">(לחיצה לפרטים נוספים)</a>
+<p>אחרי שמצאנו את הבסיס המשותף ל־commit שעליו אנחנו נמצאים (ה־<code>HEAD</code>) ול־branch שקיבלנו כפרמטר (<code>BRANCH_NAME</code>), עלינו למצוא את כל הקבצים ששונו מאז הבסיס המשותף ועד <code>BRANCH_NAME</code>.</p>
+<p>בתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME.<br>
+בצעו commit חדש כרגיל, והעבירו את HEAD, ואת ה־branch הפעיל ל־commit id החדש. אל תעבירו את BRANCH_NAME ל־commit id החדש.</p>
+<p>לצורך התרגיל, אתם יכולים להניח שלא קיים מצב שבו הקובץ נערך גם אצלכם, וגם ב־branch שאתם מנסים למזג.</p>
+<p>שימו לב שכעת יש ל־commit האחרון יותר מ־parent אחד. הפרידו את ה־parents בשדה parent בעזרת פסיק.<br>
+ודאו ש־graph, merge ושאר הפקודות שתלויות ב־parent עדיין מתפקדות כראוי.</p>
+<h5>בונוסים:</h5>
+<ol>
+<li>אפשרו שהפרמטר לפקודה לא יהיה בהכרח branch name, אלא יוכל להיות גם commit id.</li>
+<li>(קשה מאוד) הניחו שיתכן שקובץ כלשהו שונה בשני המקומות במקביל. אם שורה שונתה ביותר ממקום אחד, הכשילו את ה־commit. אם שורות שונות שונו באותו קובץ, מזגו אותו.</li>
+</ol>
+<h3>מזל טוב! סיימתם לממש את wit!</h3>
+<p>סחטיין עליכם, עבודה מעולה! זה באמת פרויקט ראוי לציון.<br>
+נמשיך לדסקס על wit ועל השימושים שלו ביום 4.</p>
+          <p><a href="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997/1</link>
+        <pubDate>Fri, 28 Aug 2020 11:50:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7997-1</guid>
+        <source url="https://forums.pythonic.guru/t/10-3-branch-graph-merge/7997.rss">שבוע 10 – יום 3: branch, graph, merge</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שגיאות OSError - מה לעשות כשאין exception ספציפי</title>
+    <link>https://forums.pythonic.guru/t/oserror-exception/7643</link>
+    <description>בכל מה שנוגע לפתיחת קבצים יש כמה שגיאות שנמצאות תחת OSError שהשתמשתי בהן בחלק גדול מהתרגילים, אבל יש מקרה שלא מצאתי עבורו exception ספציפי: כאשר במשתנה ה-path בפונקציה open מזינים int קופצת השגיאה: ```OSError: [WinError 6] The handle is invalid```.
+
+תחת OS exceptions (https://docs.python.org/3/library/exceptions.html#os-exceptions)
+אין שגיאה מתאימה אז אני נדרש להשתמש ב-OSError. הבעיה היא שזה &quot;תופס&quot; עוד הרבה שגיאות אחרות (כולל שגיאות שאני רוצה לתפוס בניסיון לפתוח ולקרוא קובץ כמו: FileNotFoundError, IsADirectoryError, PermissionError).
+
+מה נכון לעשות במקרה כזה?
+בינתיים כתבתי שורה אחת של except שבה כל השגיאות הספציפיות שאני רוצה לתפוס כמו אלה שציינתי, ואחריה except אחר עם OSError.</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 26 Jul 2020 05:43:24 +0000</lastBuildDate>
+    <category>שבוע 8</category>
+    <atom:link href="https://forums.pythonic.guru/t/oserror-exception/7643.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שגיאות OSError - מה לעשות כשאין exception ספציפי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זו שאלה טובה, אז אני שמח שהעלת, אבל חפש בגוגל, יש שם לא מעט תשובות בדיוק על השאלה הזו (:<br>
+בגדול צריך לתפוס עם as ואז לגשת לתכונה errno.<br>
+יש מספר שגיאה שמאפיין את כל אחת מהשגיאות האפשריות ב¯OSError ואפשר להתנות עליהם.<br>
+כאקסטרה, יש מודול בפייתון שממפה את כל השגיאות האלו לקבועים:<br>
+<a href="https://docs.python.org/3/library/errno.html" class="onebox" target="_blank">https://docs.python.org/3/library/errno.html</a></p>
+          <p><a href="https://forums.pythonic.guru/t/oserror-exception/7643/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/oserror-exception/7643/2</link>
+        <pubDate>Sun, 26 Jul 2020 05:43:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7643-2</guid>
+        <source url="https://forums.pythonic.guru/t/oserror-exception/7643.rss">שגיאות OSError - מה לעשות כשאין exception ספציפי</source>
+      </item>
+      <item>
+        <title>שגיאות OSError - מה לעשות כשאין exception ספציפי</title>
+        <dc:creator><![CDATA[Alon.B.A]]></dc:creator>
+        <description><![CDATA[
+            <p>בכל מה שנוגע לפתיחת קבצים יש כמה שגיאות שנמצאות תחת OSError שהשתמשתי בהן בחלק גדול מהתרגילים, אבל יש מקרה שלא מצאתי עבורו exception ספציפי: כאשר במשתנה ה-path בפונקציה open מזינים int קופצת השגיאה: <code>OSError: [WinError 6] The handle is invalid</code>.</p>
+<p>תחת OS exceptions (<a href="https://docs.python.org/3/library/exceptions.html#os-exceptions" class="inline-onebox" rel="noopener nofollow ugc">Built-in Exceptions — Python 3.10.1 documentation</a>)<br>
+אין שגיאה מתאימה אז אני נדרש להשתמש ב-OSError. הבעיה היא שזה “תופס” עוד הרבה שגיאות אחרות (כולל שגיאות שאני רוצה לתפוס בניסיון לפתוח ולקרוא קובץ כמו: FileNotFoundError, IsADirectoryError, PermissionError).</p>
+<p>מה נכון לעשות במקרה כזה?<br>
+בינתיים כתבתי שורה אחת של except שבה כל השגיאות הספציפיות שאני רוצה לתפוס כמו אלה שציינתי, ואחריה except אחר עם OSError.</p>
+          <p><a href="https://forums.pythonic.guru/t/oserror-exception/7643/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/oserror-exception/7643/1</link>
+        <pubDate>Sat, 25 Jul 2020 18:48:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7643-1</guid>
+        <source url="https://forums.pythonic.guru/t/oserror-exception/7643.rss">שגיאות OSError - מה לעשות כשאין exception ספציפי</source>
+      </item>
+  </channel>
+</rss>

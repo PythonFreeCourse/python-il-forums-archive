@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5605 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:46:16 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>פתרון תרגיל 54 - פוקר - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="אהלן, 
+לצערי לא הספקתי להגיש את תרגיל 54 לבדיקה של הצוות (למזלי כלל לא הייתי צריך, אך עשיתי בשביל האתגר). 
+מצרף כאן קישור לקובץ התרגיל, אולי יעזור למי שניסה את התרגיל וטרם הצליח. 
+קישור ל-TexaxHoldem.ipynb 
+מדגיש - התרגי&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="5605.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5605.rss" rel="alternate nofollow" title="הזנת RSS של ‚פתרון תרגיל 54 - פוקר’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="5605.html" property="og:url"/>
+<meta content="5605.html" name="twitter:url"/>
+<meta content="פתרון תרגיל 54 - פוקר" property="og:title"/>
+<meta content="פתרון תרגיל 54 - פוקר" name="twitter:title"/>
+<meta content="אהלן,  לצערי לא הספקתי להגיש את תרגיל 54 לבדיקה של הצוות (למזלי כלל לא הייתי צריך, אך עשיתי בשביל האתגר).  מצרף כאן קישור לקובץ התרגיל, אולי יעזור למי שניסה את התרגיל וטרם הצליח.  קישור ל-TexaxHoldem.ipynb  מדגיש - התרגיל יצא ארוך מאוד.  אשמח להתרשמותכם ואשמח לעזור ולענות על שאלות!  תהנו!  אליאור." property="og:description"/>
+<meta content="אהלן,  לצערי לא הספקתי להגיש את תרגיל 54 לבדיקה של הצוות (למזלי כלל לא הייתי צריך, אך עשיתי בשביל האתגר).  מצרף כאן קישור לקובץ התרגיל, אולי יעזור למי שניסה את התרגיל וטרם הצליח.  קישור ל-TexaxHoldem.ipynb  מדגיש - התרגיל יצא ארוך מאוד.  אשמח להתרשמותכם ואשמח לעזור ולענות על שאלות!  תהנו!  אליאור." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="פוקר" property="og:article:tag"/>
+<meta content="דוגמאות-קוד" property="og:article:tag"/>
+<meta content="פתרון-לתרגיל-נוסף" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="5 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="12 ❤"/>
+<meta content="2020-04-29T20:44:58+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5605.html">פתרון תרגיל 54 - פוקר</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a4%d7%95%d7%a7%d7%a8.html" rel="tag">פוקר</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%93%d7%95%d7%92%d7%9e%d7%90%d7%95%d7%aa-%d7%a7%d7%95%d7%93.html" rel="tag">דוגמאות-קוד</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a4%d7%aa%d7%a8%d7%95%d7%9f-%d7%9c%d7%aa%d7%a8%d7%92%d7%99%d7%9c-%d7%a0%d7%95%d7%a1%d7%a3.html" rel="tag">פתרון-לתרגיל-נוסף</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="פתרון תרגיל 54 - פוקר" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="פוקר, דוגמאות-קוד, פתרון-לתרגיל-נוסף" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-29T20:44:58Z" itemprop="datePublished">
+                     29 באפריל,‏ 2020,‏  8:44pm
+                  </time>
+<meta content="2021-09-08T03:06:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>אהלן,</p>
+<p>לצערי לא הספקתי להגיש את תרגיל 54 לבדיקה של הצוות (למזלי כלל לא הייתי צריך, אך עשיתי בשביל האתגר).<br/>
+מצרף כאן קישור לקובץ התרגיל, אולי יעזור למי שניסה את התרגיל וטרם הצליח.</p>
+<p><a href="https://drive.google.com/file/d/1oXa13gaxXYnPIBa0x4bPWHuTJ_6TJLCy/view?usp=sharing" rel="noopener nofollow ugc">קישור ל-TexaxHoldem.ipynb</a></p>
+<p>מדגיש - התרגיל יצא ארוך מאוד.<br/>
+אשמח להתרשמותכם ואשמח לעזור ולענות על שאלות!</p>
+<p>תהנו!<br/>
+אליאור.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-29T20:51:01Z" itemprop="datePublished">
+                     29 באפריל,‏ 2020,‏  8:51pm
+                  </time>
+<meta content="2020-04-29T20:51:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יופי של עבודה!<br/>
+אני מאמין שהדרך להצליח בענק עוברת בתרגילים כאלו.<br/>
+אחרי שמימשת תרגילים כמו CSV או פוקר, עם כל הכאב שנשאר באצבעות,<br/>
+אפשר להתקדם הלאה ולבנות על זה חומר חדש כשהחומר הישן יושב מצוין.<br/>
+תמשיך ככה ובהצלחה בהמשך <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T02:22:58Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  2:22am
+                  </time>
+<meta content="2020-04-30T02:23:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נצרף גם את שלי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<pre><code class="lang-python">PICTURES = ('T', 'J', 'Q', 'K', 'A')
+SUIT_TYPES = ('C', 'D', 'H', 'S')
+NUMBER = 0
+SUIT = 1
+NUMBER_OF_CARDS = 5
+
+
+def parse_number(number):
+    if number in PICTURES:
+        parsed_number = PICTURES.index(number) + 10
+    else:
+        parsed_number = int(number)
+    return parsed_number
+
+
+def parse_card(card):
+    parsed_number = parse_number(card[NUMBER])
+    return parsed_number, card[SUIT]
+
+
+def parse_hand(cards):
+    i = 0
+    new_cards = []
+    while i &lt; len(cards):
+        parsed_card = parse_card(cards[i])
+        new_cards.append(parsed_card)
+        i += 1
+    return new_cards
+
+
+def count_card_numbers(hand):
+    times_each_number_appeared = [0] * 15
+    i = 0
+    while i &lt; len(hand):
+        number = hand[i][NUMBER]
+        times_each_number_appeared[number] += 1
+        i += 1
+    times_each_number_appeared[1] = times_each_number_appeared[14]  # Ace
+    return times_each_number_appeared
+
+
+def count_suits(hand):
+    suits_counter = [0] * 4
+    i = 0
+    while i &lt; len(hand):
+        suit = hand[i][SUIT]
+        suit_index = SUIT_TYPES.index(suit)
+        suits_counter[suit_index] += 1
+        i += 1
+    return suits_counter
+
+
+def get_only_numbers(hand):
+    i = 0
+    numbers = []
+    while i &lt; len(hand):
+        numbers.append(hand[i][NUMBER])
+        i += 1
+    return numbers
+
+
+def get_hand_as_kickers(hand):
+    numbers = get_only_numbers(hand)
+    numbers.sort()
+    return numbers[::-1]
+
+
+def get_highest_x_of_kind(hand, x):
+    times_each_number_appears = count_card_numbers(hand)
+    # The highest cards are in the end, so we flip the list
+    if x in times_each_number_appears:
+        descending_number_count = times_each_number_appears[::-1]
+        highest_x_of_kind = descending_number_count.index(x)
+        real_card_value = 15 - highest_x_of_kind - 1
+        return real_card_value
+    return False
+
+
+def find_flush_color(hand, flush_length):
+    suit = 0  # 0 = C, 1 = D, 2 = H, 3 = S
+    suits_counter = count_suits(hand)
+    while suit &lt; len(suits_counter) and suits_counter[suit] &lt; flush_length:
+        suit += 1
+    if suit &gt;= len(suits_counter):  # We've gone through all the options
+        return False
+    return suit
+
+
+def filter_by_suit(hand, suit):
+    if str(suit).isdigit():
+        suit = SUIT_TYPES[suit]
+
+    i = 0
+    filtered = []
+    while i &lt; len(hand):
+        if hand[i][SUIT] == suit:
+            filtered.append(hand[i])
+        i += 1
+    return filtered
+
+
+def get_highest_of_suit(hand, suit, k):
+    filtered = filter_by_suit(hand, suit)
+    filtered.sort()
+    return filtered[-k:]
+
+
+def get_flush(hand, flush_length):
+    flush_color = find_flush_color(hand, flush_length)
+    if flush_color == False:
+        return False
+    flush = get_highest_of_suit(hand, flush_color, flush_length)
+    if len(flush) != flush_length:
+        return False
+    return flush
+
+
+def get_straight(hand, straight_length):
+    card_numbers = count_card_numbers(hand)
+    i = len(card_numbers) - 1
+    length_so_far = 1
+    while 0 &lt; i:
+        if length_so_far == straight_length:
+            return i + length_so_far - 1
+
+        if card_numbers[i] &gt; 0 and card_numbers[i - 1] &gt; 0:
+            length_so_far += 1
+        else:
+            length_so_far = 1
+        i -= 1
+    return False
+
+
+def get_two_pairs(hand):
+    pair = get_highest_x_of_kind(hand, 2)
+    if not pair:
+        return False
+
+    hand2 = filter_out_number(hand, pair)
+    another_pair = get_highest_x_of_kind(hand2, 2)
+    if not another_pair:
+        return False
+    
+    kicker = filter_out_number(hand2, another_pair)
+    return pair, another_pair, kicker
+
+
+def get_kickers(hand, numbers_to_filter):
+    i = 0
+    hand2 = hand.copy()
+    while i &lt; len(numbers_to_filter):
+        hand2 = filter_out_number(hand2, numbers_to_filter[i])
+        i += 1
+    hand_numbers = get_only_numbers(hand2)
+    hand_numbers.sort()
+    return hand_numbers[::-1]  # Highest first
+
+
+def filter_out_number(hand, number):
+    i = 0
+    new_hand = []
+    while i &lt; len(hand):
+        if hand[i][NUMBER] != number:
+            new_hand.append(hand[i])
+        i += 1
+    return new_hand
+
+
+def get_hand_strength(hand):
+    flush = get_flush(hand, NUMBER_OF_CARDS)
+    straight = get_straight(hand, NUMBER_OF_CARDS)
+    if flush and straight:
+        return 8, straight
+
+    four_of_a_kind = get_highest_x_of_kind(hand, 4)
+    if four_of_a_kind:
+        kicker = get_kickers(hand, [four_of_a_kind])
+        return 7, four_of_a_kind, kicker
+
+    three_of_a_kind = get_highest_x_of_kind(hand, 3)
+    pair = get_highest_x_of_kind(hand, 2)
+    if three_of_a_kind and pair:
+        return 6, three_of_a_kind, pair
+
+    if flush:
+        return 5, get_hand_as_kickers(hand)
+    if straight:
+        return 4, straight
+    if three_of_a_kind:
+        return 3, three_of_a_kind, get_kickers(hand, [three_of_a_kind])
+
+    two_pairs = get_two_pairs(hand)
+    if two_pairs:
+        kicker = get_kickers(hand, two_pairs)
+        return 2, two_pairs[0], two_pairs[1], kicker
+    if pair:
+        kicker = get_kickers(hand, [pair])
+        return 1, pair
+    return 0, get_hand_as_kickers(hand)
+
+
+def get_winning_hand(hand1, hand2):
+    strength1 = get_hand_strength(hand1)
+    strength2 = get_hand_strength(hand2)
+    if strength1 &gt; strength2:
+        return 0
+    elif strength1 &lt; strength2:
+        return 1
+    return 2
+
+
+def add_all_uniques(l, items):
+    i = 0
+    while i &lt; len(items):
+        if items[i] not in l:
+            l.append(items[i])
+        i += 1
+    return items
+
+
+def create_all_hands_combinations(hand, length):
+    if len(hand) == length:
+        return [hand]
+
+    combinations = []
+    i = 0
+    while i &lt; len(hand):
+        rest_of_hand = hand[:i] + hand[i+1:]
+        created = create_all_hands_combinations(rest_of_hand, length)
+        add_all_uniques(combinations, created)
+        i += 1
+    
+    return combinations
+
+
+def get_best_of_hands(hands):
+    if not hands:
+        return []
+
+    best_hand = hands[0]
+    max_i = 0
+    i = 1
+    while i &lt; len(hands):
+        current_hand = hands[i]
+        winning_hand = get_winning_hand(best_hand, current_hand)
+        if winning_hand % 2 == 1:
+            best_hand = current_hand
+            max_i = i
+        i += 1
+    
+    return (best_hand, max_i)
+    
+
+def create_best_hand(larger_hand, wanted_size):
+    combinations = create_all_hands_combinations(larger_hand, wanted_size)
+    i = 0
+    parsed_combinations = []
+    while i &lt; len(combinations):
+        parsed_combinations.append(parse_hand(combinations[i]))
+        i += 1
+    return get_best_of_hands(parsed_combinations)[0]
+
+
+def get_best_player(hands, public):
+    i = 0
+    new_hands = []
+    while i &lt; len(hands):
+        actual_hand = create_best_hand(hands[i] + public, 5)
+        print(actual_hand)
+        new_hands.append(actual_hand)
+        i += 1
+    return get_best_of_hands(new_hands)[1]
+
+
+def test_strength(hand, expected_strength):
+    parsed_hand = parse_hand(hand)
+    strength = get_hand_strength(parsed_hand)
+    assert strength == expected_strength, f"{hand}:\t{strength} != {expected_strength}"
+
+
+test_strength(['TH', 'AH', 'QH', 'KH', '3S'], (0, [14, 13, 12, 10, 3]))
+test_strength(['TH', 'TH', 'QH', 'KH', '3S'], (1, 10))
+test_strength(['2H', 'QH', '2H', 'KH', '3S'], (1, 2))
+test_strength(['2H', 'QH', '2S', 'QS', '3S'], (2, 12, 2, [3]))
+test_strength(['QH', 'QC', '2H', 'QS', '3S'], (3, 12, [3, 2]))
+test_strength(['AH', 'KS', 'QH', 'JH', 'TS'], (4, 14))
+test_strength(['9H', 'KS', 'QH', 'JH', 'TS'], (4, 13))
+test_strength(['9H', '5H', '3H', 'JH', 'TH'], (5, [11, 10, 9, 5, 3]))
+test_strength(['9H', '9S', '9C', 'JH', 'JS'], (6, 9, 11))
+test_strength(['9H', '9S', 'JC', 'JH', 'JS'], (6, 11, 9))
+test_strength(['9H', 'JD', 'JC', 'JH', 'JS'], (7, 11, [9]))
+test_strength(['AH', 'KH', 'QH', 'JH', 'TH'], (8, 14))
+test_strength(['9H', 'KH', 'QH', 'JH', 'TH'], (8, 13))
+print(create_best_hand(['2S', '9H', 'KH', '5S', 'QH', 'JH', 'TH'], 5))
+print(get_best_player([['2S, 9H'], ['9H', 'KH'], ['5H', '6H'], ['7H', '4H']], ['QH', 'JH', 'TH', '8H']))
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T06:24:28Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  6:24am
+                  </time>
+<meta content="2020-04-30T06:24:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<pre><code> CARDS = ['2', '3' , '4', '5' , '6', '7', '8' , '9' , '10', '11', '12' , '13', '14']
+ SHAPES = ['C', 'D', 'H', 'S']
+ # Translation - '10' = T, '11' = J, '12' = Q, '13' = K, '14' = A
+ RESULTS = ['High card', 'Pair', 'Two pairs', 'Three of a kind', 'Straight', 'Flush', 'Full house', 'Four of a kind', 'Straight flush', 'Royal flush']
+ 
+ 
+ # Returns a list of the cards from the highest one to the lowest - just the numbers
+ def sorting(hand):
+     index = 0
+     final = []
+     while index &lt; len(hand):
+         final += [int(hand[index][1:])]
+         index += 1
+     final.sort()
+     return final[::-1]
+ 
+ # Returns if there is a straight
+ def straight(hand_nums):
+     index = 0
+     counter = 0
+     while index &lt; len(hand_nums) - 1:
+         if hand_nums[index] == hand_nums[index+1] + 1:
+             counter += 1
+         else:
+             counter = 0
+         index += 1
+     if counter == 4 or counter == 3 and hand_nums[0] == 14 and hand_nums[-1] == 2:
+         return True
+     else:
+         return False
+ 
+ # Returns if there is a flush
+ def flush(hand):
+     index = 0
+     while index &lt; len(hand) - 1:
+         if hand[index][0] == hand[index+1][0]:
+             index += 1
+         else:
+             return False
+     return True
+ 
+ # Returns a list of - wheather there is a four of a kind, three of a kind and pairs
+ def pairs(hand_nums):
+     index = 0
+     count = 0
+     final = []
+     while index &lt; len(CARDS):
+         count = hand_nums.count(int(CARDS[index]))
+         if count == 4:
+             return [7, int(CARDS[index])]
+         if count == 3:
+             final.insert(0, [3, int(CARDS[index])])
+         if count == 2:
+             final.append([2, int(CARDS[index])])
+         index += 1
+     return final
+ 
+ # Returns the hand rate result
+ def hand_rate(hand):
+     return RESULTS[hand_rate_help(hand)[0]]
+ 
+ # Returns an integer of the hand rate in order to equal it to another hand
+ def hand_rate_help(hand):
+     nums_sort = sorting(hand)
+     straight_c = straight(nums_sort)
+     flush_c = flush(hand)
+     pairs_c = pairs(nums_sort)
+     if straight_c and flush_c:
+         if nums_sort[0] == 14:
+             return [9]
+         return [8, nums_sort[0]]
+     if len(pairs_c) &gt; 0:
+         if pairs_c[0] == 7:
+             return pairs_c
+     if len(pairs_c) == 2:
+         if pairs_c[0][0] == 3:
+             return [6, pairs_c[0][1], pairs_c[1][1]]
+     if flush_c:
+         return [5, nums_sort[0]]
+     if straight_c:
+         if nums_sort[0] == 14 and nums_sort[-1] == 2:
+             return [4, nums_sort[1]]
+         return [4, nums_sort[0]]
+     if len(pairs_c) == 1:
+         if pairs_c[0][0] == 3:
+             return [3, pairs_c[0][1]] + remove_from_hand(nums_sort, [pairs_c[0][1]])
+         return [1, pairs_c[0][1]] + remove_from_hand(nums_sort, [pairs_c[0][1]])
+     if len(pairs_c) == 2:
+         return [2, pairs_c[1][1], pairs_c[0][1]] + remove_from_hand(nums_sort, [pairs_c[1][1], pairs_c[0][1]])
+     return [0, nums_sort]
+ 
+ # Removes from the hand the pairs and stuff like that in order to get the high cards
+ def remove_from_hand(hand, removes):
+     hand_c = hand.copy()
+     index = 0
+     while index &lt; len(removes):
+         while removes[index] in hand_c:
+             hand_c.remove(removes[index])
+         index += 1
+     return hand_c
+ 
+ # Gets two hands and returns which hand wins
+ def who_wins(hand1, hand2):
+     hand1_result = hand_rate_help(hand1)
+     hand2_result = hand_rate_help(hand2)
+     if hand1_result &lt; hand2_result:
+         return hand2
+     if hand1_result &gt; hand2_result:
+         return hand1
+     return "Duece"
+ 
+ # Gets a list of two cards of the player and the hand on the table and returns the best hand
+ def best_hand(player_hand, hand):
+     best = hand
+     i = 0
+     while i &lt; len(hand):
+         j = 0
+         hand_c = hand.copy()
+         hand_c[i] = player_hand[0]
+         while j &lt; len(hand):
+             if who_wins(best, hand_c) == hand_c:
+                 best = hand_c
+             hand_c = hand.copy()
+             hand_c[i] = player_hand[0]
+             hand_c[j] = player_hand[1]
+             j += 1
+         if who_wins(best, hand_c) == hand_c:
+             best = hand_c
+         i += 1
+     return best
+ 
+ # Gets the players hands and the hand on the table and returns the index of the best player
+ def best_handler(players_hands, hand):
+     index = 0
+     best_hands = []
+     while index &lt; len(players_hands):
+         best = best_hand(players_hands[index], hand)
+         best_hands += [best]
+         index += 1
+     index = 1
+     winner = [[best_hands[0], 0]]
+     while index &lt; len(best_hands):
+         res = who_wins(winner[0][0], best_hands[index])
+         if res == "Duece":
+             winner += [best_hands[index], index]
+         elif res == best_hands[index]:
+             winner = [[best_hands[index], index]]
+         index += 1
+     index = 0
+     if len(winner) == 1:
+         return winner[0][1]
+     total = []
+     while index &lt; len(winner):
+         total += winner[index][1]
+         index += 1
+     return total</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T20:22:54Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  8:22pm
+                  </time>
+<meta content="2020-04-30T20:22:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>וואי זה כזה ארוך ! מקווה שיהיה לי זמן להגיע לזה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T20:25:36Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  8:25pm
+                  </time>
+<meta content="2020-04-30T20:37:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאלוהים יעזור איזה אורך X:<br/>
+מקווה שגם לי יתפנה זמן לפתור את זה <img alt=":upside_down_face:" class="emoji" src="../../images/emoji/twitter/upside_down_facec164.png?v=9" title=":upside_down_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="5605.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-01T01:22:37Z" itemprop="datePublished">
+                     1 במאי,‏ 2020,‏  1:22am
+                  </time>
+<meta content="2020-05-01T01:22:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מוסיף גם את שלי אם למישהו יש כוח לקרוא ולהעיר.<br/>
+מודה שזה היה אחד התרגילים המהנים.</p>
+<pre><code>def score_hand(hand):  # Prints score based on the hand rating
+    rating = rate_hand(hand)
+    if rating.startswith('9'):
+        print('Royal Flush')
+    elif rating.startswith('8'):
+        print(f'Straight Flush kicker: {rating[1]}')
+    elif rating.startswith('7'):
+        print(f'Four of a kind: {rating[1]}')
+    elif rating.startswith('6'):
+        print(f'Full House: {rating[1]} over {rating[2]}')
+    elif rating.startswith('5'):
+        print(f'Flush kicker: {rating[1]}')
+    elif rating == '45':
+        print('Straight 5 high')
+    elif rating.startswith('4'):
+        print(f'Straight {rating[1]} high')
+    elif rating.startswith('3'):
+        print(f'Three of a kind: {rating[1]}')
+    elif rating.startswith('2'):
+        print(f'Two pairs: {rating[1]} over {rating[2]} kicker: {rating[3]}')
+    elif rating.startswith('1'):
+        print(f'Pair of {rating[1]} kicker: {rating[2]}')
+    elif rating.startswith('0'):
+        print(f'High card: {rating[1]}')
+    return
+
+
+def rate_hand(hand):  # Rates hand
+    if is_flush(hand) and is_straight(hand):
+        if hand[0].isalpha() and hand[1].isalpha() and hand[2].isalpha() and hand[3].isalpha() and hand[4].isalpha():
+            return '9'
+        return f'8{kicker(hand)}'
+    if four_of(hand) != None:
+        return f'7{four_of(hand)}'
+    if type(full_house(hand)) == tuple:
+        rank = full_house(hand)
+        return f'6{rank[0]}{rank[1]}'
+    if is_flush(hand):
+        return f'5{kicker(hand)}'
+    if is_straight(hand):
+        return f'4{kicker(hand)}'
+    if is_short_straight(hand):
+        return '45'
+    if three_of(hand) != None:
+        return f'3{three_of(hand)}'
+    if two_pairs(hand) != None:
+        rank = two_pairs(hand)
+        return f'2{rank[0]}{rank[1]}{rank[2]}'
+    if pair(hand) != None:
+        rank = pair(hand)
+        return f'1{rank[0]}{rank[1]}'
+    return f'0{kicker(hand)}'
+
+
+def convert_hand(hand):  # Converts hand to sortable form
+    temp = hand.copy()
+    i = 0
+    while i &lt; len(temp):
+        if temp[i][0] == 'T':
+            temp[i] = 10
+        elif temp[i][0] == 'J':
+            temp[i] = 11
+        elif temp[i][0] == 'Q':
+            temp[i] = 12
+        elif temp[i][0] == 'K':
+            temp[i] = 13
+        elif temp[i][0] == 'A':
+            temp[i] = 14
+        else:
+            temp[i] = int(temp[i][0])
+        i += 1
+    return temp
+
+
+def revert_hand(hand):  # Reverts hand to original card values
+    temp = hand.copy()
+    i = 0
+    while i &lt; len(temp):
+        if temp[i] == 10:
+            temp[i] = 'T'
+        elif temp[i] == 11:
+            temp[i] = 'J'
+        elif temp[i] == 12:
+            temp[i] = 'Q'
+        elif temp[i] == 13:
+            temp[i] = 'K'
+        elif temp[i] == 14:
+            temp[i] = 'A'
+        else:
+            temp[i] = str(temp[i])
+        i += 1
+    return temp
+
+
+def sort_hand(hand):  # Sorts hand
+    temp = convert_hand(hand)
+    temp = [temp[0], temp[1], temp[2], temp[3], temp[4]]
+    temp.sort()
+    return temp
+
+
+def four_of(hand):  # Checks for four of a kind
+    temp = revert_hand(sort_hand(hand))
+    if temp[0] == temp[1] == temp[2] == temp[3] or temp[1] == temp[2] == temp[3] == temp[4]:
+        return temp[1]
+    return
+
+
+def full_house(hand):  # Checks for full house and returns values in order
+    temp = revert_hand(sort_hand(hand))
+    if temp[0] == temp[1] == temp[2] and temp[3] == temp[4]:
+        return temp[0], temp[3]
+    if temp[0] == temp[1] and temp[2] == temp[3] == temp[4]:
+        return temp[2], temp[0]
+    return
+
+
+def is_flush(hand):  # Checks fo flush
+    return hand[0][1] == hand[1][1] == hand[2][1] == hand[3][1] == hand[4][1]
+
+
+def is_straight(hand):  # Checks for straight
+    temp = sort_hand(hand)
+    if temp[0] + 1 == temp[1] and temp[1] + 1 == temp[2] and temp[2] + 1 == temp[3] and temp[3] + 1 == temp[4]:
+        return True
+    return False
+
+
+def is_short_straight(hand):  # Checks if the hand is a straight starting with an ace as value of 1
+    temp = sort_hand(hand)
+    if temp[0] == 2 and temp[1] == 3 and temp[2] == 4 and temp[3] == 5 and temp[4] == 14:
+        return True
+    return False
+
+
+def three_of(hand):  # Checks for three of a kind
+    temp = revert_hand(sort_hand(hand))
+    if not four_of(hand) and not full_house(hand):
+        if temp[0] == temp[1] == temp[2] or temp[1] == temp[2] == temp[3] or temp[2] == temp[3] == temp[4]:
+            return temp[2]
+    return
+
+
+def two_pairs(hand):  # Checks for two pairs and returns them in order with kicker
+    temp = revert_hand(sort_hand(hand))
+    if not four_of(hand) and not full_house(hand) and not three_of(hand):
+        if temp[0] == temp[1] and temp[2] == temp[3]:
+            return temp[2], temp[0], temp[4]
+        if temp[0] == temp[1] and temp[3] == temp[4]:
+            return temp[3], temp[0], temp[2]
+        if temp[1] == temp[2] and temp[3] == temp[4]:
+            return temp[3], temp[1], temp[0]
+    return
+
+
+def pair(hand):  # Checks for a pair and returns with kicker
+    temp = revert_hand(sort_hand(hand))
+    if not four_of(hand) and not full_house(hand) and not three_of(hand) and not two_pairs(hand):
+        if temp[0] == temp[1] or temp[1] == temp[2]:
+            return temp[1], temp[-1]
+        if temp[2] == temp[3]:
+            return temp[2], temp[-1]
+        if temp[3] == temp[4]:
+            return temp[3], temp[2]
+    return
+
+
+def kicker(hand):  # Finds the hand's kicker (high card)
+    return revert_hand(sort_hand(hand))[-1]
+
+
+def fix_rating(rating):  # "Fixes" rating to comparables values
+    return int(rating.replace('T', '10').replace('J', '11').replace('Q', '12').replace('K', '13').replace('A', '14'))
+
+
+def seperate_rating(rating):  # Returns rating in list form for comparison
+    temp = []
+    i = 0
+    while i &lt; len(rating):
+        temp.append(fix_rating(rating[i]))
+        i += 1
+    return temp
+
+
+def compare_hands(hand0, hand1):  # Compares two hands and returns winner
+    temp0 = seperate_rating(rate_hand(hand0))
+    temp1 = seperate_rating(rate_hand(hand1))
+    i = 0
+    while i &lt; len(temp0) and i &lt; len(temp1):
+        if temp0[i] &gt; temp1[i]:
+            return hand0
+        if temp0[i] &lt; temp1[i]:
+            return hand1
+        i += 1
+    return
+
+
+def find_winner(l):  # Finds winner from a list of hands
+    best_hand = l[0]
+    i = 0
+    while i &lt; len(l):
+        temp_hand = compare_hands(l[i], best_hand)
+        if temp_hand != None:
+            best_hand = temp_hand
+        i += 1
+    return best_hand
+
+
+def find_best_hand(hand):  # Finds best combinations of 5 cards out of 7
+    combos = [
+    [hand[0], hand[1], hand[2], hand[3], hand[4]],
+    [hand[0], hand[1], hand[2], hand[3], hand[5]],
+    [hand[0], hand[1], hand[2], hand[3], hand[6]],
+    [hand[0], hand[1], hand[2], hand[4], hand[5]],
+    [hand[0], hand[1], hand[2], hand[4], hand[6]],
+    [hand[0], hand[1], hand[2], hand[5], hand[6]],
+    [hand[0], hand[1], hand[3], hand[4], hand[5]],
+    [hand[0], hand[1], hand[3], hand[4], hand[6]],
+    [hand[0], hand[1], hand[3], hand[5], hand[6]],
+    [hand[0], hand[1], hand[4], hand[5], hand[6]],
+    [hand[0], hand[2], hand[3], hand[4], hand[5]],
+    [hand[0], hand[2], hand[3], hand[4], hand[6]],
+    [hand[0], hand[2], hand[3], hand[5], hand[6]],
+    [hand[0], hand[2], hand[4], hand[5], hand[6]],
+    [hand[0], hand[3], hand[4], hand[5], hand[6]],
+    [hand[1], hand[2], hand[3], hand[4], hand[5]],
+    [hand[1], hand[2], hand[3], hand[4], hand[6]],
+    [hand[1], hand[2], hand[3], hand[5], hand[6]],
+    [hand[1], hand[2], hand[4], hand[5], hand[6]],
+    [hand[1], hand[3], hand[4], hand[5], hand[6]],
+    [hand[2], hand[3], hand[4], hand[5], hand[6]]
+                                                ]
+    best_hand = combos[0]
+    best_rating = seperate_rating(rate_hand(best_hand))
+    i = 0
+    while i &lt; len(combos):
+        temp_rating = seperate_rating(rate_hand(combos[i]))
+        if temp_rating &gt; best_rating:
+            best_hand = combos[i]
+            best_rating = temp_rating
+        i += 1
+    return best_hand
+
+
+def texas_holdem(players, board):  # Finds winner from list of players in a game of texas holdem
+    hands = []
+    i = 0
+    while i &lt; len(players):
+        hands.append(find_best_hand(players[i] + board))
+        i += 1
+    return players[hands.index(find_winner(hands))]</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5605 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:46:17 GMT -->
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שימוש בbreak וcontinue בלולאה</title>
+    <link>https://forums.pythonic.guru/t/break-continue/9158</link>
+    <description>במהלך הקורס נאסר עלינו להשתמש בשתי מילות המפתח האלה כי זה &quot;bad practice&quot;, אשמח לשמוע למה? ובאילו דרכים חלופיות ניתן לדלג על איטרציה בלולאת for  אם תנאי מסויים מתקיים (בלולאת while יש פשוט קידום של האינדקס באחד),
+וכן כיצד לסיים לולאה אם תנאי מסויים מתקיים (בלולאת while פשוט מציבים באינדקס ערך של סיום לולאה).</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 08 Apr 2021 13:22:08 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/break-continue/9158.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שימוש בbreak וcontinue בלולאה</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אפרט קצת למה התכוונתי<br>
+אתה בונה פונקציה שעושה משהו<br>
+ואז משתמש בקשטן שגורם בסופו של דבר לתוצאות אחרות ממה שהקוד של הפונקציה מראה שהיא עושה.<br>
+מעבר לזה בקוד עצמו אין פירוט על הקשטן או מה הוא עושה רק שורה שבה קוראים לו…<br>
+נשמע הרבה יותר מבלבל ולא טרוויאלי מברייק וקונטיניו בלולאה…</p>
+          <p><a href="https://forums.pythonic.guru/t/break-continue/9158/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/break-continue/9158/4</link>
+        <pubDate>Thu, 08 Apr 2021 13:22:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9158-4</guid>
+        <source url="https://forums.pythonic.guru/t/break-continue/9158.rss">שימוש בbreak וcontinue בלולאה</source>
+      </item>
+      <item>
+        <title>שימוש בbreak וcontinue בלולאה</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>נשמע שגם שימוש בקשטנים (@) עושים את אותם בעיות… ועדיין איכשהו נחשב נכון טוב ומתוחכם להשתמש בהם…<br>
+אתה יכול להבהיר את ההבדל בין שני המקרים?</p>
+          <p><a href="https://forums.pythonic.guru/t/break-continue/9158/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/break-continue/9158/3</link>
+        <pubDate>Thu, 08 Apr 2021 13:19:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9158-3</guid>
+        <source url="https://forums.pythonic.guru/t/break-continue/9158.rss">שימוש בbreak וcontinue בלולאה</source>
+      </item>
+      <item>
+        <title>שימוש בbreak וcontinue בלולאה</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>הסיבה הפדגוגית</h3>
+<p>לכל בעיה יש פתרון מיטבי אחר:<br>
+ישנן בעיות שקל יותר לפתור בעזרת לולאת for, ובעיות אחרות – בעזרת לולאת while (ראו עוד במחברות).<br>
+חניכים נוטים לבחור סוג לולאה אחד ולהשתמש בו תמיד – וזו פרקטיקה שגויה.<br>
+המטרה שלי היא לוודא שהם יודעים לשלוט בשתי הטכניקות.</p>
+<p>בדרך כלל זה נראה ככה:</p>
+<ol>
+<li>חניך רגיל לפתור בעיות בעזרת לולאות for.</li>
+<li>הוא נתקל בתרגיל בו צריך לעצור בתנאי. נניח: באיזה מיקום ברשימה סכום האיברים עד אותו מיקום הוא 100.</li>
+<li>החניך יבחר for, וכדי “לחפות” על הבחירה השגויה – ישתמש ב־break כשהגיע לסכום 100.</li>
+<li>החניך פספס את הפתרון המיטבי – שימוש ב־while.</li>
+</ol>
+<p>האיסור על השימוש ב־break וב־continue מטרתו לטייב את בחירת סוג הלולאה ע"י החניך בהתאם לצורך.</p>
+<h3>הסיבה האישית</h3>
+<p>מעבר לנ"ל, העדפתי האישית היא לא להשתמש ב־continue וב־break; אבל זה לחלוטין עניין של טעם אישי.<br>
+הנה הסיבות שאני מונה כששואלים אותי מדוע:</p>
+<ol>
+<li>שימוש ב־break או ב־continue מרגיש לי קצת לשקר לקורא: כשאנחנו רואים header של לולאה אנחנו יודעים מה היא תעשה ויכולים לעבור הלאה. break ו־continue מפרים את ההבטחה הזו.</li>
+<li>גם כששמים לב למילות המפתח break או continue, ה"חוק הנוסף" שהוספנו ללולאה מעמיסה על ה־cognitive load של הקורא.</li>
+<li>זה פתח לבאגים נוראיים (בגלל שילוב של 1 ו־2).</li>
+<li>אם הקוד משתמש בחלוקה נכונה לפונקציות ולתפקידים, ונעשה שימוש מושכל ב־while וב־for, ב־99% מהמקרים אין צורך ב־break או continue, ככה שהם די code smell.</li>
+<li>זה Code Smell גם כי python -m this אומר Special cases aren’t special enough to break the rules, וזה בד"כ הסיבה שמשתמשים ב־break או ב־continue.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/break-continue/9158/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/break-continue/9158/2</link>
+        <pubDate>Wed, 07 Apr 2021 13:15:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9158-2</guid>
+        <source url="https://forums.pythonic.guru/t/break-continue/9158.rss">שימוש בbreak וcontinue בלולאה</source>
+      </item>
+      <item>
+        <title>שימוש בbreak וcontinue בלולאה</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>במהלך הקורס נאסר עלינו להשתמש בשתי מילות המפתח האלה כי זה “bad practice”, אשמח לשמוע למה? ובאילו דרכים חלופיות ניתן לדלג על איטרציה בלולאת for  אם תנאי מסויים מתקיים (בלולאת while יש פשוט קידום של האינדקס באחד),<br>
+וכן כיצד לסיים לולאה אם תנאי מסויים מתקיים (בלולאת while פשוט מציבים באינדקס ערך של סיום לולאה).</p>
+          <p><a href="https://forums.pythonic.guru/t/break-continue/9158/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/break-continue/9158/1</link>
+        <pubDate>Wed, 07 Apr 2021 08:31:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9158-1</guid>
+        <source url="https://forums.pythonic.guru/t/break-continue/9158.rss">שימוש בbreak וcontinue בלולאה</source>
+      </item>
+  </channel>
+</rss>

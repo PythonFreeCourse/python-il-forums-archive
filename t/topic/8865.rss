@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>חיבור טלגרם לשרת</title>
+    <link>https://forums.pythonic.guru/t/topic/8865</link>
+    <description>כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.
+
+לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? :roll_eyes:
+
+
+לגבי האבטחה:
+חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.
+זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.
+
+וככה בעצם הבוט ירוץ על שרת שלנו.
+
+מה דעתכם?</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 21 Jan 2021 16:18:51 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8865.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>חיבור טלגרם לשרת</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי PR. אשמח לקבל חוות דעתך על המימוש הנוכחי.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8865/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8865/5</link>
+        <pubDate>Thu, 21 Jan 2021 16:18:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8865-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8865.rss">חיבור טלגרם לשרת</source>
+      </item>
+      <item>
+        <title>חיבור טלגרם לשרת</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <ul>
+<li>
+<p>אני עושה tunneling לlocalhost כי ניתן לחבר webhook רק עם https. בprodaction צריך להגדיר webhook עם הURL האמיתי של האתר שלנו במשתנה סביבה (או בקובץ קונפיג) - אז לא יהיה tunneling בprod.</p>
+</li>
+<li>
+<p>כאשר ירוצו הבדיקות: הגדרת הbot_api והwebhook לא יהיו בקונפיג - חלק מהבדיקות שתלויות בחיבור יכשלו.</p>
+</li>
+</ul>
+<blockquote>
+<p>הייתי מדליק שדה ב־DB של telegram_bot_accessible, שאם הוא <code>True</code> הבוט יכול לקרוא את הפרטים הרלוונטיים.</p>
+</blockquote>
+<p>זה לא יעזור כי פעם הבא שמשתמש ישלח הודעה - הבוט לא ידע מי מהמשתמשים שלח את ההודעה - telegram_bot_accessible לא יתן אינדיקציה מי השולח - בוט מקבל json עם telegram id של השולח בטלגרם וחייב לבדוק האם היוזר עם telegram id כזה כבר קיים בDB.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8865/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8865/4</link>
+        <pubDate>Thu, 21 Jan 2021 09:52:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8865-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8865.rss">חיבור טלגרם לשרת</source>
+      </item>
+      <item>
+        <title>חיבור טלגרם לשרת</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="leddest" data-post="1" data-topic="8865">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/l/ecb155/40.png" class="avatar"> leddest:</div>
+<blockquote>
+<p>כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.</p>
+</blockquote>
+</aside>
+<p>אני לא בטוח שאני שמח מהעניין של האפשרות לפתוח טאנל לשרת prod שלנו, זה נשמע לי קצת מסוכן.<br>
+מה המטרה של זה? אין דרך אחרת להנגיש את ה־webhook, נניח, בעזרת השרת של fastapi?</p>
+<aside class="quote no-group" data-username="leddest" data-post="1" data-topic="8865">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/l/ecb155/40.png" class="avatar"> leddest:</div>
+<blockquote>
+<p>לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? <img src="https://forums.pythonic.guru/images/emoji/twitter/roll_eyes.png?v=9" title=":roll_eyes:" class="emoji" alt=":roll_eyes:"></p>
+</blockquote>
+</aside>
+<p>לא בטוח שהבנתי מה הכוונה כאן</p>
+<aside class="quote no-group" data-username="leddest" data-post="1" data-topic="8865">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/l/ecb155/40.png" class="avatar"> leddest:</div>
+<blockquote>
+<p>לגבי האבטחה:<br>
+חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.</p>
+</blockquote>
+</aside>
+<p>נשמע מעולה עד כאן, צריך שתהיה לו אפשרות גם להסיר את עצמו</p>
+<aside class="quote no-group" data-username="leddest" data-post="1" data-topic="8865">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/l/ecb155/40.png" class="avatar"> leddest:</div>
+<blockquote>
+<p>זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.</p>
+</blockquote>
+</aside>
+<p>הייתי מדלג על עניין ה־hash ונותן לבוט גישה ברגע שהמשתמש הכניס את ה־id שקיבל מהבוט לפרופיל.<br>
+בשלב הזה כבר הייתי מדליק שדה ב־DB של telegram_bot_accessible, שאם הוא <code>True</code> הבוט יכול לקרוא את הפרטים הרלוונטיים.<br>
+פספסתי משהו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8865/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8865/3</link>
+        <pubDate>Thu, 21 Jan 2021 02:52:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8865-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8865.rss">חיבור טלגרם לשרת</source>
+      </item>
+      <item>
+        <title>חיבור טלגרם לשרת</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>(הודעת catchup לכל מי שמצטרף לדיון (שהתחיל בפרטי)) –</p>
+<p>בימים האחרונים <a class="mention" href="https://forums.pythonic.guru/u/leddest">@leddest</a> בונה בוט לטלגרם ועלו תהיות איך עושים אותו מבחינה ארכיטקטורית.<br>
+ניסינו לחשוב יחד גם על איך מנהלים את זה מבחינת אבטחה, כדי שמשתמש יוכל לגשת רק לפרטים שלו, ויוכל להזדהות מול הבוט באופן בטוח ולא להסגיר נניח את הסיסמה שלו.<br>
+חנוך רוצה להקים את הבוט על אותו שרת יחד עם הפרויקט של לוח השנה, וכך יהיה לו גישה ל־database בלי להצטרך להתממשק דרך ה־API.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8865/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8865/2</link>
+        <pubDate>Thu, 21 Jan 2021 02:47:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8865-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8865.rss">חיבור טלגרם לשרת</source>
+      </item>
+      <item>
+        <title>חיבור טלגרם לשרת</title>
+        <dc:creator><![CDATA[leddest]]></dc:creator>
+        <description><![CDATA[
+            <p>כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.</p>
+<p>לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? <img src="https://forums.pythonic.guru/images/emoji/twitter/roll_eyes.png?v=9" title=":roll_eyes:" class="emoji" alt=":roll_eyes:"></p>
+<p>לגבי האבטחה:<br>
+חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.<br>
+זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.</p>
+<p>וככה בעצם הבוט ירוץ על שרת שלנו.</p>
+<p>מה דעתכם?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8865/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8865/1</link>
+        <pubDate>Thu, 21 Jan 2021 01:55:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8865-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8865.rss">חיבור טלגרם לשרת</source>
+      </item>
+  </channel>
+</rss>

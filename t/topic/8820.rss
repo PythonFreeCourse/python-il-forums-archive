@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>עזרה בנוגע למבנה של הפרויקט</title>
+    <link>https://forums.pythonic.guru/t/topic/8820</link>
+    <description>היי, אשמח לעזרה בהבנה של התגובות על הPR שלי.
+
+על קובץ בשם export.py (שמייצא event לפורמט של icalendar), קיבלתי הערה שהוא שייך לתיקיית routers:
+
+&gt; Maybe should be under app/routers/export.py?
+
+לפי מה שאני הבנתי, המטרה של תיקיית routers היא לאחד את כל ה-routes, אולי הבנתי לא נכון...
+קיבלתי הערות דומות על קבצים אחרים, יש לכם עצות מה לעשות?</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 19 Jan 2021 02:09:27 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8820.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>פה יש דיבור על קובץ בשם crud.py:</p>
+<p><a href="https://fastapi.tiangolo.com/tutorial/sql-databases/#crud-utils" class="onebox" target="_blank" rel="noopener nofollow ugc">https://fastapi.tiangolo.com/tutorial/sql-databases/#crud-utils</a></p>
+<p>מה דעתכם?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/9</link>
+        <pubDate>Tue, 19 Jan 2021 02:09:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לדעתי תחת routes אמור להיכנס כל מה שאנחנו רוצים שיהפוך ל־API שאפשר להשתמש בו אח"כ ע"י המשתמשים שלנו, ותחת internal אמורים להיכנס דברים שפחות מתאימים לתפקד כ־API.<br>
+לא סגור על זה. אולי ל־<a class="mention" href="https://forums.pythonic.guru/u/leddest">@leddest</a>  שקרא את הדוקומנטציה לאורכה ולרוחבה תהיה תשובה מדויקת יותר</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/8</link>
+        <pubDate>Mon, 18 Jan 2021 16:25:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>אז גם אותן פונקציות כלליות אמורות להכנס תחת תיקיית routers?<br>
+לדוגמה, כתבתי קובץ שמאחד את כל פעולות הCRUD של המשתמש. הנה דוגמא מתוכו:</p>
+<pre><code>from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import Session
+
+from app.database.models import User
+from app.internal.utils import save
+
+
+def create_user(username, password, email, session: Session) -&gt; User:
+    """Creates and saves a new user."""
+
+    user = User(
+        username=username,
+        password=password,
+        email=email,
+    )
+    save(user, session=session)
+    return user
+</code></pre>
+<p>אני חשבתי שהמקום של הקובץ הזה הוא בתיקיית internal, האם הכוונה שלך היא שהוא יהיה בתיקיית routers?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/7</link>
+        <pubDate>Mon, 18 Jan 2021 07:27:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תראה, יש ב־routes ממש לוגיקה.<br>
+נניח הבט על הפונקציה register:</p>
+<aside class="onebox githubblob">
+  <header class="source">
+      <a href="https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/app/api/routes/authentication.py" target="_blank" rel="noopener">github.com</a>
+  </header>
+  <article class="onebox-body">
+    <h4><a href="https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/app/api/routes/authentication.py" target="_blank" rel="noopener">nsidnev/fastapi-realworld-example-app/blob/master/app/api/routes/authentication.py</a></h4>
+<pre><code class="lang-py">from fastapi import APIRouter, Body, Depends, HTTPException
+from starlette.status import HTTP_201_CREATED, HTTP_400_BAD_REQUEST
+
+from app.api.dependencies.database import get_repository
+from app.core import config
+from app.db.errors import EntityDoesNotExist
+from app.db.repositories.users import UsersRepository
+from app.models.schemas.users import (
+    UserInCreate,
+    UserInLogin,
+    UserInResponse,
+    UserWithToken,
+)
+from app.resources import strings
+from app.services import jwt
+from app.services.authentication import check_email_is_taken, check_username_is_taken
+
+router = APIRouter()
+
+
+</code></pre>
+
+  This file has been truncated. <a href="https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/app/api/routes/authentication.py" target="_blank" rel="noopener">show original</a>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/6</link>
+        <pubDate>Mon, 18 Jan 2021 06:37:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>אנסה לנסח בצורה שונה.</p>
+<p>אני לא הבנתי באיזו תיקייה אני אמור לשמור את הפונקציות הבסיסיות/ כלליות? (יצירת משתמש/ יצוא אירוע ועוד)</p>
+<p>בתיקיית הroutes בדוגמה שנתת, יש רק פונקציות שמנתבות את בקשות הget/ post של המשתמש, אין שם פונקציות “כלליות”, לכן אני לא מצליח להבין איפה אני אמור למקם את אותן הפונקציות.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/5</link>
+        <pubDate>Mon, 18 Jan 2021 05:39:44 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>עיינתי בתיקיית cores ולא ראיתי לוגיקה. יכול להיות שאני מפספס משהו, אבל יש שם 4 קבצים שקשורים יותר לסטאפ (לוגינג, קונפיגורציה וכד’).<br>
+לעומת זאת בתיקייה api/routes אני רואה <a href="https://github.com/nsidnev/fastapi-realworld-example-app/tree/master/app/api/routes">פה</a> ממש את כל הלוגיקה של התוכנה – התייחסות למשתמשים, פרופילים, הערות וכד’.</p>
+<p>יש מצב שאנחנו מדברים על פרויקטים אחרים או משהו? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/4</link>
+        <pubDate>Mon, 18 Jan 2021 04:35:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>כנראה שלא הבנתי נכון אותך או את הדוגמה.<br>
+בדוגמה, יש תיקיה בשם route שמכילה את כל הנתיבים. בדוגמה יש גם תיקיה בשם core שנראה שהיא מכילה את הלוגיקה של הפרויקט.<br>
+אני חשבתי שתיקיית הrouters שלנו מקבילה לשלהם, ולכן היא צריכה להכיל רק את הנתיבים.</p>
+<p>תוכל לכוון אותי איפה הבנתי לא נכון?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/3</link>
+        <pubDate>Sun, 17 Jan 2021 18:35:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ה־routes אמור בגדול לכלול את כל הלוגיקה של הפרויקט.<br>
+אפשר לקרוא לזה גם בשם אחר – api נניח, זה פשוט הדוגמה שהם נותנים בתיעוד שלהם.<br>
+תוכל לראות דוגמה טובה כאן – <a href="https://github.com/nsidnev/fastapi-realworld-example-app/tree/master/app" class="inline-onebox">fastapi-realworld-example-app/app at master · nsidnev/fastapi-realworld-example-app · GitHub</a></p>
+<p>אין לי יותר ידע משלכם בעניין הזה, אז אפשר לפתוח את זה לדיון.<br>
+בכ"מ מבחינת ארכיטקטורה חשוב שלא ישב כמעט קוד ב־main.py, זה יהפוך את הניווט בפרויקט למאוד לא נוח</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/2</link>
+        <pubDate>Sun, 17 Jan 2021 17:41:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+      <item>
+        <title>עזרה בנוגע למבנה של הפרויקט</title>
+        <dc:creator><![CDATA[pelled.idan]]></dc:creator>
+        <description><![CDATA[
+            <p>היי, אשמח לעזרה בהבנה של התגובות על הPR שלי.</p>
+<p>על קובץ בשם export.py (שמייצא event לפורמט של icalendar), קיבלתי הערה שהוא שייך לתיקיית routers:</p>
+<blockquote>
+<p>Maybe should be under app/routers/export.py?</p>
+</blockquote>
+<p>לפי מה שאני הבנתי, המטרה של תיקיית routers היא לאחד את כל ה-routes, אולי הבנתי לא נכון…<br>
+קיבלתי הערות דומות על קבצים אחרים, יש לכם עצות מה לעשות?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8820/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8820/1</link>
+        <pubDate>Sun, 17 Jan 2021 17:08:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8820-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8820.rss">עזרה בנוגע למבנה של הפרויקט</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/5141 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:45:25 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>פונקציות גיבוב - מה הפשט? - שבוע 3 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+התרגיל המסכם קצת לא ברור לי… 
+יש הסבר על פונקציות גיבוב אך לא רשום מה המטרה של פונקציה כזו ומה השימושים שלה? 
+מעבר לכך, מה זה מודולו ? 
+תודה מראש" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="5141.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="5141.rss" rel="alternate nofollow" title="הזנת RSS של ‚פונקציות גיבוב - מה הפשט?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="5141.html" property="og:url"/>
+<meta content="5141.html" name="twitter:url"/>
+<meta content="פונקציות גיבוב - מה הפשט?" property="og:title"/>
+<meta content="פונקציות גיבוב - מה הפשט?" name="twitter:title"/>
+<meta content="היי,  התרגיל המסכם קצת לא ברור לי…  יש הסבר על פונקציות גיבוב אך לא רשום מה המטרה של פונקציה כזו ומה השימושים שלה?  מעבר לכך, מה זה מודולו ?  תודה מראש" property="og:description"/>
+<meta content="היי,  התרגיל המסכם קצת לא ברור לי…  יש הסבר על פונקציות גיבוב אך לא רשום מה המטרה של פונקציה כזו ומה השימושים שלה?  מעבר לכך, מה זה מודולו ?  תודה מראש" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 3" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="העשרה" property="og:article:tag"/>
+<meta content="דיוני-עומק" property="og:article:tag"/>
+<meta content="פונקציית-גיבוב" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="40 ❤"/>
+<meta content="2020-04-21T08:40:53+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="51414658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="5141.html">פונקציות גיבוב - מה הפשט?</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/10-category/10.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 3</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%94%d7%a2%d7%a9%d7%a8%d7%94.html" rel="tag">העשרה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%93%d7%99%d7%95%d7%a0%d7%99-%d7%a2%d7%95%d7%9e%d7%a7.html" rel="tag">דיוני-עומק</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a4%d7%95%d7%a0%d7%a7%d7%a6%d7%99%d7%99%d7%aa-%d7%92%d7%99%d7%91%d7%95%d7%91.html" rel="tag">פונקציית-גיבוב</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="פונקציות גיבוב - מה הפשט?" itemprop="headline"/>
+<meta content="שבוע 3" itemprop="articleSection"/>
+<meta content="העשרה, דיוני-עומק, פונקציית-גיבוב" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">tomer.kun</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T08:40:53Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  8:40am
+                  </time>
+<meta content="2021-09-08T02:54:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,</p>
+<p>התרגיל המסכם קצת לא ברור לי…<br/>
+יש הסבר על פונקציות גיבוב אך לא רשום מה המטרה של פונקציה כזו ומה השימושים שלה?<br/>
+מעבר לכך, מה זה מודולו ?</p>
+<p>תודה מראש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="5096.html" itemprop="url">אשכולות מעניינים להעמקה</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Bar_Walter</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/dfa39760d41e882ba689e775557bf90910a4e03f.gif" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T09:03:18Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  9:03am
+                  </time>
+<meta content="2020-04-21T09:03:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי תומר,</p>
+<p>המטרה של הפונקציה והשימושים שלה לא רלוונטיים לתרגיל.<br/>
+על מנת שלא להעמיס על המחברת ולהקשות על הבנת התרגיל, אין פירוט על הנושא במחברת.<br/>
+כמובן שאם הנושא מעניין אותך, אתה מוזמן לקרוא עוד, מצרפת לך פה 3 לינקים בעברית שתוכל להתחיל מהם <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p><aside class="onebox whitelistedgeneric">
+<header class="source">
+<img class="site-icon" height="32" src="../../uploads/default/original/2X/e/e4bbc7a147e5410488552eadf9d28d4ee2b0a784.png" width="32"/>
+<a href="https://codehub.co.il/2018/10/20/מה-אלו-פונקציות-גיבוב-hashing-ולמה-הן-משמשות/" target="_blank" title="03:07AM - 20 October 2018">Codehub – 20 Oct 18</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:500/281;"><img class="thumbnail" height="281" src="../../uploads/default/original/2X/d/dfa39760d41e882ba689e775557bf90910a4e03f.gif" width="500"/></div>
+<h3><a href="https://codehub.co.il/2018/10/20/מה-אלו-פונקציות-גיבוב-hashing-ולמה-הן-משמשות/" target="_blank">מה אלו פונקציות גיבוב (Hashing) ולמה הן משמשות? | Codehub</a></h3>
+<p>אז היום אנחנו נלמד על פונקציית Hash! (או בעברית פונקציית גיבוב, בעברית זה תמיד נשמע משעמם יותר), פונקציית גיבוב זאת פונקציה שלוקחת קלט חופשי באורך משתנה וממירה אותו לפלט באורך קבוע. לדוגמא אם אני העביר לפונקציה את הערך x אני תמיד אקבל את הערך y....</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<br/>
+<aside class="onebox wikipedia">
+<header class="source">
+<a href="https://he.wikipedia.org/wiki/פונקציית_גיבוב" target="_blank">he.wikipedia.org</a>
+</header>
+<article class="onebox-body">
+<h3><a href="https://he.wikipedia.org/wiki/פונקציית_גיבוב" target="_blank">פונקציית גיבוב</a></h3>
+<p>בתקשורת ספרתית ובמדעי המחשב, פונקציית גִּבּוּב (באנגלית: Hash function; לעיתים פונקציית ערבול, פונקציית תמצות ואף פונקציית טחינה) היא פונקציה שממירה קלט חופשי באורך משתנה לפלט באורך קבוע, בדרך כלל קצר בהרבה. אין זה רצוי, אך עם זאת בלתי נמנע, שפונקציית גיבוב תיתן לעיתים פלט זהה לקלטים שונים, ולכן פונקציות גיבוב נמדדות בהסתברות להפקת פלט זהה. לפונקציות גיבוב יש שימושים בבעיות אלגוריתמיות רבות, ובהן מיון וחיפוש בטקסטים ארוכים ובהצפנה.
+ פונקציית גיבוב היא מרכיב חשוב בבניית טבלת גיבוב. הפונקציה משמשת ...</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</p>
+<aside class="onebox whitelistedgeneric">
+<header class="source">
+<img class="site-icon" height="32" src="../../uploads/default/original/2X/e/e812e0e5c0b07c467ad2a2ca9cfc09af2a7e77c5.png" width="32"/>
+<a href="https://davidson.weizmann.ac.il/online/askexpert/איך-עובד-ביטקוין" target="_blank" title="10:03AM - 13 December 2017">איך עובד ביטקוין? – 13 Dec 17</a>
+</header>
+<article class="onebox-body">
+<img class="thumbnail onebox-avatar" height="340" src="../../uploads/default/original/2X/8/82e78f0173f891bf4f6ca6b8d79c30055bd27e5d.jpg" width="340"/>
+<h3><a href="https://davidson.weizmann.ac.il/online/askexpert/איך-עובד-ביטקוין" target="_blank">איך עובד ביטקוין?</a></h3>
+<p>בלוקצ'יין, כרייה והצפנת גיבוב: איך פועלת שרשרת הכסף שמאחורי המטבע הווירטואלי?</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/0/0cc474d765f790038b884eaffcc8974027b3c120.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T10:59:09Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏ 10:59am
+                  </time>
+<meta content="2020-04-21T10:59:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מוסיף קצת קידום עצמי חסר בושה – 2 פוסטים שכתבתי בעבר בנושא:</p>
+<aside class="onebox whitelistedgeneric">
+<header class="source">
+<img class="site-icon" height="16" src="https://static.xx.fbcdn.net/rsrc.php/yz/r/KFyVIAWzntM.ico" width="16"/>
+<a href="https://www.facebook.com/Yam.Mesicka/posts/10154008891258297" target="_blank">facebook.com</a>
+</header>
+<article class="onebox-body">
+<img class="thumbnail onebox-avatar" height="200" src="../../uploads/default/original/2X/0/0cc474d765f790038b884eaffcc8974027b3c120.jpg" width="200"/>
+<h3><a href="https://www.facebook.com/Yam.Mesicka/posts/10154008891258297" target="_blank">Yam Mesicka</a></h3>
+<p>רגע! לפני שאתם סוגרים כי זה עוד פוסט טכנולוגי שלי, חכו שנייה וקראו כמה מילים. הפוסט עדיין טכנולוגי, אבל כולם יכולים לקרוא.
+
+אמ;לק: המון אתרים אתרים היום שומרים עליכם מידע, כולל דברים מגה רגישים כמו...</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+<aside class="onebox whitelistedgeneric">
+<header class="source">
+<img class="site-icon" height="16" src="https://static.xx.fbcdn.net/rsrc.php/yz/r/KFyVIAWzntM.ico" width="16"/>
+<a href="https://www.facebook.com/Yam.Mesicka/posts/10154374478368297" target="_blank">facebook.com</a>
+</header>
+<article class="onebox-body">
+<div class="aspect-image" style="--aspect-ratio:429/434;"><img class="thumbnail" height="434" src="../../uploads/default/original/2X/1/1655558ad8c9f677fd10e0267005dcee1755cbd6.jpg" width="429"/></div>
+<h3><a href="https://www.facebook.com/Yam.Mesicka/posts/10154374478368297" target="_blank">Yam Mesicka</a></h3>
+<p>חוזרים לפינה האהובה והמוכרת: פוסט טכנולוגי במילים פשוטות. והפעם נבין מה זה גיבוב, מה זה SHA1 ומה זה אומר שמצאו התנגשויות/שברו אותו (בכתיבת רשומה זו לא נפגעו ארנבונים).
+
+אז שוב הגיע היום הזה בחודש בו...</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="8" itemprop="userInteractionCount"/>
+<span class="post-likes">8 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../2-0-hush/5327/2.html" itemprop="url">בנק 2.0 ופונקציות גיבוב/ hush</a>
+<meta content="3" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T11:00:48Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏ 11:00am
+                  </time>
+<meta content="2020-04-21T11:00:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה !  אני גם הסתבכתי מלהבין אותו גם אחרי חיפוש וקריאה באינטרנט.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">common.typo</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T16:23:54Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  4:23pm
+                  </time>
+<meta content="2020-04-21T16:23:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>משרשר לכאן.</p>
+<p>עד סעיף 3 - אני מבין שהפעולות היו שרירותיות.    תוכל לענות על השאלה שנתת פה?   למה מודולו ולמה הערך הספציפי הזה?  ומה הקשר בין ה מודולו X לאורך קבוע X.</p>
+<p>" 1. כדי שהפלט תמיד יהיה באורך זהה, נשתמש במודולו 100,297 על התוצאה (חשבו: איך מודולו גורם לזה לקרות?)</p>
+<p>פונקציית הגיבוב שיצרנו מחזירה תמיד ערכים באורך קבוע (בין 0 ל־100,297), כפי שפונקציית גיבוב צריכה להחזיר (לאו דווקא באורך זה, אבל הפלט חייב להיות באורך קבוע)."</p>
+<p>תודה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T16:25:36Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  4:25pm
+                  </time>
+<meta content="2020-04-21T16:25:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ol>
+<li>מה מודולו עושה?</li>
+<li>מה המספר המקסימלי שיוצא מ־n % 100? ומ־n % 1000? ומ־n % 10000?</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">common.typo</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:32:59Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:32pm
+                  </time>
+<meta content="2020-04-21T20:05:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>( אמ;לק :   עבור   n%x  מחזיר מספרים בין 0 ל x  )  - אז עבור 100297  - לא נוכל לקבל מספר ארוך יותר ממנו.</p>
+<p>(אם מישהי אחרת תרצה פירוט בעתיד)<br/>
+והדרך הארוכה - כולל תשובות למה ששאלת :</p>
+<p>מחזיר שארית בין שני מספרים.    ( לדוג’ 2 = 5 % 7  )</p>
+<p>%100 - 99 (הדו ספרתי הגדול ביותר) , %1000 - 999  - %10000 - 9999<br/>
+(עבור חזקות של 10 - יחזיר את  (חזקה) הספרות אחרונות של n )</p>
+<p>כש  n % x -    כל n עד x  יחזיר n<br/>
+n = x * i  יחזיר 0<br/>
+x * i &gt; n &gt; x   יחזיר את ההפרש ביניהם.  (n-x)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">common.typo</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T17:51:17Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  5:51pm
+                  </time>
+<meta content="2020-04-21T17:51:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@Yam</span></p>
+<p>אני חושב שמה שבילבל אותי (ושלח אותי להבין לעומק)  היה המשפט :  “מחזירה ערכים באורך קבוע”</p>
+<p>הפונק’ <strong>לא</strong> “:מחזירה ערכים באורך קבוע”. אלא מחזירה ערך שנמצא ב<strong>טווח ערכים</strong> קבוע בין 0 ל 100,297(לא כולל)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T18:18:24Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  6:18pm
+                  </time>
+<meta content="2020-04-21T18:18:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מניחה שהכוונה היא שהערכים הם באורך קבוע של מילת מחשב. הכוונה אינה שהם באורך קבוע בייצוג העשרוני הרגיל <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T18:19:20Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  6:19pm
+                  </time>
+<meta content="2020-04-21T18:19:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מהוא ה i  במשוואה ? בחלק האחרון</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T18:20:03Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  6:20pm
+                  </time>
+<meta content="2020-04-21T18:20:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ים, בנוגע לפוסט בפייסבוק. איך בעצם אפשר לדעת בכלל אם אתר מסויים מצפין את הססמאות שלנו או לא ?<br/>
+הרי זה לא מוצג למשתמשים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">israel4001</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T19:04:43Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  7:04pm
+                  </time>
+<meta content="2020-04-21T19:04:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת שהמחברת הזו לדעתי מאוד לא מובנת בניגוד למחברות אחרות שהם ממש מובנות וברורות [גם אם פה ושם יש מה לשפר]. הדברים שכתבת בקישורים עזרו לי להבין יותר טוב, ואני ממליץ לערוך את המחברת ואולי אף להשתמש במה שכתבת בפייסבוק וכדו’, ששם הדברים ממש ברורים…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">common.typo</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T19:15:45Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  7:15pm
+                  </time>
+<meta content="2020-04-21T19:15:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>י   i הוא כופל של x בכל סבב של חישוב השארית, כמו מונה בלולאה.</p>
+<p>כך שמודולו מתבצע בעצם על איבר x*i  - והמקרה הטריוויאלי הוא הראשון כש i = 1</p>
+<p>מה שאומר שכל הכפולות של מספר x יחזירו מודולו 0</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">sgshlomi</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-21T21:36:23Z" itemprop="datePublished">
+                     21 באפריל,‏ 2020,‏  9:36pm
+                  </time>
+<meta content="2020-04-21T21:36:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בדקתי גם את העניין הזה של גיבוב יחד עם חבר,<br/>
+העלנו שבעצם פונקצית גיבוב היא פונקציה שמחזירה אמת או שקר אך לא מחזירה ערך חד חד ערכי,</p>
+<p>לדוגמה משתמש הזין סיסמה מסוימת, אחרי עירבול של הסיסמה (ע"י הכפלות <strong>מודולו</strong> ושאר ירקות) קיבלנו איזה אינדקס מסוים, לצורך העניין 1<br/>
+לאחר מכן יבוא משתמש אחר ויזין סיסמה, וגם עליה נבצע את אותה פונקצית הגיבוב, האם נקבל 1?<br/>
+אם כן, סימן שהסיסמה שהמשתמש הראשון והמשתמש השני הזינו, היא אותה הסיסמה,<br/>
+אחרת הסיסמה שונה,<br/>
+זה הכוונה גם חד חד ערכי, כלומר לא נוכל לקבל את הסיסמה מפונקצית הגיבוב אלא רק את האינדקס (למשל) אם הוא נכון ושווה לאינדקס המקורי בשונה מחד ערכי שבעצם פעולת הגיבוב היא על הערך עצמו - דוגמה- משתמש הזין סיסמה, ביצענו פונקצית גיבוב עליה וקיבלנו ערך מסוים שע"י שנעשה פעולת גיבוב הפוכה נקב את הסיסמה - בעצם כך הסיסמה תהיה גלויה,<br/>
+ביד יד ערכי מקבלים אינדקס (בעיקר ע"י המודולו) ולא את הסיסמה אף פעם</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-22T04:07:46Z" itemprop="datePublished">
+                     22 באפריל,‏ 2020,‏  4:07am
+                  </time>
+<meta content="2020-04-22T04:07:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="12" data-topic="5141" data-username="israel4001">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/israel4001/40/1504_2.jpg" width="20"/> israel4001:</div>
+<blockquote>
+<p>האמת שהמחברת הזו לדעתי מאוד לא מובנת בניגוד למחברות אחרות שהם ממש מובנות וברורות</p>
+</blockquote>
+</aside>
+<p>למרות שלא אני כתבתי את המחברת, לדעתי הביקורת כאן טיפה פחות מוצדקת.<br/>
+המטרה היא לתת לכם לתרגל ולא ללמד אתכם מה היא פונקציית גיבוב.<br/>
+מעבר לזה פונקציית הגיבוב שאתם כותבים שם היא לא פונקציית גיבוב טובה בשום אופן ולא היינו משתמשים בה בשימושים יומיומיים.<br/>
+זה סתם שם כדי לתת סיפור רקע נחמד ושמי שמתעניין יוכל לקרוא עוד <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<aside class="quote no-group" data-post="14" data-topic="5141" data-username="sgshlomi">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/s/e495f1/40.png" width="20"/> sgshlomi:</div>
+<blockquote>
+<p>העלנו שבעצם פונקצית גיבוב היא פונקציה שמחזירה אמת או שקר אך לא מחזירה ערך חד חד ערכי,</p>
+</blockquote>
+</aside>
+<p>זה משפט מבלבל נורא. פונקציית גיבוב <em>לא</em> מחזירה אמת או שקר.<br/>
+אפשר לדמיין אותה כפונקצייה חד חד ערכית (היא לא[1]) שכשנותנים לה קלט היא מחזירה פלט מעורבל.<br/>
+עבור אותה פונקציית גיבוב (נניח SHA1), מאותו קלט, תמיד יצא אותו פלט. עבור שני קלטים לעולם לא יצא אותו פלט (כמעט[1]).<br/>
+אם משה נרשם והזין את הסיסמה password1 ואז שלומי נרשם והזין את הסיסמה password1, שניהם יקבלו את אותו פלט מפונקציית הגיבוב[2].<br/>
+הדבר הנחמד בפונקציית גיבוב זה שכשהאקר שם את ידיו על מסד הנתונים, בו נשמר רק הגיבוב של password1, הוא לא יוכל להבין שהסיסמה אכן הייתה password1. הוא יראה משהו בסגנון של e38ad214943daad1d64c102faec29de4afe9da3d.</p>
+<hr/>
+<p>[1]<br/>
+ניתן להוכיח די בקלות למה פונקציות גיבוב הן לא חד־חד־ערכיות (היא כן פונקציית על) בזכות עקרון שובך היונים:</p>
+<ol>
+<li>ניקח את פונקציית הגיבוב MD5, שמחזירה לנו תמיד 32 תווים הקסדצימלים.</li>
+<li>נכניס אליה את כל הקלטים האפשריים שיש להם 32 תווים.</li>
+<li>נניח שהפיזור של פלט הפונקציה הוא מושלם, ועבור כל אחד מהקלטים קיבלנו מהפונקציה פלט שונה בן 32 תווים.</li>
+<li>לפי עקרון שובך היונים, עבור כל קלט נוסף, שהוא לא בן 32 תווים, נקבל פלט שכבר יצא לנו (שכן כיסינו את כל הפלטים שאורכם 32 תווים).</li>
+</ol>
+<p>[2]<br/>
+וזו אכן בעיה, כי תוקף חכם יראה איזה hash (תוצאה מגיבוב) מופיעה הכי הרבה פעמים במסד־הנתונים של האתר, והוא יכול להשקיע פרק זמן משמעותי כדי לנסות לפענח אותה. במקרה כזה הוא יוכל בהשקעה לא קטנה לפרוץ לכמות רבה של משתמשים בו זמנית. כדי להתגבר על כך יש מנגנונים כמו salting (המלחה), אבל קצרה היריעה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">danareviv</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-23T11:22:20Z" itemprop="datePublished">
+                     23 באפריל,‏ 2020,‏ 11:22am
+                  </time>
+<meta content="2020-04-23T11:22:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי<br/>
+אם אנחנו כבר כאן, מקבלת שגיאה בכתיבת הפונקציה הנדרשת בתרגיל הנל<br/>
+IndentationError: unexpected indent (&lt; string &gt;,  line 1)</p>
+<p>השורה הראשונה היא תחילת הפונקציה def<br/>
+לא הצלחתי להבין מה לא טוב בקוד <img alt=":dizzy_face:" class="emoji" src="../../images/emoji/twitter/dizzy_facec164.png?v=9" title=":dizzy_face:"/><br/>
+אוכל לשלוח את הקוד בפרטי<br/>
+תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ganit</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-27T07:15:13Z" itemprop="datePublished">
+                     27 באפריל,‏ 2020,‏  7:15am
+                  </time>
+<meta content="2020-04-27T07:15:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני רק רוצה להוסיף שזה אחד הדברים המעניינים, ובגלל שאני לא ממש מהעולם הזה כמובן שלא ידעתי שהוא קיים.<br/>
+תודה על כל הלינקים, ביליתי בסופש כמה שעות טובות מלינק ללינק לחיפושים אחרים כדי להבין על מה מדובר, איך ואיפה משתמשים בזה ומה בדיוק קרה עם SHA1, אחד המגניבים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">razzz</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T18:59:21Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  6:59pm
+                  </time>
+<meta content="2020-04-30T18:59:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>באותה מידה יכלנו להשתמש במספר אחר באותו אורך במקום 100297? יש סיבה שהשתמשו דווקא בו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">common.typo</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T19:13:21Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  7:13pm
+                  </time>
+<meta content="2020-04-30T19:13:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן. להבנתי זו בחירה שרירותית.<br/>
+מודולו X יתן לך מספרים בין 0 ל X.  - לא יחזיר מספרים ארוכים ממנו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">itamaraviv</span>
+</span>
+<link href="5141.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-04-30T19:55:30Z" itemprop="datePublished">
+                     30 באפריל,‏ 2020,‏  7:55pm
+                  </time>
+<meta content="2020-04-30T19:55:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבחירה לא כל כך שרירותית (בתור כותב התרגיל). זה מספר ראשוני. יש סיבות למה כדאי לבחור מספרים ראשוניים, שמופיעים הרבה ב קריפטולוגיה, קריפטואנליזה וכו’.<br/>
+אחד השיקולים היה להימנע מקבלה של תוצאה של 0. זה יקרה רק עבור כפולות של המספר הזה (או 0 שלא אמורים להגיע אליו בתרגיל שלנו) וזה כבר יחסית נדיר.<br/>
+בבחירת מספר זוגי, נניח 16, היינו מקבלים הרבה מאוד תוצאות hash של 0 וזה יחסית הורס את התרגיל כיון שהרבה ססמאות היו מחזירות hash 0 ומאפשרות כניסה לבנק.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="51414658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/5141 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:45:37 GMT -->
+</html>

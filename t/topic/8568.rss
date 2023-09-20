@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>תרגילים: שבוע 15</title>
+    <link>https://forums.pythonic.guru/t/topic/8568</link>
+    <description># תרגול
+
+## ביטויים רגולריים
+
+### על גלי האתר
+כתבו פונקציה שעוברת על קוד HTML, ומחלצת ממנו את כל הקישורים שמתחילים ב־`http://` או ב־`https://`. שימו לב שזה רק תרגיל, וככלל, זה נחשב [רעיון רע מאוד](https://stackoverflow.com/a/1732454/1058671) להשתמש ב־Regular Expression כדי לחלץ נתונים מ־HTML.
+
+### סימון למטה
+כדי ליצור לינק בפורומים, אפשר לפתוח סוגריים מרובעים, לכתוב את המלל שיופיע כקישור, לסגור אותם, לפתוח סוגריים עגולים, להזין את הקישור ולסגור את הסוגריים העגולים. זה יראה כך: 
+`[מערכת התרגילים](solve.pythonic.guru)`. כתבו פונקציה שמקבלת פוסט בפורום, ומחזירה רשימה של tuples, כך שעבור כל קישור בפוסט –
+1. במקום הראשון בכל tuple יופיע המלל של הקישור.
+2. במקום השני יופיע הקישור עצמו. 
+
+לדוגמה: `[(&#39;מערכת התרגילים&#39;, &#39;solve.pythonic.guru&#39;), (&#39;הפורומים&#39;, &#39;forums.pythonic.guru&#39;)]`.
+
+### הוא מגיע
+פתרו את [תרגיל 2](https://adventofcode.com/2020/day/2) ואת [תרגיל 4](https://adventofcode.com/2020/day/4) ב־Advent of Code 2020. השתמשו ב־Regular Expressions.
+
+### ר&quot;ת
+כתבו פונקציה שמקבלת רצף מילים, ומחזירה את ראשי התיבות שלהן. לדוגמה: עבור `United States of America` היא תחזיר USoA. השתמשו ב־sub כדי להגיע לתוצאה הרצויה.
+
+### דחוף!!!
+כתבו פונקציה כנגד אנשים מציקים ומתלהמים בפורומים. הפונקציה תקבל מחרוזת שבה יש סימני פיסוק כפולים (כמו &quot;עזרה דחוף!!!&quot;) ותוריד את הכפילות (עזרה דחוף!). הפונקציה תעבוד גם על סימני שאלה, נקודה ופסיקים. 
+
+דוגמאות:
+&gt; אני צריך עזרה!,!!! דחוף!!! 
+
+יהפוך ל
+&gt; אני צריך עזרה!,! דחוף!
+
+
+דוגמאות:
+&gt; אני צריך עזרה`!!!!!!!` דחוף?!?!
+
+יהפוך ל
+&gt; אני צריך עזרה! דחוף?!?!
+
+### לפרק נתיבים
+כתבו פונקציה שמקבלת נתיב לקובץ במחשב, ומחזירה במילון שם התיקייה בה הוא נמצא, את שם הקובץ ואת הסיומת שלו. 
+
+לדוגמה, עבור הנתיב:
+&gt; `C:\Berries Sherries\Music\Axis of Awesome\4 Chords.tar.gz`
+
+יוחזר המילון:
+&gt; `{&#39;folder&#39;: &#39;Axis of Awesome&#39;, &#39;name&#39;: &#39;4 Chords.tar&#39;, &#39;extension&#39;: &#39;gz&#39;}`
+
+### סוגרים חשבון
+כתבו פונקציה שמקבלת ביטוי חשבוני ובודקת אם הוא תקין. ביטוי חשבוני נחשב תקין אם הוא מורכב ממספרים שביניהם הסימנים `+`, `-`, `*` או `/`, והוא מסתיים בסימן `=`. לדוגמה, הביטויים הבאים נחשבים חוקיים: `17/5=`, `5+2=`, `5=`, `99+1/2=`, `6.2*2=`, `6+4+3+1/2+6=`. הביטויים הבאים נחשבים לא חוקיים: `1.1.1=`, `1++7=`, `=1+1`, `1=1`, `1+=1`.
+
+### הערות
+כתבו ביטוי רגולרי שמוצא את כל ההערות מרובות השורות (שמתחילות ומסתיימות ב־`&quot;&quot;&quot;` או `&#39;&#39;&#39;`) בקוד פייתון. בונוס: נסו למצוא באותו ביטוי גם הערות רגילות (`#`).
+
+----
+
+## בדיקות תוכנה
+
+### רגע, צדקתי?
+
+כתבו בדיקות לתרגילים &quot;סימון למטה&quot;, &quot;לפרק נתיבים&quot; ו&quot;הערות&quot;. 
+
+### חיים שלי
+
+&quot;משחק החיים&quot; מתרחש בטבלה בגודל אינסופי (לצורך התרגיל, גודלה יהיה 50 על 50).
+ערך ברירת המחדל של כל התאים בטבלה הוא &quot;מת&quot;, כלומר 0.
+לפני המהלך הראשון של המשחק, &quot;מחיים&quot; מספר תאים בטבלה, כלומר, משנים את ערכם מ־0 ל־1.
+
+המשחק מתרחש ב&quot;דורות&quot;, כאשר בכל דור ($T$) מצב הלוח מתעדכן לפי מצב הלוח בדור הקודם ($T - 1$).
+מצבו של תא בדור $T$ יקבע לפי כמות השכנים שלו, קרי, כמות התאים שמקיפים אותו (בצדדים ובאלכסוניו – 8 במספר).
+
+בדור $T$, תא חי ימות (ערכו ישתנה ל־0) אם אחד התנאים הבאים התקיים:
+1. כמות השכנים החיים שלו בדור $T-1$ היא פחות מ־2 – התא ימות מבדידות.
+2. כמות השכנים החיים שלו בדור $T-1$ היא יותר מ־3 – התא ימות מצפיפות יתר.
+
+בדור $T$, תא מסוים יחיה (ערכו יישאר או ישתנה ל־1) אם אחד התנאים הבאים התקיים:
+1. הוא היה חי, וכמות השכנים החיים שלו בדור $T-1$ היא בין 2 ל־3 – התא ממשיך לדור הבא.
+2. הוא היה מת, אבל כמות השכנים החיים שלו בדור $T-1$ היא 3 בדיוק – ככה תאים באים לעולם. דילגו על הרעיון של חסידות וכו&#39;.
+
+החוקים שתוארו עד כה למשחק החיים קיבלו את הסימון `B3/S23`: 
+1. תא נולד (`B`) אם יש לו 3 שכנים חיים.
+2. תא שורד (`S`) אם יש לו 2 או 3 שכנים חיים.
+3. בכל מצב אחר הוא מת.
+
+צרו פונקציה שנקראת `game_of_life` ומקבלת כפרמטר את סימון החוקים.
+אם לא הועבר לפונקציה סימון חוקים, השתמשו בחוקים `B3/S23` המופיעים מעלה.
+הפונקציה תציג [סימולציה ויזואלית](https://www.youtube.com/watch?v=OEbCsKJKXaE) של &quot;משחק החיים&quot; – בין אם בעזרת `print` או בעזרת כלים כמו `pygame`.
+
+הפרידו לפונקציות ככל האפשר וכתבו קוד מסודר ונעים לתחזוקה.
+כיתבו בדיקות לכל הפונקציות שלכם, ונסו להגיע ל־100% כיסוי.
+
+(העתקות מהאינטרנט של התרגיל הזה לא יתקבלו בעין יפה :) )
+
+### פרויקט בלי בדיקות? :scream: 
+
+הוסיפו בדיקות לפרויקט שבניתם בשבוע שעבר.
+קראו על הוספת בדיקות ל־Flask בעמוד התיעוד המתאים.
+ודאו שיש לכם 80% כיסוי לפחות.
+
+----
+
+## סיבוכיות
+
+
+### יעילות בסיסית
+
+כתבו מה היעילות של כל אחד מהפעולות הבאות.
+השתמשו בגוגל כדי לחפש את סיבוכיות הזמן (time complexity) של כל אחד מהבאים.
+אם אפשר, התייחסו למקרה הממוצע (Average case) ולא למקרה הגרוע ביותר (Worst case):
+
+1. רשימה בפייתון: הוספת איבר אחרון, הוספת איבר שאינו אחרון, מחיקת איבר אחרון, מחיקת איבר שאינו אחרון, פנייה לאיבר ברשימה, חיפוש איבר ברשימה (`in`), מציאת אורך הרשימה.
+2. מילון בפייתון: הוספת איבר חדש, אחזור איבר לפי key, אחזור איבר לפי value, מחיקת איבר, חיפוש איבר במילון (`in`).
+3. קבוצה (set) בפייתון: הוספת איבר חדש, מחיקת איבר, חיפוש איבר (`in`).
+4. סידור של n מספרים ברשימה בלתי ממויינת. רמז: אין הנחות נוספות לגבי הרשימה, ועליכם להתייחס לאלגוריתמים מבוססי השוואה.
+5. מציאת איבר ברשימה מסודרת, ומציאת איבר ברשימה לא מסודרת.
+
+### יעילות בחיים
+
+מה היעילות של &quot;משחק החיים&quot; שכתבתם בתרגיל על בדיקות תוכנה?
+מה היעילות של כל אחת מהפונקציות שבו?
+צרפו קישור לתרגיל &quot;משחק החיים&quot; שהעלתם.
+
+### הפרש סכום הריבועים
+
+סכום הריבועים של המספרים הטבעיים עד 5 הוא $1^2 + 2^2 + 3^2 + 4^2 + 5^2 = 55$.
+ריבוע הסכום של המספרים הטבעיים עד 5 הוא $(1 + 2 + 3 + 4 + 5)^2 = 15 ^ 2 = 225$.
+
+כלומר, הפרש סכום הריבועים במקרה שבו $N=5$ הוא 170, שכן $225-55=170$.
+
+כתבו תוכנה שמקבלת $N$ ומחזירה את הפרש סכום הריבועים. מה יעילותה?
+ בונוס למתמטיקאים: האם תוכלו לפתור ביעילות זמן ריצה $O(1)$?
+
+### על הדרך מושיק
+
+נצייר טבלה בגודל 2 על 2, ונמקם את מושיק בשולחן השופטים ש**בנקודה** השמאלית העליונה של הטבלה (לא בתא).
+מושיק יודע לנוע רק ימינה ולמטה, כך שיש לו 6 דרכים בלבד להגיע לנקודה הימנית התחתונה בטבלה, הרי היא המנה הנכספת:
+
+![Untitled Diagram|359x219](upload://aeRxLqaVWLJiio5M9KioqKEwGSC.png) 
+
+קבלו כקלט את גודל הטבלה, $N$.
+בכמה דרכים יכול מושיק להגיע למנה?
+מה היעילות של התוכנית שכתבתם?
+
+### קריוס ובקטוס
+
+אזדרכת וחשבשבת צריכות להתחלק בסופגניות הזעירות שקיבלו בחנוכה.
+לצורך כך, הן בנו משחק שמשתמש בטבלה ריבועית $M$ בגודל $X$ על $X$ שמולאה במספרים באופן אקראי.
+
+בתחילת המשחק, אזדרכת בוחרת שורה כרצונה ($i$) ומעבירה עליה קו כחול.
+חשבשבת בוחרת בעמודה כרצונה ($j$) ומעבירה על כל המספרים בה קו אדום.
+אזדרכת עכשיו לוקחת סופגניות זעירות כמספר שמופיע בטבלה במקום $M_{ij}$.
+עכשיו אזדרכת שוב בוחרת שורה כרצונה ($k$; שחייבת להיות שורה שבה לא בחרה בעבר), וחשבשבת שוב בוחרת עמודה בטבלה ($l$; שחייבת להיות עמודה שלא בחרה בעבר).
+אזדרכת לוקחת הפעם $M_{kl}$ סופגניות.
+בכל שלב במשחק, אם מספר הסופגניות בתא הנבחר הוא שלילי, אזדרכת מאבדת את מספר הסופגניות הזה, והסופגניות עוברות לחשבשבת.
+המשחק ממשיך עד שמועבר קו על כל המספרים שבטבלה.
+
+מה מספר הסופגניות הגדול ביותר שאזדרכת יכולה להרוויח אם גם אזדרכת וגם חשבשבת משחקים בצורה הטובה ביותר?
+לצורך התרגיל, השתמשו בטבלה בגודל 4 על 4. 
+מה היעילות של התוכנית שכתבתם כדי לגלות זאת?
+
+### דונלד
+
+דונלד הקים חנות למכירת ברווזי גומי.
+באחד הטרמפים שלקח עם חברו, קנות&#39;, הידוע כדאקדקן במיוחד בענייני חשבונאות,
+סיפר לו דונלד כיצד הוא מנהל את החשבונות בחנות שלו.
+
+עבור כל קנייה, דונלד רושם בקובץ את סכום הקנייה כשלפניה מופיע הסימן `+`.
+כל פעם שדולנד קונה סחורה חדשה עבור החנות, דונלד רושם בקובץ את הסימן מינוס, ואז את הסכום שהוציא.
+
+לדוגמה, החודש היו לו 3 לקוחות שקנו ממנו ברווזי גומי ב־50, 60 ו־70 שקלים, והוא ביצע 2 רכישות בשווי 120 ו־2 שקלים.
+קובץ החשבונות שלו החודש נראה כך:
+```
++50
++60
+-120
++70
+-2
+```
+
+כתבו שתי פונקציות שיעזרו לדולנד:
+1. הפונקציה `parse_file` שתקבל נתיב לקובץ, ותחזיר מבנה נתונים שיהיה נוח לעבוד איתו.
+2. דונלד רוצה להתרברב בכמה שהוא עשיר. עזרו לו לכתוב את הפונקציה `very_rich`, שמחזירה את הסכום הגבוה ביותר שהרוויח בימים רצופים החודש. בדוגמה שניתנה למעלה, הסכום הוא 110: בימים הראשון והשני דונלד הרוויח 110 ש&quot;ח. לאחר מכן הפסיד 120 ש&quot;ח (סך הכל חובות של 10 ש&quot;ח) ואז הרוויח 70 ש&quot;ח (מרווח 60 ש&quot;ח). בדוגמה הבאה, דונלד יתרברב על רווח של 45 ש&quot;ח בין הימים השלישי לשישי. ממשו את הפונקציה הזו ביעילות זמן ריצה של לפחות $O(n^2)$. האם יש לכם רעיון אפילו טוב יותר?
+
+```
++5
+-10
++30
++10
+-5
++10
+-40
++30
+```
+
+### הורדות
+
+ביום הראשון של הקורס, כשב־LIVE ביקשתי מהחניכים להוריד את Anaconda Python, השרתים שלהם קרסו.
+בתחקור שלאחר המעשה, בעלי השרת ניסו להבין איפה היה העומס הרב ביותר על השרת.
+לצורך כך, הם קיבלו את התיעוד של מה קרה בשרת.
+
+כל שורה בקובץ מורכבת מ־3 חלקים:
+1. ה־IP שממנו נשלחה בקשת ההורדה, ואחריו נקודתיים.
+2. הזמן (בשניות מאז עליית השרת) שבו כל IP התחיל להוריד את הקובץ, ואחריו מקף.
+3. הזמן (בשניות מאז עליית השרת) שבו כל IP סיים להוריד את הקובץ.
+
+לדוגמה:
+
+```text
+193.238.175.157: 503-584
+81.173.1.186: 324-793
+208.195.27.101: 224-710
+198.241.74.162: 747-770
+201.96.152.206: 601-861
+159.10.243.192: 823-879
+137.221.214.153: 416-975
+24.139.10.160: 190-323
+136.244.3.48: 640-975
+117.126.245.109: 67-302
+```
+
+עזרו למחלקת ה־IT לתחקר את המקרה: באיזה טווח שניות היו הכי הרבה חיבורים פתוחים מול השרת.
+אם מספר החיבורים המירבי התרחש ביותר מנקודת זמן אחת, החזירו את נקודת הזמן הראשונה שבה זה קרה.
+בדוגמה שהוצגה למעלה, נניח, מספר החיבורים המירבי היה 5, בין השניות 640 ל־711.
+
+פתרו בסיבוכיות זמן ריצה $O(n\log{n})$.
+הניחו שהמספרים יכולים להיות גדולים מאוד – השרת רץ מאז 1980 לפחות, ויש אגדות על כמה הורדות שעדיין לא הסתיימו מאז...</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 08 Jan 2021 10:06:56 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8568.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, אין עם זה בעיה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/38">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/38</link>
+        <pubDate>Fri, 08 Jan 2021 10:06:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-38</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה לי שבכל מקרה הייתה צריכה להיות לך שם מטודה במחלקה שעושה את זה אז לא נראה לי קריטי.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/37">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/37</link>
+        <pubDate>Fri, 08 Jan 2021 08:27:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-37</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה קצת טיפשית, אבל זה בסדר אם יצרתי את משחק החיים כמחלקה במקום כפונקציה? עכשיו שמתי לב שפספסתי את הדרישה הזו ואני תוהה אם לכתוב את זה מחדש <img src="https://forums.pythonic.guru/images/emoji/twitter/see_no_evil.png?v=9" title=":see_no_evil:" class="emoji" alt=":see_no_evil:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/36">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/36</link>
+        <pubDate>Fri, 08 Jan 2021 07:45:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-36</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה לא באמת קריטי, עשי מה שנוח לך</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/35">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/35</link>
+        <pubDate>Wed, 06 Jan 2021 11:07:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-35</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[imimouni]]></dc:creator>
+        <description><![CDATA[
+            <p>מה זאת אומרת קלט של המשתמש? כלומר הוא כותב בדיוק אילו תאים הוא בוחר להחיות בפעם הראשונה?<br>
+או שאפשר פשוט שיתן מספר של תאים להחיות ואז להגריל איזה תאים יוחיו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/34">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/34</link>
+        <pubDate>Tue, 05 Jan 2021 22:08:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-34</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[nellie]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+אנסה לתת לך כיוון.<br>
+בכל שורה יש לך ip, זמן התחלה וזמן סיום. כאשר ברשימה, חלק מטווחי הזמנים “עולים” זה על זה. למשל, הטווח של השורה החמישית (601-861), חופף בחלק מהזמן לטווח של השורה השניה (324-793). זאת אומרת שישנו טווח זמנים המשותף לשתי השורות הנ"ל שבו שני החיבורים פתוחים בו זמנית.<br>
+בתרגיל אנחנו מתבקשים לתת מענה גם על מה מספר החיבורים המקסימלי הפתוחים מול השרת <strong>יחד</strong> ברשימת הנתונים שלנו וגם מה היה אותו <strong>טווח זמנים</strong> ששם זה קרה.<br>
+על מנת להבין טוב את השאלה, הנתונים ומה אני צריכה לעשות שם, ציירתי על דף את כל הנתונים כגאנט.<br>
+מקווה שעזרתי, בהצלחה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/33">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/33</link>
+        <pubDate>Sun, 03 Jan 2021 16:15:17 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-33</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ממש עדיף לנסות לבד, ולפנות לגוגל רק אם התייאשתם.<br>
+ממליץ לנסות לפי הדרכים שפה: <a href="https://forums.pythonic.guru/t/topic/8580/2" class="inline-onebox">הכוונה לתרגילי סיבוכיות - מס׳ 2 מאת Yam</a><br>
+ככה אני פתרתי כשקיבלתי שאלה דומה בראיון עבודה (:</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/32">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/32</link>
+        <pubDate>Sun, 03 Jan 2021 15:21:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-32</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[nirpn1]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא בטוח שאני פתרתי את זה נכון אבל העצה שלי היא לחשוב מה אתה רוצה לבצע בתרגיל הזה (מבחינה טכנית)<br>
+ולחפש בגוגל שיטות איך לפתור את זה תוך שימוש במילה יעילות והטיותיה.</p>
+<p>בהצלחה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/31">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/31</link>
+        <pubDate>Sun, 03 Jan 2021 14:49:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-31</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="1" data-topic="8568">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>לדוגמה:</p>
+<pre><code class="lang-auto">193.238.175.157: 503-584
+81.173.1.186: 324-793
+208.195.27.101: 224-710
+198.241.74.162: 747-770
+201.96.152.206: 601-861
+159.10.243.192: 823-879
+137.221.214.153: 416-975
+24.139.10.160: 190-323
+136.244.3.48: 640-975
+117.126.245.109: 67-302
+</code></pre>
+<p>עזרו למחלקת ה־IT לתחקר את המקרה: באיזה טווח שניות היו הכי הרבה חיבורים פתוחים מול השרת.<br>
+אם מספר החיבורים המירבי התרחש ביותר מנקודת זמן אחת, החזירו את נקודת הזמן הראשונה שבה זה קרה.<br>
+בדוגמה שהוצגה למעלה, נניח, מספר החיבורים המירבי היה 5, בין השניות 640 ל־711.</p>
+</blockquote>
+</aside>
+<p>מישהו יכול לתת לי כיוון או הסבר כל שהוא ? כי אין לי מושג איך אפילו להתחיל לפתור את זה??<br>
+תודה !</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/30">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/30</link>
+        <pubDate>Sun, 03 Jan 2021 14:46:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-30</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>כל פעם שנרשם מספר, עבר יום בעצם בכל ירידת שורה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/28">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/28</link>
+        <pubDate>Sun, 03 Jan 2021 08:17:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-28</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group quote-modified" data-username="Yam" data-post="1" data-topic="8568">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<ol>
+<li>דונלד רוצה להתרברב בכמה שהוא עשיר. עזרו לו לכתוב את הפונקציה <code>very_rich</code>, שמחזירה את הסכום הגבוה ביותר שהרוויח בימים רצופים החודש. בדוגמה שניתנה למעלה, הסכום הוא 110: בימים הראשון והשני דונלד הרוויח 110 ש"ח. לאחר מכן הפסיד 120 ש"ח (סך הכל חובות של 10 ש"ח) ואז הרוויח 70 ש"ח (מרווח 60 ש"ח). בדוגמה הבאה, דונלד יתרברב על רווח של 45 ש"ח בין הימים השלישי לשישי. ממשו את הפונקציה הזו ביעילות זמן ריצה של לפחות O(n2)O(n^2) . האם יש לכם רעיון אפילו טוב יותר?</li>
+</ol>
+<pre><code class="lang-auto">+5
+-10
++30
++10
+-5
++10
+-40
++30
+</code></pre>
+</blockquote>
+</aside>
+<p>מישהו יכול להסביר לי איך אני סופר את הימים זה לא ממש ברור לי מתי מתחלף יום? תודה מראש!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/27">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/27</link>
+        <pubDate>Sun, 03 Jan 2021 07:30:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-27</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>היא יכולה לבחור בכל שלב מספר שלילי והתוצאה אכן תהיה שלילית אם סה"כ הבחירות קטנה מ0.</p>
+<p>מניח שאם רוצים ללכת פיזית על סךופגניות אמיתיות אז ברגע שמגיעים ל0 אז זה נשאר ב0</p>
+<p>אני העדפתי לעשות לפי הראשון כמו חשבון בנק שאפשר להיכנס בו למינוס לצורך העניין.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/26">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/26</link>
+        <pubDate>Sat, 02 Jan 2021 16:33:39 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-26</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>עוד שאלה: האם כמות הנקודות בקריוס ובקטוס יכולה להיות שלילית? נגיד אם חשבשבת בוחר בתחילת המשחק תא עם מספר שלילי?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/25">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/25</link>
+        <pubDate>Sat, 02 Jan 2021 16:28:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-25</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>בכל דור כל התאים משתנים בבת אחת לפי המצב בדור הקודם ושינוי של תא אחד לא משפיע על התאים הסמוכים לו.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/24">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/24</link>
+        <pubDate>Fri, 01 Jan 2021 21:25:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-24</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>המספרים בטבלה מוגרלים אקראית (ים כתב איפשהו שהוא הגריל מספרים בין m² ל-m²-) ומכאן אפשר להניח שגם כמות הסופגניות המקסימלית אקראית. בנוסף הכמות הסופית עשויה להשתנות גם בהתאם לבחירות השחקנים.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/23">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/23</link>
+        <pubDate>Fri, 01 Jan 2021 21:21:08 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-23</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>במשחק החיים:</p>
+<p>האם כל דור T חדש הוא תמונת מצב של מה שהיה בדור לפני ? כלומר, אם נגיד אני בודק תא והוא משתנה, התא שלידו אמור להגיב לשינו אם זה באותה בדיקה של דור ? או שהתא אחריו ישתנה ע"פ מה שהיה בדוק קודם בלבד.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/22">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/22</link>
+        <pubDate>Fri, 01 Jan 2021 18:52:12 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-22</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Ode]]></dc:creator>
+        <description><![CDATA[
+            <p>בקריוס ובקטוס - האם כמות הסופגניות משנה? כלומר, האם המספרים צריך להסתכם ל-X סופגניות, או שהסופגניות כל כך פקטיביות שאפשר להניח שיש אינסוף מהן? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/21">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/21</link>
+        <pubDate>Fri, 01 Jan 2021 17:23:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-21</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[nellie]]></dc:creator>
+        <description><![CDATA[
+            <p>הנתון מדוייק.<br>
+במידה ותתחיל לבדוק את הנתונים ביום השלישי, תחבר ותחסר עד היום השישי כולל - תגיע לסכום של 45 ש"ח.<br>
+ברשימת הנתונים הזו, זה טווח הימים עם הרווח המכסימלי <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/20">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/20</link>
+        <pubDate>Mon, 28 Dec 2020 00:50:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-20</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="1" data-topic="8568">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>בדוגמה הבאה, דונלד יתרברב על רווח של 45 ש"ח בין הימים השלישי לשישי.</p>
+</blockquote>
+</aside>
+<p>הכוונה לימים החמישי והשישי?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/19">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/19</link>
+        <pubDate>Sun, 27 Dec 2020 22:50:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-19</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/17</link>
+        <pubDate>Sun, 27 Dec 2020 14:27:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-17</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[eyalmerav]]></dc:creator>
+        <description><![CDATA[
+            <p>קריוס ובקטוס<br>
+האם ניתן להניח שבמטריצה אין ערכים שגודלם 0?<br>
+האם אפשר להניח שכל הערכים מטיפוס שלם?<br>
+(ולא נקודה צפה)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/16</link>
+        <pubDate>Sun, 27 Dec 2020 05:08:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-16</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כמה שבא לך, ואילו תאים שבא לך. בגדול זה אמור להיות קלט של המשתמש.</p>
+<p>וכן, לגבי שאלת הקלט</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/15</link>
+        <pubDate>Sat, 26 Dec 2020 22:57:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-15</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>תרגיל “משחק החיים”, שתי שאלות לגבי האתחול:</p>
+<aside class="quote no-group" data-username="Yam" data-post="1" data-topic="8568">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>לפני המהלך הראשון של המשחק, “מחיים” מספר תאים בטבלה, כלומר, משנים את ערכם מ־0 ל־1.</p>
+</blockquote>
+</aside>
+<p>מהו מספר התאים שיש להחיות? והאם בחירת התאים שאותם מחיים נעשית באופן רנדומלי?</p>
+<p>ושאלה לגבי הקלט לפונקציה:<br>
+במידה וניתן קלט, האם הפורמט שלו הוא בדיוק כמו בדוגמא? כלומר -<br>
+תו, לאחר מכן מספר שלם אחד שהמשמעות שלו היא מספר השכנים החיים על מנת להחיות תא מת, לאחר מכן סלאש, תו,  ולבסוף שתי ספרות שהראשונה היא התחלה של טווח והשניה סוף הטווח שמציין (כולל הקצוות) את מספר השכנים החיים שישאירו תא חי בחיים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/14</link>
+        <pubDate>Sat, 26 Dec 2020 19:26:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-14</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="adi1" data-post="12" data-topic="8568">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"> adi1:</div>
+<blockquote>
+<p>האם הכוונה שבכל תור של אזדרכת נבחרת שורה רנדומלית שלא נבחרה בעבר ומתוכה חשבשבת בוחרת איזה טור כדאי לה לבחור?</p>
+</blockquote>
+</aside>
+<p>מבין שתי האופציות שהצעת, זו הכוונה בתרגיל</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/13</link>
+        <pubDate>Fri, 25 Dec 2020 14:42:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-13</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+      <item>
+        <title>תרגילים: שבוע 15</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,<br>
+ניתן לקבל הסבר נוסף לכוונה בסוף המשחק?<br>
+האם הכוונה שבכל תור של אזדרכת נבחרת שורה רנדומלית שלא נבחרה בעבר ומתוכה חשבשבת בוחרת איזה טור כדאי לה לבחור?<br>
+או הכוונה למהלך האחרון שנשאר במשחק?</p>
+<p>תודה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8568/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8568/12</link>
+        <pubDate>Fri, 25 Dec 2020 09:53:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8568-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8568.rss">תרגילים: שבוע 15</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שימוש בrender templates</title>
+    <link>https://forums.pythonic.guru/t/render-templates/8409</link>
+    <description>היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :
+![image|690x388](upload://jKpkXrkQRsCf7Ch5XI6mcniaEXe.png) 
+
+ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנהHTML, בקובץ app.py ומחזיר את המשתנה HTML, אני כן יכול לראות תוצאה תקינה ב127.0.0.1:5000 בדפדפן (אם כי ללא העיצוב של קובץ ה-CSS) למישהו יש רעיון מה הבעיה? מקווה שהבהרתי את עצמי בצורה ברורה.</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 31 Oct 2020 20:58:48 +0000</lastBuildDate>
+    <category>שבוע 12</category>
+    <atom:link href="https://forums.pythonic.guru/t/render-templates/8409.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>הקובץ html מצפה לקבל פרמטרים שאתה לא שולח לו.</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/10</link>
+        <pubDate>Sat, 31 Oct 2020 20:58:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-10</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>קבצי CSS צריך לשים בתיקיית STATIC ולדאוג להגדיר נתיב מתאים. (או לדרוס את ברירת המחדל ולשים בנתיב אחר, יש מדריכים בשפע באינטרנט איך להגדיר)</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/9</link>
+        <pubDate>Sat, 31 Oct 2020 20:23:59 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-9</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי אני מניח שבטרמינל התכוונת לcmd (בהתחלה חשבתי שהתכוונת לvscode),<br>
+אני מקבל את ההודעה הזאת:<br>
+return render_template(‘index3.html’, str1=“hagai3”)<br>
+File “c:\programdata\anaconda3\lib\site-packages\flask\templating.py”, line 140, in render_template<br>
+ctx.app,<br>
+File “c:\programdata\anaconda3\lib\site-packages\flask\templating.py”, line 120, in _render<br>
+rv = template.render(context)<br>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2\environment.py”, line 1090, in render<br>
+self.environment.handle_exception()<br>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2\environment.py”, line 832, in handle_exception<br>
+reraise(*rewrite_traceback_stack(source=source))<br>
+File “c:\programdata\anaconda3\lib\site-packages\jinja2_compat.py”, line 28, in reraise<br>
+raise value.with_traceback(tb)<br>
+File “C:\Users\Hagai\Desktop\חגי\תכנות\Visual Studio Code\YouTube live\week 12\project\templates\index3.html”, line 35, in top-level template code<br>
+</p><div>{{movie-name}}</div><br>
+jinja2.exceptions.UndefinedError: ‘movie’ is undefined<br>
+127.0.0.1 - - [31/Oct/2020 20:58:34] “←[35m←[1mGET / HTTP/1.1←[0m” 500 -
+<p>שיחקתי קצת עם הקוד, מחקתי ובדקתי ומה שעושה את הבעיה נמצא בחלק הזה של הקוד:</p>
+<div>
+<pre><code>  &lt;div class="result" data-result-id="1"&gt;
+
+    &lt;div class="movies-details"&gt;
+
+      &lt;div class="movie-name res-property"&gt;{{movie-name}}&lt;/div&gt;
+
+      &lt;div class="movie-length res-property"&gt;{{movie-length}}&lt;/div&gt;
+
+      &lt;div class="movie-rate res-property"&gt;{{movie-rate}}&lt;/div&gt;
+
+      &lt;div class="movie-main-actors res-property"&gt;{{movie-main-actors}}&lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+</code></pre>
+<p>אגב ושאלה נוספת, אני רואה שהוא לא מפעיל את הקובץ css והייתי שמח לדעת איך לעשות זאת</p>
+</div>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/8</link>
+        <pubDate>Sat, 31 Oct 2020 19:05:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-8</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, משהו אמור להריץ אותה. ואגב, בטרמינל שבו הרצת חייב להיות לוג כלשהו שמפרט את השגיאה שקיבלת.</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/7</link>
+        <pubDate>Sat, 31 Oct 2020 17:39:45 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-7</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>לא ממש הבנתי את השאלה…<br>
+אתה מדבר על פונקציית hello world?</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/6</link>
+        <pubDate>Sat, 31 Oct 2020 15:26:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-6</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי, מה גורם לפונקציית הפייתון לרוץ? יש דוגמא בפורום מה התוכן צריך להיות</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/4</link>
+        <pubDate>Sat, 31 Oct 2020 15:17:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-4</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>בטרמינל אין שגיאה.</p>
+<p>ככה נראה הקובץ של app.py:<br>
+from flask import Flask, render_template</p>
+<p>app = Flask(<strong>name</strong>)</p>
+<p><span class="mention">@app.route</span>(’/’)</p>
+<p>def hello_world():</p>
+<pre><code>return render_template('index.html')
+</code></pre>
+<p>ככה נראה הקובץ index.html:</p>
+
+
+
+
+  
+<pre><code>&lt;!-- https://github.com/joshbuchea/HEAD --&gt;
+
+&lt;link rel="stylesheet" href="index.css"&gt;
+
+&lt;meta charset="utf-8"&gt;
+
+&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+&lt;title&gt;Movies Recommondations&lt;/title&gt;
+</code></pre>
+  
+  
+<pre><code>&lt;!-- https://www.youtube.com/watch?v=3elFdnJexmU&amp;feature=youtu.be&amp;ab_channel=%D7%9E%D7%93%D7%A8%D7%99%D7%9A%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F --&gt;
+
+&lt;h1&gt;Movies Recommondations&lt;/h1&gt;
+
+&lt;form action="/action_page.php" method="get"&gt;
+
+  &lt;label for="genres"&gt;Choose your genre from the list:&lt;/label&gt;
+
+  &lt;input list="genres" name="genre" id="genre"&gt;
+
+  &lt;datalist id="genres"&gt;
+
+    &lt;option value="Comedy"&gt;
+
+    &lt;option value="Action"&gt;
+
+    &lt;option value="Drama"&gt;
+
+    &lt;option value="Science Fiction"&gt;
+
+    &lt;option value="Family"&gt;
+
+  &lt;/datalist&gt;
+
+  &lt;button type="submit" class="btn btn-primary"&gt;Search&lt;/button&gt;
+
+&lt;/form&gt;
+
+&lt;/div&gt;
+
+&lt;h2&gt;Results&lt;/h2&gt;
+
+&lt;div id="results"&gt;
+
+  &lt;div class="result" data-result-id="1"&gt;
+
+    &lt;div class="movies-details"&gt;
+
+      &lt;div class="movie-name res-property"&gt;{{movie-name}}&lt;/div&gt;
+
+      &lt;div class="movie-length res-property"&gt;{{movie-length}}&lt;/div&gt;
+
+      &lt;div class="movie-rate res-property"&gt;{{movie-rate}}&lt;/div&gt;
+
+      &lt;div class="movie-main-actors res-property"&gt;{{movie-main-actors}}&lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div class="movies-result-sample"&gt;
+
+     {{ code sample}}
+
+  &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/3</link>
+        <pubDate>Sat, 31 Oct 2020 14:57:28 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-3</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>מה השגיאה בטרמינל? אמור להיות פירוט.<br>
+לא יזיק גם לראות את התוכן של app.py</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/2</link>
+        <pubDate>Sat, 31 Oct 2020 14:29:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-2</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+      <item>
+        <title>שימוש בrender templates</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>היי אני מנסה לקשר בין flask לבין האתר שבניתי, הכנסתי את הקובץ index.html לתיקייה templates, אבל משום מה הוא לא נקלט ואני מקבל שגיאה :<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8.png" data-download-href="https://forums.pythonic.guru/uploads/default/8a684b0e488bd1986e1b37a3d94a9597a70558e8" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_690x388.png" alt="image" data-base62-sha1="jKpkXrkQRsCf7Ch5XI6mcniaEXe" width="690" height="388" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_690x388.png, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1035x582.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_1380x776.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/8/8a684b0e488bd1986e1b37a3d94a9597a70558e8_2_10x10.png"></a></div><p></p>
+<p>ניסיתי לבדוק וקבצי html אחרים כן נקלטים בצורה תקינה מהתיקייה של templates, לא מבין ממש מה הבעיה איתו ספציפית, כשאני מעתיק את התוכן של index.html לתוך משתנהHTML, בקובץ app.py ומחזיר את המשתנה HTML, אני כן יכול לראות תוצאה תקינה ב127.0.0.1:5000 בדפדפן (אם כי ללא העיצוב של קובץ ה-CSS) למישהו יש רעיון מה הבעיה? מקווה שהבהרתי את עצמי בצורה ברורה.</p>
+          <p><a href="https://forums.pythonic.guru/t/render-templates/8409/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/render-templates/8409/1</link>
+        <pubDate>Sat, 31 Oct 2020 13:34:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8409-1</guid>
+        <source url="https://forums.pythonic.guru/t/render-templates/8409.rss">שימוש בrender templates</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>עוד שאלה על מודול צד שלישי</title>
+    <link>https://forums.pythonic.guru/t/topic/6795</link>
+    <description>(סליחה על המסתורין, אבל אני רוצה להמנע מכתיבת ספוילר)
+בתרגיל &quot;זכרו זכרו&quot; השתמשתי בספריה חיצונית ומתוכה בפרט במודול שיודע לטפל בתמונות.
+היה לי שם משהו מוזר:
+כשיבאתי את כל הספריה, אז הקריאה לפונקציה שיודעת לפתוח קובץ של תמונה לקריאה (-open), לא תפקדה. קיבלתי שגיאה שאומרת ש&quot;אין דבר כזה&quot; שנקרא open  בהקשר הזה. הקריאה היא שרשור של שם הספריה, עם המודול, ואז הפונקציה של הפתיחה.
+אם אני מייבאת רק את המודול המסויים מתוך הספריה, אז אין בעיה. 
+אני כמובן יכולה לוותר על שם הספריה בשרשור, אבל אם אני חוזרת ומייבאת את כל הספריה אחרי שייבאתי במפורש את המודול הנדרש, השרשור מתפקד בסדר.
+(מבחינת הגשת התרגיל, &quot;הכל בסדר&quot;)
+יש למישהו רעיון למה זה יכול לקרות?
+אולי זה קשור לשמות השונים (ישן וחדש) של הספריה?</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 02 Jun 2020 05:44:35 +0000</lastBuildDate>
+    <category>שבוע 6</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/6795.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[danny]]></dc:creator>
+        <description><![CDATA[
+            <p>נתקלתי באותה הבעיה בדיוק. רק שבהתחלה זה עבד בשיטה הנפוצה. כשעברתי לתרגיל נוסף שהצריך PIL לפתע זה זרק הודעת שגיאה מוזרה, עברתי לשיטה הפחות נפוצה וזה הסתדר.<br>
+אז למה זה פעם כן עובד ופעם זה לא עובד? מה משפיע על זה? יש דרך להגדיר מראש?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/6</link>
+        <pubDate>Tue, 02 Jun 2020 05:44:35 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>המקרה שאת מתארת תואם את המצב שבו <code>x.y</code> הוא תת מודול. אמנם לא למדנו על הנושא לעומק, אבל ארחיב. במקרה כזה, <code>y</code> הוא מודול שארוז בתוך מודול האב <code>x</code> (נקרא “חבילה”. באופן כללי ההבדל בין חבילה למודול הוא שמודול הוא קובץ בודד, וחבילה היא אוסף של מודולים).<br>
+במקרה כזה יש 2 התנהגויות. את ההתנהגות בוחר מי שכתב את המודול:</p>
+<ul>
+<li>הנפוצה היא ש־x טוענת באופן אוטומטי את y – זה מצריך דקה של עבודה מצד מי שכותב את המודול.</li>
+<li>הפחות נפוצה היא שאפשר לייבא את <code>x</code>, אבל הוא לא מייבא בתוכו את <code>x.y</code>. במקרה כזה תצטרכי לכתוב <code>import x.y</code>, או <code>from x import y</code>.</li>
+</ul>
+<p>אם תבחרי לרשום <code>import x.y</code>, תוכלי להשתמש בנוטציה <code>x.y.whatever</code>. אם תבחרי לרשום <code>from x import y</code>, תוכלי להשתמש ב־<code>y.whatever</code>. כך או כך, עדיף לעקוב אחרי תיעוד המודול ולהשתמש בו כפי שהם מציעים.</p>
+<p>בהצלחה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/5</link>
+        <pubDate>Sat, 30 May 2020 01:16:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[tamar.kahan]]></dc:creator>
+        <description><![CDATA[
+            <p>לעניין הפניה בפורום, אתה כמובן (שוב) צודק -<br>
+יש בזה הרבה יותר תועלת לכולם.<br>
+(ואין ספק שבדיקת תרגילים היא עניין מייגע מאד. תודה!!)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/4</link>
+        <pubDate>Fri, 29 May 2020 15:20:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[tamar.kahan]]></dc:creator>
+        <description><![CDATA[
+            <p>התחלתי עם<br>
+import x<br>
+ורציתי להשתמש ב<br>
+x.y.open<br>
+(עם סוגרים אחרי ועם שם הקובץ)<br>
+קיבלתי ש ל y אין open.</p>
+<p>לעומת זאת כשביקשתי לייבא במפורש גם את y מתוך x,<br>
+from x import y<br>
+אז גם<br>
+y.open  עבד, וגם x.y.open עבד.</p>
+<p>(בסופו של דבר ייבאתי רק את y מתוך x, ו y.open כמובן פועל)</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/3</link>
+        <pubDate>Fri, 29 May 2020 15:18:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>נניח שהספרייה היא x.<br>
+ניסית לייבא את x.open? באיזו צורה? <code>import x.open</code>? <code>from x import open</code>?<br>
+איך ניסית להשתמש בה אח"כ?</p>
+<hr>
+<p>תוספת קצרה על ההגיון של למה אני שולח אנשים לפורום ולא עונה במערכת ההגשות (ואז כן עונה להם פה), שיהיה הסבר אחת ולתמיד:</p>
+<ol>
+<li>בדיקת הגשות זה דבר מעייף ועמוס, שמצריך הרבה ריכוז וזמן. אני לא יכול להתכתב עם חניכים כי זה גם יאריך את זמני הבדיקה, וגם יוציא אותי מהפוקוס וה־zen mode.</li>
+<li>אנחנו לא נוהגים לדלג על תרגילים או לבחור תרגילי בדיקה. הבדיקה שלנו סריאלית והמערכת פשוט נותנת את התרגיל הבא בתור.</li>
+<li>אני מעדיף ששאלות מהסוג הזה יופיעו בפורום כדי שיהיה אפשר לחפש אותן אח"כ בקלות, ולא אצטרך לענות כמה פעמים על אותה שאלה.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/2</link>
+        <pubDate>Fri, 29 May 2020 14:59:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+      <item>
+        <title>עוד שאלה על מודול צד שלישי</title>
+        <dc:creator><![CDATA[tamar.kahan]]></dc:creator>
+        <description><![CDATA[
+            <p>(סליחה על המסתורין, אבל אני רוצה להמנע מכתיבת ספוילר)<br>
+בתרגיל “זכרו זכרו” השתמשתי בספריה חיצונית ומתוכה בפרט במודול שיודע לטפל בתמונות.<br>
+היה לי שם משהו מוזר:<br>
+כשיבאתי את כל הספריה, אז הקריאה לפונקציה שיודעת לפתוח קובץ של תמונה לקריאה (-open), לא תפקדה. קיבלתי שגיאה שאומרת ש"אין דבר כזה" שנקרא open  בהקשר הזה. הקריאה היא שרשור של שם הספריה, עם המודול, ואז הפונקציה של הפתיחה.<br>
+אם אני מייבאת רק את המודול המסויים מתוך הספריה, אז אין בעיה.<br>
+אני כמובן יכולה לוותר על שם הספריה בשרשור, אבל אם אני חוזרת ומייבאת את כל הספריה אחרי שייבאתי במפורש את המודול הנדרש, השרשור מתפקד בסדר.<br>
+(מבחינת הגשת התרגיל, “הכל בסדר”)<br>
+יש למישהו רעיון למה זה יכול לקרות?<br>
+אולי זה קשור לשמות השונים (ישן וחדש) של הספריה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6795/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6795/1</link>
+        <pubDate>Fri, 29 May 2020 14:15:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6795-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6795.rss">עוד שאלה על מודול צד שלישי</source>
+      </item>
+  </channel>
+</rss>

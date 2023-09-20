@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</title>
+    <link>https://forums.pythonic.guru/t/9-2/7775</link>
+    <description>## יום 2 – ניהול פרויקט מרובה קבצים
+
+במהלך הקורס, כשערכנו את הקוד שלנו בעזרת Jupyter Notebook, היה לנו נוח לנהל את כל הקוד שלנו בתא אחד. מכשעברנו לכתוב ב־Visual Code התחלנו לנהל את הקוד שלנו על גבי קובץ שנמצא במחשב.
+
+פרויקטים רבים גדלים במהרה, ומכילים קוד מורכב שקשה לקרוא כמקשה אחת. במקרים כאלו, נוח יותר לפצל את הקוד לחלקים קטנים, כאשר לכל חלק יש מטרה אחת מוגדרת. עשינו את זה תחילה עם פונקציות, אחר כך עם מחלקות, ומכשהתקדמנו נציג יחידה אפילו גדולה יותר – קובץ.
+
+לדוגמה, במערכת בדיקת התרגילים של הקורס, יש קובץ שאחראי למערכת הנוטיפיקציות, קובץ אחר שמנהל את המשתמשים במערכת וקובץ נוסף שמריץ את הבדיקה האוטומטית על הפתרונות שהוגשו.
+
+### אז איך זה עובד בפועל?
+
+כדי [להריץ קובץ פייתון](https://realpython.com/run-python-scripts/) שיצרתם באמצעות ה־IDE שלכם, תוכלו לפתוח את שורת הפקודה ([Windows](https://www.computerhope.com/issues/chusedos.htm), [Mac](https://support.apple.com/en-il/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)) במחשב שלכם ולרשום בה `python PATH`, כאשר `PATH` הוא הנתיב המלא לקובץ שאתם רוצים להריץ. לדוגמה, אם הקובץ שלי נמצא ב־`C:\Users\Yam\Desktop\chess.py`, אצטרך לרשום בשורת הפקודה `python C:\Users\Yam\Desktop\chess.py`. שורה זו תריץ את קובץ הפייתון ותדפיס את הפלט שלו למסך שלכם.
+
+### יצירת מודול
+
+נזכיר: מודול הוא קובץ פייתוני שבתוכו קבועים, פונקציות, ייבואים ומחלקות.
+
+כדי ליצור מודול חדש, פשוט צרו קובץ נוסף באותה תיקייה.
+
+ניקח לדוגמה את הקבצים `hi.py` ואת `bye.py` שנמצאים באותה תיקייה.
+נכתוב ב־`hi.py` את הקוד הבא:
+```python
+print(&quot;Haiush!&quot;)
+```
+
+וב־`bye.py` את הקוד הבא:
+```python
+import hi
+
+print(&quot;Baiush!&quot;)
+```
+
+נריץ את הקובץ bye.py ונראה מה יפלט למסך:
+```
+❯ python bye.py
+Haiush!
+Baiush!
+```
+
+### סימון נקודת התחלה
+
+בסוף קובץ הפייתון שמריצים, נהוג לרשום את השורה הבאה:
+```if __name__ == &#39;__main__&#39;:```
+ובהזחה שאחריה לכתוב את הקריאה לפונקציות שאנחנו רוצים להריץ.
+
+מתי התנאי שבשורה זו מתקיים? 
+`__name__` הוא משתנה קסם שמקבל את שם הקובץ שרץ כרגע.
+זאת אומרת, אם נכתוב `__name__` בתוך קובץ ששמו chess.py, הערך של `__name__` יהיה שווה ל־chess.
+אבל יש קאץ&#39;: בקובץ שהפעלתם ישירות, כלומר באמצעות הפקודה `python filename`, ערכו של `__name__` יהיה `__main__`. לכן התנאי שמופיע למעלה מתקיים.
+
+למעשה, השורה הזו מסמנת את המקום שממנו מריצים את התוכנית.
+
+נראה דוגמה.
+נשנה את הקוד ב־`hi.py` לקוד הבא:
+
+```python
+if __name__ == &#39;__main__&#39;:
+    print(&quot;Haiush!&quot;)
+```
+
+ואת הקוד ב־`bye.py` לקוד הבא:
+```python
+import hi
+
+if __name__ == &#39;__main__&#39;:
+    print(&quot;Baiush!&quot;)
+```
+
+מה ירוץ לדעתכם? נסו במחשב שלכם!
+כתרגול, שנו את שורות התנאי כך ששני התנאים יתקיימו.
+
+לקריאה נוספת: 
+1. [התיעוד של פייתון](https://docs.python.org/3/library/__main__.html).
+2. [תשובה ב־Stackoverflow](https://stackoverflow.com/questions/419163/what-does-if-name-main-do).
+
+### יצירת חבילה
+
+חבילה היא הצירוף של כמה מודולים יחד לכדי &quot;מארז&quot; אחד.
+כדי ליצור חבילה נפתח תיקייה חדשה, ובה נפתח קובץ ריק חדש ששמו `__init__.py` – זה קובץ שיבהיר לפייתון שמדובר בחבילה.
+לידו, נוכל להוסיף אילו קובצי `.py` (&quot;מודולים&quot;) שמתחשק לנו.
+
+נדמיין שתיקיית העבודה שלנו נראית כך:
+
+```
+world
+├── __init__.py
+├── main.py
+├── zoo.py
+└── sounds
+    ├── __init__.py
+    ├── cat.py
+    ├── dog.py
+    └── ferret.py
+```
+
+אם אנחנו כותבים קוד עבור `main.py` ורוצים לטעון את `zoo.py`, נכתוב: `import zoo`.
+אם אנחנו כותבים קוד עבור `main.py` ורוצים לטעון את `cat.py`, נכתוב: `import sounds.cat` או `from sounds import cat`.
+
+קראו לעומק [כאן](https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html) ונסו בעצמכם.
+
+## תרגול
+ההגשה לתרגילים הללו דורשת יכולת להעלות קבצים מרובים, ולכן היא תוכל להתבצע רק החל מצאת שבת.
+
+### תרגיל 1: נקמת ההיררכיה
+צרו במחשב שלכם קבצים לפי ההיררכיה שמוצגת בפרק &quot;יצירת חבילה&quot; במדריך.
+דאגו שהקוד הבא ב־`main.py` יעבוד:
+
+```
+from sounds import cat, dog
+
+
+if __name__ == &#39;__main__&#39;:
+    cat.make_sound()
+    dog.make_sound()
+```
+
+פלט אפשרי, לדוגמה:
+```
+Yooo
+Meow
+```
+
+### תרגיל 2: שח
+
+חלקו את תרגיל השח ששיפצתם לכמה קבצים, כך שיהיה מסודר יותר.
+השתמשו ב־import־ים כדי לגרום לו לפעול כמקשה אחת, דרך &quot;הקובץ הראשי&quot; שיצרתם, ושמו chess.py.</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 06 Aug 2020 17:08:05 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/9-2/7775.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            
+          <p><a href="https://forums.pythonic.guru/t/9-2/7775/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-2/7775/2</link>
+        <pubDate>Thu, 06 Aug 2020 17:14:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7775-2</guid>
+        <source url="https://forums.pythonic.guru/t/9-2/7775.rss">שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</source>
+      </item>
+      <item>
+        <title>שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>יום 2 – ניהול פרויקט מרובה קבצים</h2>
+<p>במהלך הקורס, כשערכנו את הקוד שלנו בעזרת Jupyter Notebook, היה לנו נוח לנהל את כל הקוד שלנו בתא אחד. מכשעברנו לכתוב ב־Visual Code התחלנו לנהל את הקוד שלנו על גבי קובץ שנמצא במחשב.</p>
+<p>פרויקטים רבים גדלים במהרה, ומכילים קוד מורכב שקשה לקרוא כמקשה אחת. במקרים כאלו, נוח יותר לפצל את הקוד לחלקים קטנים, כאשר לכל חלק יש מטרה אחת מוגדרת. עשינו את זה תחילה עם פונקציות, אחר כך עם מחלקות, ומכשהתקדמנו נציג יחידה אפילו גדולה יותר – קובץ.</p>
+<p>לדוגמה, במערכת בדיקת התרגילים של הקורס, יש קובץ שאחראי למערכת הנוטיפיקציות, קובץ אחר שמנהל את המשתמשים במערכת וקובץ נוסף שמריץ את הבדיקה האוטומטית על הפתרונות שהוגשו.</p>
+<h3>אז איך זה עובד בפועל?</h3>
+<p>כדי <a href="https://realpython.com/run-python-scripts/">להריץ קובץ פייתון</a> שיצרתם באמצעות ה־IDE שלכם, תוכלו לפתוח את שורת הפקודה (<a href="https://www.computerhope.com/issues/chusedos.htm">Windows</a>, <a href="https://support.apple.com/en-il/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac">Mac</a>) במחשב שלכם ולרשום בה <code>python PATH</code>, כאשר <code>PATH</code> הוא הנתיב המלא לקובץ שאתם רוצים להריץ. לדוגמה, אם הקובץ שלי נמצא ב־<code>C:\Users\Yam\Desktop\chess.py</code>, אצטרך לרשום בשורת הפקודה <code>python C:\Users\Yam\Desktop\chess.py</code>. שורה זו תריץ את קובץ הפייתון ותדפיס את הפלט שלו למסך שלכם.</p>
+<h3>יצירת מודול</h3>
+<p>נזכיר: מודול הוא קובץ פייתוני שבתוכו קבועים, פונקציות, ייבואים ומחלקות.</p>
+<p>כדי ליצור מודול חדש, פשוט צרו קובץ נוסף באותה תיקייה.</p>
+<p>ניקח לדוגמה את הקבצים <code>hi.py</code> ואת <code>bye.py</code> שנמצאים באותה תיקייה.<br>
+נכתוב ב־<code>hi.py</code> את הקוד הבא:</p>
+<pre><code class="lang-python">print("Haiush!")
+</code></pre>
+<p>וב־<code>bye.py</code> את הקוד הבא:</p>
+<pre><code class="lang-python">import hi
+
+print("Baiush!")
+</code></pre>
+<p>נריץ את הקובץ bye.py ונראה מה יפלט למסך:</p>
+<pre><code class="lang-auto">❯ python bye.py
+Haiush!
+Baiush!
+</code></pre>
+<h3>סימון נקודת התחלה</h3>
+<p>בסוף קובץ הפייתון שמריצים, נהוג לרשום את השורה הבאה:<br>
+<code>if __name__ == '__main__':</code><br>
+ובהזחה שאחריה לכתוב את הקריאה לפונקציות שאנחנו רוצים להריץ.</p>
+<p>מתי התנאי שבשורה זו מתקיים?<br>
+<code>__name__</code> הוא משתנה קסם שמקבל את שם הקובץ שרץ כרגע.<br>
+זאת אומרת, אם נכתוב <code>__name__</code> בתוך קובץ ששמו chess.py, הערך של <code>__name__</code> יהיה שווה ל־chess.<br>
+אבל יש קאץ’: בקובץ שהפעלתם ישירות, כלומר באמצעות הפקודה <code>python filename</code>, ערכו של <code>__name__</code> יהיה <code>__main__</code>. לכן התנאי שמופיע למעלה מתקיים.</p>
+<p>למעשה, השורה הזו מסמנת את המקום שממנו מריצים את התוכנית.</p>
+<p>נראה דוגמה.<br>
+נשנה את הקוד ב־<code>hi.py</code> לקוד הבא:</p>
+<pre><code class="lang-python">if __name__ == '__main__':
+    print("Haiush!")
+</code></pre>
+<p>ואת הקוד ב־<code>bye.py</code> לקוד הבא:</p>
+<pre><code class="lang-python">import hi
+
+if __name__ == '__main__':
+    print("Baiush!")
+</code></pre>
+<p>מה ירוץ לדעתכם? נסו במחשב שלכם!<br>
+כתרגול, שנו את שורות התנאי כך ששני התנאים יתקיימו.</p>
+<p>לקריאה נוספת:</p>
+<ol>
+<li>
+<a href="https://docs.python.org/3/library/__main__.html">התיעוד של פייתון</a>.</li>
+<li>
+<a href="https://stackoverflow.com/questions/419163/what-does-if-name-main-do">תשובה ב־Stackoverflow</a>.</li>
+</ol>
+<h3>יצירת חבילה</h3>
+<p>חבילה היא הצירוף של כמה מודולים יחד לכדי “מארז” אחד.<br>
+כדי ליצור חבילה נפתח תיקייה חדשה, ובה נפתח קובץ ריק חדש ששמו <code>__init__.py</code> – זה קובץ שיבהיר לפייתון שמדובר בחבילה.<br>
+לידו, נוכל להוסיף אילו קובצי <code>.py</code> (“מודולים”) שמתחשק לנו.</p>
+<p>נדמיין שתיקיית העבודה שלנו נראית כך:</p>
+<pre><code class="lang-auto">world
+├── __init__.py
+├── main.py
+├── zoo.py
+└── sounds
+    ├── __init__.py
+    ├── cat.py
+    ├── dog.py
+    └── ferret.py
+</code></pre>
+<p>אם אנחנו כותבים קוד עבור <code>main.py</code> ורוצים לטעון את <code>zoo.py</code>, נכתוב: <code>import zoo</code>.<br>
+אם אנחנו כותבים קוד עבור <code>main.py</code> ורוצים לטעון את <code>cat.py</code>, נכתוב: <code>import sounds.cat</code> או <code>from sounds import cat</code>.</p>
+<p>קראו לעומק <a href="https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html">כאן</a> ונסו בעצמכם.</p>
+<h2>תרגול</h2>
+<p>ההגשה לתרגילים הללו דורשת יכולת להעלות קבצים מרובים, ולכן היא תוכל להתבצע רק החל מצאת שבת.</p>
+<h3>תרגיל 1: נקמת ההיררכיה</h3>
+<p>צרו במחשב שלכם קבצים לפי ההיררכיה שמוצגת בפרק “יצירת חבילה” במדריך.<br>
+דאגו שהקוד הבא ב־<code>main.py</code> יעבוד:</p>
+<pre><code class="lang-auto">from sounds import cat, dog
+
+
+if __name__ == '__main__':
+    cat.make_sound()
+    dog.make_sound()
+</code></pre>
+<p>פלט אפשרי, לדוגמה:</p>
+<pre><code class="lang-auto">Yooo
+Meow
+</code></pre>
+<h3>תרגיל 2: שח</h3>
+<p>חלקו את תרגיל השח ששיפצתם לכמה קבצים, כך שיהיה מסודר יותר.<br>
+השתמשו ב־import־ים כדי לגרום לו לפעול כמקשה אחת, דרך “הקובץ הראשי” שיצרתם, ושמו chess.py.</p>
+          <p><a href="https://forums.pythonic.guru/t/9-2/7775/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/9-2/7775/1</link>
+        <pubDate>Thu, 06 Aug 2020 16:13:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7775-1</guid>
+        <source url="https://forums.pythonic.guru/t/9-2/7775.rss">שבוע 9 – יום 2: ניהול פרויקט מרובה קבצים</source>
+      </item>
+  </channel>
+</rss>

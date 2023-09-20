@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+    <link>https://forums.pythonic.guru/t/4-flask-request-args/8428</link>
+    <description>עברתי על הסרטון כמה פעמים, כתבתי בעצמי בקוד תוך כדי ועדיין מקבל שגיאה:
+עולה לי האתר:
+![image|690x388](upload://n0tmGdaX0LtjNhZiD1ooyK1Lct6.png) 
+
+כשאני מזין שם של פוקימון אני מקבל שגיאה בcmd
+ pokemon_name = request.args.get(&#39;pokemon&#39;).lower()
+
+AttributeError: &#39;NoneType&#39; object has no attribute &#39;lower&#39;
+
+הקוד של קובץ app.py  נראה ככה:
+```
+from flask import Flask, render_template, request
+import requests
+
+app = Flask(__name__)
+
+@app.route(&#39;/&#39;)
+
+def hello_world():
+    pokemon_name = request.args.get(&#39;pokemon&#39;).lower()
+    if not pokemon_name:
+        return render_template(&#39;index.html&#39;)
+    print(pokemon_name)
+    resp = requests.get(f&#39;https://pokeapi.co/api/v2/pokemon/{pokemon_name}&#39;)
+    resp_json = resp.json()
+    images = resp_json[&#39;sprites&#39;]
+    images = {k: v for k, v in images.items() if isinstance(v, str)}
+    return render_template(
+        &#39;index.html&#39;,
+        name=pokemon_name,
+        sprites = images,
+    )
+```
+בגלל שאני לא ממש מבין איך לדבג את זה ומה הולך לאן בקוד נתקעתי, מההערה שבcmd נראה שמה שאני מקבל בrequest.args.get(&#39;pokemon&#39;) זה none, ולא מחרוזת ולכן אני לא יכול להפעיל את הפונקציה lower(). אבל אין לי מושג איך לפתור זאת, ניסיתי לקרוא באינטרנט מה קורה שם עם הrequest וזה לא ברור לי איך המידע מגיע לrequest.</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 05 Nov 2020 14:07:25 +0000</lastBuildDate>
+    <category>שבוע 12</category>
+    <atom:link href="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="Yam" data-post="4" data-topic="8428">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"> Yam:</div>
+<blockquote>
+<p>request.args.get</p>
+</blockquote>
+</aside>
+<p>כן קראתי בלינק הזה <a href="https://werkzeug.palletsprojects.com/en/0.14.x/datastructures/#werkzeug.datastructures.MultiDict.get" rel="noopener nofollow ugc">https://werkzeug.palletsprojects.com/en/0.14.x/datastructures/#werkzeug.datastructures.MultiDict.get</a></p>
+<p>עריכה:</p>
+<p>אוקיי הייתה לי איזה בעיה בלינק, היה שם רווח לא נחוץ וגם הייתה לי טעות בkey זה היה צריך להיות pokemon_name במקום pokemon אחרי שהצלחתי להדפיס את המילון ראיתי שזה אחד המפתחות שם.</p>
+<p>תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/4-flask-request-args/8428/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/4-flask-request-args/8428/5</link>
+        <pubDate>Thu, 05 Nov 2020 13:54:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8428-5</guid>
+        <source url="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss">סרטון של יום 4 שאלה לגבי flask.request.args</source>
+      </item>
+      <item>
+        <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הסתכלת בתיעוד של request.args.get? <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/4-flask-request-args/8428/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/4-flask-request-args/8428/4</link>
+        <pubDate>Thu, 05 Nov 2020 11:14:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8428-4</guid>
+        <source url="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss">סרטון של יום 4 שאלה לגבי flask.request.args</source>
+      </item>
+      <item>
+        <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>כן את זה הבנתי, הבעיה שלי שאני לא מצליח לראות הדפסות שאני עושה בcmd ואין לי מושג למה, ובנוסף אני לא מבין למה אני מקבל none. אם עשיתי מה שים עשה בסרטון, או אם טעיתי איפה היא</p>
+          <p><a href="https://forums.pythonic.guru/t/4-flask-request-args/8428/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/4-flask-request-args/8428/3</link>
+        <pubDate>Thu, 05 Nov 2020 09:32:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8428-3</guid>
+        <source url="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss">סרטון של יום 4 שאלה לגבי flask.request.args</source>
+      </item>
+      <item>
+        <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+        <dc:creator><![CDATA[Liran_C]]></dc:creator>
+        <description><![CDATA[
+            <p>תבדוק את הtype של pokemon_name = request.args.get(‘pokemon’) כי lower זו פונקציה של str ואם זה לא מצליח כנראה קיבלת מידע מסוג אחר…</p>
+          <p><a href="https://forums.pythonic.guru/t/4-flask-request-args/8428/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/4-flask-request-args/8428/2</link>
+        <pubDate>Thu, 05 Nov 2020 08:16:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8428-2</guid>
+        <source url="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss">סרטון של יום 4 שאלה לגבי flask.request.args</source>
+      </item>
+      <item>
+        <title>סרטון של יום 4 שאלה לגבי flask.request.args</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>עברתי על הסרטון כמה פעמים, כתבתי בעצמי בקוד תוך כדי ועדיין מקבל שגיאה:<br>
+עולה לי האתר:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/a13fb52a9b11874d1bde117383f945430a819f94.png" data-download-href="https://forums.pythonic.guru/uploads/default/a13fb52a9b11874d1bde117383f945430a819f94" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a13fb52a9b11874d1bde117383f945430a819f94_2_690x388.png" alt="image" data-base62-sha1="n0tmGdaX0LtjNhZiD1ooyK1Lct6" width="690" height="388" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a13fb52a9b11874d1bde117383f945430a819f94_2_690x388.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a13fb52a9b11874d1bde117383f945430a819f94_2_1035x582.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a13fb52a9b11874d1bde117383f945430a819f94_2_1380x776.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a13fb52a9b11874d1bde117383f945430a819f94_2_10x10.png"></a></div><p></p>
+<p>כשאני מזין שם של פוקימון אני מקבל שגיאה בcmd<br>
+pokemon_name = request.args.get(‘pokemon’).lower()</p>
+<p>AttributeError: ‘NoneType’ object has no attribute ‘lower’</p>
+<p>הקוד של קובץ app.py  נראה ככה:</p>
+<pre><code class="lang-auto">from flask import Flask, render_template, request
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+
+def hello_world():
+    pokemon_name = request.args.get('pokemon').lower()
+    if not pokemon_name:
+        return render_template('index.html')
+    print(pokemon_name)
+    resp = requests.get(f'https://pokeapi.co/api/v2/pokemon/{pokemon_name}')
+    resp_json = resp.json()
+    images = resp_json['sprites']
+    images = {k: v for k, v in images.items() if isinstance(v, str)}
+    return render_template(
+        'index.html',
+        name=pokemon_name,
+        sprites = images,
+    )
+</code></pre>
+<p>בגלל שאני לא ממש מבין איך לדבג את זה ומה הולך לאן בקוד נתקעתי, מההערה שבcmd נראה שמה שאני מקבל בrequest.args.get(‘pokemon’) זה none, ולא מחרוזת ולכן אני לא יכול להפעיל את הפונקציה lower(). אבל אין לי מושג איך לפתור זאת, ניסיתי לקרוא באינטרנט מה קורה שם עם הrequest וזה לא ברור לי איך המידע מגיע לrequest.</p>
+          <p><a href="https://forums.pythonic.guru/t/4-flask-request-args/8428/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/4-flask-request-args/8428/1</link>
+        <pubDate>Wed, 04 Nov 2020 17:13:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8428-1</guid>
+        <source url="https://forums.pythonic.guru/t/4-flask-request-args/8428.rss">סרטון של יום 4 שאלה לגבי flask.request.args</source>
+      </item>
+  </channel>
+</rss>

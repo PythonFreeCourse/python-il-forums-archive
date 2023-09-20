@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+    <link>https://forums.pythonic.guru/t/topic/6238</link>
+    <description># **ההעלאה עצמה:**
+
+1. ראשית ודאו שהשורה **הראשונה** בתא היא `# Upload XX` כאשר XX מוחלף במספר שנמצא במערכת הגשת התרגילים ליד שם התרגיל. חייב להיות רווח בין ה-# למילה ובין המילה למספר. המערכת גמישה מספיק כדי לקבל u במקום U. זו חייבת להיות השורה הראשונה - לפני הערות, לפני import ולפני כל דבר אחר.
+
+2. אם אתם מנסים להעלות פעם נוספת תרגיל אך לא מצליחים לדרוס את הקודם - אל תשנו דבר בתא מלבד להוסיף בשורה האחרונה בתא `# Reupload XX` כאשר XX מוחלף גם פה במספר התרגיל. אל תשנו את השורה הראשונה שכוללת את ה-Upload, היא צריכה להישאר כפי שהיא. לאחר מכן שמרו את המחברת והעלו את התרגיל שוב למערכת.
+
+3. לפעמים, בעיקר כשמריצים דברים עם המון הדפסות, המחברת נהיית מאוד כבדה. במקרה כזה לחצו על המקלדת פה ![תמונה|690x145](upload://xvJTH6tooYBojkxW0BEdd5Kkgrm.png) ולחצו על `clear all cells output`. כמובן לא לשכוח לשמור אחרי. אם זה עדיין לא עובד - נסו להעתיק את התא הרלוונטי למחברת חדשה ולהעלות אותה.
+4. אם כבר הגשתם את הכול ואתם רוצים לתקן משהו, זה הקישור דרכו ניתן להגיש מחדש https://solve.pythonic.guru/send.
+* פירוט מלא לשימוש באתר נמצא פה: https://forums.pythonic.guru/t/topic/3259
+
+# **הערות הבודק האוטומטי על איך הקוד נראה:**
+*שימו לב שמשבוע 5 חובה לתקן את כל ההערות, אחרת התרגיל לא ייבדק.*
+
+יש כמובן הרבה הערות אפשריות, אבל הנפוצות מביניהן עד כה:
+1. הערות ריווח למיניהן: 
+חשוב לשים לב שיש רווח אחרי פסיקים ושיש רווח אחרי נקודתיים במילון (ההערה עצמה יכולה להיות על אחד מהם ולהתכוון לשני) - ושאין רווח לפני הפסיק או לפני הנקודתיים. 
+נהוג להפריד פונקציה בשתי שורות ריקות לפניה ואחריה. כמו כן, אם יש לכם תווים לבנים בשורה ריקה או בשורה כלשהי אחרי התו האחרון בה - אתם תקבלו הערה גם על זה. 
+אם כותבים הערות שמתחילות ב-# - צריך שיהיה רווח בודד אחריה, ואם זו ההערה שאינה מתחילה בתחילת השורה צריך להיות רווח כפול בין התו האחרון בשורה לבינה.
+גם לפני ואחרי אופרטורים כדוגמת +, -, =, == וכו&#39; יש לשים רווח. יוצא הדופן הוא כשמדובר בפרמטר דיפולטי ואז אין לשים רווח לפני ואחרי ה-=.
+למי שמעוניין להרחיב את ידיעותיו בתחום של איך לעצב קוד נכון, יש מסמך שלם בנושא ממש כאן https://www.python.org/dev/peps/pep-0008/.
+2. המשתנה לא הוגדר לפני השימוש - ייתכן שהגדרתם משתנה או ייבאתם מודול בתא אחר במחברת ולכן התא רץ לכם כמו שצריך - אבל כשאתם מעלים תא בודד הוא לא יכול לרוץ כי המשתנה/המודול אינם מוכרים בו. המחברת זוכרת שהגדרתם למעלה, הבודק לא. אפשר לבדוק בכמה דרכים לפני ההגשה - להעתיק למחברת חדשה ולבדוק אם זה עובד, או פשוט לעשות restart kernel ולהריץ את התא הזה בלבד.
+3. הגדרתם משתנה אך לא השתמשתם בו בלולאה. בלולאת for אנו רוצים לעיתים לרוץ x פעמים ומשתמשים לשם כך ב-for i in range(x), שזה טוב ויפה. אבל לפעמים אנו לא משתמשים בכלל ב-i, וזה נחשב לא מנומס להשאיר אותו מבלי שימוש. אם זה המקרה - החליפו את i בקו תחתון (_), זו הדרך שלכם לסמן שאין טעם לתת למשתנה הזה שם.
+4. האם אפשר לבדוק שערך שווה ל-True/False בצורה קצרה יותר - מוסבר במחברת של תנאים (מחברת 2.1).
+5. אם אתם מעוניינים להשוות משהו ל-None, אל תעשו זאת עם == אלא עם is, למרות ש(עוד?) לא למדנו מה זה בדיוק אומר.
+6. כל השורות של ה-import אמורות להופיע לפני כל השורות של ה-from ... import. כל אחד מהנ&quot;ל אמור להיות מסודר לפי סדר הא&quot;ב. כל זה מופרד לשני בלוקים שונים - הראשון של ספריות מובנות בפייתון והשני של ספריות חיצוניות.
+# הבדיקה האוטומטית על איך הקוד עובד:
+1. אם יש AssertionError ואחריה x == y זה אומר שניסו להשוות את הערך שהפונקציה שלכם מחזירה, לרוב מדובר במה שמצד שמאל של האופרטור ==, כלומר x, עם מה שהיה אמור לצאת וההשוואה החזירה False. בדקו את עצמכם - האם הערך המוחזר הוא הערך הנכון? האם הדפסתם במקום להחזיר? האם פספסתם מקרה קצה? שימו לב שכתוב לכם גם מה אמור לחזור - אחלה דרך לבדוק מה השתבש.
+2. אם כתוב missing 1 required positional argument - הפונקציה שלכם מצפה לקבל ארגומנט אחד יותר ממה שהיא מקבלת בפועל (כלומר ממה שהבודק מצפה שהיא תקבל ומנסה לשלוח לה). בדקו האם קיבלתם את הארגומנטים שהתבקשתם או שהוספתם עוד רק למען הנוחות שלכם, וחשבו על איך לשנות את זה - למשל לעטוף בפונקציה חיצונית שמקבלת את מספר הארגומנטים שצריך.
+3. באופן כללי אבל גם מופיע לפעמים בהערות של הבודק: &quot;None type not callable&quot; או &quot;None type not iterable&quot; מעידים על זה שיש לכם None במקום שלא ציפיתם לו. נסו לחקור מי ה-None הסורר ולאן הוא חמק מבלי שהבחנתם לב :slight_smile:</description>
+    <language>he</language>
+    <lastBuildDate>Sun, 26 Jul 2020 14:27:23 +0000</lastBuildDate>
+    <category>מחוץ לקטגוריה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/6238.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/290">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/290</link>
+        <pubDate>Fri, 31 Jul 2020 15:33:54 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-290</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>לא, אבל נראה לי שאם תתחילי להעלים אותן אז או שזה יסתדר או שיתברר לך המקור המדויק</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/289">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/289</link>
+        <pubDate>Sun, 26 Jul 2020 14:27:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-289</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>הבנתי, תודה! וויש לך רעיון לגבי עניין הפער בין מספר ההערות שאני רואה למה שההתראות אומרות?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/288">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/288</link>
+        <pubDate>Sun, 26 Jul 2020 14:25:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-288</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>אני תיקנתי הכל. זה קצת מבאס עם הדוגמה, אבל היה לי חשוב לזהות בדיוק מה צץ, וגם לא רציתי שיופיע תרגיל עם שורות אדומות בבודק</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/287">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/287</link>
+        <pubDate>Sun, 26 Jul 2020 02:36:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-287</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>בשחמט גנואים - הנוטיפיקיישן אומרים שיש 10 הערות על הבודק האוטומטי,<br>
+ספרתי רק 6 (פתחתי את כל ההדגשות האדומות וספרתי כמובן גם את אלה שכללו שתי הערות)<br>
+האם זה תקין? בנוסף, הבנתי נכון שאפשר להתעלם מההערות שנוגעות להזחה ולפסיקים שהופיעו גם בדוגמה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/286">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/286</link>
+        <pubDate>Sun, 26 Jul 2020 01:51:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-286</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[nitayv]]></dc:creator>
+        <description><![CDATA[
+            <p>אהההה סבבה מגניב אהבתי תודה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/284">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/284</link>
+        <pubDate>Sat, 11 Jul 2020 17:44:19 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-284</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אתה משתמש בה רק ב־key – שים אותה ב־key ישירות.<br>
+אם אתה משתמש בה בעוד מקומות – הגדר אותה כפונקציה בפני עצמה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/283">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/283</link>
+        <pubDate>Sat, 11 Jul 2020 14:02:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-283</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[nitayv]]></dc:creator>
+        <description><![CDATA[
+            <p>עשיתי את התרגיל מאפיה.<br>
+יצרתי פונקציה בתוך המחלקה שעושה את הקטע של ההצבעה. כחלק מהפתרון יצרתי פונקציה עם למבדה שמקבלת שחקן ומחזירה כמה הצביעו לו. (שזה פשוט להחזיר תכונה של השחקן) קיבלתי ההערה שבמקרה כזה עדיף לא להשתמש בלמבדה אלא ליצור פונקציה בשביל זה. האמת ממש התבאסתי חחח עד שזכרתי את הלמבדה וזה גם בא לי בול.<br>
+אפשר רק להבין למה למבדה זה לא טוב במקרה הזה?<br>
+ואיפה ראוי שאכתוב את הפונקציה הזאת? מחוץ לכל המחלקות ?<br>
+הרעיון של הפונקציה הזאת שאני משתמש בה אחרי זה כkey בsort.</p>
+<p>אם לא הייתי ברור בהסבר -  שורה 143 -<br>
+<a href="https://solve.pythonic.guru/view/106261" rel="nofollow noopener">https://solve.pythonic.guru/view/106261</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/282">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/282</link>
+        <pubDate>Fri, 10 Jul 2020 14:23:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-282</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זו בדיקה שהמטרה שלה היא לראות שאין לך ססמאות שמסתובבות בקוד <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+תחליפי את מה שכתוב שם ב¯<code>os.getenv('pass_user1') </code><br>
+נניח</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/281">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/281</link>
+        <pubDate>Fri, 10 Jul 2020 13:50:01 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-281</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[timnar312]]></dc:creator>
+        <description><![CDATA[
+            <p>תיקון אוטומטי בהיררכיה אומר לי בסיסמה במערכת המשתמשים שבניתי -  “אפשר סיסמה עם קידוד קשה”.<br>
+לא מבינה מה הוא רוצה <img src="https://forums.pythonic.guru/images/emoji/twitter/roll_eyes.png?v=9" title=":roll_eyes:" class="emoji" alt=":roll_eyes:"></p>
+<p><a href="https://solve.pythonic.guru/view/106210" rel="nofollow noopener">קישור לפתרון התרגיל שלי</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/280">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/280</link>
+        <pubDate>Fri, 10 Jul 2020 11:22:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-280</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[sagi.zo]]></dc:creator>
+        <description><![CDATA[
+            <p>לגבי השחמט גנואים:<br>
+העיצובים היפים של התרגיל לדוגמה בכל הנוגע לכיוון של כלים לא עוברים את הבודק האוטומטי.<br>
+מרגיש כאן מסר כפול…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/279">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/279</link>
+        <pubDate>Fri, 10 Jul 2020 10:25:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-279</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[hadaskam]]></dc:creator>
+        <description><![CDATA[
+            <p>אלוף על חלל! תודה! הייתה שם איזשהיא פונקציה ששכחתי למחוק <img src="https://forums.pythonic.guru/images/emoji/twitter/see_no_evil.png?v=9" title=":see_no_evil:" class="emoji" alt=":see_no_evil:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/278">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/278</link>
+        <pubDate>Wed, 08 Jul 2020 13:26:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-278</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[gonny]]></dc:creator>
+        <description><![CDATA[
+            <p>בטוחה שאין לך בקוד def <strong>str</strong> פעמיים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/277">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/277</link>
+        <pubDate>Wed, 08 Jul 2020 13:21:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-277</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[hadaskam]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353.png" data-download-href="https://forums.pythonic.guru/uploads/default/e6fbb96ac97a60cba0bc717710e31add533d3353" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353_2_690x166.png" alt="image" data-base62-sha1="wXn8mVOS3KM4gGzYt2DLlphpblF" width="690" height="166" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353_2_690x166.png, https://forums.pythonic.guru/uploads/default/original/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6fbb96ac97a60cba0bc717710e31add533d3353_2_10x10.png"></a></div><br>
+זה נראה כך. מעל פונקציה זו מוגדרת הפונקציה foldee_content<p></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/276">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/276</link>
+        <pubDate>Wed, 08 Jul 2020 13:18:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-276</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[orpazf]]></dc:creator>
+        <description><![CDATA[
+            <p>אולי זו רק אני, אבל זה נראה כאילו העלת הערה שמתייחסת לשורה אחרת (למיטב ידיעתי החץ הקטן מסמן מה השורה הבעייתית, והוא מופנה למעלה ולא לשורה האדומה). ייתכן שיש לך כמה שורות מסומנות וההערה אינה על השורה שהעלית?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/275">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/275</link>
+        <pubDate>Wed, 08 Jul 2020 13:15:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-275</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[hadaskam]]></dc:creator>
+        <description><![CDATA[
+            <p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fc1e39a890c5ea25f113be0dcc6628010abde1de.png" alt="image" data-base62-sha1="zYl4WM43uwoC1rX0hzqTu1JfEFo" width="323" height="99"><br>
+<img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d887ceb29ea1444fea6c5f00f2958dcb190f1366.png" alt="image" data-base62-sha1="uTw6b5af7bMGaQJC05XH6uSniOq" width="352" height="56"><br>
+לא מבינה מה הבעיה. בפונקציה folder content הגדרתי מחרוזת של בעצם מה מכילה התיקייה כדי להדפיס את תוכן הספריה. הפונקציה מחזירה מחרוזת.<br>
+אז איפה הבעיה? <img src="https://forums.pythonic.guru/images/emoji/twitter/frowning.png?v=9" title=":frowning:" class="emoji" alt=":frowning:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/274">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/274</link>
+        <pubDate>Wed, 08 Jul 2020 13:11:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-274</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>בלי קשר , הייתי מציע להסיר את השורה רווח בין כל אחד אין לזה צורך. שורה רווח תכניס רק בין מודלים מובנים ללא מובנים</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/273">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/273</link>
+        <pubDate>Fri, 26 Jun 2020 14:25:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-273</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>colorama מגיע כחלק מההתקנה של anaconda.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/272">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/272</link>
+        <pubDate>Fri, 26 Jun 2020 09:06:43 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-272</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[alexander.elad]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה!</p>
+<p>הסתדר לי עכשיו.</p>
+<p>רק לא מובן לי למה colorama עובד לי בלי שהתקנתי אותו לפני אם זה מודול לא מובנה…</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/271">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/271</link>
+        <pubDate>Fri, 26 Jun 2020 09:04:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-271</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[zurikarat]]></dc:creator>
+        <description><![CDATA[
+            <p>colorama הוא מודל לא מובנה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/270">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/270</link>
+        <pubDate>Fri, 26 Jun 2020 08:45:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-270</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[alexander.elad]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מקבל שגיאה בבודק הואטמטי על סידור מודולים לא נכון. בהתחלה סידרתי את זה לפי ה-from ואז קיבלתי שגיאה על ה-datetime אז העברתי אותו להיות ראשון כך שזה יהיה מסודר לפי ה-import ועכשיו אני מקבל שגיאה על ה-path למרות שהוא מסודר במקום הנכון מבחינה אלפבתית על פי שני הפרמטרים. אני לא מבין מה אני עושה לא נכון?</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/b/be2eeab020c62e02680edfd2e388e489f01489e9.png" alt="image" data-base62-sha1="r8reL61ZlTP2FIh9lpbwyCU9yPf" width="462" height="211"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/269">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/269</link>
+        <pubDate>Fri, 26 Jun 2020 07:52:31 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-269</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[avitan101]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מקבל שגיאה בבדיקה האוטומטית בתרגיל חללר<br>
+TypeError: type object argument after * must be an iterable, not int<br>
+לא ברור לי מה הבעיה, האם זה הבודק שמנסה להכניס זמן בפורמט שונה ממה שהגדרתי או שזו בעיה אחרת</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/268">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/268</link>
+        <pubDate>Tue, 23 Jun 2020 14:51:26 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-268</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[ofek.shabo27]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה על ההסבר, הוספתי</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/266">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/266</link>
+        <pubDate>Tue, 16 Jun 2020 13:41:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-266</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן, ר’ <a href="https://forums.pythonic.guru/t/topic/5612/4" class="inline-onebox">פסיק אחרי הערך האחרון במילון</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/265">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/265</link>
+        <pubDate>Tue, 16 Jun 2020 13:38:32 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-265</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+      <item>
+        <title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</title>
+        <dc:creator><![CDATA[ofek.shabo27]]></dc:creator>
+        <description><![CDATA[
+            <p>למרות שלא מגיע איבר נוסף אחריו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/6238/264">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/6238/264</link>
+        <pubDate>Tue, 16 Jun 2020 13:36:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-6238-264</guid>
+        <source url="https://forums.pythonic.guru/t/topic/6238.rss">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</source>
+      </item>
+  </channel>
+</rss>

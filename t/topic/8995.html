@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8995 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:52:10 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד - שבוע 16 - פייתון בעברית ובחינם</title>
+<meta content="תיאור כללי
+מעבר על המערכת כדי לנקות את הקוד. 
+מה ההצעה כוללת?
+
+תיקון שגיאות ש mypy מדווח
+תיקון שגיאות כתיב
+הוספת TODO איפה שחסר
+ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 &amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8995.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8995.rss" rel="alternate nofollow" title="הזנת RSS של ‚הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8995.html" property="og:url"/>
+<meta content="8995.html" name="twitter:url"/>
+<meta content="הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד" property="og:title"/>
+<meta content="הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד" name="twitter:title"/>
+<meta content='תיאור כללי מעבר על המערכת כדי לנקות את הקוד.  מה ההצעה כוללת?  תיקון שגיאות ש mypy מדווח תיקון שגיאות כתיב הוספת TODO איפה שחסר ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת שימוש בfastapi.status איפה שצריך במקום מספרים  כולל שינויים בקוד? אם כן, איפה? כן. איפה שיהיה צורך.  האם יהיו שינויים במסד הנתונים? אם כן, איפה? לא.  האם יהיה שינוי ב־frontend? אם כן, איפה? כן. איפה שיהיה צורך.  אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו ל...' property="og:description"/>
+<meta content='תיאור כללי מעבר על המערכת כדי לנקות את הקוד.  מה ההצעה כוללת?  תיקון שגיאות ש mypy מדווח תיקון שגיאות כתיב הוספת TODO איפה שחסר ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת שימוש בfastapi.status איפה שצריך במקום מספרים  כולל שינויים בקוד? אם כן, איפה? כן. איפה שיהיה צורך.  האם יהיו שינויים במסד הנתונים? אם כן, איפה? לא.  האם יהיה שינוי ב־frontend? אם כן, איפה? כן. איפה שיהיה צורך.  אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו ל...' name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 16" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="19 ❤"/>
+<meta content="2021-02-02T12:49:56+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד","mainEntity":{"@type":"Question","name":"הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד","text":"תיאור כללי\n\nמעבר על המערכת כדי לנקות את הקוד.\n\nמה ההצעה כוללת?\n\nתיקון שגיאות ש mypy מדווח\n\nתיקון שגיאות כתיב\n\nהוספת TODO איפה שחסר\n\nריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת\n\nשימוש בfastapi.status איפה שצריך במקום מספרים\n\nכולל שינויים &hellip;","upvoteCount":7,"answerCount":1,"dateCreated":"2021-02-02T12:49:56.737Z","author":{"@type":"Person","name":"Gonny"},"acceptedAnswer":{"@type":"Answer","text":"הערות\n\n[תמונה] gonny:\n\nההנחיות של <a href=\"https://google.github.io/styleguide/pyguide.html\">גוגל<\/a> וההנחיות של <a href=\"https://www.python.org/dev/peps/pep-0257/\">PEP 257<\/a> קצת סותרות אחד את השני.\n\nבגוגל כתוב:\n\nThe docstring should be descriptive-style (&quot;&quot;&quot;Fetches rows from a Bigtable.&quot;&quot;&quot;) rather than imperative-style (&quot;&quot;&quot;Fetch rows from a Bigtable.&quot;&quot;&quot;)\n\nבעוד ב PEP כתוב:\n\nThe docstring is a phrase endi&hellip;","upvoteCount":3,"dateCreated":"2021-02-08T17:02:40.362Z","url":"https://forums.pythonic.guru/t/topic/8995/8","author":{"@type":"Person","name":"Yam"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8995.html">הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-16/28.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 16</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הצעה לטיקט - מעבר ראשון כדי לנקות את הקוד" itemprop="headline"/>
+<meta content="שבוע 16" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T12:49:56Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏ 12:49pm
+                  </time>
+<meta content="2021-02-02T12:49:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h3>תיאור כללי</h3>
+<p>מעבר על המערכת כדי לנקות את הקוד.</p>
+<h3>מה ההצעה כוללת?</h3>
+<ul>
+<li>תיקון שגיאות ש mypy מדווח</li>
+<li>תיקון שגיאות כתיב</li>
+<li>הוספת TODO איפה שחסר</li>
+<li>ריפקטור של פונקציות שחוזרות על עצמן למקום אחד - לדוגמא, יצירת יוזר פיקטיבי שקיים בלפחות 3-4 מקומות שונים במערכת</li>
+<li>שימוש בfastapi.status איפה שצריך במקום מספרים</li>
+</ul>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<p>כן. איפה שיהיה צורך.</p>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>לא.</p>
+<h3>האם יהיה שינוי ב־frontend? אם כן, איפה?</h3>
+<p>כן. איפה שיהיה צורך.</p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<p>רוב השינויים לא אמורים לגרור שינוי או הוספה בטסטים הקיימים, כך שאם הטסטים הקיימים עוברים, הקוד בסדר. במקום שבו יהיה רפקטור לפונקציה ספציפית, יהיה צורך בהוספת טסט או שינוי של טסט קיים.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T14:02:45Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  2:02pm
+                  </time>
+<meta content="2021-02-02T14:02:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שמעתי מים שיש דעות חלוקות לגבי כתיבת TODO בתוך קוד.<br/>
+<a href="https://wiki.c2.com/?TodoCommentsConsideredHarmful">לינק בנושא</a> (ים, שם,שם)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T14:14:15Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  2:14pm
+                  </time>
+<meta content="2021-02-02T14:14:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אין עניין בזה, אז אני לא אבצע את זה. לא קראתי את כל המאמר אלא רק את הנקודות שהם ציינו אז אגיב עליהם:</p>
+<ul>
+<li>1 זאת טענה חסרת תוכן.ל IDE כמו PyCharm לדוגמא יש טאב שבו מופיעים כל ה TODO. לא צריך לחפש ידנית בקוד.</li>
+<li>2 ו3 אלו טענות בלי תוכן</li>
+<li>4 לא רלוונטית אלינו כי אנחנו לא משתמשים במערכת שמתעדפת תיקונים</li>
+<li>5 לא רלוונטית אלינו כי אין לנו בוס ואין לנו הספק שאנחנו צריכים לעמוד בו</li>
+</ul>
+<p>מה שכן רלוונטי אלינו זה שאנחנו עובדים בצורה לא הכי מסודרת, כאשר כל אחד עובד על חלק ומשאיר חלקים “מתים” בקוד לאחר כך. בלי לסמן אלו חלקים מתים, באמת נצטרך לעבור על כל השורות בקוד כדי לראות מה לא עובד ולמה (טענה 1 אצלו במאמר, רק הפוך).</p>
+<p>ובאופן משעשע, לאותו מאמר יש גם את <a href="https://wiki.c2.com/?TodoCommentsConsideredUseful" rel="noopener nofollow ugc">המאמר הנגדי</a> <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T14:51:36Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  2:51pm
+                  </time>
+<meta content="2021-02-02T14:51:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא מנומס לא לקרוא את המאמר ולהגיד שהוא חסר תוכן <img alt=":stuck_out_tongue:" class="emoji" src="../../images/emoji/twitter/stuck_out_tonguec164.png?v=9" title=":stuck_out_tongue:"/></p>
+<p>אענה בקצרה ולא אגיב בהמשך כדי להימנע מוויכוח ארוך על משהו שהוא בכ"מ דעה חלוקה:</p>
+<p>טענות 2 ו־3 לא חסרות תוכן, ולמעשה מאוד חשובות.<br/>
+טענה 2 מדברת על שכפול של TODO בכמה מקומות. החסרון המיידי הוא שיכול להיות שיישאר לך TODO בקוד למרות שכבר טיפלת בו.<br/>
+טענה 3 מדברת על חוסר עדכון של הערות – משהו שאנחנו רואים הרבה (ואחת הטענות החזקות והמרכזיות נגד הערות בקוד) – אנשים מתעלמים מהערות ולא שמים לב שהן נמצאות שם, ההערות לא מתעדכנות ואז יוצא מצב שיש הערות שלא תואמות את הקוד. זה בעייתי כי ישארו issues פתוחים למרות שכבר טיפלו בהן.</p>
+<p>לגבי טענה 1 – הכוונה היא לא שקשה למצוא את ה־TODO פיזית. גם בשנה המרוחקת בה נכתב המאמר היו כלים של Find בעורכי טקסט. הבעיה היא ארגון וסדר. כשה־TODO מפוזר בקוד במקום להיות מנוהל במערכת שמיועדת לזה, המשימות לא מחולקות היטב, אין קטגוריות לכל משימה ולא ברור באיזה שלב התקדמות נמצאת כל משימה.</p>
+<p>טענה 5 גם רלוונטית, לדעתי. אין בוס, אבל לפחות בראייה אישית הרבה יותר מניע כשיש רשימה של פריטים שסימנתי, ואני יכול לסמן עליהם check ולראות כמה דברים נמצאים מאחוריי. בעבר הייתי עובד ממש עם פתקים צבעוניים פיזית ומעביר אותם בין עמודות. סופר מתגמל <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/6e2d450553ccc8e1274375650a949af286335a80" href="../../uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpg" title="image"><img alt="image" data-base62-sha1="fIFvI07XnmrnK9q31qf9uzzJXd6" data-small-upload="../../uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_10x10.png" height="286" src="../../uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_690x286.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/6/6e2d450553ccc8e1274375650a949af286335a80_2_690x286.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/6/6e2d450553ccc8e1274375650a949af286335a80.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">820×340 50.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<hr/>
+<p>בכ"מ הרעיון המקורי באשכול נשמע לי מצוין!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T16:13:42Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  4:13pm
+                  </time>
+<meta content="2021-02-02T16:13:42Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רק לצורך תשובה רשמית, כי כמו שאמרתי, אני יכול גם לא, להוסיף או לא להוסיף הערות TODO?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-02T16:33:18Z" itemprop="datePublished">
+                     2 בפברואר,‏ 2021,‏  4:33pm
+                  </time>
+<meta content="2021-02-02T16:33:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כיוון שמדובר במשהו שמבוסס על דעה אישית, ואחת שאין לי העדפה סופר חזקה לגביה, בנושא הזה כל אחד יכול לעשות מה שהוא מעדיף (:</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-08T09:43:16Z" itemprop="datePublished">
+                     8 בפברואר,‏ 2021,‏  9:43am
+                  </time>
+<meta content="2021-02-08T14:45:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כמה שאלות שעלו לי בעקבות מעבר על הקוד לפני תחילת עבודה על הטיקט, שנוגעות לסגנון אחיד, מכיוון שכרגע יש עירבוב של סגנונות.</p>
+<h1>הערות:</h1>
+<ol>
+<li>ההנחיות של <a href="https://google.github.io/styleguide/pyguide.html" rel="noopener nofollow ugc">גוגל</a> וההנחיות של <a href="https://www.python.org/dev/peps/pep-0257/" rel="noopener nofollow ugc">PEP 257</a> קצת סותרות אחד את השני.<br/>
+בגוגל כתוב:</li>
+</ol>
+<blockquote>
+<pre><code>   The docstring should be descriptive-style ("""Fetches rows from a Bigtable.""") rather than imperative-style ("""Fetch rows from a Bigtable.""")
+</code></pre>
+</blockquote>
+<p>בעוד ב PEP כתוב:</p>
+<blockquote>
+<p>The docstring is a phrase ending in a period. It prescribes the function or method’s effect as a command (“Do this”, “Return that”), not as a description; e.g. don’t write “Returns the pathname …”.</p>
+</blockquote>
+<p>לפי איזה סגנון אנחנו פועלים בפרוייקט?</p>
+<ol start="2">
+<li>בהמשך הסגנון של גוגל כתוב:</li>
+</ol>
+<blockquote>
+<p>The description should include required type(s) if the code does not contain a corresponding type annotation.</p>
+</blockquote>
+<p>מכיוון שאנחנו משתמשים ב type annotation, האם הדוקומנצטיה אצלנו כוללת אותם או לא?</p>
+<ol start="3">
+<li>
+<p>בדוגמאות שהם נתנו, אין ציון של הtype בחלק של ה Returns. האם לכלול אותו אצלנו או לא?</p>
+</li>
+<li>
+<p>האם הטקסט אחרי השם הפרמטר והנקודותיים באות גדולה או קטנה?</p>
+</li>
+</ol>
+<h1>שמות קבצים:</h1>
+<ol>
+<li>
+<p>איך נכון לכתוב שמות שמורכבים מיותר ממילה אחת: מילה אחת מחוברת, עם הפרדה בקו תחתון או במקף? לדוגמא: dayview.py, calendar_grid.py ו trash-can.svg (כל אלה קיימים בפרוייקט).</p>
+</li>
+<li>
+<p>האם שמות כל הקבצים צריכים להתחיל באות קטנה? לדוגמא: Aquarius.svg</p>
+</li>
+</ol>
+<h1>סגנון פייתון:</h1>
+<ol>
+<li>בסוף מילון שמחולק לשורות ביקשת להוסיף פסיק אחרי האלמנט האחרון. האם זה נכון גם לגבי אובייקטים אחרים? לדוגמא בקוד יש לנו כרגע גם סגנון כזה:</li>
+</ol>
+<pre><code class>router = APIRouter(
+    prefix="/calendar/month",
+    tags=["calendar"],
+    responses={404: {"description": "Not found"}},
+)
+</code></pre>
+<ol start="2">
+<li>האם להוסיף קו תחתון בתחילת שם לפונקציות protected?</li>
+</ol>
+<h1>סגנון HTML:</h1>
+<ol>
+<li>
+<p>האם צריך לבצע indent לטקסט בקובץ html אחרי if או for?</p>
+</li>
+<li>
+<p>מה כמות הרווחים בקובץ html? האם אנחנו הולכים לפי <a href="https://google.github.io/styleguide/htmlcssguide.html#Indentation" rel="noopener nofollow ugc">גוגל</a> שאומר 2 רווחים ל indent ולפחות 4 בcontinuation? (זה דיי שמושי לסגור כי זה משהו שאפשר להגדיר ב IDE)</p>
+</li>
+<li>
+<p>באיזה סגנון נעשה שימוש לשמות ID, class שמורכבים מיותר ממילה אחת? <a href="https://google.github.io/styleguide/htmlcssguide.html#ID_and_Class_Name_Delimiters" rel="noopener nofollow ugc">גוגל</a> אומרים להשתמש במקף. כרגע בפרוייקט יש לנו שימוש בכל סוג אפשרי.</p>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8995.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-08T17:02:40Z" itemprop="datePublished">
+                     8 בפברואר,‏ 2021,‏  5:02pm
+                  </time>
+<meta content="2021-02-08T17:18:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<h3>הערות</h3>
+<aside class="quote no-group quote-modified" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol>
+<li>ההנחיות של <a href="https://google.github.io/styleguide/pyguide.html">גוגל</a> וההנחיות של <a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a> קצת סותרות אחד את השני.<br/>
+בגוגל כתוב:</li>
+</ol>
+<blockquote>
+<pre><code class>   The docstring should be descriptive-style ("""Fetches rows from a Bigtable.""") rather than imperative-style ("""Fetch rows from a Bigtable.""")
+</code></pre>
+</blockquote>
+<p>בעוד ב PEP כתוב:</p>
+<blockquote>
+<p>The docstring is a phrase ending in a period. It prescribes the function or method’s effect as a command (“Do this”, “Return that”), not as a description; e.g. don’t write “Returns the pathname …”.</p>
+</blockquote>
+<p>לפי איזה סגנון אנחנו פועלים בפרוייקט?</p>
+</blockquote>
+</aside>
+<p>בנושא הספציפי הזה, הייתי מקפיד על ללכת לפי גוגל.</p>
+<aside class="quote no-group quote-modified" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol start="2">
+<li>בהמשך הסגנון של גוגל כתוב:</li>
+</ol>
+<blockquote>
+<p>The description should include required type(s) if the code does not contain a corresponding type annotation.</p>
+</blockquote>
+<p>מכיוון שאנחנו משתמשים ב type annotation, האם הדוקומנצטיה אצלנו כוללת אותם או לא?</p>
+</blockquote>
+</aside>
+<p>לדעתי השימוש ב־Type Annotations מייתר את הצורך בהכנסת הסוג לתיעוד, זה יהיה שכפול מידע ואנחנו אוהבים DRY</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ul>
+<li>בדוגמאות שהם נתנו, אין ציון של הtype בחלק של ה Returns. האם לכלול אותו אצלנו או לא?</li>
+</ul>
+</blockquote>
+</aside>
+<p>אותה תשובה – לדעתי אין צורך כיוון שזה כלול ב־type annotations</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol start="3">
+<li>האם הטקסט אחרי השם הפרמטר והנקודותיים באות גדולה או קטנה?</li>
+</ol>
+</blockquote>
+</aside>
+<p>לפי <a class="inline-onebox" href="https://www.grammarly.com/blog/capitalization-after-colons/#:~:text=When%20a%20colon%20introduces%20a,it%20is%20a%20proper%20noun">Capitalization After Colons | Grammarly</a>, אם זה משפט שלם חדש אפשר להשתמש ב־Uppercase. נראה לי שזה המצב כאן</p>
+<hr/>
+<h3>שמות קבצים</h3>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ul>
+<li>איך נכון לכתוב שמות שמורכבים מיותר ממילה אחת: מילה אחת מחוברת, עם הפרדה בקו תחתון או במקף? לדוגמא: dayview.py, calendar_grid.py ו trash-can.svg (כל אלה קיימים בפרוייקט).</li>
+</ul>
+</blockquote>
+</aside>
+<p>נראה לי שכיוון שאנחנו משתמשים בפייתון והקונבנציה היא מקפים תחתונים גם בשמות קבצים וגם בשמות תיקיות, עדיף להמשיך ככה עבור כל הפרויקט</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol>
+<li>האם שמות כל הקבצים צריכים להתחיל באות קטנה? לדוגמא: Aquarius.svg</li>
+</ol>
+</blockquote>
+</aside>
+<p>הייתי משאיר כמו שזה, כי אתה לא רוצה ללכת לבדוק עכשיו עבור כל קובץ אם זה שם של מישהו ולשנות בהתאם.</p>
+<h3>סגנון פייתון:</h3>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol>
+<li>בסוף מילון שמחולק לשורות ביקשת להוסיף פסיק אחרי האלמנט האחרון. האם זה נכון גם לגבי אובייקטים אחרים? לדוגמא בקוד יש לנו כרגע גם סגנון כזה:</li>
+</ol>
+</blockquote>
+</aside>
+<p>עבור כל דבר שמחולק לשורות, כולל קריאה לפונקציה.<br/>
+השאלה שצריכה להישאל היא “מה יקרה כשמישהו ירצה להוסיף שורה”.<br/>
+התשובה שצריכים להגיע אליה היא “הוא לא יצטרך לגעת בכלל בשורות האחרות בקוד”.</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol start="2">
+<li>האם להוסיף קו תחתון בתחילת שם לפונקציות protected?</li>
+</ol>
+</blockquote>
+</aside>
+<p>אם אתה בטוח מאוד שהן protected <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<h3>סגנון HTML</h3>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ul>
+<li>האם צריך לבצע indent לטקסט בקובץ html אחרי if או for?</li>
+</ul>
+</blockquote>
+</aside>
+<p>להערכתי להזיח (כך ב־docs של Jinja2). אם רוצים להימנע מהגועל שזה גורם ב־HTML אפשר להשתמש ב־whitespace control של Jinja2</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ul>
+<li>מה כמות הרווחים בקובץ html? האם אנחנו הולכים לפי <a href="https://google.github.io/styleguide/htmlcssguide.html#Indentation">גוגל</a> שאומר 2 רווחים ל indent ולפחות 4 בcontinuation? (זה דיי שמושי לסגור כי זה משהו שאפשר להגדיר ב IDE)</li>
+</ul>
+</blockquote>
+</aside>
+<p>כן</p>
+<aside class="quote no-group" data-post="7" data-topic="8995" data-username="gonny">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/gonny/40/4404_2.png" width="20"/> gonny:</div>
+<blockquote>
+<ol>
+<li>באיזה סגנון נעשה שימוש לשמות ID, class שמורכבים מיותר ממילה אחת? <a href="https://google.github.io/styleguide/htmlcssguide.html#ID_and_Class_Name_Delimiters">גוגל</a> אומרים להשתמש במקף. כרגע בפרוייקט יש לנו שימוש בכל סוג אפשרי.</li>
+</ol>
+</blockquote>
+</aside>
+<p>בוא נשתמש במקף <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8995 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:52:15 GMT -->
+</html>

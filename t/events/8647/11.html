@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/events/8647/11 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:05:06 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע - מס׳ 11 מאת Yam - הצעות לטיקטים - פייתון בעברית ובחינם</title>
+<meta content="תיאור כללי
+הוספת פיצ’רים ל&amp;quot;אירוע&amp;quot; בלוח השנה 
+מה ההצעה כוללת?
+הוספה של מיקום האירוע, קישור לשיחת ווידאו, זמנים ביום, קובץ 
+התאמת הפונקציה גם לעריכת אירוע קיים במידה ומועבר ID של אירוע 
+כולל שינויים בקוד? אם כן, איפה?
+הוספ&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8647.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8647.rss" rel="alternate nofollow" title="הזנת RSS של ‚הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="11.html" property="og:url"/>
+<meta content="11.html" name="twitter:url"/>
+<meta content="הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע" property="og:title"/>
+<meta content="הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע" name="twitter:title"/>
+<meta content="עכשיו אני רואה שיש התנגשות עם ניהול פגישות ביומן - מס׳ 8 מאת Yam.  תוכל בבקשה להסביר מה ההבדלים ביניהם? 🙂" property="og:description"/>
+<meta content="עכשיו אני רואה שיש התנגשות עם ניהול פגישות ביומן - מס׳ 8 מאת Yam.  תוכל בבקשה להסביר מה ההבדלים ביניהם? 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="הצעות לטיקטים" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="2021-01-12T14:54:10+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע","mainEntity":{"@type":"Question","name":"הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע","text":"תיאור כללי\n\nהוספת פיצ’רים ל&quot;אירוע&quot; בלוח השנה\n\nמה ההצעה כוללת?\n\nהוספה של מיקום האירוע, קישור לשיחת ווידאו, זמנים ביום, קובץ\n\nהתאמת הפונקציה גם לעריכת אירוע קיים במידה ומועבר ID של אירוע\n\nכולל שינויים בקוד? אם כן, איפה?\n\nהוספה של עמודות בטבלת “events”\n\nהוספה של פונקציה של יצירת אירוע חדש לקבלת הנתונים וה&hellip;","upvoteCount":6,"answerCount":0,"dateCreated":"2021-01-10T19:22:53.989Z","author":{"@type":"Person","name":"מיכאל בן דוד"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8647.html">הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/ticket-ideas/29.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הצעות לטיקטים</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="הוספת פיצ'רים לevents ובניית פונקצייה להוספת אירוע" itemprop="headline"/>
+<meta content="הצעות לטיקטים" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T19:22:54Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏  7:22pm
+                  </time>
+<meta content="2021-01-12T08:44:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h3>תיאור כללי</h3>
+<p>הוספת פיצ’רים ל"אירוע" בלוח השנה</p>
+<h3>מה ההצעה כוללת?</h3>
+<p>הוספה של מיקום האירוע, קישור לשיחת ווידאו, זמנים ביום, קובץ<br/>
+התאמת הפונקציה גם לעריכת אירוע קיים במידה ומועבר ID של אירוע</p>
+<h3>כולל שינויים בקוד? אם כן, איפה?</h3>
+<p>הוספה של עמודות בטבלת “events”<br/>
+הוספה של פונקציה של יצירת אירוע חדש לקבלת הנתונים והזנתם בDB<br/>
+הגדרת נתוני חובה ל"אירוע"<br/>
+בנייה של דף HTML + CSS להזנת הנתונים ע"מ לא לנפח את המשימה אני אשמח אם מישהו ירצה לקחת את החלק של הפרונטאד.</p>
+<h3>האם יהיו שינויים במסד הנתונים? אם כן, איפה?</h3>
+<p>הוספת עמודות בטבלת “events”</p>
+<h3>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</h3>
+<p>הזנה של כל הנתונים לטופס<br/>
+הקפצת הודעת שגיאה במידה ולא מוזן מידע קריטי (יוזר יוצר, יום, שעה/יום מלא, שם אירוע)<br/>
+בדיקה שניתן לשנות נתונים של אירוע קיים</p>
+<p>ותודה לאלן על הפורמט הנוח</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/8748.html" itemprop="url">טיקטים לפי קטגוריות</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T21:46:01Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏  9:46pm
+                  </time>
+<meta content="2021-01-10T21:46:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נראה לי שזה בעצם “יצירת האיוונט” עצמו<br/>
+זה נראה לי הדבר החשוב ביותר שאם אין אותו היום במערכת אז מן הסתם חייב שיהיה כי הרבה מאוד מההצעות עצמן מהתבססות על “אירוע” \ “פגישה” שכזו בלוז מן הסתם.</p>
+<p>אני מציע להוסיף גם:</p>
+<ul>
+<li>
+<p>הגדרת האירוע כ"פרטי" כך למשל לא יהיה מוצג לאנשים אחרים המידע עליו. - הכוונה לא שזה יהיה “פרטי” בקטע של אני באירוע של השכנים. אלא פרטי בקטע שאם זה מוגדר כזה אז רק אני יכול לראות את המידע על האירוע הזה ולא אחרים (במקרים בהם יהיה בעתיד ניתן לשתף לוחות או לראות לוחות של אנשים אחרים)</p>
+</li>
+<li>
+<p>פיצר של “מועדף” אן פריוריטי - במקרים בהם אני מזומן לשני דברים במקביל. שיהיה נגיד עדיפות (הפיצר הזה יותר רלוונטי למנהלי צוותים נגיד שצריכים להצטרף לפגישות של מי שתחתם. ואז יכול להיות שיש שני פגישות במקביל. במצב כזה אני יכול להגדיר לעצמי שפגישה מסויימת יש לה פריוריטי.</p>
+</li>
+</ul>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T23:05:05Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏ 11:05pm
+                  </time>
+<meta content="2021-01-10T23:05:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8647" data-username="mbdi007">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/m/3ec8ea/40.png" width="20"/> mbdi007:</div>
+<blockquote>
+<p>בנייה של דף HTML + CSS להזנת הנתונים ע"מ לא לנפח את המשימה אני אשמח אם מישהו ירצה לקחת את החלק של הפרונטאד.</p>
+</blockquote>
+</aside>
+<p>אני אשמח לעבוד איתך כדי ליצור את ה-front-end ליצירת איוונט <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<aside class="quote group-helper" data-post="2" data-topic="8647" data-username="aviadamar">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.jpg" width="20"/> aviadamar:</div>
+<blockquote>
+<ul>
+<li>הגדרת האירוע כ"פרטי" כך למשל לא יהיה מוצג לאנשים אחרים המידע עליו. - הכוונה לא שזה יהיה “פרטי” בקטע של אני באירוע של השכנים. אלא פרטי בקטע שאם זה מוגדר כזה אז רק אני יכול לראות את המידע על האירוע הזה ולא אחרים (במקרים בהם יהיה בעתיד ניתן לשתף לוחות או לראות לוחות של אנשים אחרים)</li>
+<li>פיצר של “מועדף” אן פריוריטי - במקרים בהם אני מזומן לשני דברים במקביל. שיהיה נגיד עדיפות (הפיצר הזה יותר רלוונטי למנהלי צוותים נגיד שצריכים להצטרף לפגישות של מי שתחתם. ואז יכול להיות שיש שני פגישות במקביל. במצב כזה אני יכול להגדיר לעצמי שפגישה מסויימת יש לה פריוריטי.</li>
+</ul>
+</blockquote>
+</aside>
+<p>לדעתי אלו צריכים להיות פיצ’רים נפרדים היות והם מבוססים על האופציה לשתף לוחות שנה ויש להם הרבה נפח של אימות משתמשים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T23:08:23Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏ 11:08pm
+                  </time>
+<meta content="2021-01-10T23:08:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אכן ישתמשו בזה  בפיצרים האחרים אבל חייב להיות קיים ביצירת האיוונט עצמו.</p>
+<p>להגדיר משהו כפרטי למשל זה רק למלא רובריקה. וכבר יכול להיות בפורם עצמו (בפינטרסט למשל יש את זה)</p>
+<p>מי שמממש את הדברים האחרים יוכל להשתמש בנתון הזה מתול הדאטאבייס</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-10T23:38:47Z" itemprop="datePublished">
+                     10 בינואר,‏ 2021,‏ 11:38pm
+                  </time>
+<meta content="2021-01-10T23:38:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אין לי הרבה נסיון, אבל מרגיש לי שלבנות פיצ’רים ללא פונקציונאליות זה לא דבר שכדאי לעשות.<br/>
+אני חושבת שיותר הגיוני שמי שבונה פיצ’ר של פרטיות אירוע, יוסיף את האלמנט בטופס, יוסיף את השדה ל-ORM וידאג שכל אירוע שכבר קיים, יקבע כ"פרטי" בתור ברירת מחדל. אחרת אנחנו יכולים ליצור אינסוף קלטים חסרי פונקציונליות ומשמעות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">imimouni</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-11T05:39:24Z" itemprop="datePublished">
+                     11 בינואר,‏ 2021,‏  5:39am
+                  </time>
+<meta content="2021-01-11T05:39:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הוספתי הצעת פיֵצ׳ר לפרטיות <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> מקווה שיתקבל <img alt=":joy:" class="emoji" src="../../../images/emoji/twitter/joyc164.png?v=9" title=":joy:"/> עכשיו רואה את הטיקט הזה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-11T09:39:50Z" itemprop="datePublished">
+                     11 בינואר,‏ 2021,‏  9:39am
+                  </time>
+<meta content="2021-01-11T09:39:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מעולה עכשיו יהיה לזה שימוש <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Ode</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-11T17:30:53Z" itemprop="datePublished">
+                     11 בינואר,‏ 2021,‏  5:30pm
+                  </time>
+<meta content="2021-01-11T17:30:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הסתכלתי קצת על איך העמודים של google cal בנויים ושמתי לב שבין אם יוצרים, עורכים או משכפלים אירוע, הם מעבירים אותך ל-eventedit. אם עושים עריכה לאיוונט הם משרשרים את מזהה האיוונט לעומת איוונט חדש שבו אין מזהה כלל.<br/>
+לדעתי כדאי לפעול באותה צורה ולקרוא ל"יצירת איוונט" בפועל eventedit. כשיוצרים איוונט, אם לא מועבר מזהה קיים, המערכת תיצור ישות חדשה של איוונט.<br/>
+אם כן מועבר מזהה, הוא יעדכן את ישות הקיימת (אולי זה יכול להיות טיקט נוסף, אבל זה יהיה חלק מה-route הזה).<br/>
+ככה זה בעצם יצמצם לפונקציה אחת טיפול בהוספה וטיפול בעריכה של איוונט, שכנראה גם ככה יהיו פונקציות כמעט זהות, חוץ מהעברה של ערכים לטופס ושמירה של ערכים ל-DB</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/8720/3.html" itemprop="url">עדכון אירוע קיים</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T08:45:20Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  8:45am
+                  </time>
+<meta content="2021-01-12T08:45:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מבקש בדיקה!</p>
+<p>בברכה, וכו’</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T14:21:13Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  2:21pm
+                  </time>
+<meta content="2021-01-12T14:21:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נשמע אחלה. אשמח לראות mock + erd</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T14:54:10Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  2:54pm
+                  </time>
+<meta content="2021-01-12T14:54:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עכשיו אני רואה שיש התנגשות עם <a class="inline-onebox" href="../../topic/8648/8.html">ניהול פגישות ביומן - מס׳ 8 מאת Yam</a>.<br/>
+תוכל בבקשה להסביר מה ההבדלים ביניהם? <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T16:10:45Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  4:10pm
+                  </time>
+<meta content="2021-01-12T16:10:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם הבנתי נכון בהצעה שם נדב רוצה להוסיף תעדוף לאירוע ולקשר את אותו למשתמש.</p>
+<p>אני מדבר על השיכבת בסיס יותר של הוספת נתונים לאירוע, ובניית ממשק ליצירת ועריכת אירועים<br/>
+מוזמן להסתתכל בשירטוט היפה ש <span class_="mention">@Ode</span>  עשתה בשירשור <a href="../../topic/8699/5.html">הזה</a>.<br/>
+יש שם חפיפה מכיוון ששנינו מדברים על יצירת האירוע אבל אני מבין שאנחנו מכוונים שונה.</p>
+<p>עובד על ERD ןMOCK אבל חשבתי שכדי לא לעכב אני אייצר פרונטאנד די בסיס ומי שירצה ישפר את זה ע"פ העיצוב הכללי, מקובל עליך?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T16:26:53Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  4:26pm
+                  </time>
+<meta content="2021-01-12T16:26:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@nadav</span> – תוכל לחדד את מה ההצעה שלך מביאה ואם יש התנגשות בין הטיקטים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nadav</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T16:43:57Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  4:43pm
+                  </time>
+<meta content="2021-01-12T16:43:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בעיקרון הרעיון שלי היה לאפשר לאנשים נוספים להשתתף באירוע:</p>
+<ol>
+<li>להזמין אנשים לאירוע</li>
+<li>משתתפים יכולים להתעלם/לדחות/אולי משתתפים/מגיעים</li>
+</ol>
+<p>תוך כדי הרעיון שלאירוע יכול להיות חשיבות - חובה/רשות וכו…</p>
+<p>לא יודע להגיד אם יש התנגשות</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T17:58:43Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  5:58pm
+                  </time>
+<meta content="2021-01-12T17:58:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בנתיים נשמע שיש התנגשות, אלא אם אני מבין משהו לא נכון. אודה לכם אם תדברו ביניכם ותתאמו מה כל אחד עושה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbdi007</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T18:28:37Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  6:28pm
+                  </time>
+<meta content="2021-01-12T18:28:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>דיברנו בפרטי וסיכמנו על החלוקה הזאת - אני בונה את היצירה של אירוע חדש כולל דף פרונט בסיס ונדב מרחיב את האירוע הקיים לזימון של עוד אנשים…</p>
+<p>זה הERD שלי - (ותודה ל <span class_="mention">@Ode</span>  על העצות)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ee7b4624a38d331429195580c58bc68f0193d4bc" href="../../../uploads/default/original/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc.png" title="image"><img alt="image" data-base62-sha1="y1HKzWAPltHmOoeXUQotA97cksQ" data-small-upload="../../../uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_10x10.png" height="299" src="../../../uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_690x299.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_690x299.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_1035x448.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ee7b4624a38d331429195580c58bc68f0193d4bc_2_1380x598.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1406×611 25.7 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>זה הMOCK שלי -<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/21ef66f376f2af7a3614849c84a662a7132d7dcd" href="../../../uploads/default/original/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd.png" title="image"><img alt="image" data-base62-sha1="4QcFK3jN63DtQkBAZLJwkSTVDpX" data-small-upload="../../../uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_10x10.png" height="260" src="../../../uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_690x260.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_690x260.png, https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_1035x390.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/2/21ef66f376f2af7a3614849c84a662a7132d7dcd_2_1380x520.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1588×600 42.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>סבבה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8647.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-12T19:02:46Z" itemprop="datePublished">
+                     12 בינואר,‏ 2021,‏  7:02pm
+                  </time>
+<meta content="2021-01-12T19:02:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נשמע מצוין, בהצלחה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/events/8647/11 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:05:06 GMT -->
+</html>

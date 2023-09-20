@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/12-5-jinja2-heroku/8361/1 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:50:30 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="מה היא סביבה וירטואלית?
+נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב. 
+פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית. 
+אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח,&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8361.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8361.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="1.html" property="og:url"/>
+<meta content="1.html" name="twitter:url"/>
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" property="og:title"/>
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" name="twitter:title"/>
+<meta content="מה היא סביבה וירטואלית? נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב.  פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית.  אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח, גרסה 0.12), ושדרוג שלו ישבור את המערכת.  הפרויקט השני הוא מערכת התרגילים של הקורס, שמשתמש בטכנולוגיה חדשה ונוצצת.  בין המודולים שמככּבים בו נמצא Flask בגרסתו החדשה ביותר – גרסה 1.1.  בפרויקט שלישי משל עצמכם אתם משתמשים במודולים אחרים, אבל חלק מהמודולים שבהם אתם משתמשים, נסמכים ב..." property="og:description"/>
+<meta content="מה היא סביבה וירטואלית? נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב.  פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית.  אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח, גרסה 0.12), ושדרוג שלו ישבור את המערכת.  הפרויקט השני הוא מערכת התרגילים של הקורס, שמשתמש בטכנולוגיה חדשה ונוצצת.  בין המודולים שמככּבים בו נמצא Flask בגרסתו החדשה ביותר – גרסה 1.1.  בפרויקט שלישי משל עצמכם אתם משתמשים במודולים אחרים, אבל חלק מהמודולים שבהם אתם משתמשים, נסמכים ב..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-12" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="5 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="27 ❤"/>
+<meta content="2020-10-20T01:00:14+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="../83614658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8361.html">שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%a9%d7%91%d7%95%d7%a2-12.html" rel="tag">שבוע-12</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 12 – יום 5: סביבה וירטואלית, Jinja2, העלאה ל־Heroku" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="תוכן-הוראה, שבוע-12" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T01:00:14Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  1:00am
+                  </time>
+<meta content="2020-10-22T22:10:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>מה היא סביבה וירטואלית?</h2>
+<p>נניח שאתם מתכנתים כמה וכמה פרויקטים על אותו מחשב.</p>
+<p>פרויקט אחד הוא של העבודה, בו אתם עורכים קוד שנכתב לפני 5 שנים ומשתמש במודולים ישנים יחסית.<br/>
+אחד המודולים, Flask, נניח, הוא בגרסה ישנה מאוד (נניח, גרסה 0.12), ושדרוג שלו ישבור את המערכת.</p>
+<p>הפרויקט השני הוא מערכת התרגילים של הקורס, שמשתמש בטכנולוגיה חדשה ונוצצת.<br/>
+בין המודולים שמככּבים בו נמצא Flask בגרסתו החדשה ביותר – גרסה 1.1.</p>
+<p>בפרויקט שלישי משל עצמכם אתם משתמשים במודולים אחרים, אבל חלק מהמודולים שבהם אתם משתמשים, נסמכים בעצמם על מודולים אחרים.<br/>
+בין המודולים, ישנו גם מודול A שבעצמו נסמך מודול B – הרי הוא Flask בגרסה 1.0.</p>
+<p>כשאתם מנסים לעבור בין פרויקטים אתם מגלים שגרסה 0.12 של Flask אינה תואמת עם גרסה 1.1,<br/>
+וגרסה 1.1 מתנהגת מעט שונה מגרסה 1.0.</p>
+<p>מובן שישנה בעיה: לא פרקטי להסיר את Flask ולהתקין את הגרסה הרצויה כל פעם שנעבור לעבוד על פרויקט אחר.</p>
+<h3>הפתרון? סביבות וירטואליות!</h3>
+<p>סביבה וירטואלית מאפשרת לנו להגדיר מעין קופסה מבודדת שבה רץ פייתון בלי כל המודולים שהתקנו על המחשב.<br/>
+אם נרצה, נוכל להתקין עבור המערכת שאנחנו כותבים בעבודה סביבה וירטואלית (דמיינו חדר מבו‏ּדד וסטרילי) שבה מותקנים <em>רק</em> המודולים ששייכים לפרויקט שלנו.<br/>
+כשנרצה לעבור לפרויקט אחר, נניח, לזה של מערכת הגשת התרגילים בקורס – נוכל להגדיר עבורו סביבה וירטואלית משלו, שבה יהיו מותקנים <em>רק</em> המודולים שקשורים למערכת הגשת התרגילים בקורס.</p>
+<p>אלו שתי סביבות שונות, נפרדות אחת מהשנייה, שלא יודעות על קיומן אחת של השנייה, או על המודולים שהותקנו אחת אצל השנייה.<br/>
+זה מאפשר לנו (ולכל מי שיעבוד על המערכת שלנו) להפעיל כל אחת מהסביבות בנפרד, ולעבוד עליהן באופן בלתי תלוי.</p>
+<h3>איך עושים את זה?</h3>
+<p>כל מה שצריך כדי <em>ליצור</em> סביבה וירטואלית, זה להריץ בשורת הפקודה:<br/>
+<code>python -m venv PROJECT_NAME</code></p>
+<p>הפקודה הזו תיצור תיקייה חדשה בשם PROJECT_NAME, שבתוכה יהיו תיקיות וקבצים.<br/>
+התיקיות והקבצים הללו הם מה שמאפשר לסביבה הווירטואלית לפעול.<br/>
+מרובם אתם רוצים להתעלם בשלב הזה, אבל אתם עדיין צריכים להיכנס לתוך הסביבה הווירטואלית כדי שתפעל.</p>
+<p>כדי <em>להפעיל</em> את הסביבה הווירטואלית, אם כך, תצטרכו לרשום:</p>
+<ul>
+<li>בווינדוס: <code>PROJECT_NAME\Scripts\activate.bat</code>
+</li>
+<li>ב־MacOS/בלינוקס: <code>source PROJECT_NAME/bin/activate</code>
+</li>
+</ul>
+<p>וזהו. כעת אתם בתוך הסביבה הווירטואלית.<br/>
+ליד שורת הפקודה שלכם אמורה להתווסף המילה PROJECT_NAME, כדי להזכיר לכם שזה המצב.<br/>
+תוכלו לצאת מהסביבה הווירטואלית בכל זמן אם תכתבו <code>deactivate</code>.</p>
+<p>הסביבה הווירטואלית תקפה רק בחלון שבו הפעלתם אותה.<br/>
+אם תריצו פקודות בחלון אחר אתם לא תפעלו תחת הסביבה הווירטואלית ותשפיעו על גרסת הפייתון “הראשית” שמותקנת אצלכם במחשב.</p>
+<p>כדי להתקין מודול חדש תוכלו להשתמש ב־pip, כרגיל.<br/>
+שימו לב שהתקנת המודול תתבצע בתוך הסביבה הווירטואלית ולא תשפיע על גרסת הפייתון הראשית שמותקנת אצלכם במחשב.<br/>
+כדי לשמור את כל ההתקנות שביצעתם בסביבה וירטואלית מסוימת ולשלוח אותם לחבריכם שיוכלו להתקין אותן בקלות, כתבו:</p>
+<blockquote>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</blockquote>
+<p>הפקודה הזו תיצור קובץ בשם requirements.txt, שמכיל את כל החבילות שמותקנות אצלכם בסביבה.<br/>
+אם תכתבו אותו כשאתם מחוץ לסביבה הווירטואלית, ישפכו לקובץ הזה כל החבילות שמותקנות אצלכם על הגרסה הראשית של פייתון, ולא דווקא מותקנות בסביבה הווירטואלית. משמע: חשוב לוודא שאתם בתוך הסביבה הווירטואלית שלכם לפני שהרצתם pip freeze.</p>
+<p>טיפ: ודאו ש־requirements.txt נמצא אצלכם בתיקייה הראשית של הפרויקט. זה הנוהג, ויש אפילו שירותים שיאפשרו לכם להעלות חבילה של פייתון וידרשו שהקובץ הזה ישב שם.</p>
+<p>כדי להתקין את כל החבילות שנמצאות בקובץ requirements.txt שקיבלתם מחבר או בתוך פרויקט כלשהו, היכנסו לסביבה הווירטואלית וכתבו:</p>
+<blockquote>
+<p><code>pip install -r requirements.txt</code></p>
+</blockquote>
+<p>זהו. אתם יודעים להשתמש בסביבות וירטואליות <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<h3>גרסאות נוספות</h3>
+<p>נוסף על השיטה שהוצגה פה פה, יש שיטות נוספות ליצור סביבות וירטואליות.<br/>
+(קריאת העשרה, ממילא אין צורך לזכור את כל זה ותתקלו בדברים האלו ככל שתעבדו יותר עם פייתון)</p>
+<ol>
+<li>המודול virtualenv – אותו רעיון, אבל לא חלק מהמודולים שבאים עם פייתון ויש לו <a href="https://virtualenv.pypa.io/en/latest/">יותר פיצ’רים</a>.</li>
+<li>המודול conda – שילוב מעניין בין מנהל חבילות לסביבה וירטואלית. לא בשימוש נרחב, אבל נוח יחסית. מאפשר גם לבחור את גרסת הפייתון שרוצים להשתמש בה, אם אתם עובדים על פרויקטים שתומכים בגרסאות פייתון שונות.</li>
+<li>המודול pipenv הוא מודול פופולרי מאוד, שבדומה ל־conda עשיר בפיצ’רים לניהול סביבה וחבילות. מעבר לתפקידה של הפקודה <code>pipenv</code> שיוצרת סביבה וירטואלית, היא גם יודעת לנהל גם את החבילות שמותקנות באותה סביבה. הטריק של pipenv הוא ליצור קובץ נפרד בשם Pipfile.lock שבו יש את גרסאות החבילות שהותקנו, ללא התלויות שלהם (יכולים לחשוב על היתרונות והחסרונות? פתחו על זה דיון בפורום).</li>
+<li>המודול poetry הוא מודול שמתחיל לתפוס תאוצה בשנה האחרונה. הוא דומה ל־pipenv אבל תומך בתקנים החדשים ביותר של השפה, ונראה שהוא עובד די טוב בפועל.</li>
+</ol>
+<p>הקהילה די מפוצלת בנוגע לשיטת ניהול התלויות והסביבה של הפרויקט, כך שאתם מוזמנים לבחור בדרך המועדפת עליכם.<br/>
+אשאיר את קריאת ההרחבה וההשוואה על כל אחד מהמודולים הללו עבורכם.</p>
+<h2>תבניות לאתר: Jinja2</h2>
+<p>כשאנחנו כותבים קוד לאתר שלנו קצה־לקצה, אנחנו כבר יודעים שנצטרך להשתמש לא מעט ב־HTML.<br/>
+הצרה היא שכשאנחנו רוצים לשלב את ה־HTML הזה עם פייתון, פעמים רבות נצטרך להכניס לדף מידע באופן דינאמי. למשל:</p>
+<ol>
+<li>אם קיבלנו מ־API חיצוני רשימת עצמים (מזג האוויר בשבוע הקרוב, העמלות של השקל מול הדולר בשבוע האחרון, רשימת כל הפוקימונים שקיימים) ואנחנו רוצים לשלב אותם ב־HTML באמצעות לולאה.</li>
+<li>אם אנחנו רוצים להציג חלק מסוים בדף רק במקרים מסוימים. לדוגמה, במערכת התרגילים מוצגת בדף התרגיל האפשרות להוסיף הערה אך ורק אם המשתמש הוא המנהל.</li>
+<li>אם אנחנו רוצים להציג בכל הדפים תפריט, אבל לא רוצים לשכפל את הקוד כשאנחנו יוצרים דף חדש עבור המערכת.</li>
+</ol>
+<p>לצורך כך סביבות שמתעסקות באתרי אינטרנט לרוב מנגישות למתכנתים דבר שנקרא Web template engine.<br/>
+הרעיון של Web template engines הוא לאפשר למתכנתים לכתוב HTML, ולהוסיף לו Syntax מוסכם מראש שיאפשר למתכנתים להטמיע בתוך אותו HTML תוכן דינאמי.</p>
+<p>הנה, לדוגמה, קוד ב־Jinja2 (שנלקח <a href="https://palletsprojects.com/p/jinja/">מכאן</a>). נניח שלקובץ קוראים user_list.html:</p>
+<pre><code class>{% extends "layout.html" %}
+{% block body %}
+  &lt;ul&gt;
+  {% for user in users %}
+    &lt;li&gt;&lt;a href="{{ user.url }}"&gt;{{ user.username }}&lt;/a&gt;&lt;/li&gt;
+  {% endfor %}
+  &lt;/ul&gt;
+{% endblock %}
+</code></pre>
+<p>בקוד הזה השורה הראשונה אומרת שה־HTML במסמך הזה הולך להיות “מודבק” בתוך מסמך אחר, שנקרא layout.html.<br/>
+התוכן שבא אחר־כך מורה על ul (רשימה לא מסודרת של תבליטים) שמכילה תבליט אחד עבור כל משתמש במשתנה user.<br/>
+עבור כל user מתוך רשימת users, יופיע קישור שיילקח מתוך user.url, והמלל של הקישור יהיה user.username.</p>
+<p>שימו לב לשילוב המעניין בין תחביר פייתוני לבין תחביר של HTML. זו היכולת המעניינת (והמועילה) שאנחנו מקבלים ב־Web template engines בכלל, וב־Jinja2 בפרט.</p>
+<p>התשתית שבה אנחנו משתמשים לבניית אתרים, Flask, משתמשת ב־Jinja2 בתור ה־Web template engine שמגיע יחד איתה.<br/>
+כל קובץ שיהיה בתוך תיקיית templates בפרויקט שלנו נחשב ל"template", ו־Flask תדע לטעון אותו באמצעות הפונקציה render_template.<br/>
+אם נניח נרצה לטעון את ה־template שנקרא <code>user_list.html</code> כאשר משתמש נכנס לעמוד <code>/all_users</code>, נכתוב את הקוד הבא:</p>
+<pre><code class>@app.route('/all_users')
+def login():
+    registered_users = get_all_users()  # נניח שהפונקציה הזו מחזירה את רשימת המשתמשים במערכת
+    render_template('user_list.html', users=registered_users)
+</code></pre>
+<p>ל־Jinja2 יש הרבה פיצ’רים וטריקים נחמדים.<br/>
+אתם יכולים לקרוא עליהם ב<a href="https://jinja.palletsprojects.com/en/2.11.x/">תיעוד</a>, או לראות <a href="https://github.com/PythonFreeCourse/lms/tree/master/lms/templates">דוגמאות</a> בקוד המקור של מערכת התרגילים.</p>
+<h2>אחסון באינטרנט</h2>
+<p>כשאנחנו רוצים להעלות אתר דינאמי שבנינו לאינטרנט, חשוב לנו שיקרו כמה דברים:</p>
+<ol>
+<li>שהוא יהיה נגיש מכל מקום בעולם, והניהול שלו יהיה נגיש מכל מקום בעולם.</li>
+<li>שהגישה אליו תהיה מהירה יחסית – זה אומר שהחיבור של המקום שמאחסן את האתר לאינטרנט יהיה טוב מאוד, ואולי אפילו הגורם המאחסן ישתמש בכל מני <a href="https://en.wikipedia.org/wiki/Content_delivery_network">טריקים</a> כדי להמהיר את הגישה לאתר שלנו.</li>
+<li>שיאפשר לנו לשלוט על המחשב שעליו מאוחסן האתר שלנו כאילו זה היה המחשב שלנו.</li>
+</ol>
+<p>ישנם מספר שירותים שעונים על הדרישות האלו, ומוגדרים כפלטפורמה נוחה להעלות אליה את אתרי האינטרנט שתכנתנו באמצעות Flask (או באמצעות כל מודול/שפת תכנות אחרים).</p>
+<h3>השרת</h3>
+<p>למרות ש־Flask יודע לקבל בקשות HTTP, זו לא המומחיות שלו והוא מבצע את זה בצורה איטית וגרועה יחסית.<br/>
+Flask מיועד בעיקר לספק לנו את הסביבה לפיתוח האתר, ופחות כרכיב שאחראי להיות השרת שמטפל בפניות HTTP.</p>
+<p>לעומתו, ישנן תוכנות שייעודן לטפל בבקשות HTTP במהירות וביעילות. הן נקראות “שרתי אינטרנט” או “שרתי HTTP”, ולפעמים הן מגיעות עם פיצ’רים חשובים, כמו ניהול עומסים, תמיכה ב־IPv6, ניהול זיכרון מטמון, אפשרות להוספת headers לתשובות ששולח השרת, ניהול הקונפיגורציה של התקשורת המאובטחת (HTTPS) וכן הלאה.</p>
+<p>שרתי האינטרנט המוכרים ביותר כיום הם nginx, Apache, lighttpd ו־IIS.<br/>
+לצרכים שלנו הבחירה בינו לבין Apache או לבין lighttpd היא די שרירותית.</p>
+<p>בשביל להשלים את הפאזל, נצטרך רכיב שידע לתרגם את מה שמגיע לשרת האינטרנט ל־Flask, ואת מה שיוצא מ־Flask לשרת האינטרנט. הרכיב הזה נקרא WSGI, או <a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">Web Server Gateway Interface</a>. התוכנה שנבחר לצורך הזה נקראת Gunicorn.</p>
+<h4>לסיכום:</h4>
+<ol>
+<li>יש לנו פייתון שמריץ Flask, שהוא מודול בפייתון שיודע לקבל בקשות לפי מיקום הבקשה (<code>app.route</code>) ולפיהן להחזיר תשובות.</li>
+<li>בד"כ נרצה לטעון בעזרתו templates שכתובים ב־Jinja2.</li>
+<li>את הבקשות מהאינטרנט תקבל תוכנה שזה הייעוד שלה ובזה היא טובה: שרת אינטרנט, כמו nginx או Apache.</li>
+<li>בין שרת האינטרנט ל־Flask יישב רכיב שיודע לתרגם דברים אחד לשני (WSGI). בחרנו באחד שנקרא Gunicorn.</li>
+</ol>
+<h3>ספק האחסון</h3>
+<p>כיום יש תחרות גדולה בקרב החברות הגדולות על מי “יזכה” לארח את האתר שלנו באינטרנט. בין החברות הגדולות שמציעות שירותים כאלו נמצאות Amazon, Goolge ו־Microsoft עם השירותים AWS, GCP ו־Azure (בהתאמה). החברות האלו מנסות לצוד בעיקר לקוחות ענק שישלמו להם אלפי דולרים ועד מיליוני דולרים בחודש על השכרת שרתים, אבל כדגי הרקק שאנחנו – רובן יציעו לנו תוכניות חינמיות משתלמות, לפחות לשנה בחינם.</p>
+<p>ספק האחסון שנסקור הוא Heroku, שדואג לפשט את כל תהליך העלאת האתר. כדי להשתמש בו, תצטרכו <a href="https://signup.heroku.com/signup/dc">לפתוח חשבון</a> ב־Heroku.</p>
+<p>צרו במחשב שלכם סביבה וירטואלית, כמו שלמדנו בתחילת היום. לצורך הדוגמה, נקרא לה heroku:</p>
+<blockquote>
+<p><code>python -m venv heroku</code></p>
+</blockquote>
+<p>הפעילו את הסביבה הוירטואלית באמצעות <code>source heroku/bin/activate</code> או <code>heroku\Scripts\activate.bat</code>, בתלות במערכת ההפעלה שלכם.<br/>
+לאחר מכן התקינו את flask ואת gunicorn באמצעות pip.</p>
+<p>צרו קובץ חדש ששמו app.py, וכיתבו בו קוד בסיסי שמשתמש ב־Flask:</p>
+<pre><code class="lang-python">from flask import Flask, request, jsonify
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "&lt;h1&gt;Welcome to our server !!&lt;/h1&gt;"
+
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
+</code></pre>
+<p>הריצו flask run, היכנסו ל־<a href="http://localhost:5000/">http://localhost:5000</a> ובדקו שהסביבה שלכם עובדת.</p>
+<p>צרו את קובץ requirements.txt, שמכיל את כל התלויות ש־Heroku צריכים להכיר:</p>
+<blockquote>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</blockquote>
+<p>צרו קובץ נוסף בשם Procfile (ללא סיומת).<br/>
+הקובץ הזה הוא קובץ מיוחד עבור Heroku, שמגדיר עבור Heroku אילו פקודות להריץ בכל מני מקרים.<br/>
+אנחנו נכתוב בתוכו רק את השורה:</p>
+<blockquote>
+<p><code>web: gunicorn app:app</code></p>
+</blockquote>
+<p>שאומרת: ברגע שמגיעה בקשת אינטרנט, תפנה אותה ל־gunicorn.<br/>
+(מבולבלים? זה בסדר. Heroku דואג להרים Web server מאחורי הקלעים כדי שלא נצטרך להתעסק בזה. הוא יקבל את הבקשות ל־Web server שיעביר אותם ל־gunicorn).</p>
+<p>עכשיו צרו git שינהל את כל הקוד שכתבתם – זה הדבר המנומס לעשות.<br/>
+כתבו <code>git init .</code> בתיקייה הרלוונטית, ואז <code>git add -A</code> ו־<code>git commit -a -m "First commit"</code>.</p>
+<p>אנחנו כמעט מוכנים לשיגור. התחברו ל־Heroku, ולחצו על New -&gt; Create new app.<br/>
+צרו אפליקציה בשם שמתחשק לכם (שמרו אותו), וכשתגיעו לעמוד הניהול יהיו לכם שתי אפשרויות:</p>
+<ol>
+<li>העלאה באמצעות GitHub – אם העלתם את האפליקציה שלכם לגיטהאב זה מעולה, ותוכלו לעשות את זה ביתר קלות מכאן.</li>
+<li>העלאה באמצעות Heroku CLI – תצטרכו להתקין לפי המדריך <a href="https://devcenter.heroku.com/articles/heroku-command-line">כאן</a>. אחרי שהתקנתם, כתבו <code>heroku login</code> בחלון חדש של שורת פקודה. אחרי שהתחברתם היכנסו לפרויקט שלכם, הפעילו את הסביבה הוירטואלית, כיתבו <code>heroku git:remote -a PROJECT_NAME</code> ואז <code>git push heroku master</code>.</li>
+</ol>
+<p>עכשיו אתם אמורים להיות מסוגלים לראות את האתר שלכם ב־ <code>https://PROJECT_NAME.herokuapp.com/</code>. מזל טוב!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../topic/8411.html" itemprop="url">ריכוז חומרים: שבוע 12</a>
+<meta content="10" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../debag-flask/8378/4.html" itemprop="url">Debag flask - טיפ שימושי</a>
+<meta content="11" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">car.chopin</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T15:17:58Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  3:17pm
+                  </time>
+<meta content="2020-10-20T15:17:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאלה ללייב של היום- יש אפשרות להדגים איך עובדים עם css בהקשר jinja ו-flask? למשל, אני משתמשת בFlaskForm כדי לייצר טופס, ויש בו כפתור submit. אבל משום מה כשאני מנסה לעצב בcss, הוא מקבל את העיצוב של ההורה (תגית form) ולא עיצוב שהגדרתי למחלקה שנתתי לו. תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nitayv</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:10:21Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:10pm
+                  </time>
+<meta content="2020-10-20T16:10:21Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי.<br/>
+כל נושא בסביבות הוירטואלית לא ממש יושב לי טוב.<br/>
+אני עד עכשיו משתמש באנקונדה ופותח משם את הסביבת עבודה ויש לי מלא בלאגן עם זה. אשמח בלייב להבין רגע מאפס איך זה עובד בלי אנקונדה ועם אנקונדה הנושא הזה של סביבה וירטואלית כי לא ממש הצלחתי להתנתק מהבייס של האנקונדה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:23:44Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:23pm
+                  </time>
+<meta content="2020-10-20T16:23:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאלה ללייב -<br/>
+לגבי קלט של טקסט הבנתי כיצד לעבוד, מסקרן אותי לדעת כיצד עובדים כאשר מקבלים קובץ מהמשתמש לדוגמה תמונה, קבצי וידאו וכד’<br/>
+האם יש צורת עבודה מקובלת? מהן הסכנות שטומנות בכך?<br/>
+תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:27:44Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:27pm
+                  </time>
+<meta content="2020-10-20T16:27:44Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כדי שאתייחס אל זה בלייב אצטרך משהו יותר ספציפי.<br/>
+קראת את הדוקומנטציה של עבודה עם קבצים ב¯Flask? מה שם לא יושב?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:28:41Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:28pm
+                  </time>
+<meta content="2020-10-20T16:28:41Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא לגמרי הבנתי את הקשר בין אנקונדה, איך אתה משתמש באנקונדה והסביבה הוירטואלית. תוכל להרחיב בבקשה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:29:31Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:29pm
+                  </time>
+<meta content="2020-10-20T16:29:31Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תוכלי לשתף בבקשה את ה¯CSS ואת התוצאה הויזואלית?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:35:58Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:35pm
+                  </time>
+<meta content="2020-10-20T16:35:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>טרם קראתי, אבל קראתי שיש סכנות בקבלת קבצים מלקוח ותמיד צריך לחשוד במה המשתמש ינסה לעלות לשרת.<br/>
+אם אפשר הכוונה בנושא של עבודה בצורה חכמה עם קבצים המתקבלים מלקוח אני אשמח (בפן האבטחתי)<br/>
+ויכול להיות שהשאלה שלי עדיין בוסרית</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Joseph.Gati</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:50:29Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:50pm
+                  </time>
+<meta content="2020-10-20T16:50:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניתן להרחיב בלייב היום על הנושא של wsgi? דוגמא ספציפית תעזור מאוד.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">car.chopin</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T16:55:33Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  4:55pm
+                  </time>
+<meta content="2020-10-20T17:07:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה קובץ הhtml של הטופס:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/adcbbd5972bb8e9b26045d544c6a4317ee66460d" href="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" title="image"><img alt="image" data-base62-sha1="oNt6YHI0NSw8ezxy6i7SbkoJtKt" data-small-upload="../../../uploads/default/optimized/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d_2_10x10.png" height="236" src="../../../uploads/default/original/2X/a/adcbbd5972bb8e9b26045d544c6a4317ee66460d.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">929×319 17.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+ספציפית מה שלא עובד זה form.submit עם מחלקת button.<br/>
+זה הcss הרלוונטי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/79998621e5c7f8d2e18145c871111496f5098bf3" href="../../../uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" title="image"><img alt="image" data-base62-sha1="hlIHf76qbL8zehMOEvKDLYsmNyz" data-small-upload="../../../uploads/default/optimized/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3_2_10x10.png" height="500" src="../../../uploads/default/original/2X/7/79998621e5c7f8d2e18145c871111496f5098bf3.png" width="364"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">378×518 10 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+זה העיצוב הסופי:<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/554f77a2d7de3e059c1c838c8f9228ec1fbeab61" href="../../../uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png" title="image"><img alt="image" data-base62-sha1="caGQgjCEzuuw7KiztCcmDGoHKFj" data-small-upload="../../../uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_10x10.png" height="387" src="../../../uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/5/554f77a2d7de3e059c1c838c8f9228ec1fbeab61.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 90.5 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div><br/>
+אפשר לראות פה שהכפתור Trump it לא מקבל את העיצוב שנתתי לו במחלקת buttom.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T17:30:04Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  5:30pm
+                  </time>
+<meta content="2020-10-20T17:30:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש אפשרות לעלות תיקיות לgithub?<br/>
+כי יש לי תיקייה בשם templates ש-flask חייבת לראות שהיא קיימת.</p>
+<p>אני חושב שבגלל זה אני מקבל שגיאה.<br/>
+אגב גם לא הצלחתי גם דרך התוכה של heroku הוא נתקע לי אחרי הlogin<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/7895bb8833777e83269ea2d3df0dba08ae8822d0" href="../../../uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png" title="image"><img alt="image" data-base62-sha1="hcK60Hpxt8P1xEaCqGRZ1lY1nri" data-small-upload="../../../uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_10x10.png" height="222" src="../../../uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_690x222.png, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0_2_1035x333.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/7/7895bb8833777e83269ea2d3df0dba08ae8822d0.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1163×375 19.9 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>כמובן שעל המחשב הכל עובד</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ef0d23e36f9494478359d9e048019cb256425d0b" href="../../../uploads/default/original/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b.png" title="image"><img alt="image" data-base62-sha1="y6KgCOGATBtMR3uPKD9FeB8gge7" data-small-upload="../../../uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_10x10.png" height="103" src="../../../uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_690x103.png, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1035x154.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/e/ef0d23e36f9494478359d9e048019cb256425d0b_2_1380x206.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1387×209 20.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p>מצטער שלא יכולתי להגיע לשיעור היום! חוגגים ירח דבש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:00:19Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:00pm
+                  </time>
+<meta content="2020-10-20T18:00:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא מצאתי API שמספק את כל המידע שרציתי בצורה מסודרת (ובכל מקרה רציתי גם להיות מסוגל לבצע חיפוש על כל המידע), אז השתמשתי ב webscraping בשביל לחלץ את כל המידע הדרוש וייצאתי אותו לקובץ json. האם נכון יותר לבצע את הפעולה הזו בכל פעם שהשרת עולה (אם זה בכלל אפשרי או הגיוני) או שמספיק לצרף את הקובץ כחלק מהקבצים לשרת ולאבד את היכולת לעדכן את המידע?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:04:45Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:04pm
+                  </time>
+<meta content="2020-10-20T18:04:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תלוי בצורך.<br/>
+אם זה מידע שלא משתנה כמעט (נניח, רשימת הפוקימונים והמתקפות שלהם) – הגיוני לבדוק בהעלאת השרת האם הקובץ הזה קיים/מעודכן ולפעול בהתאם.<br/>
+אם זה מידע שמתעדכן תדיר – אולי עדיף לעדכן את הנתונים בכל בקשה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T18:20:54Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  6:20pm
+                  </time>
+<meta content="2020-10-20T18:20:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האיסוף של כל הנתונים לוקח בממוצע בין דקה וחצי ל-2 דקות, אז לעדכן אותו כל בקשה יהיה איום ונורא.<br/>
+בגדול מדובר במידע שאכן כמעט ולא משתנה (אם בכלל), אז אלך עם התחושה הראשונית ואמשוך אותו בהעלאת השרת.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:13:49Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:13pm
+                  </time>
+<meta content="2020-10-20T19:13:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי ים,</p>
+<p>תודה על התייחסות בסרטוןן!</p>
+<p>זה הלוג -<br/>
+(אני חושב שחסרה לי תיקיית templates (בגלל flask) בגיטהאב ובגלל זה יש שגיאה, איך ניתן להקים תיקייה בגיטהאב?</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/cf64e3ded15863e9dc31484017cb9c4badaf2642" href="../../../uploads/default/original/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642.png" title="image"><img alt="image" data-base62-sha1="tAGZx2h4QuxY75J7GpEBG3HZyX8" data-small-upload="../../../uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_10x10.png" height="375" src="../../../uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/c/cf64e3ded15863e9dc31484017cb9c4badaf2642_2_1380x750.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1915×1041 102 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:16:14Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:16pm
+                  </time>
+<meta content="2020-10-20T19:16:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>פשוט צור קובץ index.html ב־templates</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T19:30:19Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  7:30pm
+                  </time>
+<meta content="2020-10-20T19:30:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה רבה!</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d" href="../../../uploads/default/original/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d.png" title="image"><img alt="image" data-base62-sha1="mrtaBafWgnsB2hhKX2nPWEME1Ih" data-small-upload="../../../uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_10x10.png" height="375" src="../../../uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_690x375.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1035x562.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/9/9d4ac6ce63b81ec6c0f0a99654430d1033cd927d_2_1380x750.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1913×1041 49.6 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T21:10:18Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏  9:10pm
+                  </time>
+<meta content="2020-10-20T21:10:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני מנסה לדמיין את הסיטואציה שלך בירח דבש עם לפטופ <img alt=":rofl:" class="emoji" src="../../../images/emoji/twitter/roflc164.png?v=9" title=":rofl:"/> <img alt=":rofl:" class="emoji" src="../../../images/emoji/twitter/roflc164.png?v=9" title=":rofl:"/><br/>
+ים זה לגמרי נצחון שלך בכמה לוקחים את הקורס שלך ברצינות.</p>
+<p>ועכשיו ברצינות - המון מזל טוב <img alt=":smiley:" class="emoji" src="../../../images/emoji/twitter/smileyc164.png?v=9" title=":smiley:"/> <img alt=":partying_face:" class="emoji" src="../../../images/emoji/twitter/partying_facec164.png?v=9" title=":partying_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">EliranRefaely</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-20T23:48:52Z" itemprop="datePublished">
+                     20 באוקטובר,‏ 2020,‏ 11:48pm
+                  </time>
+<meta content="2020-10-20T23:48:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הגעתי עד לפה, לא יכול להפסיד!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eyalmerav</span>
+</span>
+<link href="../8361.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-10-21T06:09:54Z" itemprop="datePublished">
+                     21 באוקטובר,‏ 2020,‏  6:09am
+                  </time>
+<meta content="2020-10-21T06:09:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איך עושים ירח דבש בתקופה כזאת?!<br/>
+אני מניח שאתם בארץ… ?!<br/>
+<img alt=":sweat_smile:" class="emoji only-emoji" src="../../../images/emoji/twitter/sweat_smilec164.png?v=9" title=":sweat_smile:"/><img alt=":statue_of_liberty:" class="emoji only-emoji" src="../../../images/emoji/twitter/statue_of_libertyc164.png?v=9" title=":statue_of_liberty:"/><img alt=":statue_of_liberty:" class="emoji only-emoji" src="../../../images/emoji/twitter/statue_of_libertyc164.png?v=9" title=":statue_of_liberty:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="../83614658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/12-5-jinja2-heroku/8361/1 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:50:30 GMT -->
+</html>

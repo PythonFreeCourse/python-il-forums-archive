@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/3273/3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:37:47 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מחברת 6 - בוליאנים - מס׳ 3 מאת Yam - שבוע 1 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+מישהו יכול להסביר לי למה הביטוי : ‘5’ &amp;gt; ‘24’ מחזיר True?" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../3273.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../3273.rss" rel="alternate nofollow" title="הזנת RSS של ‚מחברת 6 - בוליאנים’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="3.html" property="og:url"/>
+<meta content="3.html" name="twitter:url"/>
+<meta content="מחברת 6 - בוליאנים" property="og:title"/>
+<meta content="מחברת 6 - בוליאנים" name="twitter:title"/>
+<meta content="אלו נקודות נהדרות אסף, אני רק אחדד – דווקא יש משמעות להשוואה בין מחרוזות.  כשאנחנו משווים בין שתי מחרוזות, אנחנו למעשה לוקחים את התו הראשון במחרוזת הראשונה והתו הראשון במחרוזת השנייה, ובודקים מי מבחינת סדר לקסיקוגרפי (מילוני) גדול יותר. אם התו הראשון זהה, עוברים להשוות את התו השני וכן הלאה.  אז הביטוי הבוליאני ‘24’ קטן מ־‘5’ מחזיר True מכיוון שהמחרוזת 2 קטנה לקסיקוגרפית מהמחרוזת 5.  – ים" property="og:description"/>
+<meta content="אלו נקודות נהדרות אסף, אני רק אחדד – דווקא יש משמעות להשוואה בין מחרוזות.  כשאנחנו משווים בין שתי מחרוזות, אנחנו למעשה לוקחים את התו הראשון במחרוזת הראשונה והתו הראשון במחרוזת השנייה, ובודקים מי מבחינת סדר לקסיקוגרפי (מילוני) גדול יותר. אם התו הראשון זהה, עוברים להשוות את התו השני וכן הלאה.  אז הביטוי הבוליאני ‘24’ קטן מ־‘5’ מחזיר True מכיוון שהמחרוזת 2 קטנה לקסיקוגרפית מהמחרוזת 5.  – ים" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 1" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="מחרוזות" property="og:article:tag"/>
+<meta content="אופרטורי-השוואה" property="og:article:tag"/>
+<meta content="בוליאניים" property="og:article:tag"/>
+<meta content="2020-03-29T11:16:17+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../3273.html">מחברת 6 - בוליאנים</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/6-category/6.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 1</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%9e%d7%97%d7%a8%d7%95%d7%96%d7%95%d7%aa.html" rel="tag">מחרוזות</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%90%d7%95%d7%a4%d7%a8%d7%98%d7%95%d7%a8%d7%99-%d7%94%d7%a9%d7%95%d7%95%d7%90%d7%94.html" rel="tag">אופרטורי-השוואה</a>, 
+            <a class="discourse-tag" href="../../../tag/%d7%91%d7%95%d7%9c%d7%99%d7%90%d7%a0%d7%99%d7%99%d7%9d.html" rel="tag">בוליאניים</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מחברת 6 - בוליאנים" itemprop="headline"/>
+<meta content="שבוע 1" itemprop="articleSection"/>
+<meta content="מחרוזות, אופרטורי-השוואה, בוליאניים" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Gili</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T08:06:06Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏  8:06am
+                  </time>
+<meta content="2021-08-28T13:34:32Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,<br/>
+מישהו יכול להסביר לי למה הביטוי : ‘5’ &gt; ‘24’ מחזיר True?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../3857/2.html" itemprop="url">שאלה לגבי מחברת 6 - התרגול עצמו במחברת</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Asafmich</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T08:26:46Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏  8:26am
+                  </time>
+<meta content="2020-03-29T08:26:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש פה השוואה בין מחרוזות, כלומר פייתון לוקחת שני טקסטים ומשווה ביניהם.<br/>
+אם היית רוצה לבדוק את המצב בין 24 ל 5 אז היה צריך לרשום את בלי ה ’ '.<br/>
+יותר חשוב להבין שיש בעיה להשתמש בכמתים להשוות מחרוזות (מילים) מאשר להבין למה זה מחזיר אמת לדעתי.<br/>
+כלומר, האם ‘כד’ גדול מ: ‘צלחת’? אין לנו באמת דרך לפתור את זה אלא אם כן נשייך איזשהו ערכים מספריים.<br/>
+מקווה שזה ברור <img alt=":confused:" class="emoji" src="../../../images/emoji/twitter/confusedc164.png?v=9" title=":confused:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T11:16:17Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏ 11:16am
+                  </time>
+<meta content="2020-03-29T11:16:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="2" data-topic="3273" data-username="Asafmich">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/a/d26b3c/40.png" width="20"/> Asafmich:</div>
+<blockquote>
+<p>יותר חשוב להבין שיש בעיה להשתמש בכמתים להשוות מחרוזות (מילים) מאשר להבין למה זה מחזיר אמת לדעתי.<br/>
+כלומר, האם ‘כד’ גדול מ: ‘צלחת’? אין לנו באמת דרך לפתור את זה אלא אם כן נשייך איזשהו ערכים מספריים.<br/>
+מקווה שזה ברור</p>
+</blockquote>
+</aside>
+<p>אלו נקודות נהדרות אסף, אני רק אחדד – דווקא יש משמעות להשוואה בין מחרוזות.<br/>
+כשאנחנו משווים בין שתי מחרוזות, אנחנו למעשה לוקחים את התו הראשון במחרוזת הראשונה והתו הראשון במחרוזת השנייה, ובודקים מי מבחינת סדר לקסיקוגרפי (מילוני) גדול יותר. אם התו הראשון זהה, עוברים להשוות את התו השני וכן הלאה.<br/>
+אז הביטוי הבוליאני ‘24’ קטן מ־‘5’ מחזיר True מכיוון שהמחרוזת 2 קטנה לקסיקוגרפית מהמחרוזת 5.</p>
+<p>– ים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../boolean/3535/3.html" itemprop="url">שאלה בקשר להשוואה בין סטרינגים במחברת Boolean</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Meyrav</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T12:17:56Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏ 12:17pm
+                  </time>
+<meta content="2020-03-29T12:17:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@Yam</span><br/>
+בJAVA ניתן להשוות עוד פרמטרים בין מחרוזות, ובכללי להוציא מידע על מחרוזות, כמו אורך המחרוזת או מספר הופעות של תו מסוים בתוך המחרוזת.<br/>
+האם נלמד כיצד לעשות זאת בפייתון?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T12:22:13Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏ 12:22pm
+                  </time>
+<meta content="2020-03-29T12:22:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/> בעתיד נדע איך.<br/>
+השוואת אורכי מחרוזות זה משהו שאפשר לעשות כבר השבוע, נסי למצוא איך!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-29T12:47:47Z" itemprop="datePublished">
+                     29 במרץ,‏ 2020,‏ 12:47pm
+                  </time>
+<meta content="2020-03-29T12:47:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@Yam</span><br/>
+לא משהו רציני, אבל בחוברת 6<br/>
+| False   | 4 &gt; 5   | האם צד שמאל קטן יותר מצד ימין    | &lt;              |<br/>
+האופרטור כתוב הפוך מהתיאור, בפועל צריך להיות:<br/>
+| False   | 4 &lt; 5   | האם צד שמאל קטן יותר מצד ימין    | &lt;              |</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">omerkate</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T10:36:55Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏ 10:36am
+                  </time>
+<meta content="2020-03-30T10:36:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לי התרגיל האחרון עשה error גם לאחר שעשיתי int ל input, אז ניסיתי לבדוק מה לא בסדר ובחנתי אם הטיפ שנתתם עובד (ש print(1 == 1) יציג לי True) וזה גם עשה לי error כך שיש לי בעיה אחרת שם ככל הנראה, מנין היא נובעת?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T11:06:17Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏ 11:06am
+                  </time>
+<meta content="2020-03-30T11:25:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@omerkate</span> אפשר לראות מה כתבת שעשה את הבעיה?<br/>
+כלומר להעלות לפה תמונה כדי להבין את השאלה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">matan18</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T11:17:06Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏ 11:17am
+                  </time>
+<meta content="2020-03-30T11:17:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שלום, מתקשה בתרגיל בסוף המחברת.<br/>
+יש מצב לייעוץ, הכוונה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">omerkate</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/1X/11da4c74070131580af680a56be17a74dc07ab8b.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T11:50:26Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏ 11:50am
+                  </time>
+<meta content="2020-03-30T11:50:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/11da4c74070131580af680a56be17a74dc07ab8b" href="../../../uploads/default/original/1X/11da4c74070131580af680a56be17a74dc07ab8b.png" title="image"><img alt="image" data-base62-sha1="2xVOOSI7dSOvzFwYIlEMrPRANdh" data-small-upload="../../../uploads/default/optimized/1X/11da4c74070131580af680a56be17a74dc07ab8b_2_10x10.png" height="387" src="../../../uploads/default/optimized/1X/11da4c74070131580af680a56be17a74dc07ab8b_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/1X/11da4c74070131580af680a56be17a74dc07ab8b_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/1X/11da4c74070131580af680a56be17a74dc07ab8b_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/1X/11da4c74070131580af680a56be17a74dc07ab8b.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 68.2 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/656bf280097e0f8fbb4605093a15ede94637e3c4" href="../../../uploads/default/original/1X/656bf280097e0f8fbb4605093a15ede94637e3c4.png" title="image"><img alt="image" data-base62-sha1="etdv1NbFUDNls30G1GaOOoYMvmQ" data-small-upload="../../../uploads/default/optimized/1X/656bf280097e0f8fbb4605093a15ede94637e3c4_2_10x10.png" height="387" src="../../../uploads/default/optimized/1X/656bf280097e0f8fbb4605093a15ede94637e3c4_2_690x387.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/1X/656bf280097e0f8fbb4605093a15ede94637e3c4_2_690x387.png, https://forums.pythonic.guru/uploads/default/optimized/1X/656bf280097e0f8fbb4605093a15ede94637e3c4_2_1035x580.png 1.5x, https://forums.pythonic.guru/uploads/default/original/1X/656bf280097e0f8fbb4605093a15ede94637e3c4.png 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1366×768 75 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">arieveksler</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T12:56:23Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏ 12:56pm
+                  </time>
+<meta content="2020-03-30T12:56:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@omerkate</span> נראה שהפקודה PRINT לא יודעת לקרוא לאופרטור בינארי.<br/>
+ממליץ לנסות אותו הדבר רק להסיר את הPRINT ולראות מה יוצא</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">oksana</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T15:42:15Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏  3:42pm
+                  </time>
+<meta content="2020-03-30T15:42:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be" href="../../../uploads/default/original/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be.jpg" title="צילומסך"><img alt="צילומסך" data-base62-sha1="qCLW7Ce1i8dS7EJ9f6Q7w14ASXs" data-small-upload="../../../uploads/default/optimized/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be_2_10x10.png" height="163" src="../../../uploads/default/optimized/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be_2_690x163.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be_2_690x163.jpeg, https://forums.pythonic.guru/uploads/default/optimized/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be_2_1035x244.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/1X/ba9a8d87d0cb24d10c7bf19869f757dbd8d958be_2_1380x326.jpeg 2x" width="690"/><div class="meta">
+<svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">צילומסך</span><span class="informations">1399×332 22.4 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div><br/>
+היי אשמח לדעת איפה אני טועה בתרגיל האחרון של חוברת 6 ולמה לא משנה איזה מספר אני אזין זה מראה TRUE<br/>
+תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Eden</span>
+</span>
+<link href="../3273.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-03-30T18:29:22Z" itemprop="datePublished">
+                     30 במרץ,‏ 2020,‏  6:29pm
+                  </time>
+<meta content="2020-03-30T18:29:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>,היי<br/>
+False למה כאשר מבצעים 1 == “1” התשובה המתקבלת היא<br/>
+וכאשר מבצעים<br/>
+2 in “20”<br/>
+?אז מופיעה הודעת שגיאה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/3273/3 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:37:47 GMT -->
+</html>

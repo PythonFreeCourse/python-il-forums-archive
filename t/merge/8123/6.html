@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/merge/8123/6 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:05:16 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Merge - איחוד שתי תיקיות? - מס׳ 6 מאת Yam - שבוע 10 - פייתון בעברית ובחינם</title>
+<meta content="היי, 
+לא הבנתי איך הפונקציה merge גורמת לאיחוד של ה-commit הנוכחי (שעליו HEAD מצביע) עם ה-commit שהענף שהועבר לפונקציה מצביע עליו. 
+
+בתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME. 
+בצעו com&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../8123.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../8123.rss" rel="alternate nofollow" title="הזנת RSS של ‚Merge - איחוד שתי תיקיות?’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6.html" property="og:url"/>
+<meta content="6.html" name="twitter:url"/>
+<meta content="Merge - איחוד שתי תיקיות?" property="og:title"/>
+<meta content="Merge - איחוד שתי תיקיות?" name="twitter:title"/>
+<meta content="כן, אלו זה קבצים שנמצאים בתיקיית ה־commit id שעליה HEAD מצביע, עם קבצים שנמצאים ב־commit id שקיבלנו כפרמטר ל־merge.  אנחנו מניחים שלא שינו את ה־staging area מאז ה־checkout האחרון (לא עשו add לקבצים חדשים).  זה מתקשר ומתחבר למה שאלון כותב בהודעה הבאה:   כן – צריך להכשיל את ה־merge אם תכולת ה־staging area שונה מהתכולת התיקייה של ה־commit id האחרון." property="og:description"/>
+<meta content="כן, אלו זה קבצים שנמצאים בתיקיית ה־commit id שעליה HEAD מצביע, עם קבצים שנמצאים ב־commit id שקיבלנו כפרמטר ל־merge.  אנחנו מניחים שלא שינו את ה־staging area מאז ה־checkout האחרון (לא עשו add לקבצים חדשים).  זה מתקשר ומתחבר למה שאלון כותב בהודעה הבאה:   כן – צריך להכשיל את ה־merge אם תכולת ה־staging area שונה מהתכולת התיקייה של ה־commit id האחרון." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 10" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="wit-merge" property="og:article:tag"/>
+<meta content="2020-09-08T22:32:47+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"Merge - איחוד שתי תיקיות?","mainEntity":{"@type":"Question","name":"Merge - איחוד שתי תיקיות?","text":"היי,\n\nלא הבנתי איך הפונקציה merge גורמת לאיחוד של ה-commit הנוכחי (שעליו HEAD מצביע) עם ה-commit שהענף שהועבר לפונקציה מצביע עליו.\n\nבתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME.\n\nבצעו commit חדש כרגיל, והעבירו את HEAD, ואת ה־branch הפעיל ל־commit id החדש. אל תעבירו א&hellip;","upvoteCount":1,"answerCount":0,"dateCreated":"2020-09-08T10:40:53.938Z","author":{"@type":"Person","name":"Alon Ben Ari"}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../8123.html">Merge - איחוד שתי תיקיות?</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../../c/old/week-10/21.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 10</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/wit-merge.html" rel="tag">wit-merge</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Merge - איחוד שתי תיקיות?" itemprop="headline"/>
+<meta content="שבוע 10" itemprop="articleSection"/>
+<meta content="wit-merge" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T10:40:54Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏ 10:40am
+                  </time>
+<meta content="2020-09-08T15:11:52Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי,</p>
+<p>לא הבנתי איך הפונקציה merge גורמת לאיחוד של ה-commit הנוכחי (שעליו HEAD מצביע) עם ה-commit שהענף שהועבר לפונקציה מצביע עליו.</p>
+<blockquote>
+<p>בתוך ה־staging_area, החליפו את הקבצים ששונו מאז הבסיס המשותף ועד BRANCH_NAME.<br/>
+בצעו commit חדש כרגיל, והעבירו את HEAD, ואת ה־branch הפעיל ל־commit id החדש. אל תעבירו את BRANCH_NAME ל־commit id החדש.</p>
+</blockquote>
+<p>האם ב-staging area כבר נמצאים הקבצים שיש ב-commit שעליו מצביע HEAD? אחרת ה-commit החדש שנוצר הוא רק העתק של הענף שהועבר לפונקציה.<br/>
+ואם כן, אז כנראה ב-staging area יש גם קבצים שנוספו אחרי היווצרות שני ה- commit-ים שאנחנו רוצים לאחד. כך שיש שם גם קבצים שאין באף אחת מהתיקיות.</p>
+<p>ועוד שאלת הבנה בסיסית, לא הבנתי איפה מצופה מהמשתמש לעבוד על הקבצים שהוא רוצה להוסיף\לשנות, ישירות בתוך תיקיית ה-commit שהוא רוצה או בתיקיית הבסיס (זו שנמצא בה .wit)?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T14:50:07Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  2:50pm
+                  </time>
+<meta content="2020-09-08T14:50:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>merge הוא מיזוג של התיקיה הנוכחית עם הענף branch שהוא קיבל בפרמטר.</p>
+<p>מצופה מהמשתמש לעבוד בתיקיה המקורית שלו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T18:34:46Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  6:34pm
+                  </time>
+<meta content="2020-09-08T18:34:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבנתי את המטרה של merge, לא הבנתי בפועל איך היא מתקיימת לפי ההוראות שניתנו.<br/>
+לפי מה שהבנתי, מה שנוצר זו תיקייה שכוללת קבצים מהענף שהועבר לפונקציה (כי הקבצים משם הועתקו ל-staging area) ועוד קבצים שכבר היו ב-staging area.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T19:02:40Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  7:02pm
+                  </time>
+<meta content="2020-09-08T19:02:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הבנת נכון.<br/>
+התיקיה מכילה מיזוג של קבצים:<br/>
+קבצים שנמצאים בstaging של הממזג<br/>
+וקבצים שנוספו או שונו מאז הפיצול בין הממזג לענף שפוצל ממנו.(שאחרי שמצאת אותם אתה מעתיק לstaging)<br/>
+בסוף מתקבל לך בstaging, קבצים שמכילים גם את הקבצים של הממוזג(הענף שקיבלת בפרמטר)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Alon.B.A</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T20:02:54Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏  8:02pm
+                  </time>
+<meta content="2020-09-08T20:02:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בדיוק עמדתי לכתוב שאלה ואז הבנתי את הפער שהיה לי.<br/>
+רציתי לשאול מה קורה במצב שבו HEAD מצביע לא על ה-commit האחרון שבוצע, ואז עושים merge עם ענף מסוים. במקרה כזה, [חשבתי ש]ה- staging area מכיל גם קבצים של add-ים אחרים שבוצעו לאחרונה. ואז תיקיית האיחוד מכילה קבצים שלא נמצאים באף אחת מהתיקיות.<br/>
+ואז נזכרתי שכאשר מבצעים checkout, כל תיקיית ה-staging area מתעדכנת לפי הענף/commit_id שהועבר (אני ממש מחקתי את התיקייה והעתקתי את כל הקבצים לתיקייה חדשה בשם זה). ולכן, בכל מצב, תכולת ה-staging_area זהה לתכולת תיקיית commit_id שעליה מצביע כרגע HEAD.<br/>
+זה נכון?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-08T22:32:47Z" itemprop="datePublished">
+                     8 בספטמבר,‏ 2020,‏ 10:32pm
+                  </time>
+<meta content="2020-09-08T22:32:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote group-helper" data-post="4" data-topic="8123" data-username="efratush">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/e/ecc23a/40.png" width="20"/> efratush:</div>
+<blockquote>
+<p>קבצים שנמצאים בstaging של הממזג</p>
+</blockquote>
+</aside>
+<p>כן, אלו זה קבצים שנמצאים בתיקיית ה־commit id שעליה HEAD מצביע, עם קבצים שנמצאים ב־commit id שקיבלנו כפרמטר ל־merge.<br/>
+אנחנו מניחים שלא שינו את ה־staging area מאז ה־checkout האחרון (לא עשו add לקבצים חדשים).</p>
+<p>זה מתקשר ומתחבר למה שאלון כותב בהודעה הבאה:</p>
+<aside class="quote no-group" data-post="5" data-topic="8123" data-username="Alon.B.A">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../letter_avatar_proxy/v4/letter/a/f1d935/40.png" width="20"/> Alon.B.A:</div>
+<blockquote>
+<p>ואז נזכרתי שכאשר מבצעים checkout, כל תיקיית ה-staging area מתעדכנת לפי הענף/commit_id שהועבר (אני ממש מחקתי את התיקייה והעתקתי את כל הקבצים לתיקייה חדשה בשם זה). ולכן, בכל מצב, תכולת ה-staging_area זהה לתכולת תיקיית commit_id שעליה מצביע כרגע HEAD.</p>
+</blockquote>
+</aside>
+<p>כן – צריך להכשיל את ה־merge אם תכולת ה־staging area שונה מהתכולת התיקייה של ה־commit id האחרון.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../9199.html" itemprop="url">Merge הכשלת הפעולה</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T08:15:48Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  8:15am
+                  </time>
+<meta content="2020-09-10T08:15:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי אז אם הבנתי נכון,<br/>
+יש לי שני קומיטים - האחד הפעיל שהhead נמצא עליו(נקרא לו A) והאחד שקיבלתי כפרמטר(נקרא לו B).</p>
+<ul>
+<li>אני מחפש את המכנה המשותף שלהם ומוצא(נקרא לו C).</li>
+<li>אני מוודא שהתוכן של staging_area והתוכן של A זהים.</li>
+</ul>
+<p>עכשיו החלק שאני מתקשה להבין, אילו קבצים יועתקו לstaging_area לפני הקומיט?<br/>
+ראיתי שכתוב להעתיק את הקבצים שהשתנו מאז אבל אני מנסה להבין מה אני מחפש.<br/>
+נניח שאני משווה בין C לA, ורואה שבC יש שני קבצים שאין בA, וב-A יש שני קבצים שאין ב-C(אחרים).<br/>
+מאיפה אני מעתיק את מצב הקבצים, מ-B?</p>
+<p>תודה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T10:14:57Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏ 10:14am
+                  </time>
+<meta content="2020-09-10T10:19:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למיטב הבנתי, הכוונה היא לקבצים ששונו בתוכנם (ובעלי אותו שם) ולקבצים שקיימים ב-B אך לא קיימים ב-A (קבצים שנוספו).</p>
+<p>נגיד שיש לך תמונה ראשונה שקיימים בה:</p>
+<blockquote>
+<p>Text1.py, Text2.py</p>
+</blockquote>
+<p>יש לך תמונה אחרת שיש בו את:</p>
+<blockquote>
+<p><strong>Text1.py</strong>, Text2.py, Text3.py</p>
+</blockquote>
+<p>המודגשים הם הקבצים ששונו בתוכנם.</p>
+<p>שלבים:</p>
+<ol>
+<li>מצא את ההבדלים: Text1.py ו-Text3.py.</li>
+<li>העתק ל-staging_area את הקבצים האלו במקביל למה שכבר יש שם.</li>
+<li>בצע commit (פקודה כזו תייצר תמונה בעלת 2 הורים).</li>
+<li>שנה את הענף הפעיל והראש כך שיצביעו על התמונה החדשה.</li>
+</ol>
+<p>לי יש שאלה אחרת אבל:<br/>
+בגיט, כשאתה מבצע איחוד בין 2 תמונות שהראשונה היא האב של השנייה, לא נוצרת תמונה חדשה אלא מתבצעים כל השלבים על בסיס הקבצים של האב.<br/>
+גם במימוש שלנו זה קורה, אבל בסוף ההנחייה היא לייצר תמונה חדשה בכל פעם.<br/>
+יש צורך (במסגרת הנחיות התרגיל, לא לכיף <img alt=":wink:" class="emoji" src="../../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/>) לממש את הפונקציה הזו? או שמהבחינה הזו התרגיל דורש ליצור תמונה חדשה בהכרח כל פעם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T17:14:18Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  5:14pm
+                  </time>
+<meta content="2020-09-10T17:14:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="8" data-topic="8123" data-username="eliory09">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/eliory09/40/47_2.jpg" width="20"/> eliory09:</div>
+<blockquote>
+<p>בגיט, כשאתה מבצע איחוד בין 2 תמונות שהראשונה היא האב של השנייה, לא נוצרת תמונה חדשה אלא מתבצעים כל השלבים על בסיס הקבצים של האב.</p>
+</blockquote>
+</aside>
+<p>ההתנהגות שאתה מדבר עליה נקראת fast-forward והיא לרוב לא כ"כ רצויה.<br/>
+רוב מי שאני מכיר משתמש ב־flag בשם <code>--no-ff</code> כדי לנטרל את ההתנהגות הזו.<br/>
+אין צורך לממש התנהגות כזו עבור התרגיל, תמיד תיווצר תמונה חדשה בדומה להתנהגות של <code>no-ff</code></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T17:16:07Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  5:16pm
+                  </time>
+<meta content="2020-09-10T18:04:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אם אתה כרגע על A וביצעת merge עם B, וה־commit המשותף הקרוב ביותר הוא C, אתה צריך להביא את הקבצים ששונו בין A לבין C ואת הקבצים ששונו בין B לבין C.<br/>
+את כל שאר הקבצים ב־A אתה פשוט מעתיק.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T17:54:01Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  5:54pm
+                  </time>
+<meta content="2020-09-10T17:54:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בין B ל-C הגיוני לי, למה בין A ל-B? הרי אין ביניהם באמת חפיפה.<br/>
+מה שאני הבנתי בינתיים זה שאני עובד עם A ומעתיק אליו את הקבצים ששונו או התווספו בין C ל-B.<br/>
+פספסתי משהו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T18:04:01Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  6:04pm
+                  </time>
+<meta content="2020-09-10T18:04:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>סליחה, הכוונה הייתה בין A ל־C ובין B ל־C. (ערכתי בהתאם)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="../8123.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-09-10T19:10:25Z" itemprop="datePublished">
+                     10 בספטמבר,‏ 2020,‏  7:10pm
+                  </time>
+<meta content="2020-09-10T19:10:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה!<br/>
+20202020202020</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/merge/8123/6 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:05:16 GMT -->
+</html>

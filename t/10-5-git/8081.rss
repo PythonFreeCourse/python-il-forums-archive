@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 10 – יום 5: שילוב git עם שרת מרוחק</title>
+    <link>https://forums.pythonic.guru/t/10-5-git/8081</link>
+    <description>## הקדמה
+
+עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם.
+אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט.
+זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנו על ידי אחרים.
+
+כשנעבוד עם git במקום העבודה שלנו או כחלק מפרויקט Open Source משותף, חשוב שנהיה מסוגלים:
+1. להוריד את הפרויקט אלינו למחשב.
+2. לקבל עדכונים לפרויקט שהועלו על ידי שאר המתכנתים.
+3. לשלוח בקלות את הקוד שכתבנו, כך ששאר הקולגות יוכלו להוריד אותו בקלות.
+
+## הפקודות
+
+לשמחתנו, git מכירה בחשיבות העניין, ומאפשרת לנו לשלוט בכך ב־3 פקודות פשוטות:
+
+1. הפקודה git clone מקבלת כפרמטר כתובת, ומורידה ממנה את ה־repository.
+2. הפקודה git pull מקבלת את כל העדכונים שהתרחשו מאז ה־git clone או ה־git pull האחרונים שנעשו.
+3. הפקודה git push מפיצה את כל ה־commit־ים שאתם עשיתם בתיקייה המקומית שלכם לשאר הקולגות שלכם.
+
+### איך זה עובד? – הפקודה git clone
+
+בפקודה git clone אנחנו מבקשים מ־git להוריד פרויקט git מקישור שסיפקנו כפרמטר.
+
+הריצו לדוגמה את הפקודה הבאה בשורת הפקודה שלכם.
+הפקודה תוריד למחשב שלכם Repository שכולל את כל מחברות הפייתון של שבועות 1 עד 8.
+```bash
+git clone https://github.com/PythonFreeCourse/Notebooks/
+```
+
+אם תיכנסו לתיקייה החדשה שנוצרה (`cd Notebooks`) תוכלו למצוא את תיקיית `.git`.
+אתם תראו שכל פקודות ה־git שלמדתם עד כה עובדות כרגיל (נסו, לדוגמה, להריץ `git status`).
+
+אם תריצו את הפקודה `git remote -v`, יופיעו כפלט שתי שורות.
+השורה הראשונה, שלידה כתוב fetch, היא המקור שממנו `git` תמשוך מידע כשנבקש ממנה לקבל עדכונים בנוגע ל־repository.
+השורה השנייה, שלידה כתוב push, היא היעד שאליו `git` תדחוף את המידע כשנבקש ממנה לשלוח עדכונים בנוגע ל־repository.
+
+המילה `origin` שנמצאת שם היא השם שניתן כברירת מחדל למיקום שממנו הורדנו את ה־repository.
+במקרה שלנו, לדוגמה, origin זה שם מקוצר ל־`https://github.com/PythonFreeCourse/Notebooks/`.
+
+### איך זה עובד? – הפקודה git push
+
+הפקודה `git push` מאפשרת לכם לדחוף לשרת עדכונים שביצעתם ב־repository.
+לאחר הרצת הפקודה, השינויים שביצעתם ישלחו, והקולגות שלכם יוכלו להוריד אותם.
+
+יש שני קאצ&#39;ים בפקודה:
+1. לפני שתוכלו לעשות git push, תתבקשו לעשות git pull – להוריד אליכם את המצב העדכני של ה־repository.
+2. הפקודה המלאה היא: `git push origin master` (או כל branch אחר שעליו אתם נמצאים במקום `master`). 
+
+### איך זה עובד? – הפקודה git pull
+
+הפקודה git pull מאפשרת לכם למשוך עדכונים שהתבצעו ב־repository מאז שעדכנתם אותו פעם אחרונה.
+
+היא מורכבת מ־2 חלקים: 
+1. הפקודה `git fetch`, שמורידה אליכם את מה שקורה בשרת המרוחק
+2. הפקודה `git merge`, שמנסה למזג את מה ש־`git fetch` הורידה למחשב שלכם עם העבודה המקומית אצלכם במחשב.
+
+#### בעיה נפוצה: merge conflict
+
+לפעמים בעקבות הפקודה `git pull` קורה דבר מעט לא נעים שנקרא *merge conflict*.
+זה מצב שבו git לא בטוחה כיצד למזג את הגרסאות, והיא מבקשת את עזרתכם.
+
+במצב כזה, דרך הפעולה המומלצת היא:
+1. להקליד git status, כדי לראות עבור אילו קבצים המיזוג נכשל.
+2. לערוך אותם. git דאגה לכתוב בתוך הקובץ איפה הקונפליקט. הסירו את השורות המיותרות.
+3. הוסיפו את הקבצים המתוקנים בעזרת `git add`.
+4. עשו `git commit` כרגיל.
+
+בחלק מהמערכות, הפקודה `git mergetool` תמצא אצלכם במחשב כלי עזר גרפי שיכול להקל על העבודה הזו.
+ראו ב־Stackoverflow את השאלה &quot;[How to resolve merge conflicts in Git?](https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git)&quot;.
+
+## אתרים מרוחקים לאחסון repositories
+
+ישנן פלטפורמות אינטרנטיות שמציעות לנו לאחסן את הפרויקטים שלנו בחינם.
+דמיינו Google Photos, רק במקום פלטפורמה לשמירת התמונות שלכם – פלטפורמה לשיתוף הקוד שלכם :slight_smile:
+
+מתכנתים רבים משתמשים באתרים האלו מדי יום.
+לרוב, האתרים האלו משמשים לשיתוף פרויקטים שאנשים בנו – ממודולים ועד תוכני הוראה.
+אנשים רבים משתמשים בהם גם כתיק עבודות, כפרופיל אישי ברשת, כמקום למצוא חתיכות קוד מעניינות ועוד.
+
+שניים מהאתרים המובילים בתחום הם GitHub ו־GitLab.
+
+האתר GitHub פופולרי יותר בפער ניכר.
+הפלטפורמה נקנתה באוקטובר 2018 על ידי Microsoft, ולפי מדד Alexa לפופולריות של אתרים, היא נמצאת במקום ה־80 בעולם.
+זה גם האתר שבו אנחנו בחרנו לאחסן את מערכת העלאת התרגילים שלנו ואת מחברות הקורס.
+
+### איך מנווטים פה?
+
+רוב פרויקטי הקוד הפתוח המודרניים מארחים את הקוד שלהם ב־GitHub.
+זה כולל מודולים פופולריים בפייתון, כמו [requests](https://github.com/psf/requests), [tensorflow](https://github.com/tensorflow/tensorflow), [flask](https://github.com/pallets/flask), [pandas](https://github.com/pandas-dev/pandas), [numpy](https://github.com/numpy/numpy), [tqdm ](https://github.com/tqdm/tqdm), [bokeh](https://github.com/bokeh/bokeh) ועוד.
+למעשה, אפילו קוד המקור של CPython עצמה (הפייתון שאנחנו משתמשים בו) [נמצא ב־GitHub](https://github.com/python/cpython).
+עוד פרויקטים שאולי אתם מכירים ומנוהלים ב־GitHub כוללים את [VSCode](https://github.com/Microsoft/vscode) ואת [הפלטפורמה לקורסים חינמיים edx](https://github.com/edx/edx-platform).
+
+הטריק הוא לחפש בגוגל את השם של הפרויקט, כשלפניו יש את המילה GitHub. לדוגמה: GitHub VSCode.
+זה נחמד כשאנחנו רוצים לתרום קוד לפרויקט מסוים, לפתוח לו באג או לעיין בקוד שלו ולהבין איך הוא בנוי.
+זה גם יכול לעזור לנו להבין עד כמה הפיתוח של הפרויקט פעיל, והאם אפשר לסמוך על כך שתהיה תמיכה ועדכונים.
+
+כשנרצה לנווט, נסתכל על 4 אזורים מרכזיים:
+
+#### סרגל הניווט למעלה
+
+![image|690x47](upload://tNBE5A33xYsEycCIlQ9YEae3abv.png) 
+
+כאן מתחבאים מספר קישורים מעניינים:
+1. הקישור Code יאפשר לכם לגשת לראות את הקוד עצמו.
+2. הקישור Issues יאפשר לכם לראות בקשות לפיצ&#39;רים ודיווחים על תקלים שנפתחו בידי המשתמשים.
+3. הקישור Pull Requests יאפשר לכם לראות תרומות קוד שממתינות לאישור.
+4. הקישור Insights יאפשר לכם לראות תובנות מעניינות על תרומות הקוד וקהילת המפתחים של הפרויקט.
+
+המונח &quot;Pull Requests&quot; קצת מבלבל, בעיקר כיוון שאנחנו מדברים עליו כשאנחנו עושים push.
+
+[details=&quot;לפירוט על המונח Pull Request.&quot;]
+בכל פעם שתתרמו קוד לפרויקט קוד פתוח, אתם תיצרו בקשה להעלות את הקוד שלכם ל־repository המרוחק שמשותף לכולם.
+הבקשה הזו מהאדם שמתחזק את ה־repository למזג את הקוד שלכם עם הקוד הקיים נקראת &quot;pull request&quot; ([ולא &quot;push request&quot;](https://stackoverflow.com/questions/21657430/why-is-a-git-pull-request-not-called-a-push-request)), כיוון שאתם (כביכול) מבקשים מאנשים אחרים למשוך את הקוד שלכם.
+זה שם לא מוצלח, אבל זה מה יש :)
+[/details]
+
+#### לשונית הקוד
+
+![image|690x166](upload://raDqvKpWwwN1N4YMEAaCrzEHkfK.png) 
+
+התמונה היא מתוך פרויקט [LMS](https://github.com/pythonfreecourse/LMS).
+
+1. בצד שמאל העליון אנחנו יכולים לבחור על איזה branch להסתכל.
+2. בצד ימין, אם תלחצו על הכפתור הירוק &quot;Code&quot;, תקבלו קישורים להורדת הפרויקט (כ־zip או בעזרת git clone).
+3. בראש הרשימה אנחנו יכולים לראות את האדם האחרון שתרם קוד לפרויקט, את מספר ה־commit ואת כמות ה־commit־ים שהתבצעו בפרויקט תחת ה־branch.
+4. בהמשך אפשר לראות את הקבצים עצמם.
+5. אם נמשיך לגלול למטה, נראה את קובץ ה־README של הפרויקט, שלרוב מסביר כיצד להתקין אותו ומראה דוגמאות לשימוש בו.
+
+#### מדדים ל־repository איכותי ב־GitHub
+
+בבואנו להעריך האם אנחנו רוצים להשתמש במודול מסוים או בקוד שמצאנו ב־GitHub, נסתכל על כמה סימנים מעניינים:
+
+![image|372x50, 75%](upload://nWHoxHR3XtMHTpTEqSsEncGKYl5.png) 
+
+1. כמות ה־Stars של הפרויקט: כמה אלפים זה מצוין, מאות זה טוב, עשרות זה מפוקפק.
+2. כמות ה־Fork־ים. זה מראה כמה אנשים יצרו פרויקט על בסיס הפרויקט הנוכחי – בד&quot;כ כדי לתרום לפרויקט
+3. מתי הייתה התרומה האחרונה? אם לפני יותר מכמה חודשים, נראה שהפרויקט לא מתוחזק יותר. שווה לבדוק אם יש פרויקטים עדכניים יותר.
+4. כמה Commit־ים התבצעו לפרויקט? – מספר גדול בדרך כלל מראה על יותר בשלות.
+5. כמה Issue־ים פתוחים יש? האם מטפלים ב־Issue־ים או שהם נשארים פתוחים?
+
+![image|367x87, 75%](upload://ucebscsBl3szb8j4EF5hw5Pmsaf.png) 
+
+### תרגיל 1: צעדים ראשונים
+
+1. פתחו לעצמכם פרופיל ב־GitHub, אם עדיין אין לכם כזה.
+2. צרו repo חדש והעלו את מערכת wit שלכם ל־GitHub.
+3. (רשות) יעזור לתפוצת הקורס – סמנו כוכב ב־Repo־ים שלנו: [מחברות הקורס](https://github.com/PythonFreeCourse/Notebooks) ו[המערכת לבדיקת תרגילים](https://github.com/PythonFreeCourse/lms/).
+
+היעזרו במדריך [הזה](https://gist.github.com/mindplace/b4b094157d7a3be6afd2c96370d39fad), אם יש צורך.
+צרפו לפתרון התרגיל את הקישור ל־repository שיצרתם ב־GitHub.
+
+### תרגיל 2: התמודדות עם עבודה מרוחקת
+
+התרגיל הזה מומלץ מאוד, אבל לא חובה להגיש אותו.
+השלימו את תרגילים 1 ו־2 בעמוד הבא:
+
+https://github.com/martinjrobins/exercise
+
+## מקורות לימוד נוספים
+
+1. [ספר אונליין על Git](https://git-scm.com/book/en/v2). אם תבחרו לקרוא רק דבר אחד, זה צריך להיות זה. 
+ ממליץ בחום לקרוא את 6 הפרקים הראשונים כדי לצלוח את הנושא ברמת ידע גבוהה.
+2. עוד [מקור מפורט מאוד](https://gitimmersion.com/), ספר שלוקח את זה צעד צעד בנושאי git.
+3. [קורס אונלייני](https://www.udacity.com/course/version-control-with-git--ud123) שמסכם את מה שלמדנו השבוע.
+4. [איך עובדים עם GitHub?](https://www.freecodecamp.org/news/git-and-github-overview/)
+5. [איך נכון לעבוד ב־git עם אנשים בצוות (מתקדם)](https://xdg.me/blog/a-survey-of-git-best-practices)
+7. [אתר שמרכז מקורות מידע בנוגע לעבודה עם Git](https://www.git-tower.com/learn/).
+8. כבר נתתי לזה קישור בעבר, אבל עדיין, [זו ההרצאה הכי טובה שראיתי על git](https://www.youtube.com/watch?v=1ffBJ4sVUb4).</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 05 Sep 2020 18:12:06 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/10-5-git/8081.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 10 – יום 5: שילוב git עם שרת מרוחק</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h2>הקדמה</h2>
+<p>עד כה, יצרנו בסיס איתן בכל הנוגע לניהול git במחשב המקומי שלכם.<br>
+אף אחת מהפקודות שלמדתם לא מתקשרת עם האינטרנט.<br>
+זה אומר שכרגע אנחנו לא יודעים לשתף את המידע שב־repository שלכם עם משתמשים אחרים, או למשוך פרויקטים שנבנו על ידי אחרים.</p>
+<p>כשנעבוד עם git במקום העבודה שלנו או כחלק מפרויקט Open Source משותף, חשוב שנהיה מסוגלים:</p>
+<ol>
+<li>להוריד את הפרויקט אלינו למחשב.</li>
+<li>לקבל עדכונים לפרויקט שהועלו על ידי שאר המתכנתים.</li>
+<li>לשלוח בקלות את הקוד שכתבנו, כך ששאר הקולגות יוכלו להוריד אותו בקלות.</li>
+</ol>
+<h2>הפקודות</h2>
+<p>לשמחתנו, git מכירה בחשיבות העניין, ומאפשרת לנו לשלוט בכך ב־3 פקודות פשוטות:</p>
+<ol>
+<li>הפקודה git clone מקבלת כפרמטר כתובת, ומורידה ממנה את ה־repository.</li>
+<li>הפקודה git pull מקבלת את כל העדכונים שהתרחשו מאז ה־git clone או ה־git pull האחרונים שנעשו.</li>
+<li>הפקודה git push מפיצה את כל ה־commit־ים שאתם עשיתם בתיקייה המקומית שלכם לשאר הקולגות שלכם.</li>
+</ol>
+<h3>איך זה עובד? – הפקודה git clone</h3>
+<p>בפקודה git clone אנחנו מבקשים מ־git להוריד פרויקט git מקישור שסיפקנו כפרמטר.</p>
+<p>הריצו לדוגמה את הפקודה הבאה בשורת הפקודה שלכם.<br>
+הפקודה תוריד למחשב שלכם Repository שכולל את כל מחברות הפייתון של שבועות 1 עד 8.</p>
+<pre><code class="lang-bash">git clone https://github.com/PythonFreeCourse/Notebooks/
+</code></pre>
+<p>אם תיכנסו לתיקייה החדשה שנוצרה (<code>cd Notebooks</code>) תוכלו למצוא את תיקיית <code>.git</code>.<br>
+אתם תראו שכל פקודות ה־git שלמדתם עד כה עובדות כרגיל (נסו, לדוגמה, להריץ <code>git status</code>).</p>
+<p>אם תריצו את הפקודה <code>git remote -v</code>, יופיעו כפלט שתי שורות.<br>
+השורה הראשונה, שלידה כתוב fetch, היא המקור שממנו <code>git</code> תמשוך מידע כשנבקש ממנה לקבל עדכונים בנוגע ל־repository.<br>
+השורה השנייה, שלידה כתוב push, היא היעד שאליו <code>git</code> תדחוף את המידע כשנבקש ממנה לשלוח עדכונים בנוגע ל־repository.</p>
+<p>המילה <code>origin</code> שנמצאת שם היא השם שניתן כברירת מחדל למיקום שממנו הורדנו את ה־repository.<br>
+במקרה שלנו, לדוגמה, origin זה שם מקוצר ל־<code>https://github.com/PythonFreeCourse/Notebooks/</code>.</p>
+<h3>איך זה עובד? – הפקודה git push</h3>
+<p>הפקודה <code>git push</code> מאפשרת לכם לדחוף לשרת עדכונים שביצעתם ב־repository.<br>
+לאחר הרצת הפקודה, השינויים שביצעתם ישלחו, והקולגות שלכם יוכלו להוריד אותם.</p>
+<p>יש שני קאצ’ים בפקודה:</p>
+<ol>
+<li>לפני שתוכלו לעשות git push, תתבקשו לעשות git pull – להוריד אליכם את המצב העדכני של ה־repository.</li>
+<li>הפקודה המלאה היא: <code>git push origin master</code> (או כל branch אחר שעליו אתם נמצאים במקום <code>master</code>).</li>
+</ol>
+<h3>איך זה עובד? – הפקודה git pull</h3>
+<p>הפקודה git pull מאפשרת לכם למשוך עדכונים שהתבצעו ב־repository מאז שעדכנתם אותו פעם אחרונה.</p>
+<p>היא מורכבת מ־2 חלקים:</p>
+<ol>
+<li>הפקודה <code>git fetch</code>, שמורידה אליכם את מה שקורה בשרת המרוחק</li>
+<li>הפקודה <code>git merge</code>, שמנסה למזג את מה ש־<code>git fetch</code> הורידה למחשב שלכם עם העבודה המקומית אצלכם במחשב.</li>
+</ol>
+<h4>בעיה נפוצה: merge conflict</h4>
+<p>לפעמים בעקבות הפקודה <code>git pull</code> קורה דבר מעט לא נעים שנקרא <em>merge conflict</em>.<br>
+זה מצב שבו git לא בטוחה כיצד למזג את הגרסאות, והיא מבקשת את עזרתכם.</p>
+<p>במצב כזה, דרך הפעולה המומלצת היא:</p>
+<ol>
+<li>להקליד git status, כדי לראות עבור אילו קבצים המיזוג נכשל.</li>
+<li>לערוך אותם. git דאגה לכתוב בתוך הקובץ איפה הקונפליקט. הסירו את השורות המיותרות.</li>
+<li>הוסיפו את הקבצים המתוקנים בעזרת <code>git add</code>.</li>
+<li>עשו <code>git commit</code> כרגיל.</li>
+</ol>
+<p>בחלק מהמערכות, הפקודה <code>git mergetool</code> תמצא אצלכם במחשב כלי עזר גרפי שיכול להקל על העבודה הזו.<br>
+ראו ב־Stackoverflow את השאלה “<a href="https://stackoverflow.com/questions/161813/how-to-resolve-merge-conflicts-in-git">How to resolve merge conflicts in Git?</a>”.</p>
+<h2>אתרים מרוחקים לאחסון repositories</h2>
+<p>ישנן פלטפורמות אינטרנטיות שמציעות לנו לאחסן את הפרויקטים שלנו בחינם.<br>
+דמיינו Google Photos, רק במקום פלטפורמה לשמירת התמונות שלכם – פלטפורמה לשיתוף הקוד שלכם <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>מתכנתים רבים משתמשים באתרים האלו מדי יום.<br>
+לרוב, האתרים האלו משמשים לשיתוף פרויקטים שאנשים בנו – ממודולים ועד תוכני הוראה.<br>
+אנשים רבים משתמשים בהם גם כתיק עבודות, כפרופיל אישי ברשת, כמקום למצוא חתיכות קוד מעניינות ועוד.</p>
+<p>שניים מהאתרים המובילים בתחום הם GitHub ו־GitLab.</p>
+<p>האתר GitHub פופולרי יותר בפער ניכר.<br>
+הפלטפורמה נקנתה באוקטובר 2018 על ידי Microsoft, ולפי מדד Alexa לפופולריות של אתרים, היא נמצאת במקום ה־80 בעולם.<br>
+זה גם האתר שבו אנחנו בחרנו לאחסן את מערכת העלאת התרגילים שלנו ואת מחברות הקורס.</p>
+<h3>איך מנווטים פה?</h3>
+<p>רוב פרויקטי הקוד הפתוח המודרניים מארחים את הקוד שלהם ב־GitHub.<br>
+זה כולל מודולים פופולריים בפייתון, כמו <a href="https://github.com/psf/requests">requests</a>, <a href="https://github.com/tensorflow/tensorflow">tensorflow</a>, <a href="https://github.com/pallets/flask">flask</a>, <a href="https://github.com/pandas-dev/pandas">pandas</a>, <a href="https://github.com/numpy/numpy">numpy</a>, <a href="https://github.com/tqdm/tqdm">tqdm </a>, <a href="https://github.com/bokeh/bokeh">bokeh</a> ועוד.<br>
+למעשה, אפילו קוד המקור של CPython עצמה (הפייתון שאנחנו משתמשים בו) <a href="https://github.com/python/cpython">נמצא ב־GitHub</a>.<br>
+עוד פרויקטים שאולי אתם מכירים ומנוהלים ב־GitHub כוללים את <a href="https://github.com/Microsoft/vscode">VSCode</a> ואת <a href="https://github.com/edx/edx-platform">הפלטפורמה לקורסים חינמיים edx</a>.</p>
+<p>הטריק הוא לחפש בגוגל את השם של הפרויקט, כשלפניו יש את המילה GitHub. לדוגמה: GitHub VSCode.<br>
+זה נחמד כשאנחנו רוצים לתרום קוד לפרויקט מסוים, לפתוח לו באג או לעיין בקוד שלו ולהבין איך הוא בנוי.<br>
+זה גם יכול לעזור לנו להבין עד כמה הפיתוח של הפרויקט פעיל, והאם אפשר לסמוך על כך שתהיה תמיכה ועדכונים.</p>
+<p>כשנרצה לנווט, נסתכל על 4 אזורים מרכזיים:</p>
+<h4>סרגל הניווט למעלה</h4>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79.png" data-download-href="https://forums.pythonic.guru/uploads/default/d0da97bd062caa58417074faf7d616bb655c7a79" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_690x47.png" alt="image" data-base62-sha1="tNBE5A33xYsEycCIlQ9YEae3abv" width="690" height="47" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_690x47.png, https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_1035x70.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/d0da97bd062caa58417074faf7d616bb655c7a79_2_10x10.png"></a></div><p></p>
+<p>כאן מתחבאים מספר קישורים מעניינים:</p>
+<ol>
+<li>הקישור Code יאפשר לכם לגשת לראות את הקוד עצמו.</li>
+<li>הקישור Issues יאפשר לכם לראות בקשות לפיצ’רים ודיווחים על תקלים שנפתחו בידי המשתמשים.</li>
+<li>הקישור Pull Requests יאפשר לכם לראות תרומות קוד שממתינות לאישור.</li>
+<li>הקישור Insights יאפשר לכם לראות תובנות מעניינות על תרומות הקוד וקהילת המפתחים של הפרויקט.</li>
+</ol>
+<p>המונח “Pull Requests” קצת מבלבל, בעיקר כיוון שאנחנו מדברים עליו כשאנחנו עושים push.</p>
+
+לפירוט על המונח Pull Request. <a href="https://forums.pythonic.guru/t/10-5-git/8081/1">(לחיצה לפרטים נוספים)</a>
+<h4>לשונית הקוד</h4>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8.png" data-download-href="https://forums.pythonic.guru/uploads/default/be6e7b9661164c68e289e2b611993c80494e6fa8" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_690x166.png" alt="image" data-base62-sha1="raDqvKpWwwN1N4YMEAaCrzEHkfK" width="690" height="166" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_690x166.png, https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_1035x249.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/be6e7b9661164c68e289e2b611993c80494e6fa8_2_10x10.png"></a></div><p></p>
+<p>התמונה היא מתוך פרויקט <a href="https://github.com/pythonfreecourse/LMS">LMS</a>.</p>
+<ol>
+<li>בצד שמאל העליון אנחנו יכולים לבחור על איזה branch להסתכל.</li>
+<li>בצד ימין, אם תלחצו על הכפתור הירוק “Code”, תקבלו קישורים להורדת הפרויקט (כ־zip או בעזרת git clone).</li>
+<li>בראש הרשימה אנחנו יכולים לראות את האדם האחרון שתרם קוד לפרויקט, את מספר ה־commit ואת כמות ה־commit־ים שהתבצעו בפרויקט תחת ה־branch.</li>
+<li>בהמשך אפשר לראות את הקבצים עצמם.</li>
+<li>אם נמשיך לגלול למטה, נראה את קובץ ה־README של הפרויקט, שלרוב מסביר כיצד להתקין אותו ומראה דוגמאות לשימוש בו.</li>
+</ol>
+<h4>מדדים ל־repository איכותי ב־GitHub</h4>
+<p>בבואנו להעריך האם אנחנו רוצים להשתמש במודול מסוים או בקוד שמצאנו ב־GitHub, נסתכל על כמה סימנים מעניינים:</p>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/a7d4ad4db7c81079cf857490b7d57cd13e547d7b.png" alt="image" data-base62-sha1="nWHoxHR3XtMHTpTEqSsEncGKYl5" width="279" height="37"></p>
+<ol>
+<li>כמות ה־Stars של הפרויקט: כמה אלפים זה מצוין, מאות זה טוב, עשרות זה מפוקפק.</li>
+<li>כמות ה־Fork־ים. זה מראה כמה אנשים יצרו פרויקט על בסיס הפרויקט הנוכחי – בד"כ כדי לתרום לפרויקט</li>
+<li>מתי הייתה התרומה האחרונה? אם לפני יותר מכמה חודשים, נראה שהפרויקט לא מתוחזק יותר. שווה לבדוק אם יש פרויקטים עדכניים יותר.</li>
+<li>כמה Commit־ים התבצעו לפרויקט? – מספר גדול בדרך כלל מראה על יותר בשלות.</li>
+<li>כמה Issue־ים פתוחים יש? האם מטפלים ב־Issue־ים או שהם נשארים פתוחים?</li>
+</ol>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/d/d3a31967350fee13f7514733d646a3ddf0f2494b.png" alt="image" data-base62-sha1="ucebscsBl3szb8j4EF5hw5Pmsaf" width="275" height="65"></p>
+<h3>תרגיל 1: צעדים ראשונים</h3>
+<ol>
+<li>פתחו לעצמכם פרופיל ב־GitHub, אם עדיין אין לכם כזה.</li>
+<li>צרו repo חדש והעלו את מערכת wit שלכם ל־GitHub.</li>
+<li>(רשות) יעזור לתפוצת הקורס – סמנו כוכב ב־Repo־ים שלנו: <a href="https://github.com/PythonFreeCourse/Notebooks">מחברות הקורס</a> ו<a href="https://github.com/PythonFreeCourse/lms/">המערכת לבדיקת תרגילים</a>.</li>
+</ol>
+<p>היעזרו במדריך <a href="https://gist.github.com/mindplace/b4b094157d7a3be6afd2c96370d39fad">הזה</a>, אם יש צורך.<br>
+צרפו לפתרון התרגיל את הקישור ל־repository שיצרתם ב־GitHub.</p>
+<h3>תרגיל 2: התמודדות עם עבודה מרוחקת</h3>
+<p>התרגיל הזה מומלץ מאוד, אבל לא חובה להגיש אותו.<br>
+השלימו את תרגילים 1 ו־2 בעמוד הבא:</p>
+<aside class="onebox allowlistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/martinjrobins/exercise" target="_blank" rel="noopener">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <div class="aspect-image" style="--aspect-ratio:400/399;"><img src="https://forums.pythonic.guru/uploads/default/original/2X/5/51ec9d8c91fb7d535777902123efee1922d8584e.png" class="thumbnail" width="400" height="399"></div>
+
+<h3><a href="https://github.com/martinjrobins/exercise" target="_blank" rel="noopener">martinjrobins/exercise</a></h3>
+
+<p>exercise repo for git lecture. Contribute to martinjrobins/exercise development by creating an account on GitHub.</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<h2>מקורות לימוד נוספים</h2>
+<ol>
+<li>
+<a href="https://git-scm.com/book/en/v2">ספר אונליין על Git</a>. אם תבחרו לקרוא רק דבר אחד, זה צריך להיות זה.<br>
+ממליץ בחום לקרוא את 6 הפרקים הראשונים כדי לצלוח את הנושא ברמת ידע גבוהה.</li>
+<li>עוד <a href="https://gitimmersion.com/">מקור מפורט מאוד</a>, ספר שלוקח את זה צעד צעד בנושאי git.</li>
+<li>
+<a href="https://www.udacity.com/course/version-control-with-git--ud123">קורס אונלייני</a> שמסכם את מה שלמדנו השבוע.</li>
+<li><a href="https://www.freecodecamp.org/news/git-and-github-overview/">איך עובדים עם GitHub?</a></li>
+<li><a href="https://xdg.me/blog/a-survey-of-git-best-practices">איך נכון לעבוד ב־git עם אנשים בצוות (מתקדם)</a></li>
+<li>
+<a href="https://www.git-tower.com/learn/">אתר שמרכז מקורות מידע בנוגע לעבודה עם Git</a>.</li>
+<li>כבר נתתי לזה קישור בעבר, אבל עדיין, <a href="https://www.youtube.com/watch?v=1ffBJ4sVUb4">זו ההרצאה הכי טובה שראיתי על git</a>.</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/10-5-git/8081/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/10-5-git/8081/1</link>
+        <pubDate>Sat, 05 Sep 2020 06:22:29 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8081-1</guid>
+        <source url="https://forums.pythonic.guru/t/10-5-git/8081.rss">שבוע 10 – יום 5: שילוב git עם שרת מרוחק</source>
+      </item>
+  </channel>
+</rss>

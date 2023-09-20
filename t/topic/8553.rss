@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+    <link>https://forums.pythonic.guru/t/topic/8553</link>
+    <description>נניח ואני מעוניין מדי פעם לעשות שינויי בdb  
+- מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו) 
+- והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 15 Dec 2020 11:31:36 +0000</lastBuildDate>
+    <category>שבוע 14</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8553.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>תשאל את אמיר שעבר מהכללית ל-GOOGLE<br>
+<img src="https://forums.pythonic.guru/images/emoji/twitter/zipper_mouth_face.png?v=9" title=":zipper_mouth_face:" class="emoji only-emoji" alt=":zipper_mouth_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/6</link>
+        <pubDate>Tue, 15 Dec 2020 11:31:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[ofirp]]></dc:creator>
+        <description><![CDATA[
+            <p>כמה זה בריא התהליך הזה? לי לפחות זה מוכר שבוחרים שעה הכי פחות פעילה ושמים הודעה שהשרת ירד לתחזוקה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/5</link>
+        <pubDate>Tue, 15 Dec 2020 10:05:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה ! אמשיך בקריאה על זה השמע לי סופר משמעותי <img src="https://forums.pythonic.guru/images/emoji/twitter/muscle/2.png?v=9" title=":muscle:t2:" class="emoji" alt=":muscle:t2:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/4</link>
+        <pubDate>Sun, 13 Dec 2020 08:57:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>למען האמת זה נושא מורכב למדי, מה שנקרא – שאל את ארכיטקט המערכות הקרוב לביתך.<br>
+אנסה לתת פה אמ;לק לא מחייב.</p>
+<p>המטרה שלנו היא לשנות את הצורה של מסד נתונים עם 0 “זמן מת” שבו האפליקציה לא עובדת.<br>
+מהמטרה הזו נגזרות כמה שאלות:</p>
+<ol>
+<li>כנראה שיהיה data שצריך להשתנות. איך משנים אותו, טכנית, בלי לכבות את מסד הנתונים?</li>
+<li>בזמן הזה כנראה ממשיך לזרום מידע לאפליקציה. איך מתייחסים אליו ואיך מכניסים אותו למסד הנתונים? בצורה של המידע הישן? בצורה של המידע החדש? מה אנחנו בדיוק באמצע של שינוי constrains לסט מסוים של עמודות? איך מוודאים שאין race conditions?</li>
+</ol>
+<p>הנה שיטה אחת:</p>
+<ol>
+<li>להוסיף database נוסף ל־production, שהוא איך שהיית רוצה שה־database החדש יראה.</li>
+<li>לשנות את הפונקציות שאחראיות על הכנסת הנתונים ל־database. עבור כל נתון חדש שמתקבל לכתיבה: לנסות להכניס את הנתונים ל־database הישן. אם זה הצליח, להכניס אותו גם ל־database החדש. לפעמים ה־database עצמו יודע לעשות את זה בלי לשנות את התנהגות האפליקציה עצמה, זה נקרא CDC (או change data capture).</li>
+<li>לבנות סקריפט מיגרציה שלוקח את כל הנתונים מה־database הישן ומזרים אותם ל־database החדש. חשוב לזכור להשתמש ב־ON CONFLICT IGNORE בשלב הזה.</li>
+<li>כשריצת הסקריפט תסתיים, לשנות את הפונקציות שאחראיות על הכנסת הנתונים ל־database שוב כך שעבור כל נתון שמתקבל לכתיבה, יכתבו אותו רק ל־database החדש.</li>
+</ol>
+<p>שיטה אחרת היא ליצור את ה־database החדש, להפנות את הכתיבה אליו וכל פעם לקרוא מ־2 מסדי הנתונים, עד שירוץ סקריפט מיגרציה שיעביר את הנתונים מה־db הישן לחדש.</p>
+<p>תוכל לקרוא עוד על העניין בעצמך אם תגגל “database migration zero downtime”.</p>
+<p>בהצלחה!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/3</link>
+        <pubDate>Sun, 13 Dec 2020 01:13:11 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[jacov.g]]></dc:creator>
+        <description><![CDATA[
+            <p>אתה יכול להוסיף עמודות בסוף הטבלה. אם אתה מביא שדות לפי שם - שאילתות קיימות לא יתייחסו לשדות החדשים בשליפה מהטבלה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/2</link>
+        <pubDate>Sat, 12 Dec 2020 13:59:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+      <item>
+        <title>שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>נניח ואני מעוניין מדי פעם לעשות שינויי בdb</p>
+<ul>
+<li>מה הדרך הטובה ביותר לעשות זאת בסביבה שהיא פיתוח (כלומר בלי השפעה על האתר עצמו)</li>
+<li>והוצאה של זה לפרודקשין -  רצוי לעשות כמו בוידאו של ים להתחבר למסד נגיד דרך יופיטר \ סביבה מקומית ולהריץ פונקציות שמעדכנות את המסד ?</li>
+</ul>
+          <p><a href="https://forums.pythonic.guru/t/topic/8553/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8553/1</link>
+        <pubDate>Fri, 11 Dec 2020 08:57:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8553-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8553.rss">שינויים במסד הנתונים לאחר העלאה של האתר לאוויר</source>
+      </item>
+  </channel>
+</rss>

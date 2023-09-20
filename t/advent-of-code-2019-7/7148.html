@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-7/7148 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:20:51 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Advent of Code 2019 🤯 (יום 7) - אתגר - פייתון בעברית ובחינם</title>
+<meta content="בהצלחה :slight_smile: 
+יום 7" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7148.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7148.rss" rel="alternate nofollow" title="הזנת RSS של ‚Advent of Code 2019 🤯 (יום 7)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_1024x660.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_1024x660.jpg" property="og:image"/>
+<meta content="7148.html" property="og:url"/>
+<meta content="7148.html" name="twitter:url"/>
+<meta content="Advent of Code 2019 🤯 (יום 7)" property="og:title"/>
+<meta content="Advent of Code 2019 🤯 (יום 7)" name="twitter:title"/>
+<meta content="בהצלחה 🙂  יום 7" property="og:description"/>
+<meta content="בהצלחה 🙂  יום 7" name="twitter:description"/>
+<meta content="אתגר" property="og:article:section"/>
+<meta content="BF1E2E" property="og:article:section:color"/>
+<meta content="advent-of-code" property="og:article:tag"/>
+<meta content="אתגר" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="6 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="11 ❤"/>
+<meta content="2020-06-15T02:34:27+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7148.html">Advent of Code 2019 🤯 (יום 7)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/challenge/11.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #BF1E2E"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אתגר</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/advent-of-code.html" rel="tag">advent-of-code</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%90%d7%aa%d7%92%d7%a8.html" rel="tag">אתגר</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Advent of Code 2019 🤯 (יום 7)" itemprop="headline"/>
+<meta content="אתגר" itemprop="articleSection"/>
+<meta content="advent-of-code, אתגר" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-15T02:34:27Z" itemprop="datePublished">
+                     15 ביוני,‏ 2020,‏  2:34am
+                  </time>
+<meta content="2020-06-15T02:34:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>בהצלחה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+<a href="https://adventofcode.com/2019/day/7">יום 7</a></p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a" href="../../uploads/default/original/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a.jpg" title="image"><img alt="image" data-base62-sha1="a18xCs2VblOXEY2cXdMxSec7wsq" data-small-upload="../../uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_10x10.png" height="444" src="../../uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_690x444.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_690x444.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a_2_1035x666.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/4/4636aa40ba6c4f5a1e13e1bed8786a5a9bc8622a.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">1100×709 135 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yuval.cagan</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-15T15:43:49Z" itemprop="datePublished">
+                     15 ביוני,‏ 2020,‏  3:43pm
+                  </time>
+<meta content="2020-06-15T15:43:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>import operator
+
+
+def int_input(inputs=None):
+    if inputs == None or inputs == []:
+        return int(input())
+    else:
+        return inputs.pop(0)
+
+
+def intcode_computer(instructions, user_inputs=None, pass_print=False):
+    temp = instructions.copy()
+    STATES = {
+        1: {'func': operator.add, 'inputs': 3, 'index': 4, 'type': 0},
+        2: {'func': operator.mul, 'inputs': 3, 'index': 4, 'type': 0},
+        3: {'func': int_input, 'inputs': 1, 'index': 2, 'type': 1},
+        4: {'func': print, 'inputs': 1, 'index': 2, 'type': 2},
+        5: {'func': operator.truth, 'inputs': 2, 'index': 3, 'type': 3},
+        6: {'func': operator.not_, 'inputs': 2, 'index': 3, 'type': 3},
+        7: {'func': operator.lt, 'inputs': 3, 'index': 4, 'type': 4},
+        8: {'func': operator.eq, 'inputs': 3, 'index': 4, 'type': 4},
+             }
+
+    outputs = []
+    index = 0
+    while True:
+        opcode = str(temp[index]).zfill(5)
+        state = int(opcode[-2:])
+        if state != 99:
+            inputs = [temp[index + i + 1] for i in range(STATES[state]['inputs'])]
+            for pos in range(len(inputs) - 1):
+                if int(opcode[-3 - pos]) == 0:
+                    inputs[pos] = temp[inputs[pos]]
+            if STATES[state]['type'] == 0:
+                temp[inputs[-1]] = STATES[state]['func'](*inputs[:-1])
+            elif STATES[state]['type'] == 1:
+                if user_inputs is not None:
+                    inputs = user_inputs + inputs
+                temp[inputs[-1]] = STATES[state]['func'](inputs[:-1])
+                if user_inputs is not None and user_inputs != []: 
+                    user_inputs.pop(0)
+            elif STATES[state]['type'] == 2:
+                if int(opcode[-3]) == 0:
+                    inputs[0] = temp[inputs[0]]
+                if not pass_print:
+                    STATES[state]['func'](inputs[0])
+                outputs.append(inputs[0])
+            elif STATES[state]['type'] == 4:
+                if STATES[state]['func'](*inputs[:-1]):
+                    temp[inputs[-1]] = 1
+                else:
+                    temp[inputs[-1]] = 0
+            index += STATES[state]['index']
+            if STATES[state]['type'] == 3:
+                if STATES[state]['func'](*inputs[:-1]):
+                    if int(opcode[-4]) == 0:
+                        index = temp[inputs[-1]]
+                    else:
+                        index = inputs[-1]
+        else:
+            if outputs:
+                return outputs
+            else:
+                return temp
+
+
+def calc_signal(software_input, sequence_list, pass_print=False):
+    output = 0
+    for digit in sequence_list:
+        inputs = [digit, output]
+        output = intcode_computer(software_input, inputs, pass_print)[0]
+    return output
+
+
+def find_highest_signal(software_input, range_start, range_end, pass_print=False):
+    all_sequences = [[d0, d1, d2, d3, d4]
+                     for d0 in range(range_start, range_end)
+                     for d1 in range(range_start, range_end)
+                     if d1 != d0
+                     for d2 in range(range_start, range_end)
+                     if d0 != d2 != d1
+                     for d3 in range(range_start, range_end)
+                     if d0 != d3 != d1 and d3 != d2
+                     for d4 in range(range_start, range_end)
+                     if d0 != d4 != d1 and d2 != d4 != d3
+                    ]
+
+    max_signal = 0
+    for sequence in all_sequences:
+        signal = calc_signal(software_input, sequence, pass_print)
+        if signal &gt; max_signal:
+            max_signal = signal
+
+    return max_signal
+
+
+with open('Day 7.txt', 'r') as file_handler:
+    challenge_input = list(map(int, file_handler.read().split(',')))
+
+
+find_highest_signal(challenge_input, 0, 5, pass_print=True)
+</code></pre>
+</details>
+<p>הפעם הם ניצחו אותי. אני פשוט לא מבין מה רוצים בחלק 2 וויתרתי לבנתיים.<br/>
+אחזור לזה בהמשך עם ראש נקי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">nirpn1</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-15T18:39:30Z" itemprop="datePublished">
+                     15 ביוני,‏ 2020,‏  6:39pm
+                  </time>
+<meta content="2020-06-15T18:39:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":star2:" class="emoji only-emoji" src="../../images/emoji/twitter/star2c164.png?v=9" title=":star2:"/></p>
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>#day7
+#part 1
+import itertools
+import operator
+
+PRO_CODE = list(range(1, 9))
+
+
+def get_intcode_program(intcode):
+    with open(intcode, "r") as intcode_program:
+        intcode_program_read = intcode_program.read()
+    intcode_program_read = list(map(int, intcode_program_read.split(",")))
+    return intcode_program_read
+
+
+def opcode_3_4(intcode_pro, code, signal):
+    if intcode_pro[code] % 100 == 3:
+        intcode_pro[intcode_pro[code + 1]] = signal
+        return True
+    elif intcode_pro[code] % 1000 == 4:
+        return False
+    elif intcode_pro[code] % 1000 == 104:
+        return False
+    return True
+
+
+def opcode_1_2(int_code_pro, code, a, b):
+    if code == 1:
+        return operator.add(int_code_pro[a], int_code_pro[b])
+    elif code == 2:
+        return operator.mul(int_code_pro[a], int_code_pro[b])
+
+
+def opcode_5_6(int_code_pro, code, a, b):
+    if int_code_pro[code] % 100 == 5:
+        if int_code_pro[a] != 0:
+            return int_code_pro[b]
+    elif int_code_pro[code] % 100 == 6:
+        if int_code_pro[a] == 0:
+            return int_code_pro[b]
+    return code + 3
+
+
+def opcode_7_8(int_code_pro, code, a, b):
+    if int_code_pro[code] % 100 == 7:
+        if int_code_pro[a] &lt; int_code_pro[b]:
+            return 1
+    elif int_code_pro[code] % 100 == 8:
+        if int_code_pro[a] == int_code_pro[b]:
+            return 1
+    return 0
+
+
+def retrieve_parameters_mode_and_run(int_code_pro, pos, number):
+    number = str(number).zfill(5)
+    if number[2] == "0":
+        a = int_code_pro[pos + 1]
+    else:
+        a = pos + 1
+    if number[1] == "0":
+        b = int_code_pro[pos + 2]
+    else:
+        b = pos + 2
+    return a, b
+
+
+def run_code(intcode_pro, signal, signal2):
+    code = 0
+    counti = 0
+    while code &lt; len(intcode_pro):
+        if intcode_pro[code] % 100 in PRO_CODE[0:2]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            intcode_pro[intcode_pro[code + 3]] = opcode_1_2(intcode_pro, intcode_pro[code] % 100, a, b)
+            code += 4
+        elif intcode_pro[code] % 100 in PRO_CODE[2:4]:
+            if True:
+                if counti == 1:
+                    signal = signal2
+                counti = 1
+            if not opcode_3_4(intcode_pro, code, signal):
+                if intcode_pro[code + 2] == 99:
+                    if intcode_pro[code] == 4:
+                        return (intcode_pro[intcode_pro[code + 1]], intcode_pro)
+                    return (intcode_pro[code + 1], intcode_pro)
+                print("Error")
+                return False
+            code += 2
+        elif intcode_pro[code] % 100 in PRO_CODE[4:6]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            code = opcode_5_6(intcode_pro, code, a, b)
+        elif intcode_pro[code] % 100 in PRO_CODE[6:8]:
+            a, b = retrieve_parameters_mode_and_run(intcode_pro, code, intcode_pro[code])
+            value = opcode_7_8(intcode_pro, code, a, b)
+            intcode_pro[intcode_pro[code + 3]] = value
+            code += 4
+
+
+intcode_prog = get_intcode_program("resources//day7.txt")
+all_possibilites = itertools.permutations("01234", 5)
+maximum = 0
+for possible in all_possibilites:
+    output = 0
+    for digit in possible:
+        output, intcode_prog = run_code(intcode_prog, int(digit), output)
+    if output &gt; maximum:
+        maximum = output
+print(f"answer part 1 : {maximum}")
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-16T22:18:20Z" itemprop="datePublished">
+                     16 ביוני,‏ 2020,‏ 10:18pm
+                  </time>
+<meta content="2020-06-16T23:20:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חלק 2 יחכה למחר כנראה. בינתיים זה נחמד מאוד <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<details>
+<summary>
+חלק 1</summary>
+<pre><code class>from itertools import permutations 
+
+
+# *************************************** IntCode Computer ************************************************
+def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        return puzzle_input.read().split(',')
+
+
+def run_input(puzzle_input, op_dict, inputs):
+    op_code = 0
+    i = 0
+    while i &lt; len(puzzle_input) and puzzle_input[i] != '99':
+        op_code = puzzle_input[i]
+        puzzle_input, to_increase, to_set = handle_op_code(op_code, i, puzzle_input, op_dict, inputs)
+        
+        if to_increase:
+            i += int(to_increase)
+        else:
+            i = int(to_set)
+        if puzzle_input == -1:
+            return -1
+        
+    return puzzle_input
+
+
+def handle_op_code(op_code, op_code_idx, puzzle_input, op_dict, inputs):
+    op = get_operation(op_code)
+    op_code = op_code.zfill(5)
+    mode1 = op_code[2]
+    mode2 = op_code[1]
+    mode3 = op_code[0]
+    
+    if op == 99:
+        return puzzle_input, _, 0
+    elif op == -1:
+        return puzzle_input, _, 0
+    
+    elif op == 3:
+        return handle_three(op_code_idx, puzzle_input, inputs), 2, 0
+    
+    elif op == 4:
+        if int(op_code.zfill(5)[2]):
+            mode = 1
+        else:
+            mode = 0
+        return handle_four(op_code_idx, puzzle_input, mode), 2, 0
+    
+    elif op == 5:
+        to_set = handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+            
+    
+    elif op == 6:
+        to_set = handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+    
+    elif op == 7:
+        return handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+    
+    elif op == 8:
+        return handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+        
+    else:
+        return handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1, mode2, mode3), 4,0
+
+
+
+def get_operation(op_code):
+    if op_code[-1] == '1':
+        return '+'
+    elif op_code[-1] == '2':
+        return '*'
+    elif op_code[-1] == '3':
+        return 3
+    elif op_code[-1] == '4':
+        return 4
+    elif op_code[-1] == '5':
+        return 5
+    elif op_code[-1] == '6':
+        return 6
+    elif op_code[-1] == '7':
+        return 7
+    elif op_code[-1] == '8':
+        return 8
+    elif op_code[-1] == '9':
+        return 99
+    else:
+        return -1
+
+
+def get_args(op_code_idx, puzzle_input, modes, num_args):
+    args = []
+    if num_args == 2:
+        for i in range(len(modes)):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(-1)
+
+    else:
+        for i in range(len(modes) - 1):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(op_code_idx + 3)
+    
+    return args
+
+
+def handle_three(op_code_idx, puzzle_input, inputs):
+    integer = inputs[0]
+    inputs.pop(0)
+    puzzle_input[int(puzzle_input[op_code_idx + 1])] = integer
+    return puzzle_input
+
+
+def handle_four(op_code_idx, puzzle_input, mode):
+    if mode:
+        return puzzle_input[op_code_idx + 1]
+    else:
+        return puzzle_input[int(puzzle_input[op_code_idx + 1])]
+
+
+def handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if not arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1 &lt; arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+    
+    return puzzle_input
+
+
+def handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if arg1 == arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:        
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+        
+    return puzzle_input
+
+
+def handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1='0', mode2='0', mode3='0'):
+    arg3 = int(puzzle_input[op_code_idx + 3])
+    arg2 = set_arg(op_code_idx + 2, puzzle_input, mode2)
+    arg1 = set_arg(op_code_idx + 1, puzzle_input, mode1)
+    
+    
+    operation_result = op_dict.get(op)(arg1, arg2)
+    puzzle_input[arg3] = str(op_dict.get(op)(arg1, arg2))
+    return puzzle_input
+
+
+def set_arg(idx, puzzle_input, mode):
+    if mode == '0':
+        first_input_idx = int(puzzle_input[idx])
+        arg = int(puzzle_input[first_input_idx])
+    else:
+        arg = int(puzzle_input[idx])
+    return arg
+
+
+def add(num1, num2):
+    return num1 + num2
+
+
+def multiply(num1, num2):
+    return num1 * num2
+# *************************************** IntCode Computer ************************************************
+
+
+def get_permutations(numbers):
+    perm = permutations(numbers) 
+    for i in list(perm): 
+        yield i 
+
+
+def get_best(puzzle_input, op_dict):
+    results = []
+    perms = get_permutations(range(0, 5))
+    for perm in perms:
+        res = '0'
+        for i in range(5):
+            inputs = [str(perm[i]), res]
+            res = run_input(puzzle_input, op_dict, inputs)
+        results.append(res)
+    
+    results = [int(result) for result in results]
+    return max(results)
+ 
+
+def main():
+    puzzle_input = get_input('input.txt')
+    op_dict = op_dict = {'+': add, '*': multiply}
+    first_part_result = get_best(puzzle_input, op_dict)
+    print(f'First part result: {first_part_result}')
+
+
+main()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-17T21:21:27Z" itemprop="datePublished">
+                     17 ביוני,‏ 2020,‏  9:21pm
+                  </time>
+<meta content="2020-06-17T21:21:27Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כבר כמעט השארתי את הסוף של זה למחר ויצאתי לרוץ… ואז בזמן הריצה איכשהו עלה לי רעיון וזה עבד!</p>
+<details>
+<summary>
+חלק 2</summary>
+<pre><code class>from itertools import permutations 
+
+
+# *************************************** IntCode Computer ************************************************
+def get_input(path):
+    with open(path, 'r') as puzzle_input:
+        return puzzle_input.read().split(',')
+
+
+def run_input(puzzle_input, op_dict, inputs, idx=0):
+    op_code = 0
+    i = idx
+    while i &lt; len(puzzle_input) and puzzle_input[i] != '99':
+        op_code = puzzle_input[i]
+        puzzle_input, to_increase, to_set = handle_op_code(op_code, i, puzzle_input, op_dict, inputs)
+
+        if to_increase:
+            i += int(to_increase)
+        else:
+            i = int(to_set)
+        if puzzle_input == -1:
+            return -1
+
+    if type(puzzle_input) == str:
+        return puzzle_input, i
+    
+    if puzzle_input[i] == '99':
+        return 99, i
+
+
+def handle_op_code(op_code, op_code_idx, puzzle_input, op_dict, inputs):
+    op = get_operation(op_code)
+    op_code = op_code.zfill(5)
+    mode1 = op_code[2]
+    mode2 = op_code[1]
+    mode3 = op_code[0]
+
+    if op == 99:
+        return puzzle_input, _, 0
+    elif op == -1:
+        return puzzle_input, _, 0
+
+    elif op == 3:
+        return handle_three(op_code_idx, puzzle_input, inputs), 2, 0
+
+    elif op == 4:
+        if int(op_code.zfill(5)[2]):
+            mode = 1
+        else:
+            mode = 0
+        return handle_four(op_code_idx, puzzle_input, mode), 2, 0
+
+    elif op == 5:
+        to_set = handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+
+
+    elif op == 6:
+        to_set = handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3)
+        return puzzle_input, 0, to_set
+
+    elif op == 7:
+        return handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+
+    elif op == 8:
+        return handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3), 4, 0
+
+    else:
+        return handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1, mode2, mode3), 4,0
+
+
+
+def get_operation(op_code):
+    if op_code[-1] == '1':
+        return '+'
+    elif op_code[-1] == '2':
+        return '*'
+    elif op_code[-1] == '3':
+        return 3
+    elif op_code[-1] == '4':
+        return 4
+    elif op_code[-1] == '5':
+        return 5
+    elif op_code[-1] == '6':
+        return 6
+    elif op_code[-1] == '7':
+        return 7
+    elif op_code[-1] == '8':
+        return 8
+    elif op_code[-1] == '9':
+        return 99
+    else:
+        return -1
+
+
+def get_args(op_code_idx, puzzle_input, modes, num_args):
+    args = []
+    if num_args == 2:
+        for i in range(len(modes)):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(-1)
+
+    else:
+        for i in range(len(modes) - 1):
+            if not int(modes[i]):
+                args.append(int(puzzle_input[int(puzzle_input[op_code_idx + i + 1])]))
+            else:
+                args.append(int(puzzle_input[op_code_idx + i + 1]))
+        args.append(op_code_idx + 3)
+
+    return args
+
+
+def handle_three(op_code_idx, puzzle_input, inputs):
+    integer = inputs[0]
+    inputs.pop(0)
+    puzzle_input[int(puzzle_input[op_code_idx + 1])] = integer
+    return puzzle_input
+
+
+def handle_four(op_code_idx, puzzle_input, mode):
+    if mode:
+        return puzzle_input[op_code_idx + 1]
+    else:
+        return puzzle_input[int(puzzle_input[op_code_idx + 1])]
+
+
+def handle_five(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_six(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2]
+    arg1, arg2, _ = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if not arg1:
+        return arg2
+    else:
+        return op_code_idx + 3
+
+
+def handle_seven(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))    
+    if arg1 &lt; arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+    
+    return puzzle_input
+
+
+def handle_eight(op_code_idx, puzzle_input, mode1, mode2, mode3):
+    modes = [mode1, mode2, mode3]
+    arg1, arg2, arg3 = get_args(op_code_idx, puzzle_input, modes, len(modes))
+    if arg1 == arg2:
+        puzzle_input[int(puzzle_input[arg3])] = '1'
+    else:        
+        puzzle_input[int(puzzle_input[arg3])] = '0'
+        
+    return puzzle_input
+
+
+def handle_math_ops(op_dict, op, op_code_idx, puzzle_input, mode1='0', mode2='0', mode3='0'):
+    arg3 = int(puzzle_input[op_code_idx + 3])
+    arg2 = set_arg(op_code_idx + 2, puzzle_input, mode2)
+    arg1 = set_arg(op_code_idx + 1, puzzle_input, mode1)
+    
+    
+    operation_result = op_dict.get(op)(arg1, arg2)
+    puzzle_input[arg3] = str(op_dict.get(op)(arg1, arg2))
+    return puzzle_input
+
+
+def set_arg(idx, puzzle_input, mode):
+    if mode == '0':
+        first_input_idx = int(puzzle_input[idx])
+        arg = int(puzzle_input[first_input_idx])
+    else:
+        arg = int(puzzle_input[idx])
+    return arg
+
+
+def add(num1, num2):
+    return num1 + num2
+
+
+def multiply(num1, num2):
+    return num1 * num2
+# *************************************** IntCode Computer ************************************************
+
+
+def get_permutations(numbers):
+    perm = permutations(numbers) 
+    for i in list(perm): 
+        yield i 
+
+
+def part_two(puzzle_input, op_dict):
+    results = []
+    perms = get_permutations(range(5, 10))
+    for perm in perms:
+        res = '0'
+        i = 0
+        j = 0
+        flag = False
+        amplifiers_pos = [0, 0, 0, 0, 0]
+        puzzle_input_copies = []
+        for k in range(5):
+            puzzle_input_copies.append(puzzle_input.copy())
+        
+        while res != 99:
+            if not flag:
+                inputs = [str(perm[i]), res]
+            else:
+                inputs = [res]
+            prev_res = res
+            res, j = run_input(puzzle_input_copies[i], op_dict, inputs, amplifiers_pos[i])
+            amplifiers_pos[i] = j
+            if (i + 1) % 5 == 0:
+                flag = True
+                
+            i = (i + 1) % 5
+            
+        results.append(prev_res)
+
+    results = [int(result) for result in results]
+    return max(results)
+
+
+def main():
+    puzzle_input = get_input('input.txt')
+    op_dict = op_dict = {'+': add, '*': multiply}    
+    second_part_result = part_two(puzzle_input, op_dict)
+    print(second_part_result)
+
+
+main()
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-22T00:20:30Z" itemprop="datePublished">
+                     22 ביוני,‏ 2020,‏ 12:20am
+                  </time>
+<meta content="2020-06-22T00:20:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אסגור ברביעי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T10:01:19Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏ 10:01am
+                  </time>
+<meta content="2020-06-24T10:01:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>וואי וואי, חלש פה הפעם <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+לא מת על הפתרון שלי, אבל עובד.<br/>
+מסיבות של חוסר זמן לא צנזרתי דברים שאתם לא יודעים, אבל אין פה איזו טכניקה מטורפת שגורמת להכול להיות יותר קל.</p>
+<pre><code class="lang-python">import itertools
+import operator
+from copy import copy
+from typing import (
+    Any, Callable, Dict, Iterable, Iterator, List, Optional, Tuple, Union,
+)
+
+from typing_extensions import TypedDict
+
+
+Command = TypedDict(
+    'Command',
+    {
+        'size': int, 'function': Callable[..., Any],
+        'jump': bool, 'void': int, 'method': bool,
+    },
+    total=False,
+)
+ParsedCmds = Iterator[int]
+vmethod = {'void': 1, 'method': True}
+
+
+class IntcodeMachine:
+    OPCODES: Dict[int, Command] = {
+        1: {'size': 4, 'function': operator.add},
+        2: {'size': 4, 'function': operator.mul},
+        3: {'size': 2, 'function': lambda s: s.get_input(), 'method': True},
+        4: {'size': 2, 'function': lambda s, v: s.add_output(v), **vmethod},
+        5: {'size': 3, 'function': operator.truth, 'jump': True},
+        6: {'size': 3, 'function': operator.not_, 'jump': True},
+        7: {'size': 4, 'function': lambda x, y: bool(operator.lt(x, y))},
+        8: {'size': 4, 'function': lambda x, y: bool(operator.eq(x, y))},
+    }
+
+    def __init__(self, code: List[int], inputs: Iterable[int]) -&gt; None:
+        self.eip = 0  # Instructions pointer
+        self.code = code
+        self._inputs = iter(inputs)
+        self._outputs_index = 0
+        self._outputs: List[int] = []
+
+    @property
+    def opcode(self) -&gt; int:
+        return self.code[self.eip] % 100
+
+    @property
+    def is_halt(self) -&gt; bool:
+        return self.opcode == 99
+
+    @property
+    def is_jump(self) -&gt; bool:
+        return self.opcode_get('jump', False)
+
+    def add_inputs(self, inputs: Union[int, List[int]]) -&gt; None:
+        if not isinstance(inputs, (list, tuple)):
+            inputs = [inputs]
+        self._inputs = itertools.chain(self._inputs, inputs)
+
+    def get_input(self) -&gt; Optional[int]:
+        try:
+            return next(self._inputs)
+        except StopIteration:
+            return None
+
+    def add_output(self, outputs: Union[int, List[int]]) -&gt; None:
+        if not isinstance(outputs, (list, tuple)):
+            outputs = [outputs]
+        self._outputs.extend(outputs)
+
+    def get_outputs(self) -&gt; List[int]:
+        outputs = self._outputs[self._outputs_index:]
+        self._outputs_index = len(self._outputs)
+        return outputs
+
+    @property
+    def modes(self) -&gt; Tuple[int, int, int]:
+        modes_part = self.code[self.eip] // 100
+        return modes_part % 10, modes_part // 10 % 10, modes_part // 100
+
+    def opcode_get(self, prop: str, default: Any = None) -&gt; Any:
+        return self.OPCODES[self.opcode].get(prop, default)
+
+    @property
+    def argc(self) -&gt; int:
+        return self.opcode_get('size', 2) - 2
+
+    @property
+    def args(self) -&gt; List[int]:
+        offset = self.argc + self.opcode_get('void', 0)
+        params = self.code[self.eip + 1:self.eip + 1 + offset]
+        out = []
+        for param, mode in zip(params, self.modes):
+            out.append(param if mode else self.code[param])
+        if self.opcode_get('method'):
+            out.insert(0, self)
+        return out
+
+    @property
+    def write_address(self) -&gt; Optional[int]:
+        if self.opcode_get('void'):
+            return None
+
+        write_to = self.code[self.eip + 1 + self.argc]
+        is_relative_jump = self.is_jump and self.modes[self.argc] == 0
+        return self.code[write_to] if is_relative_jump else write_to
+
+    def __call__(self) -&gt; List[int]:
+        while self.opcode != 99:
+            op_size = self.opcode_get('size')
+            args, write_to = self.args, self.write_address
+            returns = self.opcode_get('function')(*args)
+            if returns is None and self.opcode == 3:
+                return self.get_outputs()  # Halt until you get input
+            if write_to is not None and not self.is_jump:
+                self.code[write_to] = returns
+            should_jump = self.is_jump and returns
+            self.eip = write_to if should_jump else (self.eip + op_size)
+        return self.get_outputs()
+
+
+def get_input() -&gt; List[int]:
+    with open('input.txt', 'r') as challenge_input:
+        return list(map(int, challenge_input.read().strip().split(',')))
+
+
+# Part 1
+program = get_input()
+outputs = []
+for phases in itertools.permutations(list(range(5))):
+    current_input = 0
+    for phase in phases:
+        current_machine = IntcodeMachine(program, [phase, current_input])
+        current_input = current_machine()[-1]
+        program = current_machine.code
+    outputs.append(current_input)
+print(max(outputs))
+
+
+# Part 2
+program = get_input()
+max_output = 0
+for phases in itertools.permutations(list(range(5, 10))):
+    machines = [IntcodeMachine(copy(get_input()), [phase]) for phase in phases]
+    next_input = 0
+    i = 0
+    while not machines[-1].is_halt:
+        machines[i].add_inputs(next_input)
+        next_input = machines[i]()[-1]
+        i = (i + 1) % len(machines)
+    max_output = max(max_output, next_input)
+print(max_output)
+</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="7148.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-30T15:12:37Z" itemprop="datePublished">
+                     30 ביוני,‏ 2020,‏  3:12pm
+                  </time>
+<meta content="2020-06-30T15:12:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תאמין או לא - מסתבר שהקטע עם הריצה קרה גם לי!<br/>
+קצת באיחור, אבל פתרתי. עובר ל-8 <img alt=":star_struck:" class="emoji" src="../../images/emoji/twitter/star_struckc164.png?v=9" title=":star_struck:"/></p>
+<details>
+<summary>
+Advent of Code, Day 7</summary>
+<pre><code class="lang-python"># ADVENT OF CODE, DAY 7
+from itertools import permutations
+
+def get_intcode():
+    with open('input.txt', 'r') as file:
+        intcode = file.read().split(',')
+    intcode = intcode_items_to_int(intcode)
+    return intcode
+
+
+def intcode_items_to_int(intcode):
+    for i, num in enumerate(intcode):
+        intcode[i] = int(intcode[i])
+    return intcode
+
+
+def read_instruction(code):
+    opcode = int(code) % 100
+    parameters = str(int(code) // 100).zfill(3)
+    return opcode, parameters
+
+
+def run_intcode(amp_memory, phase, intcode):
+    i = 0
+    j = 0
+    is_phase = True
+    is_ended = False
+    current_output = 0
+    while i &lt; len(intcode):
+        opcode, parameters = read_instruction(intcode[i])
+        if opcode == 1 or opcode == 2:
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if parameters[1] == '0':
+                num2 = intcode[intcode[i + 2]]
+            elif parameters[1] == '1':
+                num2 = intcode[i + 2]
+            if opcode == 1:
+                intcode[intcode[i + 3]] = num1 + num2
+            else:
+                intcode[intcode[i + 3]] = num1 * num2
+            i += 4
+        if opcode == 3:
+            if is_phase:
+                intcode[intcode[i + 1]] = phase
+                is_phase = False
+            else:
+                intcode[intcode[i + 1]] = amp_memory[j]
+                j += 1
+            i += 2
+        if opcode == 4:
+            if parameters[2] == '0':
+                current_output = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                current_output = intcode[i + 1]
+            if j == len(amp_memory):
+                return intcode, current_output, is_ended
+            i += 2
+        if opcode == 5 or opcode == 6:
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if opcode == 5:
+                if num1 != 0:
+                    if parameters[1] == '0':
+                        i = intcode[intcode[i + 2]]
+                    if parameters[1] == '1':
+                        i = intcode[i + 2]
+                else:
+                    i += 3
+            if opcode == 6:
+                if num1 == 0:
+                    if parameters[1] == '0':
+                        i = intcode[intcode[i + 2]]
+                    if parameters[1] == '1':
+                        i = intcode[i + 2]
+                else:
+                    i += 3
+        if opcode == 7 or opcode ==8:
+            if parameters[2] == '0':
+                num1 = intcode[intcode[i + 1]]
+            elif parameters[2] == '1':
+                num1 = intcode[i + 1]
+            if parameters[1] == '0':
+                num2 = intcode[intcode[i + 2]]
+            elif parameters[1] == '1':
+                num2 = intcode[i + 2]
+            if opcode == 7:
+                if num1 &lt; num2:
+                    intcode[intcode[i + 3]] = 1
+                else:
+                    intcode[intcode[i + 3]] = 0
+            if opcode == 8:
+                if num1 == num2:
+                    intcode[intcode[i + 3]] = 1
+                else:
+                    intcode[intcode[i + 3]] = 0
+            i += 4
+        if opcode == 99:
+            is_ended = True
+            return intcode, current_output, is_ended
+
+
+def feedback_loop(phases):
+    options = list(permutations(phases))
+    max_thrusters = 0
+    correct_phases = []
+    current_amp = 'a'
+    for option in options:
+        amp_a = [0]
+        amp_b = []
+        amp_c = []
+        amp_d = []
+        amp_e = []
+        is_complete = False
+        j = 0
+        while not is_complete:
+            for phase in option:
+                intcode = get_intcode()
+                if current_amp == 'a':
+                    intcode, output_value, _ = run_intcode(amp_a, phase, intcode)
+                    amp_b.append(output_value)
+                    current_amp = 'b'
+                elif current_amp == 'b':
+                    intcode, output_value, _ = run_intcode(amp_b, phase, intcode)
+                    amp_c.append(output_value)
+                    current_amp = 'c'
+                elif current_amp == 'c':
+                    intcode, output_value, _ = run_intcode(amp_c, phase, intcode)
+                    amp_d.append(output_value)
+                    current_amp = 'd'
+                elif current_amp == 'd':
+                    intcode, output_value, _ = run_intcode(amp_d, phase, intcode)
+                    amp_e.append(output_value)
+                    current_amp = 'e'
+                elif current_amp == 'e':
+                    intcode, output_value, is_complete = run_intcode(amp_e, phase, intcode)
+                    amp_a.append(output_value)
+                    current_amp = 'a'
+        if amp_a[-1] &gt; max_thrusters:
+            max_thrusters = amp_a[-1]
+            correct_phases = option
+    return (max_thrusters, correct_phases) 
+
+
+# PART 1
+print(feedback_loop([0, 1, 2, 3, 4]))
+# PART 2
+print(feedback_loop([5, 6, 7, 8, 9]))
+</code></pre>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/advent-of-code-2019-7/7148 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:20:57 GMT -->
+</html>

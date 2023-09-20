@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/7813 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:42:12 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 9 - רפרנסים - דיבורים - פייתון בעברית ובחינם</title>
+<meta content="יום 3: הסבר על Type annotations כמילון - “Lukas Graham” להקה שמוכרת בעיקר בזכות השיר 7years שזה גם הגיל שרשום ב-value… :face_with_hand_over_mouth:" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7813.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7813.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 9 - רפרנסים’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/6/6d6f0f4fd47c111884b8fdd97da5999cee5b64db.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/6/6d6f0f4fd47c111884b8fdd97da5999cee5b64db.jpg" property="og:image"/>
+<meta content="7813.html" property="og:url"/>
+<meta content="7813.html" name="twitter:url"/>
+<meta content="שבוע 9 - רפרנסים" property="og:title"/>
+<meta content="שבוע 9 - רפרנסים" name="twitter:title"/>
+<meta content="יום 3: הסבר על Type annotations כמילון - “Lukas Graham” להקה שמוכרת בעיקר בזכות השיר 7years שזה גם הגיל שרשום ב-value… 🤭" property="og:description"/>
+<meta content="יום 3: הסבר על Type annotations כמילון - “Lukas Graham” להקה שמוכרת בעיקר בזכות השיר 7years שזה גם הגיל שרשום ב-value… 🤭" name="twitter:description"/>
+<meta content="דיבורים" property="og:article:section"/>
+<meta content="3AB54A" property="og:article:section:color"/>
+<meta content="רפרנסים" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="67 ❤"/>
+<meta content="2020-08-08T20:09:14+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7813.html">שבוע 9 - רפרנסים</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/offtopic/12.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #3AB54A"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">דיבורים</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a8%d7%a4%d7%a8%d7%a0%d7%a1%d7%99%d7%9d.html" rel="tag">רפרנסים</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 9 - רפרנסים" itemprop="headline"/>
+<meta content="דיבורים" itemprop="articleSection"/>
+<meta content="רפרנסים" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/6/6d6f0f4fd47c111884b8fdd97da5999cee5b64db.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-08T20:09:14Z" itemprop="datePublished">
+                     8 באוגוסט,‏ 2020,‏  8:09pm
+                  </time>
+<meta content="2020-08-08T20:09:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>יום 3: הסבר על Type annotations כמילון - “Lukas Graham” להקה שמוכרת בעיקר בזכות השיר 7years שזה גם הגיל שרשום ב-value… <img alt=":face_with_hand_over_mouth:" class="emoji" height="20" loading="lazy" src="../../images/emoji/twitter/face_with_hand_over_mouthe5bf.png?v=12" title=":face_with_hand_over_mouth:" width="20"/></p><div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="LHCob76kigA" data-video-start-time="" data-video-title="Lukas Graham - 7 Years [Official Music Video]">
+<a href="https://www.youtube.com/watch?v=LHCob76kigA" rel="noopener nofollow ugc" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="303031" height="360" src="../../uploads/default/original/2X/6/6d6f0f4fd47c111884b8fdd97da5999cee5b64db.jpg" title="Lukas Graham - 7 Years [Official Music Video]" width="480"/>
+</a>
+</div>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">efratush</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-08T21:00:50Z" itemprop="datePublished">
+                     8 באוגוסט,‏ 2020,‏  9:00pm
+                  </time>
+<meta content="2020-08-08T21:00:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יום ראשון, שאלה שניה: מנצנץ כוכב קטן.<br/>
+שיר נושא התרגיל.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-08T22:23:30Z" itemprop="datePublished">
+                     8 באוגוסט,‏ 2020,‏ 10:23pm
+                  </time>
+<meta content="2020-08-08T22:23:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מוסיף - זה שיר נושא התרגיל עם שגיאות כתיב, בדיוק כמו השגיאות שיש בשיר. <img alt=":smiley:" class="emoji" src="../../images/emoji/twitter/smileyc164.png?v=9" title=":smiley:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="4" itemprop="userInteractionCount"/>
+<span class="post-likes">4 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Almog</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-09T23:40:15Z" itemprop="datePublished">
+                     9 באוגוסט,‏ 2020,‏ 11:40pm
+                  </time>
+<meta content="2020-08-09T23:40:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מרגיש קצת אובייס אבל רוספורף פיינס מ"תרגיל אפל" הוא פרופסור סנייפ במהופך (השם התהפך בדיוק באותו האופן שבו הכישוף הפך את מילות הספרים בספריה) ו"תם ונשלם הקונדס" זו הדרך לסגור את מפת הקונדסאים</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="10" itemprop="userInteractionCount"/>
+<span class="post-likes">10 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">elador9</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/4/43c792eff30b0905c17c8a6588ed82d88a008d0e.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-10T16:41:24Z" itemprop="datePublished">
+                     10 באוגוסט,‏ 2020,‏  4:41pm
+                  </time>
+<meta content="2020-08-10T16:41:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>log_error = create_logger(“Errors”)<br/>
+log_system = create_logger(“System”)<br/>
+log_error(“CRITICAL FAILURE: Can’t find Nemo.”)<br/>
+log_system(“Chop Suey”)</p>
+<p>טוב יש שגיאה בלמצוא את נמו כי הוא נאבד…<br/>
+מאמין שקולות של לוויתן יעזרו לנו לתקן את השגיאה:</p><div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="jJGeeryk0Eo" data-video-start-time="" data-video-title='Finding Nemo( Dory speaking "whale")'>
+<a href="https://www.youtube.com/watch?v=jJGeeryk0Eo" rel="noopener nofollow ugc" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="24489B" height="360" src="../../uploads/default/original/2X/4/43c792eff30b0905c17c8a6588ed82d88a008d0e.jpg" title='Finding Nemo( Dory speaking "whale")' width="480"/>
+</a>
+</div>
+<p>והנה שגיאת ה-Chop Suey ב-System of a down:</p><div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="CSvFpBOe8eY" data-video-start-time="" data-video-title="System Of A Down - Chop Suey! (Official HD Video)">
+<a href="https://www.youtube.com/watch?v=CSvFpBOe8eY" rel="noopener nofollow ugc" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="171814" height="388" src="../../uploads/default/original/2X/e/e3567e65692b2a9f78ec363f2a5211ae208b5b41.jpg" title="System Of A Down - Chop Suey! (Official HD Video)" width="690"/>
+</a>
+</div>
+<p>ולא נראה לי שאי פעם הזכרנו את זה, אבל “hello world” הוא סלב בפני עצמו:</p><aside class="onebox wikipedia" data-onebox-src="https://he.wikipedia.org/wiki/תוכנית_Hello_world?wprov=sfla1">
+<header class="source">
+<a href="https://he.wikipedia.org/wiki/תוכנית_Hello_world?wprov=sfla1" rel="noopener nofollow ugc" target="_blank">he.wikipedia.org</a>
+</header>
+<article class="onebox-body">
+<h3><a href="https://he.wikipedia.org/wiki/תוכנית_Hello_world?wprov=sfla1" rel="noopener nofollow ugc" target="_blank">תוכנית Hello world</a></h3>
+<p>תוכנית "Hello World" (מילולית: "שלום, עולם") היא תוכנית מחשב המדפיסה את המחרוזת "Hello World" בהתקן תצוגה. משתמשים בה בהדגמות ללימוד שפות תכנות שונות, ועבור תלמידים רבים היא מהווה את ניסיון התכנות הראשון שלהם בשפה.
+ לרוב, כתיבת תוכנית כזו היא עניין פשוט מאוד, במיוחד בשפות המתבססות על שורת פקודה (למשל במעטפת פקודה) כדי להוציא את הפלט. אומנם יש שפות שבהן זהו עניין מסובך, במיוחד אם יש צורך בממשק משתמש גרפי (GUI).
+ תוכנית "hello world" יכולה להיות שימושית כדי לבדוק שהמהדר, סביבת הפיתוח וסביבת הריצה ש...</p>
+</article>
+<div class="onebox-metadata">
+</div>
+<div style="clear: both"></div>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Cookiez</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-10T20:00:46Z" itemprop="datePublished">
+                     10 באוגוסט,‏ 2020,‏  8:00pm
+                  </time>
+<meta content="2020-08-10T20:00:46Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>התרגיל החלופי של היום הראשון “ועל ים לקו שמונה מלכות” מרפרנס להגדה של פסח “וְעַל הַיָם לָקוּ חֲמִשִּׁים מַכּוֹת” (ותוכן התרגיל הוא פיתרון של חידת שמונה המלכות) <img alt=":sunglasses:" class="emoji" src="../../images/emoji/twitter/sunglassesc164.png?v=9" title=":sunglasses:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">lia.arbel1</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-12T14:13:57Z" itemprop="datePublished">
+                     12 באוגוסט,‏ 2020,‏  2:13pm
+                  </time>
+<meta content="2020-08-12T14:13:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יום 4 - תרגיל “קיבוץ גלויות”, בדוגמה לפונקציה join יש את Mushu ו- Cricket<br/>
+הרי הם מהסרט מולאן <img alt=":dragon:" class="emoji" src="../../images/emoji/twitter/dragonc164.png?v=9" title=":dragon:"/> <img alt=":cricket:" class="emoji" src="../../images/emoji/twitter/cricketc164.png?v=9" title=":cricket:"/> <img alt=":crossed_swords:" class="emoji" src="../../images/emoji/twitter/crossed_swordsc164.png?v=9" title=":crossed_swords:"/> (שלצערנו ה-live action לא יצא עדיין)<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1f399b2f2caf41118fd93b442330fac4e11534ee" href="../../uploads/default/original/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee.jpg" title="image"><img alt="image" data-base62-sha1="4sedMq3oVY6qpsRjrCwKgh6OOHc" data-small-upload="../../uploads/default/optimized/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee_2_10x10.png" height="444" src="../../uploads/default/optimized/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee_2_690x444.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee_2_690x444.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee_2_1035x666.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1f399b2f2caf41118fd93b442330fac4e11534ee_2_1380x888.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">3299×2125 590 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Cookiez</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-13T21:16:50Z" itemprop="datePublished">
+                     13 באוגוסט,‏ 2020,‏  9:16pm
+                  </time>
+<meta content="2020-08-13T21:16:50Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למיטב הבנתי הם לא מופיעים בסרט בכלל <img alt=":sob:" class="emoji" src="../../images/emoji/twitter/sobc164.png?v=9" title=":sob:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">adi1</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-14T14:46:11Z" itemprop="datePublished">
+                     14 באוגוסט,‏ 2020,‏  2:46pm
+                  </time>
+<meta content="2020-08-14T14:46:11Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בש.ב של יום 5: קולונל האטי הוא מנהיג הפילים מספר הג’ונגל<br/>
+וביגבאגים היא התכנית של החרקים ששודרה בערוץ הילדים <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-15T22:41:19Z" itemprop="datePublished">
+                     15 באוגוסט,‏ 2020,‏ 10:41pm
+                  </time>
+<meta content="2020-08-15T22:41:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>במחברת סיכום תרגיל None shall pass קצת אובייס אבל רפרנס לגנדלף You shall not pass <img alt=":hugs:" class="emoji" src="../../images/emoji/twitter/hugsc164.png?v=9" title=":hugs:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="5" itemprop="userInteractionCount"/>
+<span class="post-likes">5 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T04:32:00Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  4:32am
+                  </time>
+<meta content="2020-08-17T04:32:00Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האמת שגם אני חשבתי על זה, אבל הרפרנס שהתכוונתי אליו בפועל אפילו יותר מפתיע <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T05:41:49Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  5:41am
+                  </time>
+<meta content="2020-08-17T05:41:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אויייי מצאתי חחח</p>
+<div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="88haV1v5Z84" data-video-start-time="" data-video-title=" - YouTube">
+<a href="https://www.youtube.com/watch?v=88haV1v5Z84" rel="noopener nofollow ugc" target="_blank">
+<img class="youtube-thumbnail" height="" src="#" title=" - YouTube" width=""/>
+</a>
+</div>
+<p>מונטי פייתון כמובן <img alt=":sweat_smile:" class="emoji" height="20" loading="lazy" src="../../images/emoji/twitter/sweat_smilee5bf.png?v=12" title=":sweat_smile:" width="20"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ori81510</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/e/e58942e63286617f3a27a30789d5518eb16ae2d6.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-17T09:26:51Z" itemprop="datePublished">
+                     17 באוגוסט,‏ 2020,‏  9:26am
+                  </time>
+<meta content="2020-08-17T09:26:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>איזו נוסטלגיה <img alt=":star_struck:" class="emoji" height="20" loading="lazy" src="../../images/emoji/twitter/star_strucke5bf.png?v=12" title=":star_struck:" width="20"/></p>
+<div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="zIV4poUZAQo" data-video-start-time="" data-video-title='The Knights Who Say "Ni!" - Monty Python and the Holy Grail'>
+<a href="https://www.youtube.com/watch?v=zIV4poUZAQo" rel="noopener" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="2B2F2E" height="388" src="../../uploads/default/original/2X/e/e58942e63286617f3a27a30789d5518eb16ae2d6.jpg" title='The Knights Who Say "Ni!" - Monty Python and the Holy Grail' width="690"/>
+</a>
+</div>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T21:30:15Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  9:30pm
+                  </time>
+<meta content="2020-08-19T21:30:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מוסיף - קוראים ככה לתרגיל כי פילים זוכרים ממש טוב <img alt=":hugs:" class="emoji" src="../../images/emoji/twitter/hugsc164.png?v=9" title=":hugs:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T21:35:40Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  9:35pm
+                  </time>
+<meta content="2020-08-19T21:35:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ואם אנחנו כבר שם – למה קוראים ככה לפיל בספר הג’ונגל? <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Dusinka</span>
+</span>
+<link href="7813.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/b/ba03d9d4877ec36b75d4c6db13e758cc4fddc847.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-19T21:42:33Z" itemprop="datePublished">
+                     19 באוגוסט,‏ 2020,‏  9:42pm
+                  </time>
+<meta content="2020-08-19T21:42:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt=":exploding_head:" class="emoji" src="../../images/emoji/twitter/exploding_headc164.png?v=9" title=":exploding_head:"/> <img alt=":exploding_head:" class="emoji" src="../../images/emoji/twitter/exploding_headc164.png?v=9" title=":exploding_head:"/> <img alt=":exploding_head:" class="emoji" src="../../images/emoji/twitter/exploding_headc164.png?v=9" title=":exploding_head:"/> <img alt=":exploding_head:" class="emoji" src="../../images/emoji/twitter/exploding_headc164.png?v=9" title=":exploding_head:"/> <img alt=":exploding_head:" class="emoji" src="../../images/emoji/twitter/exploding_headc164.png?v=9" title=":exploding_head:"/> י</p>
+<p><img alt="image" data-base62-sha1="qxz3IHJ9xMX887I6aK4mXHIEu7Z" height="23" src="../../uploads/default/original/2X/b/ba03d9d4877ec36b75d4c6db13e758cc4fddc847.png" width="425"/></p>
+<p>המילה פיל בהינדו <img alt=":open_mouth:" class="emoji" src="../../images/emoji/twitter/open_mouthc164.png?v=9" title=":open_mouth:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="6" itemprop="userInteractionCount"/>
+<span class="post-likes">6 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/7813 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:42:26 GMT -->
+</html>

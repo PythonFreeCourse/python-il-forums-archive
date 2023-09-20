@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בעיה עם sqlalchemy</title>
+    <link>https://forums.pythonic.guru/t/sqlalchemy/8914</link>
+    <description>אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.
+זאת המחלקה ממנה אני יורש
+![image|690x306](upload://vWKtZ8RBswcG0EP1zelbdGF1u3a.jpeg) 
+זאת הירושה שלי
+![image|690x423](upload://wX7kvBxaaiYuAyFMC7HUJIkg9Sz.jpeg) 
+מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.
+כל השורות המסומנות קיימות במחלקה ממנה אני יורש.
+ככה זה בדוקומנטציה:
+![image|690x305](upload://3jFJmnqckD6gtJWjDDPTjiEglaj.png) 
+זאת השגיאה בטקסט:
+801: SAWarning: Column &#39;user.id&#39; is marked as a member of the primary key for table &#39;user&#39;, but has no Python-side or server-side default generator indicated, nor does it indicate &#39;autoincrement=True&#39; or &#39;nullable=True&#39;, and no explicit value is passed.  Primary key columns typically may not store NULL.
+  util.warn(msg)
+אשמח מאוד לעזרה אם מישהו מכיר את זה, כי לא מוצא על זה כלום בגוגל, בהקשר של sqlalchemy</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 26 Jan 2021 22:29:19 +0000</lastBuildDate>
+    <category>עזרה ושיתופי פעולה</category>
+    <atom:link href="https://forums.pythonic.guru/t/sqlalchemy/8914.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אם הכוונה שלך היא לזה, אז כן, כבר הכנסתי את זה לקוד כשהתאמתי את הגדרות הדאטה בייס<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3.png" data-download-href="https://forums.pythonic.guru/uploads/default/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3.png" alt="image" data-base62-sha1="saqiGZ7rl8Fy8JHJ8Vjqpyy9mbp" width="690" height="108" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c56a87b8eb0b3d97cdd7176fa8c9378cdc37eff3_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/11</link>
+        <pubDate>Tue, 26 Jan 2021 22:12:34 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-11</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אוקיי, ראיתי. ניסית לבדוק האם <a href="https://github.com/frankie567/fastapi-users/issues/262">הפתרון הזה</a> מעלים את השגיאה?</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/10</link>
+        <pubDate>Tue, 26 Jan 2021 22:08:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-10</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>ים, ראיתי את הפתרון הזה עוד לפני כן. יש שני עניינים איתו:</p>
+<ol>
+<li>הם מגדירים טבלה שונה. זה לא המצב שלי. אני מוסיף על אותה טבלה.</li>
+<li>אני לא יכול להגדיר את id. לפחות לא בדרך ‘פשוטה’<br>
+תיכנס לפה ותראה למה…<br>
+<a href="https://github.com/frankie567/fastapi-users/blob/master/fastapi_users/db/sqlalchemy.py" class="inline-onebox" rel="noopener nofollow ugc">fastapi-users/sqlalchemy.py at master · frankie567/fastapi-users · GitHub</a>
+</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/9</link>
+        <pubDate>Tue, 26 Jan 2021 22:04:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-9</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אבדוק, יותר לעומק. אבל לפני בניית הדאטה בייס הממוזג הזה, עשיתי בדיקות, ואותה הבקשה בדיוק עבדה. זה לא ענין של קומיט. לא שיניתי כלום בקוד. אנסה לבדוק יותר לעומק את השדות שלהם, אולי יש התנגשות עם הגדרות הנתונים שלהם, לעומת מה שאני שולח. אבל אז, אם אני לא טועה, הייתי מקבל שגיאה מ- SQL</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/8</link>
+        <pubDate>Tue, 26 Jan 2021 21:58:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-8</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נראה שזה פתר את הבעיה. אם אתה רוצה להפתר מה־warning (ראוי) קרא <a href="https://docs.sqlalchemy.org/en/13/faq/ormconfiguration.html#i-m-getting-a-warning-or-error-about-implicitly-combining-column-x-under-attribute-y">כאן</a> (יצא ראשון בגוגל).</p>
+<p>אחרי שפתרת את הבעיה הזו, אם יש בעיה בשמירה נראה שהיא במקום אחר. שכחת לעשות commit או משהו כזה.</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/7</link>
+        <pubDate>Tue, 26 Jan 2021 21:55:36 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-7</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אגב, הטבלה נוצרה בהצלחה ככה. ואני יכול לשמור דרך המודול ממנו אני יורש. אני מנסה למנוע מצב שכולם יצטרכו לתקן את הקוד, מאחר ושם המחלקה של של הסיפרייה הזאת שונה משלנו, ואותו לא ניתן לשנות(אני יודע שניתן… :))</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/6</link>
+        <pubDate>Tue, 26 Jan 2021 21:52:23 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-6</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4.png" data-download-href="https://forums.pythonic.guru/uploads/default/3efe4cd216fe46290ec1ca20b5732e039ae855a4" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4.png" alt="image" data-base62-sha1="8ZgrbTqdaDXGp6SCqis5VXPyQyo" width="690" height="102" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/3/3efe4cd216fe46290ec1ca20b5732e039ae855a4_2_10x10.png"></a></div><br>
+כמו שאתה רואה, זאת לא ממש ‘שגיאה’ אלא יותר אזהרה. אבל אני לא מצליח לשמור ככה בדאטה בייס. הראוט מרונדר לי חזרה.<p></p>
+<p>זה הריקווסט<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/7/7096053e5e1ca832591d7052bc845547038f5709.png" data-download-href="https://forums.pythonic.guru/uploads/default/7096053e5e1ca832591d7052bc845547038f5709" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/7/7096053e5e1ca832591d7052bc845547038f5709.png" alt="image" data-base62-sha1="g3YTqTi0WZR1UPSo1WfAT9vxdGx" width="690" height="280" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7096053e5e1ca832591d7052bc845547038f5709_2_10x10.png"></a></div><p></p>
+<p>זה הריספונס<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c.png" data-download-href="https://forums.pythonic.guru/uploads/default/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c.png" alt="image" data-base62-sha1="ozzm5Df9h8cCvqJC48hHnuTRpzm" width="690" height="334" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/ac398490a4702a485eb2ac7e1fe58f73ae52fe3c_2_10x10.png"></a></div><p></p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/5</link>
+        <pubDate>Tue, 26 Jan 2021 21:50:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-5</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>… מה השגיאה האחרת?</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/4</link>
+        <pubDate>Tue, 26 Jan 2021 21:43:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-4</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>לא, מתקבלת שגיאה אחרת</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/3</link>
+        <pubDate>Tue, 26 Jan 2021 21:43:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-3</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אם אתה מוציא את id מהערה, זה עובד?</p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/2</link>
+        <pubDate>Tue, 26 Jan 2021 21:41:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-2</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+      <item>
+        <title>בעיה עם sqlalchemy</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>אני מנסה לרשת ממחלקה Base, כדי להרחיב טבלה קיימת בדאטה בייס.<br>
+זאת המחלקה ממנה אני יורש<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_690x306.jpeg" alt="image" data-base62-sha1="vWKtZ8RBswcG0EP1zelbdGF1u3a" width="690" height="306" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_690x306.jpeg, https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/d/dfe7828ac903c946b4a3ab2f2ccd3a224bf66e44_2_10x10.png"></a></div><br>
+זאת הירושה שלי<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/e6f45904e70645128e911b84ca0c9d93df10d3db" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_690x423.jpeg" alt="image" data-base62-sha1="wX7kvBxaaiYuAyFMC7HUJIkg9Sz" width="690" height="423" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_690x423.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_1035x634.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/e/e6f45904e70645128e911b84ca0c9d93df10d3db_2_10x10.png"></a></div><br>
+מקבל את השגיאה שבצילום, כאשר אני מנסה לשמור יוזר בדיבי, דרך המחלקה היורשת.<br>
+כל השורות המסומנות קיימות במחלקה ממנה אני יורש.<br>
+ככה זה בדוקומנטציה:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3.png" data-download-href="https://forums.pythonic.guru/uploads/default/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_690x305.png" alt="image" data-base62-sha1="3jFJmnqckD6gtJWjDDPTjiEglaj" width="690" height="305" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_690x305.png, https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_1035x457.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/173fd3d7a34131ad83c0e76a0ff50e3fd324e7d3_2_10x10.png"></a></div><br>
+זאת השגיאה בטקסט:<br>
+801: SAWarning: Column ‘user.id’ is marked as a member of the primary key for table ‘user’, but has no Python-side or server-side default generator indicated, nor does it indicate ‘autoincrement=True’ or ‘nullable=True’, and no explicit value is passed.  Primary key columns typically may not store NULL.<br>
+util.warn(msg)<br>
+אשמח מאוד לעזרה אם מישהו מכיר את זה, כי לא מוצא על זה כלום בגוגל, בהקשר של sqlalchemy<p></p>
+          <p><a href="https://forums.pythonic.guru/t/sqlalchemy/8914/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/sqlalchemy/8914/1</link>
+        <pubDate>Tue, 26 Jan 2021 21:21:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8914-1</guid>
+        <source url="https://forums.pythonic.guru/t/sqlalchemy/8914.rss">בעיה עם sqlalchemy</source>
+      </item>
+  </channel>
+</rss>

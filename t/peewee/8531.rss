@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בעיה בתרגום שאילתה ל־peewee</title>
+    <link>https://forums.pythonic.guru/t/peewee/8531</link>
+    <description>[quote=&quot;adi1, post:1, topic:8525&quot;]
+```
+&quot;&quot;&quot;SELECT c.name as production_name, count(*) AS number_of_movies
+                FROM companies AS c
+                INNER JOIN movie_company AS m_c
+                ON c.id = m_c.company_id
+                INNER JOIN movies AS m
+                ON m_c.movie_id = m.id
+            WHERE c.id = {}
+            GROUP BY c.name
+            ORDER BY number_of_movies DESC
+            LIMIT 1;&quot;&quot;&quot;
+```
+[/quote]
+
+השגיאה הזאת גם לא הבנתי איך מתעלמים ממנה, זה אומר שהשאילתה שלך מחזירה כלום..
+
+
+ואני גם תקוע על איך לתרגם עם נכון ל peewe...
+
+SELECT u.user_name as user_name, count(*) AS total_points
+	FROM users AS u
+	INNER JOIN games AS g
+	ON u.user_name = g.user_name
+	INNER JOIN game_resulte AS r
+	ON r.game_id = g.game_id
+GROUP BY u.user_name
+ORDER BY total_points DESC
+LIMIT 3;</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 09 Dec 2020 14:03:22 +0000</lastBuildDate>
+    <category>שבוע 14</category>
+    <atom:link href="https://forums.pythonic.guru/t/peewee/8531.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[nadav]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה.<br>
+מה שעבד בסוף :<br>
+query = Users.select(Users.user_name, peewee.fn.COUNT().alias(‘total_points’)).join(Games).join(GameResulte).group_by(Users.user_name).order_by(Users.user_name.desc()).limit(3)<br>
+top_players = <span class="chcklst-box fa fa-square-o fa-fw"></span><br>
+for user in query:<br>
+top_players += [user.user_name, user.total_points]</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/7</link>
+        <pubDate>Wed, 09 Dec 2020 14:03:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-7</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כיוון שלא ביקשת את התוצאות. ראינו את זה כמה פעמים ב־live.<br>
+נסה עם <code>.dicts</code> או <code>.get</code>. יש פתרונות בתיעוד של peewee</p>
+<p>ראה לדוגמה: <a href="https://stackoverflow.com/questions/45501197/get-list-of-query-results-in-peewee/45721586">https://stackoverflow.com/questions/45501197/get-list-of-query-results-in-peewee/45721586</a><br>
+גיגלתי בשביל זה: peewee returns the query instead results</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/6</link>
+        <pubDate>Wed, 09 Dec 2020 13:39:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-6</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[nadav]]></dc:creator>
+        <description><![CDATA[
+            <p>Users.select(Users.user_name, peewee.fn.COUNT().alias(‘total_points’)).join(Games).join(GameResulte).group_by(Users.user_name).order_by(Users.user_name.desc())</p>
+<p>שאני מוסיף לזה סידור יורד, זה נותן לי בפלט את השאילתה ולא את הנתונים שאמורים לחזור…</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/5</link>
+        <pubDate>Wed, 09 Dec 2020 13:33:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-5</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>זה נראה בסדר. איפה הבעיה?</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/4</link>
+        <pubDate>Wed, 09 Dec 2020 13:30:09 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-4</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[nadav]]></dc:creator>
+        <description><![CDATA[
+            <pre><code>top_players = Users.select(Users.user_name, peewee.fn.COUNT().alias('total_points')).join(Games).join(GameResulte).group_by(Users.user_name)</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/3</link>
+        <pubDate>Wed, 09 Dec 2020 13:24:47 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-3</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>נדב – מה ניסית לכתוב כדי שזה יעבוד?</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/2</link>
+        <pubDate>Wed, 09 Dec 2020 13:22:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-2</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+      <item>
+        <title>בעיה בתרגום שאילתה ל־peewee</title>
+        <dc:creator><![CDATA[nadav]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="adi1" data-post="1" data-topic="8525">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/a/ecb155/40.png" class="avatar"><a href="https://forums.pythonic.guru/t/join-count/8525/1">שאילתת join עם count(*)</a>
+</div>
+<blockquote>
+<pre><code class="lang-auto">"""SELECT c.name as production_name, count(*) AS number_of_movies
+                FROM companies AS c
+                INNER JOIN movie_company AS m_c
+                ON c.id = m_c.company_id
+                INNER JOIN movies AS m
+                ON m_c.movie_id = m.id
+            WHERE c.id = {}
+            GROUP BY c.name
+            ORDER BY number_of_movies DESC
+            LIMIT 1;"""
+</code></pre>
+</blockquote>
+</aside>
+<p>השגיאה הזאת גם לא הבנתי איך מתעלמים ממנה, זה אומר שהשאילתה שלך מחזירה כלום…</p>
+<p>ואני גם תקוע על איך לתרגם עם נכון ל peewe…</p>
+<p>SELECT u.user_name as user_name, count(*) AS total_points<br>
+FROM users AS u<br>
+INNER JOIN games AS g<br>
+ON u.user_name = g.user_name<br>
+INNER JOIN game_resulte AS r<br>
+ON r.game_id = g.game_id<br>
+GROUP BY u.user_name<br>
+ORDER BY total_points DESC<br>
+LIMIT 3;</p>
+          <p><a href="https://forums.pythonic.guru/t/peewee/8531/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/peewee/8531/1</link>
+        <pubDate>Wed, 09 Dec 2020 13:08:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8531-1</guid>
+        <source url="https://forums.pythonic.guru/t/peewee/8531.rss">בעיה בתרגום שאילתה ל־peewee</source>
+      </item>
+  </channel>
+</rss>

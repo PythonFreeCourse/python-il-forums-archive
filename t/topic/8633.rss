@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שבוע 16: אז... מה עכשיו?</title>
+    <link>https://forums.pythonic.guru/t/topic/8633</link>
+    <description>### המטרות של השבוע הזה:
+
+1. ללמד עבודה עם כלים של החיים האמיתיים.
+2. ליצור גיבוש אחרון של הקהילה שסיימה את הקורס.
+3. לתת לכם פוש קטנטון נוסף לתיק העבודות.
+4. להשתמש בכל מה שלמדנו עד עכשיו.
+5. ליצור כולנו משהו, ביחד.
+
+### מה עושים?
+
+בונים ביחד אפליקציה (אתר) ללוח שנה – כשהרעיונות באים מכם.
+אני בטוח שיחד נוכל לבנות משהו גדול, מגניב, חינמי ו־Open Source־י.
+הפרויקט שנבנה יופץ תחת רישיון Apache2 (שימוש חופשי לכל מי שרוצה, בלי תנאים), ויפורסם ב־GitHub.
+התרומות יהיו דרך Pull Requests שיעשו ל־GitHub של הפרויקט.
+
+### איפה הקוד של הפרויקט?
+
+[כאן](https://github.com/PythonFreeCourse/calendar).
+
+### באילו טכנולוגיות נבנה את הפרויקט?
+
+כאמור, אנחנו בונים את הפרויקט ביחד.
+אני הולך להיות ה־CTO של הפרויקט לצורך העניין – אקבל את ההחלטות הטכנולוגיות אחרי התייעצות עם כולכם.
+אני אשתדל לתרום גם קוד איפה שיהיה צורך.
+
+1. שפת התכנות המרכזית תהיה Python, כמובן. יהיה גם HTML/CSS/JS – מקווה שיהיו עוד אנשים חוץ ממני שיתנדבו לכתוב (זה בסדר ללמוד תוך כדי) כדי שלא כל העומס יפול עליי.
+2. ה־Framework הפיתוחי שנשתמש בו לצורך יצירת האתר הוא Fast API. זה framework שמאוד דומה ל־Flask והוא יחסית חם בשוק. יהיה מעניין (גם עבורי) לבחון אותו.
+3. אנחנו נשתמש במסד נתונים רלציוני. בשרת הוא יהיה PostgreSQL, ובסביבה הלוקאלית שלכם הוא יהיה SQLite. זה יאפשר לנו להקים את הסביבה הלוקאלית בקלות בלי התקנות של postgresql. כדי לגשר בין הפער של שני הדיאלקטים וכדי לדאוג לאבסטרקציה, נשתמש ב־ORM המוביל עבור פייתון כרגע – SQLAlchemy.
+4. לצורכי מיגרציה, נשתמש ב־Alembic.
+
+אם יעלה צורך בטכנולוגיות נוספות, נכניס אותן תוך כדי תוך התייעצות עם הקהילה.
+
+### מה שיעורי הבית של השבוע?
+
+לפתור 3 &quot;טיקטים&quot; – באגים, הצעות לפיצ&#39;ר, שיפור ארכיטקטוני או כל דבר שאתם מרגישים שאתם יכולים לתרום למערכת.
+
+הדרישות מכל טיקט שכזה:
+1. **גודל סביר.** בבקשה אל תפתחו ואל תעודדו הצעות כמו &quot;להוסיף favicon&quot;. יש לכם בסך הכל שלושה טיקטים לפתור השבוע – לא יהיו עוד שיעורי בית. בואו נרים יחד משהו מכובד.
+2.  **לפחות טיקט אחד של פיצ&#39;ר לכל אדם** – מתוך 3 הטיקטים שלכם, 1 לפחות צריך להיות הוספת יכולת למערכת.
+3. **מותר יותר מ־3 טיקטים** – תמיד אפשר לתרום עוד אם תרצו. זה נחמד לראות את הפיצ&#39;רים שלכם באוויר.
+4. **דברים מועילים שיביאו Value למערכת**.
+
+### איך זה יעבוד?
+
+התהליך עובד כך:
+
+#### שלב ראשון: הגשת הצעה לטיקט
+
+כל אחד יכול להגיש הצעה לטיקט [כאן](https://forums.pythonic.guru/c/week-16/ticket-ideas/29) – תחת הקטגוריה &quot;הצעות לטיקטים&quot;.
+פתחו אשכול חדש ובו כתבו בפירוט:
+1. מה ההצעה כוללת?
+2. איך אתם מתכוונים לממש אותה?
+3. אם היא כוללת שינויים בקוד: אילו שינויים? איפה הם יכנסו?
+4. אם היא כוללת שינויים במסד הנתונים: אילו שינויים?
+5. האם היא דורשת frontend? איך הוא יראה? ציירו mock.
+6. אילו טסטים יגרמו לטיקט להיחשב כ&quot;עובד&quot;, ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?
+
+כדי למנוע את היותי צוואר בקבוק, תצטרכו לצבור 5 לבבות על האשכול שלכם לפני שאסתכל עליו.
+עזרו לעצמכם ולאחרים: הסתכלו על הצעות של חברים שלכם והצביעו להן אם אתם חושבים שהן הצעות טובות.
+תרגישו בנוח להעיר ולהציע הצעות לשיפור ולגימור טוב יותר של הרעיון.
+
+אחרי שצברתם 5 לבבות, פרסמו הודעה חדשה כתגובה לאשכול – &quot;מבקש בדיקה&quot;.
+בשלב הזה אני אסתכל על האשכול ואאשר שהרעיון הוא רעיון טוב ושאפשר להתחיל לעבוד עליו.
+בשלב הזה, פיתחו [Issue](https://github.com/PythonFreeCourse/calendar/issues/new) ב־GitHub של הפרויקט עם כל הפרטים הרלוונטיים.
+
+שימו לב: אם לא צברתם 5 לבבות תוך 72 שעות, האשכול ינעל ואנשים אחרים יוכלו להציע את אותו רעיון מחדש בצורה שונה. המנגנון הזה קיים כדי לא &quot;לנעול&quot; רעיונות לזמן בלתי מוגבל אצל אדם אחד.
+
+### שלב שני: כתיבת הקוד
+
+### איך תורמים קוד מבחינה טכנית?
+
+1. **עשו fork לפרויקט**, בעזרת הכפתור בפינה הימנית העליונה בעמוד [הזה](https://github.com/PythonFreeCourse/calendar).
+2. **עשו clone מתוך עמוד המשתמש שלכם** (לא מעמוד הפרויקט!) בעזרת `git clone url`. לדוגמה: `https://github.com/yammesicka/calendar`.
+3. **הוסיפו את ה־repo המקורי**, כדי שתוכלו למשוך ממנו מידע כשהוא מתעדכן: `git remote add upstream https://github.com/PythonFreeCourse/calendar`. זה יאפשר לכל אחד לעבוד על ריפו בלתי תלוי משלו, אבל להיות מקושר לריפו שעליו כולם עובדים.
+4. אם עבר זמן מאז שעשיתם clone, **עדכנו את הקבצים בפרויקט**: `git pull upstream develop`.
+5. **צרו בראנץ&#39; חדש**. תתחילו בלעבור ל־branch שנקרא `develop`, ממנו יצאו הפיצ&#39;רים שלנו: `git checkout develop`. אחרי שעשיתם את זה, התפצלו לענף חדש בו תכתבו את הקוד שלכם: `git checkout -b branch_name`. ה־branch_name אמור לתאר במילה או שתיים את הפיצ&#39;ר/באג שעליו אתם עובדים. אם זה פיצ&#39;ר, השתמשו בתחילית `feature/` – לדוגמה, `feature/add-events`. תחיליות אפשריות נוספות: `refactor/`, `bugfix/`, `/build`. שימו לב שלא יאושר קוד שנוצר על ה־master/main/develop, ולא תינתן תמיכה בהעברת המידע לבראנץ&#39; חדש.
+6. **כתבו את הקוד ואת הטסטים לקוד**. ודאו שלא פגעתם ב־coverage של הפרויקט. הוסיפו דוקומנטציה ככל שיש בכך צורך.
+7. **הוסיפו את הקוד** בעזרת git add לקבצים הרלוונטיים, git commit עם הודעה מפורטת לפי [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) ואז git push. צרו Pull Request לפרויקט.
+8. כשאתם בוחרים לאיזה ענף לעשות Pull Request, בחרו develop. אל תשלחו PR־ים ל־main. להסברים לגבי שיטת העבודה הזו קראו [כאן](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
+
+#### תרמתי קוד. מה עכשיו?
+
+פתחו אשכול בפורום [הזה](https://forums.pythonic.guru/c/peer-reviews-requests/30) (&quot;בקשות ל־Pull Requests&quot;) עם קישור ל־Pull Request שלכם, והמתינו ל־5 אנשים שקראו את הקוד שלכם ונתנו לכם לב.
+קראו את הקוד שלכם לפני שליחת ה־PR, ומחקו קוד שמסומן בהערה והדפסות. ודאו שלא שכחתם typing ושדאגתם שהקוד שלכם נאה לקריאה ושהייבואים שלכם מסודרים בסדר הנכון.
+אחרי שצברתם 5 לבבות, פרסמו הודעה חדשה כתגובה לאשכול – &quot;מבקש בדיקה&quot;.
+בשלב הזה אני אסתכל על ה־PR ואאשר שהקוד הוא טוב, או אבקש שיפורים. אם הקוד טוב, אאשר אותו ואעשה לו deploy. את השינויים שהכנסתם תוכלו לראות באתר שכתובתו תפורסם בהמשך, ויריץ את המערכת שלנו.
+מזל טוב, תפרתם טיקט :)
+
+### גילוי נאות
+
+זו פעם ראשונה שאני עושה את הטירוף הזה, ולכן הפורמט עתיד להשתנות בכל שלב שהוא.
+אני ממליץ לכם לזנק על הפרויקט כמה שיותר מוקדם, כדי לא להתקע בלי לבבות או עם טיקטים מסובכים מדי (מאוד כיף לעבוד על פרויקט בתחילת דרכו).
+
+ההודעה פה היא wiki, כך שכולכם יכולים לערוך אותה. השתמשו בזה כדי להוסיף תשובות לשאלות נפוצות.
+
+**בבקשה אל תפנו אלי בפרטי עם שאלות**. כל מי שסיפרתי לו על הרעיון הזה אמר שאני חולה נפש ולנהל 40 ג&#39;וניורים זה רעיון גרוע בכל קנה מידה. אני מאמין שכשיש חניכים אדירים עם קהילה מדהימה זה אפשרי.
+זה הזמן שלכם לתת כתף לחברים לקהילה (ולי) ולעזור ליצור פה מוצר מדהים.
+
+בואו נגרום לזה לקרות :)</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 20 Jan 2021 12:09:33 +0000</lastBuildDate>
+    <category>אשכולות הנהלה</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/8633.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>בדיוק רשמתי בקבוצת טלגרם, כן צריך למשוך כרגע מDEVELOP בשביל להשתמש במה שכולנו עובדים עליו כרגע.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/20">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/20</link>
+        <pubDate>Wed, 20 Jan 2021 12:09:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-20</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>אני רואה שיש פער של כ-50 קומיטים בין הבראנצ’ים main ו-develop, ובבראנץ’ develop יש קבצים כמו config.py.example שראיתי התייחסות מצד ים לעבוד לפיהם/איתם.<br>
+האם אנחנו אמורים לעדכן את הקבצים לוקאלית מהבראנץ’ develop במקום main/לעשות מרג’ בין הבראנצ’ים או שאני פשוט מפספס משהו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/19">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/19</link>
+        <pubDate>Wed, 20 Jan 2021 12:05:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-19</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Ellen]]></dc:creator>
+        <description><![CDATA[
+            <p>אתה יכול להוריד את הקוד ממיין לדבלופ בבקשה?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/18">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/18</link>
+        <pubDate>Fri, 15 Jan 2021 14:45:25 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-18</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כן <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"> זו בעיה שלי ואני אשלם עליה אח"כ, אבל חשוב להקפיד על עבודה נכונה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/17">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/17</link>
+        <pubDate>Fri, 15 Jan 2021 14:26:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-17</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה נוספת, מקווה שלא מעיק:<br>
+אמרנו לעשות בראנץ’ מdevelop<br>
+ברגע זה main נמצא 10 commits קדימה מdevelop -<br>
+עדיין לעשות בראנץ’ מdevelop?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/16">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/16</link>
+        <pubDate>Fri, 15 Jan 2021 09:39:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-16</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הנחתי שאנשים ירגישו יותר בנוח להתנסח ולהצביע בפלטפורמה מוכרת</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/15">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/15</link>
+        <pubDate>Tue, 12 Jan 2021 00:35:30 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-15</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>מגניב,<br>
+ושאלת עניין אחרונה - מה עומד מאחורי הבחירה עם הלעשות לבבות פה בפורום ולא REVIEW בPR עצמו?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/14">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/14</link>
+        <pubDate>Mon, 11 Jan 2021 20:38:50 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-14</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>ככה נהוג.<br>
+זה מאפשר לי לא לתת לכם גישות כתיבה לפרויקט (צריך כאלו לצורך פתיחת PR־ים על חלק מה־branch־ים).<br>
+ר’ גם <a href="https://gist.github.com/MarcDiethelm/7303312">How to make a clean pull request</a></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/13">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/13</link>
+        <pubDate>Mon, 11 Jan 2021 17:16:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-13</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>למה לעשות FORK ואז CLONE,<br>
+ולא ישירות CLONE מעמוד הפרויקט ועל גבי הCLONE הזה לעשות את כל הBRANCHES</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/12">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/12</link>
+        <pubDate>Mon, 11 Jan 2021 14:57:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-12</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>לא בטוח שהבנתי את השאלה.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/11">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/11</link>
+        <pubDate>Mon, 11 Jan 2021 11:03:48 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-11</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[ombental]]></dc:creator>
+        <description><![CDATA[
+            <p>שאלה -<br>
+למה לא לעשות CLONE על הMAIN REPO ולעבוד עליו עם בראנצ’ים שונים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/10">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/10</link>
+        <pubDate>Mon, 11 Jan 2021 10:22:03 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-10</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote group-helper" data-username="efratush" data-post="7" data-topic="8633" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/e/ecc23a/40.png" class="avatar"> efratush:</div>
+<blockquote>
+<p>כשאומרים פיצ׳ר, מה הוא כולל?<br>
+לדוגמה ברעיון של מתן אפשרות לבחירת לוחות שנה שונים (לועזי, עברי וכד׳), האם הפיצ׳ר כולל רק קוד או לדאוג לכל המסביב(ייבוא הלוחות השונים, הפרונט שמשתנה בעקבותם וכד׳ וכו׳?</p>
+</blockquote>
+</aside>
+<p>את יכולה לנסות לזקק מהרעיון שלך משהו שאנחנו קוראים לו בתעשייה MVP, או Minimum Viable Product. מינימום דברים שאת צריכה לעשות כדי שזה יהיה פיצ’ר עובד שיהיה אפשר להראות שעשית את זה, זה עובד עבור המשתמש וסימנת V על המטרה.</p>
+<aside class="quote no-group" data-username="sagi.zo" data-post="8" data-topic="8633" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/sagi.zo/40/235_2.png" class="avatar"> sagi.zo:</div>
+<blockquote>
+<p>אני אשמח להצטרף לעיצוב הממשק הכללי של המערכת, זה גם בטיקט לעשות? או שזה כבר יש מולך ים?</p>
+</blockquote>
+</aside>
+<p>כרגע הכל יתנהל בטיקטים כיוון שאני מוצף בפניות. אם נראה שהמצב נהיה טוב יותר עם הזמן נעביר משימות ל־offline.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/9</link>
+        <pubDate>Sun, 10 Jan 2021 19:31:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-9</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[sagi.zo]]></dc:creator>
+        <description><![CDATA[
+            <p>אני אשמח להצטרף לעיצוב הממשק הכללי של המערכת, זה גם בטיקט לעשות? או שזה כבר יש מולך ים?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/8</link>
+        <pubDate>Sun, 10 Jan 2021 19:29:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-8</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>כשאומרים פיצ׳ר, מה הוא כולל?<br>
+לדוגמה ברעיון של מתן אפשרות לבחירת לוחות שנה שונים (לועזי, עברי וכד׳), האם הפיצ׳ר כולל רק קוד או לדאוג לכל המסביב(ייבוא הלוחות השונים, הפרונט שמשתנה בעקבותם וכד׳ וכו׳?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/7</link>
+        <pubDate>Sun, 10 Jan 2021 19:28:40 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-7</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>בגדול את מחליטה מה מייחד אותו, אני חושב שזה חלק מהיופי בפרויקט.</p>
+<p>אולי הלוח שלנו יאפשר לשים slot־ים לפגישות, ויאפשר לנו ליצור מערכת ניהול תורים?<br>
+אולי הוא יאפשר למשתמש להכניס CSS ולהחליט איך יראה לוח השנה שלו?<br>
+אולי הוא יהיה הלוח היחיד שתומך בהמרה ללוח המאיה?</p>
+<p>זה ביידיים שלכם <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/6</link>
+        <pubDate>Sun, 10 Jan 2021 19:24:15 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-6</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>מה מייחד את הלוח שנה שלנו מהקיימים בשוק?<br>
+או שהמטרה היא לא לייחד אלא להתנסות בעבודה צוות?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/5</link>
+        <pubDate>Sun, 10 Jan 2021 19:15:57 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>כיוון שהפרויקט הוא Open Source גלובלי, שפת הפרויקט היא אנגלית וברירת המחדל היא לוח שנה לועזי.<br>
+נשמע לי נהדר לאפשר בחירה ביניהם בהגדרות, זה נשמע כמו רעיון מצוין לפיצ’ר.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/4</link>
+        <pubDate>Sun, 10 Jan 2021 19:08:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[efratush]]></dc:creator>
+        <description><![CDATA[
+            <p>האם הלוח שנה מוגדר כלוח שנה עברי?</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/3</link>
+        <pubDate>Sun, 10 Jan 2021 19:07:13 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>בהצלחה לנו! אנחנו יכולים!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/2</link>
+        <pubDate>Sun, 10 Jan 2021 18:36:42 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+      <item>
+        <title>שבוע 16: אז... מה עכשיו?</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <h3>המטרות של השבוע הזה:</h3>
+<ol>
+<li>ללמד עבודה עם כלים של החיים האמיתיים.</li>
+<li>ליצור גיבוש אחרון של הקהילה שסיימה את הקורס.</li>
+<li>לתת לכם פוש קטנטון נוסף לתיק העבודות.</li>
+<li>להשתמש בכל מה שלמדנו עד עכשיו.</li>
+<li>ליצור כולנו משהו, ביחד.</li>
+</ol>
+<h3>מה עושים?</h3>
+<p>בונים ביחד אפליקציה (אתר) ללוח שנה – כשהרעיונות באים מכם.<br>
+אני בטוח שיחד נוכל לבנות משהו גדול, מגניב, חינמי ו־Open Source־י.<br>
+הפרויקט שנבנה יופץ תחת רישיון Apache2 (שימוש חופשי לכל מי שרוצה, בלי תנאים), ויפורסם ב־GitHub.<br>
+התרומות יהיו דרך Pull Requests שיעשו ל־GitHub של הפרויקט.</p>
+<h3>איפה הקוד של הפרויקט?</h3>
+<p><a href="https://github.com/PythonFreeCourse/calendar">כאן</a>.</p>
+<h3>באילו טכנולוגיות נבנה את הפרויקט?</h3>
+<p>כאמור, אנחנו בונים את הפרויקט ביחד.<br>
+אני הולך להיות ה־CTO של הפרויקט לצורך העניין – אקבל את ההחלטות הטכנולוגיות אחרי התייעצות עם כולכם.<br>
+אני אשתדל לתרום גם קוד איפה שיהיה צורך.</p>
+<ol>
+<li>שפת התכנות המרכזית תהיה Python, כמובן. יהיה גם HTML/CSS/JS – מקווה שיהיו עוד אנשים חוץ ממני שיתנדבו לכתוב (זה בסדר ללמוד תוך כדי) כדי שלא כל העומס יפול עליי.</li>
+<li>ה־Framework הפיתוחי שנשתמש בו לצורך יצירת האתר הוא Fast API. זה framework שמאוד דומה ל־Flask והוא יחסית חם בשוק. יהיה מעניין (גם עבורי) לבחון אותו.</li>
+<li>אנחנו נשתמש במסד נתונים רלציוני. בשרת הוא יהיה PostgreSQL, ובסביבה הלוקאלית שלכם הוא יהיה SQLite. זה יאפשר לנו להקים את הסביבה הלוקאלית בקלות בלי התקנות של postgresql. כדי לגשר בין הפער של שני הדיאלקטים וכדי לדאוג לאבסטרקציה, נשתמש ב־ORM המוביל עבור פייתון כרגע – SQLAlchemy.</li>
+<li>לצורכי מיגרציה, נשתמש ב־Alembic.</li>
+</ol>
+<p>אם יעלה צורך בטכנולוגיות נוספות, נכניס אותן תוך כדי תוך התייעצות עם הקהילה.</p>
+<h3>מה שיעורי הבית של השבוע?</h3>
+<p>לפתור 3 “טיקטים” – באגים, הצעות לפיצ’ר, שיפור ארכיטקטוני או כל דבר שאתם מרגישים שאתם יכולים לתרום למערכת.</p>
+<p>הדרישות מכל טיקט שכזה:</p>
+<ol>
+<li>
+<strong>גודל סביר.</strong> בבקשה אל תפתחו ואל תעודדו הצעות כמו “להוסיף favicon”. יש לכם בסך הכל שלושה טיקטים לפתור השבוע – לא יהיו עוד שיעורי בית. בואו נרים יחד משהו מכובד.</li>
+<li>
+<strong>לפחות טיקט אחד של פיצ’ר לכל אדם</strong> – מתוך 3 הטיקטים שלכם, 1 לפחות צריך להיות הוספת יכולת למערכת.</li>
+<li>
+<strong>מותר יותר מ־3 טיקטים</strong> – תמיד אפשר לתרום עוד אם תרצו. זה נחמד לראות את הפיצ’רים שלכם באוויר.</li>
+<li>
+<strong>דברים מועילים שיביאו Value למערכת</strong>.</li>
+</ol>
+<h3>איך זה יעבוד?</h3>
+<p>התהליך עובד כך:</p>
+<h4>שלב ראשון: הגשת הצעה לטיקט</h4>
+<p>כל אחד יכול להגיש הצעה לטיקט <a href="https://forums.pythonic.guru/c/week-16/ticket-ideas/29">כאן</a> – תחת הקטגוריה “הצעות לטיקטים”.<br>
+פתחו אשכול חדש ובו כתבו בפירוט:</p>
+<ol>
+<li>מה ההצעה כוללת?</li>
+<li>איך אתם מתכוונים לממש אותה?</li>
+<li>אם היא כוללת שינויים בקוד: אילו שינויים? איפה הם יכנסו?</li>
+<li>אם היא כוללת שינויים במסד הנתונים: אילו שינויים?</li>
+<li>האם היא דורשת frontend? איך הוא יראה? ציירו mock.</li>
+<li>אילו טסטים יגרמו לטיקט להיחשב כ"עובד", ויאפשרו לנו לסגור את הטיקט ולהגדיר את המשימה כהושלמה?</li>
+</ol>
+<p>כדי למנוע את היותי צוואר בקבוק, תצטרכו לצבור 5 לבבות על האשכול שלכם לפני שאסתכל עליו.<br>
+עזרו לעצמכם ולאחרים: הסתכלו על הצעות של חברים שלכם והצביעו להן אם אתם חושבים שהן הצעות טובות.<br>
+תרגישו בנוח להעיר ולהציע הצעות לשיפור ולגימור טוב יותר של הרעיון.</p>
+<p>אחרי שצברתם 5 לבבות, פרסמו הודעה חדשה כתגובה לאשכול – “מבקש בדיקה”.<br>
+בשלב הזה אני אסתכל על האשכול ואאשר שהרעיון הוא רעיון טוב ושאפשר להתחיל לעבוד עליו.<br>
+בשלב הזה, פיתחו <a href="https://github.com/PythonFreeCourse/calendar/issues/new">Issue</a> ב־GitHub של הפרויקט עם כל הפרטים הרלוונטיים.</p>
+<p>שימו לב: אם לא צברתם 5 לבבות תוך 72 שעות, האשכול ינעל ואנשים אחרים יוכלו להציע את אותו רעיון מחדש בצורה שונה. המנגנון הזה קיים כדי לא “לנעול” רעיונות לזמן בלתי מוגבל אצל אדם אחד.</p>
+<h3>שלב שני: כתיבת הקוד</h3>
+<h3>איך תורמים קוד מבחינה טכנית?</h3>
+<ol>
+<li>
+<strong>עשו fork לפרויקט</strong>, בעזרת הכפתור בפינה הימנית העליונה בעמוד <a href="https://github.com/PythonFreeCourse/calendar">הזה</a>.</li>
+<li>
+<strong>עשו clone מתוך עמוד המשתמש שלכם</strong> (לא מעמוד הפרויקט!) בעזרת <code>git clone url</code>. לדוגמה: <code>https://github.com/yammesicka/calendar</code>.</li>
+<li>
+<strong>הוסיפו את ה־repo המקורי</strong>, כדי שתוכלו למשוך ממנו מידע כשהוא מתעדכן: <code>git remote add upstream https://github.com/PythonFreeCourse/calendar</code>. זה יאפשר לכל אחד לעבוד על ריפו בלתי תלוי משלו, אבל להיות מקושר לריפו שעליו כולם עובדים.</li>
+<li>אם עבר זמן מאז שעשיתם clone, <strong>עדכנו את הקבצים בפרויקט</strong>: <code>git pull upstream develop</code>.</li>
+<li>
+<strong>צרו בראנץ’ חדש</strong>. תתחילו בלעבור ל־branch שנקרא <code>develop</code>, ממנו יצאו הפיצ’רים שלנו: <code>git checkout develop</code>. אחרי שעשיתם את זה, התפצלו לענף חדש בו תכתבו את הקוד שלכם: <code>git checkout -b branch_name</code>. ה־branch_name אמור לתאר במילה או שתיים את הפיצ’ר/באג שעליו אתם עובדים. אם זה פיצ’ר, השתמשו בתחילית <code>feature/</code> – לדוגמה, <code>feature/add-events</code>. תחיליות אפשריות נוספות: <code>refactor/</code>, <code>bugfix/</code>, <code>/build</code>. שימו לב שלא יאושר קוד שנוצר על ה־master/main/develop, ולא תינתן תמיכה בהעברת המידע לבראנץ’ חדש.</li>
+<li>
+<strong>כתבו את הקוד ואת הטסטים לקוד</strong>. ודאו שלא פגעתם ב־coverage של הפרויקט. הוסיפו דוקומנטציה ככל שיש בכך צורך.</li>
+<li>
+<strong>הוסיפו את הקוד</strong> בעזרת git add לקבצים הרלוונטיים, git commit עם הודעה מפורטת לפי <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> ואז git push. צרו Pull Request לפרויקט.</li>
+<li>כשאתם בוחרים לאיזה ענף לעשות Pull Request, בחרו develop. אל תשלחו PR־ים ל־main. להסברים לגבי שיטת העבודה הזו קראו <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">כאן</a>.</li>
+</ol>
+<h4>תרמתי קוד. מה עכשיו?</h4>
+<p>פתחו אשכול בפורום <a href="https://forums.pythonic.guru/c/peer-reviews-requests/30">הזה</a> (“בקשות ל־Pull Requests”) עם קישור ל־Pull Request שלכם, והמתינו ל־5 אנשים שקראו את הקוד שלכם ונתנו לכם לב.<br>
+קראו את הקוד שלכם לפני שליחת ה־PR, ומחקו קוד שמסומן בהערה והדפסות. ודאו שלא שכחתם typing ושדאגתם שהקוד שלכם נאה לקריאה ושהייבואים שלכם מסודרים בסדר הנכון.<br>
+אחרי שצברתם 5 לבבות, פרסמו הודעה חדשה כתגובה לאשכול – “מבקש בדיקה”.<br>
+בשלב הזה אני אסתכל על ה־PR ואאשר שהקוד הוא טוב, או אבקש שיפורים. אם הקוד טוב, אאשר אותו ואעשה לו deploy. את השינויים שהכנסתם תוכלו לראות באתר שכתובתו תפורסם בהמשך, ויריץ את המערכת שלנו.<br>
+מזל טוב, תפרתם טיקט <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<h3>גילוי נאות</h3>
+<p>זו פעם ראשונה שאני עושה את הטירוף הזה, ולכן הפורמט עתיד להשתנות בכל שלב שהוא.<br>
+אני ממליץ לכם לזנק על הפרויקט כמה שיותר מוקדם, כדי לא להתקע בלי לבבות או עם טיקטים מסובכים מדי (מאוד כיף לעבוד על פרויקט בתחילת דרכו).</p>
+<p>ההודעה פה היא wiki, כך שכולכם יכולים לערוך אותה. השתמשו בזה כדי להוסיף תשובות לשאלות נפוצות.</p>
+<p><strong>בבקשה אל תפנו אלי בפרטי עם שאלות</strong>. כל מי שסיפרתי לו על הרעיון הזה אמר שאני חולה נפש ולנהל 40 ג’וניורים זה רעיון גרוע בכל קנה מידה. אני מאמין שכשיש חניכים אדירים עם קהילה מדהימה זה אפשרי.<br>
+זה הזמן שלכם לתת כתף לחברים לקהילה (ולי) ולעזור ליצור פה מוצר מדהים.</p>
+<p>בואו נגרום לזה לקרות <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/8633/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/8633/1</link>
+        <pubDate>Sun, 10 Jan 2021 18:15:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8633-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/8633.rss">שבוע 16: אז... מה עכשיו?</source>
+      </item>
+  </channel>
+</rss>

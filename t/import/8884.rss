@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+    <link>https://forums.pythonic.guru/t/import/8884</link>
+    <description>יש לי קובץ פייתון בנתיב calendar/app/routers/event_images.py
+וקובץ קונפיגורציה בנתיב calendar/app/config.py.
+אני רוצה לעשות אימפורט רלטיבי לקובץ הקונפיגורציה ב-
+ event_images.py
+ע&quot;י השורה from .. import config.
+אבל משום מה אני מקבל את השגיאה הבאה:
+ImportError: attempted relative import with no known parent package.
+
+אדגיש כמה דברים:
+1. יש קובץ _init_ בכל מקום, כך שפייתון אמור להכיר בתיקיות כ-packages.
+2. כשאני מנסה להשתמש באימפורט אבסולוטי - from app import config - הוא משום מה לא מכיר ב-package בשם app. ראיתי שלאחרים לא הייתה בעיה כזו בשימוש באימפורט אבסולוטי ל-app מתוך routers, כך שאני לא מבין מה הבעיה.
+3. כשאני משתמש באימפורט הרלטיבי, פייצ&#39;ארם **כן** מצליח &quot;להכיר&quot; את config ומציע לי משם תכונות שאני יכול לייבא.
+4. כשעשיתי push לגיטהאב קיבלתי את השגיאה המצורפת:
+![WhatsApp Image 2021-01-21 at 16.49.27|690x406](upload://Mk3GsVBXmgkRlyJGOm1sWw6bi6.jpeg) 
+לא ברור למה דווקא מתריע שלא מזהה את התכונה, אבל אפשר לראות שפירש את הפקודה של האימפורט הרליטיבי כ-app.config, שזה באמת נכון.
+
+בכל מקרה, הקוד שלי עם ההערה מופיע כאן:
+https://github.com/PythonFreeCourse/calendar/pull/70/checks</description>
+    <language>he</language>
+    <lastBuildDate>Tue, 26 Jan 2021 16:45:53 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/import/8884.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>אי אפשר להריץ כך את הקוד. הוא תלוי בהרבה דברים אחרים.<br>
+כשאתה עושה דבר כזה הוא מניח שתיקיית הפרויקט שלך היא routers, וכל עוד אין בה app.py ה־import של app לא יעבוד.</p>
+<p>זה <em>אולי</em> יעבוד אם תעשה cd ל־clone_21012021 ותקליד שם <code>python app/routers/event_images.py</code>.<br>
+במקרה הזה הוא אמור להניח ש־clone_21012021 הוא ה־current working directory, התיקייה תוכנס ל־PYTHONPATH והפרויקט יוכל להיטען.</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/9">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/9</link>
+        <pubDate>Mon, 25 Jan 2021 17:40:24 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-9</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[nir9696]]></dc:creator>
+        <description><![CDATA[
+            <p>אני לא מריץ את ה-main, אלא רק את הקובץ שאני הכנתי ואת הטסטים המתאימים לו.<br>
+אני רושם את הפקודות הבאות:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/c/c2026d7fb9f6239ec42760768db1f008b78fbb2a.png" data-download-href="https://forums.pythonic.guru/uploads/default/c2026d7fb9f6239ec42760768db1f008b78fbb2a" title="תמונה"><img src="https://forums.pythonic.guru/uploads/default/original/2X/c/c2026d7fb9f6239ec42760768db1f008b78fbb2a.png" alt="תמונה" data-base62-sha1="rGhPv2mAHWM8AaUPt8ziZqk4RxU" width="690" height="219" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c2026d7fb9f6239ec42760768db1f008b78fbb2a_2_10x10.png"></a></div><p></p>
+<p>כמובן שהנתיב C:\Users\nir\Desktop\week16\clone_21012021\ הוא הנתיב שאליו עשיתי את ה-clone.<br>
+שוב אני מדגיש, שללא השימוש בשורה from app import config (וכתוצאה מכך, גם בקובץ ה-config) הקוד רץ ללא בעיות.</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/8">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/8</link>
+        <pubDate>Mon, 25 Jan 2021 14:44:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-8</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[nellie]]></dc:creator>
+        <description><![CDATA[
+            <p>היי ניר,<br>
+אולי, רק אולי הבעיה בפקודה אותה אתה מפעיל כדי להריץ?<br>
+האם לפני ההרצה אתה רושם cd calendar?<br>
+האם אתה משתמש בפקודה: uvicorn app.main:app?</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/7">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/7</link>
+        <pubDate>Mon, 25 Jan 2021 12:22:46 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-7</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="nir9696" data-post="5" data-topic="8884">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/nir9696/40/5942_2.png" class="avatar"> nir9696:</div>
+<blockquote>
+<p>כשאני מריץ את הקובץ event_images.py דרך הפייצ’ארם או דרך ה-cmd אני מקבל את ההודעה:</p>
+</blockquote>
+</aside>
+<p>איך אתה מנסה להריץ אותו דרך ה¯cmd? לאיזו תיקייה אתה עושה CD ואיזו פקודה אתה מריץ?</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/6</link>
+        <pubDate>Mon, 25 Jan 2021 06:25:58 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-6</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[nir9696]]></dc:creator>
+        <description><![CDATA[
+            <p>ראשית, עץ התיקיות שלי נראה כך:<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/7/7169c062901fc675566eae1d84252089b210c0c3.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/7169c062901fc675566eae1d84252089b210c0c3" title="תמונה"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7169c062901fc675566eae1d84252089b210c0c3_2_257x250.jpeg" alt="תמונה" data-base62-sha1="gbiwAQ8guPlP6yBAJrm0CusxzUL" width="257" height="250" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7169c062901fc675566eae1d84252089b210c0c3_2_257x250.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7169c062901fc675566eae1d84252089b210c0c3_2_385x375.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/7/7169c062901fc675566eae1d84252089b210c0c3_2_514x500.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/7/7169c062901fc675566eae1d84252089b210c0c3_2_10x10.png"></a></div><p></p>
+<p>בקוד שנמצא ב-event_images.py אני מעוניין להשתמש במשתנה שהגדרתי בקובץ הקונפיגורציה שנמצא רמה אחת מעל - בתיקיית app.<br>
+לצורך כך אני כותב ב-event_images.py את הפקודה from app import config.<br>
+כשאני מריץ את הקובץ event_images.py דרך הפייצ’ארם או דרך ה-cmd אני מקבל את ההודעה:<br>
+Traceback (most recent call last):<br>
+File “event_images.py”, line 1, in <br>
+from app import config<br>
+ModuleNotFoundError: No module named ‘app’</p>
+<p>לחלופין, אני מנסה להשתמש באימפורט רלטיבי וכותב במקום הפקודה דלעיל את הפקודה:<br>
+from … import config</p>
+<p>כשאני מריץ את הקובץ event_images.py דרך הפייצ’ארם או דרך ה-cmd אני מקבל את ההודעה:<br>
+Traceback (most recent call last):<br>
+File “event_images.py”, line 1, in <br>
+from … import config<br>
+ImportError: attempted relative import with no known parent package</p>
+<p>ניסיתי פעולות אלה גם כאשר הקובץ הוא config.py.example וגם כאשר הקובץ הוא config.py וגם כאשר שניהם נמצאים.</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/5</link>
+        <pubDate>Sun, 24 Jan 2021 16:17:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-5</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>תוכל לפרט בדיוק, צעד אחר צעד, מה אתה עושה כדי להריץ?</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/4</link>
+        <pubDate>Sun, 24 Jan 2021 15:48:02 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-4</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[nir9696]]></dc:creator>
+        <description><![CDATA[
+            <p>ניסיתי הכל. עם הקובץ לדוגמה ובלי הקובץ לדוגמה, ופשוט לא עובד. העניין הוא שזה לא רץ לי אפילו לא מקומית. התוכנית פשוט לא מצליחה לזהות את ה-package בשם “app” מתוך routers. אני לא מצליח להבין למה, אבל אני לא חושב שזה קשור לקובץ config עצמו.<br>
+הזיהוי מצליח רק אם עולים לרמה “מעל” app בעץ התיקיות. ולא הייתה בעיה בייבוא של app מתוך הטסט בתיקיית tests משום מה. רק מתוך routers…<br>
+חקרתי המון באינטרנט וראיתי שעוד מפתחים נתקלו בבעיה דומה בלי תשובה משביעת רצון לפיתרון…<br>
+אני באמת לא יודע אם אני מפספס משהו קטן או שיש כאן אכן אישיו.</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/3</link>
+        <pubDate>Sun, 24 Jan 2021 15:27:04 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-3</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>היי,</p>
+<p>הקונפיגורציה שלנו נמצאת ב־config.py.example.<br>
+כשהמערכת עוברת ב־CI, היא למעשה דורסת את config.py (שלא אמור להיות קיים ב־git) בעזרת הפקודה:</p>
+<blockquote>
+<p><code>cp config.py.example config.py</code></p>
+</blockquote>
+<p>על מנת שההגדרה שהוספת תזוהה, אתה צריך להוסיף אותה ב־config.py.example ולמחוק את הקובץ config.py.</p>
+          <p><a href="https://forums.pythonic.guru/t/import/8884/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/2</link>
+        <pubDate>Sun, 24 Jan 2021 05:27:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-2</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+      <item>
+        <title>בעיה בזיהוי import רלטיבי ואבסולוטי</title>
+        <dc:creator><![CDATA[nir9696]]></dc:creator>
+        <description><![CDATA[
+            <p>יש לי קובץ פייתון בנתיב calendar/app/routers/event_images.py<br>
+וקובץ קונפיגורציה בנתיב calendar/app/config.py.<br>
+אני רוצה לעשות אימפורט רלטיבי לקובץ הקונפיגורציה ב-<br>
+event_images.py<br>
+ע"י השורה from … import config.<br>
+אבל משום מה אני מקבל את השגיאה הבאה:<br>
+ImportError: attempted relative import with no known parent package.</p>
+<p>אדגיש כמה דברים:</p>
+<ol>
+<li>יש קובץ <em>init</em> בכל מקום, כך שפייתון אמור להכיר בתיקיות כ-packages.</li>
+<li>כשאני מנסה להשתמש באימפורט אבסולוטי - from app import config - הוא משום מה לא מכיר ב-package בשם app. ראיתי שלאחרים לא הייתה בעיה כזו בשימוש באימפורט אבסולוטי ל-app מתוך routers, כך שאני לא מבין מה הבעיה.</li>
+<li>כשאני משתמש באימפורט הרלטיבי, פייצ’ארם <strong>כן</strong> מצליח “להכיר” את config ומציע לי משם תכונות שאני יכול לייבא.</li>
+<li>כשעשיתי push לגיטהאב קיבלתי את השגיאה המצורפת:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e.jpeg" data-download-href="https://forums.pythonic.guru/uploads/default/0576668cb492dd7c60e2f58a4c9a44996712669e" title="WhatsApp Image 2021-01-21 at 16.49.27"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e_2_690x406.jpeg" alt="WhatsApp Image 2021-01-21 at 16.49.27" data-base62-sha1="Mk3GsVBXmgkRlyJGOm1sWw6bi6" width="690" height="406" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e_2_690x406.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e_2_1035x609.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e.jpeg 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/0/0576668cb492dd7c60e2f58a4c9a44996712669e_2_10x10.png"></a></div><br>
+לא ברור למה דווקא מתריע שלא מזהה את התכונה, אבל אפשר לראות שפירש את הפקודה של האימפורט הרליטיבי כ-app.config, שזה באמת נכון.</li>
+</ol>
+<p>בכל מקרה, הקוד שלי עם ההערה מופיע כאן:</p><aside class="onebox githubpullrequest">
+  <header class="source">
+      <a href="https://github.com/PythonFreeCourse/calendar/pull/70/checks" target="_blank" rel="noopener nofollow ugc">github.com/PythonFreeCourse/calendar</a>
+  </header>
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Pull Request">
+    <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/PythonFreeCourse/calendar/pull/70" target="_blank" rel="noopener nofollow ugc">feat: gets a link to the suitable image of a given event content.</a>
+    </h4>
+
+    <div class="branches">
+      <code>PythonFreeCourse:develop</code> ← <code>nir9696:feature/event_images</code>
+    </div>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2021-01-17" data-time="18:18:48" data-timezone="UTC">06:18PM - 17 Jan 21 UTC</span>
+      </div>
+
+      <div class="user">
+        <a href="https://github.com/nir9696" target="_blank" rel="noopener nofollow ugc">
+          <img alt="nir9696" src="https://forums.pythonic.guru/uploads/default/original/2X/4/44be9be1aab1aa0614546daaaef52109b59ffde2.png" class="onebox-avatar-inline" width="20" height="20">
+          nir9696
+        </a>
+      </div>
+
+      <div class="lines" title="20 commits changed 38 files with 302 additions and 1 deletions">
+        <a href="https://github.com/PythonFreeCourse/calendar/pull/70/files" target="_blank" rel="noopener nofollow ugc">
+          <span class="added">+302</span>
+          <span class="removed">-1</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+          <p><a href="https://forums.pythonic.guru/t/import/8884/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/import/8884/1</link>
+        <pubDate>Sun, 24 Jan 2021 05:21:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8884-1</guid>
+        <source url="https://forums.pythonic.guru/t/import/8884.rss">בעיה בזיהוי import רלטיבי ואבסולוטי</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלת טייפינג ואימפורטים</title>
+    <link>https://forums.pythonic.guru/t/topic/7937</link>
+    <description>היי שאלה לי, כהקדמה אצרף את עץ התיקיות שלי בשחמט
+![image|400x500](upload://aycV1GXol6sKN6huT6EmmyVcgcv.png) 
+
+בchess.py שמתי דוגמה חביבה שהייתה פה בפורום שמראה הזזה של חלקים.
+עכשיו משהו מעניין שלא הצלחתי למצוא לו פתרון בחיפושים נרחבים פה ובפורום ובאינטרנט.
+
+בתוך הקבצים בתת תיקייה pieces עשיתי import לColor מcolor, כלומר משהו מתיקייה מעל, כיוון שזה משתמש בזה ונראה לי לא הגיוני לעשות 2 קבצי color כיוון שאז שינוי של אחד מהם צריך לוודא שמשנים גם בשני. 
+כאשר אני מריצה את הדוגמה שלי מתוך chess.py אין שום בעיה.
+כאשר אני מריצה סתם נניח את bishop מתוך תיקיית pieces - יש תקלה של-
+![image|690x52](upload://qYkJ0rrtMXjhTqi661ihej7vap7.png) 
+
+אבל כאמור זה לא מפריע לכל העניין לרוץ. לא כל כך הבנתי למה
+
+
+בהמשך לזה, בתרגיל מטפיי - 
+ניסיתי לעשות import לboard לצורך annotation של חלק מהפונקציות בחלקי המשחק שרוצים לקבל לוח. 
+משום מה הפעם הדוגמה מchess.py זורקת שגיאה -
+![image|690x116](upload://yCbXgARKH1tK6G6a5GqJ8YVchgF.png) 
+ומסרבת לרוץ.
+
+ככה שזה לא ספציפית בעיה של import מעל תיקייה. 
+בסופו של דבר מעניינות אותי השאלות הבאות-
+* האם ניתן לעשות import למודול בתיקיית parent? איך? כל מה שהופיע באינטרנט לא עבד אצלי. (להוסיף דברים בsettings.json, וכו)
+* איך למרות שimport של color מתיקייה מעל לא מאפשר לחלקי המשחק לרוץ בנפרד זה עדיין רץ בדוגמה בתיקייה מעל?
+* למה דווקא הimport של board שנמצא בדיוק באותה תיקייה כמו color כן מקריס את הדוגמה?
+
+תודה :slight_smile:</description>
+    <language>he</language>
+    <lastBuildDate>Fri, 21 Aug 2020 15:39:42 +0000</lastBuildDate>
+    <category>שבוע 9</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/7937.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלת טייפינג ואימפורטים</title>
+        <dc:creator><![CDATA[imimouni]]></dc:creator>
+        <description><![CDATA[
+            <p>ובצורה קצת יותר ברורה למקרה שמישהו גם יצטרך</p>
+<aside class="quote no-group" data-username="Yam" data-post="14" data-topic="7862" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/yam/40/6_2.png" class="avatar"><a href="https://forums.pythonic.guru/t/instance-of-custom-type-annotation/7862/14">Instance of custom type annotation</a>
+</div>
+<blockquote>
+<p>כן, זו טעות שלי. שימוש במחרוזת <a href="https://mypy.readthedocs.io/en/latest/kinds_of_types.html#class-name-forward-references" rel="nofollow noopener">לא יכולה לפתור ייבוא מעגלי של מודולים </a>, רק התייחסות עתידית.</p>
+<p>אפשר לעיין בתיעוד של mypy בחלק שעוסק בייבוא מעגלי <a href="https://mypy.readthedocs.io/en/latest/common_issues.html#import-cycles" rel="nofollow noopener">כאן </a>.</p>
+</blockquote>
+</aside>
+          <p><a href="https://forums.pythonic.guru/t/topic/7937/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7937/3</link>
+        <pubDate>Fri, 21 Aug 2020 11:59:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7937-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7937.rss">שאלת טייפינג ואימפורטים</source>
+      </item>
+      <item>
+        <title>שאלת טייפינג ואימפורטים</title>
+        <dc:creator><![CDATA[yuval.cagan]]></dc:creator>
+        <description><![CDATA[
+            <p>אפשר לעשות אימפורט באמצעות נתיב אבסולוטי. אם את תמיד מתכוונת להריץ קובץ שנמצא בתיקיית האב, ניתן ליבא מתקיית בת באמצעות import x.y כש-x הוא שם התיקייה ו-y הוא שם הקובץ.<br>
+להבנתי, מאותה סיבה שציינתי לעיל, יש בעיה בהרצת חלקי המשחק בנפרד מכיוון וכאשר את מריצה אותם ישירות התיקייה הראשית שלך היא תיקיית הבת ותיקיית האב לא מוכרת לפייתון כנתיב חוקי.<br>
+לגבי האימפורט של board: נראה מהתמונה שאת מייבאת את board שמייבא את bishop שבתורו שוב מייבא את board.  נוצר כאן ייבוא מעגלי, והוא מה שמקריס את התוכנה. פייתון לא יכול לייבא את board בשנית.<br>
+היו על כך פוסטים רבים פה בפורום וים גם דיבר על הנושא בלייב האחרון. נסי לבצע חיפוש ולאתר את הפתרונות שהוצעו כאן בעבר.</p>
+<p>בהצלחה</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7937/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7937/2</link>
+        <pubDate>Fri, 21 Aug 2020 10:51:37 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7937-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7937.rss">שאלת טייפינג ואימפורטים</source>
+      </item>
+      <item>
+        <title>שאלת טייפינג ואימפורטים</title>
+        <dc:creator><![CDATA[imimouni]]></dc:creator>
+        <description><![CDATA[
+            <p>היי שאלה לי, כהקדמה אצרף את עץ התיקיות שלי בשחמט<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7.png" data-download-href="https://forums.pythonic.guru/uploads/default/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7_2_400x500.png" alt="image" data-base62-sha1="aycV1GXol6sKN6huT6EmmyVcgcv" width="400" height="500" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7_2_400x500.png, https://forums.pythonic.guru/uploads/default/optimized/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7_2_600x750.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7_2_800x1000.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/4/49f3abfbf6571eb0c233a79b7c0fa703fa9288b7_2_10x10.png"></a></div><p></p>
+<p>בchess.py שמתי דוגמה חביבה שהייתה פה בפורום שמראה הזזה של חלקים.<br>
+עכשיו משהו מעניין שלא הצלחתי למצוא לו פתרון בחיפושים נרחבים פה ובפורום ובאינטרנט.</p>
+<p>בתוך הקבצים בתת תיקייה pieces עשיתי import לColor מcolor, כלומר משהו מתיקייה מעל, כיוון שזה משתמש בזה ונראה לי לא הגיוני לעשות 2 קבצי color כיוון שאז שינוי של אחד מהם צריך לוודא שמשנים גם בשני.<br>
+כאשר אני מריצה את הדוגמה שלי מתוך chess.py אין שום בעיה.<br>
+כאשר אני מריצה סתם נניח את bishop מתוך תיקיית pieces - יש תקלה של-<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55.png" data-download-href="https://forums.pythonic.guru/uploads/default/bd0a7e8caaf607347478b0e828c8beca6adf3d55" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55_2_690x52.png" alt="image" data-base62-sha1="qYkJ0rrtMXjhTqi661ihej7vap7" width="690" height="52" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55_2_690x52.png, https://forums.pythonic.guru/uploads/default/original/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/b/bd0a7e8caaf607347478b0e828c8beca6adf3d55_2_10x10.png"></a></div><p></p>
+<p>אבל כאמור זה לא מפריע לכל העניין לרוץ. לא כל כך הבנתי למה</p>
+<p>בהמשך לזה, בתרגיל מטפיי -<br>
+ניסיתי לעשות import לboard לצורך annotation של חלק מהפונקציות בחלקי המשחק שרוצים לקבל לוח.<br>
+משום מה הפעם הדוגמה מchess.py זורקת שגיאה -<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d.png" data-download-href="https://forums.pythonic.guru/uploads/default/f29b267d03a3eae65c3b7b9724eb692d5beed07d" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d_2_690x116.png" alt="image" data-base62-sha1="yCbXgARKH1tK6G6a5GqJ8YVchgF" width="690" height="116" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d_2_690x116.png, https://forums.pythonic.guru/uploads/default/optimized/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d_2_1035x174.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d_2_1380x232.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/f/f29b267d03a3eae65c3b7b9724eb692d5beed07d_2_10x10.png"></a></div><br>
+ומסרבת לרוץ.<p></p>
+<p>ככה שזה לא ספציפית בעיה של import מעל תיקייה.<br>
+בסופו של דבר מעניינות אותי השאלות הבאות-</p>
+<ul>
+<li>האם ניתן לעשות import למודול בתיקיית parent? איך? כל מה שהופיע באינטרנט לא עבד אצלי. (להוסיף דברים בsettings.json, וכו)</li>
+<li>איך למרות שimport של color מתיקייה מעל לא מאפשר לחלקי המשחק לרוץ בנפרד זה עדיין רץ בדוגמה בתיקייה מעל?</li>
+<li>למה דווקא הimport של board שנמצא בדיוק באותה תיקייה כמו color כן מקריס את הדוגמה?</li>
+</ul>
+<p>תודה <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=10" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/7937/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/7937/1</link>
+        <pubDate>Fri, 21 Aug 2020 10:24:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7937-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/7937.rss">שאלת טייפינג ואימפורטים</source>
+      </item>
+  </channel>
+</rss>

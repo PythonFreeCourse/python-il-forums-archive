@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>עבודה עם המשתמש המחובר למערכת</title>
+    <link>https://forums.pythonic.guru/t/topic/9121</link>
+    <description>בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.
+מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.
+את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies
+
+ישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:
+כולן בנויות באופן שהיישום שלהן אמור להיות כדיפנדנסי עבור ראוט, באופן הבא:
+
+עבור ההדגמה אני משתמש באחת מהן, הנקראת current_user
+![image|689x102](upload://mQrx0C41hHpcGWmSblmGA1m029s.png)
+
+ניתן גם ליישם באופן הבא, המתאים בעיקר לפונקציות שמחזירות בוליאן. באופן זה, ערך ההחזרה מהפונקציה אינו מוכנס למשתנה, ולא ניתן להשתמש בו בתוך הפונקציה שלכם. הדיפנדנסי תתפקד רק כהגנה על הראוט:
+
+![image|690x137](upload://4kSqCcUZMqT2v0Ak5Oer4TGUimM.png) 
+
+מכנה משותף נוסף הוא שכולן מגינות על ראוט. במידה והשתמשתם בהן בכניסה לראוט, והמשתמש אינו מחובר, הוא יופנה אוטומטית לעמוד לוגאין. לאחר ההתחברות הוא יוחזר אוטומטית לראוט שלכם.
+
+השונה בין הפונקציות הוא ערך ההחזרה שלהן, כפי שמתואר בתיעוד שלהן:
+is_logged_in  - מחזירה בוליאן בלבד. מיועדת רק על הגנה על ראוט, ללא שימוש בנתוני המשתמש.
+is_manager - גם כן מחזירה בוליאן, מגינה על ראוט עבור משתמש המוגדר כמנהל בלבד.
+current_user- מחזירה אובייקט פיידנטיק המכיל: user_id, username. לנוחיותכם השתמשתי במחלקה ולא במילון.
+לתשומת לבכם, הפונקציה הזאת אינה פונה לדאטה בייס עבור הנתונים. היא מחזירה אותן ישירות מהטוקן שהמשתמש נושא איתו ממערכת האבטחה. מהסיבה הזאת היא &#39;יעילה&#39; עבור פעולות השרת, וכל עוד אינכם צריכים נתונים נוספים עבור המשתמש, אנא השתמשו בה.
+current_user_from_db - מחזירה אובייקט User מלא מהדאטה בייס, עם כל הנתונים שלו. היא הכי פחות ידידותית מבחינת משאבים, מאחר והיא פונה לדאטה בייס. אנה השתמשו בה רק אם אתם חייבים את הנתונים הספציפיים שכל הפונקציות האחרות אינן מספקות.
+בנוסף, ישנה הדגמה עבור כל אחת מהפונקציות בקובץ tests\security_testing_routes.
+אני מקווה שהכל ברור, ובכל מקרה אני פה כדי לעזור :)</description>
+    <language>he</language>
+    <lastBuildDate>Sat, 20 Feb 2021 16:13:22 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/topic/9121.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>עבודה עם המשתמש המחובר למערכת</title>
+        <dc:creator><![CDATA[ori81510]]></dc:creator>
+        <description><![CDATA[
+            <p>יש ב test_login פונקציה test_login_successful שמצאתי מאוד שימושית.</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/9121/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/9121/5</link>
+        <pubDate>Sat, 20 Feb 2021 16:13:22 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9121-5</guid>
+        <source url="https://forums.pythonic.guru/t/topic/9121.rss">עבודה עם המשתמש המחובר למערכת</source>
+      </item>
+      <item>
+        <title>עבודה עם המשתמש המחובר למערכת</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>קודם כל תודה רבה :). אני לא בטוח שהבנתי את השאלה. בפוסט כתבתי בדיוק היכן ניתן לראות הדגמה של איך להפעיל את זה, ואיך זה עובד. ישנו קובץ עם ראוטים שיצרתי במיוחד עבור הבדיקה, בתיקיית tests. שם הקובץ הוא  security_testting_routes. על פי הבדיקות שעשיתי, הכל עובד</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/9121/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/9121/4</link>
+        <pubDate>Sat, 20 Feb 2021 14:23:14 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9121-4</guid>
+        <source url="https://forums.pythonic.guru/t/topic/9121.rss">עבודה עם המשתמש המחובר למערכת</source>
+      </item>
+      <item>
+        <title>עבודה עם המשתמש המחובר למערכת</title>
+        <dc:creator><![CDATA[noam100]]></dc:creator>
+        <description><![CDATA[
+            <p>קודם כל עבודה אדירה וקריטית להמשך. תודה המון <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"><br>
+דבר שני- רציתי לשאול אם אתה עובד עם פונקציה שמכניסה משתמש כמחובר כדי לבחון אם זה עובד. ואם יש טסטים שלהן איפשהו אשמח גם לקבל ניתוב</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/9121/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/9121/3</link>
+        <pubDate>Sat, 20 Feb 2021 13:03:52 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9121-3</guid>
+        <source url="https://forums.pythonic.guru/t/topic/9121.rss">עבודה עם המשתמש המחובר למערכת</source>
+      </item>
+      <item>
+        <title>עבודה עם המשתמש המחובר למערכת</title>
+        <dc:creator><![CDATA[PureDream]]></dc:creator>
+        <description><![CDATA[
+            <p>בשעה טובה, משהו שהוא קריטי להמשך הפרויקט!<br>
+תודה לך קובי!</p>
+          <p><a href="https://forums.pythonic.guru/t/topic/9121/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/9121/2</link>
+        <pubDate>Thu, 18 Feb 2021 22:44:51 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9121-2</guid>
+        <source url="https://forums.pythonic.guru/t/topic/9121.rss">עבודה עם המשתמש המחובר למערכת</source>
+      </item>
+      <item>
+        <title>עבודה עם המשתמש המחובר למערכת</title>
+        <dc:creator><![CDATA[koby]]></dc:creator>
+        <description><![CDATA[
+            <p>בשעה טובה ישנן פונקציות המחזירות את המשתמש המחובר, וניתן לעבוד איתן בראוטים.<br>
+מצאתי לנכון לכתוב פוסט עם מעט הבהרות, כיצד להשתמש בהן.<br>
+את הפונקציות המדוברות ניתן למצוא בתיקייה: app/internal/security/dependancies</p>
+<p>ישנן 4 פונקציות שונות, שהמשותף לכולן הוא כיצד משתמשים בהן:<br>
+כולן בנויות באופן שהיישום שלהן אמור להיות כדיפנדנסי עבור ראוט, באופן הבא:</p>
+<p>עבור ההדגמה אני משתמש באחת מהן, הנקראת current_user<br>
+</p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192.png" data-download-href="https://forums.pythonic.guru/uploads/default/a01d78139587e4976eaeaa9f67efb6e698f76192" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_689x102.png" alt="image" data-base62-sha1="mQrx0C41hHpcGWmSblmGA1m029s" width="689" height="102" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_689x102.png, https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_1033x153.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/a/a01d78139587e4976eaeaa9f67efb6e698f76192_2_10x10.png"></a></div><p></p>
+<p>ניתן גם ליישם באופן הבא, המתאים בעיקר לפונקציות שמחזירות בוליאן. באופן זה, ערך ההחזרה מהפונקציה אינו מוכנס למשתנה, ולא ניתן להשתמש בו בתוך הפונקציה שלכם. הדיפנדנסי תתפקד רק כהגנה על הראוט:</p>
+<p></p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c.png" data-download-href="https://forums.pythonic.guru/uploads/default/1e64ddc9d06c65c22692b2e20ca6d967c19d534c" title="image"><img src="https://forums.pythonic.guru/uploads/default/original/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c.png" alt="image" data-base62-sha1="4kSqCcUZMqT2v0Ak5Oer4TGUimM" width="690" height="137" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1e64ddc9d06c65c22692b2e20ca6d967c19d534c_2_10x10.png"></a></div><p></p>
+<p>מכנה משותף נוסף הוא שכולן מגינות על ראוט. במידה והשתמשתם בהן בכניסה לראוט, והמשתמש אינו מחובר, הוא יופנה אוטומטית לעמוד לוגאין. לאחר ההתחברות הוא יוחזר אוטומטית לראוט שלכם.</p>
+<p>השונה בין הפונקציות הוא ערך ההחזרה שלהן, כפי שמתואר בתיעוד שלהן:<br>
+is_logged_in  - מחזירה בוליאן בלבד. מיועדת רק על הגנה על ראוט, ללא שימוש בנתוני המשתמש.<br>
+is_manager - גם כן מחזירה בוליאן, מגינה על ראוט עבור משתמש המוגדר כמנהל בלבד.<br>
+current_user- מחזירה אובייקט פיידנטיק המכיל: user_id, username. לנוחיותכם השתמשתי במחלקה ולא במילון.<br>
+לתשומת לבכם, הפונקציה הזאת אינה פונה לדאטה בייס עבור הנתונים. היא מחזירה אותן ישירות מהטוקן שהמשתמש נושא איתו ממערכת האבטחה. מהסיבה הזאת היא ‘יעילה’ עבור פעולות השרת, וכל עוד אינכם צריכים נתונים נוספים עבור המשתמש, אנא השתמשו בה.<br>
+current_user_from_db - מחזירה אובייקט User מלא מהדאטה בייס, עם כל הנתונים שלו. היא הכי פחות ידידותית מבחינת משאבים, מאחר והיא פונה לדאטה בייס. אנה השתמשו בה רק אם אתם חייבים את הנתונים הספציפיים שכל הפונקציות האחרות אינן מספקות.<br>
+בנוסף, ישנה הדגמה עבור כל אחת מהפונקציות בקובץ tests\security_testing_routes.<br>
+אני מקווה שהכל ברור, ובכל מקרה אני פה כדי לעזור <img src="https://forums.pythonic.guru/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/topic/9121/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/topic/9121/1</link>
+        <pubDate>Thu, 18 Feb 2021 17:52:49 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9121-1</guid>
+        <source url="https://forums.pythonic.guru/t/topic/9121.rss">עבודה עם המשתמש המחובר למערכת</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/fastapi-testclient-middleware-problam/9052 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:46 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>Fastapi testclient middleware problam - שבוע 16 - פייתון בעברית ובחינם</title>
+<meta content="היי לכולם! 
+אני עובד על הפאנל פיצרים ומה שמצאתי שאני רוצה לעשות לתפוס את כל הבקשות HTTP ואם הבקשה מובילה לפיצר מכובה disabled הוא לא יתן להריץ אותו. 
+(אם אני לא עושה את זה אני כנראה אצור פונקציה שמי שיש לו פיצר יצתרך כנר&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="9052.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="9052.rss" rel="alternate nofollow" title="הזנת RSS של ‚Fastapi testclient middleware problam’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/2X/a/aff071b00abe0f768d83addcea242f555cef1181.png" name="twitter:image"/>
+<meta content="../../uploads/default/original/2X/a/aff071b00abe0f768d83addcea242f555cef1181.png" property="og:image"/>
+<meta content="9052.html" property="og:url"/>
+<meta content="9052.html" name="twitter:url"/>
+<meta content="Fastapi testclient middleware problam" property="og:title"/>
+<meta content="Fastapi testclient middleware problam" name="twitter:title"/>
+<meta content="היי לכולם!  אני עובד על הפאנל פיצרים ומה שמצאתי שאני רוצה לעשות לתפוס את כל הבקשות HTTP ואם הבקשה מובילה לפיצר מכובה disabled הוא לא יתן להריץ אותו.  (אם אני לא עושה את זה אני כנראה אצור פונקציה שמי שיש לו פיצר יצתרך כנראה לתמוך בה…)  אז עושה את זה בעזרת Middleware של http שזה בעצם עושה את מה שתיארתי, וזה עובד נפלא.  הבעיה מתחילה כאשר מריצים את הטסטים הקיימים…  כל פעם שעושים בקשת http בעזרת testclient של fastapi זה זורק AssertionError  הנה הפלט.    כמו בתמונה כמובן שחיפשתי באינטרנט איך לטפל בזה ..." property="og:description"/>
+<meta content="היי לכולם!  אני עובד על הפאנל פיצרים ומה שמצאתי שאני רוצה לעשות לתפוס את כל הבקשות HTTP ואם הבקשה מובילה לפיצר מכובה disabled הוא לא יתן להריץ אותו.  (אם אני לא עושה את זה אני כנראה אצור פונקציה שמי שיש לו פיצר יצתרך כנראה לתמוך בה…)  אז עושה את זה בעזרת Middleware של http שזה בעצם עושה את מה שתיארתי, וזה עובד נפלא.  הבעיה מתחילה כאשר מריצים את הטסטים הקיימים…  כל פעם שעושים בקשת http בעזרת testclient של fastapi זה זורק AssertionError  הנה הפלט.    כמו בתמונה כמובן שחיפשתי באינטרנט איך לטפל בזה ..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 16" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="19 ❤"/>
+<meta content="2021-02-06T14:30:43+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="90524658.html?page=2" rel="next"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"Fastapi testclient middleware problam","mainEntity":{"@type":"Question","name":"Fastapi testclient middleware problam","text":"היי לכולם!\n\nאני עובד על הפאנל פיצרים ומה שמצאתי שאני רוצה לעשות לתפוס את כל הבקשות HTTP ואם הבקשה מובילה לפיצר מכובה disabled הוא לא יתן להריץ אותו.\n\n(אם אני לא עושה את זה אני כנראה אצור פונקציה שמי שיש לו פיצר יצתרך כנראה לתמוך בה…)\n\nאז עושה את זה בעזרת Middleware של http שזה בעצם עושה את מה שתיארת&hellip;","upvoteCount":0,"answerCount":1,"dateCreated":"2021-02-06T14:30:43.117Z","author":{"@type":"Person","name":"Liran Caduri"},"acceptedAnswer":{"@type":"Answer","text":"מגניב, אחלה תגובה וכל הכבוד על המחקר העצמאי :slight_smile:\n\nקראתי את הקישורים שהבאת ונראה שזו באמת הבעיה, ואני לא רואה פתרון טוב יותר כרגע.\n\nנשמע אחלה, לך על זה!\n\nלפני שאתה מתחיל שים לב שב־requests שבודקים האם משהו הוא ok, רואים האם הוא בין 200 ל־400 (לא כולל 400) – משום שגם 301/302 ושאר החברים נחשב&hellip;","upvoteCount":2,"dateCreated":"2021-02-10T10:22:12.187Z","url":"https://forums.pythonic.guru/t/fastapi-testclient-middleware-problam/9052/16","author":{"@type":"Person","name":"Yam"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="9052.html">Fastapi testclient middleware problam</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-16/28.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 16</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="Fastapi testclient middleware problam" itemprop="headline"/>
+<meta content="שבוע 16" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/a/aff071b00abe0f768d83addcea242f555cef1181.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-06T14:30:43Z" itemprop="datePublished">
+                     6 בפברואר,‏ 2021,‏  2:30pm
+                  </time>
+<meta content="2021-02-06T14:30:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי לכולם!<br/>
+אני עובד על הפאנל פיצרים ומה שמצאתי שאני רוצה לעשות לתפוס את כל הבקשות HTTP ואם הבקשה מובילה לפיצר מכובה disabled הוא לא יתן להריץ אותו.<br/>
+(אם אני לא עושה את זה אני כנראה אצור פונקציה שמי שיש לו פיצר יצתרך כנראה לתמוך בה…)</p>
+<p>אז עושה את זה בעזרת Middleware של http שזה בעצם עושה את מה שתיארתי, וזה עובד נפלא.</p>
+<p>הבעיה מתחילה כאשר מריצים את הטסטים הקיימים…<br/>
+כל פעם שעושים בקשת http בעזרת testclient של fastapi זה זורק <code>AssertionError</code></p>
+<p>הנה הפלט.<br/>
+<img alt="Screen Shot 2021-02-06 at 16.09.52" data-base62-sha1="p6qHNtQVO23wxc0vw8mrSIdVlM5" height="337" src="../../uploads/default/original/2X/a/aff071b00abe0f768d83addcea242f555cef1181.png" width="553"/></p>
+<p>כמו בתמונה כמובן שחיפשתי באינטרנט איך לטפל בזה ומצאתי בשביל שאוכל להשתמש בmiddleware צריך להשתמש ב<a href="https://github.com/vinissimus/async-asgi-testclient" rel="noopener nofollow ugc">async asgi testclient</a></p>
+<p>והנה הבעיה בגיטאב עם דוגמא של השגיאה <a href="https://github.com/bloomingmath/fastapi-middleware-issue/blob/master/README.md" rel="noopener nofollow ugc">כאן</a> ובמקרה זה גם המקור שסיפק את התשובה.</p>
+<p>כמובן שהחלפתי את הtestclient כדי לנסות לראות שהבעיה נפתרה ואכן השגיאה שספציפית הזאת כן.<br/>
+אבל שאר הטסטים לא מעודכנים לסוג הזה של testclient ופקודות כמו <code>response.ok</code> לא עובדות.</p>
+<p>אשמח להצעות נוספות <img alt=":blush:" class="emoji" src="../../images/emoji/twitter/blushc164.png?v=9" title=":blush:"/> או האם זה אפשרי שנעדכן את הtestclient שלנו ואת הטסטים שלנו.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-07T06:36:36Z" itemprop="datePublished">
+                     7 בפברואר,‏ 2021,‏  6:36am
+                  </time>
+<meta content="2021-02-07T06:36:36Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+האם הבעיה היא ספציפית שאין את <code>.ok</code>?<br/>
+אם כן, בדקת האם יש תחליפים בקוד של המודול? <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-07T07:15:09Z" itemprop="datePublished">
+                     7 בפברואר,‏ 2021,‏  7:15am
+                  </time>
+<meta content="2021-02-07T07:15:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש תחליפים פחות ספציפים.</p>
+<p>הנה כמה דוגמאות מהדוקומנטציה.</p>
+<pre><code>resp = await client.get("/")
+assert resp.status_code == 200
+assert resp.text == "plain response"
+
+resp = await client.get("/json")
+assert resp.status_code == 200
+assert resp.json() == {"hello": "world"}</code></pre>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-07T07:24:40Z" itemprop="datePublished">
+                     7 בפברואר,‏ 2021,‏  7:24am
+                  </time>
+<meta content="2021-02-07T07:24:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הם למעשה יותר ספציפיים, כי הם לא מקבלים 302 או 303 כוולידיים. יש משהו פחות ספציפי?(:</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-07T07:28:55Z" itemprop="datePublished">
+                     7 בפברואר,‏ 2021,‏  7:28am
+                  </time>
+<meta content="2021-02-07T07:38:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא מצאתי משהו נוסף…</p>
+<p>איך ממשיכים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-07T21:57:12Z" itemprop="datePublished">
+                     7 בפברואר,‏ 2021,‏  9:57pm
+                  </time>
+<meta content="2021-02-07T21:57:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הלינק ששלחת ל־issue הוא בעיה שהייתה קיימת לפני שנתיים. אתה בטוח שזו הבעיה?</p>
+<p>רפרנס נוסף: <a class="inline-onebox" href="https://github.com/encode/starlette/issues/472">AssertionError with middleware and TemplateResponse · Issue #472 · encode/starlette · GitHub</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-08T07:30:20Z" itemprop="datePublished">
+                     8 בפברואר,‏ 2021,‏  7:30am
+                  </time>
+<meta content="2021-02-08T07:30:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן זה אותה בעיה.<br/>
+וכבר ראיתי את הלינק ששלחת, זה כמו הissue ששלחתי…</p>
+<p>כיצד ממשיכים?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-08T17:29:24Z" itemprop="datePublished">
+                     8 בפברואר,‏ 2021,‏  5:29pm
+                  </time>
+<meta content="2021-02-08T17:29:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יש פתרונות בטיקט ששלחתי. ניסית אותם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-08T17:54:10Z" itemprop="datePublished">
+                     8 בפברואר,‏ 2021,‏  5:54pm
+                  </time>
+<meta content="2021-02-08T17:54:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ניסיתי שם הכל ולא עבד לי.</p>
+<p>חלק מהפתרונות עושים שגיאות יותר גדולות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-09T03:39:06Z" itemprop="datePublished">
+                     9 בפברואר,‏ 2021,‏  3:39am
+                  </time>
+<meta content="2021-02-09T03:39:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לצערי לא יהיה לי זמן להתפנות להיכנס לקוד בקרוב. נסה למצוא פתרונות בעצמך או להיעזר בקהילה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-09T07:55:55Z" itemprop="datePublished">
+                     9 בפברואר,‏ 2021,‏  7:55am
+                  </time>
+<meta content="2021-02-09T07:55:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצאתי פתרון את זה <a href="https://github.com/vinissimus/async-asgi-testclient" rel="noopener nofollow ugc">async asgi testclient</a> כפי שציינתי בפוסט.<br/>
+ולא רצית כי אין <code>.ok</code> ויש במקום <code>.status_code</code><br/>
+אז אם זאת הבעיה למה לא לבדוק אם <code>.status_code</code> בין 200 ל299 ?<br/>
+הראי כל קוד בין 200 ל299 הוא אומר שהבקשה עברה בהצלחה כפי שצויין כאן <a class="inline-onebox" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" rel="noopener nofollow ugc">HTTP response status codes - HTTP | MDN</a>.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-09T08:35:19Z" itemprop="datePublished">
+                     9 בפברואר,‏ 2021,‏  8:35am
+                  </time>
+<meta content="2021-02-09T08:35:19Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רגע, למה המודול ההוא עובד? מה ממומש בו שונה?<br/>
+נכנסתי ל¯async asgi test client, זה מודול שמתוחזק חצי כוח</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-09T08:48:53Z" itemprop="datePublished">
+                     9 בפברואר,‏ 2021,‏  8:48am
+                  </time>
+<meta content="2021-02-09T09:08:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אני לא יודע למה הוא עובד אחרת…<br/>
+אני רק יודע שזה עובד וזה מה שאומרים לעשות למי שיש את הבעיה.<br/>
+אתה יכול לראות את ההסבר למה זה עובד <a href="https://github.com/tiangolo/fastapi/issues/806#issuecomment-567913676" rel="noopener nofollow ugc">כאן</a>. זה מתוך הissue שפתחו בfastapi.</p>
+<p>אני יודע מניסיון שfastapi testclient מחזיר type לא מתאים של הבקשה גם מצולם בתמונה למעלה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T02:49:35Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏  2:49am
+                  </time>
+<meta content="2021-02-10T02:49:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אי אפשר לפתור באגים בלי להבין למה fix שהכנסת לפרויקט עובד, ולמה הדבר הקודם לא.<br/>
+לא הייתי מכניס לבית שלי תיקונאי שאומר “אין לי מושג למה זה עובד, אבל הנה תראה זה עובד” <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>הסכנות הן:</p>
+<ol>
+<li>הכנסת פתרונות לא מתאימים שיגרמו באגים במקומות אחרים.</li>
+<li>יצירת באגים עתידיים עבור אנשים שירצו להוסיף קוד לפרויקט.</li>
+<li>פתרון לא מיטבי שלא מתחשב בכל מקרי הקצה, ועלול להוסיף טכנולוגיות לא נכונות או מזיקות לקוד.</li>
+</ol>
+<p>אני אשמח אם תוכל לחקור קצת מה ההבדל ולמה אחד עובד והשני לא,<br/>
+או שתצליח למממש פתרון כזה בעצמך.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T08:42:35Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏  8:42am
+                  </time>
+<meta content="2021-02-10T08:42:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז בדקתי על ההבדלים כמו שביקשת.</p>
+<p>הfastapi משתמש ב-starlette middleware הוא אפילו לא משנה אותו.<br/>
+וכאשר משתמשים בmiddleware עם jinja2 templates<br/>
+הוא מחזיר <code>message["type"]</code>  שונה.</p>
+<p>לדוגמא <code>{'type': 'http.response.template'}</code></p>
+<p>וכאשר הקוד רץ ה<code>message["type"]</code> עובר וולידציה והוא חייב להיות תואם ל-<br/>
+<code>{'type': 'http.response.start'}</code> ככה הקוד שלהם כתוב.</p>
+<p>ומצאו שהפתרון הוא להשתמש ב<a href="https://github.com/vinissimus/async-asgi-testclient" rel="noopener nofollow ugc">async-asgi-testclient</a> כי הוא מחזיר את ה<code>message["type"]</code>  הנכון.</p>
+<p>לפי מה שמצאתי זה הפתרון הרשמי שסגר את הissues של הבעיה הזאת.</p>
+<aside class="quote no-group" data-post="14" data-topic="9052" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<ol>
+<li>הכנסת פתרונות לא מתאימים שיגרמו באגים במקומות אחרים.</li>
+<li>יצירת באגים עתידיים עבור אנשים שירצו להוסיף קוד לפרויקט.</li>
+<li>פתרון לא מיטבי שלא מתחשב בכל מקרי הקצה, ועלול להוסיף טכנולוגיות לא נכונות או מזיקות לקוד.</li>
+</ol>
+</blockquote>
+</aside>
+<p>בדקתי גם על הסכנות והסכנות האלה לא קיימות פה, fastapi testclient הוא בעצם starlette testclient והוא מבוסס על HTTPX וגם async-asgi-testclient מבוסס על HTTPX, הם בגדול עובדים באותה צורה וההבדל זה ה<code>message["type"]</code>  שונה זה מה שמצאתי על הבדלים.</p>
+<p>וגם לfastapi יש פונקציות כמו <code>.ok</code> כמו שאמרנו אבל אפשר לפתור את זה כשבודקים אם ה<code>.status_code</code><br/>
+בין 200 ל299 כפי שאומרים כאן <a class="inline-onebox" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" rel="noopener nofollow ugc">HTTP response status codes - HTTP | MDN</a>.</p>
+<aside class="quote no-group" data-post="14" data-topic="9052" data-username="Yam">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../user_avatar/forums.pythonic.guru/yam/40/6259_2.jpg" width="20"/> Yam:</div>
+<blockquote>
+<p>שתצליח למממש פתרון כזה בעצמך.</p>
+</blockquote>
+</aside>
+<p>לא הצלחתי לפתור את הבעיה הזאת בעצמי כי הדברים שם הם read only ולא נותן לי לשנות אותם.</p>
+<p>מה אתה אומר אפשר להחליף את הtestclient שלנו כדי שאוכל להשתמש בmiddleware?</p>
+<p>ותודה רבה על העזרה <img alt=":raised_hands:" class="emoji" src="../../images/emoji/twitter/raised_handsc164.png?v=9" title=":raised_hands:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T10:22:12Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏ 10:22am
+                  </time>
+<meta content="2021-02-10T10:22:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מגניב, אחלה תגובה וכל הכבוד על המחקר העצמאי <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>קראתי את הקישורים שהבאת ונראה שזו באמת הבעיה, ואני לא רואה פתרון טוב יותר כרגע.<br/>
+נשמע אחלה, לך על זה!</p>
+<p>לפני שאתה מתחיל שים לב שב־requests שבודקים האם משהו הוא <code>ok</code>, רואים האם הוא בין 200 ל־400 (לא כולל 400) – משום שגם 301/302 ושאר החברים נחשבים כעמוד תקין.<br/>
+אם אתה בכלל רוצה לצאת מלך – תעשה PR ל־async-asgi-testclient ותוסיף שם <code>.ok</code> <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T10:30:03Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏ 10:30am
+                  </time>
+<meta content="2021-02-10T10:30:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה ענקית !!<br/>
+אנסה להוסיף <code>.ok</code> נשמע מעניין.<br/>
+חחחחח</p>
+<p>ואולי אפשר להחליף מעכשיו את הtest client שכולם יכולו לעדכן את הטסטים שלהם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T10:48:33Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏ 10:48am
+                  </time>
+<meta content="2021-02-10T10:48:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ברגע שתחליף ואקבל את הקומיט שלך לכולם לא תהיה ברירה <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/><br/>
+(כן, כדאי להחליף עכשיו)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Liran_C</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T11:00:29Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏ 11:00am
+                  </time>
+<meta content="2021-02-10T11:00:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אבל זה לא יעבור את הטסטים בגיטאב, אתה תקבל את הקומיט בכל זאת?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="9052.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-02-10T11:17:04Z" itemprop="datePublished">
+                     10 בפברואר,‏ 2021,‏ 11:17am
+                  </time>
+<meta content="2021-02-10T11:17:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זה יעבור אם תדאג שזה יעבור <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="90524658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/fastapi-testclient-middleware-problam/9052 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 02:51:51 GMT -->
+</html>

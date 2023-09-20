@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שאלה בנוגע ליעילות של list אל מול dic</title>
+    <link>https://forums.pythonic.guru/t/list-dic/9173</link>
+    <description>תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי. 
+
+הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.
+תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.
+ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צורך לעבור על כולה כל פעם מחדש ברגע שנתקלים במילה חדשה.
+
+האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום  (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).
+,תודה מראש על ההתייחסות.
+.
+
+&gt; **מתודה א:   --  מיון בעזרת רשימה  -  צורה לא יעילה**
+
+```
+my_list = [&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;]
+new_dic = {}
+while my_list:
+    counting = 0
+    current = my_list[0]
+    while counting &lt; len(my_list) and my_list[counting] == current:
+        counting += 1
+    new_dic[current] = counting
+    my_list = my_list[ counting :]
+print(new_dic)
+# {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}
+```
+![image|431x32](upload://AwgRODC2RjXniMfZwF7HzxHZ4JU.png)
+
+&gt; **מתודה ב:   --   מיון בעזרת מילון**
+
+
+```
+my_list = [&#39;a&#39;, &#39;a&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;]
+new_dic = {}
+for word in my_list:
+    if word in new_dic:
+        new_dic[word] += 1
+    else:
+        new_dic[word] = 1
+print(new_dic)
+# {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1}
+```
+![image|356x32](upload://zHWv75Lf68EgQOrHXkTi7QYxhEG.png)</description>
+    <language>he</language>
+    <lastBuildDate>Mon, 16 Aug 2021 09:21:21 +0000</lastBuildDate>
+    <category>שבוע 5</category>
+    <atom:link href="https://forums.pythonic.guru/t/list-dic/9173.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שאלה בנוגע ליעילות של list אל מול dic</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="112344asafh" data-post="1" data-topic="9173">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/letter_avatar_proxy/v4/letter/1/47e85d/40.png" class="avatar"> 112344asafh:</div>
+<blockquote>
+<p>האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).<br>
+,תודה מראש על ההתייחסות.</p>
+</blockquote>
+</aside>
+<p>השורה <code>    my_list = my_list[counting:]</code> מעתיקה כל פעם את כל האיברים ב־<code>my_list</code> לרשימה חדשה, החל ממקום <code>counting</code>. זו פעולה יקרה שעלולה לארוך זמן רב אם הרשימה גדולה.</p>
+          <p><a href="https://forums.pythonic.guru/t/list-dic/9173/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/list-dic/9173/3</link>
+        <pubDate>Mon, 16 Aug 2021 09:21:21 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9173-3</guid>
+        <source url="https://forums.pythonic.guru/t/list-dic/9173.rss">שאלה בנוגע ליעילות של list אל מול dic</source>
+      </item>
+      <item>
+        <title>שאלה בנוגע ליעילות של list אל מול dic</title>
+        <dc:creator><![CDATA[112344asafh]]></dc:creator>
+        <description><![CDATA[
+            <p>שכחתי בפוסט הראשון לוסיף מדוע הפעולה sort() על רשימה גדולה ככל שתיהיה לוקחת גם היא מילי שניות מדוע לא מדובר בפעולה שאמורה לקחת זמן, האם לא מדובר כאן על מצב בוהרשימה נקראת על ידי המחשב כמה וכמה פעמים וכך מסדרת את אותה לפי הסדר, לכאורה זו פעולה יותר מורכבת שאומרה לקחת יותר זמן ממה שאני ניסיתי לעשות במטודה א. כשניסיתי למצוא למספור המילים שמופיעות בטקסט.<br>
+שוב תודה על ההתיחסות</p>
+          <p><a href="https://forums.pythonic.guru/t/list-dic/9173/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/list-dic/9173/2</link>
+        <pubDate>Mon, 16 Aug 2021 06:49:06 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9173-2</guid>
+        <source url="https://forums.pythonic.guru/t/list-dic/9173.rss">שאלה בנוגע ליעילות של list אל מול dic</source>
+      </item>
+      <item>
+        <title>שאלה בנוגע ליעילות של list אל מול dic</title>
+        <dc:creator><![CDATA[112344asafh]]></dc:creator>
+        <description><![CDATA[
+            <p>תחילה אומר שניסיתי ככל יכולתי ומקווה שהצלחתי להעביר את השאלה בלי להזכיר אף תרגיל ספציפי.</p>
+<p>הרגע גמרתי את האחד מהתרגילים שהופיעו בשבועות הקודמים ואין מה להגיד המודלים האלו זה Game Changer.<br>
+תרגיל זה שוב עורר בי שאלה שרציתי לכתוב כבר זמן רב, שאלה שלא נותנת מנוח לנפשי, קראתי כאן אשכולות קשורים אך תשובה מספקת עדיין לא קיבלתי. כדי לפתור את אחד מהתרגילים יש לבצע מספור למילים בצורה חכמה.<br>
+ולתומי עד שנתקלתי בהפרשי הזמנים העצומים בין שתי השיטות חשבתי שמצאתי את הדרך האולטימטיבית למספור האיברים ברשימה בלי צורך לעבור על כולה כל פעם מחדש ברגע שנתקלים במילה חדשה.</p>
+<p>האם ישנה אפשרות להסביר מדוע מתודה א כל כך לא יעילה לעומת מתודה ב? אחדד את השאלה ואומר שבשני המתודות אני עובר על הרשימה כולה רק פעם אחת, לכן מאיפה מגיע פער הזמנים העצום  (במתודה א, שיניתי את פונקצייה count כך שלא תעבור כל פעם על כל הטקסט).<br>
+,תודה מראש על ההתייחסות.<br>
+.</p>
+<blockquote>
+<p><strong>מתודה א:   –  מיון בעזרת רשימה  -  צורה לא יעילה</strong></p>
+</blockquote>
+<pre><code class="lang-auto">my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+while my_list:
+    counting = 0
+    current = my_list[0]
+    while counting &lt; len(my_list) and my_list[counting] == current:
+        counting += 1
+    new_dic[current] = counting
+    my_list = my_list[ counting :]
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fff42947224699b3ad64e6c964f0d7b34ffd8716.png" alt="image" data-base62-sha1="AwgRODC2RjXniMfZwF7HzxHZ4JU" width="431" height="32"></p>
+<blockquote>
+<p><strong>מתודה ב:   –   מיון בעזרת מילון</strong></p>
+</blockquote>
+<pre><code class="lang-auto">my_list = ['a', 'a', 'a', 'b', 'b', 'c']
+new_dic = {}
+for word in my_list:
+    if word in new_dic:
+        new_dic[word] += 1
+    else:
+        new_dic[word] = 1
+print(new_dic)
+# {'a': 3, 'b': 2, 'c': 1}
+</code></pre>
+<p><img src="https://forums.pythonic.guru/uploads/default/original/2X/f/fa43bdac5b8bcc7c8ffdb5d5e3aa2c68477cd416.png" alt="image" data-base62-sha1="zHWv75Lf68EgQOrHXkTi7QYxhEG" width="356" height="32"></p>
+          <p><a href="https://forums.pythonic.guru/t/list-dic/9173/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/list-dic/9173/1</link>
+        <pubDate>Sun, 15 Aug 2021 19:35:00 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-9173-1</guid>
+        <source url="https://forums.pythonic.guru/t/list-dic/9173.rss">שאלה בנוגע ליעילות של list אל מול dic</source>
+      </item>
+  </channel>
+</rss>

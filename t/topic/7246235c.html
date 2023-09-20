@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/7246?page=7 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:40:30 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק - שבוע 7 - פייתון בעברית ובחינם</title>
+<meta content="הוספנו קצת בדיקות אוטומטיות לתרגילים, אני מניח שקיבלתם לא מעט הערות. 
+הצוות (@gal432, @itamaraviv, @ido) עבדו עליהם לא מעט, ככה שהבדיקות ברמה טובה כרגע ועבדתי הערב על להכניס אותן למערכת. 
+השבוע, כבכל שבוע הבדיקות הפכו לה&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7246235c.html?page=7" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7246.rss" rel="alternate nofollow" title="הזנת RSS של ‚עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7246235c.html?page=7" property="og:url"/>
+<meta content="7246235c.html?page=7" name="twitter:url"/>
+<meta content="עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק" property="og:title"/>
+<meta content="עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק" name="twitter:title"/>
+<meta content="נסה להריץ את הקוד שלך ותראה כי השגיאה הראשונה תקפוץ גם כן.  לגבי השגיאה שניה, כמו שכתוב בטסט, הפונקציונליות של המתודה שלך לא עובדת כפי שהוגדר בתרגיל.  בהצלחה! 🙂" property="og:description"/>
+<meta content="נסה להריץ את הקוד שלך ותראה כי השגיאה הראשונה תקפוץ גם כן.  לגבי השגיאה שניה, כמו שכתוב בטסט, הפונקציונליות של המתודה שלך לא עובדת כפי שהוגדר בתרגיל.  בהצלחה! 🙂" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 7" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="הבודק-האוטומטי" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="14 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="99 ❤"/>
+<meta content="2020-06-23T21:33:12+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="7246c575.html?page=6" rel="prev"/>
+<link href="7246fdfa.html?page=8" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7246.html">עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-7/17.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 7</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html" rel="tag">הבודק-האוטומטי</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="עזרה בפענוח הבדיקות האוטומטיות / דיווח על בעיות אפשריות בבודק" itemprop="headline"/>
+<meta content="שבוע 7" itemprop="articleSection"/>
+<meta content="הבודק-האוטומטי" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_129" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T21:33:12Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏  9:33pm
+                  </time>
+<meta content="2020-06-23T21:33:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נסה להריץ את הקוד שלך ותראה כי השגיאה הראשונה תקפוץ גם כן.<br/>
+לגבי השגיאה שניה, כמו שכתוב בטסט, הפונקציונליות של המתודה שלך לא עובדת כפי שהוגדר בתרגיל.<br/>
+בהצלחה! <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_130" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T21:55:04Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏  9:55pm
+                  </time>
+<meta content="2020-06-23T21:55:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בצב שילוח 1 - האם השגיאה:</p>
+<pre><code class>AssertionError: assert 1 in (0, 2)  +  where 1 = len([{'body': 'Hello, Newman.', 'id': 3, 'is_read': True, 'sender': 'Mr. Peanutbutter', ...}])
+</code></pre>
+<p>היא שגיאה אצלי או שזה משהו אצל הבודק? כי אם זה אצלי, אשמח להכוונה איפה לחפש. הבדיקות שאני מריץ הן על הבדיקה והן על החיפוש עובדות נכון.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_131" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:00:48Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:00pm
+                  </time>
+<meta content="2020-06-23T22:00:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>למיטב הבנתי כל הבעיות שנמצאו עד כה טופלו.<br/>
+מה הכותרת של תיבת השגיאה? (זו האינדיקציה לבדיקה שבה נמצאה השגיאה)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_132" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:04:14Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:04pm
+                  </time>
+<meta content="2020-06-23T22:04:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הכותרת: קריאת מספר הודעות. אבל זה לא עוזר. אם אני מבקש 1 אני מקבל 1. אם אני מבקש 2 אני מקבל 2. אם אני מבקש 50 ויש 2 אני מקבל 2. אם קראתי את כולם ומבקש אותם שוב, אז אני מקבל רשימה ריקה. אם אני לא מגדיר כמה, אז אני מקבל הכל. כמובן שאני לא מקבל משהו שכבר קראתי. לכן אמרתי שאני צריך הכוונה מה אני מפספס פה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_133" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:12:43Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:12pm
+                  </time>
+<meta content="2020-06-23T22:12:43Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>והשגיאה עדכנית? כי גם אצלי היה הבדל של “1” בין הספירה שלי לספירה של הבודק, אבל למיטב הבנתי זה טופל (אצלי השגיאה הזו נעלמה אחרי אחד העידכונים של הבודק).<br/>
+מציעה לך לבדוק מצב שאתה מכניס 3 הודעות, קורא 2 ואז מבקש ללא פרמטר (מצפה לקבל 1 שלא נקראה).<br/>
+אם אתה משוכנע שהמספרים שלך נכונים, שים פה לינק וחבר סגל יציץ בפעם הבאה שיהיה פה <img alt=":wink:" class="emoji" src="../../images/emoji/twitter/winkc164.png?v=9" title=":wink:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_134" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">gonny</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-23T22:16:35Z" itemprop="datePublished">
+                     23 ביוני,‏ 2020,‏ 10:16pm
+                  </time>
+<meta content="2020-06-23T22:16:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יוצא בדיוק כמו שתיארת. אני גם אציין שצב שילוח 2 אצלי משתמש באותו קוד בדיוק פרט להבדל שהוא משתמש באובייקט של מחלקת הודעות, אבל הלוגיקה זהה לחלוטין ושם אין לי את השגיאה.<br/>
+<a class="onebox" href="https://solve.pythonic.guru/view/101402" rel="nofollow noopener" target="_blank">https://solve.pythonic.guru/view/101402</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_135" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">danny</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T00:11:39Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏ 12:11am
+                  </time>
+<meta content="2020-06-24T00:11:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>חללר<br/>
+TypeError: ‘&gt;’ not supported between instances of ‘datetime.datetime’ and ‘int’</p>
+<p>לא מבין איפה השגיאה, השתמשתי באופרטור &lt; בין שני int-ים</p>
+<p><a class="onebox" href="https://solve.pythonic.guru/view/100590" rel="nofollow noopener" target="_blank">https://solve.pythonic.guru/view/100590</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_136" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T00:29:28Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏ 12:29am
+                  </time>
+<meta content="2020-06-24T00:29:28Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נסה להעלות מחדש, השגיאה הזו ישנה ולא אמורה להופיע</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_137" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T00:36:02Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏ 12:36am
+                  </time>
+<meta content="2020-06-24T00:36:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שנה את <code>time_of_launch</code> כך שיתקבל ישירות כ-<code>datetime</code> ואל תמיר אותו בפנים.</p>
+<p>הסבר: במידה ובחרת לעבוד עם תאריכים בעזרת datetime אז מצופה כי לאורך כל הקוד האובייקטים יהיו מסוג זה, אך במקרה שלך מצופה לקבל מחרוזת בפורמט מאוד ספציפי ואז היא מומרת לאובייקט הנ"ל. לאחר השינוי שאני מציע אין סיבה לאף אחד לדעת על פורמט כלשהו מכיוון שהכל יעבוד מראש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_139" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">imimouni</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T05:50:25Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  5:50am
+                  </time>
+<meta content="2020-06-24T05:50:25Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אבל בתכלס אני חייבת לתקן את זה? דווקא נחמדה לי הספריה הזו…והיה נחמד ללמוד קצת לעבוד איתה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_140" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">yoavjanah</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T06:14:34Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  6:14am
+                  </time>
+<meta content="2020-06-24T06:14:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי אשמח לעזרה בעניין!!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_141" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">timnar312</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T06:24:59Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  6:24am
+                  </time>
+<meta content="2020-06-24T06:24:59Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תיקנתי את הגשת בשעה אבל הוא כותב לי</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/1cb5fd7419948a2aa394b293a7d3fce9226c0372" href="../../uploads/default/original/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372.jpg" title="3"><img alt="3" data-base62-sha1="45Zhqp2UGn39oq78Fqy0lYRDiq6" data-small-upload="../../uploads/default/optimized/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372_2_10x10.png" height="123" src="../../uploads/default/optimized/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372_2_690x123.jpg" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372_2_690x123.jpeg, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372_2_1035x184.jpeg 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/1/1cb5fd7419948a2aa394b293a7d3fce9226c0372_2_1380x246.jpeg 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">3</span><span class="informations">1470×263 35.1 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+<p><a href="https://solve.pythonic.guru/view/102414" rel="nofollow noopener">https://solve.pythonic.guru/view/102414</a><br/>
+split  עם int לא על ה   str אני עובדת על<br/>
+int מעבירה אחר כך ל<br/>
+לכן לא מבינה איפה אני טועה…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_142" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">of313</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T07:07:18Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  7:07am
+                  </time>
+<meta content="2020-06-24T07:07:18Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אותו מצב ואותה שגיאה אצלי, רק בצב שלוח 1.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_143" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">maya</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T07:25:45Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  7:25am
+                  </time>
+<meta content="2020-06-24T07:25:45Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>היי,<br/>
+אני רק רוצה לוודא שגם אצלי זו אותה הבעיה ושאין טעות נוספת שאני צריכה לתקן - <a href="https://solve.pythonic.guru/view/102145" rel="nofollow noopener">https://solve.pythonic.guru/view/102145</a></p>
+<p>תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_144" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">hadasit</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T11:56:34Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏ 11:56am
+                  </time>
+<meta content="2020-06-24T11:56:34Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הי,<br/>
+אחרי שתיקנתי את ההערות בצב שלוח - ואחרי שינוי השם לsubject  קפצו לי הודעות שגיאה על מקרי קצה נוספים שעזרו לי לשפר את הקוד. תודה על שיפור הבודק האוטומטי!  זה תורם מאד בעיני ללימוד ולחשיבה יותר לעומק.<br/>
+תיקנתי את מה שהבנתי שיש לתקן בצב שלוח 2 ועדיין מופיעות הודעות שגיאה של בודק אוטומטי.</p>
+<p>האם אלו ההודעות שאין צורך לתקן מאחר והשתמשתי במחלקה נוספת? או שיש עוד בעיות בקוד?  אודה להבהרה <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+<a href="https://solve.pythonic.guru/view/102551" rel="nofollow noopener">https://solve.pythonic.guru/view/102551</a></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_145" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T13:23:09Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  1:23pm
+                  </time>
+<meta content="2020-06-24T13:23:09Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אנא עבור שוב על הדרישות של התרגיל ותקן בהתאם (רמז: יש להשתמש במחלקה החדשה שכתבת)<br/>
+ומזכיר כי לא חובה שהטסטים יעברו בצב שלוח 1+2</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_146" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T13:25:05Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  1:25pm
+                  </time>
+<meta content="2020-06-24T13:25:05Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לא אמור לקרות יותר, אם זה עדיין כך נסה להעלות מחדש</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_147" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T13:26:49Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  1:26pm
+                  </time>
+<meta content="2020-06-24T13:26:49Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תחילת שיגור בהכרח מצופה להכיל מידע מדויק על התאריך (ולא רק שעה) ולכן שימוש ב-<code>time.time</code> / <code>datetime</code> יהיה הדבר הנכון, והטסטים לא מעבירים רק מחרוזת של שעה ולכן לא עובר אצלך <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_148" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ido</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T13:29:13Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  1:29pm
+                  </time>
+<meta content="2020-06-24T13:29:13Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מצוין ללמוד דברים חדשים אך אנו גם מוגבלים בצד שלנו עם הטסטים ולפחות כרגע אבקש ממך להשתמש ב-<code>time.time</code> או <code>datetime</code> כדי שהטסטים יעבדו בצורה הנכונה.<br/>
+למדנו המון מהשבוע הזה ונשפר את החוויה שלכם בשבוע הבא!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_149" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">timnar312</span>
+</span>
+<link href="7246.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-06-24T13:57:32Z" itemprop="datePublished">
+                     24 ביוני,‏ 2020,‏  1:57pm
+                  </time>
+<meta content="2020-06-24T15:26:23Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עריכה 17: תודה רבה לפני הכל <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+עריכה2:<br/>
+מחקתי את קבלת זמן מהמשתמש,<br/>
+עכשיו אני מקבלת עוד שגיאה לא הגיונית בין str לint<br/>
+אין לי השוואה בינהם… <img alt=":anguished:" class="emoji" src="../../images/emoji/twitter/anguishedc164.png?v=9" title=":anguished:"/> <img alt=":anguished:" class="emoji" src="../../images/emoji/twitter/anguishedc164.png?v=9" title=":anguished:"/> <img alt=":anguished:" class="emoji" src="../../images/emoji/twitter/anguishedc164.png?v=9" title=":anguished:"/><br/>
+<a href="https://solve.pythonic.guru/view/102653" rel="nofollow noopener">https://solve.pythonic.guru/view/102653</a></p>
+<hr/>
+<p>עריכה1: ערכתי את הטקסט שיהיה גם תאריך,<br/>
+לא ברור לי,קראתי בפורום שרצוי שהמשתמש יכול לתת זמן (הקוד כמובן נותן זמן ממודול אם לא הוגדר לו)<br/>
+אני לא מבינה מה המבנה שהמערכת מצפה לו?</p>
+<hr/>
+<p>לפני שאני שולחת את כל האפשרויות ונחסמת לי אפשרות העלה <img alt=":grin:" class="emoji" src="../../images/emoji/twitter/grinc164.png?v=9" title=":grin:"/><br/>
+הוא מצפה לשנה, חודש, יום ושעה או גם לשאר?<br/>
+והאם מצפה לחודש במספר או לא…<br/>
+(את כל האפשרויות וההוספות יש לי בתרגיל כמו שראית, אני רק צריכה רק להתאים למה שהבודק מצפה)</p>
+<ul>
+<li>עוד שאלה שלא ברורה לי,<br/>
+כבר כמה פעמים הוא כותב לי “שעדיף להשתמש פשוט בlist”<br/>
+למרות שאני מכוונה משתמשת בlist comprehension</li>
+</ul>
+<details>
+<summary>
+רמז נראה לי</summary>
+<p>כדי ששני הmain יהיו אותו דבר ואוכל להשוות</p>
+</details>
+<p>למה הכוונה שהוא רוצה שאשתמש בlist זה סתם האריך לי (השורה לא הייתה ארוכה)…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><a href="7246c575.html?page=6" itemprop="url" rel="prev">→ עמוד קודם</a></span>
+<span itemprop="name"><b><a href="7246fdfa.html?page=8" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/7246?page=7 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 05:40:34 GMT -->
+</html>

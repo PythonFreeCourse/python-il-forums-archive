@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>שילוב קובץ javascript בקוד</title>
+    <link>https://forums.pythonic.guru/t/javascript/8923</link>
+    <description>שלום,
+כאשר אני משלב קוד javascript  ומשתמש בfastAPI אני מקבל שגיאת: ![image|690x388](upload://lnGpmHS46pHXqmwdelTphta9FGh.png) 
+
+ובcmd כתוב :  raise NoMatchFound()
+starlette.routing.NoMatchFound
+
+לא ברור לי למה,הרי שמתי את קובץ הjs בתוך תיקיית static,
+אני תקוע על זה הרבה זמן, לא מצאתי תשובה באינטרנט, אשמח לעזרה.
+
+קוד ה-python: 
+```
+from fastapi import FastAPI, Request
+
+from fastapi.responses import HTMLResponse
+
+from fastapi.staticfiles import StaticFiles
+
+from fastapi.templating import Jinja2Templates
+
+app = FastAPI()
+
+app.mount(&quot;/static&quot;, StaticFiles(directory=&quot;static&quot;), name=&quot;static&quot;)
+
+templates = Jinja2Templates(directory=&quot;templates&quot;)
+
+@app.get(&quot;/items/{id}&quot;, response_class=HTMLResponse)
+
+async def read_item(request: Request, id: str):
+
+    return templates.TemplateResponse(&quot;item.html&quot;, {&quot;request&quot;: request, &quot;id&quot;: id})
+```
+
+קוד הHTML:
+
+```
+&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+
+    &lt;link href=&quot;{{ url_for(&#39;static&#39;, path=&#39;/styles.css&#39;) }}&quot; rel=&quot;stylesheet&quot;&gt;
+
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+
+    &lt;title&gt;Go_to_date&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;id: {{ id }}&lt;/h1&gt;
+
+    &lt;button class=&quot;open-button&quot; onclick=&quot;openForm()&quot;&gt;Go to specific date&lt;/button&gt;
+
+    &lt;div class=&quot;form-popup&quot; id=&quot;myForm&quot;&gt;
+
+      &lt;form action=&quot;/go_to_date/process&quot; class=&quot;form-container&quot;&gt;
+
+        &lt;h1&gt;Enter the date in the format: dd.mm.yyyy&lt;/h1&gt;
+
+        &lt;input type=&quot;text&quot; placeholder=&quot;Enter date&quot; name=&quot;date&quot; required&gt;
+
+    
+
+        &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Submit&lt;/button&gt;
+
+        &lt;button type=&quot;button&quot; class=&quot;btn cancel&quot; onclick=&quot;closeForm()&quot;&gt;Close&lt;/button&gt;
+
+      &lt;/form&gt;
+
+    &lt;/div&gt;
+
+    
+
+    &lt;script src=&quot;{{url_for(&#39;static&#39;, filename=&#39;popup.js&#39;)}}&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+```</description>
+    <language>he</language>
+    <lastBuildDate>Thu, 28 Jan 2021 13:06:33 +0000</lastBuildDate>
+    <category>שבוע 16</category>
+    <atom:link href="https://forums.pythonic.guru/t/javascript/8923.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>תודה לכולכם הבעיה נפתרה כשבמקום name כתבתי path.</p>
+<pre><code class="lang-auto">    &lt;script src="{{url_for('static', name='popup.js')}}"&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="lang-auto">    &lt;script src="{{url_for('static', path='popup.js')}}"&gt;&lt;/script&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/6">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/6</link>
+        <pubDate>Thu, 28 Jan 2021 11:36:38 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-6</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>בקובץ HTML שלך היום יש את השורה הזו ?</p>
+<pre><code class="lang-auto">onclick="openForm()"
+</code></pre>
+<p>בנוגע ל:<br>
+directory=STATIC_PATH<br>
+זה משתנה סביבה הוא לוקח אותו מהdependencies<br>
+אתה צריך לעשתות pull  ל develop  אתה כנראה עובד בגרסא ישנה.</p>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/5</link>
+        <pubDate>Thu, 28 Jan 2021 10:32:07 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-5</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[adi1]]></dc:creator>
+        <description><![CDATA[
+            <p>נסה אולי ככה:</p>
+<pre><code class="lang-auto"> &lt;script type="text/javascript" src="{{ url_for('static', path='/popup.js') }}"&gt;&lt;/script&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/4</link>
+        <pubDate>Thu, 28 Jan 2021 10:11:05 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-4</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote group-helper" data-username="aviadamar" data-post="2" data-topic="8923">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.png" class="avatar"> aviadamar:</div>
+<blockquote>
+<p>נראה לי שהקריאה שלך לקובץ עצמו לא נכונה. קודם כל הmain שלך צריך להראות ככה (שזה מתיישר עם ה develop העדכני)</p>
+<pre><code class="lang-auto">app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
+</code></pre>
+</blockquote>
+</aside>
+<p>לא בדיוק הבנתי, את המשתנה STATIC_PATH, לרשום את הPATH המלא לתיקיית static בפרוייקט? פשוט ראיתי שככה גם כתוב במדריכים השונים, וגם בענף main, אגב בענף develop לא קיימת השורה של app.mount.</p>
+<aside class="quote group-helper" data-username="aviadamar" data-post="2" data-topic="8923">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/aviadamar/40/5479_2.png" class="avatar"> aviadamar:</div>
+<blockquote>
+<p>מבחינת שיטת עבודה - אל תכניס את הקוד של הJS בתוך הקובץ html כמו פה למשל:</p>
+<pre><code class="lang-auto">&lt;button class="open-button" onclick="openForm()"&gt;
+</code></pre>
+<p>צריך שהכל ידע להיכנס מתוך הקובץ js עצמו אל הhtml יש המון דרכים בהם אתה יכול להגיע לאלמנטים האלה ולהכניס אליהם את הפונקציה:</p>
+</blockquote>
+</aside>
+<p>לא הכנסתי קוד javascript, שמתי בתוך קובץ הHTML קישור לקובץ הjavascript שבתיקיית static.</p>
+<pre><code class="lang-auto">&lt;script src="{{url_for('static', filename='popup.js')}}"&gt;&lt;/script&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/3</link>
+        <pubDate>Thu, 28 Jan 2021 09:15:41 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-3</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[aviadamar]]></dc:creator>
+        <description><![CDATA[
+            <p>נראה לי שהקריאה שלך לקובץ עצמו לא נכונה. קודם כל הmain שלך צריך להראות ככה (שזה מתיישר עם ה develop העדכני)</p>
+<pre><code class="lang-auto">app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
+</code></pre>
+<p>אם זה לא עובד נסה בפורמט הזה:</p>
+<pre><code class="lang-auto">&lt;script src="{{ url_for('static', path='/load_weeks.js') }}"&gt;&lt;/script&gt;
+</code></pre>
+<p>מבחינת שיטת עבודה - אל תכניס את הקוד של הJS בתוך הקובץ html כמו פה למשל:</p>
+<pre><code class="lang-auto">&lt;button class="open-button" onclick="openForm()"&gt;
+</code></pre>
+<p>צריך שהכל ידע להיכנס מתוך הקובץ js עצמו אל הhtml  יש המון דרכים בהם אתה יכול להגיע לאלמנטים האלה ולהכניס אליהם את הפונקציה:</p>
+<ol>
+<li>getElementById</li>
+<li>getElementsByClassName</li>
+<li>querySelector<br>
+ועוד …</li>
+</ol>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/2</link>
+        <pubDate>Thu, 28 Jan 2021 08:32:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-2</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+      <item>
+        <title>שילוב קובץ javascript בקוד</title>
+        <dc:creator><![CDATA[krauskas]]></dc:creator>
+        <description><![CDATA[
+            <p>שלום,<br>
+כאשר אני משלב קוד javascript  ומשתמש בfastAPI אני מקבל שגיאת: </p><div class="lightbox-wrapper"><a class="lightbox" href="https://forums.pythonic.guru/uploads/default/original/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259.png" data-download-href="https://forums.pythonic.guru/uploads/default/95db0740bd170f2ea8d3e130496a0cbba4e23259" title="image"><img src="https://forums.pythonic.guru/uploads/default/optimized/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259_2_690x388.png" alt="image" data-base62-sha1="lnGpmHS46pHXqmwdelTphta9FGh" width="690" height="388" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259_2_690x388.png, https://forums.pythonic.guru/uploads/default/optimized/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259_2_1035x582.png 1.5x, https://forums.pythonic.guru/uploads/default/optimized/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259_2_1380x776.png 2x" data-small-upload="https://forums.pythonic.guru/uploads/default/optimized/2X/9/95db0740bd170f2ea8d3e130496a0cbba4e23259_2_10x10.png"></a></div><p></p>
+<p>ובcmd כתוב :  raise NoMatchFound()<br>
+starlette.routing.NoMatchFound</p>
+<p>לא ברור לי למה,הרי שמתי את קובץ הjs בתוך תיקיית static,<br>
+אני תקוע על זה הרבה זמן, לא מצאתי תשובה באינטרנט, אשמח לעזרה.</p>
+<p>קוד ה-python:</p>
+<pre><code class="lang-auto">from fastapi import FastAPI, Request
+
+from fastapi.responses import HTMLResponse
+
+from fastapi.staticfiles import StaticFiles
+
+from fastapi.templating import Jinja2Templates
+
+app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/items/{id}", response_class=HTMLResponse)
+
+async def read_item(request: Request, id: str):
+
+    return templates.TemplateResponse("item.html", {"request": request, "id": id})
+</code></pre>
+<p>קוד הHTML:</p>
+<pre><code class="lang-auto">&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+
+    &lt;link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet"&gt;
+
+    &lt;meta charset="UTF-8"&gt;
+
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+    &lt;title&gt;Go_to_date&lt;/title&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;id: {{ id }}&lt;/h1&gt;
+
+    &lt;button class="open-button" onclick="openForm()"&gt;Go to specific date&lt;/button&gt;
+
+    &lt;div class="form-popup" id="myForm"&gt;
+
+      &lt;form action="/go_to_date/process" class="form-container"&gt;
+
+        &lt;h1&gt;Enter the date in the format: dd.mm.yyyy&lt;/h1&gt;
+
+        &lt;input type="text" placeholder="Enter date" name="date" required&gt;
+
+    
+
+        &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+
+        &lt;button type="button" class="btn cancel" onclick="closeForm()"&gt;Close&lt;/button&gt;
+
+      &lt;/form&gt;
+
+    &lt;/div&gt;
+
+    
+
+    &lt;script src="{{url_for('static', filename='popup.js')}}"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+          <p><a href="https://forums.pythonic.guru/t/javascript/8923/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/javascript/8923/1</link>
+        <pubDate>Thu, 28 Jan 2021 08:07:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-8923-1</guid>
+        <source url="https://forums.pythonic.guru/t/javascript/8923.rss">שילוב קובץ javascript בקוד</source>
+      </item>
+  </channel>
+</rss>

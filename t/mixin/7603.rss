@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>תכונות ו-MIXIN (ומלון קליפורניה)</title>
+    <link>https://forums.pythonic.guru/t/mixin/7603</link>
+    <description>מההדגמות שהיו במחברת 2 + מתחילת החשיבה על מלון קליפורניה,
+אני מנסה לחדד לעצמי את הקשר\הבדל בין תכונות לבין מחלקות MIXIN. 
+למה הכוונה - מחלקת כפתור ירשה את מחלקת מלבן גדול ומחלקת לחיץ. לפני המחברת הזאת, הייתי אומרת שהדברים האלה יכולים להיות פשוט תכונות של מחלקת כפתור (&#39;self.shape = &#39;rectangle או self.clicked = True), למשל. 
+אני מנסה לחדד לעצמי מה הערך המוסף של מחלקות ה-MIXIN על תכונות וקצת מתקשה. אשמח להסבר דרך החשיבה הזו וההקבלה לתכונות, אם ניתן.. או לכל הסבר שהוא אם אני לגמרי לא בכיוון :sweat_smile:</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 22 Jul 2020 01:27:33 +0000</lastBuildDate>
+    <category>שבוע 8</category>
+    <atom:link href="https://forums.pythonic.guru/t/mixin/7603.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>תכונות ו-MIXIN (ומלון קליפורניה)</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>זה ממש עושה סדר.<br>
+קיוויתי שתענה רק בעוד כמה שעות אבל מה שנקרא - אכזבת אותי לטובה.<br>
+תודה רבה!</p>
+          <p><a href="https://forums.pythonic.guru/t/mixin/7603/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mixin/7603/3</link>
+        <pubDate>Wed, 22 Jul 2020 01:27:33 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7603-3</guid>
+        <source url="https://forums.pythonic.guru/t/mixin/7603.rss">תכונות ו-MIXIN (ומלון קליפורניה)</source>
+      </item>
+      <item>
+        <title>תכונות ו-MIXIN (ומלון קליפורניה)</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <aside class="quote no-group" data-username="car.chopin" data-post="1" data-topic="7603">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="20" height="20" src="https://forums.pythonic.guru/user_avatar/forums.pythonic.guru/car.chopin/40/4258_2.png" class="avatar"> car.chopin:</div>
+<blockquote>
+<p>מחלקת כפתור ירשה את מחלקת מלבן גדול ומחלקת לחיץ. לפני המחברת הזאת, הייתי אומרת שהדברים האלה יכולים להיות פשוט תכונות של מחלקת כפתור</p>
+</blockquote>
+</aside>
+<p>דמייני שיש לך מפעל לרובוטים (לצורך כך ניצור מחלקה שנקראת <code>Robot</code>). השלד של כל הרובוטים נראה פחות יותר יותר אותו דבר, אבל יש הרבה דגמים ולכל דגם יש מחלקה משלו שיורשת מ־<code>Robot</code>.<br>
+אז נניח יש <code>KillerRobot</code>, <code>DancingRobot</code>, <code>BakingRobot</code> ו־<code>CleaningRobot</code>.<br>
+לרוב הרובוטים יש 2 ידיים ו־2 רגליים. את יכולה להגדיר מחלקה שנקראת <code>RegularLimbsMixing</code> שתגדיר <code>self.legs = 2, self.hands = 2</code>.<br>
+עכשיו את יכולה ש־<code>KillerRobot</code>, <code>DancingRobot</code> ו־<code>BakingRobot</code> ירשו ממנה כדי לקבל את התכונות הללו.<br>
+אפשר לעשות אותו דבר לצבעים של הרובוט, נניח (<code>self.hands_color = ..., self.head_color = ...</code>).<br>
+השם Mixin נגזר מדוכן גלידה שהיית מרכיבה בעצמך. היית בוחרת איזה דברים לשים בגלידה (what to mix in), וזה הדימוי שנבחר לייצג את היכולת הזו בתכנות.</p>
+<p>הרעיון של Mixin הוא מחלקה שהמטרה שלה היא להיות כמו plugin שכזה שאת יכולה “לחבר” להרבה מחלקות.<br>
+את מגדירה במחלקה אחת (ה־Mixin) סט של תכונות/פעולות שאת יודעת שיהיו משותפות להרבה מחלקות, כי יש להן משהו משותף, ואז מבצעת ירושה ל־Mixin כדי שכולם יקבלו את התכונות/פעולות האלו.</p>
+          <p><a href="https://forums.pythonic.guru/t/mixin/7603/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mixin/7603/2</link>
+        <pubDate>Wed, 22 Jul 2020 01:24:20 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7603-2</guid>
+        <source url="https://forums.pythonic.guru/t/mixin/7603.rss">תכונות ו-MIXIN (ומלון קליפורניה)</source>
+      </item>
+      <item>
+        <title>תכונות ו-MIXIN (ומלון קליפורניה)</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>מההדגמות שהיו במחברת 2 + מתחילת החשיבה על מלון קליפורניה,<br>
+אני מנסה לחדד לעצמי את הקשר\הבדל בין תכונות לבין מחלקות MIXIN.<br>
+למה הכוונה - מחלקת כפתור ירשה את מחלקת מלבן גדול ומחלקת לחיץ. לפני המחברת הזאת, הייתי אומרת שהדברים האלה יכולים להיות פשוט תכונות של מחלקת כפתור ('self.shape = 'rectangle או self.clicked = True), למשל.<br>
+אני מנסה לחדד לעצמי מה הערך המוסף של מחלקות ה-MIXIN על תכונות וקצת מתקשה. אשמח להסבר דרך החשיבה הזו וההקבלה לתכונות, אם ניתן… או לכל הסבר שהוא אם אני לגמרי לא בכיוון <img src="https://forums.pythonic.guru/images/emoji/twitter/sweat_smile.png?v=10" title=":sweat_smile:" class="emoji" alt=":sweat_smile:"></p>
+          <p><a href="https://forums.pythonic.guru/t/mixin/7603/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/mixin/7603/1</link>
+        <pubDate>Wed, 22 Jul 2020 01:07:27 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7603-1</guid>
+        <source url="https://forums.pythonic.guru/t/mixin/7603.rss">תכונות ו-MIXIN (ומלון קליפורניה)</source>
+      </item>
+  </channel>
+</rss>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/6146 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:18:56 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>מספרים פראיים - מחברת 3 - שבוע 5 - פייתון בעברית ובחינם</title>
+<meta content="היי (: 
+תקועה על התרגיל הזה כבר יותר מדי זמן… 
+אסתיר כדי למנוע ספויילרים ממי שלא פתר: 
+&lt;details&gt;&lt;summary&gt;תקציר&lt;/summary&gt;בתרגיל עשיתי עוד 2 פונקציות אחד מהן בודקת אם מספר ראשוני, 
+ואחת מהן מחזירה רשימה של כל הראשוניים עד המספר המבוקש. 
+האם כל הפונקצ&amp;hellip;&lt;/details&gt;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="6146.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="6146.rss" rel="alternate nofollow" title="הזנת RSS של ‚מספרים פראיים - מחברת 3’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="6146.html" property="og:url"/>
+<meta content="6146.html" name="twitter:url"/>
+<meta content="מספרים פראיים - מחברת 3" property="og:title"/>
+<meta content="מספרים פראיים - מחברת 3" name="twitter:title"/>
+<meta content="היי (:  תקועה על התרגיל הזה כבר יותר מדי זמן…  אסתיר כדי למנוע ספויילרים ממי שלא פתר:  &lt;details&gt;&lt;summary&gt;תקציר&lt;/summary&gt;בתרגיל עשיתי עוד 2 פונקציות אחד מהן בודקת אם מספר ראשוני,  ואחת מהן מחזירה רשימה של כל הראשוניים עד המספר המבוקש.  האם כל הפונקציות בתרגיל צריכות להיות גנרטורים? או שאפשר גם להשתמש בפונקציות “רגילות”?&lt;/details&gt;" property="og:description"/>
+<meta content="היי (:  תקועה על התרגיל הזה כבר יותר מדי זמן…  אסתיר כדי למנוע ספויילרים ממי שלא פתר:  &lt;details&gt;&lt;summary&gt;תקציר&lt;/summary&gt;בתרגיל עשיתי עוד 2 פונקציות אחד מהן בודקת אם מספר ראשוני,  ואחת מהן מחזירה רשימה של כל הראשוניים עד המספר המבוקש.  האם כל הפונקציות בתרגיל צריכות להיות גנרטורים? או שאפשר גם להשתמש בפונקציות “רגילות”?&lt;/details&gt;" name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 5" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שגיאה" property="og:article:tag"/>
+<meta content="מספרים-פראיים" property="og:article:tag"/>
+<meta content="generator" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="2 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="6 ❤"/>
+<meta content="2020-05-12T18:30:38+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"מספרים פראיים - מחברת 3","mainEntity":{"@type":"Question","name":"מספרים פראיים - מחברת 3","text":"היי (:\n\nתקועה על התרגיל הזה כבר יותר מדי זמן…\n\nאסתיר כדי למנוע ספויילרים ממי שלא פתר:\n\n<details><summary>תקציר<\/summary>בתרגיל עשיתי עוד 2 פונקציות אחד מהן בודקת אם מספר ראשוני,\n\nואחת מהן מחזירה רשימה של כל הראשוניים עד המספר המבוקש.\n\nהאם כל הפונקציות בתרגיל צריכות להיות גנרטורים? או שאפשר גם להשתמש בפונקציות “רגילות”?<\/details>","upvoteCount":0,"answerCount":0,"dateCreated":"2020-05-12T18:30:37.951Z","author":{"@type":"Person","name":""}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="6146.html">מספרים פראיים - מחברת 3</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-5/14.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 5</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/%d7%a9%d7%92%d7%99%d7%90%d7%94.html" rel="tag">שגיאה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%9e%d7%a1%d7%a4%d7%a8%d7%99%d7%9d-%d7%a4%d7%a8%d7%90%d7%99%d7%99%d7%9d.html" rel="tag">מספרים-פראיים</a>, 
+            <a class="discourse-tag" href="../../tag/generator.html" rel="tag">generator</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="מספרים פראיים - מחברת 3" itemprop="headline"/>
+<meta content="שבוע 5" itemprop="articleSection"/>
+<meta content="שגיאה, מספרים-פראיים, generator" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-12T18:30:38Z" itemprop="datePublished">
+                     12 במאי,‏ 2020,‏  6:30pm
+                  </time>
+<meta content="2021-09-13T16:24:03Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>היי (:<br/>
+תקועה על התרגיל הזה כבר יותר מדי זמן…<br/>
+אסתיר כדי למנוע ספויילרים ממי שלא פתר:</p>
+<details>
+<summary>
+תקציר</summary>
+<p>בתרגיל עשיתי עוד 2 פונקציות אחד מהן בודקת אם מספר ראשוני,<br/>
+ואחת מהן מחזירה רשימה של כל הראשוניים עד המספר המבוקש.<br/>
+האם כל הפונקציות בתרגיל צריכות להיות גנרטורים? או שאפשר גם להשתמש בפונקציות “רגילות”?</p>
+</details>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-12T18:32:04Z" itemprop="datePublished">
+                     12 במאי,‏ 2020,‏  6:32pm
+                  </time>
+<meta content="2020-05-12T18:32:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר להשתמש גם בפונקציות רגילות <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">ruty3017</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/c/c074b829d6bd377bea419cc890600c7f14ebe4d3.gif" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-12T18:43:51Z" itemprop="datePublished">
+                     12 במאי,‏ 2020,‏  6:43pm
+                  </time>
+<meta content="2020-05-12T18:43:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יישששש איזה הקלה <img alt=":blush:" class="emoji" src="../../images/emoji/twitter/blushc164.png?v=9" title=":blush:"/> <img alt=":blush:" class="emoji" src="../../images/emoji/twitter/blushc164.png?v=9" title=":blush:"/></p>
+<p> <a class="onebox" href="https://media.giphy.com/media/axu6dFuca4HKM/giphy.gif" rel="nofollow noopener" target="_blank">
+<img height="238" src="../../uploads/default/original/2X/c/c074b829d6bd377bea419cc890600c7f14ebe4d3.gif" width="500"/>
+</a>
+</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T23:02:37Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏ 11:02pm
+                  </time>
+<meta content="2020-05-16T23:02:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תופס פה טרמפ על השאלה - פתרתי באותו אופן - פונקציה משנית שמוצאת מחלקים, ופונקציה ראשית שמוסיפה אותם לרשימה עד שיש את כולם. הבעיה היא שהשתמשתי רק בפונקציות רגילות. כשניסיתי לבקש מהפוקנציה המשנית לעבוד עם yield במקום return, קיבלתי הודעת שגיאה TypeError: unsupported operand type(s) for /: ‘int’ and ‘generator’<br/>
+ואני ממש לא מבין למה זה קורה, במיוחד כי היא נראית דומה מאוד לדוגמאות במחברת, שמשתמשות באינטג’רים. ניסיתי לקרוא במחברת כדי להבין אם אני מפספס משהו שקשור למיוטביליטי, אבל אני לא מצליח למצוא משהו כזה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T23:17:17Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏ 11:17pm
+                  </time>
+<meta content="2020-05-16T23:17:17Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה השגיאה שהדבקת פה אומרת, במילים פשוטות?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/2/28ed54f1b4765647d4790d16ec0643511ac25aae.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T23:41:58Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏ 11:41pm
+                  </time>
+<meta content="2020-05-16T23:41:58Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>שאני לא יכול לבצע פעולות כאלה על אינטג’ר? זה מה שהצלחתי להבין מזה. אבל בדוגמאות במחברת דווקא יש שימוש באינטג’ר.</p>
+<p><img alt="image" data-base62-sha1="5Q3zX4exAGO5PgQ4oqCxqRynwXs" height="357" src="../../uploads/default/original/2X/2/28ed54f1b4765647d4790d16ec0643511ac25aae.png" width="679"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T23:43:55Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏ 11:43pm
+                  </time>
+<meta content="2020-05-16T23:43:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>מה זה “פעולות כאלו”? ולא כתוב רק integer <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+נסה לתרגם את השגיאה במלואה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T01:52:57Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  1:52am
+                  </time>
+<meta content="2020-05-17T01:52:57Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הפעולה שהשתמשתי בה היא מודולו (כדי למצוא מחלקים ללא שארית). אולי מדובר בפעולה שג’נרייטור לא תומך בה מאיזו סיבה. גיגול של הודעת השגיאה הביא אותי בעיקר לתשובות בסטאק אוברפלואו שהן מתקדמות מדי יחסית לידע שלי כרגע. בתיעוד של מודולו כתוב שלפעמים היא לא מתמודדת כל כך טוב עם מספרים מורכבים (לא שנראה לי שאלו אמורים להיות מספרים מורכבים) אז אפשר לנסות להמיר אותם לערך מוחלט עם ()abs, אז ניסיתי וגם זה לא עבד. ניסיתי לקרוא את התיעוד של yield, אבל לא הצלחתי להבין מה גורם לה לזרוק TypeError. חשבתי שאולי זה “:/” זה איזו פעולה שלא למדנו או סוג מיוחד של floor division, אבל נראה שזה לא המצב. אני לא יודע מה עוד ניתן לחפש.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T01:55:14Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  1:55am
+                  </time>
+<meta content="2020-05-17T01:55:14Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="8" data-topic="6146" data-username="mbrodsky">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/m/a3d4f5/40.png" width="20"/> mbrodsky:</div>
+<blockquote>
+<p>חשבתי שאולי זה “:/” זה איזו פעולה שלא למדנו או סוג מיוחד של floor division, אבל נראה שזה לא המצב. אני לא יודע מה עוד ניתן לחפש.</p>
+</blockquote>
+</aside>
+<p>הנקודתיים שם זה לא חלק מהאופרטור, אלא חלק מההודעה עצמה (פיסוק באנגלית).<br/>
+אני רוצה שנעבוד על פרימת הבעיה הזו ביחד ולכן אני אצטרך שתתרגם לי רגע 1 ל־1 את ההודעה שפייתון הקפיץ לך.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:04:33Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:04am
+                  </time>
+<meta content="2020-05-17T02:04:33Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי. אז הודעת השגיאה היא TypeError: unsupported operand type(s) for /: ‘int’ and ‘generator’<br/>
+בעיית טיפוס: פעולה שאינה נתמכת לאינטג’ר וג’נרייטור. (זה התרגום הכי טוב שעלה לי בראש).</p>
+<p>כשאני משנה מריטרן ליילד בפונקציה המשנית, הודעת השגיאה מכוונת דווקא לפונקציה הראשית, בדיוק למקום שבו היא מחלקת את המספר המקורי במחלקים כחלק מהלולאה שתפקידה למצוא את כל המחלקים. כלומר, נדמה שהשגיאה מתרחשת מחוץ לג’נרייטור עצמו. מעבר לזה אני באמת לא יודע.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:07:10Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:07am
+                  </time>
+<meta content="2020-05-17T02:07:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תרגום סבבה, אבל שכחת לצרף בתרגום את הפעולה שלא נתמכת בין האינטג’ר והג’נרייטור. יכול למצוא אותה בשגיאה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:09:12Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:09am
+                  </time>
+<meta content="2020-05-17T02:09:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אנחנו מדברים על פעולת החילוק?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:09:55Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:09am
+                  </time>
+<meta content="2020-05-17T02:09:55Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כן. אוקיי, עכשיו אתה יודע שיש לך בעיה של חילוק של מספר שלם ב־generator.<br/>
+חילוק בין טיפוסים כאלו מן הסתם לא יכול להיות תקין בפייתון.<br/>
+תוכל להסתכל על השגיאה ולנסות לחשוב מה יכולה להיות הבעיה שם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:14:12Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:14am
+                  </time>
+<meta content="2020-05-17T02:14:12Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בפונקציה המשנית, זו שבה אני מוצא את המחלקים, אני משתמש במודולו, שהוא סוג של חילוק. אני מריץ אותה בפונקציה הראשית ומקבל מחלק אותו אני מוסיף לרשימה. לאחר מכן אני לוקח את המספר הראשי, ומחלק אותו במחלק שהפונקציה המשנית מצאה (כדי להקטין את המספר כחלק מריצת לולאת הווייל שמוצאת את כל המספרים). זה המקום בו קופצת השגיאה.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:16:06Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:16am
+                  </time>
+<meta content="2020-05-17T02:16:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>בטוח שאתה לא משתמש בשום מקום בחילוק? איפה הוא מציג את השגיאה?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/d/d5feefd00f09dd09126bc44c0a5aacfda346fa0a.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:19:39Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:19am
+                  </time>
+<meta content="2020-05-17T02:19:39Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כתבתי בהודעה שאני משתמש בחילוק, אבל הוא מתרחש מחוץ לג’נרייטור. הג’נרייטור אמור להחזיר מספר  (המחלק הראשוני), ואז אני לוקח את המספר הזה ומחלק את המספר הראשי במחלק שמצאתי באמצעות הפונקציה המשנית. כשאני משתמש בריטרן זה עובד יופי. כשאני משתמש ביילד אז קופצת הודעת השגיאה.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/d5feefd00f09dd09126bc44c0a5aacfda346fa0a" href="../../uploads/default/original/2X/d/d5feefd00f09dd09126bc44c0a5aacfda346fa0a.png" title="image"><img alt="image" data-base62-sha1="ux5TQl8Og4OBnQ2flGXb3et6zP4" data-small-upload="../../uploads/default/optimized/2X/d/d5feefd00f09dd09126bc44c0a5aacfda346fa0a_2_10x10.png" height="312" src="../../uploads/default/original/2X/d/d5feefd00f09dd09126bc44c0a5aacfda346fa0a.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">772×350 22.3 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:22:10Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:22am
+                  </time>
+<meta content="2020-05-17T02:22:10Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אבל הבעיה היא בשורה הזו, זה מה שפייתון אומר וזו כנראה האמת <img alt=":slight_smile:" class="emoji" src="../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+עכשיו אתה צריך להבין שבתוך number יש לך int, ובתוך new_number יש לך generator.<br/>
+נסה לעקוב אחרי התוכנה ולהבין איך זה קרה</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="6146.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T02:36:22Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏  2:36am
+                  </time>
+<meta content="2020-05-17T02:36:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אוקיי, אוקיי, אוקיי (כמו שאומר סטטיק). אז ככה. הבלבול שלי התחיל ממקור סמנטי. אני חשבתי שג’נרייטור זה פשוט השם של פונקציה שמשתמשת ביילד. עכשיו הבנתי ממך שהג’נרייטור זה בעצם הערך שהיא מחזירה, וזה טיפוס איטרבילי שלא ניתן לחלק באינטג’ר. השמתי את הטיפוס הזה בתוך רשימה עם איבר אחד, ואז הצבתי את איבר אפס של הרשימה הזו במקום שבו הצבתי קודם את הג’נרייטור שבבורותי חשבתי שהוא אינטג’ר. עכשיו זה עובד עם יילד! ים, אתה מלך. כלומר, אני שונא אותך על זה שהכרחת אותי לעבוד כל כך קשה, אבל אתה מלך. תודה!</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/6146 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:19:01 GMT -->
+</html>

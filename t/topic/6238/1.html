@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/6238/1 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:19:08 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות - הבודק-האוטומטי - פייתון בעברית ובחינם</title>
+<meta content="ההעלאה עצמה:
+
+
+ראשית ודאו שהשורה הראשונה בתא היא # Upload XX כאשר XX מוחלף במספר שנמצא במערכת הגשת התרגילים ליד שם התרגיל. חייב להיות רווח בין ה-# למילה ובין המילה למספר. המערכת גמישה מספיק כדי לקבל u במקום U. זו חייבת ל&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="../6238.html" rel="canonical"/>
+<link href="../../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="../6238.rss" rel="alternate nofollow" title="הזנת RSS של ‚העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../../uploads/default/original/2X/e/eade4036f170c4eecda544a595eb5e5fb1bd8340.png" name="twitter:image"/>
+<meta content="../../../uploads/default/original/2X/e/eade4036f170c4eecda544a595eb5e5fb1bd8340.png" property="og:image"/>
+<meta content="1.html" property="og:url"/>
+<meta content="1.html" name="twitter:url"/>
+<meta content="העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות" property="og:title"/>
+<meta content="העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות" name="twitter:title"/>
+<meta content="ההעלאה עצמה:   ראשית ודאו שהשורה הראשונה בתא היא # Upload XX כאשר XX מוחלף במספר שנמצא במערכת הגשת התרגילים ליד שם התרגיל. חייב להיות רווח בין ה-# למילה ובין המילה למספר. המערכת גמישה מספיק כדי לקבל u במקום U. זו חייבת להיות השורה הראשונה - לפני הערות, לפני import ולפני כל דבר אחר.    אם אתם מנסים להעלות פעם נוספת תרגיל אך לא מצליחים לדרוס את הקודם - אל תשנו דבר בתא מלבד להוסיף בשורה האחרונה בתא # Reupload XX כאשר XX מוחלף גם פה במספר התרגיל. אל תשנו את השורה הראשונה שכוללת את ה-Upload, היא צריכ..." property="og:description"/>
+<meta content="ההעלאה עצמה:   ראשית ודאו שהשורה הראשונה בתא היא # Upload XX כאשר XX מוחלף במספר שנמצא במערכת הגשת התרגילים ליד שם התרגיל. חייב להיות רווח בין ה-# למילה ובין המילה למספר. המערכת גמישה מספיק כדי לקבל u במקום U. זו חייבת להיות השורה הראשונה - לפני הערות, לפני import ולפני כל דבר אחר.    אם אתם מנסים להעלות פעם נוספת תרגיל אך לא מצליחים לדרוס את הקודם - אל תשנו דבר בתא מלבד להוסיף בשורה האחרונה בתא # Reupload XX כאשר XX מוחלף גם פה במספר התרגיל. אל תשנו את השורה הראשונה שכוללת את ה-Upload, היא צריכ..." name="twitter:description"/>
+<meta content="הבודק-האוטומטי" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="19 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="146 ❤"/>
+<meta content="2020-05-15T11:25:43+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<link href="../62384658.html?page=2" rel="next"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="../6238.html">העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות</a>
+</h1>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../../tag/%d7%94%d7%91%d7%95%d7%93%d7%a7-%d7%94%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%98%d7%99.html" rel="tag">הבודק-האוטומטי</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="העלאת תרגילים ותיקון הערות הבודק האוטומטי - פתרון לבעיות נפוצות" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="הבודק-האוטומטי" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/e/eade4036f170c4eecda544a595eb5e5fb1bd8340.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T11:25:43Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 11:25am
+                  </time>
+<meta content="2020-05-31T12:07:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h1><strong>ההעלאה עצמה:</strong></h1>
+<ol>
+<li>
+<p>ראשית ודאו שהשורה <strong>הראשונה</strong> בתא היא <code># Upload XX</code> כאשר XX מוחלף במספר שנמצא במערכת הגשת התרגילים ליד שם התרגיל. חייב להיות רווח בין ה-# למילה ובין המילה למספר. המערכת גמישה מספיק כדי לקבל u במקום U. זו חייבת להיות השורה הראשונה - לפני הערות, לפני import ולפני כל דבר אחר.</p>
+</li>
+<li>
+<p>אם אתם מנסים להעלות פעם נוספת תרגיל אך לא מצליחים לדרוס את הקודם - אל תשנו דבר בתא מלבד להוסיף בשורה האחרונה בתא <code># Reupload XX</code> כאשר XX מוחלף גם פה במספר התרגיל. אל תשנו את השורה הראשונה שכוללת את ה-Upload, היא צריכה להישאר כפי שהיא. לאחר מכן שמרו את המחברת והעלו את התרגיל שוב למערכת.</p>
+</li>
+<li>
+<p>לפעמים, בעיקר כשמריצים דברים עם המון הדפסות, המחברת נהיית מאוד כבדה. במקרה כזה לחצו על המקלדת פה <img alt="תמונה" data-base62-sha1="xvJTH6tooYBojkxW0BEdd5Kkgrm" height="145" src="../../../uploads/default/original/2X/e/eade4036f170c4eecda544a595eb5e5fb1bd8340.png" width="690"/> ולחצו על <code>clear all cells output</code>. כמובן לא לשכוח לשמור אחרי. אם זה עדיין לא עובד - נסו להעתיק את התא הרלוונטי למחברת חדשה ולהעלות אותה.</p>
+</li>
+<li>
+<p>אם כבר הגשתם את הכול ואתם רוצים לתקן משהו, זה הקישור דרכו ניתן להגיש מחדש <a href="https://solve.pythonic.guru/send">https://solve.pythonic.guru/send</a>.</p>
+</li>
+</ol>
+<ul>
+<li>פירוט מלא לשימוש באתר נמצא פה: <a class="inline-onebox" href="../3259.html">מדריך לשימוש באתר לבדיקת תרגילים</a>
+</li>
+</ul>
+<h1><strong>הערות הבודק האוטומטי על איך הקוד נראה:</strong></h1>
+<p><em>שימו לב שמשבוע 5 חובה לתקן את כל ההערות, אחרת התרגיל לא ייבדק.</em></p>
+<p>יש כמובן הרבה הערות אפשריות, אבל הנפוצות מביניהן עד כה:</p>
+<ol>
+<li>הערות ריווח למיניהן:<br/>
+חשוב לשים לב שיש רווח אחרי פסיקים ושיש רווח אחרי נקודתיים במילון (ההערה עצמה יכולה להיות על אחד מהם ולהתכוון לשני) - ושאין רווח לפני הפסיק או לפני הנקודתיים.<br/>
+נהוג להפריד פונקציה בשתי שורות ריקות לפניה ואחריה. כמו כן, אם יש לכם תווים לבנים בשורה ריקה או בשורה כלשהי אחרי התו האחרון בה - אתם תקבלו הערה גם על זה.<br/>
+אם כותבים הערות שמתחילות ב-# - צריך שיהיה רווח בודד אחריה, ואם זו ההערה שאינה מתחילה בתחילת השורה צריך להיות רווח כפול בין התו האחרון בשורה לבינה.<br/>
+גם לפני ואחרי אופרטורים כדוגמת +, -, =, == וכו’ יש לשים רווח. יוצא הדופן הוא כשמדובר בפרמטר דיפולטי ואז אין לשים רווח לפני ואחרי ה-=.<br/>
+למי שמעוניין להרחיב את ידיעותיו בתחום של איך לעצב קוד נכון, יש מסמך שלם בנושא ממש כאן <a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a>.</li>
+<li>המשתנה לא הוגדר לפני השימוש - ייתכן שהגדרתם משתנה או ייבאתם מודול בתא אחר במחברת ולכן התא רץ לכם כמו שצריך - אבל כשאתם מעלים תא בודד הוא לא יכול לרוץ כי המשתנה/המודול אינם מוכרים בו. המחברת זוכרת שהגדרתם למעלה, הבודק לא. אפשר לבדוק בכמה דרכים לפני ההגשה - להעתיק למחברת חדשה ולבדוק אם זה עובד, או פשוט לעשות restart kernel ולהריץ את התא הזה בלבד.</li>
+<li>הגדרתם משתנה אך לא השתמשתם בו בלולאה. בלולאת for אנו רוצים לעיתים לרוץ x פעמים ומשתמשים לשם כך ב-for i in range(x), שזה טוב ויפה. אבל לפעמים אנו לא משתמשים בכלל ב-i, וזה נחשב לא מנומס להשאיר אותו מבלי שימוש. אם זה המקרה - החליפו את i בקו תחתון (_), זו הדרך שלכם לסמן שאין טעם לתת למשתנה הזה שם.</li>
+<li>האם אפשר לבדוק שערך שווה ל-True/False בצורה קצרה יותר - מוסבר במחברת של תנאים (מחברת 2.1).</li>
+<li>אם אתם מעוניינים להשוות משהו ל-None, אל תעשו זאת עם == אלא עם is, למרות ש(עוד?) לא למדנו מה זה בדיוק אומר.</li>
+<li>כל השורות של ה-import אמורות להופיע לפני כל השורות של ה-from … import. כל אחד מהנ"ל אמור להיות מסודר לפי סדר הא"ב. כל זה מופרד לשני בלוקים שונים - הראשון של ספריות מובנות בפייתון והשני של ספריות חיצוניות.</li>
+</ol>
+<h1>הבדיקה האוטומטית על איך הקוד עובד:</h1>
+<ol>
+<li>אם יש AssertionError ואחריה x == y זה אומר שניסו להשוות את הערך שהפונקציה שלכם מחזירה, לרוב מדובר במה שמצד שמאל של האופרטור ==, כלומר x, עם מה שהיה אמור לצאת וההשוואה החזירה False. בדקו את עצמכם - האם הערך המוחזר הוא הערך הנכון? האם הדפסתם במקום להחזיר? האם פספסתם מקרה קצה? שימו לב שכתוב לכם גם מה אמור לחזור - אחלה דרך לבדוק מה השתבש.</li>
+<li>אם כתוב missing 1 required positional argument - הפונקציה שלכם מצפה לקבל ארגומנט אחד יותר ממה שהיא מקבלת בפועל (כלומר ממה שהבודק מצפה שהיא תקבל ומנסה לשלוח לה). בדקו האם קיבלתם את הארגומנטים שהתבקשתם או שהוספתם עוד רק למען הנוחות שלכם, וחשבו על איך לשנות את זה - למשל לעטוף בפונקציה חיצונית שמקבלת את מספר הארגומנטים שצריך.</li>
+<li>באופן כללי אבל גם מופיע לפעמים בהערות של הבודק: “None type not callable” או “None type not iterable” מעידים על זה שיש לכם None במקום שלא ציפיתם לו. נסו לחקור מי ה-None הסורר ולאן הוא חמק מבלי שהבחנתם לב <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/>
+</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="29" itemprop="userInteractionCount"/>
+<span class="post-likes">29 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6244/2.html" itemprop="url">שגיאה בהעלאת מחברת מסויימת</a>
+<meta content="4" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6465/3.html" itemprop="url">הודעת שגיאה מהבודק האוטומטי בשימוש בלולאה עם שני פרמטרים</a>
+<meta content="5" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6342/2.html" itemprop="url">לא מצליח להעלות מחברת פתאום</a>
+<meta content="6" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6234/7.html" itemprop="url">שגיאה בעת העלאת פתרונות- שבוע 5</a>
+<meta content="7" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6710/2.html" itemprop="url">מחברת 3 - העלאת תרגיל</a>
+<meta content="8" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6465/2.html" itemprop="url">הודעת שגיאה מהבודק האוטומטי בשימוש בלולאה עם שני פרמטרים</a>
+<meta content="9" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../../1-2/7029/2.html" itemprop="url">מחברת 1 - 2 שגיאות בבודק האוטומטיות שנראות לי כטעות של הבודק</a>
+<meta content="10" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../7236/2.html" itemprop="url">מערכת הגשת התרגילים</a>
+<meta content="11" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6914/2.html" itemprop="url">בעיה בהגשת מחברת 5</a>
+<meta content="12" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6963/2.html" itemprop="url">הבודק האוטומטי: יבואי המודולים</a>
+<meta content="13" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6757/11.html" itemprop="url">המלצה לשיפור ויעול מערכת ההגשה</a>
+<meta content="14" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6838/2.html" itemprop="url">בתעות דרסתי תרגיל שבדקו לי אותו במערכת</a>
+<meta content="15" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../6767/2.html" itemprop="url">היי שלום - הערת בודק אוטומטי</a>
+<meta content="16" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orronai</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T11:31:48Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 11:31am
+                  </time>
+<meta content="2020-05-15T11:31:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תבורכי <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T11:43:15Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 11:43am
+                  </time>
+<meta content="2020-05-15T11:43:15Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>יוזמה מבורכת! (הצעה - שאלות נפוצות)</p>
+<p>לגבי רווח - לפני/אחרי פסיק ונקודותיים - שתי המילים מתחלפות בבודק האוטומטי . נדמה לי שלגבי רווח אחרי מופיע הביטוי ‘אחרי פסיק’ וזה מופיע גם אם הכוונה לנקודתיים,  ומופיע כרווח לפני נקודותיים גם אם מדובר בפסיק</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T12:43:54Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 12:43pm
+                  </time>
+<meta content="2020-05-15T12:43:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>האם יש לך דוגמא למשהו מהנ"ל? כי לא זכור לי שנתקלתי בהערות כאלה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_6" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T12:51:37Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 12:51pm
+                  </time>
+<meta content="2020-05-15T12:51:37Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>את זה כתבתי, אני מתכוונת להערה של רווח לפני פסיק או לגבי התייחסות לנקודתיים במקום לפסיק בהערה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_7" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">aviadamar</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T12:53:02Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 12:53pm
+                  </time>
+<meta content="2020-05-15T12:53:02Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>נכון טעות שלי הבנתי את מה דבורה רשמה לא נכון.<br/>
+עדין מברך על היזומה ! שלא תתבלבלי <img alt=":heart:" class="emoji" src="../../../images/emoji/twitter/heartc164.png?v=9" title=":heart:"/></p>
+<p>מה שכן, יש הערות על רווחים בהערות שלא מופיע ואולי זה הכוונה.<br/>
+נגים אם לא עושים רווח כפול בין הערה לשורת קוד,<br/>
+או לא עושים רווח אחרי # של הערה בכללי (גם היא בשורה נפרדת וגם אם אחרי שורת קוד)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_8" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+                
+                  ננעץ גלובלית ב־
+              </span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T14:48:56Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  2:48pm
+                  </time>
+<meta content="2020-05-15T14:48:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_9" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">devorack</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/0/049ace3fedacba25cb505922cfc02792d5497468.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T15:12:06Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  3:12pm
+                  </time>
+<meta content="2020-05-15T15:12:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><img alt="image" data-base62-sha1="EJzVxw2JBLSoFXANutcs7rYG3m" height="297" src="../../../uploads/default/original/2X/0/049ace3fedacba25cb505922cfc02792d5497468.png" width="423"/></p>
+<p>הכנסתי תרגיל חדש עם הטעות, רק בשביל זה <img alt=":crazy_face:" class="emoji" src="../../../images/emoji/twitter/crazy_facec164.png?v=9" title=":crazy_face:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+<span class="post-likes">2 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_10" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T15:17:56Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏  3:17pm
+                  </time>
+<meta content="2020-05-15T15:17:56Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>תודה! אוסיף ברגע שהוא יאפשר לי לערוך (הגעתי למספר עריכות מקסימלי להיום מסתבר <img alt=":face_with_hand_over_mouth:" class="emoji" src="../../../images/emoji/twitter/face_with_hand_over_mouthc164.png?v=9" title=":face_with_hand_over_mouth:"/>)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_11" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">olkamark</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T23:41:40Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 11:41pm
+                  </time>
+<meta content="2020-05-15T23:41:40Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>הי <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<p>העלאתי תרגילים אבל רוצה לתקן אותם.<br/>
+לא הבנתי מה הכוונה: "אם אתם מנסים להעלות פעם נוספת תרגיל אך לא מצליחים לדרוס את הקודם " - איך אפשר לדרוס את הקודם?<br/>
+האם רק רישום <span class="hashtag">#Reupload</span> במחברת ושמירה מעלה מחדש? (נראה שלא…)<br/>
+איפה לרשום Reupload?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_12" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-15T23:45:48Z" itemprop="datePublished">
+                     15 במאי,‏ 2020,‏ 11:45pm
+                  </time>
+<meta content="2020-05-15T23:45:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ראשית נסי להעלות את התרגיל בדיוק כמו שהעלית בפעם הקודמת. אם זה עובד ועודכנה גרסא חדשה - נהדר.<br/>
+אם זה לא עובד, הוסיפי בשורה האחרונה של התא <code># Reupload XX</code>, שמרי את המחברת ונסי להעלות שוב לאתר.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_13" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/9/9ff4e336cd6608b1326a39e2e34f5ae367f62bf5.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T14:39:30Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  2:39pm
+                  </time>
+<meta content="2020-05-16T14:39:30Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כשמכניסים DICTIONARY בלי רווח<br/>
+<div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/9ff4e336cd6608b1326a39e2e34f5ae367f62bf5" href="../../../uploads/default/original/2X/9/9ff4e336cd6608b1326a39e2e34f5ae367f62bf5.png" title="Firefox_Screenshot_2020-05-16T14-37-51.183Z"><img alt="Firefox_Screenshot_2020-05-16T14-37-51.183Z" data-base62-sha1="mP2AoiWSDUFgHPnXR4S3muDHy4t" data-small-upload="../../../uploads/default/optimized/2X/9/9ff4e336cd6608b1326a39e2e34f5ae367f62bf5_2_10x10.png" height="134" src="../../../uploads/default/original/2X/9/9ff4e336cd6608b1326a39e2e34f5ae367f62bf5.png" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Firefox_Screenshot_2020-05-16T14-37-51.183Z</span><span class="informations">706×138 11.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div> <div class="lightbox-wrapper"><a class="lightbox" data-download-href="https://forums.pythonic.guru/uploads/default/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0" href="../../../uploads/default/original/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0.png" title="Firefox_Screenshot_2020-05-16T14-37-26.217Z"><img alt="Firefox_Screenshot_2020-05-16T14-37-26.217Z" data-base62-sha1="sHu4YKnw6uwc9jpAL3A58qErjry" data-small-upload="../../../uploads/default/optimized/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0_2_10x10.png" height="184" src="../../../uploads/default/optimized/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0_2_690x184.png" srcset="https://forums.pythonic.guru/uploads/default/optimized/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0_2_690x184.png, https://forums.pythonic.guru/uploads/default/original/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0.png 1.5x, https://forums.pythonic.guru/uploads/default/original/2X/c/c92741ea17f70dbb8b8a6c6ac9da0f2878d3b4e0.png 2x" width="690"/><div class="meta"><svg aria-hidden="true" class="fa d-icon d-icon-far-image svg-icon"><use xlink:href="#far-image"></use></svg><span class="filename">Firefox_Screenshot_2020-05-16T14-37-26.217Z</span><span class="informations">711×190 17.8 KB</span><svg aria-hidden="true" class="fa d-icon d-icon-discourse-expand svg-icon"><use xlink:href="#discourse-expand"></use></svg></div></a></div></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_14" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T14:41:47Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  2:41pm
+                  </time>
+<meta content="2020-05-16T14:41:47Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p><span class_="mention">@jacov.g</span><br/>
+מופיע <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+<aside class="quote group-helper" data-post="1" data-topic="6238" data-username="orpazf">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../../user_avatar/forums.pythonic.guru/orpazf/40/1019_2.jpg" width="20"/> orpazf:</div>
+<blockquote>
+<p>חשוב לשים לב שיש רווח אחרי פסיקים ושיש רווח אחרי נקודתיים במילון (ההערה עצמה יכולה להיות על אחד מהם ולהתכוון לשני) - ושאין רווח לפני הפסיק או לפני הנקודתיים.</p>
+</blockquote>
+</aside>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_15" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">jacov.g</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T14:49:06Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  2:49pm
+                  </time>
+<meta content="2020-05-16T14:49:06Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עדיין, הערה היא על “פסיק” ולא על “נקודותיים”, פעם חשבתי שבגלל רווח או אי רווח אחרי ה - ‘,’ כששברתי את המילון בין כמה שורות.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_16" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T14:52:35Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  2:52pm
+                  </time>
+<meta content="2020-05-16T14:59:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>כתבתי שההערה יכולה להיות על כל אחד מהם ולהתכוון לשני, מכיוון שיש גם דוגמאות בהן בהערה כתוב נקודתיים אך מדובר על פסיק. הצעה לניסוח חלופי תתקבל בברכה <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/></p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_17" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">vleora</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<link href="../../../uploads/default/original/2X/6/6b79d17ac3715f71be500906810b07dd5ab66e25.png" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T19:17:48Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  7:17pm
+                  </time>
+<meta content="2020-05-16T19:17:48Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>קיבלתי הערה כזאת<br/>
+<img alt="image" data-base62-sha1="fkM5c7rdHxcVKen4kWsWMu33WIZ" height="209" src="../../../uploads/default/original/2X/6/6b79d17ac3715f71be500906810b07dd5ab66e25.png" width="585"/><br/>
+כי רציתי להציג את המספר ללא נקודה עשרונית. (שאלה ממחברת 2) איך כדאי לתקן? (בלי random התוצאות לא יצאו כמו בהנחייה לתרגיל)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_18" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T19:22:07Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  7:22pm
+                  </time>
+<meta content="2020-05-16T19:22:07Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>זו כבר לא הערה של בודק אוטומטי אלא של בודק בשר ודם, והיא לא על בעיית עיצוב קוד אלא לנסות לשפר לוגית <img alt=":slight_smile:" class="emoji" src="../../../images/emoji/twitter/slight_smilec164.png?v=9" title=":slight_smile:"/><br/>
+מה ניסית לבדוק בשורה הזו? האם אנחנו מכירים דרך אחרת לבצע את הבדיקה הזו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_19" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">vleora</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T20:48:51Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  8:48pm
+                  </time>
+<meta content="2020-05-16T20:48:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אפשר רמז? (איך להדפיס x.y ככה: x.y ו -  x.0 ככה: xׂ)</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_20" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">orpazf</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-16T20:50:26Z" itemprop="datePublished">
+                     16 במאי,‏ 2020,‏  8:50pm
+                  </time>
+<meta content="2020-05-16T20:50:26Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>ממליצה לחזור על אופרטורים חשבוניים שלמיטב זכרוני הופיעו במחברות השבוע הראשון</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_21" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">naphtali.r.89</span>
+</span>
+<link href="../6238.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-05-17T12:36:54Z" itemprop="datePublished">
+                     17 במאי,‏ 2020,‏ 12:36pm
+                  </time>
+<meta content="2020-05-17T12:36:54Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>לגבי נקודה 4.<br/>
+אני שובר את הראש כבר כמה ימים… לא יודע איך לקצר את ההשוואה לערך של TRUE ולא רוצה לשתף בקוד שלי כדי לבדוק מה יכול להתייעל בו.<br/>
+במחברות 6 - 7 של שבוע ראשון לא מצאתי משהו שיעזור לי.<br/>
+איך אני אמור לעשות את זה? אני פשוט לא רואה דרך קצרה יותר ממה שרשמתי…</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" itemscope="" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+<span itemprop="name"><b><a href="../62384658.html?page=2" itemprop="url" rel="next">עמוד הבא ←</a></b></span>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/6238/1 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:19:08 GMT -->
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/topic/8865 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 01:43:31 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>חיבור טלגרם לשרת - פייתון בעברית ובחינם</title>
+<meta content="כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost. 
+לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? :roll_eyes: 
+לגבי האבטחה: 
+חשבתי לתת למשתמש לש&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="8865.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="8865.rss" rel="alternate nofollow" title="הזנת RSS של ‚חיבור טלגרם לשרת’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="8865.html" property="og:url"/>
+<meta content="8865.html" name="twitter:url"/>
+<meta content="חיבור טלגרם לשרת" property="og:title"/>
+<meta content="חיבור טלגרם לשרת" name="twitter:title"/>
+<meta content="כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.  לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? 🙄  לגבי האבטחה:  חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.  זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.  וככה בעצם הבו..." property="og:description"/>
+<meta content="כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.  לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? 🙄  לגבי האבטחה:  חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.  זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.  וככה בעצם הבו..." name="twitter:description"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="2 ❤"/>
+<meta content="2021-01-21T01:55:35+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="8865.html">חיבור טלגרם לשרת</a>
+</h1>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="חיבור טלגרם לשרת" itemprop="headline"/>
+<meta content="מחוץ לקטגוריה" itemprop="articleSection"/>
+<meta content="" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">leddest</span>
+</span>
+<link href="8865.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-21T01:55:35Z" itemprop="datePublished">
+                     21 בינואר,‏ 2021,‏  1:55am
+                  </time>
+<meta content="2021-01-21T01:55:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.</p>
+<p>לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? <img alt=":roll_eyes:" class="emoji" src="../../images/emoji/twitter/roll_eyesc164.png?v=9" title=":roll_eyes:"/></p>
+<p>לגבי האבטחה:<br/>
+חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.<br/>
+זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.</p>
+<p>וככה בעצם הבוט ירוץ על שרת שלנו.</p>
+<p>מה דעתכם?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="8748.html" itemprop="url">טיקטים לפי קטגוריות</a>
+<meta content="1" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8865.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-21T02:47:20Z" itemprop="datePublished">
+                     21 בינואר,‏ 2021,‏  2:47am
+                  </time>
+<meta content="2021-01-21T02:47:20Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>(הודעת catchup לכל מי שמצטרף לדיון (שהתחיל בפרטי)) –</p>
+<p>בימים האחרונים <span class_="mention">@leddest</span> בונה בוט לטלגרם ועלו תהיות איך עושים אותו מבחינה ארכיטקטורית.<br/>
+ניסינו לחשוב יחד גם על איך מנהלים את זה מבחינת אבטחה, כדי שמשתמש יוכל לגשת רק לפרטים שלו, ויוכל להזדהות מול הבוט באופן בטוח ולא להסגיר נניח את הסיסמה שלו.<br/>
+חנוך רוצה להקים את הבוט על אותו שרת יחד עם הפרויקט של לוח השנה, וכך יהיה לו גישה ל־database בלי להצטרך להתממשק דרך ה־API.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="8865.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-21T02:52:04Z" itemprop="datePublished">
+                     21 בינואר,‏ 2021,‏  2:52am
+                  </time>
+<meta content="2021-01-21T02:52:04Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<aside class="quote no-group" data-post="1" data-topic="8865" data-username="leddest">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/l/ecb155/40.png" width="20"/> leddest:</div>
+<blockquote>
+<p>כרגע קיים חיבור לטלגרם API, הבוט יושב על שרת של fastapi עם webhook שאני מקים עם ngrok בשביל localhost.</p>
+</blockquote>
+</aside>
+<p>אני לא בטוח שאני שמח מהעניין של האפשרות לפתוח טאנל לשרת prod שלנו, זה נשמע לי קצת מסוכן.<br/>
+מה המטרה של זה? אין דרך אחרת להנגיש את ה־webhook, נניח, בעזרת השרת של fastapi?</p>
+<aside class="quote no-group" data-post="1" data-topic="8865" data-username="leddest">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/l/ecb155/40.png" width="20"/> leddest:</div>
+<blockquote>
+<p>לא ברור איך להעביר את כל הטסטים של codecov כי לא יהיה חיבור לwebhook? <img alt=":roll_eyes:" class="emoji" src="../../images/emoji/twitter/roll_eyesc164.png?v=9" title=":roll_eyes:"/></p>
+</blockquote>
+</aside>
+<p>לא בטוח שהבנתי מה הכוונה כאן</p>
+<aside class="quote no-group" data-post="1" data-topic="8865" data-username="leddest">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/l/ecb155/40.png" width="20"/> leddest:</div>
+<blockquote>
+<p>לגבי האבטחה:<br/>
+חשבתי לתת למשתמש לשלוח הודעה בטלגרם והוא יקבל ID שיש לו בטלגרם עם ההודעה: להיכנס לעמוד הפרופיל שלו ולהזין את הID שם.</p>
+</blockquote>
+</aside>
+<p>נשמע מעולה עד כאן, צריך שתהיה לו אפשרות גם להסיר את עצמו</p>
+<aside class="quote no-group" data-post="1" data-topic="8865" data-username="leddest">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" class="avatar" height="20" src="../../letter_avatar_proxy/v4/letter/l/ecb155/40.png" width="20"/> leddest:</div>
+<blockquote>
+<p>זה ישמור את הhash שנקבל מid. ואז כל פעם שמשתמש ישלח הודעה בבוט: שרת יבדוק את הID מול הHASH ויתן לפי זה את האירועים שלו. משתמש בכל רגע יכול למחוק את הHASH שלו בהגדרות.</p>
+</blockquote>
+</aside>
+<p>הייתי מדלג על עניין ה־hash ונותן לבוט גישה ברגע שהמשתמש הכניס את ה־id שקיבל מהבוט לפרופיל.<br/>
+בשלב הזה כבר הייתי מדליק שדה ב־DB של telegram_bot_accessible, שאם הוא <code>True</code> הבוט יכול לקרוא את הפרטים הרלוונטיים.<br/>
+פספסתי משהו?</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="2" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_4" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">leddest</span>
+</span>
+<link href="8865.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-21T09:52:24Z" itemprop="datePublished">
+                     21 בינואר,‏ 2021,‏  9:52am
+                  </time>
+<meta content="2021-01-21T10:08:35Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<ul>
+<li>
+<p>אני עושה tunneling לlocalhost כי ניתן לחבר webhook רק עם https. בprodaction צריך להגדיר webhook עם הURL האמיתי של האתר שלנו במשתנה סביבה (או בקובץ קונפיג) - אז לא יהיה tunneling בprod.</p>
+</li>
+<li>
+<p>כאשר ירוצו הבדיקות: הגדרת הbot_api והwebhook לא יהיו בקונפיג - חלק מהבדיקות שתלויות בחיבור יכשלו.</p>
+</li>
+</ul>
+<blockquote>
+<p>הייתי מדליק שדה ב־DB של telegram_bot_accessible, שאם הוא <code>True</code> הבוט יכול לקרוא את הפרטים הרלוונטיים.</p>
+</blockquote>
+<p>זה לא יעזור כי פעם הבא שמשתמש ישלח הודעה - הבוט לא ידע מי מהמשתמשים שלח את ההודעה - telegram_bot_accessible לא יתן אינדיקציה מי השולח - בוט מקבל json עם telegram id של השולח בטלגרם וחייב לבדוק האם היוזר עם telegram id כזה כבר קיים בDB.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_5" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">leddest</span>
+</span>
+<link href="8865.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2021-01-21T16:18:51Z" itemprop="datePublished">
+                     21 בינואר,‏ 2021,‏  4:18pm
+                  </time>
+<meta content="2021-01-21T16:18:51Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>עשיתי PR. אשמח לקבל חוות דעתך על המימוש הנוכחי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/topic/8865 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 01:43:35 GMT -->
+</html>

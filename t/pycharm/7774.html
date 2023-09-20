@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/pycharm/7774 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:06:09 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>בעיה בהתקנת מודולים ב Pycharm - שבוע 9 - פייתון בעברית ובחינם</title>
+<meta content="עריכה: מצאתי את הפתרון לבעיה שלי (ואולי גם שלכם), הפתרון מוסבר בסרטון המצורף. 
+התחלתי לעבוד עם פייצ’ארם. יש לסביבה הזו פיצ’ר נהדר שבו אם המודול לא מותקן אז הולכים לשם שלו, לוחצים אלט + אנטר, וישר נפתחת האפשרות להתקין אות&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7774.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7774.rss" rel="alternate nofollow" title="הזנת RSS של ‚בעיה בהתקנת מודולים ב Pycharm’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7774.html" property="og:url"/>
+<meta content="7774.html" name="twitter:url"/>
+<meta content="בעיה בהתקנת מודולים ב Pycharm" property="og:title"/>
+<meta content="בעיה בהתקנת מודולים ב Pycharm" name="twitter:title"/>
+<meta content="עריכה: מצאתי את הפתרון לבעיה שלי (ואולי גם שלכם), הפתרון מוסבר בסרטון המצורף.  התחלתי לעבוד עם פייצ’ארם. יש לסביבה הזו פיצ’ר נהדר שבו אם המודול לא מותקן אז הולכים לשם שלו, לוחצים אלט + אנטר, וישר נפתחת האפשרות להתקין אותו. הבעיה היא שזה תמיד נכשל ואני מקבל הודעות שגיאה שנראות ככה. אציין שאני משתמש בגרסה המקצועית של פייצ’רם (יש לי גישה בחינם כי יש לי כתובת מייל של סטודנט באמריקה) ובפייתון 3.8 (עדכנתי גרסה בהמלצתו של ים כדי לנסות לתקן איזו בעיה בג’ופיטר). בפרויקטים האינטרפטר שלי הוא conda. מאחר וא..." property="og:description"/>
+<meta content="עריכה: מצאתי את הפתרון לבעיה שלי (ואולי גם שלכם), הפתרון מוסבר בסרטון המצורף.  התחלתי לעבוד עם פייצ’ארם. יש לסביבה הזו פיצ’ר נהדר שבו אם המודול לא מותקן אז הולכים לשם שלו, לוחצים אלט + אנטר, וישר נפתחת האפשרות להתקין אותו. הבעיה היא שזה תמיד נכשל ואני מקבל הודעות שגיאה שנראות ככה. אציין שאני משתמש בגרסה המקצועית של פייצ’רם (יש לי גישה בחינם כי יש לי כתובת מייל של סטודנט באמריקה) ובפייתון 3.8 (עדכנתי גרסה בהמלצתו של ים כדי לנסות לתקן איזו בעיה בג’ופיטר). בפרויקטים האינטרפטר שלי הוא conda. מאחר וא..." name="twitter:description"/>
+<meta content="הקורס הפתוח" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="שבוע 9" property="og:article:section"/>
+<meta content="0088CC" property="og:article:section:color"/>
+<meta content="import" property="og:article:tag"/>
+<meta content="סביבת-עבודה" property="og:article:tag"/>
+<meta content="תקלות-טכניות" property="og:article:tag"/>
+<meta content="pycharm" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="4 ❤"/>
+<meta content="2020-08-06T15:17:25+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"בעיה בהתקנת מודולים ב Pycharm","mainEntity":{"@type":"Question","name":"בעיה בהתקנת מודולים ב Pycharm","text":"עריכה: מצאתי את הפתרון לבעיה שלי (ואולי גם שלכם), הפתרון מוסבר בסרטון המצורף.\n\nהתחלתי לעבוד עם פייצ’ארם. יש לסביבה הזו פיצ’ר נהדר שבו אם המודול לא מותקן אז הולכים לשם שלו, לוחצים אלט + אנטר, וישר נפתחת האפשרות להתקין אותו. הבעיה היא שזה תמיד נכשל ואני מקבל הודעות שגיאה שנראות ככה. אציין שאני משתמש ב&hellip;","upvoteCount":0,"answerCount":1,"dateCreated":"2020-08-06T15:17:25.056Z","author":{"@type":"Person","name":""},"acceptedAnswer":{"@type":"Answer","text":"אז נראה שמצאתי את הפתרון לבעיה, אבל אני משאיר את הפוסט כי יכול להיות שהוא יועיל למישהו. הבעיה נובעת מזה שכשעובדים עם אנקונדה חשוב מאוד שהאינטפרטר שנבחר יהיה pythonw.exe. מצ&quot;ב קישור לסרטון על איך לפתור את הבעיה. החלק הרלוונטי מתחיל בערך ב 5:00 של הסרטון. רצוי לראות אותו בסבלנות ולעקוב אחר ההוראות.\n\n&hellip;","upvoteCount":3,"dateCreated":"2020-08-06T16:01:01.989Z","url":"https://forums.pythonic.guru/t/pycharm/7774/2","author":{"@type":"Person","name":"mbrodsky"}}}}</script>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7774.html">בעיה בהתקנת מודולים ב Pycharm</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/20.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">הקורס הפתוח</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/old/week-9/19.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #0088CC"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">שבוע 9</span>
+</span>
+</a>
+<meta content="2" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/import.html" rel="tag">import</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a1%d7%91%d7%99%d7%91%d7%aa-%d7%a2%d7%91%d7%95%d7%93%d7%94.html" rel="tag">סביבת-עבודה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%aa%d7%a7%d7%9c%d7%95%d7%aa-%d7%98%d7%9b%d7%a0%d7%99%d7%95%d7%aa.html" rel="tag">תקלות-טכניות</a>, 
+            <a class="discourse-tag" href="../../tag/pycharm.html" rel="tag">pycharm</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="בעיה בהתקנת מודולים ב Pycharm" itemprop="headline"/>
+<meta content="שבוע 9" itemprop="articleSection"/>
+<meta content="import, סביבת-עבודה, תקלות-טכניות, pycharm" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="7774.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T15:17:25Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  3:17pm
+                  </time>
+<meta content="2022-02-10T23:40:53Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<p>עריכה: מצאתי את הפתרון לבעיה שלי (ואולי גם שלכם), הפתרון מוסבר בסרטון המצורף.</p>
+<p>התחלתי לעבוד עם פייצ’ארם. יש לסביבה הזו פיצ’ר נהדר שבו אם המודול לא מותקן אז הולכים לשם שלו, לוחצים אלט + אנטר, וישר נפתחת האפשרות להתקין אותו. הבעיה היא שזה תמיד נכשל ואני מקבל הודעות שגיאה שנראות ככה. אציין שאני משתמש בגרסה המקצועית של פייצ’רם (יש לי גישה בחינם כי יש לי כתובת מייל של סטודנט באמריקה) ובפייתון 3.8 (עדכנתי גרסה בהמלצתו של ים כדי לנסות לתקן איזו בעיה בג’ופיטר). בפרויקטים האינטרפטר שלי הוא conda. מאחר ואני לא יכול להתקין מודולים אין לי אפשרות לבצע את התרגילים, אז אם למישהו יש עצה…</p>
+<p>Collecting package metadata (current_repodata.json): …working… done<br/>
+Solving environment: …working… failed with initial frozen solve. Retrying with flexible solve.<br/>
+Collecting package metadata (repodata.json): …working… done<br/>
+Solving environment: …working… failed with initial frozen solve. Retrying with flexible solve.</p>
+<p>PackagesNotFoundError: The following packages are not available from current channels:</p>
+<ul>
+<li>sounddevice</li>
+</ul>
+<p>Current channels:</p>
+<ul>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/main/win-64" rel="noopener nofollow ugc">main/win-64</a></li>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/main/noarch" rel="noopener nofollow ugc">main/noarch</a></li>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/r/win-64" rel="noopener nofollow ugc">r/win-64</a></li>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/r/noarch" rel="noopener nofollow ugc">r/noarch</a></li>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/msys2/win-64" rel="noopener nofollow ugc">msys2/win-64</a></li>
+<li><a class="inline-onebox" href="https://repo.anaconda.com/pkgs/msys2/noarch" rel="noopener nofollow ugc">msys2/noarch</a></li>
+</ul>
+<p>To search for alternate channels that may provide the conda package you’re<br/>
+looking for, navigate to</p>
+<pre><code>https://anaconda.org
+</code></pre>
+<p>and use the search bar at the top of the page.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">mbrodsky</span>
+</span>
+<link href="7774.html" itemprop="mainEntityOfPage"/>
+<link href="../../uploads/default/original/2X/7/78ed5d7b0f6d9c9d9a4836ef5ec23bfd8f2ab63b.jpg" itemprop="image"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T16:01:01Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  4:01pm
+                  </time>
+<meta content="2020-08-06T16:01:01Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>אז נראה שמצאתי את הפתרון לבעיה, אבל אני משאיר את הפוסט כי יכול להיות שהוא יועיל למישהו. הבעיה נובעת מזה שכשעובדים עם אנקונדה חשוב מאוד שהאינטפרטר שנבחר יהיה pythonw.exe. מצ"ב קישור לסרטון על איך לפתור את הבעיה. החלק הרלוונטי מתחיל בערך ב 5:00 של הסרטון. רצוי לראות אותו בסבלנות ולעקוב אחר ההוראות.</p>
+<div class="youtube-onebox lazy-video-container" data-provider-name="youtube" data-video-id="RvbUqf3Tb1s" data-video-start-time="" data-video-title="How to Fix PyCharm Import Error and Setup Your Interpreter">
+<a href="https://www.youtube.com/watch?v=RvbUqf3Tb1s" rel="noopener nofollow ugc" target="_blank">
+<img class="youtube-thumbnail" data-dominant-color="5C4846" height="388" src="../../uploads/default/original/2X/7/78ed5d7b0f6d9c9d9a4836ef5ec23bfd8f2ab63b.jpg" title="How to Fix PyCharm Import Error and Setup Your Interpreter" width="690"/>
+</a>
+</div>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="3" itemprop="userInteractionCount"/>
+<span class="post-likes">3 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_3" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">eliory09</span>
+</span>
+<link href="7774.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-06T16:50:22Z" itemprop="datePublished">
+                     6 באוגוסט,‏ 2020,‏  4:50pm
+                  </time>
+<meta content="2020-08-06T16:50:22Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+<p>רק אוסיף לפוסט החשוב שלך שהדבר רלוונטי מאוד גם ל-VSCode למיטב הבנתי.</p>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="1" itemprop="userInteractionCount"/>
+<span class="post-likes">לייק 1</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/pycharm/7774 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 04:06:11 GMT -->
+</html>

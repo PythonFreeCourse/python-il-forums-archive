@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+    <link>https://forums.pythonic.guru/t/2-str/7176</link>
+    <description>אהלן, 
+אני מצליחה להשתמש במחלקת Message  מתוך PostOffice.
+הבעיה היא שכשאני מנסה להדפיס תוצאה של פעולה של PostOffice (למשל של read_inbox), משום מה ההודעות מיוצגות כך:
+This is Newman&#39;s inbox [&lt;__main__.Message object at 0x00000277F408C048&gt;, &lt;__main__.Message object at 0x00000277F4088E08&gt;, &lt;__main__.Message object at 0x00000277F4088D48&gt;].
+ולא בהתאם לאיך שהן אמורות להיות מוצגות כפי שהגדרתי להן תחת מחלקת Message באמצעות __str__.
+
+מה פספסתי?
+תודה!</description>
+    <language>he</language>
+    <lastBuildDate>Wed, 17 Jun 2020 04:53:16 +0000</lastBuildDate>
+    <category>שבוע 7</category>
+    <atom:link href="https://forums.pythonic.guru/t/2-str/7176.rss" rel="self" type="application/rss+xml" />
+      <item>
+        <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>עכשיו הבנתי! תודה על ההבהרה.</p>
+          <p><a href="https://forums.pythonic.guru/t/2-str/7176/5">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-str/7176/5</link>
+        <pubDate>Wed, 17 Jun 2020 04:53:16 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7176-5</guid>
+        <source url="https://forums.pythonic.guru/t/2-str/7176.rss">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</source>
+      </item>
+      <item>
+        <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+        <dc:creator><![CDATA[Yam]]></dc:creator>
+        <description><![CDATA[
+            <p>הבהרה קטנה בנוגע ל¯<code>__repr__</code>: הוא לא כ"כ נועד להדפסות. המטרה שלו הוא להיות כלי עזר למתכנת.<br>
+ההגדרה ה(כמעט) רשמית שלו היא “מחזיר מחרוזת, שכשמריצים אותה בג’ופיטר נוטבוק מתקבל האובייקט עצמו”.<br>
+עדיף לא לעשות לו Abuse, ואם יש צורך להשתמש בלולאה <img src="https://forums.pythonic.guru/images/emoji/twitter/upside_down_face.png?v=9" title=":upside_down_face:" class="emoji" alt=":upside_down_face:"></p>
+          <p><a href="https://forums.pythonic.guru/t/2-str/7176/4">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-str/7176/4</link>
+        <pubDate>Wed, 17 Jun 2020 04:42:53 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7176-4</guid>
+        <source url="https://forums.pythonic.guru/t/2-str/7176.rss">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</source>
+      </item>
+      <item>
+        <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>זה הצליח! חשבתי על repr אבל כשקראתי עליה משום מה קיבלתי את הרושם שאין הבדל מstr למעט האם הייצוג שנוצר הוא “פורמלי” או יותר מיועד להיות משהו “קריא” עבור משתמש. למדתי להמשך, תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/2-str/7176/3">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-str/7176/3</link>
+        <pubDate>Wed, 17 Jun 2020 02:14:55 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7176-3</guid>
+        <source url="https://forums.pythonic.guru/t/2-str/7176.rss">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</source>
+      </item>
+      <item>
+        <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+        <dc:creator><![CDATA[devorack]]></dc:creator>
+        <description><![CDATA[
+            <p>הפעולה __. str __ (שניתן לקרוא לה גם ע"י ()print) מייצרת סטרינג מאובייקט (אם הוגדרה בהתאם), לא מרשימה שבעצמה אינה אובייקט (בהדפסה קיבלת את תוכן הרשימה). בידייך שתי אפשרויות להתמודד עם זה:<br>
+להדפיס אובייקטים (רמז: לולאת for יכולה לעזור במקרה זה)<br>
+ישנה גם פעולת הקסם __.repr __ (.<em>. עריכה.</em>.  שלמיטב הבנתי לא מומלץ להשתמש בה להדפסות)</p>
+          <p><a href="https://forums.pythonic.guru/t/2-str/7176/2">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-str/7176/2</link>
+        <pubDate>Wed, 17 Jun 2020 01:56:56 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7176-2</guid>
+        <source url="https://forums.pythonic.guru/t/2-str/7176.rss">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</source>
+      </item>
+      <item>
+        <title>צב שלוח 2 בעייה בהדפסה למרות שיש _str__</title>
+        <dc:creator><![CDATA[car.chopin]]></dc:creator>
+        <description><![CDATA[
+            <p>אהלן,<br>
+אני מצליחה להשתמש במחלקת Message  מתוך PostOffice.<br>
+הבעיה היא שכשאני מנסה להדפיס תוצאה של פעולה של PostOffice (למשל של read_inbox), משום מה ההודעות מיוצגות כך:<br>
+This is Newman’s inbox [&lt;<strong>main</strong>.Message object at 0x00000277F408C048&gt;, &lt;<strong>main</strong>.Message object at 0x00000277F4088E08&gt;, &lt;<strong>main</strong>.Message object at 0x00000277F4088D48&gt;].<br>
+ולא בהתאם לאיך שהן אמורות להיות מוצגות כפי שהגדרתי להן תחת מחלקת Message באמצעות <strong>str</strong>.</p>
+<p>מה פספסתי?<br>
+תודה!</p>
+          <p><a href="https://forums.pythonic.guru/t/2-str/7176/1">קריאת הנושא במלואו</a></p>
+        ]]></description>
+        <link>https://forums.pythonic.guru/t/2-str/7176/1</link>
+        <pubDate>Wed, 17 Jun 2020 01:27:10 +0000</pubDate>
+        <guid isPermaLink="false">forums.pythonic.guru-post-7176-1</guid>
+        <source url="https://forums.pythonic.guru/t/2-str/7176.rss">צב שלוח 2 בעייה בהדפסה למרות שיש _str__</source>
+      </item>
+  </channel>
+</rss>

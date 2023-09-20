@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<!-- Mirrored from forums.pythonic.guru/t/9-3-type-annotations/7782 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:22 GMT -->
+<!-- Added by HTTrack --><meta content="text/html;charset=utf-8" http-equiv="content-type"/><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8"/>
+<title>שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations) - אשכולות הנהלה - פייתון בעברית ובחינם</title>
+<meta content="רמיזות על טיפוסים – Type Annotations
+חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות. 
+כלי יעיל נוסף בהקש&amp;hellip;" name="description"/>
+<meta content="Discourse 3.2.0.beta2-dev - https://github.com/discourse/discourse version ebe68e15fce9c2fc2c67628ce4a9b24284c09b80" name="generator"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_32x32.jpg" rel="icon" type="image/png"/>
+<link href="../../uploads/default/optimized/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521_2_180x180.jpg" rel="apple-touch-icon" type="image/png"/>
+<meta content="#ffffff" media="all" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover" name="viewport"/>
+<link href="7782.html" rel="canonical"/>
+<link href="../../opensearch.xml" rel="search" title="פייתון בעברית ובחינם Search" type="application/opensearchdescription+xml"/>
+<link class="light-scheme" href="../../stylesheets/color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba33.css_%3b%20filename_%3dUTF-8%27%27color_definitions_scheme_2_3_4eaabccdb423ebdd5fde62bb8c929b7912b0ba337939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_rtl" href="../../stylesheets/desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="checklist_rtl" href="../../stylesheets/checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27checklist_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-cakeday_rtl" href="../../stylesheets/discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-cakeday_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_rtl" href="../../stylesheets/discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-details_rtl" href="../../stylesheets/discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-details_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-lazy-videos_rtl" href="../../stylesheets/discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-lazy-videos_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-local-dates_rtl" href="../../stylesheets/discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-local-dates_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-math_rtl" href="../../stylesheets/discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-math_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-narrative-bot_rtl" href="../../stylesheets/discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-narrative-bot_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-presence_rtl" href="../../stylesheets/discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-presence_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-solved_rtl" href="../../stylesheets/discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-solved_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-tooltips_rtl" href="../../stylesheets/discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-tooltips_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="docker_manager_rtl" href="../../stylesheets/docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27docker_manager_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_rtl" href="../../stylesheets/poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="discourse-calendar_desktop_rtl" href="../../stylesheets/discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27discourse-calendar_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="poll_desktop_rtl" href="../../stylesheets/poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce.css_%3b%20filename_%3dUTF-8%27%27poll_desktop_rtl_010e86cdc443c6a22fa77214fa3fc0bf2f3542ce7939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link data-target="desktop_theme" data-theme-id="3" data-theme-name="בהיר" href="../../stylesheets/desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a74400.css_%3b%20filename_%3dUTF-8%27%27desktop_theme_3_32d9a33a83c213d82cb6da72bd3eb36192a744007939.css?__ws=forums.pythonic.guru" media="all" rel="stylesheet"/>
+<link href="7782.rss" rel="alternate nofollow" title="הזנת RSS של ‚שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)’" type="application/rss+xml"/>
+<meta content="פייתון בעברית ובחינם" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" name="twitter:image"/>
+<meta content="../../uploads/default/original/1X/49c4c7d93c7e73a9a15013cfae1d89084c9ba521.jpg" property="og:image"/>
+<meta content="7782.html" property="og:url"/>
+<meta content="7782.html" name="twitter:url"/>
+<meta content="שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)" property="og:title"/>
+<meta content="שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)" name="twitter:title"/>
+<meta content="רמיזות על טיפוסים – Type Annotations חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות.  כלי יעיל נוסף בהקשר זה, הוא הוספת type annotations לקוד שלנו. לצד כל משתנה, נוכל לכתוב מאיזה טיפוס פייתוני הוא. זה יעזור לנו מאוד כשנרצה לקרוא את הקוד בעתיד, ויעזור לנו לעשות סדר בסוגי המשתנים שמועברים לאורך התוכנית.  אבל זה לא נגמר כאן! ל־type annotations יש שני יתרונות פרקטיים משמעותיים מאוד:   ה..." property="og:description"/>
+<meta content="רמיזות על טיפוסים – Type Annotations חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות.  כלי יעיל נוסף בהקשר זה, הוא הוספת type annotations לקוד שלנו. לצד כל משתנה, נוכל לכתוב מאיזה טיפוס פייתוני הוא. זה יעזור לנו מאוד כשנרצה לקרוא את הקוד בעתיד, ויעזור לנו לעשות סדר בסוגי המשתנים שמועברים לאורך התוכנית.  אבל זה לא נגמר כאן! ל־type annotations יש שני יתרונות פרקטיים משמעותיים מאוד:   ה..." name="twitter:description"/>
+<meta content="אשכולות הנהלה" property="og:article:section"/>
+<meta content="92278F" property="og:article:section:color"/>
+<meta content="type-annotations" property="og:article:tag"/>
+<meta content="תוכן-הוראה" property="og:article:tag"/>
+<meta content="שבוע-9" property="og:article:tag"/>
+<meta name="twitter:label1" value="זמן קריאה"/>
+<meta name="twitter:data1" value="1 mins 🕑"/>
+<meta name="twitter:label2" value="לייקים"/>
+<meta name="twitter:data2" value="7 ❤"/>
+<meta content="2020-08-07T04:15:49+00:00" property="article:published_time"/>
+<meta content="true" property="og:ignore_canonical"/>
+</head>
+<body class="">
+<header class="d-header">
+
+<div class="wrap content">
+<div class="title">
+<a data-auto-route="true" href="/index.html">
+<img alt="פייתון בעברית ובחינם" class="logo-big" id="site-logo" src="/uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg"/>
+</a>
+<div class="before-header-panel-outlet"></div>
+<div class="panel" role="navigation">
+<span class="header-buttons"></span>
+<ul class="icons d-header-icons">
+<!-- More to come? -->
+</ul>
+</div>
+</div>
+</div></header>
+<div class="wrap" id="main-outlet" role="main">
+<div id="topic-title">
+<h1>
+<a href="7782.html">שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)</a>
+</h1>
+<div class="topic-category" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+<span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a class="badge-wrapper bullet" href="../../c/7-category/7.html" itemprop="item">
+<span class="badge-category-bg" style="background-color: #92278F"></span>
+<span class="badge-category clear-badge">
+<span class="category-name" itemprop="name">אשכולות הנהלה</span>
+</span>
+</a>
+<meta content="1" itemprop="position"/>
+</span>
+</div>
+<div class="topic-category">
+<div class="discourse-tags list-tags"><span class="tags-string">תגיות: </span>
+<a class="discourse-tag" href="../../tag/type-annotations.html" rel="tag">type-annotations</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%aa%d7%95%d7%9b%d7%9f-%d7%94%d7%95%d7%a8%d7%90%d7%94.html" rel="tag">תוכן-הוראה</a>, 
+            <a class="discourse-tag" href="../../tag/%d7%a9%d7%91%d7%95%d7%a2-9.html" rel="tag">שבוע-9</a>
+</div>
+</div>
+</div>
+<div itemscope="" itemtype="http://schema.org/DiscussionForumPosting">
+<meta content="שבוע 9 – יום 3: רמיזות על טיפוסים (Type Annotations)" itemprop="headline"/>
+<meta content="אשכולות הנהלה" itemprop="articleSection"/>
+<meta content="type-annotations, תוכן-הוראה, שבוע-9" itemprop="keywords"/>
+<div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+<meta content="פייתון בעברית ובחינם" itemprop="name"/>
+<div itemprop="logo" itemscope="" itemtype="http://schema.org/ImageObject">
+<meta content="../../uploads/default/original/1X/3c7e2ccc77e214fb4e38daa421f1b8878a5677f9.jpg" itemprop="url"/>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_1">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+</span>
+<link href="7782.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-07T04:15:49Z" itemprop="datePublished">
+                     7 באוגוסט,‏ 2020,‏  4:15am
+                  </time>
+<meta content="2020-08-14T16:13:29Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="articleBody">
+<h2>רמיזות על טיפוסים – Type Annotations</h2>
+<p>חלק גדול מהחומר שלמדנו בשבועות האחרונים התרכז בסיוע למתכנתים שיבואו לקרוא את הקוד שלנו. למדנו לחלק טוב יותר את הקוד, להוסיף תיעוד, לחלק לקבצים ולשמור על קונבנציות.</p>
+<p>כלי יעיל נוסף בהקשר זה, הוא הוספת type annotations לקוד שלנו. לצד כל משתנה, נוכל לכתוב מאיזה טיפוס פייתוני הוא. זה יעזור לנו מאוד כשנרצה לקרוא את הקוד בעתיד, ויעזור לנו לעשות סדר בסוגי המשתנים שמועברים לאורך התוכנית.</p>
+<p>אבל זה לא נגמר כאן! ל־type annotations יש שני יתרונות פרקטיים משמעותיים מאוד:</p>
+<ol>
+<li>ה־IDEs שלכם יודעים לזהות את ה־type annotation, ולהגיד לכם כשהעברתם סוג משתנה לא נכון או כשאתם מכניסים את עצמכם לפה של אריה.</li>
+<li>יש כלים חיצוניים, כמו <a href="http://mypy-lang.org/">mypy</a>, שמאפשרים לכם לדעת האם יש חוסר עקביות בסוגי המשתנים. לדוגמה, אם הצהרתם בעזרת type annotations שמפונקציה מסוימת אמור לחזור מילון, וניסיתם לעשות על הערך שחזר ממנה <code>.strip()</code>, הכלי החיצוני יצעק שאין פעולה כזו על מילון.</li>
+</ol>
+<hr/>
+<h3>טכניקה</h3>
+<p>מספיק תיאוריה לבינתיים. בואו נראה איך זה נראה. ניקח את הקוד הבא, שבו אין type annotations:</p>
+<pre><code class="lang-python">def add(a, b):
+    return a + b
+</code></pre>
+<p>ונוסיף לו type annotations:</p>
+<pre><code class="lang-python">def add(a: int, b: int) -&gt; int:
+    return a + b
+</code></pre>
+<p>אחרי שם המשתנה (הפרמטר, במקרה שלנו) נכתוב נקודתיים ואז את הטיפוס שאנחנו מצפים להשים אליו.<br/>
+אחרי כותרת הפונקציה ולפני הנקודתיים, אנחנו יכולים לסמן חץ ואז את הטיפוס שהפונקציה תחזיר.</p>
+<p>קראו עוד בכללי על mypy <a href="https://mypy.readthedocs.io/en/stable/getting_started.html">כאן</a>.</p>
+<h4>סיבוכים</h4>
+<p>אבל רגע, מה קורה אם אנחנו רוצים לקבל <code>int</code> <strong>או</strong> <code>float</code>? ניתן להשתמש ב־Union מתוך ספריית typing:</p>
+<pre><code class="lang-python">from typing import Union
+
+
+def add(a: Union[int, float], b: Union[int, float]) -&gt; Union[int, float]:
+    return a + b
+</code></pre>
+<p>אפשר גם לשמור על משתנה לשם הקריאות:</p>
+<pre><code class="lang-python">from typing import Union
+
+
+Number = Union[int, float]
+
+
+def add(a: Number, b: Number) -&gt; Number:
+    return a + b
+</code></pre>
+<p>עבור משתנים מטיפוסים יותר מורכבים, כמו List, Tuple, Dict וכדומה, יש Type annotations יותר מורכבים.</p>
+<p>במילון מציינים את הטיפוס של המפתח, ואז את הטיפוס של הערך:</p>
+<pre><code class="lang-python">ages: Dict[str, int] = {"Yam": 28, "Nimrod": 29, "Lukas Graham": 7}
+</code></pre>
+<p>ברשימה מציינים את טיפוס הערכים מתוך הנחה שהיא הומוגנית. אם לא, אפשר להשתמש ב־Union.</p>
+<pre><code class="lang-python">bands: List[str] = ["Caravan Palace", "C2C", "Deluxe"]
+</code></pre>
+<p>ב־tuple מציינים את הטיפוס של כל אחד מהמקומות ב־tuple.<br/>
+אם לא ידוע כמה איברים נמצאים ב־tuple, יש להשתמש ב־<code>...</code>:</p>
+<pre><code class="lang-python">bands: Tuple[str, str, str] = ("Caravan Palace", "C2C", "Deluxe")
+</code></pre>
+<p>או:</p>
+<pre><code class="lang-python">bands: Tuple[str, ...] = ("Caravan Palace", "C2C", "Deluxe")
+</code></pre>
+<p>קריאה מעמיקה של הדף <a href="https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html">הזה</a> תסדר לכם את כל החומר שצריך לדעת בנושא.<br/>
+נוסף על הרעיונות שהוצגו כאן, ודאו שאתם יודעים להשתמש ב־<code>Callable</code>, <code>Sequence</code>, <code>Iterable</code>, <code>Iterator</code>, <code>Optional</code> ו־<code>Any</code>.</p>
+<hr/>
+<p>כך או כך, type annotations הם רשות ופייתון עצמו מתעלמת מהם לחלוטין. אפילו אם תוסיפו Type annotations שאומר שפרמטר של פונקציה מסוימת הוא <code>bool</code>, פייתון לא תחייב אתכם לשלוח אליה ארגומנט מסוג <code>bool</code> ובפועל תוכלו לעשות מה שאתם רוצים. זה כלי עזר לא מחייב.</p>
+<hr/>
+<h3>הפעלת mypy</h3>
+<p>הכלי mypy פותח על ידי Guido Van Russom (כן, זה הבחור שפיתח את פייתון במקור).<br/>
+מטרתו הוא לנתח קוד שיש בו type annotations ולבדוק שהתוכנה תקינה ואין “התנגשויות” או בעיות במהלך ההצהרות על טיפוסי המשתנים.</p>
+<p>כדי להריץ אותו, התקינו את mypy בעזרת pip install.<br/>
+לאחר מכן, פתחו שורת פקודה והקלידו בה mypy ואז את הנתיב לפרויקט/לקובץ שלכם:</p>
+<pre><code class="lang-nohighlight">❯ mypy file.py
+Success: no issues found in 1 source file
+</code></pre>
+<p>ניתן לכתוב אחרי המילה <code>mypy</code> את הדגל <code>--strict</code>, שמחייב את כל הקוד להיות type annotated (כדי שלא נשכח), ומוסיף בדיקות מעט מחמירות יותר על טיפוסי הנתונים. לדוגמה:</p>
+<pre><code class="lang-nohighlight">❯ mypy --strict sounds
+sounds/dog.py:1: error: Function is missing a return type annotation
+sounds/dog.py:1: note: Use "-&gt; None" if function does not return a value
+sounds/cat.py:1: error: Function is missing a return type annotation
+sounds/cat.py:1: note: Use "-&gt; None" if function does not return a value
+sounds/koo/mmm.py:3: error: Call to untyped function "make_sound" in typed context
+Found 3 errors in 3 files (checked 5 source files)
+</code></pre>
+<p>נסו להריץ mypy עם <code>--strict</code> על אחד התרגילים שלכם כדי להתרשם בעצמכם.</p>
+<hr/>
+<h3>תרגילים</h3>
+<h4>טיפוס אפל</h4>
+<p>הספרים בספרייתו של רוספורף פיינס כושפו בכישוף נורא: כל המילים בספר התהפכו (“שלום” הפך ל"םולש").<br/>
+חשבתם שכאן תם ונשלם הקונדס? לא ולא! במקום כל אות מופיע הערך הגימטרי שלה.</p>
+<p>לדוגמה: במשפט “מי ימלל היפוגריף שאוכל?” סדר האותיות התהפך: “ימ ללמי ףירגופיה ?לכואש”, ואז כל אות הומרה לערך הגימטרי שלה:</p>
+<pre><code class>010040000030030040010000080010200003006080010005000?030020006001300
+</code></pre>
+<p>שימו לב שכל אות תופסת 3 תווים בדיוק (האות א’ מיוצגת כ־001, האות מ’ כ־040 וכד’).<br/>
+במקום רווח הוכנס המספר 000, ושאר התווים שאינם עברית נשארו כפי שהיו במקור.</p>
+<p>כתבו פונקציה שמקבלת ספר של רוספורף פיינס (מחרוזת טקסט) ויודעת לשחזר אותו למצבו המקורי.<br/>
+דאגו לכתוב type annotations.</p>
+<p>לנוחיותכם: טבלת הגימטריה כמילון.</p>
+<pre><code class="lang-python">gematria = {
+    'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5, 'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9,
+    'י': 10, 'כ': 20, 'ל': 30, 'מ': 40, 'נ': 50, 'ס': 60, 'ע': 70, 'פ': 80,
+    'צ': 90, 'ק': 100, 'ר': 200, 'ש': 300, 'ת': 400,
+    'ך': 20, 'ם': 40, 'ן': 50, 'ף': 80, 'ץ': 90,
+}
+</code></pre>
+<h4>מט־פיי</h4>
+<p>הוסיפו type annotations לתרגיל השחמט משבוע שעבר.<br/>
+ניתן להוסיף את ה־type annotations אחרי שחילקתם את התרגיל לקבצים.</p>
+<hr/>
+<p>משאבים נוספים:</p>
+<ol>
+<li>מאמר סופר מפורט ב־<a href="https://realpython.com/python-type-checking/">Real Python</a>
+</li>
+<li>
+<a href="https://docs.python.org/3/library/typing.html">התיעוד</a> של הספרייה typing.</li>
+<li>
+<a href="https://mypy.readthedocs.io/en/stable/">התיעוד</a> של mypy.</li>
+</ol>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="7" itemprop="userInteractionCount"/>
+<span class="post-likes">7 לייקים</span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+<div class="crawler-linkback-list" itemscope="" itemtype="http://schema.org/ItemList">
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/7849/2.html" itemprop="url">תיקוני תרגילים - שבוע 9</a>
+<meta content="7" itemprop="position"/>
+</div>
+<div itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+<a href="../topic/7968.html" itemprop="url">ריכוז חומרים: שבוע 9</a>
+<meta content="8" itemprop="position"/>
+</div>
+</div>
+</div>
+<div class="topic-body crawler-post" id="post_2" itemprop="comment" itemscope="" itemtype="http://schema.org/Comment">
+<div class="crawler-post-meta">
+<span class="creator" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+<span itemprop="name">Yam</span>
+                
+                  נסגר ב־
+              </span>
+<link href="7782.html" itemprop="mainEntityOfPage"/>
+<span class="crawler-post-infos">
+<time class="post-time" datetime="2020-08-07T04:24:24Z" itemprop="datePublished">
+                     7 באוגוסט,‏ 2020,‏  4:24am
+                  </time>
+<meta content="2020-08-07T04:24:24Z" itemprop="dateModified"/>
+</span>
+</div>
+<div class="post" itemprop="text">
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/LikeAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+<span class="post-likes"></span>
+</div>
+<div itemprop="interactionStatistic" itemscope="" itemtype="http://schema.org/InteractionCounter">
+<meta content="http://schema.org/CommentAction" itemprop="interactionType"/>
+<meta content="0" itemprop="userInteractionCount"/>
+</div>
+</div>
+</div>
+</div>
+<footer class="container wrap">
+</footer>
+<span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span><span class_="highlight-scripts"><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css" rel="stylesheet"/><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script><script>hljs.highlightAll();</script></span></body>
+<!-- Mirrored from forums.pythonic.guru/t/9-3-type-annotations/7782 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Sep 2023 03:42:25 GMT -->
+</html>
